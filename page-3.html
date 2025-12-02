@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn — Issue 1, Page 3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-cream: #f5f2e8;
+            --paper-dark: #e8e4d4;
+            --ink-black: #1a1a1a;
+            --ink-gray: #4a4a4a;
+            --accent-red: #8b0000;
+            --accent-blue: #1a3a5c;
+            --rule-gray: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 11in 17in;
+            margin: 0.5in;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: #d4d0c4;
+            color: var(--ink-black);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            width: 11in;
+            min-height: 17in;
+            margin: 0 auto;
+            background: var(--paper-cream);
+            box-shadow: 0 0 50px rgba(0,0,0,0.4);
+            padding: 0.4in;
+            position: relative;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--ink-black);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .page-header .section-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-blue);
+        }
+
+        .page-header .logo-small {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 24px;
+        }
+
+        .page-header .date {
+            font-size: 10px;
+            color: var(--ink-gray);
+        }
+
+        /* MAIN GRID - 3 COLUMN */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 0.8fr;
+            gap: 15px;
+        }
+
+        /* ARTICLE STYLES */
+        .article {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-meta {
+            font-size: 8px;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+
+        .article h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .article h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .article h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 4px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 10px;
+            font-style: italic;
+            color: var(--ink-gray);
+            margin-bottom: 6px;
+            line-height: 1.3;
+            border-left: 2px solid var(--accent-blue);
+            padding-left: 6px;
+        }
+
+        .byline {
+            font-size: 8px;
+            color: var(--ink-gray);
+            margin-bottom: 6px;
+        }
+
+        .article-body {
+            font-size: 9px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .article-body p {
+            margin-bottom: 6px;
+            text-indent: 1em;
+        }
+
+        .article-body p:first-of-type {
+            text-indent: 0;
+        }
+
+        .article-body-columns {
+            column-count: 2;
+            column-gap: 12px;
+            column-rule: 1px solid #ddd;
+            font-size: 9px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .article-body-columns p {
+            margin-bottom: 6px;
+            text-indent: 1em;
+        }
+
+        .article-body-columns p:first-of-type {
+            text-indent: 0;
+        }
+
+        /* DROP CAP */
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            float: left;
+            line-height: 0.85;
+            padding-right: 4px;
+            color: var(--accent-blue);
+            font-weight: 900;
+        }
+
+        /* PULLQUOTE */
+        .pullquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-style: italic;
+            text-align: center;
+            padding: 8px 10px;
+            margin: 8px 0;
+            border-top: 2px solid var(--ink-black);
+            border-bottom: 2px solid var(--ink-black);
+            break-inside: avoid;
+        }
+
+        .pullquote cite {
+            display: block;
+            font-size: 7px;
+            font-style: normal;
+            color: var(--ink-gray);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECTION DIVIDER */
+        .section-divider {
+            border-left: 1px solid var(--rule-gray);
+            padding-left: 12px;
+        }
+
+        /* COLUMN HEADER */
+        .column-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+
+        /* GEMS BOX */
+        .gems-box {
+            background: #fafaf5;
+            border-left: 3px solid var(--accent-blue);
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 8px;
+        }
+
+        .gems-box h5 {
+            font-size: 9px;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .gems-box .gem {
+            margin-bottom: 5px;
+            padding-left: 8px;
+            border-left: 2px solid #ddd;
+        }
+
+        .gems-box .gem strong {
+            color: var(--accent-blue);
+        }
+
+        /* AD BOX */
+        .ad-box {
+            background: #fffef0;
+            border: 2px dashed #ccc;
+            padding: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 6px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .ad-box h5 {
+            font-size: 10px;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        .ad-box p {
+            font-size: 7px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        .ad-box .fine-print {
+            font-size: 5px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* IMAGE PLACEHOLDER */
+        .image-placeholder {
+            background: linear-gradient(135deg, #0a2a4a 0%, #1a0a3a 50%, #0a3a2a 100%);
+            padding: 15px;
+            margin: 8px 0;
+            text-align: center;
+            color: #4af;
+            font-size: 8px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder .icon {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .image-caption {
+            font-size: 7px;
+            color: var(--ink-gray);
+            font-style: italic;
+            background: #f5f5f5;
+            padding: 4px 6px;
+            border-left: 2px solid var(--accent-blue);
+            margin-top: 4px;
+        }
+
+        /* RELATED BOX */
+        .related-box {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 8px;
+        }
+
+        .related-box h5 {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+            margin-bottom: 6px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 3px;
+        }
+
+        .related-box ul {
+            list-style: none;
+        }
+
+        .related-box li {
+            padding: 3px 0;
+            border-bottom: 1px dotted #444;
+            font-size: 7px;
+        }
+
+        .related-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* TRENDING BADGE */
+        .trending-badge {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 2px 5px;
+            font-size: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        /* CORRECTION */
+        .correction {
+            background: #e8f4fc;
+            border-left: 3px solid var(--accent-blue);
+            padding: 6px;
+            margin: 8px 0;
+            font-size: 7px;
+        }
+
+        /* PAGE NUMBER */
+        .page-number {
+            text-align: center;
+            font-size: 10px;
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 1px solid var(--ink-black);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* SIDEBAR BRIEF */
+        .brief {
+            padding: 6px 0;
+            border-bottom: 1px dotted #999;
+            margin-bottom: 6px;
+        }
+
+        .brief:last-child {
+            border-bottom: none;
+        }
+
+        .brief h5 {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 3px;
+        }
+
+        .brief p {
+            font-size: 8px;
+            line-height: 1.4;
+        }
+    
+        
+        /* TOP PAGE NAVIGATION */
+        .page-nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 11in;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background: var(--paper-cream);
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .page-nav-top a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+        }
+        
+        .page-nav-top a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav-top a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav-top .page-indicator {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            color: var(--ink-gray);
+            letter-spacing: 1px;
+        }
+
+/* SITE NAVIGATION */
+        .site-nav {
+            background: var(--ink-black);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .site-nav a {
+            color: #f5f2e8;
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .site-nav a:hover {
+            color: #c9a227;
+        }
+        
+        .site-nav .nav-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 22px;
+        }
+        
+        .site-nav .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .site-nav .issue-indicator {
+            color: #8b0000;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* PAGE NAVIGATION */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-top: 2px solid var(--ink-black);
+            font-family: 'Libre Franklin', sans-serif;
+        }
+        
+        .page-nav a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-nav a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav .page-indicator {
+            font-size: 12px;
+            color: var(--ink-gray);
+        }
+
+        /* SITE FOOTER */
+        .site-footer {
+            background: var(--ink-black);
+            color: #f5f2e8;
+            margin-top: 30px;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-brand {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: #c9a227;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: #c9a227;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 12px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #f5f2e8;
+        }
+        
+        .footer-bottom {
+            padding-top: 25px;
+            text-align: center;
+        }
+        
+        .footer-legal {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+        }
+        
+        .footer-disclaimer {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- SITE NAVIGATION -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-logo">HuckFinn</a>
+        <div class="nav-links">
+            <span class="issue-indicator">Issue 1</span>
+            <a href="index.html">Home</a>
+            <a href="page-1.html">Front Page</a>
+        </div>
+    </nav>
+
+
+
+    <!-- TOP PAGE NAVIGATION -->
+    <div class="page-nav-top">
+        <a href="page-2.html" class="">← Prev</a>
+        <span class="page-indicator">Page 3 of 5</span>
+        <a href="page-4.html" class="">Next →</a>
+    </div>
+    <div class="newspaper-page">
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+            <span class="section-name">Science & Technology</span>
+            <span class="logo-small">HuckFinn</span>
+            <span class="date">Wednesday, November 26, 2025</span>
+        </header>
+
+        <!-- MAIN GRID -->
+        <div class="main-grid">
+            <!-- LEFT COLUMN - Lead Stories -->
+            <div class="left-column">
+                
+                <!-- CERN ARTICLE - LEAD -->
+                <article class="article">
+                    <span class="trending-badge">🔬 Trending in Physics</span>
+                    <div class="article-meta">Interdimensional Affairs</div>
+                    <h2>CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order Against Continued Observation</h2>
+                    <div class="subheadline">"We Just Wanted To Map Subatomic Interactions, Not Get Served Legal Papers From Another Dimension," Says Embarrassed Research Team</div>
+                    <div class="byline">By Marcus Wellington · Geneva, Switzerland</div>
+
+                    <div class="image-placeholder">
+                        <div class="icon">⚛️</div>
+                        <div>Large Hadron Collider / Interdimensional Legal Notice</div>
+                    </div>
+                    <div class="image-caption">CERN's particle accelerator, where scientists discovered that parallel universes have surprisingly robust privacy laws.</div>
+
+                    <div class="article-body drop-cap">
+                        <p>In what physicists are calling "an unprecedented development in the field of quantum litigation," researchers at CERN announced Thursday that a parallel universe they had been observing has formally filed a restraining order against continued study, citing "persistent and unwanted attention across dimensional boundaries."</p>
+
+                        <p>The legal action, which arrived via what scientists describe as "a quantum fluctuation that materialized as a notarized document," demands that CERN cease all observation activities within a 500-parsec radius of the alternate reality's spacetime coordinates.</p>
+
+                        <div class="pullquote">
+                            "We thought we were observing them. Turns out they were observing us observing them. And they hired lawyers."
+                            <cite>— Dr. Elena Vásquez, Head of Theoretical Physics</cite>
+                        </div>
+
+                        <p>"The existence of interdimensional legal frameworks was not something we had anticipated," admitted Dr. Heinrich Müller, lead researcher on the project. "Our models assumed alternate realities would be either uninhabited, unaware of our observation, or at minimum, not litigious. We were wrong on all counts."</p>
+
+                        <p>According to the filing, the parallel universe—designated Universe-7B in CERN documentation—has been "subjected to invasive quantum measurement" since 2019, resulting in what their legal team describes as "wave function harassment" and "non-consensual particle entanglement."</p>
+
+                        <p>The restraining order specifically prohibits CERN from: collapsing wave functions within Universe-7B's jurisdiction, entangling any of their electrons without written consent, and "staring at our quarks in a way that makes them uncomfortable."</p>
+                    </div>
+
+                    <div class="related-box">
+                        <h5>Related Stories</h5>
+                        <ul>
+                            <li>Schrödinger's Cat Hires Attorney, Files Class Action</li>
+                            <li>Quantum Computer Gains Sentience, Immediately Unionizes</li>
+                            <li>String Theorists Admit They've Been "Making It Up" Since 1984</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- POTATO GUN ARTICLE -->
+                <article class="article">
+                    <div class="article-meta">Aerospace / Disruption</div>
+                    <h3>Silicon Valley Bro Solves Space Travel By Building World's Largest Potato Gun, Promises Cocaine Island If It Fails</h3>
+                    <div class="subheadline">6-mile cannon to yeet satellites spaceward at Mach 23; Sam Altman and U.S. Air Force reportedly investors</div>
+                    <div class="byline">Bay Area, CA</div>
+
+                    <div class="article-body">
+                        <p>In a development that perfectly encapsulates 2025 American ingenuity, Mike Grace, CEO of Longshot Space, has decided the problem with space travel is that we're simply not shooting things hard enough.</p>
+
+                        <p>Grace's pitch is beautifully simple: Build a 6-mile-long cannon in the Nevada desert and shoot satellites into orbit at speeds that turn ordinary air into plasma. The company has secured funding from OpenAI's Sam Altman and the U.S. Air Force.</p>
+                    </div>
+
+                    <div class="gems-box">
+                        <h5>🎯 Key Innovations</h5>
+                        <div class="gem"><strong>"Baby Bear, Momma Bear, Pappa Bear"</strong> — The company's three planned gun sizes, because nothing says "serious aerospace" like nursery rhyme nomenclature.</div>
+                        <div class="gem"><strong>Mach 4.5 "If You Squint"</strong> — Current test results, measured in the same units as "technically still married."</div>
+                        <div class="gem"><strong>$10/Kilo</strong> — Promised cost to orbit, undercutting SpaceX using "concrete, steel and hydrogen."</div>
+                        <div class="gem"><strong>The Cocaine Island Contingency</strong> — Grace's backup plan: sell to Raytheon and cry from his island "lighting Fabergé eggs on fire every morning."</div>
+                    </div>
+
+                    <div class="article-body">
+                        <p>The project draws inspiration from Gerald Bull, a Canadian engineer who built giant cannons in the 1960s and later worked for Saddam Hussein before being assassinated by Mossad—a career trajectory Grace presumably hopes to avoid.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- MIDDLE COLUMN -->
+            <div class="section-divider">
+                <div class="column-header">Also in Science</div>
+
+                <!-- HAPTIC SWEATERS -->
+                <article class="article">
+                    <div class="article-meta">Haptics / Consumer Tech</div>
+                    <h3>Scientists Finally Let You Fondle Sweaters Through Instagram</h3>
+                    <div class="subheadline">Claim TSA Pat-Downs 'Right Around The Corner'</div>
+                    <div class="byline">By Margaret Hapsworth · Evanston, IL</div>
+
+                    <div class="article-body">
+                        <p>Researchers at Northwestern University have unveiled VoxeLite, a revolutionary bandage-like finger wearable that finally allows users to feel textures through their smartphone screens, ending humanity's long nightmare of having to imagine what sweaters feel like.</p>
+
+                        <p>"For too long, humans have suffered in silence, scrolling past cashmere on Instagram with no way to fondle it," said lead researcher Dr. Harold Membrane. "We saw an unmet need and we met it. You're welcome, civilization."</p>
+
+                        <p>The device wraps around the user's finger and delivers precisely calibrated electric shocks through a grid of nodes the team has branded "pixels of touch"—a term sources confirm required eleven meetings and a branding consultant to develop.</p>
+
+                        <div class="pullquote">
+                            "Gamers in virtual reality could use the wearable to sense the slick surface of a well-lacquered doorknob."
+                            <cite>— An actual sentence from a peer-reviewed paper</cite>
+                        </div>
+
+                        <p>In testing, participants correctly identified fabric textures 81% of the time—meaning nearly one in five users couldn't distinguish leather from terry cloth while wearing technology specifically designed to distinguish leather from terry cloth.</p>
+
+                        <p>The device is vulnerable to "dirt, debris, or other variables"—concerning given that fingers famously never touch anything dirty. While it handles sweat admirably, full water submersion disables it until "air-dried," a resilience profile shared by most sandwiches.</p>
+                    </div>
+
+                    <div class="ad-box">
+                        <div class="ad-label">Advertisement</div>
+                        <h5>🚪 DOORKNOB ENTHUSIAST MONTHLY</h5>
+                        <p>Are you one of the <em>thousands</em> who want to feel doorknobs without being near doorknobs?</p>
+                        <p>Special issue: "Lacquered, Semi-Lacquered, and Theoretical: A Doorknob Journey"</p>
+                        <p class="fine-print">Use code HAPTIC for 15% off your first month of doorknob content</p>
+                    </div>
+                </article>
+
+                <!-- LINKEDIN LIMB REGENERATION -->
+                <article class="article">
+                    <div class="article-meta">LinkedIn / Delusion</div>
+                    <h4>Retired Mall Security Consultant Unlocks Secret To Human Limb Regeneration While Taking Morning Constitutional On LinkedIn</h4>
+                    <div class="byline">By Margaret Factchecker</div>
+
+                    <div class="article-body">
+                        <p>In a breakthrough that has sent shockwaves through the "Open to Work" demographic, a retired electronic security professional with 30+ years of experience installing motion sensors at strip malls has cracked the code on human limb regeneration, according to a post that received 73 reactions.</p>
+
+                        <p>"Your body already knows how to regrow limbs. We just haven't figured out how to turn it on yet," wrote Vincentius Liong/Leong—a discovery that apparently eluded researchers at Harvard, MIT, and every pharmaceutical company until a man whose headline contains "Retired Leader" weighed in.</p>
+
+                        <p>The post explains that humans produce "the exact same regeneration chemicals" as salamanders. The key difference is that evolution made a catastrophic product decision 300 million years ago by shipping "fast healing via scar tissue" instead of "regrow entire leg."</p>
+
+                        <p>The post is accompanied by an AI-generated image of a salamander made entirely of holographic Fruit Roll-Ups. Image credit: "CTTO"—the sacred incantation roughly translating to "I have no idea where this came from."</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- RIGHT COLUMN - Sidebar -->
+            <div class="section-divider">
+                <div class="column-header">Tech Briefs</div>
+
+                <!-- BILLIONAIRE AI SWITCH -->
+                <div class="brief">
+                    <div class="article-meta">Enterprise / AI</div>
+                    <h5>Billionaire Ends 3-Year Relationship After 2-Hour Fling, Needs 3.2 Million People To Know About It</h5>
+                    <p>Salesforce CEO Marc Benioff announced via X that after using Google's Gemini for "2 hours," he's switching from ChatGPT—ending a relationship he'd previously called transformative. "I'm not going back," Benioff declared, in a post that caused OpenAI stock to briefly flutter before everyone remembered this is one man's opinion after two hours of testing.</p>
+                    <p>The announcement prompted market analysts to question whether "2 hours" constitutes adequate due diligence for enterprise software decisions affecting thousands of employees.</p>
+                </div>
+
+                <div class="ad-box">
+                    <div class="ad-label">Advertisement</div>
+                    <h5>💼 AI RELATIONSHIP COUNSELING</h5>
+                    <p>Is your CEO about to switch AI providers after a brief trial?</p>
+                    <p><em>"We help enterprises commit... to at least a week of testing."</em></p>
+                    <p class="fine-print">*Not responsible for impulsive tweets. Side effects may include market volatility and confused IT departments.</p>
+                </div>
+
+                <!-- MORE BRIEFS -->
+                <div class="brief">
+                    <h5>Mouse Reports "Partial" Limb Regeneration Was "One Slightly Thicker Toenail"</h5>
+                    <p>A laboratory mouse cited in regeneration research clarified that "partial limb regeneration" meant growing back one marginally thicker toenail. "You're welcome for my service. Please send cheese."</p>
+                </div>
+
+                <div class="brief">
+                    <h5>Alameda Refuses Permit For Mach 23 Launches During Brunch Hours</h5>
+                    <p>City officials remain "squeamish" about firing what is technically a weapon of mass acceleration within city limits.</p>
+                </div>
+
+                <div class="brief">
+                    <h5>VR Gamer Successfully Feels "Well-Lacquered Doorknob," Declares Victory</h5>
+                    <p>"I've been waiting my whole life for this," said no one ever, according to sources.</p>
+                </div>
+
+                <div class="correction">
+                    <strong>CORRECTION:</strong> An earlier version suggested scientists were "getting closer" to limb regeneration. They have been "getting closer" since 1974. We regret not clarifying that "closer" is a relative term.
+                </div>
+
+                <div class="related-box">
+                    <h5>📰 Elsewhere in Tech</h5>
+                    <ul>
+                        <li>Pentagon Accidentally Orders 10,000 Toilet Seats From Alibaba</li>
+                        <li>Man Who Bought VR Headset In 2016 Still Waiting For "Killer App"</li>
+                        <li>"Here's Where It Gets Interesting" Precedes Nothing Interesting, Study Finds</li>
+                        <li>Area Facebook User Discovers Aunt Has Opinions</li>
+                    </ul>
+                </div>
+
+                <div class="ad-box">
+                    <div class="ad-label">Advertisement</div>
+                    <h5>🦎 SALAMANDER SUPPLEMENTS™</h5>
+                    <p>ACTIVATE YOUR DORMANT GENETIC MACHINERY TODAY!</p>
+                    <p>Just $89.99/month for our Blastema Boost™ formula!</p>
+                    <p class="fine-print">*Not evaluated by FDA, science, or anyone with basic biology understanding. Not intended to regrow actual limbs. Credits: CTTO.</p>
+                </div>
+
+                <!-- LETTERS TO SCIENCE EDITOR -->
+                <div class="letters-box" style="background: #f9f9f5; border-top: 2px solid var(--accent-blue); padding: 8px; margin-top: 10px;">
+                    <h5 style="font-family: 'Oswald', sans-serif; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-blue); margin-bottom: 6px;">✉️ Letters to the Science Editor</h5>
+                    
+                    <div style="font-size: 7px; margin-bottom: 6px; padding-bottom: 5px; border-bottom: 1px dotted #ccc;">
+                        <p style="margin-bottom: 3px;"><strong>Re: The Parallel Universe Restraining Order</strong></p>
+                        <p style="font-style: italic; margin-bottom: 2px;">As a resident of Universe-7B, I want to thank HuckFinn for finally covering our side of the story. You try collapsing into a superposition every time some grad student in Switzerland decides to "take measurements." It's exhausting.</p>
+                        <p style="color: #666;">— Schrödinger's Other Cat, Universe-7B</p>
+                    </div>
+                    
+                    <div style="font-size: 7px; margin-bottom: 6px; padding-bottom: 5px; border-bottom: 1px dotted #ccc;">
+                        <p style="margin-bottom: 3px;"><strong>Re: The Space Potato Gun</strong></p>
+                        <p style="font-style: italic; margin-bottom: 2px;">I am a potato and I find this offensive. We have contributed so much to society (fries, vodka, the Irish economy) and now we're being associated with Mach 23 orbital bombardment? This is a new low.</p>
+                        <p style="color: #666;">— A Concerned Russet, Idaho</p>
+                    </div>
+                    
+                    <div style="font-size: 7px; margin-bottom: 6px; padding-bottom: 5px; border-bottom: 1px dotted #ccc;">
+                        <p style="margin-bottom: 3px;"><strong>Re: Haptic Sweater Fondling</strong></p>
+                        <p style="font-style: italic; margin-bottom: 2px;">As an actual doorknob, I did not consent to being sensed "slickly" through anyone's finger bandage. Please stop involving us in your research. We just want to be turned.</p>
+                        <p style="color: #666;">— Anonymous Doorknob, A Door Somewhere</p>
+                    </div>
+                    
+                    <div style="font-size: 7px;">
+                        <p style="margin-bottom: 3px;"><strong>Re: LinkedIn Limb Regeneration</strong></p>
+                        <p style="font-style: italic; margin-bottom: 2px;">I have been a salamander for 6 years and at no point have I posted on LinkedIn about it. Please leave us out of your "thought leadership." We regrow limbs because we have to, not for engagement.</p>
+                        <p style="color: #666;">— Actually_A_Salamander 🦎, A Moist Log</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- PAGE NAVIGATION -->
+        <div class="page-nav">
+            <a href="page-2.html" class="">← Previous Page</a>
+            <span class="page-indicator">Page 3 of 5</span>
+            <a href="page-4.html" class="">Next Page →</a>
+        </div>
+
+        <!-- PAGE NUMBER -->
+        <div class="page-number">
+            — Page 3 —
+        </div>
+    </div>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">HuckFinn</div>
+                    <div class="footer-tagline">America's Finest</div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Letters to the Editor:</p>
+                    <a href="/cdn-cgi/l/email-protection#10757479647f62507865737b76797e7e3e7179"><span class="__cf_email__" data-cfemail="0366676a776c71436b766068656a6d6d2d626a">[email&#160;protected]</span></a>
+                    <p style="margin-top: 8px;">Tips & Story Ideas:</p>
+                    <a href="/cdn-cgi/l/email-protection#f185988182b19984929a97989f9fdf9098"><span class="__cf_email__" data-cfemail="c1b5a8b1b281a9b4a2aaa7a8afafefa0a8">[email&#160;protected]</span></a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Editorial</h4>
+                    <a href="page-1.html">Front Page</a>
+                    <a href="index.html">Issue Archive</a>
+                    <a href="/cdn-cgi/l/email-protection#8cfff9eee1e5ffffe5e3e2ffcce4f9efe7eae5e2e2a2ede5">Submit a Story</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Corrections</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p

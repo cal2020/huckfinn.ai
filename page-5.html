@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn Gazette - Page 5: Features & Lifestyle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f5f2e8;
+            --ink: #1a1a1a;
+            --accent: #6b2c5a;
+            --accent-light: #8e4178;
+            --gold: #c9a227;
+            --rule: #2a2a2a;
+            --gray: #666;
+            --light-gray: #d4d0c5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #d4cec0;
+            font-family: 'Libre Franklin', sans-serif;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            width: 11in;
+            min-height: 17in;
+            margin: 0.5in auto;
+            background: var(--cream);
+            padding: 0.4in;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Header */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 8px;
+            border-bottom: 3px double var(--rule);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-info {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            color: var(--gray);
+            text-align: right;
+        }
+
+        .masthead-small {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 24px;
+            color: var(--ink);
+        }
+
+        /* Main Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 0.8fr;
+            gap: 20px;
+            height: calc(100% - 50px);
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Article Styles */
+        .article {
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 12px;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-meta {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 6px;
+            color: var(--ink);
+        }
+
+        .headline-large {
+            font-size: 26px;
+        }
+
+        .headline-medium {
+            font-size: 20px;
+        }
+
+        .headline-small {
+            font-size: 16px;
+        }
+
+        .headline-tiny {
+            font-size: 14px;
+        }
+
+        .subhead {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .byline {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .article-text {
+            font-size: 10px;
+            line-height: 1.55;
+            text-align: justify;
+        }
+
+        .article-text p {
+            margin-bottom: 8px;
+        }
+
+        .drop-cap {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            line-height: 0.8;
+            padding-right: 6px;
+            padding-top: 4px;
+            color: var(--accent);
+            font-weight: 900;
+        }
+
+        /* Pullquote */
+        .pullquote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+            padding: 8px 12px;
+            margin: 10px 0;
+            background: rgba(107, 44, 90, 0.05);
+            line-height: 1.35;
+        }
+
+        .pullquote-attribution {
+            font-size: 9px;
+            font-style: normal;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 9px;
+        }
+
+        .info-box-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .info-box-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-positive { color: #4CAF50; }
+        .stat-negative { color: #e74c3c; }
+        .stat-warning { color: var(--gold); }
+
+        /* Brief Box */
+        .briefs-box {
+            background: rgba(107, 44, 90, 0.08);
+            border: 1px solid var(--accent);
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .briefs-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 4px;
+        }
+
+        .brief-item {
+            font-size: 9px;
+            padding: 5px 0;
+            border-bottom: 1px dotted var(--light-gray);
+            line-height: 1.4;
+        }
+
+        .brief-item:last-child {
+            border-bottom: none;
+        }
+
+        .brief-headline {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        /* Ad Box */
+        .ad-box {
+            background: #faf8f3;
+            border: 2px dashed var(--gray);
+            padding: 10px;
+            text-align: center;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .ad-box::before {
+            content: 'ADVERTISEMENT';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cream);
+            padding: 0 8px;
+            font-size: 7px;
+            letter-spacing: 1px;
+            color: var(--gray);
+        }
+
+        .ad-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .ad-tagline {
+            font-size: 9px;
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+
+        .ad-cta {
+            font-size: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        .ad-fine {
+            font-size: 6px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* Letters Section */
+        .letters-section {
+            background: #faf8f3;
+            border: 1px solid var(--light-gray);
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .letters-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 4px;
+        }
+
+        .letter {
+            font-size: 9px;
+            padding: 6px 0;
+            border-bottom: 1px dotted var(--light-gray);
+            line-height: 1.4;
+        }
+
+        .letter:last-child {
+            border-bottom: none;
+        }
+
+        .letter-author {
+            font-weight: 600;
+            font-style: italic;
+            color: var(--gray);
+            margin-top: 3px;
+        }
+
+        /* Index Infographic */
+        .satire-index {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: var(--cream);
+            padding: 12px;
+            margin: 10px 0;
+        }
+
+        .satire-index-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .index-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid #444;
+            font-size: 8px;
+        }
+
+        .index-row:last-child {
+            border-bottom: none;
+        }
+
+        .index-value {
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .index-critical { color: #e74c3c; }
+        .index-warning { color: var(--gold); }
+
+        /* Related Stories */
+        .related-box {
+            border-top: 2px solid var(--accent);
+            padding-top: 8px;
+            margin-top: 10px;
+        }
+
+        .related-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+
+        .related-item {
+            font-size: 8px;
+            padding: 3px 0;
+            color: var(--ink);
+        }
+
+        .related-item::before {
+            content: '■ ';
+            color: var(--accent);
+        }
+
+        /* Page Footer */
+        .page-footer {
+            position: absolute;
+            bottom: 0.4in;
+            left: 0.4in;
+            right: 0.4in;
+            text-align: center;
+            font-size: 10px;
+            color: var(--gray);
+            padding-top: 8px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Emoji display */
+        .emoji-large {
+            font-size: 24px;
+            text-align: center;
+            margin: 8px 0;
+        }
+
+        /* Doom spiral mini */
+        .doom-step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 8px;
+            padding: 3px 0;
+        }
+
+        .doom-emoji {
+            font-size: 12px;
+        }
+
+        .doom-arrow {
+            text-align: center;
+            color: var(--accent);
+            font-size: 8px;
+        }
+    
+        
+        /* TOP PAGE NAVIGATION */
+        .page-nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 11in;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background: var(--paper-cream);
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .page-nav-top a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+        }
+        
+        .page-nav-top a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav-top a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav-top .page-indicator {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            color: var(--ink-gray);
+            letter-spacing: 1px;
+        }
+
+/* SITE NAVIGATION */
+        .site-nav {
+            background: var(--ink-black);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .site-nav a {
+            color: #f5f2e8;
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .site-nav a:hover {
+            color: #c9a227;
+        }
+        
+        .site-nav .nav-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 22px;
+        }
+        
+        .site-nav .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .site-nav .issue-indicator {
+            color: #8b0000;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* PAGE NAVIGATION */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-top: 2px solid var(--ink-black);
+            font-family: 'Libre Franklin', sans-serif;
+        }
+        
+        .page-nav a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-nav a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav .page-indicator {
+            font-size: 12px;
+            color: var(--ink-gray);
+        }
+
+        /* SITE FOOTER */
+        .site-footer {
+            background: var(--ink-black);
+            color: #f5f2e8;
+            margin-top: 30px;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-brand {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: #c9a227;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: #c9a227;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 12px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #f5f2e8;
+        }
+        
+        .footer-bottom {
+            padding-top: 25px;
+            text-align: center;
+        }
+        
+        .footer-legal {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+        }
+        
+        .footer-disclaimer {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- SITE NAVIGATION -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-logo">HuckFinn</a>
+        <div class="nav-links">
+            <span class="issue-indicator">Issue 1</span>
+            <a href="index.html">Home</a>
+            <a href="page-1.html">Front Page</a>
+        </div>
+    </nav>
+
+
+
+    <!-- TOP PAGE NAVIGATION -->
+    <div class="page-nav-top">
+        <a href="page-4.html" class="">← Prev</a>
+        <span class="page-indicator">Page 5 of 5</span>
+        <a href="#" class="disabled">Next →</a>
+    </div>
+    <div class="newspaper-page">
+        <!-- Header -->
+        <header class="page-header">
+            <div>
+                <div class="masthead-small">HuckFinn</div>
+            </div>
+            <div class="section-title">Features & Lifestyle</div>
+            <div class="page-info">
+                Thursday, November 27, 2025<br>
+                Page 5
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- LEFT COLUMN -->
+            <div class="column">
+                <!-- FEATURE: Black Friday -->
+                <article class="article">
+                    <div class="article-meta">Holiday Special Report</div>
+                    <h1 class="headline headline-large">Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings</h1>
+                    <div class="subhead">Federal economists declare six separate trampling incidents "encouraging sign" for Q4 GDP growth</div>
+                    <div class="byline">By Staff Writer | November 24, 2025</div>
+                    
+                    <div class="article-text">
+                        <p><span class="drop-cap">I</span>n a beautiful display of American tradition, millions of citizens across the country kicked off the holiday shopping season Friday by temporarily suspending all human decency, compassion, and self-awareness in pursuit of moderately discounted consumer electronics.</p>
+                        
+                        <p>The annual celebration, which began mere hours after families gathered to express gratitude for what they already have, saw patriots of all ages sprinting, shoving, and occasionally brawling with complete strangers over the sacred right to save $40 on items they didn't know existed 24 hours ago.</p>
+                        
+                        <p>"I'm truly blessed," said local man Marcus Chen, sporting a black eye and torn jacket after successfully elbowing a 67-year-old grandmother to secure a discounted television. "This is what the Pilgrims would have wanted."</p>
+                    </div>
+
+                    <div class="pullquote">
+                        "When we see Americans literally stepping on each other's faces for consumer goods, we know the economy is healthy."
+                        <div class="pullquote-attribution">— Barbara Winters, Treasury Department Analyst</div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>The Morrison family of Ohio spent their Thanksgiving evening engaged in quality bonding time, reviewing tactical floor plans of their local Best Buy and discussing optimal escape routes. "We've color-coded the high-priority targets," said father Dale Morrison, pointing to a map marked with zones labeled "VIOLENT," "MODERATELY VIOLENT," and "POSSIBLY SURVIVABLE."</p>
+                        
+                        <p>Area resident Patricia Newman credited her year-round CrossFit regimen for her ability to successfully secure a $29.99 toaster oven, requiring her to vault over a fallen elderly man and execute what she described as a "textbook tackle" on a competing shopper.</p>
+                        
+                        <p>Medical professionals reported treating numerous Black Friday-related injuries, with most patients expressing satisfaction despite the physical cost. Local man Robert Patterson, being treated for a concussion and two broken ribs, deemed his injuries "a small price to pay" for $40 in savings on an air fryer. His $180 in total savings was offset by a $2,400 emergency room visit not covered by his insurance, which he described as "totally worth it."</p>
+                    </div>
+
+                    <!-- Black Friday Stats Box -->
+                    <div class="info-box">
+                        <div class="info-box-title">📊 Black Friday By The Numbers</div>
+                        <div class="info-box-item">
+                            <span>Projected Revenue</span>
+                            <span class="stat-positive">$78 Billion</span>
+                        </div>
+                        <div class="info-box-item">
+                            <span>Minor Injuries</span>
+                            <span class="stat-warning">147,000</span>
+                        </div>
+                        <div class="info-box-item">
+                            <span>Arrests</span>
+                            <span class="stat-negative">4,200</span>
+                        </div>
+                        <div class="info-box-item">
+                            <span>Damage to Human Soul</span>
+                            <span class="stat-negative">Immeasurable</span>
+                        </div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>At press time, the Morrison family was already making plans for next year's Black Friday assault, with young daughter Emma excitedly asking if she'd be "old enough to use pepper spray" by then.</p>
+                    </div>
+                </article>
+
+                <!-- HUMAN INTEREST: Area Man 14-Day Employment -->
+                <article class="article">
+                    <div class="article-meta">Human Interest • Hollywood</div>
+                    <h2 class="headline headline-medium">Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment</h2>
+                    <div class="subhead">1980s child actor shocked to discover workplace drama; immediately takes everything back</div>
+                    <div class="byline">By Ruth Shattuck</div>
+                    
+                    <div class="article-text">
+                        <p>In a stunning exposé, former child actor Corey Feldman has courageously emerged from the trenches to describe the "most toxic" workplace environment he experienced during his grueling 14-day stint on ABC's <em>Dancing with the Stars</em>—an ordeal he endured for exactly two episodes before being eliminated for performing a cha-cha to "Baby Got Back."</p>
+                        
+                        <p>The 54-year-old actor, whose entire childhood was spent navigating the notoriously wholesome environment of 1980s Hollywood—an era later becoming the subject of multiple FBI investigations—told radio listeners he had "never seen anything like" the behind-the-scenes culture at the dance competition show.</p>
+                    </div>
+
+                    <div class="pullquote">
+                        "Scientists at CERN have requested access to Feldman's brain, believing it may hold the key to understanding how a workplace can simultaneously exist in two contradictory states until observed by a publicist."
+                    </div>
+
+                    <div class="article-text">
+                        <p>"On the set everybody gets along. Everybody's great," Feldman explained, before adding, "But the behind-the-scenes drama and BS that people throw around that show, I've never seen anything like it."</p>
+                        
+                        <p>In a statement released with the speed of a man who just remembered he works in Hollywood, Feldman clarified that by "toxic," "worst," and "most toxic thing I've ever seen," he actually meant "wonderful," "grateful," and "looking forward to getting back to rehearsals"—even though he is no longer on the show.</p>
+                    </div>
+
+                    <div class="related-box">
+                        <div class="related-title">Related Stories</div>
+                        <div class="related-item">PR Firms Add "The Feldman" to Crisis Management Textbooks</div>
+                        <div class="related-item">Man Complains About Attention-Seekers While Seeking Attention</div>
+                        <div class="related-item">Genealogists Petition for Chmerkovskiy Family Tree Recognition</div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- MIDDLE COLUMN -->
+            <div class="column">
+                <!-- SECONDARY: Turkey Hazmat -->
+                <article class="article">
+                    <div class="article-meta">Thanksgiving Special Report</div>
+                    <h2 class="headline headline-medium">Nation's Turkeys Now Require Hazmat Certification To Consume</h2>
+                    <div class="subhead">Study finding 6,800 annual cancer deaths from PFAS contamination quietly being "re-evaluated" after industry expresses concerns</div>
+                    <div class="byline">By Mildred Wrongway-Patterson</div>
+                    
+                    <div class="article-text">
+                        <p><span class="drop-cap">I</span>n what officials are calling "a perfectly normal Thanksgiving advisory released at a completely normal time," the federal government issued guidance Thursday morning reminding Americans that wild turkeys in 17 states should not be consumed due to PFAS contamination levels that would make a Superfund site blush.</p>
+                        
+                        <p>"Advisory" is, of course, government-speak for "we poisoned your dinner decades ago but just got around to mentioning it on Thanksgiving morning," explained Dr. Helena Struthers, director of the CDC's Division of Unfortunate Timing.</p>
+                    </div>
+
+                    <div class="pullquote">
+                        "This year, the turkey pardons YOU."
+                        <div class="pullquote-attribution">— National Turkey Federation (statement immediately retracted)</div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>The advisory comes weeks after a landmark study found PFAS contamination in drinking water alone is responsible for approximately 6,800 cancer cases annually. The study has since been flagged for "additional review" after the American Chemistry Council expressed what insiders describe as "very expensive concerns."</p>
+                        
+                        <p>The study's authors acknowledged their findings represent a significant undercount—covering only half the U.S. population and missing areas with the most severe contamination.</p>
+                    </div>
+
+                    <!-- PFAS Doom Spiral -->
+                    <div class="satire-index">
+                        <div class="satire-index-title">🔄 The PFAS Thanksgiving Doom Spiral</div>
+                        <div class="doom-step"><span class="doom-emoji">🌲🔥</span> Indigenous fire management banned (1800s)</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">⏰</span> 100 years of fire suppression</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">🔥🔥🔥</span> MEGAFIRES (10M+ acres/year)</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">🧯</span> Fight fires with PFAS foam</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">🦃☠️</span> Turkey becomes biohazard</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">📊</span> Study documents deaths</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">💰🗑️</span> Study "re-evaluated"</div>
+                        <div class="doom-arrow">↓</div>
+                        <div class="doom-step"><span class="doom-emoji">🦃🎉</span> Happy Thanksgiving!</div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>Studies indicate 90% of line-of-duty firefighter deaths are now attributable to cancer from PFAS exposure in gear, foam, and smoke. "Happy Thanksgiving," added Dr. Kessler.</p>
+                    </div>
+                </article>
+
+                <!-- MEDIA: Satirists Surrender -->
+                <article class="article">
+                    <div class="article-meta">Special Investigation • Civilizational Autopsy</div>
+                    <h2 class="headline headline-medium">Nation's Satirists Formally Surrender To Reality</h2>
+                    <div class="subhead">Groundbreaking study reveals inverse relationship between civilizational health and satire material quality</div>
+                    <div class="byline">By Thurston Bellweather III</div>
+                    
+                    <div class="article-text">
+                        <p>In what experts are calling "the inevitable conclusion to a very predictable trajectory," the National Association of Professional Satirists (NAPS) announced Tuesday that its members would be formally surrendering to reality, effective immediately.</p>
+                        
+                        <p>"We've been tracking what we call the Satire Sufficiency Index since 2010," explained Dr. Helena Voss, lead researcher at the Institute for Advanced Doom Studies. "In 1995, it took approximately two weeks before a real headline would be mistaken for satire. By 2016, that window had collapsed to four hours. As of this morning, our instruments are showing a reading of <em>negative</em> four hours."</p>
+                    </div>
+
+                    <!-- Satire Index -->
+                    <div class="satire-index">
+                        <div class="satire-index-title">📉 Satire Sufficiency Index</div>
+                        <div class="index-row">
+                            <span>1995</span>
+                            <span class="index-value">+14 days</span>
+                        </div>
+                        <div class="index-row">
+                            <span>2016</span>
+                            <span class="index-value index-warning">+4 hours</span>
+                        </div>
+                        <div class="index-row">
+                            <span>2020</span>
+                            <span class="index-value index-warning">+15 minutes</span>
+                        </div>
+                        <div class="index-row">
+                            <span>2025</span>
+                            <span class="index-value index-critical">-4 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="pullquote">
+                        "We are living through a satire material golden age. This is not the flex it sounds like."
+                        <div class="pullquote-attribution">— Dr. Helena Voss</div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>The study introduces the Material Quality Inversion Principle: as civilizational quality approaches zero, the quality of available satire material approaches infinity. "The worse things get, the better our material gets. We have never had more to work with. We have also never been more professionally obsolete."</p>
+                    </div>
+                </article>
+
+                <!-- Ad -->
+                <div class="ad-box">
+                    <div class="ad-brand">TherapyFlex™</div>
+                    <div class="ad-tagline">"Because Your Satirist Needs Help Too"</div>
+                    <div class="ad-cta">Subscribe Now</div>
+                    <div class="ad-fine">*Coverage does not include reality-induced trauma</div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="column">
+                <!-- BOTTOM: Sports Reporter Pulitzer -->
+                <article class="article">
+                    <div class="article-meta">Sports Media</div>
+                    <h2 class="headline headline-small">Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' 3,847 Times</h2>
+                    <div class="byline">November 27, 2025</div>
+                    
+                    <div class="article-text">
+                        <p>The Pulitzer Prize Committee announced that local sports reporter Chad Broadsworth, 34, has been awarded the prestigious honor for his groundbreaking body of work consisting almost entirely of the question "How do you feel?" repeated in various tones and contexts over his 12-year career.</p>
+                        
+                        <p>"Mr. Broadsworth has demonstrated an unparalleled mastery of post-game emotional extraction," read the committee's statement. "Whether addressing a champion or a defeated athlete, his unwavering commitment to this singular line of inquiry represents the pinnacle of modern sports journalism."</p>
+                    </div>
+
+                    <div class="pullquote">
+                        "I feel... good. This is a great question that I wish I had thought of myself."
+                        <div class="pullquote-attribution">— Chad Broadsworth, upon winning</div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>Broadsworth was overcome with emotion upon receiving the news and was immediately asked by seventeen colleagues how he felt.</p>
+                        
+                        <p>Critics noted he has occasionally diversified his repertoire with variations such as "Talk about that feeling," "Walk me through those emotions," and the daringly innovative "Feelings?"</p>
+                    </div>
+                </article>
+
+                <!-- ENTERTAINMENT: Emoji of the Year -->
+                <article class="article">
+                    <div class="article-meta">Technology • Governance • Fatigue</div>
+                    <h2 class="headline headline-small">Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019</h2>
+                    <div class="subhead">'Face With Bags Under Eyes' gives billions standardized way to express exhaustion</div>
+                    
+                    <div class="emoji-large">🫩</div>
+                    
+                    <div class="article-text">
+                        <p>In a landmark decision that observers are calling "the most honest thing an international standards body has ever done," the Unicode Consortium voted to formally standardize human exhaustion, approving a "Face With Bags Under Eyes" emoji that has become the most popular new pictograph of 2025.</p>
+                        
+                        <p>"We've reached nearly 4,000 emojis," said Unicode Technical Director Dr. Helena Voss, visibly fatigued. "Four thousand ways to avoid using words. And yet until this year, we had no standardized method for conveying that you haven't slept properly since 2019."</p>
+                    </div>
+
+                    <div class="briefs-box">
+                        <div class="briefs-title">Emoji 16.0 Highlights</div>
+                        <div class="brief-item"><span class="brief-headline">🫩 Face With Bags Under Eyes:</span> "A mouth that has given up"</div>
+                        <div class="brief-item"><span class="brief-headline">🇨🇶 Sark Flag:</span> Population 529 achieves emoji representation</div>
+                        <div class="brief-item"><span class="brief-headline">🍎 Apple Core:</span> WITHDRAWN. No explanation given.</div>
+                        <div class="brief-item"><span class="brief-headline">🎺 Trombone:</span> Purpose: "womp womp" sounds of failure</div>
+                    </div>
+
+                    <div class="article-text">
+                        <p>Meanwhile, the tiny island of Sark—population 529—successfully obtained its own flag emoji through what documentation describes as a "legal workaround." "529 people out-lobbied entire continents," noted one analyst.</p>
+                    </div>
+                </article>
+
+                <!-- Letters to the Features Editor -->
+                <div class="letters-section">
+                    <div class="letters-title">Letters to the Features Editor</div>
+                    
+                    <div class="letter">
+                        <strong>Re: Black Friday Coverage</strong><br>
+                        Your article failed to mention that I saved $127 on a television I absolutely did not need and will never set up. The ER doctor says I'll regain full mobility in six weeks. Worth it.
+                        <div class="letter-author">— Marcus Chen, Still In Hospital, OH</div>
+                    </div>
+                    
+                    <div class="letter">
+                        <strong>Re: Satirists Surrender</strong><br>
+                        As a professional satirist, I can confirm this article is accurate. I wrote it as fiction three months ago. Reality published it as news before I could finish editing.
+                        <div class="letter-author">— Former Writer, Now Unemployed</div>
+                    </div>
+                    
+                    <div class="letter">
+                        <strong>Re: PFAS Turkeys</strong><br>
+                        🦃 gobble gobble (Translation: I pardon you all. You're going to need it.)
+                        <div class="letter-author">— Literal Turkey, Maine</div>
+                    </div>
+                    
+                    <div class="letter">
+                        <strong>Re: Emoji of the Year</strong><br>
+                        🫩
+                        <div class="letter-author">— Everyone, Everywhere</div>
+                    </div>
+                </div>
+
+                <!-- Ad -->
+                <div class="ad-box">
+                    <div class="ad-brand">NapCoin™</div>
+                    <div class="ad-tagline">The cryptocurrency that mines itself while you're unconscious</div>
+                    <div class="ad-cta">Dream Big™</div>
+                    <div class="ad-fine">*Wake up richer. Or don't wake up. We're not your doctor.</div>
+                </div>
+
+                <!-- Related Stories -->
+                <div class="related-box">
+                    <div class="related-title">Also In Features</div>
+                    <div class="related-item">'Everything Is Fine,' Reports Man Whose Blood Is 98% Forever Chemicals</div>
+                    <div class="related-item">AI Chatbot Performs 6 Web Searches To Explain What Emojis Exist, Gives Up</div>
+                    <div class="related-item">Man Having Heart Attack Relieved To Learn He Can Just Visualize Healthy Arteries</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE NAVIGATION -->
+        <div class="page-nav">
+            <a href="page-4.html" class="">← Previous Page</a>
+            <span class="page-indicator">Page 5 of 5</span>
+            <a href="#" class="disabled">Next Page →</a>
+        </div>
+
+        <!-- Page Footer -->
+        <div class="page-footer">
+            <span class="masthead-small" style="font-size: 14px;">HuckFinn</span> — "America's Finest News Source" — Page 5
+        </div>
+    </div>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">HuckFinn</div>
+                    <div class="footer-tagline">America's Finest</div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Letters to the Editor:</p>
+                    <a href="/cdn-cgi/l/email-protection#bbdedfd2cfd4c9fbd3ced8d0ddd2d5d595dad2"><span class="__cf_email__" data-cfemail="bfdadbd6cbd0cdffd7cadcd4d9d6d1d191ded6">[email&#160;protected]</span></a>
+                    <p style="margin-top: 8px;">Tips & Story Ideas:</p>
+                    <a href="/cdn-cgi/l/email-protection#99edf0e9ead9f1ecfaf2fff0f7f7b7f8f0"><span class="__cf_email__" data-cfemail="3d49544d4e7d55485e565b545353135c54">[email&#160;protected]</span></a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Editorial</h4>
+                    <a href="page-1.html">Front Page</a>
+                    <a href="index.html">Issue Archive</a>
+                    <a href="/cdn-cgi/l/email-protection#1d6e687f70746e6e7472736e5d75687e767b747373337c74">Submit a Story</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Corrections</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p

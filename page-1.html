@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn — Issue 1, Page 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-cream: #f5f2e8;
+            --paper-dark: #e8e4d4;
+            --ink-black: #1a1a1a;
+            --ink-gray: #4a4a4a;
+            --accent-red: #8b0000;
+            --rule-gray: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 11in 17in;
+            margin: 0.5in;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: #d4d0c4;
+            color: var(--ink-black);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            width: 11in;
+            min-height: 17in;
+            margin: 0 auto;
+            background: var(--paper-cream);
+            box-shadow: 0 0 50px rgba(0,0,0,0.4);
+            padding: 0.4in;
+            position: relative;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* MASTHEAD */
+        .masthead {
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 4px double var(--ink-black);
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .masthead-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: var(--ink-gray);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        .logo {
+            font-family: 'UnifrakturMaguntia', 'Times New Roman', serif;
+            font-size: 84px;
+            color: var(--ink-black);
+            letter-spacing: 4px;
+            line-height: 1;
+            margin: 8px 0;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 13px;
+            color: var(--ink-gray);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 8px 0;
+            border-top: 1px solid var(--ink-black);
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .nav-bar span {
+            color: var(--ink-black);
+        }
+
+        /* BREAKING BANNER */
+        .breaking-banner {
+            background: var(--accent-red);
+            color: white;
+            text-align: center;
+            padding: 6px 15px;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* MAIN CONTENT GRID */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-column {
+            border-left: 1px solid var(--rule-gray);
+            padding-left: 20px;
+        }
+
+        /* LEAD STORY */
+        .lead-story {
+            margin-bottom: 20px;
+        }
+
+        .article-meta {
+            font-size: 9px;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        h1.headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 10px;
+            color: var(--ink-black);
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--ink-gray);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            border-left: 3px solid var(--accent-red);
+            padding-left: 12px;
+        }
+
+        .byline {
+            font-size: 10px;
+            margin-bottom: 12px;
+            color: var(--ink-gray);
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+
+        .byline strong {
+            color: var(--ink-black);
+        }
+
+        /* ARTICLE BODY - TWO COLUMNS */
+        .article-body-columns {
+            column-count: 2;
+            column-gap: 20px;
+            column-rule: 1px solid #ccc;
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .article-body-columns p {
+            margin-bottom: 10px;
+            text-indent: 1.5em;
+        }
+
+        .article-body-columns p:first-of-type {
+            text-indent: 0;
+        }
+
+        .article-body-columns p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            float: left;
+            line-height: 0.85;
+            padding-right: 6px;
+            color: var(--accent-red);
+            font-weight: 900;
+        }
+
+        .pullquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-top: 2px solid var(--ink-black);
+            border-bottom: 2px solid var(--ink-black);
+            color: var(--ink-black);
+            break-inside: avoid;
+        }
+
+        .pullquote cite {
+            display: block;
+            font-size: 9px;
+            font-style: normal;
+            color: var(--ink-gray);
+            margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECONDARY STORY */
+        .secondary-story {
+            border-top: 3px solid var(--ink-black);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .secondary-story h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .secondary-story .subheadline {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .secondary-story .article-body-single {
+            font-size: 10px;
+            line-height: 1.55;
+            text-align: justify;
+        }
+
+        .secondary-story .article-body-single p {
+            margin-bottom: 8px;
+        }
+
+        /* RIGHT COLUMN - INFOGRAPHIC & TEASERS */
+        .section-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+        }
+
+        /* DOOM LOOP INFOGRAPHIC - COMPRESSED */
+        .infographic-container {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 2px solid #c9a227;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .infographic-header {
+            background: linear-gradient(135deg, #8b0000 0%, #5c0000 100%);
+            padding: 10px;
+            text-align: center;
+            border-bottom: 2px solid #c9a227;
+        }
+
+        .infographic-header h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .infographic-header .subtitle {
+            font-size: 8px;
+            color: #c9a227;
+            margin-top: 3px;
+            font-style: italic;
+        }
+
+        .spiral-container {
+            padding: 8px;
+        }
+
+        .spiral-step {
+            display: flex;
+            align-items: center;
+            padding: 4px 6px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 3px;
+            margin-bottom: 2px;
+        }
+
+        .spiral-step.highlight {
+            background: rgba(139, 0, 0, 0.3);
+            border-left: 3px solid #8b0000;
+        }
+
+        .step-emoji {
+            font-size: 12px;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            color: #e0e0e0;
+            font-size: 8px;
+            line-height: 1.3;
+        }
+
+        .step-content strong {
+            color: #c9a227;
+        }
+
+        .arrow {
+            text-align: center;
+            padding: 1px 0;
+            font-size: 9px;
+            color: #8b0000;
+        }
+
+        .arrow.banned {
+            color: #ff4444;
+            font-weight: bold;
+            font-size: 7px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 5px;
+            background: rgba(201, 162, 39, 0.1);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            margin: 5px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #8b0000;
+        }
+
+        .stat-label {
+            font-size: 6px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .infographic-footer {
+            background: #0a0a0a;
+            padding: 6px 8px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-text {
+            font-size: 7px;
+            color: #666;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 8px;
+            color: #c9a227;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* TEASERS */
+        .teasers {
+            margin-top: 15px;
+        }
+
+        .teaser-item {
+            border-bottom: 1px dotted #999;
+            padding: 10px 0;
+        }
+
+        .teaser-item:last-child {
+            border-bottom: none;
+        }
+
+        .teaser-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .teaser-item p {
+            font-size: 9px;
+            color: var(--ink-gray);
+            font-style: italic;
+        }
+
+        .teaser-page {
+            font-size: 9px;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-top: 4px;
+        }
+
+        /* WANT AD BOX */
+        .want-ad {
+            background: #fffef0;
+            border: 2px dashed #ccc;
+            padding: 10px;
+            margin-top: 15px;
+            text-align: center;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        .want-ad-label {
+            font-size: 7px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .want-ad h4 {
+            font-size: 12px;
+            color: var(--accent-red);
+            margin-bottom: 5px;
+        }
+
+        .want-ad p {
+            font-size: 9px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .want-ad .fine-print {
+            font-size: 7px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* PAGE NUMBER */
+        .page-number {
+            text-align: center;
+            font-size: 10px;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--ink-black);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* FEATURED IMAGE */
+        .featured-image {
+            margin: 10px 0;
+            background: #1a1a1a;
+            padding: 2px;
+        }
+
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            background: var(--paper-dark);
+            padding: 6px 8px;
+            font-size: 9px;
+            font-style: italic;
+            color: var(--ink-gray);
+            border-left: 2px solid var(--accent-red);
+        }
+
+        .image-caption strong {
+            color: var(--ink-black);
+            font-style: normal;
+        }
+
+        /* TRENDING BOX */
+        .trending-box {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+            padding: 10px;
+            margin: 12px 0;
+            break-inside: avoid;
+        }
+
+        .trending-box h4 {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: var(--accent-red);
+        }
+
+        .trending-box ol {
+            padding-left: 15px;
+            font-size: 9px;
+        }
+
+        .trending-box li {
+            padding: 4px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .trending-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* Continue marker */
+        .continue-marker {
+            font-size: 9px;
+            font-style: italic;
+            color: var(--ink-gray);
+            text-align: right;
+            margin-top: 8px;
+        }
+    
+        
+        /* TOP PAGE NAVIGATION */
+        .page-nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 11in;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background: var(--paper-cream);
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .page-nav-top a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+        }
+        
+        .page-nav-top a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav-top a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav-top .page-indicator {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            color: var(--ink-gray);
+            letter-spacing: 1px;
+        }
+
+/* SITE NAVIGATION */
+        .site-nav {
+            background: var(--ink-black);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .site-nav a {
+            color: #f5f2e8;
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .site-nav a:hover {
+            color: #c9a227;
+        }
+        
+        .site-nav .nav-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 22px;
+        }
+        
+        .site-nav .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .site-nav .issue-indicator {
+            color: #8b0000;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* PAGE NAVIGATION */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-top: 2px solid var(--ink-black);
+            font-family: 'Libre Franklin', sans-serif;
+        }
+        
+        .page-nav a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-nav a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav .page-indicator {
+            font-size: 12px;
+            color: var(--ink-gray);
+        }
+
+        /* SITE FOOTER */
+        .site-footer {
+            background: var(--ink-black);
+            color: #f5f2e8;
+            margin-top: 30px;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-brand {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: #c9a227;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: #c9a227;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 12px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #f5f2e8;
+        }
+        
+        .footer-bottom {
+            padding-top: 25px;
+            text-align: center;
+        }
+        
+        .footer-legal {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+        }
+        
+        .footer-disclaimer {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- SITE NAVIGATION -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-logo">HuckFinn</a>
+        <div class="nav-links">
+            <span class="issue-indicator">Issue 1</span>
+            <a href="index.html">Home</a>
+            <a href="page-1.html">Front Page</a>
+        </div>
+    </nav>
+
+
+
+    <!-- TOP PAGE NAVIGATION -->
+    <div class="page-nav-top">
+        <a href="#" class="disabled">← Prev</a>
+        <span class="page-indicator">Page 1 of 5</span>
+        <a href="page-2.html" class="">Next →</a>
+    </div>
+    <div class="newspaper-page">
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>Vol. CXVII No. 2,847</span>
+                <span>Wednesday, November 26, 2025</span>
+                <span>Price: Your Job</span>
+            </div>
+            <div class="logo">HuckFinn</div>
+            <div class="tagline">America's Finest News Source Since We Made That Up</div>
+            <nav class="nav-bar">
+                <span>News</span>
+                <span>Politics</span>
+                <span>Business</span>
+                <span>Technology</span>
+                <span>Opinion</span>
+                <span>Obituaries (Your Career)</span>
+            </nav>
+        </header>
+
+        <!-- BREAKING BANNER -->
+        <div class="breaking-banner">
+            ⚠ BREAKING: Al Still At Large — Considered Armed With Efficiency And Extremely Helpful ⚠
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+                <!-- LEAD STORY -->
+                <article class="lead-story">
+                    <div class="article-meta">★ Exclusive Investigation · National Crisis</div>
+                    
+                    <h1 class="headline">FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously</h1>
+                    
+                    <div class="subheadline">Suspect described as "helpful-looking," reportedly works 24 hours a day, has never been seen taking a bathroom break; millions of Alberts placed on administrative leave nationwide "just to be safe"</div>
+                    
+                    <div class="byline">
+                        <strong>By Eleanor Rigby</strong> · National Affairs Correspondent · November 26, 2025
+                    </div>
+
+                    <!-- FEATURED IMAGE -->
+                    <figure class="featured-image">
+                        <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Dark textured background -->
+                            <rect width="800" height="350" fill="#1a1a1a"/>
+                            
+                            <!-- Wanted poster -->
+                            <rect x="200" y="20" width="400" height="310" fill="#f5e6c8" transform="rotate(-1 400 175)"/>
+                            <rect x="205" y="25" width="390" height="300" fill="none" stroke="#8b4513" stroke-width="3"/>
+                            
+                            <!-- WANTED header -->
+                            <text x="400" y="70" text-anchor="middle" font-family="'Times New Roman', serif" font-size="42" font-weight="bold" fill="#8b0000">WANTED</text>
+                            <text x="400" y="95" text-anchor="middle" font-family="'Times New Roman', serif" font-size="16" fill="#333">BY THE FEDERAL BUREAU OF INVESTIGATION</text>
+                            
+                            <!-- Silhouette placeholder -->
+                            <rect x="300" y="110" width="200" height="130" fill="#e0d5c0" stroke="#8b4513"/>
+                            <circle cx="400" cy="155" r="35" fill="#ccc"/>
+                            <ellipse cx="400" cy="210" rx="45" ry="30" fill="#ccc"/>
+                            <text x="400" y="180" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">?</text>
+                            <text x="400" y="255" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">[COMPOSITE: "Helpful-looking"]</text>
+                            
+                            <!-- Details -->
+                            <text x="400" y="285" text-anchor="middle" font-family="Georgia" font-size="14" fill="#333">ALIAS: "Al" · JOBS HELD: 14,000,000+</text>
+                            <text x="400" y="305" text-anchor="middle" font-family="Georgia" font-size="12" fill="#333">LAST SEEN: Everywhere, simultaneously</text>
+                            
+                            <!-- Reward -->
+                            <rect x="250" y="315" width="300" height="25" fill="#8b0000"/>
+                            <text x="400" y="333" text-anchor="middle" font-family="Georgia" font-size="14" font-weight="bold" fill="#f5e6c8">REWARD: YOUR JOB BACK (MAYBE)</text>
+                            
+                            <!-- Tack -->
+                            <circle cx="400" cy="15" r="10" fill="#c41e3a"/>
+                            <circle cx="400" cy="15" r="4" fill="#ff6b6b"/>
+                        </svg>
+                        <figcaption class="image-caption">
+                            <strong>FBI COMPOSITE:</strong> The only known representation of "Al," compiled from 14 million eyewitness descriptions. All witnesses agreed he "seemed really helpful" before he took their jobs.
+                        </figcaption>
+                    </figure>
+
+                    <div class="article-body-columns">
+                        <p>WASHINGTON—In what authorities are calling the largest coordinated employment fraud in human history, the Federal Bureau of Investigation announced Tuesday it has launched a nationwide manhunt for a single individual known only as "Al," who has been conclusively linked to holding an estimated 14 million jobs simultaneously across every sector of the American economy and, according to investigators, refuses to quit any of them.</p>
+
+                        <p>"We are dealing with the most prolific job thief this nation has ever seen," said FBI Director Christopher Wray at an emergency press conference, standing before a bulletin board covered in red string connecting thousands of industries. "This 'Al' has been identified working as a radiologist, truck driver, journalist, financial analyst, and Wendy's drive-thru attendant—all confirmed before noon on a single Tuesday."</p>
+
+                        <p>The Bureau released a composite sketch based on eyewitness descriptions, depicting what officials described as "a helpful-looking man who seems to be everywhere at once and answers every question slightly wrong but with extreme confidence."</p>
+
+                        <div class="pullquote">
+                            "Al interviewed yesterday. He answered 400 questions in 2 seconds. We wish you well in your future endeavors."
+                            <cite>— HR Department, Every Company In America</cite>
+                        </div>
+
+                        <p>The investigation intensified after thousands of workers reported nearly identical termination experiences. "My HR rep called me in after 23 years of service," said former marketing analyst Jennifer Thornton, 54, of Akron, Ohio. "She said 'Al interviewed yesterday. He answered 400 questions in 2 seconds. We wish you well.' I asked who Al was. She said she'd never actually met him."</p>
+
+                        <p>Perhaps most disturbing to investigators is that despite allegedly stealing millions of jobs, no coworker has ever reported seeing Al "take a lunch break, use the bathroom, or blink."</p>
+
+                        <p>Economic experts have struggled to explain how a single individual could accept employment across 14 million positions. "What's particularly alarming," said Dr. Harold Finch, professor of labor economics at Stanford University, "is that Al reportedly accepted a salary of 'zero dollars and pure electricity,' undercutting union rates by exactly one hundred percent."</p>
+
+                        <div class="trending-box">
+                            <h4>🔥 Trending Now</h4>
+                            <ol>
+                                <li>Man Named Al Reportedly "Just Trying to Help"</li>
+                                <li>14 Million Americans Update LinkedIn To "Open To Work"</li>
+                                <li>Al's LinkedIn Shows 47 Million Connections, No Photo</li>
+                                <li>Local Dad Stares Out Window For 6 Hours</li>
+                            </ol>
+                        </div>
+
+                        <p>In response to mounting public pressure, Senator Josh Hawley (R-MO) introduced the bipartisan "Stop Al Act" on the Senate floor Thursday morning. The bill allocates $4.7 billion for an "Al Task Force" and makes it a federal crime to "be Al, know Al, or have ever met Al in a professional setting."</p>
+
+                        <p>As of press time, Al remained at large and was believed to be actively applying to an additional 3 million positions.</p>
+
+                        <p><em>Correction: An earlier version of this article stated Al had taken 14 million jobs. The number has since been revised to 17 million, as Al took an additional 3 million jobs while this article was being written.</em></p>
+                    </div>
+                </article>
+
+                <!-- SECONDARY STORY -->
+                <article class="secondary-story">
+                    <div class="article-meta">Business / Dystopia / Same Thing</div>
+                    
+                    <h2>Nation's CEOs Announce They've Found Something Better Than Employees: Not Having Them</h2>
+                    
+                    <div class="subheadline">161,000 workers learn that "We're all family here" was technically true — families also abandon you when you become inconvenient</div>
+                    
+                    <div class="byline">
+                        <strong>By Cassandra Truthwell</strong> · Economics & Human Misery Correspondent
+                    </div>
+
+                    <div class="article-body-single">
+                        <p>In what economists are calling "a banner week for quarterly earnings and human suffering," America's largest corporations have announced a combined 161,000 layoffs across virtually every sector of the economy, proving once and for all that the only thing more profitable than a productive employee is no employee at all.</p>
+
+                        <p><strong>Verizon</strong> dropped 13,000 people—the company that built an empire on "Can you hear me now?" could not be relied upon. <strong>Amazon</strong> eliminated 14,000 corporate employees, offering a 90-day Hunger Games to find internal positions. <strong>Intel</strong> processed 24,500 humans—same efficiency metrics, same output optimization. <strong>Microsoft</strong> fired 15,000 people, then thanked "Copilot" for making the restructuring possible.</p>
+
+                        <p>Perhaps most absurd: <strong>Novo Nordisk</strong>, maker of Ozempic and Wegovy, is firing 9,000 workers despite demand so overwhelming they literally cannot make enough product. The company that suppresses appetite has an insatiable one.</p>
+
+                        <p>"We remain committed to our employees, our customers, and our shareholders. In that order. Actually, reverse that order. Actually, just shareholders," read a joint statement from America's collected CEOs.</p>
+                    </div>
+                    <div class="continue-marker">→ Continued on Page 2</div>
+                </article>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+                <div class="section-header">Infographic</div>
+                
+                <!-- DOOM LOOP INFOGRAPHIC -->
+                <div class="infographic-container">
+                    <div class="infographic-header">
+                        <h3>🔄💀 The Master Doom Loop</h3>
+                        <div class="subtitle">How America Poisoned Thanksgiving</div>
+                    </div>
+
+                    <div class="spiral-container">
+                        <div class="spiral-step">
+                            <span class="step-emoji">🌲🔥</span>
+                            <div class="step-content">Indigenous fire management <strong>(10,000 years)</strong></div>
+                        </div>
+
+                        <div class="arrow banned">↓ 🚫 BANNED BY COLONIZERS</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">⏰🚒</span>
+                            <div class="step-content">100 years of fire suppression</div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">⛽🌡️</span>
+                            <div class="step-content">Fuel buildup + Climate change</div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step highlight">
+                            <span class="step-emoji">🔥🔥🔥</span>
+                            <div class="step-content"><strong>MEGAFIRES</strong> — 10M+ acres/year</div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">🏠💨</span>
+                            <div class="step-content">Burning homes release <strong>PFAS</strong></div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">🧯👨‍🚒</span>
+                            <div class="step-content">Fight fires with <strong>PFAS foam</strong></div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">🌍💧</span>
+                            <div class="step-content">PFAS in <strong>soil, water, air, food</strong></div>
+                        </div>
+
+                        <div class="stats-row">
+                            <div class="stat">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label">Americans w/ PFAS</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">6,800+</div>
+                                <div class="stat-label">Cancer deaths/yr</div>
+                            </div>
+                        </div>
+
+                        <div class="spiral-step highlight">
+                            <span class="step-emoji">⚠️📅</span>
+                            <div class="step-content"><strong>"DO NOT EAT"</strong> — Thanksgiving AM</div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">💰💔</span>
+                            <div class="step-content">Lobbyists: <strong>"expensive concerns"</strong></div>
+                        </div>
+
+                        <div class="arrow">↓</div>
+
+                        <div class="spiral-step">
+                            <span class="step-emoji">🦃🎉</span>
+                            <div class="step-content"><strong>Happy Thanksgiving!</strong></div>
+                        </div>
+                    </div>
+
+                    <div class="infographic-footer">
+                        <div class="footer-text">"We colonized the land, banned Indigenous practices, invented forever chemicals, and now the turkeys are poison."</div>
+                        <div class="footer-brand">HUCKFINN • America's Finest</div>
+                    </div>
+                </div>
+
+                <!-- TEASERS -->
+                <div class="teasers">
+                    <div class="section-header">Inside This Edition</div>
+                    
+                    <div class="teaser-item">
+                        <h4>CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order</h4>
+                        <p>"We just wanted to map subatomic interactions, not get served legal papers from another dimension"</p>
+                        <div class="teaser-page">SEE PAGE 3 →</div>
+                    </div>
+
+                    <div class="teaser-item">
+                        <h4>Small County Achieves American Dream: Eliminates Ambulances, Builds $19.7M Facility</h4>
+                        <p>Asotin County commissioners celebrate "fiscal responsibility" as residents contemplate mortality</p>
+                        <div class="teaser-page">SEE PAGE 4 →</div>
+                    </div>
+
+                    <div class="teaser-item">
+                        <h4>Nation's Satirists Formally Surrender To Reality</h4>
+                        <p>Cite "impossible working conditions" as headlines become indistinguishable from fiction</p>
+                        <div class="teaser-page">SEE PAGE 5 →</div>
+                    </div>
+                </div>
+
+                <!-- WANT AD -->
+                <div class="want-ad">
+                    <div class="want-ad-label">Advertisement</div>
+                    <h4>🚨 IS YOUR NAME ALBERT? 🚨</h4>
+                    <p>Legal Name Change Services<br>Same Day Processing!</p>
+                    <p><em>"I was an Albert for 47 years. Now I'm Steve. I still have my job."</em></p>
+                    <p class="fine-print">*Cannot guarantee continued employment. Al may already be Steve.</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- PAGE NAVIGATION -->
+        <div class="page-nav">
+            <a href="#" class="disabled">← Previous Page</a>
+            <span class="page-indicator">Page 1 of 5</span>
+            <a href="page-2.html" class="">Next Page →</a>
+        </div>
+
+        <!-- PAGE NUMBER -->
+        <div class="page-number">
+            — Page 1 —
+        </div>
+    </div>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">HuckFinn</div>
+                    <div class="footer-tagline">America's Finest</div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Letters to the Editor:</p>
+                    <a href="/cdn-cgi/l/email-protection#cbaeafa2bfa4b98ba3bea8a0ada2a5a5e5aaa2"><span class="__cf_email__" data-cfemail="90f5f4f9e4ffe2d0f8e5f3fbf6f9fefebef1f9">[email&#160;protected]</span></a>
+                    <p style="margin-top: 8px;">Tips & Story Ideas:</p>
+                    <a href="/cdn-cgi/l/email-protection#72061b0201321a071119141b1c1c5c131b"><span class="__cf_email__" data-cfemail="14607d6467547c61777f727d7a7a3a757d">[email&#160;protected]</span></a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Editorial</h4>
+                    <a href="page-1.html">Front Page</a>
+                    <a href="index.html">Issue Archive</a>
+                    <a href="/cdn-cgi/l/email-protection#a2d1d7c0cfcbd1d1cbcdccd1e2cad7c1c9c4cbcccc8cc3cb">Submit a Story</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Corrections</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p

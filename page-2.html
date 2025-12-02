@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn — Issue 1, Page 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-cream: #f5f2e8;
+            --paper-dark: #e8e4d4;
+            --ink-black: #1a1a1a;
+            --ink-gray: #4a4a4a;
+            --accent-red: #8b0000;
+            --rule-gray: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 11in 17in;
+            margin: 0.5in;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: #d4d0c4;
+            color: var(--ink-black);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            width: 11in;
+            min-height: 17in;
+            margin: 0 auto;
+            background: var(--paper-cream);
+            box-shadow: 0 0 50px rgba(0,0,0,0.4);
+            padding: 0.4in;
+            position: relative;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--ink-black);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .page-header .section-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-red);
+        }
+
+        .page-header .logo-small {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 24px;
+        }
+
+        .page-header .date {
+            font-size: 10px;
+            color: var(--ink-gray);
+        }
+
+        /* MAIN GRID */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .right-column {
+            border-left: 1px solid var(--rule-gray);
+            padding-left: 15px;
+        }
+
+        /* ARTICLE STYLES */
+        .article {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-meta {
+            font-size: 8px;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .article h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .article h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-style: italic;
+            color: var(--ink-gray);
+            margin-bottom: 8px;
+            line-height: 1.3;
+            border-left: 2px solid var(--accent-red);
+            padding-left: 8px;
+        }
+
+        .byline {
+            font-size: 9px;
+            color: var(--ink-gray);
+            margin-bottom: 8px;
+        }
+
+        .article-body {
+            font-size: 10px;
+            line-height: 1.55;
+            text-align: justify;
+        }
+
+        .article-body p {
+            margin-bottom: 8px;
+            text-indent: 1em;
+        }
+
+        .article-body p:first-of-type {
+            text-indent: 0;
+        }
+
+        .article-body-columns {
+            column-count: 2;
+            column-gap: 15px;
+            column-rule: 1px solid #ddd;
+            font-size: 10px;
+            line-height: 1.55;
+            text-align: justify;
+        }
+
+        .article-body-columns p {
+            margin-bottom: 8px;
+            text-indent: 1em;
+        }
+
+        .article-body-columns p:first-of-type {
+            text-indent: 0;
+        }
+
+        /* DROP CAP */
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            float: left;
+            line-height: 0.85;
+            padding-right: 5px;
+            color: var(--accent-red);
+            font-weight: 900;
+        }
+
+        /* PULLQUOTE */
+        .pullquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 12px;
+            font-style: italic;
+            text-align: center;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border-top: 2px solid var(--ink-black);
+            border-bottom: 2px solid var(--ink-black);
+            break-inside: avoid;
+        }
+
+        .pullquote cite {
+            display: block;
+            font-size: 8px;
+            font-style: normal;
+            color: var(--ink-gray);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CONTINUATION BOX */
+        .continuation-box {
+            background: var(--paper-dark);
+            border-left: 3px solid var(--accent-red);
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .continuation-box .header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+        }
+
+        .continuation-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* COMPANY SECTION */
+        .company-box {
+            background: #fafafa;
+            border-left: 3px solid var(--accent-red);
+            padding: 8px 10px;
+            margin: 8px 0;
+            break-inside: avoid;
+        }
+
+        .company-box h5 {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .company-box .tagline {
+            font-style: italic;
+            font-size: 9px;
+            color: var(--accent-red);
+            margin-bottom: 5px;
+        }
+
+        .company-box p {
+            font-size: 9px;
+            margin-bottom: 5px;
+        }
+
+        .layoff-badge {
+            display: inline-block;
+            background: var(--accent-red);
+            color: white;
+            padding: 2px 6px;
+            font-size: 8px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        /* SIDEBAR ARTICLE */
+        .sidebar-article {
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px dotted #999;
+        }
+
+        .sidebar-article:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-article h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-article .subheadline {
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        .sidebar-article .article-body {
+            font-size: 9px;
+        }
+
+        /* SECTION HEADER */
+        .section-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+
+        /* AD BOX */
+        .ad-box {
+            background: #fffef0;
+            border: 2px dashed #ccc;
+            padding: 10px;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 7px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .ad-box h5 {
+            font-size: 11px;
+            color: var(--accent-red);
+            margin-bottom: 5px;
+        }
+
+        .ad-box p {
+            font-size: 8px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .ad-box .fine-print {
+            font-size: 6px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* RELATED BOX */
+        .related-box {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .related-box h5 {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+        }
+
+        .related-box ul {
+            list-style: none;
+            font-size: 9px;
+        }
+
+        .related-box li {
+            padding: 4px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .related-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* PAGE NUMBER */
+        .page-number {
+            text-align: center;
+            font-size: 10px;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--ink-black);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* CORRECTION BOX */
+        .correction {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 8px;
+        }
+
+        .correction strong {
+            color: var(--accent-red);
+        }
+    
+        
+        /* TOP PAGE NAVIGATION */
+        .page-nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 11in;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background: var(--paper-cream);
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .page-nav-top a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 8px 16px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+        }
+        
+        .page-nav-top a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav-top a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav-top .page-indicator {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            color: var(--ink-gray);
+            letter-spacing: 1px;
+        }
+
+/* SITE NAVIGATION */
+        .site-nav {
+            background: var(--ink-black);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .site-nav a {
+            color: #f5f2e8;
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .site-nav a:hover {
+            color: #c9a227;
+        }
+        
+        .site-nav .nav-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 22px;
+        }
+        
+        .site-nav .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .site-nav .issue-indicator {
+            color: #8b0000;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* PAGE NAVIGATION */
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-top: 2px solid var(--ink-black);
+            font-family: 'Libre Franklin', sans-serif;
+        }
+        
+        .page-nav a {
+            color: var(--ink-black);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            border: 1px solid var(--ink-black);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .page-nav a:hover {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+        }
+        
+        .page-nav a.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        .page-nav .page-indicator {
+            font-size: 12px;
+            color: var(--ink-gray);
+        }
+
+        /* SITE FOOTER */
+        .site-footer {
+            background: var(--ink-black);
+            color: #f5f2e8;
+            margin-top: 30px;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-brand {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: #c9a227;
+            letter-spacing: 1px;
+        }
+        
+        .footer-section h4 {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: #c9a227;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 12px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .footer-section a {
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #f5f2e8;
+        }
+        
+        .footer-bottom {
+            padding-top: 25px;
+            text-align: center;
+        }
+        
+        .footer-legal {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 1px;
+        }
+        
+        .footer-disclaimer {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- SITE NAVIGATION -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-logo">HuckFinn</a>
+        <div class="nav-links">
+            <span class="issue-indicator">Issue 1</span>
+            <a href="index.html">Home</a>
+            <a href="page-1.html">Front Page</a>
+        </div>
+    </nav>
+
+
+
+    <!-- TOP PAGE NAVIGATION -->
+    <div class="page-nav-top">
+        <a href="page-1.html" class="">← Prev</a>
+        <span class="page-indicator">Page 2 of 5</span>
+        <a href="page-3.html" class="">Next →</a>
+    </div>
+    <div class="newspaper-page">
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+            <span class="section-name">National & Political</span>
+            <span class="logo-small">HuckFinn</span>
+            <span class="date">Wednesday, November 26, 2025</span>
+        </header>
+
+        <!-- MAIN GRID -->
+        <div class="main-grid">
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+                
+                <!-- CONTINUATION: CEOs ARTICLE -->
+                <div class="continuation-box">
+                    <div class="header">← Continued From Page 1</div>
+                    <h4>Nation's CEOs Announce They've Found Something Better Than Employees</h4>
+                    
+                    <div class="article-body-columns">
+                        <div class="company-box">
+                            <span class="layoff-badge">13,000 JOBS</span>
+                            <h5>Verizon: "Disconnected"</h5>
+                            <p class="tagline">"Can you hear me now? ...Hello? ...Is anyone still there?"</p>
+                            <p>Verizon built an empire on one promise: <strong>We. Don't. Drop. Calls.</strong> Then they dropped 13,000 people. Not calls. People. CEO Dan Schulman said Verizon needs to "simplify" and "reorient." That's the memo. That's what 13,000 workers got. A thesaurus entry instead of a reason.</p>
+                        </div>
+
+                        <div class="company-box">
+                            <span class="layoff-badge">1,700 JOBS</span>
+                            <h5>General Motors: "Bailout. Betrayal. Repeat."</h5>
+                            <p class="tagline">"Like A Rock (Thrown At Workers)"</p>
+                            <p><strong>2008:</strong> America paid $50 billion to save GM. <strong>2025:</strong> GM cuts 1,700 workers. Not because they're failing—because electric vehicles aren't selling fast enough. They survived on our money. They thrived on our trust. They fired us anyway.</p>
+                        </div>
+
+                        <div class="company-box">
+                            <span class="layoff-badge">14,000 JOBS</span>
+                            <h5>Amazon: "Smile"</h5>
+                            <p class="tagline">"Work Hard. Have Fun. Make History. Get Fired."</p>
+                            <p>Look at the Amazon logo. That smile? It's a smirk. 14,000 eliminated—not because Amazon is struggling, but because Amazon is investing. In AI. In robots. In the replacement of you. The deal: 90 days to find another position internally. The reality: a 90-day Hunger Games.</p>
+                        </div>
+
+                        <div class="company-box">
+                            <span class="layoff-badge">24,500 JOBS</span>
+                            <h5>Intel: "Processing"</h5>
+                            <p class="tagline">"Intel Inside. You: Outside."</p>
+                            <p>Intel made the chip inside your first computer. Now they're making the chip that will power the AI that will take your job. 99,500 workers → 75,000. That's 24,500 humans... processed. Moore's Law: Transistors double every 18 months. Intel's Law: Humans halve whenever convenient.</p>
+                        </div>
+
+                        <div class="company-box">
+                            <span class="layoff-badge">15,000 JOBS</span>
+                            <h5>Microsoft: "Clippy Died For This"</h5>
+                            <p class="tagline">"Your Potential. Our Algorithm."</p>
+                            <p>Remember Clippy? The little paperclip. Annoying but earnest. Clippy is dead. Microsoft killed him. They replaced him with Copilot. And then they fired 15,000 people. Not despite the AI investment—because of it. $10 billion into OpenAI. That money came from somewhere. That somewhere is salaries.</p>
+                        </div>
+
+                        <p>When reached for comment, the collected CEOs issued a joint statement: "We remain committed to our shareholders. The other stuff was a courtesy."</p>
+
+                        <p>At press time, workers were encouraged to "stay positive," "network," and "remember that every ending is a new beginning"—advice generated by AI and delivered by AI so no human would have to feel anything about any of this.</p>
+                    </div>
+                </div>
+
+                <!-- WAR CRIMINALS ARTICLE -->
+                <article class="article">
+                    <div class="article-meta">Politics</div>
+                    <h2>Nation's War Criminals Gather to Pay Respects to Fallen War Criminal in Touching Display of War Criminal Solidarity</h2>
+                    <div class="subheadline">Bipartisan coalition united by shared legacy of extrajudicial killings, indefinite detention, and creative interpretations of the Geneva Conventions</div>
+                    <div class="byline">By Staff Writers · Washington, D.C.</div>
+
+                    <div class="article-body drop-cap">
+                        <p>The Washington National Cathedral played host Thursday to what observers are calling "the largest gathering of alleged war criminals in one place since the last Republican administration," as political elites assembled to mourn former Vice President Dick Cheney, the man who made torture memos a legitimate genre of government documents.</p>
+
+                        <p>"It's heartwarming to see so many people who authorized drone strikes on civilians coming together like this," said one international law professor who requested anonymity for fear of being extraordinary renditioned. "Really shows that some bonds transcend party lines."</p>
+
+                        <div class="pullquote">
+                            "His talent exceeded his ego," Bush said of the man who convinced him to invade a country based on weapons that didn't exist.
+                            <cite>— Former President George W. Bush</cite>
+                        </div>
+
+                        <p>Attendees fondly recalled Cheney's greatest hits: the time he shot a man in the face and received an apology from him, his championing of "enhanced interrogation techniques" that the rest of the world called torture, and his masterful ability to award no-bid contracts to Halliburton while serving as vice president.</p>
+
+                        <p>"Sure, Dad helped lie us into a war that destabilized an entire region and created ISIS," Liz Cheney reflected, "but at least he respected the peaceful transfer of power domestically. We're not monsters."</p>
+
+                        <p>At press time, the entire guest list had been referred to the International Criminal Court, which confirmed they would continue their longstanding policy of "definitely not doing anything about that."</p>
+                    </div>
+                </article>
+
+                <!-- ZELENSKIY ARTICLE -->
+                <article class="article">
+                    <div class="article-meta">International</div>
+                    <h3>Zelenskiy Declares Readiness to Work on Peace Plan Between Cabinet Firings</h3>
+                    <div class="subheadline">"Yes, we're losing ground. Yes, we just fired ministers for corruption. Yes, Russia is bombing our power grid. But other than that, we're negotiating from tremendous strength."</div>
+                    <div class="byline">By Our Eastern European Correspondent · Kyiv</div>
+
+                    <div class="article-body">
+                        <p>Ukrainian President Volodymyr Zelenskiy announced Thursday he is "ready for constructive, honest and prompt work" on a U.S.-backed peace plan, pausing only briefly to fire two more cabinet ministers and assure international donors that this time he's really got the corruption thing under control.</p>
+
+                        <p>The 28-point U.S. peace proposal, which reportedly asks Ukraine to surrender territory and partially disarm, arrived at what diplomatic sources called "literally the worst week possible," coinciding with military setbacks, Russian advances, and the kind of government scandal that makes international backers nervously check their bank statements.</p>
+
+                        <p>French Foreign Minister Jean-Noel Barrot attempted damage control in Brussels, insisting that "peace cannot be a capitulation," while carefully avoiding any discussion of what peace <em>can</em> be when your army is retreating and your government just had a corruption scandal.</p>
+
+                        <p>Kremlin spokesman Dmitry Peskov told reporters that Russia had "nothing to add" to Putin's previous positions, which include Ukraine ceasing to exist as an independent country, several former Soviet republics rejoining Russia, and a pony.</p>
+
+                        <p>At press time, European officials were drafting a statement expressing continued support for Ukraine while attaching seventeen new conditions to future aid packages and requiring monthly receipts.</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+                <div class="section-header">Also in the News</div>
+
+                <!-- CIA ARTICLE -->
+                <div class="sidebar-article">
+                    <h4>CIA Agents Realize They've Been Filing Insurance Claims With Beijing For Past 9 Years</h4>
+                    <div class="subheadline">"We just thought the customer service got really good all of a sudden"</div>
+                    <div class="byline">Langley, VA</div>
+
+                    <div class="article-body">
+                        <p>In what intelligence officials are calling "a minor oversight," sources confirmed Monday that thousands of CIA operatives have been dutifully submitting their liability insurance claims to Chinese government-connected entities since 2015, often including detailed descriptions of workplace injuries sustained during covert operations.</p>
+
+                        <p>"They were so thorough—always wanted to know exactly where we were when the incident occurred, who we were with, what we were doing. Really went above and beyond," said one agent.</p>
+
+                        <p>The discovery came when Special Agent Marcus Chen noticed his insurance paperwork had begun arriving with a Mandarin translation on the back, which he initially assumed was "just good business practice in our globalized economy."</p>
+
+                        <p>The insurance company's parent firm reportedly provided exemplary service throughout, with claim processing times dropping from six weeks to mere hours, and approval rates reaching an unprecedented 99.8%.</p>
+
+                        <p>At press time, sources confirmed that the CIA had switched to a new insurance provider after doing "like, 30 seconds of Googling this time."</p>
+                    </div>
+
+                    <div class="related-box">
+                        <h5>Related Stories</h5>
+                        <ul>
+                            <li>Pentagon Accidentally Orders 10,000 Toilet Seats From Alibaba</li>
+                            <li>NSA Employee Finally Understands Irony After Identity Stolen</li>
+                            <li>FBI Agent Realizes Suspicious Package He's Been Tracking Is Just His Amazon Order</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- HEALTH SECRETARY ARTICLE -->
+                <div class="sidebar-article">
+                    <h4>Nation Demands Secretary of Health Focus on Real Issues Like What He Texted His Mistress</h4>
+                    <div class="subheadline">Instead of Dangerous Food Safety Reform</div>
+                    <div class="byline">Washington</div>
+
+                    <div class="article-body">
+                        <p>Following revelations about raunchy texts allegedly sent by HHS Secretary Robert F. Kennedy Jr., the American public is calling for Kennedy to stop his dangerous work investigating chronic disease and instead focus on what really matters: romantic poetry exchanged between consenting adults.</p>
+
+                        <p>"We simply cannot have a Secretary of Health distracted by trying to remove Red Dye 40 from our children's cereal when there are text messages from years ago that need to be analyzed," said CNN anchor Jake Tapper, dedicating his 47th consecutive segment to the scandal.</p>
+
+                        <p>"I was really worried RFK might actually investigate why autism rates went from 1 in 10,000 to 1 in 36 in forty years," said Pfizer CEO Albert Bourla, visibly relieved. "Thank God we can now spend the next six months talking about his poetry instead."</p>
+
+                        <p>Major food conglomerates have pledged $100 million to ensure continued coverage of the scandal, calling it "cheaper than reformulating our products without neurotoxins."</p>
+                    </div>
+
+                    <div class="correction">
+                        <strong>CORRECTION:</strong> An earlier version suggested the public might care more about glyphosate in their Cheerios than who RFK texted. We regret the error and have fired the intern responsible.
+                    </div>
+                </div>
+
+                <!-- AD -->
+                <div class="ad-box">
+                    <div class="ad-label">Advertisement</div>
+                    <h5>🛡️ EXTRAORDINARY RENDITION INSURANCE™</h5>
+                    <p>Worried about being black-bagged by a foreign government?</p>
+                    <p><em>"Coverage that follows you... everywhere."</em></p>
+                    <p class="fine-print">*Not available to whistleblowers, journalists, or anyone who questions official narratives. Parent company may be Chinese. We're honestly not sure anymore.</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- PAGE NAVIGATION -->
+        <div class="page-nav">
+            <a href="page-1.html" class="">← Previous Page</a>
+            <span class="page-indicator">Page 2 of 5</span>
+            <a href="page-3.html" class="">Next Page →</a>
+        </div>
+
+        <!-- PAGE NUMBER -->
+        <div class="page-number">
+            — Page 2 —
+        </div>
+    </div>
+
+    <!-- SITE FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">HuckFinn</div>
+                    <div class="footer-tagline">America's Finest</div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Letters to the Editor:</p>
+                    <a href="/cdn-cgi/l/email-protection#e1848588958e93a18994828a87888f8fcf8088"><span class="__cf_email__" data-cfemail="0a6f6e637e65784a627f69616c636464246b63">[email&#160;protected]</span></a>
+                    <p style="margin-top: 8px;">Tips & Story Ideas:</p>
+                    <a href="/cdn-cgi/l/email-protection#f98d90898ab9918c9a929f909797d79890"><span class="__cf_email__" data-cfemail="c1b5a8b1b281a9b4a2aaa7a8afafefa0a8">[email&#160;protected]</span></a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Editorial</h4>
+                    <a href="page-1.html">Front Page</a>
+                    <a href="index.html">Issue Archive</a>
+                    <a href="/cdn-cgi/l/email-protection#3f4c4a5d52564c4c5650514c7f574a5c5459565151115e56">Submit a Story</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Corrections</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p
