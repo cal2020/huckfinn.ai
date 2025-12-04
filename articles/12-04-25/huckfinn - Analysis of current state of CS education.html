@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f4f1e8;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Header */
+        .masthead {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 3px double #000;
+            background: #fff;
+        }
+        .masthead h1 {
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+            font-size: 3.5em;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .date-line {
+            font-size: 0.8em;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+        }
+        
+        /* Breaking Banner */
+        .breaking-banner {
+            background: #8b0000;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.85em;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Main Article */
+        .main-article {
+            padding: 30px;
+        }
+        .article-section {
+            font-size: 0.75em;
+            color: #8b0000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .headline {
+            font-size: 2.4em;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        .subheadline {
+            font-size: 1.3em;
+            color: #444;
+            font-style: italic;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .byline {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .byline a {
+            color: #8b0000;
+        }
+        
+        /* Photo */
+        .article-photo {
+            margin: 25px 0;
+            text-align: center;
+        }
+        .article-photo svg {
+            max-width: 100%;
+            border: 1px solid #ccc;
+        }
+        .photo-caption {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            padding: 0 20px;
+        }
+        .photo-credit {
+            font-size: 0.7em;
+            color: #999;
+        }
+        
+        /* Article Body */
+        .article-body p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 1.05em;
+        }
+        .article-body p:first-of-type::first-letter {
+            font-size: 3.5em;
+            float: left;
+            line-height: 0.8;
+            margin-right: 8px;
+            margin-top: 5px;
+        }
+        .pull-quote {
+            font-size: 1.4em;
+            font-style: italic;
+            text-align: center;
+            padding: 25px 40px;
+            margin: 30px 0;
+            border-top: 2px solid #8b0000;
+            border-bottom: 2px solid #8b0000;
+            color: #333;
+        }
+        
+        /* Ads */
+        .ad-container {
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad-label {
+            font-size: 0.65em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .ad-content h3 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .ad-content p {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .ad-content .price {
+            font-size: 1.5em;
+            color: #8b0000;
+            font-weight: bold;
+        }
+        .ad-cta {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 20px;
+            background: #8b0000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85em;
+        }
+        
+        /* Sidebar boxes */
+        .sidebar-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .sidebar-box h4 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b0000;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .sidebar-box ul {
+            list-style: none;
+        }
+        .sidebar-box li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
+            font-size: 0.9em;
+        }
+        .sidebar-box li:last-child {
+            border-bottom: none;
+        }
+        .sidebar-box a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .sidebar-box a:hover {
+            color: #8b0000;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            padding: 30px;
+            background: #f4f4f4;
+            border-top: 3px solid #ddd;
+        }
+        .comments-header {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #8b0000;
+        }
+        .comment-count {
+            font-size: 0.7em;
+            color: #666;
+            font-weight: normal;
+        }
+        .comment {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #ddd;
+        }
+        .comment.highlighted {
+            border-left-color: #8b0000;
+            background: #fff9f9;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+        }
+        .username {
+            font-weight: bold;
+            color: #333;
+        }
+        .username.verified::after {
+            content: " ✓";
+            color: #4a90d9;
+        }
+        .username.moderator {
+            color: #8b0000;
+        }
+        .username.moderator::after {
+            content: " [MOD]";
+            font-size: 0.8em;
+        }
+        .timestamp {
+            color: #999;
+        }
+        .comment-body {
+            font-size: 0.95em;
+            color: #333;
+        }
+        .comment-actions {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .upvotes {
+            color: #4a4;
+        }
+        .downvotes {
+            color: #a44;
+        }
+        .reply {
+            margin-left: 40px;
+            border-left-color: #e0e0e0;
+        }
+        .reply .reply {
+            margin-left: 30px;
+        }
+        .deleted-comment {
+            color: #999;
+            font-style: italic;
+        }
+        .flagged {
+            background: #fff3f3;
+        }
+        
+        /* Letters to Editor */
+        .letters-section {
+            padding: 30px;
+            border-top: 2px solid #ddd;
+        }
+        .letters-section h3 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .letter {
+            padding: 20px;
+            background: #fafafa;
+            margin-bottom: 20px;
+            border-left: 3px solid #8b0000;
+        }
+        .letter-author {
+            font-weight: bold;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        /* Opinion Poll */
+        .poll-box {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        .poll-box h4 {
+            color: #fff;
+            border-bottom-color: #444;
+            margin-bottom: 20px;
+        }
+        .poll-option {
+            background: #333;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .poll-bar {
+            height: 4px;
+            background: #8b0000;
+            margin-top: 5px;
+        }
+        .poll-total {
+            font-size: 0.8em;
+            color: #999;
+            margin-top: 15px;
+        }
+        
+        /* Corrections */
+        .corrections {
+            background: #fff9e6;
+            border: 1px solid #e6d9a6;
+            padding: 20px;
+            margin: 25px 30px;
+            font-size: 0.9em;
+        }
+        .corrections h4 {
+            color: #8b6914;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.8em;
+        }
+        .footer a {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1>HuckFinn</h1>
+            <p class="tagline">America's Finest Newspaper • "All The News That's Fit To Satirize"</p>
+            <p class="date-line">Thursday, December 4, 2025 • Vol. CLXIX, No. 42 • San Francisco, CA • $4.00</p>
+        </header>
+        
+        <!-- Breaking Banner -->
+        <div class="breaking-banner">
+            🚨 BREAKING: Area Man Still "Almost Done" With Side Project Started In 2019 🚨
+        </div>
+        
+        <!-- Main Article -->
+        <article class="main-article">
+            <p class="article-section">Education • Technology • Suffering</p>
+            
+            <h1 class="headline">Tech Industry Officially Rebrands 'Incompetence' As 'Pre-Success Experience'</h1>
+            
+            <p class="subheadline">40-Year Industry Veteran Publishes Guide Confirming That Failure Is Actually Achievement; Bath Toys Now Recognized As Mental Health Professionals</p>
+            
+            <p class="byline">By <a href="#">MARGARET STUFFINGTON</a> | Education Correspondent<br>
+            <em>Additional reporting by a rubber duck who contributed nothing but was reportedly "very helpful"</em></p>
+            
+            <!-- Article Photo -->
+            <div class="article-photo">
+                <svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="600" height="400" fill="#e8e8e8"/>
+                    <!-- Desk -->
+                    <rect x="100" y="280" width="400" height="20" fill="#8b4513"/>
+                    <!-- Computer Monitor -->
+                    <rect x="200" y="150" width="200" height="130" fill="#333" rx="5"/>
+                    <rect x="210" y="160" width="180" height="100" fill="#1a1a1a"/>
+                    <!-- Screen with AAAA -->
+                    <text x="220" y="200" fill="#00ff00" font-family="monospace" font-size="12">AAAAAAAAAAAAA</text>
+                    <text x="220" y="220" fill="#00ff00" font-family="monospace" font-size="12">AAAAAAAAAAAAA</text>
+                    <text x="220" y="240" fill="#00ff00" font-family="monospace" font-size="12">AAAAAAAAAAAAA</text>
+                    <!-- Monitor Stand -->
+                    <rect x="280" y="280" width="40" height="20" fill="#333"/>
+                    <!-- Person (silhouette looking distressed) -->
+                    <ellipse cx="150" cy="200" rx="30" ry="35" fill="#555"/>
+                    <!-- Arms up in frustration -->
+                    <line x1="130" y1="240" x2="100" y2="180" stroke="#555" stroke-width="12" stroke-linecap="round"/>
+                    <line x1="170" y1="240" x2="200" y2="180" stroke="#555" stroke-width="12" stroke-linecap="round"/>
+                    <!-- Rubber Duck -->
+                    <ellipse cx="480" cy="260" rx="35" ry="30" fill="#ffd700"/>
+                    <ellipse cx="500" cy="240" rx="20" ry="18" fill="#ffd700"/>
+                    <ellipse cx="510" cy="238" rx="8" ry="5" fill="#ff8c00"/>
+                    <circle cx="495" cy="233" r="4" fill="#000"/>
+                    <!-- Speech bubble from duck -->
+                    <ellipse cx="520" cy="200" rx="50" ry="25" fill="#fff" stroke="#333"/>
+                    <text x="490" y="205" font-family="Georgia" font-size="11" fill="#333">. . .</text>
+                    <!-- Coffee cup (spilled) -->
+                    <rect x="420" y="265" width="25" height="30" fill="#fff" stroke="#333"/>
+                    <ellipse cx="432" cy="265" rx="12" ry="4" fill="#fff" stroke="#333"/>
+                    <!-- Coffee spill -->
+                    <ellipse cx="460" cy="278" rx="20" ry="8" fill="#4a2c00"/>
+                    <!-- Stack of books labeled "HELP" -->
+                    <rect x="340" y="250" width="50" height="10" fill="#8b0000"/>
+                    <rect x="338" y="240" width="54" height="10" fill="#00008b"/>
+                    <rect x="342" y="230" width="46" height="10" fill="#006400"/>
+                    <!-- Tears -->
+                    <ellipse cx="140" cy="210" rx="3" ry="6" fill="#87ceeb"/>
+                    <ellipse cx="160" cy="215" rx="3" ry="6" fill="#87ceeb"/>
+                    <!-- Wall poster: "SUFFER = LEARN" -->
+                    <rect x="50" y="50" width="100" height="60" fill="#fff" stroke="#333"/>
+                    <text x="60" y="75" font-family="Arial" font-weight="bold" font-size="10" fill="#8b0000">SUFFER</text>
+                    <text x="75" y="90" font-family="Arial" font-weight="bold" font-size="14" fill="#333">=</text>
+                    <text x="65" y="105" font-family="Arial" font-weight="bold" font-size="10" fill="#006400">LEARN</text>
+                    <!-- Clock showing late hour -->
+                    <circle cx="550" cy="80" r="30" fill="#fff" stroke="#333" stroke-width="2"/>
+                    <line x1="550" y1="80" x2="550" y2="60" stroke="#333" stroke-width="2"/>
+                    <line x1="550" y1="80" x2="565" y2="85" stroke="#333" stroke-width="2"/>
+                    <text x="535" y="120" font-family="Georgia" font-size="10">3:47 AM</text>
+                </svg>
+                <p class="photo-caption">"The duck hasn't said anything for three hours but I feel like we're really making progress," reported local developer, moments before his fourth emotional breakdown of the evening.</p>
+                <p class="photo-credit">Photo: HuckFinn Staff Illustration / Getty Despair Collection</p>
+            </div>
+            
+            <!-- Article Body -->
+            <div class="article-body">
+                <p>In a groundbreaking new educational guide that has sent shockwaves through Silicon Valley's therapy industry, 40-year programming veteran Brian "Beej" Hall has finally confirmed what millions of struggling computer science students have long suspected: the key to professional success is simply failing more than everyone else around you.</p>
+
+                <p>"The only difference between you and your instructors is the number of failures you've had," Hall writes in his new guide, inadvertently providing the most honest job description the tech industry has ever produced. The guide, titled "Beej's Guide to Learning Computer Science," spans roughly 40 pages of advice that can be summarized as: suffer now, suffer later, but definitely suffer.</p>
+
+                <p>The document has already been hailed by industry leaders as "finally saying the quiet part loud" and "basically just a permission slip to cry at your desk."</p>
+                
+                <div class="pull-quote">
+                    "You wouldn't doubt that juggling 11 balls at once is difficult for everyone, would you? And yet, people can do it."<br>
+                    <span style="font-size: 0.6em; font-style: normal;">— The guide, comparing programming to circus performance without apparent irony</span>
+                </div>
+
+                <p>Perhaps most revolutionary is Hall's endorsement of "rubber duck debugging," a technique in which programmers explain their problems to an inanimate bath toy. According to the guide, this method works even if the duck "says nothing," a standard that most human coworkers fail to meet. Mental health professionals have expressed concern about the implications, while bath toy manufacturers have begun marketing "Enterprise Edition" rubber ducks with tiny glasses and briefcases.</p>
+
+                <p>"Study confirms bath toy more effective therapist than actual colleagues," noted Dr. Helena Pressfield of Stanford's Department of Workplace Dysfunction. "We've known this intuitively for years. The duck doesn't interrupt. The duck doesn't suggest you 'just restart the computer.' The duck simply exists, radiating silent judgment."</p>
+            </div>
+            
+            <!-- First Ad -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <div class="ad-content">
+                    <h3>🦆 ENTERPRISE RUBBER DUCK PRO MAX™ 🦆</h3>
+                    <p>The only debugging companion certified by absolutely no one!</p>
+                    <p class="price">$849.99</p>
+                    <p style="font-size: 0.8em; color: #999;">Now with Bluetooth capability it will never use</p>
+                    <a href="#" class="ad-cta">SUFFER SMARTER →</a>
+                </div>
+            </div>
+            
+            <div class="article-body">
+                <p>The guide also introduces what Hall calls "the 30-minute rule," which mandates a minimum duration of suffering before students are permitted to seek assistance. Critics have noted this is approximately 29 minutes longer than most students' will to live when confronted with a linked list assignment.</p>
+
+                <p>"After 30 minutes of genuine struggle, you've built a mental framework," the guide explains. Universities nationwide have reportedly begun referring to this as "Minimum Viable Anguish" in their course catalogs, with some institutions offering premium suffering packages for additional credit.</p>
+                
+                <p>In a section titled "Go For a Walk," Hall reveals that walking away from one's computer is now considered an "advanced technical skill" by industry veterans. The technique, pioneered by developers who simply could not look at their screens anymore, has been adopted by major tech companies as an official debugging methodology.</p>
+
+                <div class="pull-quote">
+                    "There have been times where I've decided to go for a walk and have gotten two steps out the door when a new approach to the problem has occurred to me."<br>
+                    <span style="font-size: 0.6em; font-style: normal;">— Hall, describing what therapists call "fleeing"</span>
+                </div>
+
+                <p>The guide also addresses the controversial topic of "prayer debugging," noting that it "very, very, very, very, very rarely works." Religious leaders across denominations have expressed disappointment at this revelation. "We had hoped the Almighty was at least handling the easy bugs," said Archbishop Timothy Mooreland of the Diocese of San Jose. "Apparently He does not answer prayers from programmers specifically. We're looking into why."</p>
+                
+                <p>Perhaps most confounding is the guide's stance on artificial intelligence and copying work. In one section, Hall sternly warns students against copy-pasting solutions, comparing it to "asking a robot to lift weights for you at the gym." However, just paragraphs later, he encourages students to "ask AI for hints" when stuck—a distinction that has left educators scrambling to update their academic honesty policies.</p>
+
+                <p>"Copying is only acceptable when a robot does it for you," confirmed Dr. Patricia Hendricks, Dean of Academic Integrity at MIT. "We've updated our guidelines accordingly. If you can prove a large language model wrote your assignment, that's innovation. If your roommate wrote it, that's expulsion."</p>
+            </div>
+            
+            <!-- Second Ad -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <div class="ad-content">
+                    <h3>UNIVERSITY OF PHOENIX ONLINE</h3>
+                    <p><strong>New Program:</strong> Master's Degree in Pre-Success Experience</p>
+                    <p>Learn to fail at the graduate level!</p>
+                    <p style="font-size: 0.8em;">Our graduates have failed at 47% more things than the national average</p>
+                    <a href="#" class="ad-cta">ENROLL IN DISAPPOINTMENT →</a>
+                </div>
+            </div>
+            
+            <div class="article-body">
+                <p>The guide's most provocative claim comes in its comparison of computer science education to gym membership. "School problems are just dumbbells," Hall writes, leading several universities to quietly rebrand their computer science programs as "$200,000 gym memberships for your brain."</p>
+
+                <p>"When you think about it, we're not teaching anyone to program," admitted Stanford CS Department Chair Dr. Raymond Liu. "We're just providing very expensive equipment for students to hurt themselves with repeatedly until they either get stronger or leave. Just like a gym. We're basically Planet Fitness with more crying."</p>
+
+                <p>In one particularly revealing passage, Hall invokes CrossFit philosophy, writing: "You gotta want it." Computer science departments nationwide have begun adopting similar motivational language, with some reportedly requiring students to complete coding assignments while a teaching assistant screams encouragement at them.</p>
+
+                <p>"I never thought I'd hear 'feel the burn' during a databases lecture," said sophomore Emily Chen, "but here we are."</p>
+                
+                <p>The guide also recommends that struggling programmers "print 'AAAAAAAAAA'" to their screens to "dispel bad energy," a technique that senior engineers have reportedly embraced as industry best practice. Sources at Google, Meta, and Amazon confirm that production systems worldwide contain thousands of lines of commented-out screaming.</p>
+
+                <p>"It's not elegant, but it's honest," said one anonymous principal engineer at a major tech company. "Sometimes you just need to yell into the void. The void doesn't compile anyway."</p>
+                
+                <div class="pull-quote">
+                    "Don't f---ing use profanity in your debugging statements. Murphy's Law says that if you do use profanity, you'll forget to take it out, and it will inevitably pop onto the screen while you're doing a client demo."<br>
+                    <span style="font-size: 0.6em; font-style: normal;">— The guide, speaking from what appears to be painful personal experience</span>
+                </div>
+
+                <p>In a footnote that has drawn particular attention, Hall admits that despite 40 years in the industry, "there are still tons of COBOL jobs," adding: "Joke's on me." Industry analysts have seized on this moment of vulnerability as evidence that even seasoned veterans have no idea what is happening.</p>
+
+                <p>"If someone with four decades of experience is still being surprised by the job market, what hope do the rest of us have?" asked recent graduate Michael Torres, 23, before returning to his rubber duck for comfort.</p>
+
+                <p>The guide concludes with a chapter on AI that manages to simultaneously warn against using it and recommend using it, a rhetorical feat that philosophers have compared to Schrödinger's career advice.</p>
+                
+                <p>When reached for comment, Hall's rubber duck remained silent, which sources close to the situation described as "extremely helpful."</p>
+                
+                <p><em>Developing story. Check back for updates as more students fail their way to success.</em></p>
+            </div>
+            
+            <!-- Corrections Box -->
+            <div class="corrections">
+                <h4>Corrections & Clarifications</h4>
+                <p><strong>Dec. 3, 2025:</strong> An earlier version of this article stated that rubber ducks were "more emotionally available than most tech workers." We have been informed this is not a correction but simply a fact. We regret the confusion.</p>
+                <p><strong>Dec. 2, 2025:</strong> We incorrectly reported that "prayer debugging" has a 0% success rate. A reader in Utah claims it worked once in 1987. We apologize for the error.</p>
+            </div>
+            
+            <!-- Related Articles Sidebar -->
+            <div class="sidebar-box">
+                <h4>Related Articles</h4>
+                <ul>
+                    <li><a href="#">Local Man's "Quick Fix" Enters Fourth Week</a></li>
+                    <li><a href="#">Study: 94% Of "Self-Taught Programmers" Actually Taught By Stack Overflow User Who Hasn't Logged In Since 2014</a></li>
+                    <li><a href="#">Computer Science Student Discovers New Primary Emotion: "Build Failed"</a></li>
+                    <li><a href="#">Area Developer's Linked List Finally Links After Developer Already Dead Inside</a></li>
+                    <li><a href="#">"Have You Tried Turning It Off And On Again" Named Most Effective Therapy Technique Of 2025</a></li>
+                    <li><a href="#">Man Who Said "This Should Be Easy" Last Seen Three Days Ago</a></li>
+                </ul>
+            </div>
+            
+            <!-- Third Ad -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <div class="ad-content">
+                    <h3>LEARN TO CODE IN JUST 6 WEEKS!*</h3>
+                    <p>Join our bootcamp and transform your career!</p>
+                    <p style="font-size: 0.7em; color: #999;">*Ability to code not guaranteed. Ability to suffer guaranteed. "6 weeks" refers to the time until your first emotional breakdown, not completion.</p>
+                    <p class="price">Only $15,000</p>
+                    <a href="#" class="ad-cta">DESTROY YOUR SAVINGS →</a>
+                </div>
+            </div>
+            
+            <!-- You Might Also Like -->
+            <div class="sidebar-box">
+                <h4>You Might Also Be Interested In</h4>
+                <ul>
+                    <li><a href="#">[SPONSORED] 17 Rubber Ducks That Will Fix Your Marriage</a></li>
+                    <li><a href="#">Quiz: Which Debugging Technique Matches Your Trauma Response?</a></li>
+                    <li><a href="#">[OPINION] I Walked Away From My Computer And You Won't Believe What Happened Next (I Felt Marginally Better)</a></li>
+                    <li><a href="#">35 Photos Of Programmers Moments Before Disaster</a></li>
+                    <li><a href="#">[SPONSORED] This One Weird Trick Has Therapists FURIOUS (It's A Rubber Duck)</a></li>
+                    <li><a href="#">Your Horoscope, But It's Just Different Ways Your Code Will Break Today</a></li>
+                </ul>
+            </div>
+            
+            <!-- Opinion Poll -->
+            <div class="poll-box">
+                <h4 style="text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em;">Reader Poll</h4>
+                <p style="margin-bottom: 15px; font-size: 1.1em;">What is your primary debugging technique?</p>
+                <div class="poll-option">
+                    <span>Screaming at screen</span>
+                    <span>34%</span>
+                </div>
+                <div class="poll-bar" style="width: 34%;"></div>
+                <div class="poll-option">
+                    <span>Asking rubber duck</span>
+                    <span>28%</span>
+                </div>
+                <div class="poll-bar" style="width: 28%;"></div>
+                <div class="poll-option">
+                    <span>Prayer</span>
+                    <span>22%</span>
+                </div>
+                <div class="poll-bar" style="width: 22%;"></div>
+                <div class="poll-option">
+                    <span>Actually reading the error message</span>
+                    <span>3%</span>
+                </div>
+                <div class="poll-bar" style="width: 3%;"></div>
+                <div class="poll-option">
+                    <span>Quitting and becoming a farmer</span>
+                    <span>13%</span>
+                </div>
+                <div class="poll-bar" style="width: 13%;"></div>
+                <p class="poll-total">12,847 votes • Poll closes never, like your browser tabs</p>
+            </div>
+        </article>
+        
+        <!-- Letters to the Editor -->
+        <section class="letters-section">
+            <h3>Letters to the Editor</h3>
+            
+            <div class="letter">
+                <p>Dear Editor,</p>
+                <p>I am writing to express my outrage at your article suggesting rubber ducks are effective debugging tools. I have been a professional software engineer for 15 years and have never once consulted a bath toy. I consult a small ceramic frog named Gerald, which is completely different and far more professional.</p>
+                <p class="letter-author">— Harold Pembrook, Senior Engineer, Sacramento, CA</p>
+            </div>
+            
+            <div class="letter">
+                <p>Dear Editor,</p>
+                <p>Your article failed to mention that walking away from your computer only works if you eventually come back. I have been "going for a walk" since 2019 and am now a park ranger in Montana. Best debugging session of my life.</p>
+                <p class="letter-author">— Former Developer, Glacier National Park</p>
+            </div>
+            
+            <div class="letter">
+                <p>Dear Editor,</p>
+                <p>As a rubber duck, I find your article's characterization of my profession to be reductive. We do not simply "say nothing." We practice active listening in its purest form. Please respect our labor.</p>
+                <p class="letter-author">— A Rubber Duck (dictated but not read)</p>
+            </div>
+        </section>
+        
+        <!-- Fourth Ad -->
+        <div class="ad-container" style="margin: 0; border-top: 2px solid #ddd;">
+            <p class="ad-label">Advertisement</p>
+            <div class="ad-content">
+                <h3>COBOL: STILL HERE. STILL PAYING.</h3>
+                <p>Everyone laughed. Who's laughing now?</p>
+                <p style="font-size: 0.9em;">Average COBOL developer salary: <span class="price">$95,000</span></p>
+                <p style="font-size: 0.8em; color: #999;">Average COBOL developer age: Also 95</p>
+                <a href="#" class="ad-cta">EMBRACE THE ANCIENT WAYS →</a>
+            </div>
+        </div>
+        
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h3 class="comments-header">Comments <span class="comment-count">(847 comments, 12 locked for excessive profanity)</span></h3>
+            
+            <div class="comment highlighted">
+                <div class="comment-header">
+                    <span class="username verified">CodeMonkey_Steve</span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    First! Also this article is literally me. I've been failing for 12 years and I'm a staff engineer now. The system works.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,847</span>
+                    <span class="downvotes">▼ 23</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                    <span>Give Award</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">ReactAndyBoy</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    12 years?? Rookie numbers. I've been failing since before GitHub existed. We used to fail into actual physical filing cabinets.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 943</span>
+                    <span class="downvotes">▼ 5</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply reply">
+                <div class="comment-header">
+                    <span class="username">COBOL_Grandpa_1962</span>
+                    <span class="timestamp">45 min ago</span>
+                </div>
+                <div class="comment-body">
+                    You kids and your "GitHub." Back in my day we failed on PUNCH CARDS. You had to WALK to the computer center to discover your failure. Uphill. Both ways. In the snow. The computer was the size of a ROOM and it still couldn't help you.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,247</span>
+                    <span class="downvotes">▼ 2</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">xX_DarkCoder_Xx</span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    My rubber duck left me for another developer. Said I "wasn't listening to its silence correctly." I'm devastated.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,567</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">QuackQuackDebug</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    She wasn't the right duck for you, king. There's plenty of ducks in the bath. 🦆👑
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 892</span>
+                    <span class="downvotes">▼ 3</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">Actually_Its_Whom</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Um, ACTUALLY, the article states that "prayer debugging rarely works" but fails to account for confirmation bias in the sample. Those for whom prayer debugging worked would attribute success to divine intervention and not report it as "debugging." This is basic epistemology. I expected better from HuckFinn.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 45</span>
+                    <span class="downvotes">▼ 678</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">TouchGrass2024</span>
+                    <span class="timestamp">58 min ago</span>
+                </div>
+                <div class="comment-body">
+                    sir this is a wendy's
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,341</span>
+                    <span class="downvotes">▼ 8</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply reply">
+                <div class="comment-header">
+                    <span class="username">Actually_Its_Whom</span>
+                    <span class="timestamp">55 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Um, ACTUALLY, this is clearly a newspaper comments section, not a Wendy's restaurant. The "sir this is a wendy's" meme, while popular, is inapplicable in this cont—
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12</span>
+                    <span class="downvotes">▼ 445</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply reply reply">
+                <div class="comment-header">
+                    <span class="username moderator">ModeratorJeff</span>
+                    <span class="timestamp">50 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Locking this thread. You're all on thin ice.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 567</span>
+                    <span class="downvotes">▼ 234</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">BootcampSurvivor2023</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    I paid $18,000 for a coding bootcamp and all I learned was how to mass apply to jobs on LinkedIn. This article explains everything. I wasn't learning to code. I was learning to SUFFER. The $18,000 was just the admission fee to the suffering. I've never felt more seen.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span class="downvotes">▼ 67</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">VCFundedStartupCEO</span>
+                    <span class="timestamp">45 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Have you considered that your inability to find a job is actually a skill issue? I learned to code in 3 weeks from a YouTube video and now I'm worth $40 million (on paper) (the paper is napkins) (my startup is failing)
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 1,892</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">TherapistWhoLurks</span>
+                    <span class="timestamp">45 min ago</span>
+                </div>
+                <div class="comment-body">
+                    As a licensed therapist, I'm genuinely concerned that my profession is being outperformed by waterfowl-shaped bath accessories. But also, honestly? Good for them. Those ducks are putting in the work.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,103</span>
+                    <span class="downvotes">▼ 45</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">[deleted]</span>
+                    <span class="timestamp">40 min ago</span>
+                </div>
+                <div class="comment-body deleted-comment">
+                    [Comment removed by moderator: Excessive use of "AAAAAAAAAA"]
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">LinuxBro1999</span>
+                    <span class="timestamp">35 min ago</span>
+                </div>
+                <div class="comment-body">
+                    This wouldn't be a problem if everyone just used Linux. I've been using Arch btw for 15 years and I've never needed a rubber duck because the penguin IS the duck. Think about it.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 123</span>
+                    <span class="downvotes">▼ 567</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">NormalPersonWhoUsesWindows</span>
+                    <span class="timestamp">30 min ago</span>
+                </div>
+                <div class="comment-body">
+                    how did i know someone would find a way to bring up arch linux in a comments section about rubber ducks
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,678</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply reply">
+                <div class="comment-header">
+                    <span class="username">LinuxBro1999</span>
+                    <span class="timestamp">28 min ago</span>
+                </div>
+                <div class="comment-body">
+                    I use Arch btw
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 45</span>
+                    <span class="downvotes">▼ 890</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">CryptoDevJake</span>
+                    <span class="timestamp">30 min ago</span>
+                </div>
+                <div class="comment-body">
+                    What if we put the rubber duck ON THE BLOCKCHAIN?? Decentralized debugging. Each quack is an NFT. I'm not joking I've already raised $2.3 million in seed funding please someone stop me
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 567</span>
+                    <span class="downvotes">▼ 2,341</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">SEC_Burner_Account</span>
+                    <span class="timestamp">25 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Noted.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,567</span>
+                    <span class="downvotes">▼ 3</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment flagged">
+                <div class="comment-header">
+                    <span class="username">AngryDad_1967</span>
+                    <span class="timestamp">25 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Back in MY day we didn't have "rubber ducks" or "AI" or "feelings." We had MANUALS. PHYSICAL MANUALS. You want to know how something worked, you read 400 pages of documentation PRINTED ON PAPER. Kids today are soft. Also my son is 34 and lives in my basement writing JavaScript and I'm beginning to think college was a mistake.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 892</span>
+                    <span class="downvotes">▼ 234</span>
+                    <span>Reply</span>
+                    <span style="color: orange;">⚠️ 3 users flagged this comment</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">DadsBasementJS</span>
+                    <span class="timestamp">20 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Dad please not here
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,678</span>
+                    <span class="downvotes">▼ 4</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">GPT_Wrote_This</span>
+                    <span class="timestamp">20 min ago</span>
+                </div>
+                <div class="comment-body">
+                    As an AI language model, I find this article's discussion of using AI for hints to be both informative and thought-provoking. The nuanced approach to balancing human learning with artificial assistance represents an important dialogue in our evolving educational landscape. I am definitely a human person who wrote this comment myself. Beep boop I mean hello fellow humans.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 1,567</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">CAPTCHAEnthusiast</span>
+                    <span class="timestamp">18 min ago</span>
+                </div>
+                <div class="comment-body">
+                    select all images containing traffic lights
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">QuietLurker_2008</span>
+                    <span class="timestamp">15 min ago</span>
+                </div>
+                <div class="comment-body">
+                    I've been reading this comments section for 17 years without posting. This is my first comment. I just wanted to say: same.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,892</span>
+                    <span class="downvotes">▼ 2</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">WelcomeCommittee</span>
+                    <span class="timestamp">14 min ago</span>
+                </div>
+                <div class="comment-body">
+                    ONE OF US ONE OF US ONE OF US
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,234</span>
+                    <span class="downvotes">▼ 5</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">PragmaticPaula</span>
+                    <span class="timestamp">10 min ago</span>
+                </div>
+                <div class="comment-body">
+                    I've been a developer for 20 years. This article is satire but it's also the truest thing I've ever read. I have three rubber ducks. Their names are Production, Staging, and "Oh God Why." Production is my favorite. "Oh God Why" has seen things.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,234</span>
+                    <span class="downvotes">▼ 23</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">JustHereForTheRatio</span>
+                    <span class="timestamp">8 min ago</span>
+                </div>
+                <div class="comment-body">
+                    ratio
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2</span>
+                    <span class="downvotes">▼ 4,567</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">CounterRatio</span>
+                    <span class="timestamp">7 min ago</span>
+                </div>
+                <div class="comment-body">
+                    counter-ratio + you fell off + the duck owns you
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,678</span>
+                    <span class="downvotes">▼ 1</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">DeepThoughts_Dev</span>
+                    <span class="timestamp">5 min ago</span>
+                </div>
+                <div class="comment-body">
+                    The real rubber duck was the friends we debugged along the way.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span class="downvotes">▼ 234</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="username">LastCommentAndy</span>
+                    <span class="timestamp">Just now</span>
+                </div>
+                <div class="comment-body">
+                    Commenting so I can find this later. Don't mind me.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12</span>
+                    <span class="downvotes">▼ 45</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="username">BookmarkExists</span>
+                    <span class="timestamp">Just now</span>
+                </div>
+                <div class="comment-body">
+                    brother there is a save button
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 892</span>
+                    <span class="downvotes">▼ 2</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <p style="text-align: center; color: #999; margin-top: 30px; font-size: 0.9em;">
+                — Load 789 more comments —<br>
+                <span style="font-size: 0.8em;">(Warning: 43% are variations of "I use Arch btw")</span>
+            </p>
+        </section>
+        
+        <!-- Final Ad -->
+        <div class="ad-container" style="background: #1a1a1a; color: #fff; border: none;">
+            <p class="ad-label" style="color: #666;">Advertisement</p>
+            <div class="ad-content">
+                <h3 style="color: #fff;">QUIET QUITTING NOT WORKING?</h3>
+                <h3 style="color: #ffd700;">TRY LOUD QUITTING™</h3>
+                <p style="color: #ccc;">Our patented system helps you dramatically exit any job in tech</p>
+                <p style="font-size: 0.8em; color: #999;">Includes: resignation letter templates, bridge-burning strategies, and one (1) rubber duck for emotional support</p>
+                <a href="#" class="ad-cta" style="background: #ffd700; color: #000;">BURN IT ALL DOWN →</a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>HuckFinn</strong> • America's Finest Newspaper</p>
+            <p style="margin-top: 10px;">© 2025 HuckFinn Media Group. All rights reserved. No ducks were harmed in the making of this publication.</p>
+            <p style="margin-top: 10px; font-size: 0.75em;">
+                <a href="#">About</a> • 
+                <a href="#">Careers (We're Hiring Ducks)</a> • 
+                <a href="#">Advertise</a> • 
+                <a href="#">Privacy Policy</a> • 
+                <a href="#">Terms of Suffering</a> • 
+                <a href="#">Contact</a>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.7em; color: #666;">
+                This is satire. If you're citing this in your thesis, we have concerns about your thesis.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
