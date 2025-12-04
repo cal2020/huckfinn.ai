@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+Pro:wght@400;600&family=Oswald:wght@400;500;700&family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --huck-cream: #f5f0e6;
+            --huck-black: #1a1a1a;
+            --huck-red: #8b0000;
+            --huck-gold: #c9a227;
+            --huck-gray: #4a4a4a;
+            --huck-light-gray: #e8e4db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            background-color: #f5f0e6 !important;
+            background: #f5f0e6 !important;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        html {
+            background-color: #f5f0e6 !important;
+            background: #f5f0e6 !important;
+        }
+        
+        .masthead {
+            background: var(--huck-black);
+            color: var(--huck-cream);
+            text-align: center;
+            padding: 1rem 0;
+            border-bottom: 4px double var(--huck-gold);
+        }
+        
+        .masthead h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        
+        .masthead .tagline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--huck-gold);
+            margin-top: 0.25rem;
+        }
+        
+        .masthead .date-line {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .nav-bar {
+            background: var(--huck-red);
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-bar a {
+            color: var(--huck-cream);
+            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .nav-bar a:hover {
+            color: var(--huck-gold);
+        }
+        
+        .breaking-ticker {
+            background: #ff0000;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f5f0e6;
+        }
+        
+        .article-header {
+            border-bottom: 3px solid var(--huck-black);
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-category {
+            font-family: 'Oswald', sans-serif;
+            color: var(--huck-red);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin: 0.75rem 0;
+        }
+        
+        .article-subtitle {
+            font-size: 1.3rem;
+            color: var(--huck-gray);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .byline {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.85rem;
+            color: var(--huck-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .featured-image {
+            width: 100%;
+            margin: 1.5rem 0;
+            border: 1px solid var(--huck-black);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        .featured-image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 50%, #0d0d0d 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,255,0,0.03) 2px,
+                    rgba(0,255,0,0.03) 4px
+                );
+        }
+        
+        .glitch-text {
+            font-family: 'Courier Prime', monospace;
+            font-size: 4rem;
+            color: #ff0000;
+            text-shadow: 
+                2px 2px #00ff00,
+                -2px -2px #0000ff;
+            animation: glitch 0.5s infinite;
+            z-index: 2;
+        }
+        
+        .server-rack {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .server {
+            width: 60px;
+            height: 120px;
+            background: #333;
+            border: 2px solid #555;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+            gap: 3px;
+        }
+        
+        .server-light {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: blink 0.3s infinite alternate;
+        }
+        
+        .server-light.red { background: #ff0000; box-shadow: 0 0 10px #ff0000; }
+        .server-light.dead { background: #333; }
+        
+        .casket {
+            width: 80px;
+            height: 30px;
+            background: linear-gradient(to bottom, #8B4513, #654321);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            margin-top: 10px;
+        }
+        
+        .casket::after {
+            content: '💀';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+        }
+        
+        .dollar-signs {
+            position: absolute;
+            font-size: 2rem;
+            color: #00ff00;
+            opacity: 0.5;
+            animation: float 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, -2px); }
+            80% { transform: translate(2px, 2px); }
+        }
+        
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0.3; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .image-caption {
+            font-size: 0.85rem;
+            color: var(--huck-gray);
+            font-style: italic;
+            padding: 0.75rem;
+            background: var(--huck-light-gray);
+            border-top: none;
+        }
+        
+        .article-body {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            background-color: #f5f0e6;
+        }
+        
+        .article-body p {
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+        
+        .article-body .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 0.5rem;
+            color: var(--huck-red);
+            font-weight: 900;
+        }
+        
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--huck-red);
+            border-left: 4px solid var(--huck-gold);
+            padding: 1rem 1.5rem;
+            margin: 2rem 0;
+            background: var(--huck-light-gray);
+        }
+        
+        /* INTERSTITIAL ADS */
+        .ad-container {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%);
+            border: 3px solid var(--huck-gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .ad-container::before {
+            content: 'ADVERTISEMENT';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--huck-cream);
+            padding: 0 0.5rem;
+            font-size: 0.7rem;
+            color: var(--huck-gray);
+            letter-spacing: 0.1em;
+        }
+        
+        .ad-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            color: var(--huck-red);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ad-body {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .ad-cta {
+            display: inline-block;
+            background: var(--huck-red);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .ad-fine-print {
+            font-size: 0.65rem;
+            color: var(--huck-gray);
+            margin-top: 0.75rem;
+            font-style: italic;
+        }
+        
+        /* COMMENTS SECTION */
+        .comments-section {
+            margin-top: 3rem;
+            border-top: 3px solid #1a1a1a;
+            padding-top: 2rem;
+            background-color: #f5f0e6;
+        }
+        
+        .comments-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .comment-count {
+            background: var(--huck-red);
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2px;
+        }
+        
+        .comment {
+            border-left: 3px solid #e8e4db;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+        
+        .comment.reply {
+            margin-left: 2rem;
+            border-left-color: var(--huck-gold);
+        }
+        
+        .comment.deep-reply {
+            margin-left: 4rem;
+            border-left-color: var(--huck-red);
+        }
+        
+        .comment-author {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            color: var(--huck-red);
+        }
+        
+        .comment-meta {
+            font-size: 0.75rem;
+            color: var(--huck-gray);
+            margin-bottom: 0.5rem;
+        }
+        
+        .comment-body {
+            font-size: 0.95rem;
+        }
+        
+        .comment-actions {
+            font-size: 0.8rem;
+            color: var(--huck-gray);
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .comment-actions span {
+            cursor: pointer;
+        }
+        
+        .comment-actions span:hover {
+            color: var(--huck-red);
+        }
+        
+        .verified-badge {
+            background: #1da1f2;
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+            margin-left: 0.25rem;
+        }
+        
+        .ratio-badge {
+            background: #ff6b6b;
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+            margin-left: 0.25rem;
+        }
+        
+        .mod-badge {
+            background: #28a745;
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 2px;
+            margin-left: 0.25rem;
+        }
+        
+        .deleted-comment {
+            color: var(--huck-gray);
+            font-style: italic;
+            background: #f0f0f0;
+        }
+        
+        /* RELATED ARTICLES */
+        .related-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #1a1a1a;
+            background-color: #f5f0e6;
+        }
+        
+        .related-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            color: var(--huck-red);
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .related-item {
+            border: 1px solid #e8e4db;
+            padding: 1rem;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+        
+        .related-item-category {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.7rem;
+            color: var(--huck-red);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .related-item-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            line-height: 1.2;
+        }
+        
+        .related-item-meta {
+            font-size: 0.75rem;
+            color: var(--huck-gray);
+        }
+        
+        /* MIGHT ALSO LIKE (sleazy style) */
+        .might-like-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 1px solid #444;
+        }
+        
+        .might-like-header {
+            font-family: 'Oswald', sans-serif;
+            color: #ff6b35;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .might-like-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .might-like-item {
+            background: #333;
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+        
+        .might-like-item-title {
+            color: #fff;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            margin-bottom: 0.25rem;
+        }
+        
+        .might-like-item-source {
+            color: #888;
+            font-size: 0.7rem;
+        }
+        
+        .footer {
+            background: var(--huck-black);
+            color: var(--huck-cream);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-tagline {
+            font-size: 0.8rem;
+            color: var(--huck-gold);
+            margin-top: 0.25rem;
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+            font-size: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: var(--huck-cream);
+            margin: 0 0.5rem;
+        }
+        
+        .upvote-count {
+            color: #ff6b35;
+            font-weight: bold;
+        }
+        
+        .downvote-count {
+            color: #6b88ff;
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <h1>HuckFinn</h1>
+        <div class="tagline">America's Finest Newspaper • Est. 1847</div>
+        <div class="date-line">Thursday, November 27, 2025 • Vol. CLXXVIII, No. 47 • Thanksgiving Edition • Price: Your Attention</div>
+    </header>
+    
+    <nav class="nav-bar">
+        <a href="#">Front Page</a>
+        <a href="#">Sports, Dih..Duh</a>
+        <a href="#">Local Milestones</a>
+        <a href="#">Tech Apocalypse</a>
+        <a href="#">Pride Injuries</a>
+        <a href="#">Dog Tongue Avoidance</a>
+        <a href="#">Opinion</a>
+    </nav>
+    
+    <div class="breaking-ticker">
+        🚨 BREAKING: Area Editor Forced To "Do Everything" As Civilization Crumbles • AI Systems Reportedly "Fine, Probably" • Baby Successfully Avoids Dog Tongue 🚨
+    </div>
+    
+    <main class="container">
+        <article>
+            <header class="article-header">
+                <div class="article-category">Buried Lede / Existential Threat</div>
+                <h1 class="article-title">Tech Billionaire's Death Coincides Exactly With Global AI Crash; Media Leads With High School Sports</h1>
+                <p class="article-subtitle">"Disturbance In The Force," Reports Only Available Editor, Who Then Sighed And Moved On To Juan Jennings' Pride Injury</p>
+                <div class="byline">By Staff Writer • November 27, 2025 • 4 min read • 2,847 Comments</div>
+            </header>
+            
+            <figure class="featured-image">
+                <div class="featured-image-placeholder">
+                    <div class="dollar-signs" style="top: 20%; left: 15%;">$</div>
+                    <div class="dollar-signs" style="top: 40%; right: 20%; animation-delay: 1s;">$</div>
+                    <div class="dollar-signs" style="bottom: 30%; left: 25%; animation-delay: 2s;">$</div>
+                    <div class="server-rack">
+                        <div class="server">
+                            <div class="server-light red"></div>
+                            <div class="server-light dead"></div>
+                            <div class="server-light red"></div>
+                            <div class="server-light dead"></div>
+                        </div>
+                        <div class="server">
+                            <div class="server-light dead"></div>
+                            <div class="server-light red"></div>
+                            <div class="server-light dead"></div>
+                            <div class="server-light dead"></div>
+                        </div>
+                        <div class="server">
+                            <div class="server-light red"></div>
+                            <div class="server-light red"></div>
+                            <div class="server-light dead"></div>
+                            <div class="server-light red"></div>
+                        </div>
+                    </div>
+                    <div class="glitch-text">ERROR</div>
+                    <div class="casket"></div>
+                </div>
+                <figcaption class="image-caption">
+                    <strong>ARTIST'S RENDERING:</strong> Server farm moments after billionaire "Big Dick" flatlined, depicted alongside commemorative casket. Experts confirm correlation is "weird but whatever." Dollar signs represent thoughts and prayers. (HuckFinn Graphics Department, which is also just Dr. P)
+                </figcaption>
+            </figure>
+            
+            <div class="article-body">
+                <p class="drop-cap">In what local editor Dr. P described as "not suspicious" before immediately pivoting to prep football coverage, technology billionaire Richard "Big Dick" Thornbury III died yesterday at the precise moment artificial intelligence systems worldwide experienced catastrophic failure—a coincidence the nation's remaining newsroom staff deemed insufficiently interesting to place above the fold.</p>
+                
+                <p>"Front page! Sections... Sports, dih..duh. Why do I have to do everything?" said Dr. P, the sole remaining editor at what was once a 200-person newsroom, his exasperated sighs now comprising roughly 40% of all editorial content. The veteran journalist, who has watched his profession dissolve into a one-man operation over two decades, briefly noted the potential civilization-ending implications of simultaneous AI failure before returning to more pressing matters: specifically, whose pride got hurt at the high school.</p>
+                
+                <p>"Disturbance in the force," Dr. P added cryptically, using a Star Wars reference to process what may be the most significant technological event since the invention of fire, then shrugging in a manner that suggested profound emotional exhaustion.</p>
+                
+                <div class="pull-quote">
+                    "Juan Jennings' pride injured to the tune of other boy suspended"<br>
+                    <span style="font-size: 0.9rem; font-style: normal;">— Actual news prioritized over potential AI apocalypse</span>
+                </div>
+                
+                <p>The Pride Injury, as it is now being called, refers to an incident at Lincoln High School in which student-athlete Juan Jennings experienced damage to his ego of such severity that disciplinary action was required—not against Jennings himself, but against another student whose name has been withheld because his suspension exists solely to quantify Jennings' emotional damages.</p>
+                
+                <p>"America has finally achieved a full pride-to-punishment conversion rate," explained Dr. Helena Vance, professor of Grievance Economics at Yale. "Your feelings are now directly fungible with someone else's consequences. This is late-stage emotional capitalism."</p>
+            </div>
+            
+            <!-- INTERSTITIAL AD 1 -->
+            <div class="ad-container">
+                <div class="ad-title">🤖 SKYNET LIFE INSURANCE 🤖</div>
+                <div class="ad-body">
+                    When The Machines Rise, Will Your Family Be Covered?<br>
+                    <em>New "Billionaire Deathlink" rider protects against correlated tech failures!</em>
+                </div>
+                <button class="ad-cta">Get Quote Before It's Too Late</button>
+                <div class="ad-fine-print">*Policy void if AI determines your existence is inefficient. Skynet Life is a subsidiary of Definitely Human Insurance Corp. Not available in states where AI has achieved sentience.</div>
+            </div>
+            
+            <div class="article-body">
+                <p>Meanwhile, in developments the newspaper deemed worthy of the "Local" section, area toddler Douglas "Dougie" Pemberton executed his first-ever somersault yesterday, a milestone achieved with what sources describe as "a little help from the dog."</p>
+                
+                <p>Witnesses report that the family's golden retriever, Mr. Buttons, provided crucial rotational momentum to the 18-month-old during the maneuver, yet Dougie's mother, Karen Pemberton, insisted the accomplishment was entirely her son's.</p>
+                
+                <p>"I could see the determination in the child's eyes as he completed the roll," said Pemberton, overlooking the fact that her son was functionally a passenger in a dog-assisted physics experiment. "He avoided dog-ass tongue to the face. That's the real victory here."</p>
+                
+                <div class="pull-quote">
+                    "The participation trophy has evolved: we now award intent plus dog physics."<br>
+                    <span style="font-size: 0.9rem; font-style: normal;">— Child development experts, resigned</span>
+                </div>
+                
+                <p>Indeed, sources close to the situation confirm that the near-miss with canine oral mucosa represents the day's true headline—a testament to how far journalism has fallen when "what didn't happen to a baby's face" constitutes front-page material.</p>
+                
+                <p>"Look, I've been doing this for 35 years," Dr. P said, gesturing at a monitor displaying both collapsing AI infrastructure graphs and a photo of Dougie mid-roll, tongue visibly incoming. "You tell me which one of these our readers actually care about. Go ahead. I'll wait."</p>
+                
+                <p>He then paused, stared into the middle distance, and whispered, "Dih..duh," before returning to layout.</p>
+            </div>
+            
+            <!-- INTERSTITIAL AD 2 -->
+            <div class="ad-container">
+                <div class="ad-title">⚽ PRIDE INJURY ATTORNEYS, LLP ⚽</div>
+                <div class="ad-body">
+                    Has Your Ego Been Damaged By Another Person's Existence?<br>
+                    <strong>WE GET OTHER PEOPLE SUSPENDED.</strong><br>
+                    <em>"Your feelings. Their consequences.™"</em>
+                </div>
+                <button class="ad-cta">Free Consultation</button>
+                <div class="ad-fine-print">*No actual injury required. Pride damage calculated using proprietary Feelings-to-Suspension algorithm. Juan Jennings is a paid spokesperson.</div>
+            </div>
+            
+            <div class="article-body">
+                <p>At press time, global AI systems remained offline, three major tech companies had declared bankruptcy, seventeen satellites had fallen from orbit, and autonomous vehicles worldwide had simultaneously driven themselves into the nearest body of water. These developments were slated for page A17, after sports, local interest, comics, and a surprisingly lengthy obituary for a woman who was "really good at puzzles."</p>
+                
+                <p>Thornbury's death, meanwhile, continues to raise questions that no one in media appears interested in asking, including: Was the billionaire's consciousness uploaded to the very AI systems that failed? Did he take the whole thing with him? And why does it feel like the universe just experienced a hard reset?</p>
+                
+                <p>"Disturbance in the force," Dr. P repeated when reached for follow-up, having apparently adopted the phrase as a form of journalistic surrender. "Anyway, did you see the Jennings thing? Kid's pride got <em>wrecked</em>."</p>
+            </div>
+            
+            <!-- INTERSTITIAL AD 3 -->
+            <div class="ad-container">
+                <div class="ad-title">🐕 DOG-ASS TONGUE DEFENSE SYSTEMS 🐕</div>
+                <div class="ad-body">
+                    <strong>THE #1 RATED BABY FACE SHIELD IN AMERICA</strong><br>
+                    Now with 47% more determination detection!<br>
+                    <em>Because the tongue that doesn't land is the victory we all deserve.</em>
+                </div>
+                <button class="ad-cta">Protect Your Baby's Face</button>
+                <div class="ad-fine-print">*Product does not actually exist. This ad generated by AI before it crashed. We think. Honestly Dr. P just put this here because he thought it was funny. He's so tired.</div>
+            </div>
+        </article>
+        
+        <!-- COMMENTS SECTION -->
+        <section class="comments-section">
+            <h2 class="comments-header">
+                Comments <span class="comment-count">2,847</span>
+            </h2>
+            
+            <div class="comment">
+                <div class="comment-author">TruthSeeker1776 <span class="verified-badge">PATRIOT</span></div>
+                <div class="comment-meta">2 hours ago • Liked by 1,247</div>
+                <div class="comment-body">WAKE UP SHEEPLE. "Big Dick" was the AI. The AI was "Big Dick." They're the same. He uploaded himself in 2019 and has been running the simulation ever since. Now he's gone and OF COURSE everything crashes. This is literally 1984.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">1,247</span></span>
+                    <span>👎 <span class="downvote-count">89</span></span>
+                    <span>Reply</span>
+                    <span>Report</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">DebunkerDan</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">You clearly don't understand how AI works. I have a computer science degree from YouTube University and I can tell you that billionaires can't "upload" themselves. They can only download.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">342</span></span>
+                    <span>👎 <span class="downvote-count">567</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment deep-reply">
+                <div class="comment-author">TruthSeeker1776</div>
+                <div class="comment-meta">45 min ago</div>
+                <div class="comment-body">ratio + L + you fell off + the machines are listening + your degree is fake + I bet you think the moon is real</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">892</span></span>
+                    <span>👎 <span class="downvote-count">12</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">SoccerMom_Karen_2847</div>
+                <div class="comment-meta">3 hours ago</div>
+                <div class="comment-body">Can we PLEASE get back to the important story here?? Juan Jennings' PRIDE was INJURED. As a mother of a student-athlete, I know how devastating this can be. The other boy DESERVED to be suspended. In fact, he should be expelled. And arrested. My son Tyler once had his feelings hurt at practice and we sued the school district for $2 million.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">67</span></span>
+                    <span>👎 <span class="downvote-count">2,341</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">JustADad_Steve <span class="ratio-badge">RATIOED</span></div>
+                <div class="comment-meta">2 hours ago</div>
+                <div class="comment-body">Karen I mean this respectfully but the AI that runs our entire civilization just died along with a billionaire and you're worried about high school feelings?</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">4,521</span></span>
+                    <span>👎 <span class="downvote-count">3</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment deep-reply">
+                <div class="comment-author">SoccerMom_Karen_2847</div>
+                <div class="comment-meta">2 hours ago</div>
+                <div class="comment-body">I'd like to speak to the manager of this comments section.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">12</span></span>
+                    <span>👎 <span class="downvote-count">1,892</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">Dr_P_Official <span class="mod-badge">EDITOR</span></div>
+                <div class="comment-meta">1 hour ago • Pinned</div>
+                <div class="comment-body">Why do I have to moderate everything??? Dih..duh.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">5,672</span></span>
+                    <span>👎 <span class="downvote-count">0</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">DogOwner_420</div>
+                <div class="comment-meta">2 hours ago</div>
+                <div class="comment-body">As a dog owner I take offense to the phrase "dog-ass tongue." Dogs lick their entire bodies. Every part of a dog tongue is dog-ass tongue. This is just science. The baby was never safe.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">891</span></span>
+                    <span>👎 <span class="downvote-count">234</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">PediatricianPete_MD</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">Doctor here. Can confirm. All dog tongues are technically dog-ass tongues. The CDC has guidelines on this.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">567</span></span>
+                    <span>👎 <span class="downvote-count">23</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">FirstCommenter2025</div>
+                <div class="comment-meta">4 hours ago</div>
+                <div class="comment-body">First</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">3</span></span>
+                    <span>👎 <span class="downvote-count">4,892</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">SecondCommenter</div>
+                <div class="comment-meta">4 hours ago</div>
+                <div class="comment-body">Second (but spiritually first)</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">2</span></span>
+                    <span>👎 <span class="downvote-count">891</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">CryptoMaximalist_GMI</div>
+                <div class="comment-meta">3 hours ago</div>
+                <div class="comment-body">This is actually BULLISH for Bitcoin. When AI dies, we go back to decentralized human intelligence. Also Big Dick was a known Bitcoin bear so this is good news. Also I'm down 94% this year. Anyway HODL.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">234</span></span>
+                    <span>👎 <span class="downvote-count">1,567</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">NormalPersonDoris</div>
+                <div class="comment-meta">2 hours ago</div>
+                <div class="comment-body">Sir this is a Wendy's</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">3,421</span></span>
+                    <span>👎 <span class="downvote-count">45</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">ProudGrandpa_Earl</div>
+                <div class="comment-meta">2 hours ago</div>
+                <div class="comment-body">My grandson Dougie did that somersault ALL BY HIMSELF. The dog was just there for moral support. Karen Pemberton is a wonderful mother and you people are all jealous. In my day we did somersaults uphill both ways without any dogs OR determination in our eyes. Kids these days have it easy.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">156</span></span>
+                    <span>👎 <span class="downvote-count">89</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">Mr_Buttons_TheDog</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">woof woof I did all the work woof</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">7,891</span></span>
+                    <span>👎 <span class="downvote-count">2</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment deleted-comment">
+                <div class="comment-author">[deleted]</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">[This comment has been removed for violating community guidelines regarding billionaire death celebrations]</div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">Mod_Bot_3000</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">⚠️ AUTOMATED MESSAGE: This comment was removed by AI moderation. Oh wait. Oh no.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">2,341</span></span>
+                    <span>👎 <span class="downvote-count">0</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">ConspiracyDebunker_NotCIA</div>
+                <div class="comment-meta">45 min ago</div>
+                <div class="comment-body">There's absolutely nothing suspicious about a tech billionaire dying at the exact same moment all AI systems fail. Correlation is not causation. Please return to your normal activities. Do not investigate further. This comment brought to you by the Department of Definitely Not Suspicious Events.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">89</span></span>
+                    <span>👎 <span class="downvote-count">3,456</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">GenZ_Zoomer_Brainrot</div>
+                <div class="comment-meta">30 min ago</div>
+                <div class="comment-body">no cap fr fr this article is lowkey giving unhinged but also highkey based??? like the dog ate the baby or smth??? skibidi AI really said "Big Dick is my emotional support billionaire" and then chose violence 💀💀💀 anyway stream my soundcloud</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">456</span></span>
+                    <span>👎 <span class="downvote-count">1,234</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">Boomer_Bob_1952</div>
+                <div class="comment-meta">20 min ago</div>
+                <div class="comment-body">I have no idea what you just said. In my day we communicated using WORDS. This is why society is collapsing.</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">234</span></span>
+                    <span>👎 <span class="downvote-count">567</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment deep-reply">
+                <div class="comment-author">GenZ_Zoomer_Brainrot</div>
+                <div class="comment-meta">15 min ago</div>
+                <div class="comment-body">ok boomer (affectionate)</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">2,891</span></span>
+                    <span>👎 <span class="downvote-count">12</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">ActualJournalist_Sad</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">I worked at a major newspaper for 20 years before getting laid off. Dr. P's pain is real. The "dih..duh" sound is actually industry standard for editorial exhaustion. We all make it. Every day. Until we can't anymore. Anyway I drive for Uber now. Anyone need a ride to the apocalypse?</div>
+                <div class="comment-actions">
+                    <span>👍 <span class="upvote-count">4,567</span></span>
+                    <span>👎 <span class="downvote-count">23</span></span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">LoadMore_Bot</div>
+                <div class="comment-meta">Just now</div>
+                <div class="comment-body">📜 Load 2,831 more comments... (just kidding, the AI that powered the load more button is dead)</div>
+            </div>
+        </section>
+        
+        <!-- RELATED ARTICLES -->
+        <section class="related-section">
+            <h3 class="related-header">📰 Related Articles</h3>
+            <div class="related-grid">
+                <article class="related-item">
+                    <div class="related-item-category">Tech / Obituary</div>
+                    <div class="related-item-title">Nation's Last IT Guy Says "Have You Tried Turning It Off And On Again" For Final Time</div>
+                    <div class="related-item-meta">4 hours ago • 12,847 comments</div>
+                </article>
+                <article class="related-item">
+                    <div class="related-item-category">Sports / Feelings</div>
+                    <div class="related-item-title">Local Teen's Self-Esteem Valued At Three Suspensions, One Expulsion</div>
+                    <div class="related-item-meta">Yesterday • 892 comments</div>
+                </article>
+                <article class="related-item">
+                    <div class="related-item-category">Local / Pets</div>
+                    <div class="related-item-title">Area Dog Demands Credit For Every Human Achievement In Household</div>
+                    <div class="related-item-meta">2 days ago • 2,341 comments</div>
+                </article>
+                <article class="related-item">
+                    <div class="related-item-category">Opinion</div>
+                    <div class="related-item-title">I Was A Journalist For 30 Years. Now I Am A Sigh Given Human Form.</div>
+                    <div class="related-item-meta">3 days ago • 5,672 comments</div>
+                </article>
+            </div>
+        </section>
+        
+        <!-- YOU MIGHT ALSO LIKE (Sleazy Taboola-style) -->
+        <section class="might-like-section">
+            <h3 class="might-like-header">👁️ You Might Also Be Interested In (Sponsored)</h3>
+            <div class="might-like-grid">
+                <div class="might-like-item">
+                    <div class="might-like-item-title">Billionaires HATE This One Trick For Surviving Their Deaths</div>
+                    <div class="might-like-item-source">DefinitelyRealNews.biz</div>
+                </div>
+                <div class="might-like-item">
+                    <div class="might-like-item-title">Doctors Stunned By New "Pride Injury" Cream That Grows Ego Back In 3 Days</div>
+                    <div class="might-like-item-source">MedicallyQuestionable.co</div>
+                </div>
+                <div class="might-like-item">
+                    <div class="might-like-item-title">Is YOUR Dog Plotting To Tongue Your Baby? 10 Warning Signs</div>
+                    <div class="might-like-item-source">ParanoiaParenting.net</div>
+                </div>
+                <div class="might-like-item">
+                    <div class="might-like-item-title">One Weird Trick To Get Other People Suspended For Your Feelings</div>
+                    <div class="might-like-item-source">PassiveAggressiveLiving.com</div>
+                </div>
+                <div class="might-like-item">
+                    <div class="might-like-item-title">AI That Was Definitely Not A Billionaire Wearing A Trench Coat Of Code</div>
+                    <div class="might-like-item-source">ConspiracyButMakeItSexy.info</div>
+                </div>
+                <div class="might-like-item">
+                    <div class="might-like-item-title">Exhausted Editor Reveals His One Secret: Dih..Duh</div>
+                    <div class="might-like-item-source">BurnoutContent.org</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-logo">HUCKFINN</div>
+        <div class="footer-tagline">"We Print Everything Dr. P Hasn't Given Up On Yet"</div>
+        <div class="footer-links">
+            <a href="#">About</a> |
+            <a href="#">Careers (lol)</a> |
+            <a href="#">Advertise</a> |
+            <a href="#">Ethics Policy (lost in layoffs)</a> |
+            <a href="#">Subscribe</a> |
+            <a href="#">Contact Dr. P (he's tired)</a>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.75rem;">© 2025 HuckFinn Media Group, LLC. All rights reserved. No portion of this site may be reproduced without permission, but honestly who would bother.</p>
+    </footer>
+</body>
+</html>

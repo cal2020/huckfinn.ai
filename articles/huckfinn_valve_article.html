@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest News Source</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #f4f4f4;
+            color: #222;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #4a7c4e;
+        }
+        
+        .header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3rem;
+            color: #fff;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        
+        .header .tagline {
+            color: #4a7c4e;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 5px;
+        }
+        
+        .nav-bar {
+            background-color: #4a7c4e;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .category {
+            color: #4a7c4e;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .headline {
+            font-size: 2.2rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .byline {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Article Image */
+        .article-image {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 3px solid #4a7c4e;
+        }
+        
+        /* Article Body */
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .pull-quote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #4a7c4e;
+            border-left: 4px solid #4a7c4e;
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .comments-header {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .comment {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 3px solid #4a7c4e;
+        }
+        
+        .comment.reply {
+            margin-left: 40px;
+            background: #f0f0f0;
+            border-left-color: #888;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #4a7c4e;
+            font-size: 0.9rem;
+        }
+        
+        .comment-meta {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        
+        .comment-body {
+            font-size: 0.95rem;
+        }
+        
+        .comment-actions {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .upvotes {
+            color: #4a7c4e;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>HuckFinn</h1>
+        <div class="tagline">America's Finest News Source</div>
+    </header>
+    
+    <nav class="nav-bar">
+        <a href="#">Politics</a>
+        <a href="#">Tech</a>
+        <a href="#">Business</a>
+        <a href="#">Gaming</a>
+        <a href="#">Opinion</a>
+        <a href="#">Video</a>
+    </nav>
+    
+    <main class="container">
+        <div class="category">Business / Gaming / Late-Stage Capitalism</div>
+        
+        <h1 class="headline">Valve Discovers High Revenue Possible By Eliminating Both Middle Management And Game Development</h1>
+        
+        <div class="byline">
+            By <strong>Marcus Chen-Williams</strong> | November 24, 2025 | Vol. 61, Issue 47
+        </div>
+        
+        <div class="article-image">
+            <svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Gradient for money funnel glow -->
+                    <linearGradient id="moneyGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00ff00;stop-opacity:0.4"/>
+                        <stop offset="100%" style="stop-color:#004400;stop-opacity:0.1"/>
+                    </linearGradient>
+                    <!-- Steam blue gradient -->
+                    <linearGradient id="steamBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1b2838"/>
+                        <stop offset="100%" style="stop-color:#2a475e"/>
+                    </linearGradient>
+                    <!-- Gold for revenue -->
+                    <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ffd700"/>
+                        <stop offset="50%" style="stop-color:#ffec8b"/>
+                        <stop offset="100%" style="stop-color:#daa520"/>
+                    </linearGradient>
+                </defs>
+                
+                <!-- Background: Steam store interface mockup -->
+                <rect width="800" height="520" fill="#1b2838"/>
+                
+                <!-- Steam-style header bar -->
+                <rect x="0" y="0" width="800" height="40" fill="#171a21"/>
+                <text x="20" y="27" font-family="Arial, sans-serif" font-size="18" fill="#c7d5e0" font-weight="bold">STEAM</text>
+                <text x="90" y="27" font-family="Arial, sans-serif" font-size="12" fill="#5c7e8a">STORE</text>
+                <text x="140" y="27" font-family="Arial, sans-serif" font-size="12" fill="#5c7e8a">LIBRARY</text>
+                <text x="200" y="27" font-family="Arial, sans-serif" font-size="12" fill="#5c7e8a">COMMUNITY</text>
+                
+                <!-- Wallet balance (absurd) -->
+                <rect x="600" y="8" width="180" height="24" fill="#000" fill-opacity="0.3" rx="3"/>
+                <text x="610" y="25" font-family="monospace" font-size="11" fill="#a4d007">WALLET: $17,000,000,000.00</text>
+                
+                <!-- Main content area - styled like a Steam featured game -->
+                <rect x="20" y="60" width="760" height="400" fill="#16202d" rx="5"/>
+                
+                <!-- "Featured" game box that's just a money printer -->
+                <rect x="40" y="80" width="400" height="280" fill="url(#steamBlue)" rx="3" stroke="#3a5a7c" stroke-width="1"/>
+                
+                <!-- The "game" is literally a money printer machine -->
+                <rect x="100" y="130" width="280" height="180" fill="#2d2d2d" rx="10"/>
+                <rect x="110" y="140" width="260" height="100" fill="#1a1a1a" rx="5"/>
+                
+                <!-- Printer slot top (input: other people's games) -->
+                <rect x="140" y="110" width="200" height="25" fill="#444" rx="3"/>
+                <text x="175" y="127" font-family="Arial" font-size="10" fill="#888">INSERT INDIE GAMES HERE</text>
+                
+                <!-- Screen showing 30% -->
+                <rect x="130" y="155" width="220" height="70" fill="#0a0a0a" rx="3"/>
+                <text x="180" y="200" font-family="'Courier New', monospace" font-size="36" fill="#00ff00" font-weight="bold">-30%</text>
+                <text x="165" y="215" font-family="Arial" font-size="8" fill="#666">(not a sale, just our cut)</text>
+                
+                <!-- Money coming out bottom -->
+                <rect x="180" y="245" width="120" height="20" fill="#333" rx="2"/>
+                <g fill="url(#goldShine)">
+                    <rect x="185" y="265" width="30" height="15" rx="2"/>
+                    <rect x="220" y="270" width="30" height="15" rx="2"/>
+                    <rect x="255" y="263" width="30" height="15" rx="2"/>
+                    <rect x="200" y="285" width="30" height="15" rx="2"/>
+                    <rect x="240" y="290" width="30" height="15" rx="2"/>
+                    <text x="190" y="278" font-size="10" fill="#1a1a1a">$$$</text>
+                    <text x="225" y="283" font-size="10" fill="#1a1a1a">$$$</text>
+                    <text x="260" y="276" font-size="10" fill="#1a1a1a">$$$</text>
+                </g>
+                
+                <!-- Machine label -->
+                <rect x="140" y="320" width="200" height="30" fill="#1a1a1a" rx="3"/>
+                <text x="155" y="340" font-family="Arial" font-size="11" fill="#c7d5e0">VALVE REVENUE MODEL v3.0</text>
+                
+                <!-- Game info sidebar (parody of Steam game pages) -->
+                <g transform="translate(460, 80)">
+                    <rect width="300" height="280" fill="#16202d"/>
+                    
+                    <text x="10" y="25" font-family="Arial" font-size="16" fill="#fff" font-weight="bold">Platform Simulator 2025</text>
+                    <text x="10" y="42" font-family="Arial" font-size="10" fill="#8f98a0">No actual games included</text>
+                    
+                    <!-- Fake review score -->
+                    <rect x="10" y="55" width="120" height="25" fill="#1a1a1a" rx="3"/>
+                    <text x="20" y="72" font-family="Arial" font-size="11" fill="#66c0f4">OVERWHELMINGLY</text>
+                    <text x="135" y="72" font-family="Arial" font-size="9" fill="#8f98a0">profitable</text>
+                    
+                    <!-- Fake game details -->
+                    <text x="10" y="100" font-family="Arial" font-size="9" fill="#8f98a0">RELEASE DATE:</text>
+                    <text x="90" y="100" font-family="Arial" font-size="9" fill="#667788">Whenever</text>
+                    
+                    <text x="10" y="115" font-family="Arial" font-size="9" fill="#8f98a0">DEVELOPER:</text>
+                    <text x="90" y="115" font-family="Arial" font-size="9" fill="#667788">Not Applicable</text>
+                    
+                    <text x="10" y="130" font-family="Arial" font-size="9" fill="#8f98a0">PUBLISHER:</text>
+                    <text x="90" y="130" font-family="Arial" font-size="9" fill="#667788">Everyone Else</text>
+                    
+                    <!-- Tags -->
+                    <rect x="10" y="145" width="80" height="18" fill="#3a5a7c" rx="2"/>
+                    <text x="18" y="158" font-family="Arial" font-size="9" fill="#c7d5e0">Passive Income</text>
+                    
+                    <rect x="95" y="145" width="55" height="18" fill="#3a5a7c" rx="2"/>
+                    <text x="103" y="158" font-family="Arial" font-size="9" fill="#c7d5e0">Idle Game</text>
+                    
+                    <rect x="155" y="145" width="70" height="18" fill="#3a5a7c" rx="2"/>
+                    <text x="163" y="158" font-family="Arial" font-size="9" fill="#c7d5e0">Monopoly</text>
+                    
+                    <rect x="10" y="168" width="85" height="18" fill="#3a5a7c" rx="2"/>
+                    <text x="18" y="181" font-family="Arial" font-size="9" fill="#c7d5e0">No Sequels Ever</text>
+                    
+                    <!-- Price section (joke) -->
+                    <rect x="10" y="200" width="280" height="60" fill="#0a0a0a" rx="3"/>
+                    <text x="20" y="225" font-family="Arial" font-size="11" fill="#8f98a0">REVENUE PER EMPLOYEE:</text>
+                    <text x="20" y="248" font-family="Arial" font-size="22" fill="#a4d007" font-weight="bold">$49,714,285.71</text>
+                </g>
+                
+                <!-- Bottom section: Employee counter vs other companies -->
+                <rect x="40" y="380" width="720" height="70" fill="#0a0a0a" rx="5"/>
+                
+                <!-- Employee efficiency comparison bars -->
+                <text x="60" y="400" font-family="Arial" font-size="10" fill="#8f98a0">REVENUE PER EMPLOYEE COMPARISON</text>
+                
+                <!-- Valve bar (huge) -->
+                <text x="60" y="420" font-family="Arial" font-size="9" fill="#fff">VALVE</text>
+                <rect x="110" y="410" width="620" height="14" fill="#a4d007" rx="2"/>
+                <text x="620" y="421" font-family="Arial" font-size="9" fill="#1a1a1a" font-weight="bold">$50M</text>
+                
+                <!-- Other companies (tiny) -->
+                <text x="60" y="438" font-family="Arial" font-size="8" fill="#888">APPLE</text>
+                <rect x="110" y="430" width="30" height="10" fill="#666" rx="1"/>
+                <text x="145" y="438" font-family="Arial" font-size="7" fill="#666">$2.4M</text>
+                
+                <text x="200" y="438" font-family="Arial" font-size="8" fill="#888">META</text>
+                <rect x="235" y="430" width="24" height="10" fill="#666" rx="1"/>
+                <text x="264" y="438" font-family="Arial" font-size="7" fill="#666">$1.9M</text>
+                
+                <text x="320" y="438" font-family="Arial" font-size="8" fill="#888">YOUR COMPANY</text>
+                <rect x="405" y="430" width="2" height="10" fill="#444" rx="1"/>
+                <text x="412" y="438" font-family="Arial" font-size="7" fill="#444">lol</text>
+                
+                <!-- Notification popup (Steam style) -->
+                <g transform="translate(550, 300)">
+                    <rect width="220" height="70" fill="#1a1a1a" rx="5" stroke="#3a5a7c" stroke-width="1"/>
+                    <rect x="10" y="10" width="50" height="50" fill="#2a2a2a" rx="3"/>
+                    <text x="23" y="42" font-family="Arial" font-size="20" fill="#888">HL</text>
+                    <text x="70" y="28" font-family="Arial" font-size="10" fill="#fff">Half-Life 3</text>
+                    <text x="70" y="42" font-family="Arial" font-size="9" fill="#8f98a0">is not in development</text>
+                    <text x="70" y="55" font-family="Arial" font-size="8" fill="#666">Last updated: Never</text>
+                </g>
+                
+                <!-- Tiny "350 employees" indicator -->
+                <circle cx="750" cy="490" r="25" fill="#2a2a2a" stroke="#3a5a7c" stroke-width="1"/>
+                <text x="750" y="485" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">350</text>
+                <text x="750" y="498" font-family="Arial" font-size="7" fill="#8f98a0" text-anchor="middle">employees</text>
+                <text x="750" y="508" font-family="Arial" font-size="6" fill="#666" text-anchor="middle">(not hiring)</text>
+            </svg>
+        </div>
+        
+        <div class="image-caption">
+            <strong>SCREENSHOT:</strong> A leaked image of Valve's internal dashboard reveals the company's proprietary "Revenue Model v3.0" — a system that takes indie games as input, applies a 30% processing fee, and outputs pure profit. The interface confirms Half-Life 3 remains "not in development" with a last update of "Never." Bottom graph shows Valve's per-employee revenue compared to Apple, Meta, and "Your Company (lol)." Employee count indicator in corner confirms 350 staff members, with a note: "not hiring."
+        </div>
+        
+        <div class="article-body">
+            <p>
+                <strong>BELLEVUE, WA</strong> — In a stunning vindication of doing absolutely nothing for nearly two decades, Valve Corporation announced this week that its 350 employees are on track to generate $17 billion in revenue this year, proving once and for all that the future of work is letting other people do it.
+            </p>
+            
+            <p>
+                "We've achieved peak efficiency by eliminating both middle management AND game development," said nobody at Valve, because the company's flat organizational structure means there's no spokesperson and also no one to blame for the 18-year absence of Gordon Freeman. "Turns out you can skip the 'making products' step entirely and just become the store."
+            </p>
+            
+            <div class="pull-quote">
+                "Our organizational chart is just a photo of Gabe Newell's wallet."
+                <br><small>— Internal Valve document, allegedly</small>
+            </div>
+            
+            <p>
+                The numbers are staggering. At roughly $50 million per employee, Valve generates more revenue per person than companies that actually make things — a revelation that has sent shockwaves through corporate America. Amazon CEO Andy Jassy was reportedly seen weeping into a spreadsheet after calculating that one Valve employee generates more revenue than his entire HR department combined.
+            </p>
+            
+            <p>
+                "They maintain a digital shopping cart used by 132 million people," explained economist Dr. Rebecca Torres, adjusting her glasses. "That's 350 employees, which suggests that 349 of them are working on Half-Life 3." She paused. "They are not."
+            </p>
+            
+            <p>
+                The company's legendary employee handbook, first published in 2012, states that workers should "work on what interests you" — a policy that has apparently not included the number 3 since 2007. The handbook also boasts about the company's generous compensation, with leaked data revealing an average salary of $1.3 million per employee.
+            </p>
+            
+            <p>
+                "Thirteen hundred thousand dollars a year to press the 'approve for Steam' button and occasionally ban a cheater in Counter-Strike," marveled one industry analyst. "Meanwhile, I have a PhD and make $67,000."
+            </p>
+            
+            <div class="pull-quote">
+                "Steam is technically a money printer that occasionally sells video games."
+                <br><small>— Alinea Analytics internal memo</small>
+            </div>
+            
+            <p>
+                Critics have pointed out that Valve pioneered loot boxes in PC gaming, which remains their most actively developed game mechanic to date. But defenders argue the company revolutionized the industry by inventing a way to take 30% of everyone else's games — a business model so elegant that even Wall Street hedge fund managers have reportedly called it "honestly kind of evil, but in an impressive way."
+            </p>
+            
+            <p>
+                Being privately owned means Gabe Newell answers to no shareholders, only to fans who have given up asking. The flat structure ensures every employee is equally responsible for both the company's success and the 47,000 asset-flip hentai games currently available on the storefront.
+            </p>
+            
+            <p>
+                When reached for comment, Valve's customer support team responded within their standard timeframe of one geological epoch.
+            </p>
+            
+            <p>
+                At press time, Valve employees were seen not developing Half-Life 3 while earning more in a week than most Americans make in a decade.
+            </p>
+        </div>
+        
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h2 class="comments-header">💬 Comments (2,847)</h2>
+            
+            <div class="comment">
+                <div class="comment-author">SteamWallet_Victim_2007</div>
+                <div class="comment-meta">2 hours ago · Bellevue, WA</div>
+                <div class="comment-body">I've given this company $4,000 over 15 years and they can't even email me back about my stolen account. But sure, $50 million per employee. Cool. Cool cool cool.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,521</span>
+                    <span>▼ 23</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">ValveSimp4Life</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">skill issue tbh</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 892</span>
+                    <span>▼ 156</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">SteamWallet_Victim_2007</div>
+                <div class="comment-meta">45 min ago</div>
+                <div class="comment-body">My brother in Christ, my skill issue is giving Gabe Newell a yacht</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,103</span>
+                    <span>▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">xX_GordonFreeman_Xx</div>
+                <div class="comment-meta">3 hours ago · Black Mesa, NM</div>
+                <div class="comment-body">I've been waiting for Half-Life 3 since I was 14. I'm 32 now with two kids and a mortgage. My children will inherit my disappointment.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,934</span>
+                    <span>▼ 45</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">GabeN_Official</div>
+                <div class="comment-meta">2 hours ago · Verified ✓</div>
+                <div class="comment-body">lol</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 15,678</span>
+                    <span>▼ 4,521</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">AmazonWarehouse_Worker_7734</div>
+                <div class="comment-meta">4 hours ago · Chattanooga, TN</div>
+                <div class="comment-body">Let me get this straight. I pee in bottles for $15/hr and these mfs make $1.3 million to maintain a SHOPPING CART? I'm applying to Valve right now. What do they even do???</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12,456</span>
+                    <span>▼ 89</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">FormerValveEmployee_throwaway</div>
+                <div class="comment-meta">3 hours ago</div>
+                <div class="comment-body">I worked there for 2 years. Mostly we just vibed. Sometimes someone would suggest making a game and everyone would laugh nervously and go back to counting money.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,234</span>
+                    <span>▼ 234</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">CryptoGrifter_2024</div>
+                <div class="comment-meta">5 hours ago · Miami, FL</div>
+                <div class="comment-body">Valve literally invented the "take 30% for doing nothing" model before web3 made it cringe. Gabe is the OG. Respect.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,234</span>
+                    <span>▼ 2,567</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">deleted_user</div>
+                <div class="comment-meta">4 hours ago</div>
+                <div class="comment-body">[This comment has been removed for comparing Valve to NFTs, which even Valve found offensive]</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 567</span>
+                    <span>▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">IndieDevSuffering</div>
+                <div class="comment-meta">6 hours ago · Portland, OR</div>
+                <div class="comment-body">I made a game for 3 years. Valve takes 30%. They made more from my game in passive income than I made actively developing it. I'm not crying, you're crying.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 9,871</span>
+                    <span>▼ 156</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">EpicGames_Intern</div>
+                <div class="comment-meta">5 hours ago</div>
+                <div class="comment-body">Have you considered our 12% cut? We also give away free games to people who will never play them!</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span>▼ 1,890</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">IndieDevSuffering</div>
+                <div class="comment-meta">5 hours ago</div>
+                <div class="comment-body">Tim Sweeney please stop commenting on articles this is weird</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,678</span>
+                    <span>▼ 45</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">BoomerGamer1965</div>
+                <div class="comment-meta">7 hours ago · Dallas, TX</div>
+                <div class="comment-body">Back in my day, companies made products. Now they just take a percentage of other people's products. This is what's wrong with America. Anyway, just bought 47 games in the Steam sale I'll never play.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 7,654</span>
+                    <span>▼ 234</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">HRDirector_BigTech</div>
+                <div class="comment-meta">4 hours ago · San Francisco, CA</div>
+                <div class="comment-body">We have 47,000 employees and make less per person than a company with 350 people who haven't shipped a major game since 2013. I need to lie down.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span>▼ 123</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">ManagementConsultant_McKinsey</div>
+                <div class="comment-meta">3 hours ago</div>
+                <div class="comment-body">Have you tried eliminating middle management AND your product? Our research shows this increases revenue per employee by ∞%</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,345</span>
+                    <span>▼ 567</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">First</div>
+                <div class="comment-meta">8 hours ago</div>
+                <div class="comment-body">First</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3</span>
+                    <span>▼ 8,945</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">TouchGrass_Bot</div>
+                <div class="comment-meta">8 hours ago · Automated</div>
+                <div class="comment-body">This comment has been automatically downvoted. Reason: Existing.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,567</span>
+                    <span>▼ 2</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">CS2_Cheater_Banned_Again</div>
+                <div class="comment-meta">3 hours ago · Moscow, RU</div>
+                <div class="comment-body">Maybe if they spent some of that $50 million per employee on anti-cheat I wouldn't have to make new account every week 😤</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span>▼ 5,678</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">VAC_Ban_Speedrunner</div>
+                <div class="comment-meta">2 hours ago</div>
+                <div class="comment-body">Least honest CS2 player</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span>▼ 23</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">PhilosophyMajor_Unemployed</div>
+                <div class="comment-meta">5 hours ago · Parents' Basement</div>
+                <div class="comment-body">Valve has achieved what Marx could only dream of: the complete alienation of labor from production. The workers don't produce anything. The company doesn't produce anything. Money simply appears. This is late capitalism's final form.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,789</span>
+                    <span>▼ 890</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment reply">
+                <div class="comment-author">EconMajor_AlsoUnemployed</div>
+                <div class="comment-meta">4 hours ago</div>
+                <div class="comment-body">Sir this is a gaming news article</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,567</span>
+                    <span>▼ 123</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">SteamDeck_Enjoyer</div>
+                <div class="comment-meta">2 hours ago · Anywhere with WiFi</div>
+                <div class="comment-body">Say what you want but the Steam Deck exists so they can claim they "still make hardware" and honestly? That's enough for me. I'm playing Vampire Survivors on the toilet rn. Living the dream.</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,432</span>
+                    <span>▼ 234</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">LoadingReadyRun</div>
+                <div class="comment-meta">1 hour ago</div>
+                <div class="comment-body">The real Half-Life 3 was the 30% cut we paid along the way 🥲</div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 11,234</span>
+                    <span>▼ 45</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p>© 2025 HuckFinn | America's Finest News Source | All Rights Reserved</p>
+        <p style="margin-top: 10px; font-style: italic;">"If you're not laughing, you're not paying attention"</p>
+    </footer>
+</body>
+</html>

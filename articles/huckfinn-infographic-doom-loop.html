@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The PFAS Thanksgiving Doom Spiral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: #0d0d0d;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 700px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 3px solid #c9a227;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b0000 0%, #5c0000 100%);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #c9a227;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .spiral-container {
+            padding: 1.5rem;
+        }
+
+        .spiral-step {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 4px;
+            margin-bottom: 0.25rem;
+            transition: background 0.3s;
+        }
+
+        .spiral-step:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .spiral-step.highlight {
+            background: rgba(139, 0, 0, 0.3);
+            border-left: 4px solid #8b0000;
+        }
+
+        .spiral-step.catastrophe {
+            background: rgba(139, 0, 0, 0.5);
+            border: 2px solid #8b0000;
+        }
+
+        .step-emoji {
+            font-size: 1.8rem;
+            width: 3.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .step-content strong {
+            color: #c9a227;
+        }
+
+        .arrow {
+            text-align: center;
+            padding: 0.3rem 0;
+            font-size: 1.2rem;
+            color: #8b0000;
+        }
+
+        .arrow.banned {
+            color: #ff4444;
+            font-weight: bold;
+        }
+
+        .section-divider {
+            text-align: center;
+            padding: 1rem 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 1px dashed #333;
+            border-bottom: 1px dashed #333;
+            margin: 0.5rem 0;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+            background: rgba(201, 162, 39, 0.1);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+            margin: 0.5rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #8b0000;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="header-icon">🔄💀</div>
+            <h1>The Master Doom Loop</h1>
+            <div class="subtitle">How America Poisoned Thanksgiving: A Visual Guide</div>
+        </div>
+
+        <div class="spiral-container">
+            <div class="spiral-step">
+                <span class="step-emoji">🌲🔥</span>
+                <div class="step-content">Indigenous fire management <strong>(10,000 years of success)</strong></div>
+            </div>
+
+            <div class="arrow banned">↓ 🚫 BANNED BY COLONIZERS (1800s)</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">⏰🚒</span>
+                <div class="step-content">100 years of fire suppression <strong>("10 AM Policy" - 1935)</strong></div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">⛽🌡️</span>
+                <div class="step-content">Massive fuel buildup + Climate change acceleration</div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step highlight">
+                <span class="step-emoji">🔥🔥🔥</span>
+                <div class="step-content"><strong>MEGAFIRES</strong> — 10M+ acres/year burning</div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">🏠💨</span>
+                <div class="step-content">Burning homes release <strong>PFAS from products</strong></div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">🧯👨‍🚒</span>
+                <div class="step-content">Fight fires with <strong>PFAS foam</strong>, wearing <strong>PFAS gear</strong></div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">🌍💧</span>
+                <div class="step-content">PFAS contaminates <strong>soil, water, air, food, dust</strong></div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Americans with PFAS in blood</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6,800+</div>
+                    <div class="stat-label">Cancer deaths/yr (undercount)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">17</div>
+                    <div class="stat-label">States with "Do Not Eat"</div>
+                </div>
+            </div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">🦃🦌🐟</span>
+                <div class="step-content">Wildlife contaminated <strong>"globally"</strong></div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step highlight">
+                <span class="step-emoji">⚠️📅</span>
+                <div class="step-content"><strong>"DO NOT EAT" advisory</strong> — Released THANKSGIVING MORNING</div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">📊💀</span>
+                <div class="step-content">Study documents <strong>6,800 cancer deaths/year</strong> (undercounted)</div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">💰👔</span>
+                <div class="step-content">Chemical lobbyists express <strong>"expensive concerns"</strong></div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step catastrophe">
+                <span class="step-emoji">🗑️📊</span>
+                <div class="step-content"><strong>STUDY "RE-EVALUATED"</strong> for "population groundswell mitigation"</div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step">
+                <span class="step-emoji">❓❓</span>
+                <div class="step-content">"How many deaths?" → <strong>"What deaths?"</strong></div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <div class="spiral-step" style="background: rgba(201, 162, 39, 0.2);">
+                <span class="step-emoji">🦃🎉</span>
+                <div class="step-content"><strong>Happy Thanksgiving!</strong></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">"We colonized the land, banned Indigenous fire practices, invented forever chemicals, put them in everything, and now the turkeys are poison. This is not a system, it's a Rube Goldberg machine of consequences."</div>
+            <div class="footer-brand">HUCKFINN • America's Finest Newspaper</div>
+        </div>
+    </div>
+</body>
+</html>

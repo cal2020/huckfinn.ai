@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Satire-Civilization Index | A Visual Autopsy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --crisis-red: #C41E3A;
+            --warning-orange: #E85D04;
+            --absurdity-yellow: #FFBA08;
+            --dead-inside-gray: #2D3436;
+            --existential-black: #0D0D0D;
+            --paper-cream: #F5F0E6;
+            --ink-blue: #1A365D;
+            --satire-gold: #D4AF37;
+            --doom-gradient: linear-gradient(135deg, #0D0D0D 0%, #2D3436 50%, #C41E3A 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--existential-black);
+            color: var(--paper-cream);
+            font-family: 'Crimson Pro', Georgia, serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .page-header {
+            background: var(--doom-gradient);
+            padding: 80px 40px;
+            text-align: center;
+            border-bottom: 4px solid var(--crisis-red);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: "CLASSIFIED • LEAKED • PROBABLY FINE";
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: var(--crisis-red);
+            opacity: 0.8;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 0 var(--crisis-red);
+        }
+
+        .page-header .subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--absurdity-yellow);
+            letter-spacing: 2px;
+        }
+
+        .infographic-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            gap: 60px;
+        }
+
+        .infographic {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 2px solid var(--dead-inside-gray);
+            border-radius: 0;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .infographic::before {
+            content: attr(data-classification);
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--crisis-red);
+            letter-spacing: 2px;
+            border: 1px solid var(--crisis-red);
+            padding: 4px 10px;
+        }
+
+        .infographic-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--satire-gold);
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--satire-gold);
+            padding-bottom: 15px;
+        }
+
+        .infographic-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--warning-orange);
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* CHART 1: The Main Relationship Chart */
+        .main-chart {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .y-axis {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 20px 0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            color: var(--paper-cream);
+            opacity: 0.7;
+        }
+
+        .chart-area {
+            background: linear-gradient(180deg, 
+                rgba(196, 30, 58, 0.1) 0%, 
+                rgba(232, 93, 4, 0.1) 33%, 
+                rgba(255, 186, 8, 0.1) 66%, 
+                rgba(45, 52, 54, 0.3) 100%);
+            border-left: 2px solid var(--paper-cream);
+            border-bottom: 2px solid var(--paper-cream);
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .line-satire-need {
+            stroke: var(--crisis-red);
+            stroke-width: 3;
+            fill: none;
+            filter: drop-shadow(0 0 10px var(--crisis-red));
+        }
+
+        .line-material-quality {
+            stroke: var(--absurdity-yellow);
+            stroke-width: 3;
+            fill: none;
+            filter: drop-shadow(0 0 10px var(--absurdity-yellow));
+        }
+
+        .line-civilization {
+            stroke: var(--paper-cream);
+            stroke-width: 3;
+            fill: none;
+            opacity: 0.6;
+            stroke-dasharray: 10, 5;
+        }
+
+        .chart-annotation {
+            position: absolute;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            padding: 5px 10px;
+            background: var(--existential-black);
+            border: 1px solid;
+        }
+
+        .annotation-red { 
+            border-color: var(--crisis-red); 
+            color: var(--crisis-red);
+        }
+        .annotation-yellow { 
+            border-color: var(--absurdity-yellow); 
+            color: var(--absurdity-yellow);
+        }
+        .annotation-white { 
+            border-color: var(--paper-cream); 
+            color: var(--paper-cream);
+        }
+
+        .x-axis-label {
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--paper-cream);
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+        }
+
+        .legend-line {
+            width: 30px;
+            height: 3px;
+        }
+
+        /* CHART 2: The SSI Timeline */
+        .ssi-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 30px 0;
+        }
+
+        .ssi-era {
+            display: grid;
+            grid-template-columns: 120px 80px 1fr;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--dead-inside-gray);
+            transition: background 0.3s;
+        }
+
+        .ssi-era:hover {
+            background: rgba(196, 30, 58, 0.1);
+        }
+
+        .ssi-year {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--satire-gold);
+        }
+
+        .ssi-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .ssi-positive { color: #4CAF50; }
+        .ssi-warning { color: var(--warning-orange); }
+        .ssi-critical { color: var(--crisis-red); }
+        .ssi-negative { color: #9C27B0; }
+
+        .ssi-description {
+            font-size: 0.95rem;
+            color: var(--paper-cream);
+            opacity: 0.8;
+        }
+
+        .ssi-bar-container {
+            margin: 40px 0;
+        }
+
+        .ssi-bar {
+            height: 60px;
+            background: linear-gradient(90deg, 
+                #4CAF50 0%, 
+                #4CAF50 20%,
+                var(--absurdity-yellow) 40%,
+                var(--warning-orange) 60%,
+                var(--crisis-red) 80%,
+                #9C27B0 100%);
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .ssi-marker {
+            position: absolute;
+            top: -30px;
+            transform: translateX(-50%);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-align: center;
+            color: var(--paper-cream);
+        }
+
+        .ssi-marker::after {
+            content: '▼';
+            display: block;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .ssi-current {
+            position: absolute;
+            bottom: -40px;
+            right: 0;
+            transform: translateX(10%);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: #9C27B0;
+            font-weight: 700;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* CHART 3: The Death Spiral */
+        .spiral-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .spiral-diagram {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+        }
+
+        .spiral-text {
+            font-family: 'IBM Plex Mono', monospace;
+            fill: var(--paper-cream);
+        }
+
+        .spiral-arrow {
+            stroke: var(--crisis-red);
+            stroke-width: 2;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+
+        .spiral-node {
+            fill: var(--existential-black);
+            stroke: var(--satire-gold);
+            stroke-width: 2;
+        }
+
+        /* CHART 4: Headline Latency Collapse */
+        .latency-chart {
+            margin: 30px 0;
+        }
+
+        .latency-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px;
+            align-items: center;
+            margin: 15px 0;
+            gap: 20px;
+        }
+
+        .latency-year {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--satire-gold);
+        }
+
+        .latency-bar-wrapper {
+            height: 30px;
+            background: var(--dead-inside-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .latency-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--absurdity-yellow), var(--crisis-red));
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--existential-black);
+            font-weight: 700;
+        }
+
+        .latency-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--paper-cream);
+            opacity: 0.7;
+        }
+
+        /* CHART 5: The Cassandra Coefficient */
+        .cassandra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .cassandra-card {
+            background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+            border: 1px solid var(--dead-inside-gray);
+            padding: 25px;
+            position: relative;
+        }
+
+        .cassandra-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .cassandra-positive::before { background: #4CAF50; }
+        .cassandra-zero::before { background: var(--absurdity-yellow); }
+        .cassandra-negative::before { background: var(--crisis-red); }
+
+        .cassandra-publication {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--satire-gold);
+            margin-bottom: 10px;
+        }
+
+        .cassandra-value {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .cassandra-unit {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--paper-cream);
+            opacity: 0.6;
+            letter-spacing: 1px;
+        }
+
+        .cassandra-note {
+            font-size: 0.85rem;
+            color: var(--paper-cream);
+            opacity: 0.7;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* CHART 6: Alarm Fatigue Stages */
+        .alarm-stages {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin: 30px 0;
+        }
+
+        .alarm-stage {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            border-left: 4px solid;
+            padding: 25px;
+            position: relative;
+        }
+
+        .stage-1 { 
+            border-color: var(--crisis-red); 
+            background: linear-gradient(90deg, rgba(196, 30, 58, 0.2), transparent);
+        }
+        .stage-2 { 
+            border-color: var(--warning-orange); 
+            background: linear-gradient(90deg, rgba(232, 93, 4, 0.2), transparent);
+        }
+        .stage-3 { 
+            border-color: var(--absurdity-yellow); 
+            background: linear-gradient(90deg, rgba(255, 186, 8, 0.2), transparent);
+        }
+        .stage-4 { 
+            border-color: var(--dead-inside-gray); 
+            background: linear-gradient(90deg, rgba(45, 52, 54, 0.4), transparent);
+        }
+
+        .stage-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            opacity: 0.3;
+        }
+
+        .stage-content h4 {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--satire-gold);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .stage-content p {
+            font-size: 1.1rem;
+            color: var(--paper-cream);
+        }
+
+        .stage-content .response {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--paper-cream);
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: var(--existential-black);
+            display: inline-block;
+        }
+
+        /* CHART 7: The Irony Singularity */
+        .singularity-viz {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .singularity-circles {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .singularity-circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        .circle-outer {
+            width: 400px;
+            height: 400px;
+            border: 3px solid var(--crisis-red);
+            background: radial-gradient(circle, transparent 60%, rgba(196, 30, 58, 0.2));
+            animation: rotate 60s linear infinite;
+        }
+
+        .circle-middle {
+            width: 280px;
+            height: 280px;
+            top: 60px;
+            left: 60px;
+            border: 3px solid var(--warning-orange);
+            background: radial-gradient(circle, transparent 50%, rgba(232, 93, 4, 0.2));
+            animation: rotate 40s linear infinite reverse;
+        }
+
+        .circle-inner {
+            width: 160px;
+            height: 160px;
+            top: 120px;
+            left: 120px;
+            border: 3px solid var(--absurdity-yellow);
+            background: radial-gradient(circle, transparent 40%, rgba(255, 186, 8, 0.3));
+            animation: rotate 20s linear infinite;
+        }
+
+        .circle-core {
+            width: 80px;
+            height: 80px;
+            top: 160px;
+            left: 160px;
+            background: var(--paper-cream);
+            color: var(--existential-black);
+            font-size: 10px;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .singularity-labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .sing-label {
+            position: absolute;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            padding: 5px 10px;
+            background: var(--existential-black);
+        }
+
+        /* CHART 8: Poe's Law Event Horizon */
+        .poe-horizon {
+            position: relative;
+            height: 350px;
+            margin: 40px 0;
+            background: radial-gradient(ellipse at center, 
+                var(--existential-black) 0%, 
+                var(--existential-black) 30%,
+                rgba(196, 30, 58, 0.3) 50%,
+                rgba(232, 93, 4, 0.2) 70%,
+                transparent 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .event-horizon-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px dashed;
+        }
+
+        .horizon-1 {
+            width: 300px;
+            height: 150px;
+            border-color: var(--crisis-red);
+            animation: horizonPulse 3s infinite;
+        }
+
+        .horizon-2 {
+            width: 220px;
+            height: 110px;
+            border-color: var(--warning-orange);
+            animation: horizonPulse 3s infinite 0.5s;
+        }
+
+        .horizon-3 {
+            width: 140px;
+            height: 70px;
+            border-color: var(--absurdity-yellow);
+            animation: horizonPulse 3s infinite 1s;
+        }
+
+        .horizon-core {
+            width: 60px;
+            height: 60px;
+            background: var(--existential-black);
+            border: 3px solid var(--paper-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 10px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        @keyframes horizonPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+        }
+
+        .poe-labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .poe-label {
+            position: absolute;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            color: var(--paper-cream);
+            background: var(--existential-black);
+            padding: 3px 8px;
+        }
+
+        .poe-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .poe-example {
+            padding: 15px;
+            background: var(--dead-inside-gray);
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+        }
+
+        .poe-example .year {
+            color: var(--crisis-red);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* CHART 9: Commentariat Certainty */
+        .certainty-chart {
+            margin: 30px 0;
+        }
+
+        .certainty-equation {
+            text-align: center;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.5rem;
+            padding: 30px;
+            background: var(--dead-inside-gray);
+            margin-bottom: 30px;
+        }
+
+        .certainty-equation .variable {
+            color: var(--absurdity-yellow);
+        }
+
+        .certainty-equation .equals {
+            color: var(--crisis-red);
+            margin: 0 15px;
+        }
+
+        .certainty-examples {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .certainty-example {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(90deg, var(--dead-inside-gray), transparent);
+            border-left: 4px solid var(--crisis-red);
+        }
+
+        .certainty-quote {
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        .certainty-confidence {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--crisis-red);
+            font-weight: 700;
+        }
+
+        /* CHART 10: Meme Half-Life */
+        .halflife-chart {
+            margin: 30px 0;
+        }
+
+        .halflife-timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .halflife-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, var(--absurdity-yellow), var(--warning-orange), var(--crisis-red));
+        }
+
+        .halflife-points {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .halflife-point {
+            text-align: center;
+            width: 120px;
+        }
+
+        .halflife-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--paper-cream);
+            margin: 0 auto 15px;
+            border: 3px solid var(--existential-black);
+        }
+
+        .halflife-era {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--satire-gold);
+            margin-bottom: 5px;
+        }
+
+        .halflife-duration {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--paper-cream);
+            margin-bottom: 5px;
+        }
+
+        .halflife-note {
+            font-size: 0.8rem;
+            color: var(--paper-cream);
+            opacity: 0.6;
+        }
+
+        /* Quote callouts */
+        .pull-quote {
+            border-left: 4px solid var(--satire-gold);
+            padding: 20px 30px;
+            margin: 30px 0;
+            background: rgba(212, 175, 55, 0.1);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--paper-cream);
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--satire-gold);
+            margin-top: 15px;
+        }
+
+        /* Footer */
+        .page-footer {
+            background: var(--dead-inside-gray);
+            padding: 40px;
+            text-align: center;
+            border-top: 4px solid var(--crisis-red);
+        }
+
+        .footer-text {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--paper-cream);
+            opacity: 0.6;
+        }
+
+        .footer-warning {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--crisis-red);
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header { padding: 40px 20px; }
+            .infographic { padding: 25px 15px; }
+            .main-chart { grid-template-columns: 40px 1fr; }
+            .chart-area { height: 300px; }
+            .ssi-era { grid-template-columns: 80px 60px 1fr; }
+            .latency-row { grid-template-columns: 60px 1fr 80px; }
+            .singularity-circles { width: 300px; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="page-header">
+    <h1>The Satire-Civilization Index</h1>
+    <p class="subtitle">A VISUAL AUTOPSY OF MEANING'S COLLAPSE • INTERACTIVE EDITION</p>
+</header>
+
+<main class="infographic-grid">
+
+    <!-- INFOGRAPHIC 1: The Main Relationship Chart -->
+    <section class="infographic" data-classification="LEVEL: EXISTENTIAL">
+        <h2 class="infographic-title">The Fundamental Relationship</h2>
+        <p class="infographic-subtitle">NEED FOR SATIRE × MATERIAL QUALITY × CIVILIZATIONAL HEALTH</p>
+        
+        <div class="main-chart">
+            <div class="y-axis">
+                <span>MAX</span>
+                <span>HIGH</span>
+                <span>MED</span>
+                <span>LOW</span>
+                <span>0</span>
+            </div>
+            <div class="chart-area">
+                <svg class="chart-line" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <!-- Civilization line (declining) -->
+                    <path class="line-civilization" d="M0,20 Q25,22 50,35 T100,95" />
+                    <!-- Material Quality (rising) -->
+                    <path class="line-material-quality" d="M0,85 Q25,80 50,60 T100,5" />
+                    <!-- Need for Satire (rising faster) -->
+                    <path class="line-satire-need" d="M0,80 Q25,70 50,45 T100,2" />
+                </svg>
+                
+                <div class="chart-annotation annotation-white" style="top: 15%; left: 5%;">1990s: "Normal"</div>
+                <div class="chart-annotation annotation-yellow" style="top: 35%; left: 35%;">2016: Threshold Crossed</div>
+                <div class="chart-annotation annotation-red" style="top: 5%; right: 5%;">NOW: ???</div>
+            </div>
+        </div>
+        
+        <p class="x-axis-label">TIME → PRESENT DAY → [REDACTED]</p>
+        
+        <div class="chart-legend">
+            <div class="legend-item">
+                <div class="legend-line" style="background: var(--crisis-red);"></div>
+                <span>Need for Satire</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line" style="background: var(--absurdity-yellow);"></div>
+                <span>Satire Material Quality</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line" style="background: var(--paper-cream); opacity: 0.6;"></div>
+                <span>Civilization (dashed)</span>
+            </div>
+        </div>
+
+        <div class="pull-quote">
+            "The Material Quality Inversion Principle states: Civilizational Quality × Satire Material Quality = Constant. We are currently in a satire material golden age. This is not the flex it sounds like."
+            <cite>— The Institute for Advanced Doom Studies</cite>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 2: Satire Sufficiency Index Timeline -->
+    <section class="infographic" data-classification="DECLINING RAPIDLY">
+        <h2 class="infographic-title">The Satire Sufficiency Index (SSI)</h2>
+        <p class="infographic-subtitle">TIME ELAPSED BEFORE REAL HEADLINE IS ASSUMED TO BE SATIRE</p>
+        
+        <div class="ssi-bar-container">
+            <div class="ssi-bar">
+                <div class="ssi-marker" style="left: 10%;">2 weeks<br>(1995)</div>
+                <div class="ssi-marker" style="left: 30%;">3 days<br>(2010)</div>
+                <div class="ssi-marker" style="left: 55%;">4 hours<br>(2016)</div>
+                <div class="ssi-marker" style="left: 75%;">30 min<br>(2020)</div>
+                <div class="ssi-current">▲ CURRENT: -4 HOURS<br>(Reality pre-satirizes itself)</div>
+            </div>
+        </div>
+
+        <div class="ssi-timeline" style="margin-top: 80px;">
+            <div class="ssi-era">
+                <span class="ssi-year">1995</span>
+                <span class="ssi-value ssi-positive">2 wks</span>
+                <span class="ssi-description">The Onion launches. Reality and satire maintain healthy distance. Innocent times.</span>
+            </div>
+            <div class="ssi-era">
+                <span class="ssi-year">2008</span>
+                <span class="ssi-value ssi-positive">5 days</span>
+                <span class="ssi-description">Financial crisis strains the gap. "Too big to fail" sounds like satire. It isn't.</span>
+            </div>
+            <div class="ssi-era">
+                <span class="ssi-year">2016</span>
+                <span class="ssi-value ssi-warning">4 hrs</span>
+                <span class="ssi-description">Threshold crossed definitively. Satirists begin drinking professionally.</span>
+            </div>
+            <div class="ssi-era">
+                <span class="ssi-year">2020</span>
+                <span class="ssi-value ssi-critical">30 min</span>
+                <span class="ssi-description">"Inject bleach" era. The Onion considers pivoting to hopeful fiction.</span>
+            </div>
+            <div class="ssi-era">
+                <span class="ssi-year">2024</span>
+                <span class="ssi-value ssi-negative">-4 hrs</span>
+                <span class="ssi-description">Reality now pre-satirizes itself. Satirists reduced to stenographers with anxiety.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 3: The Civilization-Satire Death Spiral -->
+    <section class="infographic" data-classification="TERMINAL">
+        <h2 class="infographic-title">The Civilization-Satire Death Spiral</h2>
+        <p class="infographic-subtitle">A SELF-REINFORCING FEEDBACK LOOP WITH NO KNOWN EXIT</p>
+        
+        <div class="spiral-container">
+            <svg class="spiral-diagram" viewBox="0 0 400 400">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#C41E3A" />
+                    </marker>
+                </defs>
+                
+                <!-- Spiral path -->
+                <path d="M200,50 
+                         C320,50 350,180 350,200 
+                         C350,280 280,350 200,350 
+                         C120,350 50,280 50,200
+                         C50,140 100,90 150,80
+                         C180,75 200,85 200,120
+                         C200,160 160,200 200,200"
+                      stroke="#C41E3A" stroke-width="3" fill="none" 
+                      stroke-dasharray="10,5" opacity="0.6"/>
+                
+                <!-- Nodes -->
+                <circle cx="200" cy="50" r="35" class="spiral-node"/>
+                <text x="200" y="45" text-anchor="middle" class="spiral-text" font-size="10">REALITY</text>
+                <text x="200" y="58" text-anchor="middle" class="spiral-text" font-size="10">GETS ABSURD</text>
+                
+                <circle cx="350" cy="200" r="35" class="spiral-node"/>
+                <text x="350" y="195" text-anchor="middle" class="spiral-text" font-size="10">SATIRE</text>
+                <text x="350" y="208" text-anchor="middle" class="spiral-text" font-size="10">ESCALATES</text>
+                
+                <circle cx="200" cy="350" r="35" class="spiral-node"/>
+                <text x="200" y="345" text-anchor="middle" class="spiral-text" font-size="10">REALITY</text>
+                <text x="200" y="358" text-anchor="middle" class="spiral-text" font-size="10">MATCHES IT</text>
+                
+                <circle cx="50" cy="200" r="35" class="spiral-node"/>
+                <text x="50" y="195" text-anchor="middle" class="spiral-text" font-size="10">SATIRE</text>
+                <text x="50" y="208" text-anchor="middle" class="spiral-text" font-size="10">ESCALATES</text>
+                
+                <!-- Center collapse point -->
+                <circle cx="200" cy="200" r="25" fill="#C41E3A"/>
+                <text x="200" y="197" text-anchor="middle" fill="#F5F0E6" font-size="8" font-family="IBM Plex Mono">COLLAPSE</text>
+                <text x="200" y="208" text-anchor="middle" fill="#F5F0E6" font-size="8" font-family="IBM Plex Mono">POINT</text>
+                
+                <!-- Arrows -->
+                <path d="M230,60 L310,170" class="spiral-arrow"/>
+                <path d="M340,240 L240,320" class="spiral-arrow"/>
+                <path d="M160,340 L80,240" class="spiral-arrow"/>
+                <path d="M60,160 L160,80" class="spiral-arrow"/>
+            </svg>
+        </div>
+
+        <div class="pull-quote">
+            "See also: 'The Discourse,' 'Main Character Syndrome,' 'The Timeline,' 'Touch Grass Deficiency'"
+            <cite>— Appendix F: Related Phenomena</cite>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 4: Headline Latency Collapse -->
+    <section class="infographic" data-classification="ACCELERATING">
+        <h2 class="infographic-title">Headline Latency Collapse</h2>
+        <p class="infographic-subtitle">THE SHRINKING WINDOW BETWEEN "ABSURD JOKE" AND "DEVELOPING STORY"</p>
+        
+        <div class="latency-chart">
+            <div class="latency-row">
+                <span class="latency-year">1990</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 100%;">~10 YEARS</div>
+                </div>
+                <span class="latency-label">Comfortable buffer</span>
+            </div>
+            <div class="latency-row">
+                <span class="latency-year">2000</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 70%;">~3 YEARS</div>
+                </div>
+                <span class="latency-label">Still manageable</span>
+            </div>
+            <div class="latency-row">
+                <span class="latency-year">2010</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 45%;">~6 MONTHS</div>
+                </div>
+                <span class="latency-label">Getting nervous</span>
+            </div>
+            <div class="latency-row">
+                <span class="latency-year">2016</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 25%;">~2 WEEKS</div>
+                </div>
+                <span class="latency-label">Active concern</span>
+            </div>
+            <div class="latency-row">
+                <span class="latency-year">2020</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 12%;">~72 HRS</div>
+                </div>
+                <span class="latency-label">Crisis mode</span>
+            </div>
+            <div class="latency-row">
+                <span class="latency-year">2024</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 5%;">~4 HRS</div>
+                </div>
+                <span class="latency-label">Why bother</span>
+            </div>
+            <div class="latency-row">
+                <span class="latency-year">2026</span>
+                <div class="latency-bar-wrapper">
+                    <div class="latency-bar" style="width: 2%;">???</div>
+                </div>
+                <span class="latency-label">[PROJECTED]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 5: The Cassandra Coefficient -->
+    <section class="infographic" data-classification="PREDICTIVE FAILURE">
+        <h2 class="infographic-title">The Cassandra Coefficient</h2>
+        <p class="infographic-subtitle">MONTHS UNTIL SATIRICAL PREDICTION BECOMES ACTUAL HEADLINE</p>
+        
+        <div class="cassandra-grid">
+            <div class="cassandra-card cassandra-positive">
+                <h3 class="cassandra-publication">The Onion (2005)</h3>
+                <p class="cassandra-value" style="color: #4CAF50;">+18</p>
+                <p class="cassandra-unit">MONTHS AHEAD OF REALITY</p>
+                <p class="cassandra-note">"Satire still functioned as warning system"</p>
+            </div>
+            <div class="cassandra-card cassandra-zero">
+                <h3 class="cassandra-publication">The Onion (2016)</h3>
+                <p class="cassandra-value" style="color: var(--absurdity-yellow);">+3</p>
+                <p class="cassandra-unit">MONTHS AHEAD OF REALITY</p>
+                <p class="cassandra-note">"Buffer zone critically compromised"</p>
+            </div>
+            <div class="cassandra-card cassandra-negative">
+                <h3 class="cassandra-publication">The Onion (2024)</h3>
+                <p class="cassandra-value" style="color: var(--crisis-red);">-2</p>
+                <p class="cassandra-unit">MONTHS BEHIND REALITY</p>
+                <p class="cassandra-note">"Now publishing retrospectives as satire"</p>
+            </div>
+            <div class="cassandra-card cassandra-negative">
+                <h3 class="cassandra-publication">Babylon Bee</h3>
+                <p class="cassandra-value" style="color: #9C27B0;">∅</p>
+                <p class="cassandra-unit">UNDEFINED</p>
+                <p class="cassandra-note">"Coefficient collapsed: accidentally sincere"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 6: Poe's Law Event Horizon -->
+    <section class="infographic" data-classification="NO ESCAPE">
+        <h2 class="infographic-title">Poe's Law Event Horizon</h2>
+        <p class="infographic-subtitle">THE BOUNDARY BEYOND WHICH PARODY AND SINCERITY BECOME INDISTINGUISHABLE</p>
+        
+        <div class="poe-horizon">
+            <div class="event-horizon-ring horizon-1"></div>
+            <div class="event-horizon-ring horizon-2"></div>
+            <div class="event-horizon-ring horizon-3"></div>
+            <div class="horizon-core">NO<br>RETURN</div>
+            
+            <div class="poe-labels">
+                <span class="poe-label" style="top: 20%; left: 10%;">DETECTABLE IRONY ZONE</span>
+                <span class="poe-label" style="top: 40%; right: 10%;">QUANTUM UNCERTAINTY ZONE</span>
+                <span class="poe-label" style="bottom: 20%; left: 20%;">MEANING COLLAPSE ZONE</span>
+            </div>
+        </div>
+
+        <div class="poe-examples">
+            <div class="poe-example">
+                <span class="year">First observed:</span>
+                "Somewhere between 'covfefe' and 'Jewish space lasers'"
+            </div>
+            <div class="poe-example">
+                <span class="year">Current status:</span>
+                "Crossed. No recovery possible. Light cannot escape."
+            </div>
+            <div class="poe-example">
+                <span class="year">Symptoms:</span>
+                "Nobody knows if anyone is joking. Including the speaker."
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 7: Alarm Fatigue Stages -->
+    <section class="infographic" data-classification="PROGRESSIVE">
+        <h2 class="infographic-title">Alarm Fatigue Syndrome</h2>
+        <p class="infographic-subtitle">THE FOUR STAGES OF CIVILIZATIONAL NUMBNESS</p>
+        
+        <div class="alarm-stages">
+            <div class="alarm-stage stage-1">
+                <span class="stage-number">1</span>
+                <div class="stage-content">
+                    <h4>INITIAL SHOCK</h4>
+                    <p>Characterized by genuine alarm and urgent communication</p>
+                    <span class="response">"OH MY GOD DID YOU SEE—"</span>
+                </div>
+            </div>
+            <div class="alarm-stage stage-2">
+                <span class="stage-number">2</span>
+                <div class="stage-content">
+                    <h4>RESIGNED ACKNOWLEDGMENT</h4>
+                    <p>Pattern recognition kicks in, surprise diminishes</p>
+                    <span class="response">"Of course they did."</span>
+                </div>
+            </div>
+            <div class="alarm-stage stage-3">
+                <span class="stage-number">3</span>
+                <div class="stage-content">
+                    <h4>ACTIVE DISSOCIATION</h4>
+                    <p>Protective psychological distancing engaged</p>
+                    <span class="response">"Anyway..."</span>
+                </div>
+            </div>
+            <div class="alarm-stage stage-4">
+                <span class="stage-number">4</span>
+                <div class="stage-content">
+                    <h4>TERMINAL ACCEPTANCE</h4>
+                    <p>Full system shutdown. Emotional bandwidth: 0</p>
+                    <span class="response">[THOUSAND-YARD STARE]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 8: The Irony Singularity -->
+    <section class="infographic" data-classification="THEORETICAL LIMIT">
+        <h2 class="infographic-title">The Irony Singularity</h2>
+        <p class="infographic-subtitle">THE THEORETICAL ENDPOINT WHERE ALL MEANING COLLAPSES</p>
+        
+        <div class="singularity-viz">
+            <div class="singularity-circles">
+                <div class="singularity-circle circle-outer"></div>
+                <div class="singularity-circle circle-middle"></div>
+                <div class="singularity-circle circle-inner"></div>
+                <div class="singularity-circle circle-core">???</div>
+                
+                <div class="singularity-labels">
+                    <span class="sing-label" style="top: 5%; left: 50%; transform: translateX(-50%); color: var(--crisis-red);">
+                        OUTER: "Is this satire?"
+                    </span>
+                    <span class="sing-label" style="top: 25%; right: 0; color: var(--warning-orange);">
+                        MIDDLE: "I genuinely can't tell"
+                    </span>
+                    <span class="sing-label" style="top: 45%; left: 0; color: var(--absurdity-yellow);">
+                        INNER: "Does it matter?"
+                    </span>
+                    <span class="sing-label" style="bottom: 5%; left: 50%; transform: translateX(-50%); color: var(--paper-cream);">
+                        CORE: [MEANING UNDEFINED]
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pull-quote">
+            "Terminal phase symptoms: Saying 'I'm being serious' is interpreted as advanced irony. The speaker is also unsure."
+            <cite>— DSM-VII: Digital Era Disorders (Projected)</cite>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 9: Commentariat Certainty Principle -->
+    <section class="infographic" data-classification="UNIVERSAL CONSTANT">
+        <h2 class="infographic-title">The Commentariat Certainty Principle</h2>
+        <p class="infographic-subtitle">THE INVERSE RELATIONSHIP BETWEEN COMPREHENSION AND CONFIDENCE</p>
+        
+        <div class="certainty-chart">
+            <div class="certainty-equation">
+                As <span class="variable">ABSURDITY</span> → ∞, 
+                <span class="variable">COMMENT CONFIDENCE</span> → ∞
+                <span class="equals">=</span>
+                <span class="variable">CONSTANT</span>
+            </div>
+
+            <div class="certainty-examples">
+                <div class="certainty-example">
+                    <span class="certainty-quote">"This is why [OUTGROUP] is destroying America"</span>
+                    <span class="certainty-confidence">100%</span>
+                </div>
+                <div class="certainty-example">
+                    <span class="certainty-quote">"If you'd actually READ the article..."</span>
+                    <span class="certainty-confidence">100%</span>
+                </div>
+                <div class="certainty-example">
+                    <span class="certainty-quote">"Wake up sheeple"</span>
+                    <span class="certainty-confidence">100%</span>
+                </div>
+                <div class="certainty-example">
+                    <span class="certainty-quote">"This is literally [HISTORICAL ATROCITY]"</span>
+                    <span class="certainty-confidence">100%</span>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--warning-orange);">
+                Note: Confidence remains constant regardless of: reading the article, understanding the topic, or basic literacy
+            </p>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 10: Meme Half-Life Decay -->
+    <section class="infographic" data-classification="ACCELERATING DECAY">
+        <h2 class="infographic-title">Meme Half-Life Decay</h2>
+        <p class="infographic-subtitle">THE ACCELERATING RATE AT WHICH SATIRE BECOMES "THIS AGED POORLY"</p>
+        
+        <div class="halflife-chart">
+            <div class="halflife-timeline">
+                <div class="halflife-line"></div>
+                <div class="halflife-points">
+                    <div class="halflife-point">
+                        <div class="halflife-dot"></div>
+                        <p class="halflife-era">1990s</p>
+                        <p class="halflife-duration">YEARS</p>
+                        <p class="halflife-note">Memes had tenure</p>
+                    </div>
+                    <div class="halflife-point">
+                        <div class="halflife-dot"></div>
+                        <p class="halflife-era">2000s</p>
+                        <p class="halflife-duration">MONTHS</p>
+                        <p class="halflife-note">Still seasonal</p>
+                    </div>
+                    <div class="halflife-point">
+                        <div class="halflife-dot"></div>
+                        <p class="halflife-era">2010s</p>
+                        <p class="halflife-duration">WEEKS</p>
+                        <p class="halflife-note">Monthly turnover</p>
+                    </div>
+                    <div class="halflife-point">
+                        <div class="halflife-dot"></div>
+                        <p class="halflife-era">2020s</p>
+                        <p class="halflife-duration">HOURS</p>
+                        <p class="halflife-note">"This aged poorly"</p>
+                    </div>
+                    <div class="halflife-point">
+                        <div class="halflife-dot"></div>
+                        <p class="halflife-era">NOW</p>
+                        <p class="halflife-duration">???</p>
+                        <p class="halflife-note">Pre-aged at birth</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pull-quote">
+            "Cause: Reality speedrunning all possible scenarios. Memes now age in the womb."
+            <cite>— Journal of Memetic Archaeology, Vol. 47</cite>
+        </div>
+    </section>
+
+    <!-- INFOGRAPHIC 11: The Onion Inversion Point -->
+    <section class="infographic" data-classification="INVERSION COMPLETE">
+        <h2 class="infographic-title">The Onion Inversion Point</h2>
+        <p class="infographic-subtitle">WHEN HOPEFUL, NORMAL HEADLINES BECOME THE SATIRE</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 30px 0;">
+            <div style="background: var(--dead-inside-gray); padding: 25px; border-left: 4px solid var(--satire-gold);">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--crisis-red); margin-bottom: 10px;">SATIRICAL (2024)</p>
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem;">"Congress Passes Bipartisan Bill After Reading It"</p>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Reader reaction: "lmao no way"</p>
+            </div>
+            <div style="background: var(--dead-inside-gray); padding: 25px; border-left: 4px solid var(--satire-gold);">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--crisis-red); margin-bottom: 10px;">SATIRICAL (2024)</p>
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem;">"Man Changes Mind After Hearing Well-Reasoned Argument"</p>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Reader reaction: "peak fiction"</p>
+            </div>
+            <div style="background: var(--dead-inside-gray); padding: 25px; border-left: 4px solid var(--satire-gold);">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--crisis-red); margin-bottom: 10px;">SATIRICAL (2024)</p>
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem;">"Social Media Platform Improves Mental Health Of Users"</p>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Reader reaction: "good one"</p>
+            </div>
+            <div style="background: var(--dead-inside-gray); padding: 25px; border-left: 4px solid var(--satire-gold);">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--crisis-red); margin-bottom: 10px;">SATIRICAL (2024)</p>
+                <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem;">"Politician Admits Mistake, Apologizes Sincerely"</p>
+                <p style="font-size: 0.85rem; margin-top: 15px; opacity: 0.7;">Reader reaction: "the onion still got it"</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--warning-orange);">
+            The most unbelievable fiction is now... normalcy.
+        </p>
+    </section>
+
+    <!-- INFOGRAPHIC 12: The Thinking Man's Delusion -->
+    <section class="infographic" data-classification="YOU ARE HERE">
+        <h2 class="infographic-title">The "Thinking Man's" Delusion</h2>
+        <p class="infographic-subtitle">THE BELIEF THAT UNDERSTANDING ABSURDITY GRANTS IMMUNITY FROM IT</p>
+        
+        <div style="text-align: center; padding: 50px; background: linear-gradient(180deg, var(--dead-inside-gray), transparent); margin: 30px 0;">
+            <p style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px;">
+                "I see the absurdity, therefore I transcend it"
+            </p>
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 1.5rem; color: var(--crisis-red);">
+                SPOILER: You do not.
+            </p>
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 1rem; color: var(--warning-orange); margin-top: 30px;">
+                We are all in the screenshot.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;">
+            <div style="padding: 20px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 3rem; color: var(--crisis-red);">0%</p>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Protection from being part of the discourse</p>
+            </div>
+            <div style="padding: 20px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 3rem; color: var(--warning-orange);">0%</p>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Immunity from the timeline</p>
+            </div>
+            <div style="padding: 20px;">
+                <p style="font-family: 'IBM Plex Mono', monospace; font-size: 3rem; color: var(--absurdity-yellow);">100%</p>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Still in the screenshot</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="page-footer">
+    <p class="footer-text">
+        THE SATIRE-CIVILIZATION INDEX • A Production of the Institute for Advanced Doom Studies<br>
+        "Quantifying the Unquantifiable Since It Stopped Mattering"
+    </p>
+    <p class="footer-warning">
+        ⚠ FOR ARCHIVAL PURPOSES ONLY • DO NOT ATTEMPT TO PROCESS EMOTIONALLY ⚠
+    </p>
+</footer>
+
+</body>
+</html>

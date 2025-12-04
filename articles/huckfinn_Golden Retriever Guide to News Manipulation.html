@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn Special Insert: The Golden Retriever's Guide to Spotting News Manipulation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #faf8f0;
+            color: #222;
+            line-height: 1.7;
+        }
+        .cover {
+            background: linear-gradient(135deg, #c9a227 0%, #e8d174 50%, #c9a227 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            border-bottom: 8px solid #8b4513;
+        }
+        .cover-badge {
+            background: #c41e3a;
+            color: white;
+            padding: 8px 25px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            transform: rotate(-2deg);
+        }
+        .cover h1 {
+            font-size: 3.5em;
+            color: #1a1a1a;
+            text-shadow: 2px 2px 0 #fff;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        .cover h2 {
+            font-size: 1.8em;
+            color: #333;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .cover-dog {
+            width: 300px;
+            height: 300px;
+            margin: 20px 0;
+        }
+        .cover-tagline {
+            font-size: 1.2em;
+            color: #444;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        .cover-footer {
+            margin-top: 40px;
+            font-size: 0.85em;
+            color: #555;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-break {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 2em;
+            color: #c9a227;
+        }
+        
+        .intro-box {
+            background: #fff;
+            border: 3px solid #c9a227;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        .intro-box::before {
+            content: "🐕";
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 2em;
+            background: #faf8f0;
+            padding: 0 10px;
+        }
+        .intro-box h3 {
+            color: #8b4513;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .tactic-card {
+            background: white;
+            margin: 25px 0;
+            border-left: 5px solid #c9a227;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .tactic-header {
+            background: linear-gradient(90deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tactic-header h4 {
+            font-size: 1.3em;
+            margin: 0;
+        }
+        .tactic-number {
+            background: #c9a227;
+            color: #1a1a1a;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .tactic-body {
+            padding: 20px;
+        }
+        .tactic-body p {
+            margin-bottom: 12px;
+        }
+        .human-definition {
+            color: #666;
+            font-style: italic;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .golden-take {
+            background: #fff9e6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .golden-take::before {
+            content: "🐕 GOLDEN RETRIEVER TAKE: ";
+            font-weight: bold;
+            color: #8b4513;
+        }
+        .sniff-rating {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+        }
+        .sniff-rating span {
+            margin-right: 10px;
+            font-weight: bold;
+            color: #8b4513;
+        }
+        .paws {
+            color: #c9a227;
+            font-size: 1.2em;
+        }
+        
+        .category-header {
+            background: #1a1a1a;
+            color: #c9a227;
+            padding: 20px 30px;
+            margin: 50px 0 30px 0;
+            position: relative;
+        }
+        .category-header h3 {
+            font-size: 1.6em;
+            margin: 0;
+        }
+        .category-header p {
+            color: #ccc;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .category-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5em;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .tip-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        .tip-box h4::before {
+            content: "🦴 ";
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 2px solid #f44336;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .warning-box h4 {
+            color: #c62828;
+            margin-bottom: 10px;
+        }
+        .warning-box h4::before {
+            content: "⚠️ ";
+        }
+        
+        .pull-quote {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #8b4513;
+            text-align: center;
+            padding: 30px;
+            margin: 40px 0;
+            border-top: 3px solid #c9a227;
+            border-bottom: 3px solid #c9a227;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table th {
+            background: #8b4513;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: #f9f6f0;
+        }
+        
+        .glossary-mini {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .glossary-mini h5 {
+            color: #8b4513;
+            margin-bottom: 10px;
+        }
+        .glossary-mini ul {
+            list-style: none;
+            padding: 0;
+        }
+        .glossary-mini li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .glossary-mini li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar {
+            background: #fff;
+            border: 2px solid #c9a227;
+            padding: 20px;
+            margin: 20px 0;
+            float: right;
+            width: 280px;
+            margin-left: 20px;
+        }
+        .sidebar h5 {
+            color: #8b4513;
+            border-bottom: 2px solid #c9a227;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .checklist {
+            background: #fff;
+            padding: 25px;
+            border: 2px dashed #8b4513;
+            margin: 30px 0;
+        }
+        .checklist h4 {
+            color: #8b4513;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 35px;
+            position: relative;
+        }
+        .checklist li::before {
+            content: "☐";
+            position: absolute;
+            left: 5px;
+            font-size: 1.2em;
+        }
+        
+        .final-section {
+            background: linear-gradient(135deg, #c9a227 0%, #e8d174 100%);
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .final-section h3 {
+            color: #1a1a1a;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .final-section p {
+            color: #333;
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto 15px auto;
+        }
+        
+        .page-number {
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            margin: 40px 0;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        
+        .masthead {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .masthead span {
+            color: #c9a227;
+            font-weight: bold;
+        }
+        
+        .toc {
+            background: white;
+            padding: 30px;
+            margin: 30px 0;
+            border: 2px solid #8b4513;
+        }
+        .toc h3 {
+            color: #8b4513;
+            border-bottom: 2px solid #c9a227;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .toc-section {
+            margin: 15px 0;
+        }
+        .toc-section h4 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .toc-section ul {
+            list-style: none;
+            padding-left: 20px;
+            color: #666;
+            font-size: 0.95em;
+        }
+        .toc-section li {
+            padding: 3px 0;
+        }
+        
+        .ad-insert {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+            border: 3px dashed #c9a227;
+            padding: 25px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        .ad-insert h4 {
+            color: #8b4513;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        .ad-insert p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .ad-insert .fine-print {
+            font-size: 0.75em;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        .dog-wisdom {
+            background: #f9f6f0;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid #c9a227;
+            font-style: italic;
+        }
+        .dog-wisdom::before {
+            content: "🐾 DOG WISDOM: ";
+            font-style: normal;
+            font-weight: bold;
+            color: #8b4513;
+        }
+
+        .belly-rub-rating {
+            display: inline-block;
+            background: #8b4513;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .quick-sniff {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .quick-sniff::before {
+            content: "👃 QUICK SNIFF: ";
+            font-weight: bold;
+            color: #1565c0;
+        }
+
+        .treat-scale {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .treat {
+            font-size: 1.3em;
+        }
+        .treat.empty {
+            opacity: 0.3;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        footer .logo {
+            color: #c9a227;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COVER -->
+    <div class="cover">
+        <div class="cover-badge">HuckFinn Special Insert • Collector's Edition</div>
+        <h1>THE GOLDEN RETRIEVER'S GUIDE</h1>
+        <h2>to Spotting News Manipulation</h2>
+        
+        <svg class="cover-dog" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background circle -->
+            <circle cx="150" cy="150" r="140" fill="#8b4513"/>
+            <circle cx="150" cy="150" r="130" fill="#faf8f0"/>
+            
+            <!-- Dog body -->
+            <ellipse cx="150" cy="200" rx="70" ry="50" fill="#d4a234"/>
+            
+            <!-- Dog head -->
+            <circle cx="150" cy="120" r="60" fill="#d4a234"/>
+            
+            <!-- Ears -->
+            <ellipse cx="90" cy="100" rx="25" ry="40" fill="#c49224" transform="rotate(-20 90 100)"/>
+            <ellipse cx="210" cy="100" rx="25" ry="40" fill="#c49224" transform="rotate(20 210 100)"/>
+            
+            <!-- Snout -->
+            <ellipse cx="150" cy="145" rx="30" ry="22" fill="#e8c874"/>
+            
+            <!-- Nose -->
+            <ellipse cx="150" cy="138" rx="12" ry="10" fill="#1a1a1a"/>
+            <ellipse cx="148" cy="135" rx="4" ry="3" fill="#444"/>
+            
+            <!-- Eyes -->
+            <circle cx="125" cy="105" r="12" fill="white"/>
+            <circle cx="175" cy="105" r="12" fill="white"/>
+            <circle cx="127" cy="107" r="7" fill="#4a2500"/>
+            <circle cx="177" cy="107" r="7" fill="#4a2500"/>
+            <circle cx="129" cy="105" r="2" fill="white"/>
+            <circle cx="179" cy="105" r="2" fill="white"/>
+            
+            <!-- Eyebrows (confused/skeptical) -->
+            <path d="M 110 90 Q 125 95 140 92" stroke="#8b4513" stroke-width="3" fill="none"/>
+            <path d="M 190 90 Q 175 95 160 92" stroke="#8b4513" stroke-width="3" fill="none"/>
+            
+            <!-- Mouth (slight confused smile) -->
+            <path d="M 130 155 Q 150 165 170 155" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+            
+            <!-- Tongue -->
+            <ellipse cx="150" cy="165" rx="10" ry="15" fill="#ff8a9a"/>
+            
+            <!-- Newspaper in mouth -->
+            <rect x="80" y="180" width="140" height="60" fill="white" stroke="#333" stroke-width="2" transform="rotate(-5 150 210)"/>
+            <line x1="90" y1="195" x2="210" y2="190" stroke="#ddd" stroke-width="1"/>
+            <line x1="90" y1="205" x2="210" y2="200" stroke="#ddd" stroke-width="1"/>
+            <line x1="90" y1="215" x2="210" y2="210" stroke="#ddd" stroke-width="1"/>
+            <line x1="90" y1="225" x2="150" y2="222" stroke="#ddd" stroke-width="1"/>
+            <text x="105" y="192" font-family="Georgia" font-size="8" fill="#333" font-weight="bold" transform="rotate(-5 150 210)">FAKE NEWS???</text>
+            
+            <!-- Question marks around head -->
+            <text x="60" y="60" font-size="24" fill="#c41e3a">?</text>
+            <text x="230" y="70" font-size="20" fill="#c41e3a">?</text>
+            <text x="45" y="150" font-size="18" fill="#c41e3a">?</text>
+            <text x="245" y="140" font-size="22" fill="#c41e3a">?</text>
+        </svg>
+        
+        <p class="cover-tagline">"Because even a good boy can learn to spot a bad source"</p>
+        <p class="cover-footer">35 Manipulation Tactics • Belly Rub Ratings Included • Yes, There's a Section on Dog Whistles<br><em>Pull out and save! (Just like you'd save a tennis ball for later)</em></p>
+    </div>
+
+    <div class="masthead">
+        <span>HUCKFINN</span> • America's Finest News Source • Special Educational Insert • Not For Chewing
+    </div>
+
+    <div class="container">
+        
+        <!-- INTRODUCTION -->
+        <div class="intro-box">
+            <h3>A Message From Your Editor (Who Is A Golden Retriever)</h3>
+            <p>Hello! I am dog.</p>
+            <p>I love everyone! The mail carrier. The squirrel. That suspicious man who keeps putting papers in our mailbox. Everyone is friend!</p>
+            <p>But other dogs tell me: "Not everyone is friend. Some people put bad things in newspaper. They are doing a bamboozle."</p>
+            <p>This made me do a confuse. How can newspaper be bad? Newspaper is for fetching! And also for when I have accident on floor!</p>
+            <p>So I did research. (Ate many newspapers.) And now I share with you everything I learned about how news people do tricks. Not good tricks like "sit" and "stay." Bad tricks. Sneaky tricks.</p>
+            <p>This guide will help you sniff out the bamboozles. Even if you are golden retriever who loves everyone. Even if you want to believe all humans are good.</p>
+            <p><strong>Some humans are not good. This is very sad. But now we will learn.</strong></p>
+            <p><em>— Max "Good Boy" Woofington III, Editor-in-Chief (and yes I did eat the original draft)</em></p>
+        </div>
+
+        <!-- TABLE OF CONTENTS -->
+        <div class="toc">
+            <h3>📰 What's Inside (Table of Contents)</h3>
+            
+            <div class="toc-section">
+                <h4>🦴 SECTION 1: The Spin Zone</h4>
+                <ul>
+                    <li>Spin, Framing, Agenda-Setting, Gatekeeping, Editorializing, Selective Reporting, Cherry-Picking</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h4>🎾 SECTION 2: The Shiny Object Tactics</h4>
+                <ul>
+                    <li>Yellow Journalism, Clickbait, Infotainment, Sensationalism, Churnalism</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h4>💰 SECTION 3: The Treat-Based Corruption</h4>
+                <ul>
+                    <li>Native Advertising, Advertorial, Checkbook Journalism, Payola, Media Capture</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h4>📢 SECTION 4: The Big Barks (Propaganda Suite)</h4>
+                <ul>
+                    <li>Propaganda, Manufacturing Consent, Astroturfing, Advocacy Journalism</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h4>⚖️ SECTION 5: The False Balance Brigade</h4>
+                <ul>
+                    <li>False Balance, Bothsidesism, Loaded Language, Dog Whistle (!!!), Stenography</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h4>🕳️ SECTION 6: The Sneaky Burial Techniques</h4>
+                <ul>
+                    <li>Soft-Pedaling, Burying the Lede, Planted Story, Trial Balloon, News Management</li>
+                </ul>
+            </div>
+            
+            <div class="toc-section">
+                <h4>🐩 SECTION 7: The Good Boy/Bad Boy Stories</h4>
+                <ul>
+                    <li>Access Journalism, Puff Piece, Hit Piece, Hatchet Job</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pull-quote">
+            "Just because someone throws a ball doesn't mean you have to fetch it. Sometimes the ball is propaganda."
+        </div>
+
+        <!-- SECTION 1: THE SPIN ZONE -->
+        <div class="category-header">
+            <h3>SECTION 1: The Spin Zone</h3>
+            <p>When they make the ball go in circles so you can't tell where it actually is</p>
+            <span class="category-icon">🦴</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>SPIN</h4>
+                <div class="tactic-number">1</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Presenting information in a biased way to favor a particular interpretation.</p>
+                
+                <div class="golden-take">
+                    This is when human throws ball but makes it curve weird so you run wrong direction. Ball was always going left but human made it LOOK like going right. Very sneaky. Much bamboozle. When news does spin, they use special words to make same thing sound different. "Tax relief" vs "tax cuts for rich." Same ball! Different throw!
+                </div>
+                
+                <div class="quick-sniff">
+                    If same event sounds VERY different on two channels, both are probably spinning. The truth is the boring version in the middle.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>FRAMING</h4>
+                <div class="tactic-number">2</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Selecting which aspects of a story to emphasize to influence perception.</p>
+                
+                <div class="golden-take">
+                    You know how when you chew shoe, human can say "dog destroyed expensive shoe" OR "dog was anxious because left alone too long"? Same event! But FRAME changes who is bad boy. News does this. Protest can be "violent mob" or "passionate demonstration." Frame is like... the picture window you look through. They choose which window. You only see what window shows.
+                </div>
+                
+                <div class="quick-sniff">
+                    Ask: What are they NOT showing me? What's outside this window?
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>AGENDA-SETTING</h4>
+                <div class="tactic-number">3</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Determining which issues receive coverage to influence what the public thinks about.</p>
+                
+                <div class="golden-take">
+                    They cannot tell you what to THINK. But they can tell you what to think ABOUT. Is like when human keeps pointing at bath and saying "bath time! bath time!" Now you only thinking about bath! Not thinking about how there is TREAT on counter! They control what you sniff. Very powerful. If all week they bark about one thing, you forget other things exist. Maybe other things are important! But no one is barking about them.
+                </div>
+                
+                <div class="dog-wisdom">
+                    The squirrel they WANT you to chase might be distraction from the squirrel they DON'T want you to notice.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>GATEKEEPING</h4>
+                <div class="tactic-number">4</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Controlling what information reaches the public.</p>
+                
+                <div class="golden-take">
+                    Is like fence around yard! Some things allowed in yard. Some things NOT allowed. But you don't know what's outside fence! Maybe there is BEST STICK EVER outside fence but gatekeeper said "no, this stick not allowed." News gatekeepers decide which stories get in yard. Many stories never make it. You never even know they existed. This is why local news important — different fence, different yard, maybe different sticks!
+                </div>
+                
+                <div class="quick-sniff">
+                    If every channel has same stories... maybe same gatekeeper? 🤔
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>EDITORIALIZING</h4>
+                <div class="tactic-number">5</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Inserting opinion into straight news reporting.</p>
+                
+                <div class="golden-take">
+                    News supposed to say: "Man threw ball." But editorializing is when they say: "Man FOOLISHLY threw ball in WRONG direction, as MANY have noted." See? They snuck opinion in! It's wearing disguise! Pretending to be fact! This is like when I bark at mailman and human says I'm "protecting house" — that's THEIR opinion that mailman is threat! (Mailman is friend. Mailman has treats sometimes.)
+                </div>
+                
+                <div class="quick-sniff">
+                    Watch for sneaky words like: clearly, obviously, controversial, embattled, so-called, admitted
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>SELECTIVE REPORTING</h4>
+                <div class="tactic-number">6</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Choosing only facts that support a preferred narrative.</p>
+                
+                <div class="golden-take">
+                    Okay so imagine: I ate 1 shoe, but I also did NOT eat 47 other shoes. Selective reporting is when human only tells vet about the 1 shoe! "Dog is shoe-eater!" they say. But what about my 98% shoe-not-eating rate?? They SELECT which facts. The ones that make story they want. Is technically true but also... not whole truth. Whole truth is important. Like whole treat. Half treat is sad.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>CHERRY-PICKING</h4>
+                <div class="tactic-number">7</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Selecting only the most favorable data points to support an argument.</p>
+                
+                <div class="golden-take">
+                    Same as selective reporting but with numbers! Study has 47 findings. They tell you 1 finding. The one that makes their point. Is like if I showed you only the photos where I am being VERY GOOD BOY and hide all photos of me on couch when not supposed to be on couch. "See? I am always good!" No. I am sometimes good. The data is complicated. They want it simple.
+                </div>
+                
+                <div class="tip-box">
+                    <h4>Good Boy Tip!</h4>
+                    <p>When they say "studies show" — ask: Which studies? How many? What did OTHER studies show? Maybe different cherries on that tree!</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">— Page 4 • Wag More, Scroll Less —</div>
+
+        <!-- SECTION 2: SHINY OBJECTS -->
+        <div class="category-header">
+            <h3>SECTION 2: The Shiny Object Tactics</h3>
+            <p>SQUIRREL! SQUIRREL! Look at the — wait what were we talking about?</p>
+            <span class="category-icon">🎾</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>YELLOW JOURNALISM</h4>
+                <div class="tactic-number">8</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Sensationalized, exaggerated reporting to boost sales and readership.</p>
+                
+                <div class="golden-take">
+                    This is the granddaddy of all bamboozles! From way back in old times when newspapers had to SHOUT to get humans to buy them. "WAR!" "SCANDAL!" "SHOCKING!" Everything is emergency! Nothing is calm! Is like if every time I saw squirrel I acted like it was BIGGEST MOST DANGEROUS SQUIRREL IN HISTORY. Every time. Eventually you'd stop believing me about squirrels. But yellow journalism still works because human brains love drama. Even when drama is fake.
+                </div>
+                
+                <div class="dog-wisdom">
+                    Not every squirrel is an emergency. Not every headline is true.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>CLICKBAIT</h4>
+                <div class="tactic-number">9</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Misleading headlines designed to generate clicks and web traffic.</p>
+                
+                <div class="golden-take">
+                    "You Won't BELIEVE What This Dog Found In Backyard!" I click. It's a stick. It's always a stick. They PROMISED amazing thing. They gave stick. This is clickbait. The headline is treat. The article is disappointment. They don't care if you're disappointed. They already got their click. Their numbers went up. You learned nothing. But your click made them money. Is like if human shook treat bag but bag was empty. BETRAYAL.
+                </div>
+                
+                <div class="warning-box">
+                    <h4>Red Flag Words!</h4>
+                    <p>"You won't believe..." • "SHOCKING" • "This one trick..." • "What happened next..." • "Number 7 will make you cry!" • "Scientists HATE this..."</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>INFOTAINMENT</h4>
+                <div class="tactic-number">10</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Blurring the line between news and entertainment for ratings.</p>
+                
+                <div class="golden-take">
+                    Is this news? Is this TV show? Is this... both? Yes. Is both. They made news into entertainment so you'd keep watching. Serious anchor person makes joke. Panel yells at each other. Graphics go WHOOSH. Music is dramatic. You feel feelings! But did you learn things? Maybe not. You were entertained though. And you watched the ads. Which is the point. News became show. Show has ratings. Ratings need drama. Drama needs... not necessarily truth.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>SENSATIONALISM</h4>
+                <div class="tactic-number">11</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Exaggerating stories to provoke emotional reactions rather than inform.</p>
+                
+                <div class="golden-take">
+                    Everything is CRISIS. Everything is BREAKING. Everything is UNPRECEDENTED. Your feelings go up and down like... like... like tail when not sure if visitor is friend or foe. They WANT your feelings going crazy. Scared people watch more. Angry people share more. Calm people go outside and touch grass. News doesn't want you calm. Calm doesn't get clicks. So even small thing becomes BIG thing. Medium thing becomes HUGE thing. Actual huge thing? They might be bored of those.
+                </div>
+                
+                <div class="quick-sniff">
+                    If your heart is racing after reading headline... take breath. Probably sensationalism. Actual news usually boring.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>CHURNALISM</h4>
+                <div class="tactic-number">12</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Republishing press releases as news without investigation.</p>
+                
+                <div class="golden-take">
+                    Company sends paper that says "Our product is GREAT and everyone loves it!" News person is tired. News person has many stories to write. News person just... puts company paper in newspaper. Changes few words. Publishes. No sniffing! No investigating! Just... copy, paste, go home. This is churnalism. The "journalism" is just churning out whatever lands in inbox. Is like if I brought you ball and you just threw it back without even looking. Low effort. No real fetch happening.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-insert">
+            <h4>🦴 PREMIUM FETCH™ NEWS SERVICE 🦴</h4>
+            <p>Tired of chasing misleading headlines? Subscribe to news that's been <strong>properly sniffed</strong>!</p>
+            <p>✓ No clickbait • ✓ No sensationalism • ✓ Vetted by actual dogs</p>
+            <p><em>"Finally, news I can trust. And also chew." — Satisfied Subscriber</em></p>
+            <p class="fine-print">*Premium Fetch is not a real service. This is satire. Please do not try to give your credit card to a dog. Though we would be very happy to receive treats.</p>
+        </div>
+
+        <div class="page-number">— Page 8 • Sniff Twice, Share Once —</div>
+
+        <!-- SECTION 3: TREAT-BASED CORRUPTION -->
+        <div class="category-header">
+            <h3>SECTION 3: The Treat-Based Corruption</h3>
+            <p>When money talks, journalism sits, stays, and rolls over</p>
+            <span class="category-icon">💰</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>NATIVE ADVERTISING</h4>
+                <div class="tactic-number">13</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Paid content disguised as editorial content.</p>
+                
+                <div class="golden-take">
+                    This is ad wearing journalism costume! "10 Best Dog Foods (Sponsored by MegaDogFood Corp)" — looks like article! Smells like article! But is actually ad! They make it look same as real news so you don't notice. Tiny word "sponsored" hiding somewhere. Maybe you see, maybe you don't. They counting on you not seeing. Is like if cat put on dog costume and tried to sneak into dog park. SUSPICIOUS. Always check for tiny "sponsored" or "partner content" labels!
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>ADVERTORIAL</h4>
+                <div class="tactic-number">14</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Advertisements presented in editorial format.</p>
+                
+                <div class="golden-take">
+                    Same as native advertising but older! From newspaper times! Full page that LOOKS like article but is actually ad for... mattresses? Weight loss? "Miracle cure"? Usually has different font or says "ADVERTISEMENT" at top in tiny letters. Your grandparents fell for these. Now internet version tricks you too. Circle of life. Circle of bamboozle.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>CHECKBOOK JOURNALISM</h4>
+                <div class="tactic-number">15</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Paying sources for stories or interviews.</p>
+                
+                <div class="golden-take">
+                    News person gives treats (money) to source. Source tells story. But wait... if source got treats, maybe source says what news person wants? Maybe source makes up spicy details for more treats? This is problem! When you pay for information, information might be... adjusted. Is like if I got extra treats for barking about SCARY MAILMAN. Suddenly every mailman very scary! More barking = more treats! Even if mailman is actually fine!
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>PAYOLA</h4>
+                <div class="tactic-number">16</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Undisclosed payment for coverage.</p>
+                
+                <div class="golden-take">
+                    Secret treats! Someone gave journalist treats but journalist didn't tell anyone! So when journalist says "This is best dog food ever!" you don't know journalist got paid to say that! Very sneaky! In radio this was big scandal — companies paid to play certain songs but didn't tell listeners. Now happens everywhere. Influencers. News. Podcasts. If they don't say "I got paid for this," might still have gotten paid for this.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>MEDIA CAPTURE</h4>
+                <div class="tactic-number">17</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> When the outlet is owned by the person or entity it should be investigating.</p>
+                
+                <div class="golden-take">
+                    BIG ONE. Very important. What if... the person who owns newspaper is same person newspaper should investigate? Will newspaper investigate own owner? Probably not! Is like if squirrel owned dog park. Would dogs be allowed to chase squirrel? No! Squirrel makes rules now! When rich person or big company owns news, news probably won't say bad things about rich person or big company. They capture the media. Media now works for them. Even if media doesn't know it.
+                </div>
+                
+                <div class="warning-box">
+                    <h4>Always Ask: Who Owns This?</h4>
+                    <p>Six companies own most of news. SIX. Maybe look up who owns the news you watch? Then ask: would this news ever say bad things about that owner? If answer is "hmm probably not"... that's media capture!</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">— Page 12 • Follow The Treats —</div>
+
+        <!-- SECTION 4: PROPAGANDA SUITE -->
+        <div class="category-header">
+            <h3>SECTION 4: The Big Barks (Propaganda Suite)</h3>
+            <p>When the whole pack is howling the same tune</p>
+            <span class="category-icon">📢</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>PROPAGANDA</h4>
+                <div class="tactic-number">18</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Information designed to promote a political agenda.</p>
+                
+                <div class="golden-take">
+                    The big one. The original bamboozle. Information designed not to inform but to make you THINK CERTAIN WAY and DO CERTAIN THING. Government propaganda. Company propaganda. "Our country is best! Their country is worst! Buy this! Fear that!" Propaganda doesn't ask you to think. Propaganda tells you what to think. Good journalism says "here are facts, you decide." Propaganda says "here is what you should believe, now believe it." Big difference! Sniff carefully!
+                </div>
+                
+                <div class="dog-wisdom">
+                    If it's telling you HOW to feel instead of giving you information, it might be propaganda. Your feelings should come from you, not from them.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>MANUFACTURING CONSENT</h4>
+                <div class="tactic-number">19</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Shaping public opinion to align with elite interests.</p>
+                
+                <div class="golden-take">
+                    Very sneaky! Very slow! Over time, through many stories, they shape what you think is "normal" and "good" and "acceptable." You didn't choose these opinions — they were manufactured FOR you. Like... like... like dog food! You didn't CHOOSE to like these kibbles! They engineered kibbles to make you like them! Same with opinions! They repeat thing enough times, from enough sources, and suddenly you "believe" thing without remembering why. Your consent was manufactured. You just don't know it.
+                </div>
+                
+                <div class="quick-sniff">
+                    Ask yourself: "Did I arrive at this opinion? Or did this opinion arrive at me?"
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>ASTROTURFING</h4>
+                <div class="tactic-number">20</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Creating fake grassroots movements to appear as genuine public sentiment.</p>
+                
+                <div class="golden-take">
+                    "Grassroots" means regular dogs coming together because they care. ASTRO-turf is FAKE GRASS. Get it?? "Movement" that looks like regular dogs but is actually organized by big company or political group! They pay for signs! They bus in dogs! They make many fake social media accounts! All to make it LOOK like everyone agrees! "See? All these regular dogs love this thing!" But dogs are not regular. Dogs are... plants. Fake grass dogs. Very tricky!
+                </div>
+                
+                <div class="tip-box">
+                    <h4>How To Spot Fake Grass!</h4>
+                    <p>Real grass (movements) is messy. Different dogs, different signs, different messages. Astroturf is too neat. Same signs. Same words. Same hashtag. If "grassroots movement" looks like marketing campaign... it's probably marketing campaign!</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>ADVOCACY JOURNALISM</h4>
+                <div class="tactic-number">21</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Openly partisan reporting that advances a particular cause.</p>
+                
+                <div class="golden-take">
+                    This one is... complicated! Some advocacy journalism is honest about it. They say "We care about X and report on X." That's okay! At least they're telling you! The problem is when advocacy journalism PRETENDS to be neutral journalism. Then it's manipulation! Is like difference between me barking "I WANT TREAT" (honest advocacy) vs me acting sick to get treat (sneaky). If they admit their bias, you can adjust your sniffing. If they hide it... bamboozle!
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">— Page 16 • Trust But Sniff —</div>
+
+        <!-- SECTION 5: FALSE BALANCE BRIGADE -->
+        <div class="category-header">
+            <h3>SECTION 5: The False Balance Brigade</h3>
+            <p>When "fair" isn't actually fair and words aren't what they seem</p>
+            <span class="category-icon">⚖️</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>FALSE BALANCE</h4>
+                <div class="tactic-number">22</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Giving equal weight to unequal viewpoints to appear neutral.</p>
+                
+                <div class="golden-take">
+                    "Some dogs say water is wet. Other dogs disagree. We report, you decide!" But... but water IS wet! Why are we giving equal time to wrong dogs?? This is false balance! News wants to seem "fair" so they put crazy opinion next to true thing, like they're equal! 97 scientists say thing. 3 scientists say opposite. News: "Scientists divided!" NO! Scientists not divided! 97 to 3 is not divided! But news makes it seem 50-50. Very misleading!
+                </div>
+                
+                <div class="dog-wisdom">
+                    Real fairness means representing reality accurately, not giving every opinion equal airtime. Some opinions are just wrong. It's okay to say that!
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>BOTHSIDESISM</h4>
+                <div class="tactic-number">23</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Reflexively presenting "both sides" of every issue, even when they aren't equivalent.</p>
+                
+                <div class="golden-take">
+                    Brother of False Balance! "Some say sun is hot. Others say sun is cold. The truth is probably in middle!" The truth is NOT in middle if one side is simply wrong! Bothsidesism is lazy journalism disguised as fairness. Journalist doesn't want to be called biased, so they present "both sides" even when one side is... just making things up! Like if one dog says cat exists and other dog says cat is government hologram. Should we present both views equally? NO! Go touch cat! Cat is real! We can check!
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>LOADED LANGUAGE</h4>
+                <div class="tactic-number">24</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Using emotionally charged words to influence opinion.</p>
+                
+                <div class="golden-take">
+                    Words have flavors! Same event, different flavors! "Tax relief" vs "tax giveaway." "Pro-life" vs "anti-choice." "Freedom fighters" vs "terrorists." The word they choose tells you what they want you to FEEL! Is event good or bad? Depends on word they pick! This is why I, dog, prefer just sniffing things directly. Can't manipulate sniff. But can manipulate words. Always ask: what's the neutral word for this? Probably the boring one. Boring usually more accurate.
+                </div>
+                
+                <div class="glossary-mini">
+                    <h5>Loaded Language Translation Guide:</h5>
+                    <ul>
+                        <li><strong>"Slammed"</strong> → Disagreed</li>
+                        <li><strong>"Destroyed"</strong> → Criticized</li>
+                        <li><strong>"Admitted"</strong> → Said</li>
+                        <li><strong>"Controversial"</strong> → We don't like it</li>
+                        <li><strong>"Embattled"</strong> → We REALLY don't like them</li>
+                        <li><strong>"Raid"</strong> → Search (by people we don't like)</li>
+                    </ul>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card" style="border-left: 5px solid #c41e3a;">
+            <div class="tactic-header" style="background: linear-gradient(90deg, #c41e3a 0%, #ff5252 100%);">
+                <h4>🐕 DOG WHISTLE 🐕</h4>
+                <div class="tactic-number">25</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Coded language that signals certain groups while maintaining plausible deniability.</p>
+                
+                <div class="golden-take">
+                    FINALLY! THE DOG ONE! I have been waiting! Okay so: actual dog whistle, only dogs hear. Humans blow it, we come running, humans pretend they didn't blow anything. "What whistle? I don't hear whistle." BUT WE HEAR IT!
+                    <br><br>
+                    Political dog whistle: same thing! Politician says words. SOME people hear secret meaning. Others don't. Politician can say "I didn't mean THAT!" But the dogs... we heard. "Law and order." "Family values." "Urban." "Globalists." These words have public meaning AND secret meaning. If you're the right dog, you hear it. If you're not, you don't even know whistle was blown.
+                    <br><br>
+                    Is sneaky because they can always deny it! "I just said 'urban'! What's wrong with 'urban'?" But certain dogs know. They always know.
+                </div>
+                
+                <div class="warning-box">
+                    <h4>How To Hear Dog Whistles You're Not Meant To Hear</h4>
+                    <p>Ask: "Who is nodding along to this? Who feels spoken to?" If certain group seems to hear message others don't, probably dog whistle. Also: look at how hate groups respond. They usually celebrate dog whistles very openly.</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>STENOGRAPHY</h4>
+                <div class="tactic-number">26</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Uncritically transcribing official statements without investigation.</p>
+                
+                <div class="golden-take">
+                    Government dog says thing. News dog writes down thing. News dog doesn't check if thing is true. News dog doesn't ask follow-up questions. News dog just... writes it down and publishes. "Officials say treat supply is fine!" But is treat supply actually fine?? No one checked! They just wrote down what Official Dog said! This is stenography — being a transcription machine, not a journalist. Real journalism is: Official says thing → Check if thing is true → THEN report. Stenography skips the checking. Very lazy. Much danger.
+                </div>
+                
+                <div class="quick-sniff">
+                    If article is just "officials say" and "according to spokesperson" with no independent checking... that's not journalism. That's dictation.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-insert">
+            <h4>🎾 THE TRUTH BALL™ 🎾</h4>
+            <p>The only ball that <em>doesn't</em> have spin!</p>
+            <p>Engineered to fly straight. No curves. No manipulation. Just pure, honest fetch.</p>
+            <p><em>"I finally know where the ball is actually going!" — Reformed Skeptic Retriever</em></p>
+            <p class="fine-print">*Truth Ball may still be affected by wind, gravity, and the fundamental uncertainty of the universe. We make no claims about objective truth. Ball is red. Or is it? This is satire.</p>
+        </div>
+
+        <div class="page-number">— Page 20 • Hear The Whistles —</div>
+
+        <!-- SECTION 6: SNEAKY BURIAL -->
+        <div class="category-header">
+            <h3>SECTION 6: The Sneaky Burial Techniques</h3>
+            <p>When they hide the bone where you'll never find it</p>
+            <span class="category-icon">🕳️</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>SOFT-PEDALING</h4>
+                <div class="tactic-number">27</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Deliberately downplaying or minimizing a story's importance or negative aspects.</p>
+                
+                <div class="golden-take">
+                    Big scandal happens! But news doesn't want you to notice! So they make it... boring. Small headline. Paragraph 23. Passive voice: "Mistakes were made." (By WHO?? Doesn't say!) No dramatic music! No BREAKING NEWS! Just... quiet mumble and move on. You yawn. You miss it. That was the plan! Sometimes the quietest story is the most important one. They make important thing boring so you'll ignore it. Very strategic.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>BURYING THE LEDE</h4>
+                <div class="tactic-number">28</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Intentionally placing the most important information deep in a story.</p>
+                
+                <div class="golden-take">
+                    "Lede" is journalism word for main point. Main point should be at top! That's the rule! But sometimes... they bury it. Like bone. Down in paragraph 17. Maybe you'll dig that far. Maybe you won't. They're hoping you won't! Headline says one thing. Paragraph 17 reveals the REAL thing. But headline is what gets shared. Paragraph 17 dies alone. Always dig to the bottom! The buried bones are often the best bones!
+                </div>
+                
+                <div class="tip-box">
+                    <h4>Good Boy Tip!</h4>
+                    <p>Read the WHOLE article, not just headline. Then ask: should paragraph 17 have been paragraph 1?</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>PLANTED STORY</h4>
+                <div class="tactic-number">29</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Information deliberately leaked to journalists by sources with ulterior motives.</p>
+                
+                <div class="golden-take">
+                    Someone WANTS this story published. So they "leak" it. Journalist thinks: "Ooh I got a scoop!" But scoop was planted on purpose! Like... like when cat leaves "gift" on doorstep. You think cat is being nice? No! Cat has agenda! Planted stories are same. Government wants to damage rival? Plant story. Company wants to tank competitor? Plant story. Politician wants distraction? Plant story. Journalist becomes tool. Not in mean way — literally becomes tool that someone else is using.
+                </div>
+                
+                <div class="quick-sniff">
+                    Ask: "Who benefits from this story being published?" That's probably who planted it.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>TRIAL BALLOON</h4>
+                <div class="tactic-number">30</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> A story floated to test public reaction before committing to an action.</p>
+                
+                <div class="golden-take">
+                    "Sources say government CONSIDERING doing bad thing." This is test! Like when I sniff human's plate before trying to steal food. Testing reaction! If humans get VERY angry at "considering," government says: "Oh we never said that! Fake news!" If humans shrug, government does the bad thing! Trial balloon is way to take risk without taking risk. Test the waters. See if dog park riots. If no riots, proceed with plan. If riots, deny everything.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>NEWS MANAGEMENT</h4>
+                <div class="tactic-number">31</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Strategic control and manipulation of information flow to shape coverage.</p>
+                
+                <div class="golden-take">
+                    Professional manipulation! Bad news comes out Friday at 5pm. Why? Because humans leave for weekend! Don't check news! By Monday, is "old news." Good news comes out Monday morning. Maximum attention! They also coordinate talking points — every spokesperson says same words, same phrases. They schedule press conferences to distract from other stories. They flood news with many stories so bad one gets lost. Is whole science! News management is what happens BEFORE you see news. The staging. The timing. The choreography.
+                </div>
+                
+                <div class="warning-box">
+                    <h4>Friday Night Special!</h4>
+                    <p>If big news drops on Friday evening, it's probably bad news they wanted to hide. Actually pay attention to Friday evening news. That's when they bury the bodies. (The metaphorical news bodies. Not actual bodies. I hope.)</p>
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-number">— Page 24 • Dig Deep —</div>
+
+        <!-- SECTION 7: GOOD BOY/BAD BOY STORIES -->
+        <div class="category-header">
+            <h3>SECTION 7: The Good Boy/Bad Boy Stories</h3>
+            <p>When journalism becomes belly rubs or rolled-up newspapers</p>
+            <span class="category-icon">🐩</span>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>ACCESS JOURNALISM</h4>
+                <div class="tactic-number">32</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> Reporting that is overly favorable to maintain access to powerful sources.</p>
+                
+                <div class="golden-take">
+                    Journalist wants access to Big Important Dog. To keep access, journalist is nice to Big Important Dog. Very nice. Maybe too nice! Doesn't ask hard questions. Doesn't report bad things. Because if journalist is mean, Big Important Dog won't talk to journalist anymore! So journalist becomes... friendly lap dog. Gets access, loses independence. Gets scoops, loses truth. Is trade-off! And WE don't know it's happening! We just see journalist "reporting" on Big Dog but not the deal they made to get there.
+                </div>
+                
+                <div class="quick-sniff">
+                    If journalist seems very friendly with subject... if they never report anything bad about certain powerful figure... might be access journalism. They're protecting the access.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>PUFF PIECE</h4>
+                <div class="tactic-number">33</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> An uncritically positive article that promotes its subject without balanced reporting.</p>
+                
+                <div class="golden-take">
+                    ALL BELLY RUBS, NO CRITICISM! "This dog is so amazing! Look at this dog's journey! This dog overcame obstacles! This dog has great hair!" Zero hard questions. Zero bad things. Just... fluff. Puff! Like dog hair after bath — all poofy and nice looking! Puff pieces are usually for celebrities, CEOs, politicians journalist likes. Is basically free advertising disguised as journalism. "Profile" that's really just PR. Nice for subject! Bad for truth!
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>HIT PIECE</h4>
+                <div class="tactic-number">34</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> An article designed to damage someone's reputation through negative, often one-sided coverage.</p>
+                
+                <div class="golden-take">
+                    Opposite of puff piece! ALL BAD THINGS! "This dog is terrible! Look at all bad things this dog did! This dog once barked at mailman! This dog is PROBLEMATIC!" Even if some things true, the PURPOSE is to destroy. Not to inform — to damage. They cherry-pick worst moments. They interview only enemies. They don't include context or defense. Is journalism as weapon! Sometimes subject deserves criticism. But hit piece goes beyond criticism into assassination (of character, not actual! This is metaphor!).
+                </div>
+                
+                <div class="dog-wisdom">
+                    If article about someone has ONLY bad things and ZERO nuance or response from subject... probably hit piece. Real life is complicated. Real dogs do good AND bad things.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tactic-card">
+            <div class="tactic-header">
+                <h4>HATCHET JOB</h4>
+                <div class="tactic-number">35</div>
+            </div>
+            <div class="tactic-body">
+                <p class="human-definition"><strong>Human Definition:</strong> A deliberately unfair, malicious attack piece intended to destroy credibility.</p>
+                
+                <div class="golden-take">
+                    Hit piece's angry big brother! Same thing but MORE! More malicious! More deliberate! HATCHET is tool for chopping! They want to CHOP subject down! Uses distortions. Uses unfair comparisons. Uses quotes out of context. Might even make things up! "Journalism" that's really just destruction. The goal isn't truth or even criticism — goal is ANNIHILATION. Make subject so damaged they can never recover. Very aggressive. Much concerning. The darkest timeline of journalism.
+                </div>
+                
+                <div class="sniff-rating">
+                    <span>Difficulty to Sniff Out:</span>
+                    <div class="treat-scale">
+                        <span class="treat">🦴</span>
+                        <span class="treat">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                        <span class="treat empty">🦴</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINAL CHECKLIST -->
+        <div class="checklist">
+            <h4>🐕 THE GOOD BOY'S NEWS SNIFFING CHECKLIST 🐕</h4>
+            <p style="text-align: center; margin-bottom: 20px;"><em>Before you believe (or share), check these boxes:</em></p>
+            <ul>
+                <li>WHO wrote this? Can I sniff their other work?</li>
+                <li>WHO owns the publication? Who are their advertisers?</li>
+                <li>WHO benefits from me believing this?</li>
+                <li>Is headline making me feel BIG EMOTIONS? (Red flag!)</li>
+                <li>Did I read past paragraph 1? (Important bones often buried deeper)</li>
+                <li>Are they showing BOTH SIDES... or just pretending to?</li>
+                <li>Is every word neutral? Or loaded with flavor?</li>
+                <li>Is this story appearing everywhere... or did someone plant it?</li>
+                <li>When was this published? (Friday 5pm = suspicious!)</li>
+                <li>Did I check if this is satire? (Like this very guide??)</li>
+            </ul>
+        </div>
+
+        <!-- FINAL SECTION -->
+        <div class="final-section">
+            <h3>🦴 THE GOLDEN RETRIEVER'S FINAL WISDOM 🦴</h3>
+            <p>I am dog. I love everyone. I want to trust.</p>
+            <p>But now I know: not all news is fetch. Some news is manipulation wearing journalism costume. Some throws are curves designed to make me run wrong way.</p>
+            <p>Does this mean trust nothing? NO! That is no way to live! Some news is good. Some journalists are honest. Some balls fly straight.</p>
+            <p>The goal is: <strong>Sniff twice. Believe once.</strong></p>
+            <p>Check sources. Read whole article. Notice when your emotions go zoom. Ask who benefits. Remember that everyone — EVERYONE — has point of view.</p>
+            <p>And sometimes? Just go outside. Touch grass. Real grass, not astroturf. Pet a dog. The news will still be there when you get back. But maybe you'll sniff it better after a good walk.</p>
+            <p><strong>Stay curious. Stay skeptical. Stay golden.</strong> 🐕</p>
+        </div>
+
+        <div class="page-number">— Page 28 • THE END (until tomorrow's news cycle) —</div>
+
+    </div>
+
+    <footer>
+        <div class="logo">HUCKFINN</div>
+        <p>America's Finest News Source • Special Insert</p>
+        <p>"All The News That's Fit To Sniff"</p>
+        <p style="margin-top: 20px; font-size: 0.85em;">© 2025 HuckFinn Media Properties LLC • This guide is satire • No actual golden retrievers were harmed in its creation</p>
+        <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Though one did fall asleep on the keyboard during editing, which explains page 14</p>
+    </footer>
+
+</body>
+</html>

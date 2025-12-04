@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Undercount Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #050a14 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 700px;
+            background: #0d1117;
+            border: 2px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #238636 0%, #196127 100%);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid #30363d;
+            position: relative;
+        }
+
+        .header::after {
+            content: "// CALCULATION ERROR";
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .header-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #7ee787;
+            margin-top: 0.5rem;
+        }
+
+        .calculator-body {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: #58a6ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: "";
+            flex: 0 0 4px;
+            height: 1rem;
+            background: #58a6ff;
+        }
+
+        /* COUNTED SECTION */
+        .counted-section {
+            background: rgba(35, 134, 54, 0.1);
+            border: 1px solid #238636;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .counted-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(35, 134, 54, 0.2);
+            border-radius: 4px;
+        }
+
+        .item-checkbox {
+            width: 24px;
+            height: 24px;
+            background: #238636;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1rem;
+        }
+
+        .item-emoji {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+
+        .item-text {
+            flex: 1;
+            color: #7ee787;
+            font-size: 0.95rem;
+        }
+
+        .item-note {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #8b949e;
+            margin-left: auto;
+        }
+
+        /* NOT COUNTED SECTION */
+        .not-counted-section {
+            background: rgba(139, 0, 0, 0.1);
+            border: 1px solid #8b0000;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .not-counted-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+
+        .not-counted-item {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 0.75rem;
+            background: rgba(139, 0, 0, 0.15);
+            border-radius: 4px;
+            border-left: 3px solid #f85149;
+        }
+
+        .not-counted-item .item-checkbox {
+            background: #21262d;
+            border: 2px solid #f85149;
+        }
+
+        .not-counted-item .item-checkbox::after {
+            content: "✗";
+            color: #f85149;
+            font-size: 0.9rem;
+        }
+
+        .not-counted-item .item-text {
+            color: #f0f0f0;
+            font-size: 0.85rem;
+        }
+
+        /* RESULTS SECTION */
+        .results-section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .result-row:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+
+        .result-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .result-value.green {
+            color: #7ee787;
+        }
+
+        .result-value.red {
+            color: #f85149;
+        }
+
+        .result-value.gold {
+            color: #c9a227;
+        }
+
+        .result-value.shrug {
+            font-size: 1.8rem;
+        }
+
+        /* STATUS SECTION */
+        .status-section {
+            background: linear-gradient(135deg, #8b0000 0%, #5c0000 100%);
+            border-radius: 6px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-icon {
+            font-size: 2.5rem;
+        }
+
+        .status-content {
+            flex: 1;
+        }
+
+        .status-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status-reason {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #c9a227;
+            margin-top: 0.25rem;
+        }
+
+        .footer {
+            background: #010409;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #21262d;
+        }
+
+        .footer-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #58a6ff;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="header-icon">📊🗑️</div>
+            <h1>The Undercount Calculator</h1>
+            <div class="subtitle">return actual_deaths; // TODO: implement</div>
+        </div>
+
+        <div class="calculator-body">
+            <div class="section-title">✓ What The Study Counted</div>
+            <div class="counted-section">
+                <div class="counted-item">
+                    <div class="item-checkbox">✓</div>
+                    <span class="item-emoji">💧</span>
+                    <span class="item-text">Drinking water exposure</span>
+                    <span class="item-note">(half the country only)</span>
+                </div>
+            </div>
+
+            <div class="section-title">✗ What The Study Didn't Count</div>
+            <div class="not-counted-section">
+                <div class="not-counted-grid">
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">💧</span>
+                        <span class="item-text">Other half of country</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">⚠️</span>
+                        <span class="item-text">Most contaminated areas</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">🍽️</span>
+                        <span class="item-text">Food exposure</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">🌬️</span>
+                        <span class="item-text">Air exposure</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">🧹</span>
+                        <span class="item-text">Dust exposure</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">👷</span>
+                        <span class="item-text">Occupational exposure</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">🛒</span>
+                        <span class="item-text">Consumer products</span>
+                    </div>
+                    <div class="not-counted-item">
+                        <div class="item-checkbox"></div>
+                        <span class="item-emoji">🍺</span>
+                        <span class="item-text">Beer (yes, really)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-title">📈 Calculation Results</div>
+            <div class="results-section">
+                <div class="result-row">
+                    <span class="result-label">study_result =</span>
+                    <span class="result-value green">6,800 deaths/year</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">coverage =</span>
+                    <span class="result-value gold">~50% of US population</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">sources_measured =</span>
+                    <span class="result-value gold">1 of 10+</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">worst_areas_included =</span>
+                    <span class="result-value red">FALSE</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">actual_result =</span>
+                    <span class="result-value shrug">¯\_(ツ)_/¯</span>
+                </div>
+            </div>
+
+            <div class="status-section">
+                <span class="status-icon">🗑️</span>
+                <div class="status-content">
+                    <div class="status-label">Study Status</div>
+                    <div class="status-value">RETRACTED</div>
+                    <div class="status-reason">reason: "Population groundswell mitigation"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-code">// Retracting the study doesn't un-poison the water. But it does un-poison the quarterly earnings call.</div>
+            <div class="footer-brand">HUCKFINN • America's Finest Newspaper</div>
+        </div>
+    </div>
+</body>
+</html>

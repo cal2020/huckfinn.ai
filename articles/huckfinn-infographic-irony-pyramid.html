@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Irony Pyramid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(180deg, #1e3a5f 0%, #0d1f33 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 750px;
+            background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+            border: 3px solid #c9a227;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0d1f33 100%);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #c9a227;
+        }
+
+        .header-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .header .subtitle {
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin-top: 0.5rem;
+        }
+
+        .pyramid-container {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pyramid-level {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.5rem;
+            margin-bottom: 4px;
+            text-align: center;
+            color: white;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pyramid-level:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .pyramid-level .emoji {
+            font-size: 1.3rem;
+            margin-right: 0.5rem;
+        }
+
+        .level-1 {
+            width: 180px;
+            background: linear-gradient(135deg, #8b0000 0%, #5c0000 100%);
+            border: 2px solid #ff4444;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            padding-top: 1.5rem;
+        }
+
+        .level-2 {
+            width: 260px;
+            background: linear-gradient(135deg, #6b2222 0%, #4a1515 100%);
+            border: 2px solid #8b0000;
+        }
+
+        .level-3 {
+            width: 340px;
+            background: linear-gradient(135deg, #4a3030 0%, #3a2020 100%);
+            border: 2px solid #6b2222;
+        }
+
+        .level-4 {
+            width: 420px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+            border: 2px solid #4a4a4a;
+        }
+
+        .level-5 {
+            width: 500px;
+            background: linear-gradient(135deg, #2d3a2d 0%, #1d2a1d 100%);
+            border: 2px solid #3a4a3a;
+        }
+
+        .level-6 {
+            width: 580px;
+            background: linear-gradient(135deg, #2d2d3a 0%, #1d1d2a 100%);
+            border: 2px solid #3a3a4a;
+        }
+
+        .level-7 {
+            width: 660px;
+            background: linear-gradient(135deg, #3a3020 0%, #2a2015 100%);
+            border: 2px solid #4a4030;
+        }
+
+        .level-base {
+            width: 700px;
+            background: linear-gradient(135deg, #c9a227 0%, #8b7018 100%);
+            border: 3px solid #e0b830;
+            padding: 1rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .level-label {
+            position: absolute;
+            right: -60px;
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.65rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid #333;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .reading-guide {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .reading-guide strong {
+            color: #c9a227;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #c9a227;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 800px) {
+            .pyramid-level {
+                font-size: 0.7rem;
+                padding: 0.6rem 1rem;
+            }
+            .level-1 { width: 120px; }
+            .level-2 { width: 170px; }
+            .level-3 { width: 220px; }
+            .level-4 { width: 270px; }
+            .level-5 { width: 320px; }
+            .level-6 { width: 370px; }
+            .level-7 { width: 420px; }
+            .level-base { width: 450px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="header-icon">🔺💀</div>
+            <h1>The Irony Pyramid</h1>
+            <div class="subtitle">Layers of American Consequence • Read Bottom to Top</div>
+        </div>
+
+        <div class="pyramid-container">
+            <div class="pyramid-level level-1">
+                <span class="emoji">🗑️</span>
+                <span><strong>RETRACTED</strong><br>"Too many deaths"</span>
+            </div>
+
+            <div class="pyramid-level level-2">
+                <span class="emoji">📊</span>
+                <span><strong>STUDY</strong><br>6,800 cancer deaths/yr (undercounted)</span>
+            </div>
+
+            <div class="pyramid-level level-3">
+                <span class="emoji">💀</span>
+                <span><strong>DEATHS</strong><br>From drinking water alone, in half the country</span>
+            </div>
+
+            <div class="pyramid-level level-4">
+                <span class="emoji">🩸</span>
+                <span><strong>98% OF USA HAS PFAS IN THEIR BLOOD</strong><br>Forever chemicals are forever</span>
+            </div>
+
+            <div class="pyramid-level level-5">
+                <span class="emoji">🦃🦌🐟</span>
+                <span><strong>WILDLIFE CONTAMINATED "GLOBALLY"</strong><br>"Do Not Eat" advisories in 17 states</span>
+            </div>
+
+            <div class="pyramid-level level-6">
+                <span class="emoji">💧🌍</span>
+                <span><strong>SOIL & WATER PERMANENTLY CONTAMINATED</strong><br>Remediation timeline: "Decades" (if ever)</span>
+            </div>
+
+            <div class="pyramid-level level-7">
+                <span class="emoji">🧯👨‍🚒</span>
+                <span><strong>FIREFIGHTING: FOAM + GEAR + SMOKE = TRIPLE PFAS</strong><br>90% of line-of-duty deaths now cancer</span>
+            </div>
+
+            <div class="pyramid-level level-7" style="width: 700px;">
+                <span class="emoji">🔥🔥🔥</span>
+                <span><strong>MEGAFIRES</strong> — Created by 100 years of fire suppression • 10M+ acres/year</span>
+            </div>
+
+            <div class="pyramid-level level-base">
+                <span class="emoji">🚫🌲</span>
+                <span><strong>INDIGENOUS FIRE PRACTICES BANNED BY COLONIZERS (1800s - present)</strong><br>10,000 years of sustainable land management → Ignored</span>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #8b0000;"></div>
+                <span>Meta-irony (retraction)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #4a3030;"></div>
+                <span>Population impact</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #3a3a3a;"></div>
+                <span>Environmental contamination</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #c9a227;"></div>
+                <span>Historical root cause</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="reading-guide">
+                <strong>↑ Reading direction:</strong> The turkey at the bottom poisoned Thanksgiving at the top
+            </div>
+            <div class="footer-brand">HUCKFINN • America's Finest Newspaper</div>
+        </div>
+    </div>
+</body>
+</html>

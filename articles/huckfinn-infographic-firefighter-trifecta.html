@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firefighter Doom Trifecta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #1a0a0a 0%, #0d0505 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 650px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 3px solid #ff6b35;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b0000 0%, #5c0000 100%);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #ff6b35;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 0.85rem;
+            color: #ff6b35;
+            margin-top: 0.5rem;
+        }
+
+        .trifecta-container {
+            padding: 2rem;
+        }
+
+        .firefighter-visual {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .firefighter-center {
+            font-size: 6rem;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.5));
+        }
+
+        .exposure-arrows {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 200px;
+        }
+
+        .trifecta-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .trifecta-item {
+            display: flex;
+            align-items: center;
+            padding: 1.25rem;
+            background: rgba(255, 107, 53, 0.1);
+            border-left: 4px solid #ff6b35;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s;
+        }
+
+        .trifecta-item:hover {
+            background: rgba(255, 107, 53, 0.2);
+            transform: translateX(5px);
+        }
+
+        .item-icon {
+            font-size: 2.5rem;
+            width: 4rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-action {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            color: #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .item-source {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-top: 0.25rem;
+        }
+
+        .item-detail {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .stat-block {
+            background: linear-gradient(135deg, #8b0000 0%, #5c0000 100%);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-block::before {
+            content: "☠️";
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-context {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline {
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            margin-top: 1.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: #ff6b35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .timeline-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .timeline-year {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            color: #c9a227;
+        }
+
+        .timeline-event {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.25rem;
+        }
+
+        .timeline-connector {
+            flex: 0.5;
+            height: 2px;
+            background: linear-gradient(90deg, #ff6b35 0%, #c9a227 100%);
+        }
+
+        .footer {
+            background: #0a0a0a;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-quote {
+            font-size: 0.85rem;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #ff6b35;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="header-icon">👨‍🚒🔥☠️</div>
+            <h1>Firefighter Doom Trifecta</h1>
+            <div class="subtitle">Three Ways to Get PFAS Exposure on Every Call</div>
+        </div>
+
+        <div class="trifecta-container">
+            <div class="firefighter-visual">
+                <span class="firefighter-center">👨‍🚒</span>
+            </div>
+
+            <div class="trifecta-items">
+                <div class="trifecta-item">
+                    <span class="item-icon">😮‍💨</span>
+                    <div class="item-content">
+                        <div class="item-action">Breathe</div>
+                        <div class="item-source">← 🏠💨 Smoke from burning homes</div>
+                        <div class="item-detail">Homes contain PFAS in carpets, furniture, electronics, clothing...</div>
+                    </div>
+                </div>
+
+                <div class="trifecta-item">
+                    <span class="item-icon">👕</span>
+                    <div class="item-content">
+                        <div class="item-action">Wear</div>
+                        <div class="item-source">← 🧥 Turnout gear (PFAS-coated)</div>
+                        <div class="item-detail">The protective equipment itself is treated with forever chemicals</div>
+                    </div>
+                </div>
+
+                <div class="trifecta-item">
+                    <span class="item-icon">🧯</span>
+                    <div class="item-content">
+                        <div class="item-action">Spray</div>
+                        <div class="item-source">← 🫧 AFFF Foam (PFAS-based)</div>
+                        <div class="item-detail">Aqueous film-forming foam used on fuel fires since the 1960s</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-block">
+                <div class="stat-number">90%</div>
+                <div class="stat-label">of line-of-duty firefighter deaths</div>
+                <div class="stat-context">are now attributable to <strong>CANCER</strong></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-title">The AFFF Timeline</div>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1960s</div>
+                        <div class="timeline-event">AFFF invented</div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">70 yrs</div>
+                        <div class="timeline-event">Military & civilian use</div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020s</div>
+                        <div class="timeline-event">CA bans AFFF</div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">3024</div>
+                        <div class="timeline-event">PFAS ready for comment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-quote">"They're poisoned by the gear they wear, the foam they spray, and the smoke from your PFAS-laden carpets. Happy Thanksgiving!"</div>
+            <div class="footer-brand">HUCKFINN • America's Finest Newspaper</div>
+        </div>
+    </div>
+</body>
+</html>

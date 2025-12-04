@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarkston Votes to Eliminate EMS, Approves $19.7M Jail | HuckFinn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f5f2e8;
+            --newsprint: #faf9f4;
+            --ink: #1a1a1a;
+            --red-accent: #c41e3a;
+            --blue-link: #1a4b8c;
+            --gray-light: #e8e5dc;
+            --gray-mid: #8c8c8c;
+            --yellow-highlight: #fff3cd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .masthead {
+            background: var(--ink);
+            color: var(--newsprint);
+            text-align: center;
+            padding: 8px 20px;
+            border-bottom: 3px solid var(--red-accent);
+        }
+
+        .masthead-top {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: var(--gray-mid);
+        }
+
+        .logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 3.5rem;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 0 var(--red-accent);
+        }
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--gray-mid);
+            margin-bottom: 10px;
+        }
+
+        .nav-bar {
+            background: var(--red-accent);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* BREAKING BANNER */
+        .breaking-banner {
+            background: var(--yellow-highlight);
+            border-bottom: 2px solid #ffc107;
+            padding: 10px 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .breaking-banner span {
+            background: var(--red-accent);
+            color: white;
+            padding: 3px 10px;
+            font-weight: 700;
+            font-size: 11px;
+            margin-right: 10px;
+            text-transform: uppercase;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: var(--newsprint);
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        /* ARTICLE HEADER */
+        .article-header {
+            border-bottom: 3px double var(--ink);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .section-label {
+            color: var(--red-accent);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #444;
+            line-height: 1.4;
+            border-left: 4px solid var(--red-accent);
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .byline {
+            font-size: 13px;
+            color: var(--gray-mid);
+            margin-top: 15px;
+        }
+
+        .byline strong {
+            color: var(--ink);
+        }
+
+        /* FEATURED IMAGE */
+        .featured-image {
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--gray-light);
+        }
+
+        .image-caption {
+            font-size: 12px;
+            color: var(--gray-mid);
+            padding: 10px;
+            background: var(--gray-light);
+            font-style: italic;
+        }
+
+        .image-caption strong {
+            color: var(--ink);
+            font-style: normal;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            column-count: 1;
+            font-size: 1.05rem;
+        }
+
+        .article-body p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            float: left;
+            line-height: 0.8;
+            padding-right: 10px;
+            color: var(--red-accent);
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            padding: 25px 40px;
+            margin: 30px 0;
+            border-top: 2px solid var(--ink);
+            border-bottom: 2px solid var(--ink);
+            background: var(--cream);
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-size: 0.9rem;
+            font-style: normal;
+            margin-top: 10px;
+            color: var(--gray-mid);
+        }
+
+        /* ADS */
+        .ad-container {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border: 2px dashed var(--gray-mid);
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 9px;
+            color: var(--gray-mid);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .ad-content {
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        .ad-content h3 {
+            font-size: 1.3rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .ad-content p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .ad-content .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red-accent);
+            margin: 10px 0;
+        }
+
+        .ad-cta {
+            display: inline-block;
+            background: var(--red-accent);
+            color: white;
+            padding: 8px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* COMMENTS SECTION */
+        .comments-section {
+            margin-top: 50px;
+            border-top: 3px solid var(--ink);
+            padding-top: 30px;
+        }
+
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .comments-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+        }
+
+        .comment-count {
+            background: var(--red-accent);
+            color: white;
+            padding: 5px 15px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .comment {
+            background: var(--cream);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--gray-mid);
+        }
+
+        .comment.highlighted {
+            border-left-color: var(--red-accent);
+            background: var(--yellow-highlight);
+        }
+
+        .comment.deleted {
+            background: #f8d7da;
+            border-left-color: #721c24;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .commenter-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .commenter-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .badge-verified { background: #28a745; color: white; }
+        .badge-local { background: #17a2b8; color: white; }
+        .badge-premium { background: gold; color: #333; }
+        .badge-banned { background: #dc3545; color: white; }
+        .badge-bot { background: #6c757d; color: white; }
+
+        .comment-time {
+            font-size: 11px;
+            color: var(--gray-mid);
+        }
+
+        .comment-body {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .comment-actions {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--gray-mid);
+        }
+
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .comment-actions span:hover {
+            color: var(--blue-link);
+        }
+
+        .reply {
+            margin-left: 40px;
+            border-left-color: #ccc;
+        }
+
+        .reply .commenter-name::before {
+            content: "↳ ";
+            color: var(--gray-mid);
+        }
+
+        /* RELATED ARTICLES */
+        .related-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--gray-light);
+        }
+
+        .related-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .related-item {
+            padding: 15px;
+            background: var(--cream);
+            border-left: 3px solid var(--red-accent);
+        }
+
+        .related-item h4 {
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .related-item h4 a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .related-item h4 a:hover {
+            color: var(--red-accent);
+        }
+
+        .related-meta {
+            font-size: 11px;
+            color: var(--gray-mid);
+        }
+
+        /* FOOTER */
+        .site-footer {
+            background: var(--ink);
+            color: var(--newsprint);
+            padding: 40px 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: var(--gray-mid);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 12px;
+        }
+
+        .footer-disclaimer {
+            font-size: 11px;
+            color: var(--gray-mid);
+            max-width: 600px;
+            margin: 20px auto 0;
+            font-style: italic;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.2rem; }
+            h1 { font-size: 1.8rem; }
+            .subheadline { font-size: 1.1rem; }
+            .pull-quote { font-size: 1.2rem; padding: 20px; }
+            .reply { margin-left: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="masthead">
+    <div class="masthead-top">Est. 2024 • Whose Side Are We On? Whose Side Ya Got? • Vol. MCMXLVII No. 847</div>
+    <div class="logo">HuckFinn</div>
+    <div class="tagline">America's Finest News Source • "We Report, You Despair"</div>
+</header>
+
+<nav class="nav-bar">
+    <a href="#">Local</a>
+    <a href="#">Politics</a>
+    <a href="#">Health & Dying</a>
+    <a href="#">Infrastructure</a>
+    <a href="#">Corrections</a>
+    <a href="#">Obituaries (Preemptive)</a>
+    <a href="#">Opinion</a>
+</nav>
+
+<div class="breaking-banner">
+    <span>Breaking</span>
+    Area Man Who Voted Against EMS Levy Currently Experiencing Chest Pains, "Sure It's Nothing"
+</div>
+
+<main class="container">
+    
+    <article>
+        <header class="article-header">
+            <div class="section-label">Local Government • Healthcare • Natural Selection</div>
+            <h1>Clarkston Votes 4-2 To Eliminate Emergency Medical Services, Approves $19.7M Jail To Store The Bodies</h1>
+            <p class="subheadline">"We've Run The Numbers And It's Simply More Cost-Effective To Arrest People Having Heart Attacks Than To Treat Them," Says City Financial Advisor</p>
+            <p class="byline">By <strong>WALTER "SCOOP" PEMBERTON</strong> | HuckFinn Senior Correspondent, Palouse Bureau<br>
+            Tuesday, November 18, 2025 • Clarkston, WA</p>
+        </header>
+
+        <div class="featured-image">
+            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                <!-- Sky gradient -->
+                <defs>
+                    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#87CEEB"/>
+                        <stop offset="100%" style="stop-color:#E0E8F0"/>
+                    </linearGradient>
+                    <linearGradient id="fire" x1="0%" y1="100%" x2="0%" y2="0%">
+                        <stop offset="0%" style="stop-color:#FF4500"/>
+                        <stop offset="50%" style="stop-color:#FFA500"/>
+                        <stop offset="100%" style="stop-color:#FFD700"/>
+                    </linearGradient>
+                </defs>
+                
+                <!-- Background sky -->
+                <rect width="800" height="450" fill="url(#sky)"/>
+                
+                <!-- Smoke clouds -->
+                <ellipse cx="550" cy="80" rx="120" ry="60" fill="#555" opacity="0.6"/>
+                <ellipse cx="500" cy="100" rx="100" ry="50" fill="#666" opacity="0.5"/>
+                <ellipse cx="600" cy="120" rx="80" ry="40" fill="#777" opacity="0.4"/>
+                
+                <!-- Ground -->
+                <rect x="0" y="350" width="800" height="100" fill="#3a5f3a"/>
+                
+                <!-- Burning house -->
+                <rect x="400" y="200" width="180" height="150" fill="#8B4513"/>
+                <polygon points="400,200 490,120 580,200" fill="#654321"/>
+                <!-- Windows with fire -->
+                <rect x="420" y="240" width="40" height="50" fill="url(#fire)"/>
+                <rect x="520" y="240" width="40" height="50" fill="url(#fire)"/>
+                <!-- Door -->
+                <rect x="465" y="280" width="50" height="70" fill="#4a3520"/>
+                <!-- Flames from roof -->
+                <ellipse cx="490" cy="140" rx="30" ry="50" fill="url(#fire)" opacity="0.9"/>
+                <ellipse cx="470" cy="160" rx="20" ry="35" fill="#FF4500" opacity="0.8"/>
+                <ellipse cx="510" cy="155" rx="25" ry="40" fill="#FFA500" opacity="0.7"/>
+                
+                <!-- Fire truck (labeled) -->
+                <rect x="100" y="300" width="200" height="80" fill="#cc0000" rx="5"/>
+                <rect x="80" y="320" width="50" height="60" fill="#cc0000" rx="5"/>
+                <!-- Wheels -->
+                <circle cx="130" cy="390" r="25" fill="#333"/>
+                <circle cx="260" cy="390" r="25" fill="#333"/>
+                <circle cx="130" cy="390" r="12" fill="#666"/>
+                <circle cx="260" cy="390" r="12" fill="#666"/>
+                <!-- Ladder -->
+                <rect x="120" y="290" width="160" height="15" fill="#C0C0C0"/>
+                <line x1="130" y1="290" x2="130" y2="305" stroke="#888" stroke-width="3"/>
+                <line x1="160" y1="290" x2="160" y2="305" stroke="#888" stroke-width="3"/>
+                <line x1="190" y1="290" x2="190" y2="305" stroke="#888" stroke-width="3"/>
+                <line x1="220" y1="290" x2="220" y2="305" stroke="#888" stroke-width="3"/>
+                <line x1="250" y1="290" x2="250" y2="305" stroke="#888" stroke-width="3"/>
+                <!-- Fire truck text -->
+                <text x="190" y="355" font-family="Arial Black" font-size="18" fill="white" text-anchor="middle">CLARKSTON</text>
+                <text x="190" y="375" font-family="Arial Black" font-size="14" fill="white" text-anchor="middle">FIRE (ONLY)</text>
+                
+                <!-- Ambulance driving away -->
+                <rect x="620" y="320" width="120" height="60" fill="white" rx="5"/>
+                <rect x="600" y="340" width="30" height="40" fill="white" rx="5"/>
+                <!-- Red cross with X -->
+                <rect x="665" y="335" width="30" height="8" fill="#cc0000"/>
+                <rect x="676" y="324" width="8" height="30" fill="#cc0000"/>
+                <line x1="660" y1="320" x2="710" y2="370" stroke="red" stroke-width="4"/>
+                <line x1="710" y1="320" x2="660" y2="370" stroke="red" stroke-width="4"/>
+                <!-- Wheels -->
+                <circle cx="640" cy="390" r="18" fill="#333"/>
+                <circle cx="720" cy="390" r="18" fill="#333"/>
+                <!-- Dust cloud behind ambulance -->
+                <ellipse cx="760" cy="370" rx="30" ry="20" fill="#D2B48C" opacity="0.6"/>
+                <ellipse cx="780" cy="360" rx="20" ry="15" fill="#D2B48C" opacity="0.4"/>
+                <!-- Text on ambulance -->
+                <text x="680" y="365" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">DEFUNDED</text>
+                
+                <!-- Person waving at ambulance -->
+                <ellipse cx="580" cy="350" rx="12" ry="15" fill="#FFE4C4"/>
+                <rect x="572" y="365" width="16" height="30" fill="#4169E1"/>
+                <!-- Raised arm -->
+                <line x1="588" y1="370" x2="610" y2="340" stroke="#FFE4C4" stroke-width="8" stroke-linecap="round"/>
+                <!-- Speech bubble -->
+                <ellipse cx="560" cy="310" rx="50" ry="25" fill="white" stroke="#333" stroke-width="2"/>
+                <polygon points="570,332 580,350 585,330" fill="white" stroke="#333" stroke-width="2"/>
+                <text x="560" y="315" font-family="Arial" font-size="11" fill="#333" text-anchor="middle">WAIT! I'M</text>
+                <text x="560" y="328" font-family="Arial" font-size="11" fill="#333" text-anchor="middle">HAVING A—</text>
+                
+                <!-- Fisherman in foreground (serene) -->
+                <ellipse cx="80" cy="380" rx="15" ry="18" fill="#FFE4C4"/>
+                <rect x="65" y="398" width="30" height="40" fill="#228B22"/>
+                <!-- Fishing rod -->
+                <line x1="95" y1="395" x2="200" y2="300" stroke="#8B4513" stroke-width="3"/>
+                <line x1="200" y1="300" x2="200" y2="420" stroke="#333" stroke-width="1"/>
+                <!-- Chair -->
+                <rect x="55" y="420" width="50" height="10" fill="#8B4513"/>
+                
+                <!-- "FISHING AT LAST LIGHT" label -->
+                <rect x="20" y="420" width="180" height="25" fill="rgba(0,0,0,0.7)"/>
+                <text x="110" y="438" font-family="Georgia" font-size="14" fill="white" text-anchor="middle" font-style="italic">Fishing at Last Light</text>
+            </svg>
+            <p class="image-caption"><strong>PRIORITIES:</strong> A Clarkston Fire Department truck responds to a structure fire while a recently defunded ambulance flees the scene. In the foreground, an area man enjoys some peaceful fishing, blissfully unaware his healthcare safety net has been eliminated. "Fishing at Last Light" has taken on new meaning for Clarkston residents. <em>(HuckFinn illustration / Department of Ironic Imagery)</em></p>
+        </div>
+
+        <div class="article-body">
+            <p>CLARKSTON, WA — In a decisive 4-2 vote that medical ethicists are calling "a masterclass in municipal self-harm," the Clarkston City Council voted Monday night to eliminate all emergency medical services from the 2026 budget, while simultaneously approving a $19.7 million jail facility in neighboring Asotin County. City officials say the two decisions are unrelated, despite what mathematicians describe as "a pretty clear inverse relationship between healthcare access and incarceration needs."</p>
+
+            <p>"We've found it's more cost-effective to incarcerate survivors than to create them in the first place," explained City Financial Advisor Marcus Treadwell, gesturing to a PowerPoint slide titled "Synergies in the Post-Medical Economy." "Every dollar we don't spend on ambulances is a dollar we can spend on secure, climate-controlled storage for cardiac arrest victims."</p>
+
+            <p>The vote came after Clarkston voters rejected an EMS levy that would have cost homeowners $2.65 per $1,000 of property valuation—roughly $530 annually for a $200,000 home. In related news, GoFundMe has announced it will be opening a regional headquarters in Clarkston to handle the anticipated demand.</p>
+
+            <div class="pull-quote">
+                "There is a glimmer of hope for the ambulance service."
+                <cite>— Lewiston Tribune, providing what medical professionals note patients often see immediately before flatlining</cite>
+            </div>
+
+            <p>Mayor Monika Lawrence cast the tie-breaking vote to preserve EMS funding during the first round of voting, which ended 3-3. However, in a second vote that parliamentary experts are calling "a real dick move," councilors Robin Albers, Russ Evans, Sheila McDougall, and David Vinton successfully eliminated the service 4-2. Councilors Stan Pierce and Sarah Reeves objected. Councilmember Pat Holman was not in attendance, having apparently already adopted the city's new emergency response protocol.</p>
+
+            <p>"This is a commitment, but it's not set in a way that it can't be changed," said City Attorney Todd Richardson, using language that physicians note also applies to the condition of untreated trauma patients. "Much like a Code Blue, we're just seeing where this goes."</p>
+
+            <p>The Lewiston Tribune, in what journalism professors are calling "the most accidentally poetic editorial decision of the decade," chose to run a serene photograph titled "Fishing at Last Light" as the dominant image on the same front page announcing the EMS elimination. Editors insist "Last Light" was not intended as a healthcare forecast for Clarkston residents, but acknowledged they "can't rule it out at this time."</p>
+        </div>
+
+        <!-- AD BREAK 1 -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="ad-content">
+                <h3>🚨 CLARKSTON URGENT CARE ALTERNATIVES 🚨</h3>
+                <p><strong>WebMD Premium+</strong> — Now with "Probably Not Cancer" confidence ratings!</p>
+                <div class="price">$12.99/mo</div>
+                <p><em>Includes: Symptom checker, anxiety spiral simulator, and our new "Just Walk It Off" wellness module</em></p>
+                <a href="#" class="ad-cta">Subscribe Before Your Next Emergency</a>
+            </div>
+        </div>
+
+        <div class="article-body">
+            <p>Meanwhile, the same newspaper front page announced that a University of Washington student had admitted to shooting a WSU football player, that a new $19.7 million jail would open in December, and that a festive holiday lights display would "light up the night Saturday." Local resident Cheryl Dennison, 54, described the juxtaposition as "honestly, pretty on-brand for us at this point."</p>
+
+            <p>"We've got shootings, we're building a jail, and we just cut emergency services," said Dennison, taking a long drag from a cigarette outside the Clarkston City Hall. "Light 'em up, boys."</p>
+
+            <p>The new Asotin County Justice Complex, which Commissioner Chuck Whitman proudly noted came in "under the $20 million mark," will provide state-of-the-art detention facilities for area residents. When asked how inmates would receive emergency medical care if needed, Whitman paused for seventeen seconds before responding, "That's a great question. Next question."</p>
+
+            <p>Property owners who voted against the EMS levy have begun organizing what they call "Neighborhood Medical Watches," which local emergency room physicians describe as "just people calling each other instead of 911, which is definitely going to work out great."</p>
+
+            <div class="pull-quote">
+                "We saved $230 a year and it only cost us $47,000 in medical bills."
+                <cite>— Area Homeowner Gerald Fitch, 58, currently in collections</cite>
+            </div>
+
+            <p>The Clarkston Fire Department, whose truck was photographed responding to a house fire on Elm Street for the Tribune's coverage, released a statement clarifying their role going forward. "We will still come watch your house burn down," said Fire Chief Barbara Okonkwo. "The difference now is that if you're inside, that's kind of on you."</p>
+
+            <p>When asked to comment, the fire truck itself—clearly labeled "CLARKSTON FIRE" in the Tribune photograph—offered no response, though sources say it has been seen at a local body shop exploring options to add "(AND ONLY FIRE)" to its existing signage.</p>
+
+            <p>City officials emphasized that the elimination "is not personal," noting that emergency services have been "underperforming relative to key metrics." When pressed on what those metrics were, Treadwell pulled up a slide showing that zero Clarkston residents who did not receive emergency medical care died from receiving emergency medical care. "You can't argue with the numbers," he said.</p>
+
+            <p>As of press time, the Lewiston Tribune was preparing tomorrow's edition, which will reportedly feature a front-page photo essay titled "Golden Hour"—a term that emergency physicians use to describe the critical window for trauma care, and that Tribune editors insist is just a nice photography term about sunset.</p>
+
+            <p>The ambulance service's final day of operation has not yet been announced, but city planners have suggested coordinating it with the ribbon-cutting ceremony for the new jail, in what they're describing as "a meaningful transition celebration."</p>
+        </div>
+
+        <!-- AD BREAK 2 -->
+        <div class="ad-container">
+            <div class="ad-label">Sponsored Content</div>
+            <div class="ad-content">
+                <h3>💀 CLARKSTON MEMORIAL PRE-PLANNING SERVICES 💀</h3>
+                <p><strong>Why wait for the inevitable?</strong></p>
+                <p>With EMS gone, now's the time to get your affairs in order!</p>
+                <div class="price">Packages starting at $3,999</div>
+                <p><em>"We put the 'fun' in 'funeral'" — 4.2 stars on Yelp</em></p>
+                <a href="#" class="ad-cta">Schedule Your Pre-Need Consultation</a>
+            </div>
+        </div>
+
+        <!-- AD BREAK 3 -->
+        <div class="ad-container">
+            <div class="ad-label">Local Business Spotlight</div>
+            <div class="ad-content">
+                <h3>🏠 CLARKSTON REALTY — "MOTIVATED SELLERS!"</h3>
+                <p>Homes priced to move FAST! (Because the owners can't afford to have medical emergencies here anymore)</p>
+                <p><strong>NEW LISTING:</strong> 3BR/2BA, great schools, no ambulance service, $299,000</p>
+                <div class="price">🔥 HOT MARKET 🔥</div>
+                <p><em>Ask about our "Cash Buyer from Literally Anywhere Else" special!</em></p>
+                <a href="#" class="ad-cta">View Listings Before They're Gone (Like EMS)</a>
+            </div>
+        </div>
+
+    </article>
+
+    <!-- COMMENTS SECTION -->
+    <section class="comments-section">
+        <div class="comments-header">
+            <h2>Reader Comments</h2>
+            <span class="comment-count">847 Comments</span>
+        </div>
+
+        <div class="comment highlighted">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">FirstCommentLarry</span>
+                    <span class="commenter-badge badge-premium">First!</span>
+                </div>
+                <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">First! Also, this is why I moved to Spokane.</div>
+            <div class="comment-actions">
+                <span>👍 234</span>
+                <span>👎 12</span>
+                <span>Reply</span>
+                <span>Report</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">ClarksTOWNLifer1982</span>
+                    <span class="commenter-badge badge-local">Local</span>
+                </div>
+                <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">imagine bragging about living in Spokane lmaooo couldn't be me</div>
+            <div class="comment-actions">
+                <span>👍 89</span>
+                <span>👎 156</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">FirstCommentLarry</span>
+                    <span class="commenter-badge badge-premium">First!</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">At least I can call an ambulance without it being a philosophical question</div>
+            <div class="comment-actions">
+                <span>👍 445</span>
+                <span>👎 23</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">TaxpayerTed</span>
+                    <span class="commenter-badge badge-verified">Verified</span>
+                </div>
+                <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">Good. I'm tired of paying for OTHER PEOPLE'S emergencies. Personal responsibility! If you're having a heart attack, maybe you should have thought about that before eating all those cheeseburgers. Not my problem!</div>
+            <div class="comment-actions">
+                <span>👍 67</span>
+                <span>👎 891</span>
+                <span>Reply</span>
+                <span>Report</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">DrSarahMD_Actual</span>
+                    <span class="commenter-badge badge-verified">Verified</span>
+                </div>
+                <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">I'm an ER physician. This isn't how any of this works. Heart attacks can happen to anyone. Car accidents don't check your diet history. This is genuinely dangerous and—</div>
+            <div class="comment-actions">
+                <span>👍 1.2K</span>
+                <span>👎 34</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">TaxpayerTed</span>
+                    <span class="commenter-badge badge-verified">Verified</span>
+                </div>
+                <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">lol ok "doctor" probably a GOVERNMENT doctor anyway. do your own research people</div>
+            <div class="comment-actions">
+                <span>👍 23</span>
+                <span>👎 567</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">JustAskingQuestions2024</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">Has anyone considered that maybe "heart attacks" are just Big Pharma propaganda? I'm just asking questions. Nobody ever died from a "heart attack" before the 1900s. Curious. 🤔</div>
+            <div class="comment-actions">
+                <span>👍 8</span>
+                <span>👎 934</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">BoomerDave1955</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">Back in MY day we didn't HAVE ambulances and we turned out FINE. Walked 15 miles to school uphill both ways WITH a broken leg. Kids today are soft. This will build character.</div>
+            <div class="comment-actions">
+                <span>👍 156</span>
+                <span>👎 423</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">OK_Boomer_Haver</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">Sir, ambulances were invented in 1487 and you were born in 1955. What are you even talking about.</div>
+            <div class="comment-actions">
+                <span>👍 2.1K</span>
+                <span>👎 45</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">BoomerDave1955</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">GOOGLE HOW DO I DELETE MY COMMENT</div>
+            <div class="comment-actions">
+                <span>👍 789</span>
+                <span>👎 12</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">LibertyPatriot1776</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">THIS IS WHAT FREEDOM LOOKS LIKE. The founding fathers didn't have ambulances and they FOUNDED A COUNTRY. Now we have the LIBERTY to die in our own homes without government interference. George Washington would be PROUD. 🇺🇸🦅</div>
+            <div class="comment-actions">
+                <span>👍 234</span>
+                <span>👎 567</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">HistoryNerd_Katie</span>
+                    <span class="commenter-badge badge-verified">Verified</span>
+                </div>
+                <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">George Washington literally died because his doctors kept bleeding him when he had a throat infection and probably would have survived with modern emergency care. This is... not the flex you think it is.</div>
+            <div class="comment-actions">
+                <span>👍 1.8K</span>
+                <span>👎 89</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">LocalMom_Karen_S</span>
+                    <span class="commenter-badge badge-local">Local</span>
+                </div>
+                <span class="comment-time">58 min ago</span>
+            </div>
+            <div class="comment-body">I just want to know what this means for the youth soccer league?? If little Braxtyn gets hurt at practice, what are we supposed to do now?? This is what happens when you don't go to church. 🙏</div>
+            <div class="comment-actions">
+                <span>👍 45</span>
+                <span>👎 234</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">SoccerDad_Mike</span>
+                    <span class="commenter-badge badge-local">Local</span>
+                </div>
+                <span class="comment-time">45 min ago</span>
+            </div>
+            <div class="comment-body">Karen, YOU voted against the levy. I saw your yard sign. "NO ON MEASURE 7." You did this.</div>
+            <div class="comment-actions">
+                <span>👍 3.4K</span>
+                <span>👎 23</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">LocalMom_Karen_S</span>
+                    <span class="commenter-badge badge-local">Local</span>
+                </div>
+                <span class="comment-time">44 min ago</span>
+            </div>
+            <div class="comment-body">That's DIFFERENT. I didn't think they'd actually DO it. 😤</div>
+            <div class="comment-actions">
+                <span>👍 12</span>
+                <span>👎 4.5K</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment deleted">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">[Deleted]</span>
+                    <span class="commenter-badge badge-banned">Banned</span>
+                </div>
+                <span class="comment-time">40 min ago</span>
+            </div>
+            <div class="comment-body"><em>[This comment has been removed for violating community guidelines: "Threats to councilmembers, regardless of how 'understandable' moderators found them, are not permitted."]</em></div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">GrillMaster_Steve</span>
+                </div>
+                <span class="comment-time">35 min ago</span>
+            </div>
+            <div class="comment-body">this is why I have a gun. I'll just shoot the heart attack</div>
+            <div class="comment-actions">
+                <span>👍 567</span>
+                <span>👎 234</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">DrSarahMD_Actual</span>
+                    <span class="commenter-badge badge-verified">Verified</span>
+                </div>
+                <span class="comment-time">34 min ago</span>
+            </div>
+            <div class="comment-body">I... that's not... you know what, sure. Best of luck with that.</div>
+            <div class="comment-actions">
+                <span>👍 2.3K</span>
+                <span>👎 12</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">ConcernedCitizen_Anonymous</span>
+                </div>
+                <span class="comment-time">30 min ago</span>
+            </div>
+            <div class="comment-body">I actually know someone on the city council and they told me this is all part of a plan to sell the land the ambulance station is on to [REDACTED] who is connected to [REDACTED] and if you follow the money it goes all the way to [REDACTED]. Wake up sheeple. The truth is out there. 👁️</div>
+            <div class="comment-actions">
+                <span>👍 34</span>
+                <span>👎 456</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">ModeratorJennifer</span>
+                    <span class="commenter-badge badge-verified">Staff</span>
+                </div>
+                <span class="comment-time">28 min ago</span>
+            </div>
+            <div class="comment-body">Sir, the redactions appear to be you just typing [REDACTED]. There's nothing there. We can see the edit history.</div>
+            <div class="comment-actions">
+                <span>👍 1.9K</span>
+                <span>👎 8</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">Definitely_Not_A_Bot_4382</span>
+                    <span class="commenter-badge badge-bot">Sus</span>
+                </div>
+                <span class="comment-time">25 min ago</span>
+            </div>
+            <div class="comment-body">Hello fellow Clarkston residents! I too am concerned about this emergency medical service situation! As a human who breathes oxygen, I believe we should all remain calm and trust in our elected officials. Have you considered purchasing life insurance? Click here for great rates: bit.ly/totallylegit</div>
+            <div class="comment-actions">
+                <span>👍 2</span>
+                <span>👎 1.2K</span>
+                <span>Reply</span>
+                <span>⚠️ Reported as spam</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">TherapistWhoNeedsTherapy</span>
+                </div>
+                <span class="comment-time">20 min ago</span>
+            </div>
+            <div class="comment-body">As a licensed therapist, I just want everyone in this comment section to know that I'm available for sessions. Looks like y'all need it. My rates are $150/hr but I'll do a Clarkston discount because Jesus Christ.</div>
+            <div class="comment-actions">
+                <span>👍 789</span>
+                <span>👎 45</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">IMovedAwayIn2019</span>
+                </div>
+                <span class="comment-time">15 min ago</span>
+            </div>
+            <div class="comment-body">Moved to Portland 6 years ago. Best decision I ever made. Enjoy your "freedom," idiots 😂😂😂</div>
+            <div class="comment-actions">
+                <span>👍 123</span>
+                <span>👎 678</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">StillHere_SomeReason</span>
+                    <span class="commenter-badge badge-local">Local</span>
+                </div>
+                <span class="comment-time">14 min ago</span>
+            </div>
+            <div class="comment-body">imagine moving to Portland and thinking YOU won 💀</div>
+            <div class="comment-actions">
+                <span>👍 2.8K</span>
+                <span>👎 234</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">GrammarPolice_Officer</span>
+                </div>
+                <span class="comment-time">10 min ago</span>
+            </div>
+            <div class="comment-body">*you're having a heart attack</div>
+            <div class="comment-actions">
+                <span>👍 34</span>
+                <span>👎 567</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">ClarksTOWNLifer1982</span>
+                    <span class="commenter-badge badge-local">Local</span>
+                </div>
+                <span class="comment-time">9 min ago</span>
+            </div>
+            <div class="comment-body">no one said "your having a heart attack" what are you correcting</div>
+            <div class="comment-actions">
+                <span>👍 456</span>
+                <span>👎 12</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment reply">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">GrammarPolice_Officer</span>
+                </div>
+                <span class="comment-time">8 min ago</span>
+            </div>
+            <div class="comment-body">sorry wrong article</div>
+            <div class="comment-actions">
+                <span>👍 234</span>
+                <span>👎 89</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">ActualCouncilmemberSDontSueMe</span>
+                </div>
+                <span class="comment-time">5 min ago</span>
+            </div>
+            <div class="comment-body">I was told there would be no accountability for this vote. Why is everyone mad. We said it could be changed later. Why are you like this.</div>
+            <div class="comment-actions">
+                <span>👍 23</span>
+                <span>👎 8.9K</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">ClassicRock_Dave</span>
+                </div>
+                <span class="comment-time">3 min ago</span>
+            </div>
+            <div class="comment-body">🎵 "Another one bites the dust" 🎵 lmao but seriously this is horrible</div>
+            <div class="comment-actions">
+                <span>👍 567</span>
+                <span>👎 345</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <div>
+                    <span class="commenter-name">PatHolman_Official</span>
+                    <span class="commenter-badge badge-verified">Verified</span>
+                </div>
+                <span class="comment-time">Just now</span>
+            </div>
+            <div class="comment-body">For the record, I was absent due to a family emergency that required an ambulance. The irony is not lost on me. No further comment.</div>
+            <div class="comment-actions">
+                <span>👍 12.4K</span>
+                <span>👎 567</span>
+                <span>Reply</span>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- RELATED ARTICLES -->
+    <section class="related-section">
+        <h3>📰 Related Articles</h3>
+        <div class="related-grid">
+            <div class="related-item">
+                <h4><a href="#">Man Who Voted Against Library Funding Asks Facebook How To Spell "Consequences"</a></h4>
+                <div class="related-meta">Local • 2.3K shares</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Area Hospital Rebrands As "Expensive Building You Can Look At From Outside"</a></h4>
+                <div class="related-meta">Healthcare • 5.6K shares</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Local Man's GoFundMe For Surgery Now Accepting Prayers In Lieu Of Money, Which Is Good Because That's All It's Getting</a></h4>
+                <div class="related-meta">Community • 8.9K shares</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Study: 100% Of People Who Died Waiting For Ambulance Were "Pretty Sure They'd Be Fine"</a></h4>
+                <div class="related-meta">Science • 12K shares</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-section">
+        <h3>🔥 You Might Also Be Interested In</h3>
+        <div class="related-grid">
+            <div class="related-item">
+                <h4><a href="#">Woman Who Said "My Taxes Are Too High" Shocked Her Roads Have Potholes</a></h4>
+                <div class="related-meta">Infrastructure • Trending</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Nation's Fire Departments Clarify They Also Won't Do CPR If You Don't Like It</a></h4>
+                <div class="related-meta">National • Satire</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Autopsy Report Lists Cause Of Death As "Voted Against Own Interests"</a></h4>
+                <div class="related-meta">Obituaries • Featured</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Poll: Americans Increasingly Willing To Die To Prove A Point</a></h4>
+                <div class="related-meta">Politics • 34K shares</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">Town That Eliminated Police Funding Surprised Crime Still Illegal</a></h4>
+                <div class="related-meta">Law & Order • Archives</div>
+            </div>
+            <div class="related-item">
+                <h4><a href="#">New Study Confirms Dying To Own The Libs Not As Satisfying As Previously Thought</a></h4>
+                <div class="related-meta">Research • Peer Reviewed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL AD -->
+    <div class="ad-container">
+        <div class="ad-label">This Article Brought To You By</div>
+        <div class="ad-content">
+            <h3>⚰️ COSTCO CASKETS ⚰️</h3>
+            <p><strong>Members save an EXTRA 15%!</strong></p>
+            <p>Now available in Clarkston with <em>expedited delivery</em></p>
+            <div class="price">Starting at $899</div>
+            <p><em>"The last bulk buy you'll ever need"</em></p>
+            <a href="#" class="ad-cta">Shop Now — Free 2-Day Shipping!</a>
+        </div>
+    </div>
+
+</main>
+
+<footer class="site-footer">
+    <div class="footer-logo">HuckFinn</div>
+    <p>"All The News That's Fit To Satirize"</p>
+    <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Corrections</a>
+        <a href="#">Ethics Policy (lol)</a>
+        <a href="#">Advertise</a>
+        <a href="#">Subscribe</a>
+        <a href="#">Obituaries (Submit Yours Early!)</a>
+    </div>
+    <p class="footer-disclaimer">
+        HuckFinn is a satirical publication. All articles are fictional and intended for entertainment purposes only. 
+        Any resemblance to actual events or persons is purely coincidental and frankly a little concerning. 
+        If you're a Clarkston resident experiencing a medical emergency, we genuinely recommend moving. 
+        © 2025 HuckFinn Media LLC. All rights reserved. Please don't sue us.
+    </p>
+</footer>
+
+</body>
+</html>

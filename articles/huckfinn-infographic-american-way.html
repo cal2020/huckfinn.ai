@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The American Way™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(180deg, #0a1628 0%, #050a14 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(180deg, #f5f0e6 0%, #e8e4db 100%);
+            border: 4px solid #1a1a1a;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0d1f33 100%);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 4px solid #c9a227;
+            position: relative;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: #c9a227;
+        }
+
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-top: 1rem;
+        }
+
+        .header .trademark {
+            font-size: 1rem;
+            vertical-align: super;
+        }
+
+        .header .subtitle {
+            font-size: 0.85rem;
+            color: #c9a227;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .timeline-container {
+            padding: 2rem 1.5rem;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 3rem;
+            top: 2rem;
+            bottom: 2rem;
+            width: 4px;
+            background: linear-gradient(180deg, #1e3a5f 0%, #8b0000 50%, #1a1a1a 100%);
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            position: relative;
+        }
+
+        .step-marker {
+            width: 3rem;
+            height: 3rem;
+            background: white;
+            border: 3px solid #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .step-content {
+            flex: 1;
+            margin-left: 1rem;
+            padding: 0.75rem 1rem;
+            background: white;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            box-shadow: 3px 3px 0 #1a1a1a;
+        }
+
+        .step-quote {
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        .step-quote em {
+            font-style: italic;
+            color: #666;
+        }
+
+        .step-arrow {
+            text-align: center;
+            padding: 0.25rem 0;
+            margin-left: 1.25rem;
+            font-size: 1.2rem;
+            color: #8b0000;
+        }
+
+        .step-disaster .step-marker {
+            background: #8b0000;
+            border-color: #5c0000;
+        }
+
+        .step-disaster .step-content {
+            background: #fff0f0;
+            border-color: #8b0000;
+            box-shadow: 3px 3px 0 #8b0000;
+        }
+
+        .step-final .step-marker {
+            background: #c9a227;
+            border-color: #8b7018;
+        }
+
+        .step-final .step-content {
+            background: #fffbeb;
+            border-color: #c9a227;
+            box-shadow: 3px 3px 0 #c9a227;
+        }
+
+        .step-ironic .step-marker {
+            background: #1a1a1a;
+        }
+
+        .step-ironic .step-marker span {
+            filter: invert(0);
+        }
+
+        .conclusion-banner {
+            background: #1a1a1a;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 4px solid #c9a227;
+        }
+
+        .conclusion-text {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.5;
+        }
+
+        .conclusion-text .highlight {
+            color: #c9a227;
+        }
+
+        .footer {
+            background: #8b0000;
+            padding: 1rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .footer-tagline {
+            font-size: 0.75rem;
+            color: #c9a227;
+            margin-top: 0.25rem;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="stars">★ ★ ★ ★ ★</div>
+            <h1>The American Way<span class="trademark">™</span></h1>
+            <div class="subtitle">A Step-by-Step Guide to Poisoning Thanksgiving</div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-step">
+                <div class="step-marker"><span>🌲</span></div>
+                <div class="step-content">
+                    <div class="step-quote">"We know better than Indigenous peoples"</div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step step-disaster">
+                <div class="step-marker"><span>🔥</span></div>
+                <div class="step-content">
+                    <div class="step-quote"><em>*Creates megafires*</em></div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step">
+                <div class="step-marker"><span>🧪</span></div>
+                <div class="step-content">
+                    <div class="step-quote">"We invented forever chemicals!"</div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step step-disaster">
+                <div class="step-marker"><span>☠️</span></div>
+                <div class="step-content">
+                    <div class="step-quote"><em>*Poisons everything forever*</em></div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step">
+                <div class="step-marker"><span>📊</span></div>
+                <div class="step-content">
+                    <div class="step-quote">"Let's study how many people are dying"</div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step step-ironic">
+                <div class="step-marker"><span>💰</span></div>
+                <div class="step-content">
+                    <div class="step-quote">"Actually, let's not"</div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step step-disaster">
+                <div class="step-marker"><span>🗑️</span></div>
+                <div class="step-content">
+                    <div class="step-quote"><em>*Retracts study*</em></div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step step-final">
+                <div class="step-marker"><span>🦃</span></div>
+                <div class="step-content">
+                    <div class="step-quote">"Happy Thanksgiving!"</div>
+                </div>
+            </div>
+
+            <div class="step-arrow">↓</div>
+
+            <div class="timeline-step">
+                <div class="step-marker"><span>🤷</span></div>
+                <div class="step-content">
+                    <div class="step-quote">"Why is everyone sick?"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion-banner">
+            <div class="conclusion-text">
+                This is not a system.<br>
+                It's a <span class="highlight">Rube Goldberg machine</span> of consequences.
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-brand">HUCKFINN</div>
+            <div class="footer-tagline">America's Finest Newspaper</div>
+        </div>
+    </div>
+</body>
+</html>

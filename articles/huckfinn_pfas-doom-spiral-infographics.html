@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The PFAS Thanksgiving Doom Spiral</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --doom-red: #e63946;
+            --toxic-green: #2de2a6;
+            --warning-yellow: #ffd166;
+            --death-purple: #9b5de5;
+            --dark-bg: #0d0d0d;
+            --charcoal: #1a1a1a;
+            --bone: #f4f1de;
+            --ember: #ff6b35;
+            --foam-blue: #4cc9f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--bone);
+            font-family: 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Toxic pattern overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(45, 226, 166, 0.02) 2px,
+                    rgba(45, 226, 166, 0.02) 4px
+                );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            border-bottom: 4px solid var(--doom-red);
+            margin-bottom: 4rem;
+        }
+
+        .hero::after {
+            content: '☠️';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero h1 {
+            font-family: 'Dela Gothic One', cursive;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            background: linear-gradient(135deg, var(--doom-red), var(--ember), var(--warning-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero .subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--toxic-green);
+            letter-spacing: 4px;
+        }
+
+        /* DOOM LOOP SECTION */
+        .doom-loop {
+            background: var(--charcoal);
+            border: 2px solid var(--doom-red);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doom-loop::before {
+            content: '🔄';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.03;
+            right: -50px;
+            bottom: -100px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--ember);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .loop-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .loop-step {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--doom-red);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .loop-step:nth-child(even) {
+            border-left-color: var(--toxic-green);
+        }
+
+        .loop-step:nth-child(3n) {
+            border-left-color: var(--warning-yellow);
+        }
+
+        .loop-step:hover {
+            background: rgba(230, 57, 70, 0.1);
+            transform: translateX(10px);
+        }
+
+        .loop-step .emoji {
+            font-size: 1.5rem;
+            min-width: 50px;
+        }
+
+        .loop-step .text {
+            font-size: 0.95rem;
+        }
+
+        .loop-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--doom-red);
+            padding: 0.25rem;
+            opacity: 0.7;
+        }
+
+        /* GEM TABLE */
+        .gem-table-section {
+            margin-bottom: 4rem;
+        }
+
+        .gem-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--charcoal);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .gem-table th {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            background: var(--doom-red);
+            color: var(--bone);
+            padding: 1rem;
+            text-align: left;
+            letter-spacing: 2px;
+        }
+
+        .gem-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(244, 241, 222, 0.1);
+        }
+
+        .gem-table tr:hover {
+            background: rgba(255, 107, 53, 0.1);
+        }
+
+        .gem-table .emoji-cell {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .gem-table .count-cell {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--toxic-green);
+            text-align: center;
+        }
+
+        .gem-table .irony-cell {
+            color: var(--warning-yellow);
+            font-size: 0.9rem;
+        }
+
+        .gem-table tfoot td {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            background: rgba(0,0,0,0.5);
+            color: var(--toxic-green);
+        }
+
+        /* IRONY PYRAMID */
+        .pyramid-section {
+            margin-bottom: 4rem;
+        }
+
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 2rem;
+        }
+
+        .pyramid-level {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 2rem;
+            text-align: center;
+            position: relative;
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+            font-size: 0.85rem;
+        }
+
+        .pyramid-level:nth-child(1) { 
+            width: 15%; 
+            background: var(--doom-red);
+            font-size: 2rem;
+        }
+        .pyramid-level:nth-child(2) { width: 25%; background: #d63447; }
+        .pyramid-level:nth-child(3) { width: 35%; background: #c62d48; }
+        .pyramid-level:nth-child(4) { width: 45%; background: #b32649; }
+        .pyramid-level:nth-child(5) { width: 55%; background: #9f1f4a; }
+        .pyramid-level:nth-child(6) { width: 65%; background: #8c184b; }
+        .pyramid-level:nth-child(7) { width: 75%; background: #78114c; }
+        .pyramid-level:nth-child(8) { width: 85%; background: #650a4d; }
+        .pyramid-level:nth-child(9) { 
+            width: 100%; 
+            background: var(--death-purple);
+            clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+            border-radius: 0 0 15px 15px;
+            padding: 1.5rem;
+        }
+
+        .pyramid-level .level-emoji {
+            font-size: 1.3rem;
+            margin-right: 0.5rem;
+        }
+
+        /* EXPOSURE WHEEL */
+        .wheel-section {
+            margin-bottom: 4rem;
+        }
+
+        .wheel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem;
+            background: var(--charcoal);
+            border-radius: 20px;
+            border: 2px solid var(--foam-blue);
+        }
+
+        .wheel-center {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .wheel-hub {
+            width: 100px;
+            height: 100px;
+            background: var(--doom-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(230, 57, 70, 0.5);
+        }
+
+        .wheel-spoke {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .wheel-spoke .spoke-emoji {
+            font-size: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .wheel-spoke:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+        .wheel-spoke:nth-child(2) { top: 15%; right: 0; }
+        .wheel-spoke:nth-child(3) { top: 50%; right: -20px; transform: translateY(-50%); }
+        .wheel-spoke:nth-child(4) { bottom: 15%; right: 0; }
+        .wheel-spoke:nth-child(5) { bottom: 0; left: 50%; transform: translateX(-50%); }
+        .wheel-spoke:nth-child(6) { bottom: 15%; left: 0; }
+        .wheel-spoke:nth-child(7) { top: 50%; left: -20px; transform: translateY(-50%); }
+        .wheel-spoke:nth-child(8) { top: 15%; left: 0; }
+
+        .wheel-spoke:nth-child(2) .spoke-emoji { animation-delay: 0.3s; }
+        .wheel-spoke:nth-child(3) .spoke-emoji { animation-delay: 0.6s; }
+        .wheel-spoke:nth-child(4) .spoke-emoji { animation-delay: 0.9s; }
+        .wheel-spoke:nth-child(5) .spoke-emoji { animation-delay: 1.2s; }
+        .wheel-spoke:nth-child(6) .spoke-emoji { animation-delay: 1.5s; }
+        .wheel-spoke:nth-child(7) .spoke-emoji { animation-delay: 1.8s; }
+        .wheel-spoke:nth-child(8) .spoke-emoji { animation-delay: 2.1s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .wheel-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            max-width: 800px;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px dashed var(--foam-blue);
+        }
+
+        .flow-item {
+            background: rgba(0,0,0,0.5);
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .flow-arrow {
+            color: var(--toxic-green);
+            font-size: 1.5rem;
+        }
+
+        /* FIREFIGHTER TRIFECTA */
+        .trifecta-section {
+            margin-bottom: 4rem;
+        }
+
+        .trifecta-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%);
+            border: 3px solid var(--ember);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trifecta-card::before {
+            content: '👨‍🚒';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .trifecta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .trifecta-item {
+            background: rgba(0,0,0,0.4);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        .trifecta-item .item-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trifecta-item .item-action {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--ember);
+            margin-bottom: 0.5rem;
+        }
+
+        .trifecta-item .item-source {
+            font-size: 0.85rem;
+            color: var(--bone);
+            opacity: 0.8;
+        }
+
+        .trifecta-result {
+            background: var(--doom-red);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .trifecta-result span {
+            color: var(--warning-yellow);
+        }
+
+        /* TIMELINE */
+        .timeline-section {
+            margin-bottom: 4rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--toxic-green), var(--doom-red), var(--death-purple));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--charcoal);
+            border-radius: 10px;
+            border-left: 4px solid var(--ember);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--ember);
+            border-radius: 50%;
+            border: 4px solid var(--dark-bg);
+        }
+
+        .timeline-item.danger::before { background: var(--doom-red); }
+        .timeline-item.toxic::before { background: var(--toxic-green); }
+        .timeline-item.death::before { background: var(--death-purple); }
+
+        .timeline-era {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: var(--warning-yellow);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-event {
+            font-size: 1.1rem;
+            color: var(--bone);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-consequence {
+            font-size: 0.9rem;
+            color: var(--toxic-green);
+            font-style: italic;
+        }
+
+        /* UNDERCOUNT CALCULATOR */
+        .undercount-section {
+            margin-bottom: 4rem;
+        }
+
+        .undercount-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .undercount-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .undercount-card {
+            background: var(--charcoal);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .undercount-card.counted {
+            border: 3px solid var(--toxic-green);
+        }
+
+        .undercount-card.not-counted {
+            border: 3px solid var(--doom-red);
+        }
+
+        .undercount-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .counted .undercount-title { color: var(--toxic-green); }
+        .not-counted .undercount-title { color: var(--doom-red); }
+
+        .undercount-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .undercount-item .check { color: var(--toxic-green); }
+        .undercount-item .cross { color: var(--doom-red); }
+
+        .undercount-result {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--charcoal), #2a1a2a);
+            border: 3px solid var(--death-purple);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .undercount-result .result-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .result-box {
+            background: rgba(0,0,0,0.5);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+        }
+
+        .result-box .label {
+            font-size: 0.9rem;
+            color: var(--bone);
+            opacity: 0.7;
+        }
+
+        .result-box .value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+        }
+
+        .result-box.study .value { color: var(--toxic-green); }
+        .result-box.actual .value { color: var(--warning-yellow); }
+        .result-box.status .value { color: var(--doom-red); }
+
+        /* TOP 10 GEMS */
+        .gems-section {
+            margin-bottom: 4rem;
+        }
+
+        .gem-card {
+            background: var(--charcoal);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gem-card:nth-child(1) { border-color: gold; }
+        .gem-card:nth-child(2) { border-color: silver; }
+        .gem-card:nth-child(3) { border-color: #cd7f32; }
+        .gem-card:nth-child(n+4) { border-color: var(--ember); }
+
+        .gem-rank {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+        }
+
+        .gem-text {
+            padding-right: 3rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .gem-irony {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .gem-irony .skull {
+            font-size: 1.2rem;
+        }
+
+        /* SATIRICAL LAYERS */
+        .layers-section {
+            margin-bottom: 4rem;
+        }
+
+        .layers-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--charcoal);
+            border-radius: 10px;
+        }
+
+        .layer-item .layer-emoji {
+            font-size: 2rem;
+        }
+
+        .layer-item .layer-label {
+            font-size: 0.9rem;
+        }
+
+        .layers-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 2rem;
+            background: var(--charcoal);
+            border-radius: 15px;
+        }
+
+        .layer-flow-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .layer-flow-arrow {
+            color: var(--doom-red);
+            font-size: 1.5rem;
+        }
+
+        /* AMERICAN WAY */
+        .american-section {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .american-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a1a1a 100%);
+            border-radius: 20px;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, var(--doom-red), var(--foam-blue)) 1;
+        }
+
+        .american-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50px;
+        }
+
+        .american-step .step-emoji {
+            font-size: 1.5rem;
+        }
+
+        .american-arrow {
+            font-size: 1.5rem;
+            color: var(--warning-yellow);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 4px solid var(--doom-red);
+            margin-top: 2rem;
+        }
+
+        .footer-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--toxic-green);
+            letter-spacing: 3px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .pyramid-level {
+                font-size: 0.7rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .wheel-center {
+                width: 250px;
+                height: 250px;
+            }
+
+            .wheel-spoke {
+                font-size: 0.7rem;
+            }
+
+            .wheel-spoke .spoke-emoji {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-emoji">🦃💀</div>
+            <h1>The PFAS Thanksgiving Doom Spiral</h1>
+            <p class="subtitle">A Visual Guide to America's Most Ironic Holiday</p>
+        </section>
+
+        <!-- MASTER DOOM LOOP -->
+        <section class="doom-loop">
+            <h2 class="section-title">🔄 The Master Doom Loop</h2>
+            <div class="loop-container">
+                <div class="loop-step"><span class="emoji">🌲</span><span class="text">Indigenous fire management (10,000 years)</span></div>
+                <div class="loop-arrow">↓ 🚫 BANNED (1800s)</div>
+                <div class="loop-step"><span class="emoji">🔥</span><span class="text">100 years of fire suppression</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">⛽</span><span class="text">Massive fuel buildup</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🌡️</span><span class="text">+ Climate change</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🔥🔥🔥</span><span class="text">MEGAFIRES</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🏠💨</span><span class="text">Burning homes release PFAS</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🧯</span><span class="text">PFAS foam used to fight fires</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">👨‍🚒</span><span class="text">Firefighters wear PFAS gear</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🌍</span><span class="text">PFAS contaminates soil/water</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🦃🦌</span><span class="text">Wildlife eats/drinks contamination</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">⚠️</span><span class="text">"DO NOT EAT" advisory</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">📅</span><span class="text">Released on THANKSGIVING MORNING</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🤷</span><span class="text">America eats store-bought turkey</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🧴🍺👗🍳</span><span class="text">...also full of PFAS</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">💀</span><span class="text">6,800+ cancer deaths/year (UNDERCOUNTED)</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">📊</span><span class="text">Study documents deaths</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">💰</span><span class="text">Lobbyists see study</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🗑️</span><span class="text">STUDY RETRACTED</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">❓</span><span class="text">"How many deaths?" → "What deaths?"</span></div>
+                <div class="loop-arrow">↓</div>
+                <div class="loop-step"><span class="emoji">🦃</span><span class="text">Happy Thanksgiving!</span></div>
+            </div>
+        </section>
+
+        <!-- GEM TABLE -->
+        <section class="gem-table-section">
+            <h2 class="section-title">📊 Gem Layers at a Glance</h2>
+            <table class="gem-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Emoji</th>
+                        <th>Theme</th>
+                        <th>Gems</th>
+                        <th>Peak Irony</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td class="emoji-cell">🦃</td>
+                        <td>Turkey Poisoning</td>
+                        <td class="count-cell">13</td>
+                        <td class="irony-cell">Advisory released ON Thanksgiving</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td class="emoji-cell">🔄</td>
+                        <td>PFAS Doom Loop</td>
+                        <td class="count-cell">5</td>
+                        <td class="irony-cell">Your couch poisons your turkey</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td class="emoji-cell">🌡️</td>
+                        <td>Climate Feedback</td>
+                        <td class="count-cell">4</td>
+                        <td class="irony-cell">Feedback loop = poisoned dinner</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td class="emoji-cell">🔥</td>
+                        <td>Fire Suppression</td>
+                        <td class="count-cell">9</td>
+                        <td class="irony-cell">Banning fire created megafires</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td class="emoji-cell">💀</td>
+                        <td>Population Death</td>
+                        <td class="count-cell">3</td>
+                        <td class="irony-cell">98% contaminated, study undercounts</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td class="emoji-cell">📊🗑️</td>
+                        <td>Study Retraction</td>
+                        <td class="count-cell">14</td>
+                        <td class="irony-cell">Truth retracted for being true</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">TOTAL</td>
+                        <td class="count-cell">48</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <!-- IRONY PYRAMID -->
+        <section class="pyramid-section">
+            <h2 class="section-title">🎯 The Irony Pyramid</h2>
+            <div class="pyramid">
+                <div class="pyramid-level">🗑️</div>
+                <div class="pyramid-level"><span class="level-emoji">📊</span> STUDY "Too many deaths"</div>
+                <div class="pyramid-level"><span class="level-emoji">💀</span> DEATHS 6,800/yr (undercount)</div>
+                <div class="pyramid-level"><span class="level-emoji">🩸</span> 98% OF USA HAS PFAS IN BLOOD</div>
+                <div class="pyramid-level"><span class="level-emoji">🦃🦌🐟</span> WILDLIFE CONTAMINATED "GLOBALLY"</div>
+                <div class="pyramid-level"><span class="level-emoji">💧🌍</span> SOIL & WATER PERMANENTLY CONTAMINATED</div>
+                <div class="pyramid-level"><span class="level-emoji">🧯👨‍🚒</span> FIREFIGHTING: FOAM + GEAR + SMOKE = TRIPLE PFAS</div>
+                <div class="pyramid-level"><span class="level-emoji">🔥🔥🔥</span> MEGAFIRES — Created by 100 years of fire suppression</div>
+                <div class="pyramid-level"><span class="level-emoji">🦃</span> THANKSGIVING TURKEY — "Do Not Eat" — Released: THANKSGIVING MORNING</div>
+            </div>
+        </section>
+
+        <!-- PFAS EXPOSURE WHEEL -->
+        <section class="wheel-section">
+            <h2 class="section-title">🧪 The PFAS Exposure Wheel</h2>
+            <div class="wheel-container">
+                <div class="wheel-center">
+                    <div class="wheel-spoke"><span class="spoke-emoji">🍳</span><span>Cookware</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">🧴</span><span>Cosmetics</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">🥡</span><span>Packaging</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">🍺</span><span>Beer</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">🧹</span><span>Carpets</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">💧</span><span>Water</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">👗</span><span>Clothing</span></div>
+                    <div class="wheel-spoke"><span class="spoke-emoji">🦃</span><span>Turkey</span></div>
+                    <div class="wheel-hub">😶</div>
+                </div>
+                <div class="wheel-flow">
+                    <div class="flow-item">⚠️ "DO NOT EAT"</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-item">📊 Study: 6,800 deaths</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-item">💰 Lobbyists</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-item">🗑️ Study Retracted</div>
+                    <span class="flow-arrow">→</span>
+                    <div class="flow-item">🤷 Problem Solved!</div>
+                </div>
+                <p style="margin-top: 2rem; text-align: center; opacity: 0.8;">
+                    <strong style="color: var(--toxic-green);">The study counted:</strong> 💧 (1 source)<br>
+                    <strong style="color: var(--doom-red);">Actual sources:</strong> 🍳🧴👗🧹🥡🍺💧🦃🌬️ (ALL OF THEM)
+                </p>
+            </div>
+        </section>
+
+        <!-- FIREFIGHTER TRIFECTA -->
+        <section class="trifecta-section">
+            <h2 class="section-title">👨‍🚒 Firefighter Doom Trifecta</h2>
+            <div class="trifecta-card">
+                <div class="trifecta-grid">
+                    <div class="trifecta-item">
+                        <div class="item-emoji">😮‍💨</div>
+                        <div class="item-action">BREATHE</div>
+                        <div class="item-source">🏠💨 Burning homes (PFAS products)</div>
+                    </div>
+                    <div class="trifecta-item">
+                        <div class="item-emoji">👕</div>
+                        <div class="item-action">WEAR</div>
+                        <div class="item-source">🧥 Turnout gear (PFAS-coated)</div>
+                    </div>
+                    <div class="trifecta-item">
+                        <div class="item-emoji">🧯</div>
+                        <div class="item-action">SPRAY</div>
+                        <div class="item-source">🫧 AFFF Foam (PFAS-based)</div>
+                    </div>
+                </div>
+                <div class="trifecta-result">
+                    📊 RESULT: <span>90% of line-of-duty deaths = CANCER</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE -->
+        <section class="timeline-section">
+            <h2 class="section-title">🕰️ The Timeline of Consequences</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-era">Pre-1800s</div>
+                    <div class="timeline-event">🌲🔥 Indigenous fire management</div>
+                    <div class="timeline-consequence">Healthy forests, small fires</div>
+                </div>
+                <div class="timeline-item danger">
+                    <div class="timeline-era">1800s</div>
+                    <div class="timeline-event">🚫🔥 Colonizers ban burning</div>
+                    <div class="timeline-consequence">Fuel starts accumulating</div>
+                </div>
+                <div class="timeline-item danger">
+                    <div class="timeline-era">1935</div>
+                    <div class="timeline-event">⏰🚒 "10 AM Policy"</div>
+                    <div class="timeline-consequence">Suppress ALL fires by 10 AM</div>
+                </div>
+                <div class="timeline-item toxic">
+                    <div class="timeline-era">1950s</div>
+                    <div class="timeline-event">🧪✨ PFAS invented</div>
+                    <div class="timeline-consequence">"Non-stick! Waterproof! Forever!"</div>
+                </div>
+                <div class="timeline-item toxic">
+                    <div class="timeline-era">1950s-2024</div>
+                    <div class="timeline-event">🍳👗🧹🥡🧯 PFAS in everything</div>
+                    <div class="timeline-consequence">Products, foam, gear, packaging</div>
+                </div>
+                <div class="timeline-item danger">
+                    <div class="timeline-era">2000s</div>
+                    <div class="timeline-event">🌡️📈 Climate change accelerates</div>
+                    <div class="timeline-consequence">Longer fire seasons, drier fuel</div>
+                </div>
+                <div class="timeline-item danger">
+                    <div class="timeline-era">2020s</div>
+                    <div class="timeline-event">🔥🔥🔥 Megafires explode</div>
+                    <div class="timeline-consequence">10M+ acres/year burning</div>
+                </div>
+                <div class="timeline-item death">
+                    <div class="timeline-era">2024</div>
+                    <div class="timeline-event">🦃☠️ Wildlife contaminated globally</div>
+                    <div class="timeline-consequence">"Do not eat" advisories</div>
+                </div>
+                <div class="timeline-item death">
+                    <div class="timeline-era">11/27/2024</div>
+                    <div class="timeline-event">📅🦃⚠️ Maine issues turkey advisory</div>
+                    <div class="timeline-consequence">ON THANKSGIVING MORNING</div>
+                </div>
+                <div class="timeline-item death">
+                    <div class="timeline-era">2024</div>
+                    <div class="timeline-event">📊💀 Study: 6,800 deaths/year</div>
+                    <div class="timeline-consequence">From drinking water ALONE</div>
+                </div>
+                <div class="timeline-item death">
+                    <div class="timeline-era">2024</div>
+                    <div class="timeline-event">🗑️💰 Study retracted</div>
+                    <div class="timeline-consequence">"Population groundswell mitigation"</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-era">2025+</div>
+                    <div class="timeline-event">⏳❓ Remediation</div>
+                    <div class="timeline-consequence">"Decades" (if ever)</div>
+                </div>
+                <div class="timeline-item death">
+                    <div class="timeline-era">3024</div>
+                    <div class="timeline-event">♾️☠️ PFAS still in ecosystem</div>
+                    <div class="timeline-consequence">Outlasts civilization</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UNDERCOUNT CALCULATOR -->
+        <section class="undercount-section">
+            <h2 class="section-title">💀 The Undercount Calculator</h2>
+            <div class="undercount-grid">
+                <div class="undercount-card counted">
+                    <div class="undercount-title">📊 WHAT THE STUDY COUNTED</div>
+                    <div class="undercount-item">
+                        <span class="check">✅</span>
+                        <span>💧 Drinking water (half the country only)</span>
+                    </div>
+                </div>
+                <div class="undercount-card not-counted">
+                    <div class="undercount-title">📊 WHAT THE STUDY DIDN'T COUNT</div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>💧 Drinking water (other half of country)</span></div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>💧 Most contaminated areas</span></div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>🍽️ Food exposure</span></div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>🌬️ Air exposure</span></div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>🧹 Dust exposure</span></div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>👷 Occupational exposure</span></div>
+                    <div class="undercount-item"><span class="cross">❌</span><span>🛒 Consumer product exposure</span></div>
+                </div>
+                <div class="undercount-result">
+                    <div class="result-row">
+                        <div class="result-box study">
+                            <div class="label">Study Result</div>
+                            <div class="value">6,800 deaths/yr</div>
+                        </div>
+                        <div class="result-box actual">
+                            <div class="label">Actual Result</div>
+                            <div class="value">¯\_(ツ)_/¯</div>
+                        </div>
+                    </div>
+                    <div class="result-row">
+                        <div class="result-box status">
+                            <div class="label">Study Status</div>
+                            <div class="value">🗑️ RETRACTED</div>
+                        </div>
+                        <div class="result-box status">
+                            <div class="label">Reason</div>
+                            <div class="value" style="font-size: 1rem;">"Population groundswell mitigation"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOP 10 GEMS -->
+        <section class="gems-section">
+            <h2 class="section-title">🏆 Top 10 Gems (Ranked by Irony)</h2>
+            <div class="gem-card">
+                <div class="gem-rank">🥇</div>
+                <div class="gem-text">The study was retracted not because it was wrong, but because it was correct in a way that was inconvenient</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">🥈</div>
+                <div class="gem-text">This year, the turkey pardons YOU</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">🥉</div>
+                <div class="gem-text">We colonized the land, banned Indigenous fire practices, created 100 years of fuel buildup, invented forever chemicals, put them in everything, built houses full of them in fire zones, and now the turkeys are poison. This is not a system, it's a Rube Goldberg machine of consequences.</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">4</div>
+                <div class="gem-text">"Population groundswell mitigation" — because "suppressing evidence of mass poisoning" tested poorly with focus groups</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">5</div>
+                <div class="gem-text">90% of firefighter line-of-duty deaths are from cancer. They're poisoned by the gear they wear, the foam they spray, and the smoke from your PFAS-laden carpets. Happy Thanksgiving!</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">6</div>
+                <div class="gem-text">The study found 6,800 cancer deaths per year. The retraction found 0 cancer deaths per year. Science!</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">7</div>
+                <div class="gem-text">"Do not eat" advisories now cover 17 states — still fewer than the states that ban books</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">8</div>
+                <div class="gem-text">California banned PFAS foam. The PFAS from the previous 70 years of foam will be ready for comment in approximately 3024.</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">9</div>
+                <div class="gem-text">The Forest Service's 1935 "10 AM Policy" (extinguish all fires by 10 AM): the origin story for your poisoned Thanksgiving turkey.</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+            <div class="gem-card">
+                <div class="gem-rank">10</div>
+                <div class="gem-text">Retracting the study doesn't un-poison the water. But it does un-poison the quarterly earnings call.</div>
+                <div class="gem-irony"><span class="skull">☠️</span><span class="skull">☠️</span><span class="skull">☠️</span></div>
+            </div>
+        </section>
+
+        <!-- SATIRICAL LAYERS -->
+        <section class="layers-section">
+            <h2 class="section-title">🎭 The Satirical Layers (Emoji Legend)</h2>
+            <div class="layers-legend">
+                <div class="layer-item">
+                    <span class="layer-emoji">🦃</span>
+                    <span class="layer-label">THANKSGIVING<br><small style="color: var(--warning-yellow);">Surface irony</small></span>
+                </div>
+                <div class="layer-item">
+                    <span class="layer-emoji">🔄</span>
+                    <span class="layer-label">DOOM LOOP<br><small style="color: var(--warning-yellow);">Systemic irony</small></span>
+                </div>
+                <div class="layer-item">
+                    <span class="layer-emoji">🔥</span>
+                    <span class="layer-label">FIRE SUPPRESSION<br><small style="color: var(--warning-yellow);">Historical irony</small></span>
+                </div>
+                <div class="layer-item">
+                    <span class="layer-emoji">💀</span>
+                    <span class="layer-label">DEATH TOLL<br><small style="color: var(--warning-yellow);">Population irony</small></span>
+                </div>
+                <div class="layer-item">
+                    <span class="layer-emoji">📊🗑️</span>
+                    <span class="layer-label">RETRACTION<br><small style="color: var(--warning-yellow);">Meta irony</small></span>
+                </div>
+            </div>
+            <div class="layers-flow">
+                <div class="layer-flow-item"><span>📊🗑️</span><span>← They retracted the study</span></div>
+                <div class="layer-flow-arrow">↑</div>
+                <div class="layer-flow-item"><span>💀</span><span>← That counted the deaths</span></div>
+                <div class="layer-flow-arrow">↑</div>
+                <div class="layer-flow-item"><span>🔄</span><span>← From the doom loop</span></div>
+                <div class="layer-flow-arrow">↑</div>
+                <div class="layer-flow-item"><span>🔥</span><span>← We created by banning fire</span></div>
+                <div class="layer-flow-arrow">↑</div>
+                <div class="layer-flow-item"><span>🦃</span><span>← That poisoned Thanksgiving</span></div>
+            </div>
+        </section>
+
+        <!-- THE AMERICAN WAY -->
+        <section class="american-section">
+            <h2 class="section-title" style="justify-content: center;">🇺🇸 The American Way™</h2>
+            <div class="american-flow">
+                <div class="american-step"><span class="step-emoji">🌲</span>"We know better than Indigenous peoples"</div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">🔥</span><em>Creates megafires</em></div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">🧪</span>"We invented forever chemicals!"</div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">☠️</span><em>Poisons everything forever</em></div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">📊</span>"Let's study how many people are dying"</div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">💰</span>"Actually, let's not"</div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">🗑️</span><em>Retracts study</em></div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">🦃</span>"Happy Thanksgiving!"</div>
+                <div class="american-arrow">↓</div>
+                <div class="american-step"><span class="step-emoji">🤷</span>"Why is everyone sick?"</div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-emoji">🦃☠️🔥💀📊🗑️</div>
+            <p class="footer-text">Happy Thanksgiving!</p>
+        </footer>
+    </div>
+</body>
+</html>

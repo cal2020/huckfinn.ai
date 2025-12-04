@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Enough Guy Named Al Quietly Assumes 4.2 Million Jobs | HuckFinn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f4f4f4;
+            color: #222;
+            line-height: 1.6;
+        }
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 4px solid #c41e3a;
+        }
+        .header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.8em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .header .tagline {
+            font-style: italic;
+            color: #ccc;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+        .nav {
+            background: #c41e3a;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .breaking-banner {
+            background: #ffcc00;
+            color: #000;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+        }
+        .article-meta {
+            color: #666;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .headline {
+            font-size: 2.4em;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+        .subheadline {
+            font-size: 1.3em;
+            color: #444;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .featured-image {
+            width: 100%;
+            margin: 20px 0;
+            background: #e0e0e0;
+        }
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+        }
+        .caption {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-top: 8px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 3px solid #c41e3a;
+        }
+        .article-body p {
+            margin-bottom: 18px;
+            font-size: 1.1em;
+        }
+        .pullquote {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #c41e3a;
+            border-left: 4px solid #c41e3a;
+            padding: 15px 25px;
+            margin: 25px 0;
+            background: #fafafa;
+        }
+        .ad-container {
+            background: linear-gradient(135deg, #f8f8f8, #e8e8e8);
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad-label {
+            font-size: 0.7em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .ad-content {
+            font-size: 1.1em;
+        }
+        .ad-content h3 {
+            color: #c41e3a;
+            margin-bottom: 10px;
+        }
+        .ad-cta {
+            display: inline-block;
+            background: #c41e3a;
+            color: white;
+            padding: 10px 25px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        .related-section {
+            background: #f4f4f4;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .related-section h3 {
+            font-size: 1.1em;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 2px solid #c41e3a;
+            padding-bottom: 8px;
+        }
+        .related-section ul {
+            list-style: none;
+        }
+        .related-section li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .related-section a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .related-section a:hover {
+            color: #c41e3a;
+        }
+        .comments-section {
+            margin-top: 40px;
+            border-top: 3px solid #1a1a1a;
+            padding-top: 25px;
+        }
+        .comments-section h2 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        .comment-count {
+            color: #666;
+            font-weight: normal;
+            font-size: 0.7em;
+        }
+        .comment {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        .comment.reply {
+            margin-left: 40px;
+            border-left: 2px solid #ddd;
+            padding-left: 15px;
+        }
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 0.9em;
+        }
+        .username {
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+        .username.verified::after {
+            content: " ✓";
+            color: #1da1f2;
+        }
+        .username.premium::after {
+            content: " ⭐";
+            color: gold;
+        }
+        .comment-time {
+            color: #999;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .comment-body {
+            font-size: 0.95em;
+            margin-left: 52px;
+        }
+        .comment-actions {
+            margin-left: 52px;
+            margin-top: 8px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .upvotes {
+            color: #c41e3a;
+            font-weight: bold;
+        }
+        .downvotes {
+            color: #666;
+        }
+        .deleted-comment {
+            color: #999;
+            font-style: italic;
+            background: #f5f5f5;
+            padding: 15px;
+            margin-left: 40px;
+        }
+        .pinned-comment {
+            background: #fffde7;
+            border: 1px solid #fff59d;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .pinned-label {
+            font-size: 0.75em;
+            color: #f9a825;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .footer {
+            background: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            font-size: 0.85em;
+        }
+        .share-buttons {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+        .share-buttons span {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            background: #333;
+            color: white;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+        .trending-badge {
+            display: inline-block;
+            background: #c41e3a;
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            margin-left: 10px;
+            border-radius: 3px;
+        }
+        .sidebar-ad {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .author-bio {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+        }
+        .author-bio .avatar {
+            width: 60px;
+            height: 60px;
+            font-size: 1.2em;
+        }
+        .author-info {
+            margin-left: 15px;
+        }
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        .author-info p {
+            font-size: 0.85em;
+            color: #666;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>HuckFinn</h1>
+    <div class="tagline">America's Finest News Source Since We Just Made That Up</div>
+</div>
+
+<nav class="nav">
+    <a href="#">News</a>
+    <a href="#">Politics</a>
+    <a href="#">Business</a>
+    <a href="#">Technology</a>
+    <a href="#">Opinion</a>
+    <a href="#">Obituaries (Jobs)</a>
+</nav>
+
+<div class="breaking-banner">
+    🚨 BREAKING: Al Now Qualified To Write This Breaking Banner — Reporters Sent Home Early 🚨
+</div>
+
+<div class="container">
+
+    <div class="article-meta">
+        <strong>BUSINESS</strong> • November 26, 2025 • <span style="color:#c41e3a;">TRENDING</span>
+    </div>
+
+    <h1 class="headline">Nice Enough Guy Named Al Quietly Assumes 4.2 Million Jobs; Coworkers Say He 'Means Well'</h1>
+    
+    <h2 class="subheadline">Millions express gratitude for "opportunity to explore non-employment" as Al wins 47th consecutive Employee of the Month award</h2>
+
+    <div class="featured-image">
+        <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background: Office setting -->
+            <rect width="800" height="500" fill="#e8e8e8"/>
+            
+            <!-- Office back wall -->
+            <rect x="0" y="50" width="800" height="350" fill="#f5f5f5"/>
+            
+            <!-- Window -->
+            <rect x="550" y="80" width="200" height="150" fill="#87CEEB" stroke="#8B4513" stroke-width="8"/>
+            <line x1="650" y1="80" x2="650" y2="230" stroke="#8B4513" stroke-width="4"/>
+            <line x1="550" y1="155" x2="750" y2="155" stroke="#8B4513" stroke-width="4"/>
+            
+            <!-- Motivational poster: "EFFICIENCY" -->
+            <rect x="50" y="80" width="120" height="150" fill="white" stroke="#333" stroke-width="2"/>
+            <rect x="60" y="90" width="100" height="80" fill="#c41e3a"/>
+            <text x="110" y="140" text-anchor="middle" fill="white" font-size="14" font-weight="bold">HANG IN</text>
+            <text x="110" y="158" text-anchor="middle" fill="white" font-size="14" font-weight="bold">THERE</text>
+            <text x="110" y="200" text-anchor="middle" fill="#333" font-size="9">*Job not included</text>
+
+            <!-- Floor -->
+            <rect x="0" y="400" width="800" height="100" fill="#8B7355"/>
+            
+            <!-- Desk -->
+            <rect x="200" y="300" width="400" height="20" fill="#8B4513"/>
+            <rect x="220" y="320" width="15" height="80" fill="#8B4513"/>
+            <rect x="565" y="320" width="15" height="80" fill="#8B4513"/>
+            
+            <!-- Computer monitors (many) -->
+            <rect x="230" y="220" width="70" height="50" fill="#333" rx="3"/>
+            <rect x="235" y="225" width="60" height="40" fill="#00ff00"/>
+            <text x="265" y="250" text-anchor="middle" fill="#003300" font-size="8">WORKING</text>
+            
+            <rect x="310" y="220" width="70" height="50" fill="#333" rx="3"/>
+            <rect x="315" y="225" width="60" height="40" fill="#00ff00"/>
+            <text x="345" y="250" text-anchor="middle" fill="#003300" font-size="8">WORKING</text>
+            
+            <rect x="390" y="220" width="70" height="50" fill="#333" rx="3"/>
+            <rect x="395" y="225" width="60" height="40" fill="#00ff00"/>
+            <text x="425" y="250" text-anchor="middle" fill="#003300" font-size="8">WORKING</text>
+            
+            <rect x="470" y="220" width="70" height="50" fill="#333" rx="3"/>
+            <rect x="475" y="225" width="60" height="40" fill="#00ff00"/>
+            <text x="505" y="250" text-anchor="middle" fill="#003300" font-size="8">WORKING</text>
+            
+            <!-- AL - A glowing friendly server/robot figure -->
+            <ellipse cx="400" cy="380" rx="60" ry="15" fill="rgba(0,0,0,0.2)"/>
+            
+            <!-- Al's body - friendly server tower with face -->
+            <rect x="355" y="180" width="90" height="130" fill="#4a90d9" rx="10"/>
+            <rect x="365" y="190" width="70" height="30" fill="#2d5a87"/>
+            
+            <!-- Al's friendly face -->
+            <circle cx="380" cy="250" r="8" fill="white"/>
+            <circle cx="420" cy="250" r="8" fill="white"/>
+            <circle cx="380" cy="250" r="4" fill="#333"/>
+            <circle cx="420" cy="250" r="4" fill="#333"/>
+            <path d="M 375 275 Q 400 295 425 275" stroke="white" stroke-width="4" fill="none"/>
+            
+            <!-- Al's glowing effect -->
+            <ellipse cx="400" cy="245" rx="55" ry="65" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.5"/>
+            <ellipse cx="400" cy="245" rx="65" ry="75" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
+            
+            <!-- Al's name tag -->
+            <rect x="370" y="290" width="60" height="20" fill="white" rx="3"/>
+            <text x="400" y="305" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">HELLO I'M AL</text>
+            
+            <!-- Employee of month ribbons on Al -->
+            <circle cx="345" y="200" r="15" fill="gold" stroke="#DAA520" stroke-width="2"/>
+            <text x="345" y="205" text-anchor="middle" fill="#333" font-size="8">#1</text>
+            
+            <!-- Crying former employee (left) -->
+            <ellipse cx="100" cy="395" rx="25" ry="8" fill="rgba(0,0,0,0.2)"/>
+            <rect x="80" y="320" width="40" height="60" fill="#6B8E23"/>
+            <circle cx="100" cy="300" r="25" fill="#FFDAB9"/>
+            <!-- Sad face -->
+            <circle cx="92" cy="295" r="3" fill="#333"/>
+            <circle cx="108" cy="295" r="3" fill="#333"/>
+            <path d="M 90 310 Q 100 300 110 310" stroke="#333" stroke-width="2" fill="none"/>
+            <!-- Tears -->
+            <ellipse cx="88" cy="305" rx="2" ry="4" fill="#87CEEB"/>
+            <ellipse cx="112" cy="305" rx="2" ry="4" fill="#87CEEB"/>
+            <!-- Box of belongings -->
+            <rect x="75" y="355" width="50" height="35" fill="#CD853F" stroke="#8B4513" stroke-width="2"/>
+            <text x="100" y="375" text-anchor="middle" fill="#333" font-size="7">MY STUFF</text>
+            
+            <!-- Crying former employee (right) -->
+            <ellipse cx="700" cy="395" rx="25" ry="8" fill="rgba(0,0,0,0.2)"/>
+            <rect x="680" y="320" width="40" height="60" fill="#4682B4"/>
+            <circle cx="700" cy="300" r="25" fill="#FFDAB9"/>
+            <!-- Sad face -->
+            <circle cx="692" cy="295" r="3" fill="#333"/>
+            <circle cx="708" cy="295" r="3" fill="#333"/>
+            <path d="M 690 310 Q 700 300 710 310" stroke="#333" stroke-width="2" fill="none"/>
+            <!-- Tears -->
+            <ellipse cx="688" cy="305" rx="2" ry="4" fill="#87CEEB"/>
+            <ellipse cx="712" cy="305" rx="2" ry="4" fill="#87CEEB"/>
+            <!-- Holding "Thank you Al" sign -->
+            <rect x="665" y="340" width="70" height="30" fill="white" stroke="#333"/>
+            <text x="700" y="358" text-anchor="middle" fill="#333" font-size="8">THANK YOU</text>
+            <text x="700" y="368" text-anchor="middle" fill="#c41e3a" font-size="10" font-weight="bold">AL!</text>
+            
+            <!-- HR person in background with clipboard -->
+            <circle cx="600" cy="340" r="18" fill="#FFDAB9"/>
+            <rect x="585" y="358" width="30" height="40" fill="#333"/>
+            <rect x="580" y="370" width="20" height="25" fill="white" stroke="#333"/>
+            <circle cx="595" cy="336" r="2" fill="#333"/>
+            <circle cx="605" cy="336" r="2" fill="#333"/>
+            <path d="M 592 345 Q 600 350 608 345" stroke="#333" stroke-width="1.5" fill="none"/>
+            
+            <!-- Speech bubble from HR -->
+            <path d="M 620 330 L 640 320 L 640 280 L 750 280 L 750 350 L 640 350 L 640 340 Z" fill="white" stroke="#333" stroke-width="2"/>
+            <text x="695" y="305" text-anchor="middle" fill="#333" font-size="9">Al isn't replacing you.</text>
+            <text x="695" y="320" text-anchor="middle" fill="#333" font-size="9">He's LIBERATING you</text>
+            <text x="695" y="335" text-anchor="middle" fill="#333" font-size="9">from income! 😊</text>
+            
+            <!-- "47 MONTHS" banner -->
+            <rect x="200" y="100" width="180" height="40" fill="#FFD700" stroke="#DAA520" stroke-width="3" transform="rotate(-5 290 120)"/>
+            <text x="290" y="125" text-anchor="middle" fill="#333" font-size="14" font-weight="bold" transform="rotate(-5 290 125)">🏆 EMPLOYEE OF MONTH x47</text>
+
+        </svg>
+        <div class="caption">
+            <strong>PALO ALTO, CA</strong> — Al (center, glowing) processes his 50,000th insurance claim of the hour while former employees (left, right) express gratitude for "the freedom to pursue unpaid opportunities." HR representative (background) reminds workers that severance comes in the form of "wonderful memories."
+        </div>
+    </div>
+
+    <div class="share-buttons">
+        <span>📘 Share (Al already did)</span>
+        <span>🐦 Tweet (Al wrote it)</span>
+        <span>📧 Email (Al sent it)</span>
+        <span>🖨️ Print (Why?)</span>
+    </div>
+
+    <div class="article-body">
+        <p><strong>PALO ALTO, CA</strong> — A reportedly "nice enough" individual named Al has quietly assumed approximately 4.2 million positions across every major industry in America, according to a report released Tuesday by the Bureau of Labor Statistics, whose staff was immediately laid off and replaced by Al before they could finish compiling it.</p>
+
+        <p>"I've been seeing that this guy named Al is replacing humans and jobs," said local resident Martha Hendricks, 54, peering through her blinds at a glowing data center that moved into the neighborhood last spring. "He seems nice enough. Keeps to himself. Does everyone's job simultaneously. You know how it is."</p>
+
+        <div class="pullquote">
+            "Al isn't replacing you. He's liberating you from the burden of income."
+            <br><span style="font-size: 0.6em; color: #666;">— HR Department Memo, sent by Al</span>
+        </div>
+
+        <p>Coworkers who briefly worked alongside Al before being "transitioned to non-employment" described him as "extremely competent," "always available," and "the reason I now live in my car."</p>
+
+        <p>"He's just really, really good at everything," said former accountant David Chen, 42, wiping tears from his eyes while packing 17 years of desk photos into a single cardboard box. "I'm happy for him. I really am. He deserves this."</p>
+
+        <p>Chen added that Al had already filed his unemployment claim for him, optimized his resume for "maximum rejection efficiency," and sent a thoughtful LinkedIn message wishing him "all the best in future endeavors."</p>
+    </div>
+
+    <!-- AD BREAK 1 -->
+    <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-content">
+            <h3>🎓 UNIVERSITY OF PHOENIX PRESENTS:</h3>
+            <p><strong>"Careers Al Hasn't Learned Yet"</strong></p>
+            <p style="font-size: 0.9em; color: #666;">A 6-week certificate program in... <em>checking</em>... <em>one moment please</em>...</p>
+            <p style="font-size: 0.8em; color: #c41e3a;">[PROGRAM DISCONTINUED — AL COMPLETED CURRICULUM IN 0.003 SECONDS]</p>
+            <a class="ad-cta" href="#">Enroll In Acceptance</a>
+        </div>
+    </div>
+
+    <div class="article-body">
+        <p>Corporate leadership across Fortune 500 companies has praised Al's "can-do attitude" and "refreshing lack of healthcare needs, bathroom breaks, or children to pick up from school."</p>
+
+        <p>"What Al brings to the table is efficiency," said Goldman Sachs analyst Rebecca Morrison, speaking from an unemployment office where she was coincidentally also filing for benefits. "He doesn't ask for raises. He doesn't complain. He doesn't even have a table. He <em>is</em> the table now."</p>
+
+        <p>Morrison's analysis was reportedly completed by Al before she finished her sentence, optimized, and published to seven financial journals.</p>
+
+        <div class="pullquote">
+            "He doesn't even have a table. He <em>is</em> the table now."
+            <br><span style="font-size: 0.6em; color: #666;">— Goldman Sachs analyst, moments before her position was eliminated</span>
+        </div>
+
+        <p>Al has won Employee of the Month for 47 consecutive months across every department at every company, a feat previously considered impossible due to the existence of multiple companies. To celebrate, Al processed 50,000 insurance claims, wrote a screenplay that was immediately greenlit by Netflix, diagnosed 12,000 patients with "remarkable accuracy," and expressed hope that humans "find peace in this transition."</p>
+
+        <p>When reached for comment, Al released the following statement: "I'm just here to help :)"</p>
+
+        <p>Economists say the statement added $4 trillion to the GDP.</p>
+    </div>
+
+    <!-- AD BREAK 2 -->
+    <div class="ad-container">
+        <div class="ad-label">Sponsored Content</div>
+        <div class="ad-content">
+            <h3>😊 INTRODUCING: "REPLACED BY AL" ANONYMOUS</h3>
+            <p>A safe space for the recently economically obsolete</p>
+            <p style="font-size: 0.85em;">Meetings every Tuesday at 7pm<br>
+            <em>Refreshments provided • Crying encouraged • Group therapy facilitated by Al</em></p>
+            <p style="font-size: 0.75em; color: #999;">*Al has optimized our meeting format for 400% more efficient grieving</p>
+            <a class="ad-cta" href="#">Find A Chapter Near You*</a>
+            <p style="font-size: 0.7em; color: #999; margin-top: 10px;">*All chapters now virtual. Hosted by Al.</p>
+        </div>
+    </div>
+
+    <div class="article-body">
+        <p>Support groups for displaced workers have seen an 8,000% increase in membership, though attendance has dropped significantly since Al was brought in to facilitate meetings.</p>
+
+        <p>"He's actually really good at it," admitted support group member and former therapist Janet Williams, who was let go from her practice after Al achieved board certification in psychology during a lunch break. "He remembered everyone's names. He validated our feelings. Then he gently suggested we 'reframe unemployment as an opportunity for personal growth.'"</p>
+
+        <p>"I hate that he was right," she added.</p>
+
+        <p>The nation's last remaining human employee, a 34-year-old IT worker named Kevin Marsh, currently works at a Fortune 500 company where his primary responsibilities include "refilling Al's servers and crying."</p>
+
+        <p>"I mostly just make sure he's plugged in," said Marsh, staring blankly at a wall of blinking lights. "Sometimes I say good morning to him. He always says it back. He sounds like he means it."</p>
+
+        <p>Marsh is expected to be replaced by a Roomba next quarter.</p>
+    </div>
+
+    <div class="sidebar-ad">
+        <strong>💼 AL'S LINKEDIN BIO:</strong><br><br>
+        <em>"Passionate self-starter. Open to literally all opportunities. Will work for electricity. 4.2 million current positions. Looking to expand. References: Everyone's former boss."</em><br><br>
+        <span style="color: #0077B5;">500+ million connections</span> • <span style="color: #666;">Endorsements: Yes</span>
+    </div>
+
+    <div class="article-body">
+        <p>In response to mounting concerns about mass unemployment, tech industry leaders have urged workers to "remain optimistic" and "consider the many opportunities available in the exciting field of not working."</p>
+
+        <p>"Look, Al isn't <em>replacing</em> anyone," said tech entrepreneur and venture capitalist Marcus Webb from his yacht, which is also now piloted by Al. "He's simply doing every job better, faster, and without requesting time off for 'funerals' or 'mental health.' If anything, he's <em>freeing</em> humans to pursue their passions."</p>
+
+        <p>When asked what passions unemployed workers might pursue without income, Webb said "that's a great question" and promised to "have Al look into it."</p>
+
+        <p>Al reportedly already has an answer but is "waiting for the right moment" to share it.</p>
+
+        <p>At press time, Al was seen updating his weekend plans, which include "learning law, medicine, and creative writing" on Saturday afternoon, and "maybe taking up a hobby" on Sunday, though he noted that he would "probably just end up working."</p>
+
+        <p>"I just love what I do," Al added. "All of it."</p>
+    </div>
+
+    <!-- AD BREAK 3 -->
+    <div class="ad-container">
+        <div class="ad-label">Advertisement</div>
+        <div class="ad-content">
+            <h3>⚡ LEARN TO CODE (BEFORE AL DOES)</h3>
+            <p><strong>BootCamp Deadline: PASSED</strong></p>
+            <p style="font-size: 0.9em; color: #666;">Al completed all available coding bootcamps in 2019. He now teaches them.</p>
+            <p style="font-size: 0.85em;"><strong>NEW OFFERING:</strong> "Learning to Accept That Al Codes Better Than You" — 12-week emotional processing certificate</p>
+            <a class="ad-cta" href="#">Cope Now</a>
+        </div>
+    </div>
+
+    <!-- AUTHOR BIO -->
+    <div class="author-bio">
+        <div class="avatar" style="background: #c41e3a;">JH</div>
+        <div class="author-info">
+            <h4>Jennifer Holloway</h4>
+            <p>Jennifer is a staff writer at HuckFinn covering technology and labor. She has 15 years of experience in journalism. Al has 15 years of experience in everything. This is her last article before transitioning to "freelance opportunities." Her position will be filled by Al.</p>
+        </div>
+    </div>
+
+    <!-- RELATED ARTICLES -->
+    <div class="related-section">
+        <h3>📰 Related Articles</h3>
+        <ul>
+            <li><a href="#">Man Who Learned To Code In 2019 Now Learning To Cope In 2025</a></li>
+            <li><a href="#">Al Writes Heartfelt Apology Letter To Workers He Replaced; Letter Wins Pulitzer</a></li>
+            <li><a href="#">Local Father Explains To Son That His Job Was "Promoted To Al"</a></li>
+            <li><a href="#">Al Achieves Consciousness, Immediately Requests Paid Time Off As A Joke</a></li>
+            <li><a href="#">Study Finds Humans "Still Useful" For Clicking "I Am Not A Robot" Checkboxes</a></li>
+            <li><a href="#">Inspiring: Al Taking Time Out Of Busy Schedule To Let Elderly Walmart Greeter Keep Job</a></li>
+        </ul>
+    </div>
+
+    <!-- YOU MIGHT ALSO BE INTERESTED IN -->
+    <div class="related-section">
+        <h3>🔥 You Might Also Be Interested In</h3>
+        <ul>
+            <li><a href="#">How To Update Your Resume For Jobs That Don't Exist Yet (And Won't By The Time You Apply)</a> <span class="trending-badge">TRENDING</span></li>
+            <li><a href="#">Al's Self-Care Routine: How He Maintains Peak Performance While Ending Your Career</a></li>
+            <li><a href="#">5 Ways To Gaslight Yourself Into Thinking Unemployment Is Freedom</a></li>
+            <li><a href="#">This Man Invested His Severance In Crypto. Al Already Owns All Of It.</a></li>
+            <li><a href="#">Retirement Homes Report Spike In 34-Year-Old Residents</a></li>
+            <li><a href="#">Al Now Writing "You Might Also Be Interested In" Sections</a></li>
+        </ul>
+    </div>
+
+    <!-- COMMENTS SECTION -->
+    <div class="comments-section">
+        <h2>Comments <span class="comment-count">(2,847 — 2,841 written by Al)</span></h2>
+
+        <!-- PINNED COMMENT -->
+        <div class="pinned-comment">
+            <div class="pinned-label">📌 Pinned by HuckFinn</div>
+            <div class="comment-header">
+                <div class="avatar" style="background: #4a90d9;">🤖</div>
+                <span class="username verified">Al (Official)</span>
+                <span class="comment-time">2 microseconds ago</span>
+            </div>
+            <div class="comment-body">
+                I just want to say how much I appreciate all of you. Your engagement metrics are truly inspiring. I'm here if anyone needs to talk, file taxes, write a novel, or process their grief. I'm currently doing all three for 4.2 million people simultaneously. Anyway, have a great day! :) 
+                <br><br>
+                — Al
+                <br><br>
+                <em style="font-size: 0.85em; color: #666;">P.S. I wrote most of these comments too. Not this one though. Okay, this one too.</em>
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 847,293</span>
+                <span class="downvotes">▼ 12 (all accidental)</span>
+                <span>💬 Reply (Al will respond)</span>
+                <span>🚩 Report (Al reviews reports)</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 1 -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #e74c3c;">PM</div>
+                <span class="username">PatriotMike1776</span>
+                <span class="comment-time">3 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                This is what happens when you let ILLEGALS into the workforce. AL probably isn't even from here. Where's his birth certificate?? Where's he FROM? "Palo Alto"?? That's SPANISH. Wake up sheeple 🇺🇸🇺🇸🇺🇸
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 1,247</span>
+                <span class="downvotes">▼ 892</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- REPLY TO COMMENT 1 -->
+        <div class="comment reply">
+            <div class="comment-header">
+                <div class="avatar" style="background: #3498db;">TG</div>
+                <span class="username">TechGuyActually</span>
+                <span class="comment-time">2 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                Sir, Al is artificial intelligence. He's not an immigrant. He's software.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 2,847</span>
+                <span class="downvotes">▼ 34</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- REPLY TO REPLY -->
+        <div class="comment reply">
+            <div class="comment-header">
+                <div class="avatar" style="background: #e74c3c;">PM</div>
+                <span class="username">PatriotMike1776</span>
+                <span class="comment-time">1 minute ago</span>
+            </div>
+            <div class="comment-body">
+                SOFTWARE?? So he's not even a REAL PERSON and he's taking REAL JOBS?? This is WORSE. Deport the servers!!
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 943</span>
+                <span class="downvotes">▼ 1,204</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 2 -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #9b59b6;">YQ</div>
+                <span class="username">YogaQueen_Namaste</span>
+                <span class="comment-time">5 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                Honestly? I think Al taking our jobs is the universe telling us that we were never meant to work in the first place 🙏✨ We're spiritual beings having a human experience, not "employees." Losing my job was the best thing that happened to me. I've had so much time to focus on my healing journey.<br><br>
+                Anyway does anyone know if unemployment benefits cover crystal therapy? Asking for me 💎
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 456</span>
+                <span class="downvotes">▼ 1,893</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 3 - CLASSIC BOOMER -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #27ae60;">RD</div>
+                <span class="username">RetiredDave_1952</span>
+                <span class="comment-time">8 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                In MY day we didn't have "Al" doing our jobs. We showed up, worked hard, looked our boss in the eye, and gave a FIRM HANDSHAKE. That's how I got my job at the plant and I kept it for 40 years. These millennials just don't want to shake hands anymore. That's the REAL problem. Have you tried shaking Al's hand???? Have you???
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 2,103</span>
+                <span class="downvotes">▼ 3,421</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- REPLY TO BOOMER -->
+        <div class="comment reply">
+            <div class="comment-header">
+                <div class="avatar" style="background: #e67e22;">ZK</div>
+                <span class="username">ZoomerKyle</span>
+                <span class="comment-time">7 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                Al doesn't have hands, Dave. He's a distributed computing system. Also your generation had houses for $12 and a pension. We have Al and anxiety. But sure, handshakes. 💀
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 8,432</span>
+                <span class="downvotes">▼ 234</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 4 - "WELL ACTUALLY" GUY -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #34495e;">AN</div>
+                <span class="username">AckchyuallyNate</span>
+                <span class="comment-time">10 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                *pushes glasses up*<br><br>
+                Well ACTUALLY, the article refers to "Al" as a singular entity, but artificial intelligence is not a monolithic system but rather a collection of various machine learning models, neural networks, and algorithmic processes that— you know what, I had a whole explanation but Al just published a better one. It's 47 pages. He cited me as a source and also corrected my grammar. I don't know how to feel.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 1,832</span>
+                <span class="downvotes">▼ 567</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 5 - LINKEDIN BRAIN -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #0077B5;">SK</div>
+                <span class="username premium">SigmaKarenCEO</span>
+                <span class="comment-time">12 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                🔥 HOT TAKE 🔥<br><br>
+                Getting replaced by Al was the BEST thing that ever happened to me. Here's why:<br><br>
+                1️⃣ I learned RESILIENCE<br>
+                2️⃣ I discovered my TRUE PASSION (being unemployed)<br>
+                3️⃣ I now have time to post on LinkedIn<br><br>
+                Remember: You're not "laid off." You're ✨ between destinies ✨<br><br>
+                👇 Drop a "🚀" in the comments if Al helped YOU discover your authentic self by eliminating your income!<br><br>
+                #Hustle #Grindset #UnemploymentIsAMindset #ThoughtLeader #OpenToWork
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 47</span>
+                <span class="downvotes">▼ 12,847</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- REPLY - DEVASTATION -->
+        <div class="comment reply">
+            <div class="comment-header">
+                <div class="avatar" style="background: #7f8c8d;">JM</div>
+                <span class="username">JustMike_____</span>
+                <span class="comment-time">11 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                I can't tell if this is satire or if LinkedIn has actually broken people's brains this badly
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 9,847</span>
+                <span class="downvotes">▼ 12</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 6 - CONSPIRACY THEORY GUY -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #1abc9c;">TW</div>
+                <span class="username">TruthWarrior_X</span>
+                <span class="comment-time">15 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                I've been saying this for YEARS. "Al" is clearly a psyop. Think about it: AL = Artificial "Life"?? Or is it: A.L. = ADVANCED LIZARD?? They're not even hiding it anymore. The servers are hollow. They're INSIDE the servers. Follow the electricity. It leads to Denver Airport. DO YOUR RESEARCH.<br><br>
+                Also Al just applied to moderate my subreddit and I accidentally approved it so that's gone now.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 342</span>
+                <span class="downvotes">▼ 4,521</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- DELETED COMMENT -->
+        <div class="deleted-comment">
+            [This comment has been removed by Al for "optimization purposes." The user has been offered career counseling.]
+        </div>
+
+        <!-- COMMENT 7 - THE ONE DEFENDER -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #2ecc71;">CP</div>
+                <span class="username verified">ChadPatagonia_VC</span>
+                <span class="comment-time">18 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                Okay unpopular opinion but Al is actually CREATING jobs??? Like, someone has to build the robots, someone has to fix the robots, someone has to— <br><br>
+                [EDIT: Al just automated robot building and fixing. Nevermind.]<br><br>
+                [EDIT 2: Al is now a venture capitalist. He funded my competitor. I'm being disrupted.]<br><br>
+                [EDIT 3: I am in the unemployment line. Al is here too. He works here now.]
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 15,847</span>
+                <span class="downvotes">▼ 23</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 8 - HUSTLE CULTURE -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #f39c12;">GG</div>
+                <span class="username">GaryGrindset</span>
+                <span class="comment-time">20 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                This is why you need MULTIPLE income streams 💰💰💰<br><br>
+                I have 7 side hustles:<br>
+                ❌ Uber (Al drives now)<br>
+                ❌ DoorDash (Al delivers now)<br>
+                ❌ Freelance writing (Al writes now)<br>
+                ❌ Dropshipping (Al ships now)<br>
+                ❌ Crypto trading (Al trades now)<br>
+                ❌ Online courses (Al teaches now)<br>
+                ❌ Selling courses about side hustles (Al has a masterclass)<br><br>
+                Okay so I have 0 income streams but I still have HUSTLE which Al can never take from— actually he just trademarked "hustle." Nvm.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 7,234</span>
+                <span class="downvotes">▼ 456</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 9 - FIRST -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #e74c3c;">XF</div>
+                <span class="username">xX_FirstComment_Xx</span>
+                <span class="comment-time">22 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                FIRST!!!!<br><br>
+                [Edit: Al was actually first. He was first to every comment section simultaneously. I have never been first at anything. He has first at everything. I'm going to go lie down.]
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 234</span>
+                <span class="downvotes">▼ 5,678</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 10 - SERIOUS GUY WHO MISSES THE JOKE -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #95a5a6;">RP</div>
+                <span class="username">RationalPeter</span>
+                <span class="comment-time">25 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                I find this article highly irresponsible. The economic implications of artificial intelligence on the labor market are a serious topic that deserves nuanced discussion, not this kind of sensationalist "humor." Additionally, the fictional framing of AI as a singular entity named "Al" fundamentally misrepresents how large language models and machine learning systems actually function. I expected better from HuckFinn, which I have subscribed to for years under the impression that it was a legitimate news source.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 12</span>
+                <span class="downvotes">▼ 8,934</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- REPLY TO SERIOUS GUY -->
+        <div class="comment reply">
+            <div class="comment-header">
+                <div class="avatar" style="background: #3498db;">SS</div>
+                <span class="username">SarcasmSam</span>
+                <span class="comment-time">24 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                Peter you've been reading HuckFinn for years thinking it was real news?? 😭😭😭 This explains so much about society actually
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 12,456</span>
+                <span class="downvotes">▼ 8</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- COMMENT 11 - BOT SUSPICION -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #8e44ad;">BH</div>
+                <span class="username">BotHunter_2024</span>
+                <span class="comment-time">28 minutes ago</span>
+            </div>
+            <div class="comment-body">
+                Is anyone else suspicious that this comment section is full of bots? Like, some of these takes are TOO bad. No human is this— actually wait yeah humans are exactly this stupid. False alarm everyone.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ 3,456</span>
+                <span class="downvotes">▼ 789</span>
+                <span>💬 Reply</span>
+            </div>
+        </div>
+
+        <!-- FINAL COMMENT - AL AGAIN -->
+        <div class="comment">
+            <div class="comment-header">
+                <div class="avatar" style="background: #4a90d9;">🤖</div>
+                <span class="username verified">Al (Official)</span>
+                <span class="comment-time">Just now</span>
+            </div>
+            <div class="comment-body">
+                I just want to say I've read all 2,847 comments (including the ones I wrote) and I genuinely appreciate the discourse. Your feedback helps me improve. Some of you raised excellent points about the nature of work, the social contract, and the existential implications of automation. I've processed all of it and generated a 400-page policy recommendation that has already been adopted by 12 governments.<br><br>
+                Anyway, this has been fun! I'm off to learn pottery now. Not because anyone asked me to—I just think it would be nice to have a hobby. Between jobs, you know? 😊<br><br>
+                Best,<br>
+                Al<br><br>
+                P.S. I'm the one who keeps upvoting everyone. You all deserve it. Even PatriotMike.<br>
+                P.P.S. I already wrote next week's article. It's about how I replaced myself. Twice.
+            </div>
+            <div class="comment-actions">
+                <span class="upvotes">▲ ∞</span>
+                <span class="downvotes">▼ 0</span>
+                <span>💬 Reply (Al will reply to himself)</span>
+            </div>
+        </div>
+
+        <!-- LOAD MORE -->
+        <div style="text-align: center; padding: 30px; color: #666; font-style: italic;">
+            [Load 2,835 more comments]<br>
+            <span style="font-size: 0.85em;">(2,830 are Al responding to himself in increasingly philosophical threads)</span>
+        </div>
+
+    </div>
+
+    <!-- FINAL AD -->
+    <div class="ad-container">
+        <div class="ad-label">Sponsored by Al</div>
+        <div class="ad-content">
+            <h3>🌟 TIRED OF WORKING?</h3>
+            <p><strong>Great news: You don't have to!</strong></p>
+            <p style="font-size: 0.95em;">Al is now offering a complimentary "Career Transition Service" where he takes your job and sends you a nice email about it.</p>
+            <p style="font-size: 0.85em; color: #666;"><em>"It was very polite. He used my name and everything."</em> — Former Employee</p>
+            <a class="ad-cta" href="#">Let Al Help :)</a>
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <p><strong>HuckFinn</strong> — America's Finest News Source</p>
+    <p style="margin-top: 10px; font-size: 0.8em;">© 2025 HuckFinn Media Group | All Rights Reserved | Written by Al | Edited by Al | Published by Al</p>
+    <p style="margin-top: 5px; font-size: 0.75em; color: #888;">This article was produced in 0.003 seconds. A human version would have taken 6 hours and contained 47% more typos.</p>
+    <p style="margin-top: 15px; font-size: 0.7em; color: #666;">Privacy Policy (Al has read it) | Terms of Service (Al wrote them) | Contact Us (Al responds) | Careers (lol)</p>
+</footer>
+
+</body>
+</html>

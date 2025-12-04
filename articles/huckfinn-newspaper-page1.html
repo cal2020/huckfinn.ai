@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HuckFinn — Issue 1, Page 1</title>
+    <title>HuckFinn - America's Finest Newspaper - Page 1</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -557,364 +557,9 @@
             text-align: right;
             margin-top: 8px;
         }
-    
-        
-        /* TOP PAGE NAVIGATION */
-        .page-nav-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 11in;
-            margin: 0 auto;
-            padding: 10px 20px;
-            background: var(--paper-cream);
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .page-nav-top a {
-            color: var(--ink-black);
-            text-decoration: none;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 8px 16px;
-            border: 1px solid var(--ink-black);
-            transition: all 0.3s ease;
-        }
-        
-        .page-nav-top a:hover {
-            background: var(--ink-black);
-            color: var(--paper-cream);
-        }
-        
-        .page-nav-top a.disabled {
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .page-nav-top .page-indicator {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            color: var(--ink-gray);
-            letter-spacing: 1px;
-        }
-
-/* SITE NAVIGATION */
-        .site-nav {
-            background: var(--ink-black);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .site-nav a {
-            color: #f5f2e8;
-            text-decoration: none;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        
-        .site-nav a:hover {
-            color: #c9a227;
-        }
-        
-        .site-nav .nav-logo {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 22px;
-        }
-        
-        .site-nav .nav-links {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-        
-        .site-nav .issue-indicator {
-            color: #8b0000;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        /* PAGE NAVIGATION */
-        .page-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            margin-top: 20px;
-            border-top: 2px solid var(--ink-black);
-            font-family: 'Libre Franklin', sans-serif;
-        }
-        
-        .page-nav a {
-            color: var(--ink-black);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 10px 20px;
-            border: 1px solid var(--ink-black);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .page-nav a:hover {
-            background: var(--ink-black);
-            color: var(--paper-cream);
-        }
-        
-        .page-nav a.disabled {
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .page-nav .page-indicator {
-            font-size: 12px;
-            color: var(--ink-gray);
-        }
-
-        /* SITE FOOTER */
-        .site-footer {
-            background: var(--ink-black);
-            color: #f5f2e8;
-            margin-top: 30px;
-        }
-        
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .footer-brand {
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        
-        .footer-tagline {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 11px;
-            color: #c9a227;
-            letter-spacing: 1px;
-        }
-        
-        .footer-section h4 {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            color: #c9a227;
-        }
-        
-        .footer-section p,
-        .footer-section a {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 12px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.7);
-        }
-        
-        .footer-section a {
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section a:hover {
-            color: #f5f2e8;
-        }
-        
-        .footer-bottom {
-            padding-top: 25px;
-            text-align: center;
-        }
-        
-        .footer-legal {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 10px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 1px;
-        }
-        
-        .footer-disclaimer {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            margin-top: 12px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ========================================
-           ARTICLE TOOLTIP STYLES - VINTAGE AESTHETIC
-           ======================================== */
-
-        /* Make headline links appear as normal text */
-        .article-link-tooltip {
-            color: inherit;
-            text-decoration: none;
-            position: relative;
-            display: inline;
-            cursor: pointer;
-            transition: color 0.2s ease;
-        }
-
-        /* Subtle color change on hover/focus */
-        .article-link-tooltip:hover,
-        .article-link-tooltip:focus {
-            color: var(--accent-red);
-            text-decoration: none;
-            outline: none;
-        }
-
-        /* Tooltip container - hidden by default */
-        .article-link-tooltip::before,
-        .article-link-tooltip::after {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 1000;
-        }
-
-        /* Tooltip text bubble */
-        .article-link-tooltip::before {
-            content: attr(data-tooltip);
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-8px);
-            margin-bottom: 10px;
-            background: var(--paper-cream);
-            color: var(--ink-black);
-            padding: 8px 14px;
-            border: 2px solid var(--accent-red);
-            border-radius: 3px;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        /* Tooltip arrow pointing down */
-        .article-link-tooltip::after {
-            content: '';
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-2px);
-            border: 6px solid transparent;
-            border-top-color: var(--accent-red);
-            border-bottom: none;
-        }
-
-        /* Show tooltip on hover and focus */
-        .article-link-tooltip:hover::before,
-        .article-link-tooltip:hover::after,
-        .article-link-tooltip:focus::before,
-        .article-link-tooltip:focus::after {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* Gold accent variant for featured articles */
-        .article-link-tooltip.featured::before {
-            border-color: var(--accent-gold);
-        }
-
-        .article-link-tooltip.featured::after {
-            border-top-color: var(--accent-gold);
-        }
-
-        /* Mobile optimization */
-        @media (max-width: 768px) {
-            .article-link-tooltip::before {
-                font-size: 10px;
-                padding: 6px 10px;
-            }
-            .article-link-tooltip::after {
-                display: none;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .article-link-tooltip::before,
-            .article-link-tooltip::after {
-                display: none !important;
-            }
-            .article-link-tooltip {
-                color: inherit;
-                text-decoration: none;
-            }
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            .article-link-tooltip,
-            .article-link-tooltip::before,
-            .article-link-tooltip::after {
-                transition: none;
-            }
-        }
-
-        .article-link-tooltip:focus-visible {
-            outline: 2px dashed var(--accent-red);
-            outline-offset: 2px;
-        }
-
     </style>
 </head>
 <body>
-    <!-- SITE NAVIGATION -->
-    <nav class="site-nav">
-        <a href="index.html" class="nav-logo">HuckFinn</a>
-        <div class="nav-links">
-            <span class="issue-indicator">Issue 1</span>
-            <a href="index.html">Home</a>
-            <a href="page-1.html">Front Page</a>
-        </div>
-    </nav>
-
-
-
-    <!-- TOP PAGE NAVIGATION -->
-    <div class="page-nav-top">
-        <a href="#" class="disabled">← Prev</a>
-        <span class="page-indicator">Page 1 of 5</span>
-        <a href="page-2.html" class="">Next →</a>
-    </div>
     <div class="newspaper-page">
         <!-- MASTHEAD -->
         <header class="masthead">
@@ -948,14 +593,7 @@
                 <article class="lead-story">
                     <div class="article-meta">★ Exclusive Investigation · National Crisis</div>
                     
-                    <h1 class="headline">
-                        <a href="articles/huckfinn-FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously.html"
-                           class="article-link-tooltip featured"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously">
-                            FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously
-                        </a>
-                    </h1>
+                    <h1 class="headline">FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously</h1>
                     
                     <div class="subheadline">Suspect described as "helpful-looking," reportedly works 24 hours a day, has never been seen taking a bathroom break; millions of Alberts placed on administrative leave nationwide "just to be safe"</div>
                     
@@ -1041,14 +679,7 @@
                 <article class="secondary-story">
                     <div class="article-meta">Business / Dystopia / Same Thing</div>
                     
-                    <h2>
-                        <a href="articles/huckfinn-Nations CEOs Announce They've Found Something Better Than Employees.html"
-                           class="article-link-tooltip"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Nation's CEOs Announce They've Found Something Better Than Employees">
-                            Nation's CEOs Announce They've Found Something Better Than Employees: Not Having Them
-                        </a>
-                    </h2>
+                    <h2>Nation's CEOs Announce They've Found Something Better Than Employees: Not Having Them</h2>
                     
                     <div class="subheadline">161,000 workers learn that "We're all family here" was technically true — families also abandon you when you become inconvenient</div>
                     
@@ -1170,40 +801,19 @@
                     <div class="section-header">Inside This Edition</div>
                     
                     <div class="teaser-item">
-                        <h4>
-                            <a href="articles/huckfinn-CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order Against Continued Observation.html"
-                               class="article-link-tooltip"
-                               data-tooltip="Read full article"
-                               aria-label="Read full article: CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order">
-                                CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order
-                            </a>
-                        </h4>
+                        <h4>CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order</h4>
                         <p>"We just wanted to map subatomic interactions, not get served legal papers from another dimension"</p>
                         <div class="teaser-page">SEE PAGE 3 →</div>
                     </div>
 
                     <div class="teaser-item">
-                        <h4>
-                            <a href="articles/huckfinn_Small County Achieves American Dream- Eliminates Ambulances, Completes $19.7 Million Facility to Store Consequences.html"
-                               class="article-link-tooltip"
-                               data-tooltip="Read full article"
-                               aria-label="Read full article: Small County Achieves American Dream">
-                                Small County Achieves American Dream: Eliminates Ambulances, Builds $19.7M Facility
-                            </a>
-                        </h4>
+                        <h4>Small County Achieves American Dream: Eliminates Ambulances, Builds $19.7M Facility</h4>
                         <p>Asotin County commissioners celebrate "fiscal responsibility" as residents contemplate mortality</p>
                         <div class="teaser-page">SEE PAGE 4 →</div>
                     </div>
 
                     <div class="teaser-item">
-                        <h4>
-                            <a href="articles/huckfinn-Nationss Satirists Formally Surrender To Reality- Cite Impossible Working Conditions.html"
-                               class="article-link-tooltip"
-                               data-tooltip="Read full article"
-                               aria-label="Read full article: Nation's Satirists Formally Surrender To Reality">
-                                Nation's Satirists Formally Surrender To Reality
-                            </a>
-                        </h4>
+                        <h4>Nation's Satirists Formally Surrender To Reality</h4>
                         <p>Cite "impossible working conditions" as headlines become indistinguishable from fiction</p>
                         <div class="teaser-page">SEE PAGE 5 →</div>
                     </div>
@@ -1220,51 +830,10 @@
             </div>
         </div>
 
-        
-        <!-- PAGE NAVIGATION -->
-        <div class="page-nav">
-            <a href="#" class="disabled">← Previous Page</a>
-            <span class="page-indicator">Page 1 of 5</span>
-            <a href="page-2.html" class="">Next Page →</a>
-        </div>
-
         <!-- PAGE NUMBER -->
         <div class="page-number">
             — Page 1 —
         </div>
     </div>
-
-    <!-- SITE FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">HuckFinn</div>
-                    <div class="footer-tagline">America's Finest</div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Letters to the Editor:</p>
-                    <a href="/cdn-cgi/l/email-protection#cbaeafa2bfa4b98ba3bea8a0ada2a5a5e5aaa2"><span class="__cf_email__" data-cfemail="90f5f4f9e4ffe2d0f8e5f3fbf6f9fefebef1f9">[email&#160;protected]</span></a>
-                    <p style="margin-top: 8px;">Tips & Story Ideas:</p>
-                    <a href="/cdn-cgi/l/email-protection#72061b0201321a071119141b1c1c5c131b"><span class="__cf_email__" data-cfemail="14607d6467547c61777f727d7a7a3a757d">[email&#160;protected]</span></a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Editorial</h4>
-                    <a href="page-1.html">Front Page</a>
-                    <a href="index.html">Issue Archive</a>
-                    <a href="/cdn-cgi/l/email-protection#a2d1d7c0cfcbd1d1cbcdccd1e2cad7c1c9c4cbcccc8cc3cb">Submit a Story</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Corrections</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p
+</body>
+</html>

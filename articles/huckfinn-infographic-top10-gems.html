@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Gems - Ranked by Irony</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .infographic {
+            width: 100%;
+            max-width: 750px;
+            background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+            border: 3px solid #c9a227;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(201, 162, 39, 0.2);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #c9a227 0%, #8b7018 100%);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid #1a1a1a;
+        }
+
+        .header-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .header .subtitle {
+            font-size: 0.9rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+
+        .gems-container {
+            padding: 1rem;
+        }
+
+        .gem-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .gem-item:hover {
+            background: rgba(201, 162, 39, 0.1);
+            border-left-color: #c9a227;
+        }
+
+        .gem-rank {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            width: 3.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .rank-gold { color: #c9a227; }
+        .rank-silver { color: #a0a0a0; }
+        .rank-bronze { color: #cd7f32; }
+        .rank-regular { color: #666; }
+
+        .gem-content {
+            flex: 1;
+            padding: 0 1rem;
+        }
+
+        .gem-text {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+
+        .gem-irony {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 5rem;
+            flex-shrink: 0;
+        }
+
+        .irony-label {
+            font-size: 0.6rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .irony-skulls {
+            font-size: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .gem-item.top-3 {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .gem-item.top-3 .gem-text {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .gem-item.first-place {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(139, 0, 0, 0.2) 100%);
+            border: 2px solid #c9a227;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid #333;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .footer {
+            background: #0a0a0a;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .footer-brand {
+            font-family: 'Oswald', sans-serif;
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="infographic">
+        <div class="header">
+            <div class="header-icon">🏆💀</div>
+            <h1>Top 10 Gems</h1>
+            <div class="subtitle">Ranked by Irony Level • The Best of the Worst</div>
+        </div>
+
+        <div class="gems-container">
+            <div class="gem-item first-place top-3">
+                <div class="gem-rank rank-gold">🥇</div>
+                <div class="gem-content">
+                    <div class="gem-text">The study was retracted not because it was wrong, but because it was correct in a way that was inconvenient</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item top-3">
+                <div class="gem-rank rank-silver">🥈</div>
+                <div class="gem-content">
+                    <div class="gem-text">This year, the turkey pardons YOU</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item top-3">
+                <div class="gem-rank rank-bronze">🥉</div>
+                <div class="gem-content">
+                    <div class="gem-text">We colonized the land, banned Indigenous fire practices, created 100 years of fuel buildup, invented forever chemicals, put them in everything, built houses full of them in fire zones, and now the turkeys are poison. This is not a system, it's a Rube Goldberg machine of consequences.</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">4</div>
+                <div class="gem-content">
+                    <div class="gem-text">"Population groundswell mitigation" — because "suppressing evidence of mass poisoning" tested poorly with focus groups</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">5</div>
+                <div class="gem-content">
+                    <div class="gem-text">90% of firefighter line-of-duty deaths are from cancer. They're poisoned by the gear they wear, the foam they spray, and the smoke from your PFAS-laden carpets. Happy Thanksgiving!</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">6</div>
+                <div class="gem-content">
+                    <div class="gem-text">The study found 6,800 cancer deaths per year. The retraction found 0 cancer deaths per year. Science!</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">7</div>
+                <div class="gem-content">
+                    <div class="gem-text">"Do not eat" advisories now cover 17 states — still fewer than the states that ban books</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">8</div>
+                <div class="gem-content">
+                    <div class="gem-text">California banned PFAS foam. The PFAS from the previous 70 years of foam will be ready for comment in approximately 3024.</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">9</div>
+                <div class="gem-content">
+                    <div class="gem-text">The Forest Service's 1935 "10 AM Policy" (extinguish all fires by 10 AM): the origin story for your poisoned Thanksgiving turkey.</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️</span>
+                </div>
+            </div>
+
+            <div class="gem-item">
+                <div class="gem-rank rank-regular">10</div>
+                <div class="gem-content">
+                    <div class="gem-text">Retracting the study doesn't un-poison the water. But it does un-poison the quarterly earnings call.</div>
+                </div>
+                <div class="gem-irony">
+                    <span class="irony-label">Irony</span>
+                    <span class="irony-skulls">☠️☠️☠️</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <span>☠️☠️☠️☠️☠️</span>
+                <span>Maximum Irony</span>
+            </div>
+            <div class="legend-item">
+                <span>☠️☠️☠️☠️</span>
+                <span>Severe Irony</span>
+            </div>
+            <div class="legend-item">
+                <span>☠️☠️☠️</span>
+                <span>High Irony</span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">"The undercount has an undercount."</div>
+            <div class="footer-brand">HUCKFINN • America's Finest Newspaper</div>
+        </div>
+    </div>
+</body>
+</html>

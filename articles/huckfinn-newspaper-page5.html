@@ -462,244 +462,9 @@
             color: var(--accent);
             font-size: 8px;
         }
-    
-        
-        /* TOP PAGE NAVIGATION */
-        .page-nav-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 11in;
-            margin: 0 auto;
-            padding: 10px 20px;
-            background: var(--paper-cream);
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .page-nav-top a {
-            color: var(--ink-black);
-            text-decoration: none;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 8px 16px;
-            border: 1px solid var(--ink-black);
-            transition: all 0.3s ease;
-        }
-        
-        .page-nav-top a:hover {
-            background: var(--ink-black);
-            color: var(--paper-cream);
-        }
-        
-        .page-nav-top a.disabled {
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .page-nav-top .page-indicator {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            color: var(--ink-gray);
-            letter-spacing: 1px;
-        }
-
-/* SITE NAVIGATION */
-        .site-nav {
-            background: var(--ink-black);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .site-nav a {
-            color: #f5f2e8;
-            text-decoration: none;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 11px;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        
-        .site-nav a:hover {
-            color: #c9a227;
-        }
-        
-        .site-nav .nav-logo {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 22px;
-        }
-        
-        .site-nav .nav-links {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-        
-        .site-nav .issue-indicator {
-            color: #8b0000;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        /* PAGE NAVIGATION */
-        .page-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            margin-top: 20px;
-            border-top: 2px solid var(--ink-black);
-            font-family: 'Libre Franklin', sans-serif;
-        }
-        
-        .page-nav a {
-            color: var(--ink-black);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 10px 20px;
-            border: 1px solid var(--ink-black);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .page-nav a:hover {
-            background: var(--ink-black);
-            color: var(--paper-cream);
-        }
-        
-        .page-nav a.disabled {
-            opacity: 0.3;
-            pointer-events: none;
-        }
-        
-        .page-nav .page-indicator {
-            font-size: 12px;
-            color: var(--ink-gray);
-        }
-
-        /* SITE FOOTER */
-        .site-footer {
-            background: var(--ink-black);
-            color: #f5f2e8;
-            margin-top: 30px;
-        }
-        
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px 30px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .footer-brand {
-            text-align: center;
-        }
-        
-        .footer-logo {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-        
-        .footer-tagline {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 11px;
-            color: #c9a227;
-            letter-spacing: 1px;
-        }
-        
-        .footer-section h4 {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            color: #c9a227;
-        }
-        
-        .footer-section p,
-        .footer-section a {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 12px;
-            line-height: 1.8;
-            color: rgba(255,255,255,0.7);
-        }
-        
-        .footer-section a {
-            text-decoration: none;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section a:hover {
-            color: #f5f2e8;
-        }
-        
-        .footer-bottom {
-            padding-top: 25px;
-            text-align: center;
-        }
-        
-        .footer-legal {
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 10px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 1px;
-        }
-        
-        .footer-disclaimer {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
-            margin-top: 12px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
     </style>
 </head>
 <body>
-    <!-- SITE NAVIGATION -->
-    <nav class="site-nav">
-        <a href="index.html" class="nav-logo">HuckFinn</a>
-        <div class="nav-links">
-            <span class="issue-indicator">Issue 1</span>
-            <a href="index.html">Home</a>
-            <a href="page-1.html">Front Page</a>
-        </div>
-    </nav>
-
-
-
-    <!-- TOP PAGE NAVIGATION -->
-    <div class="page-nav-top">
-        <a href="page-4.html" class="">← Prev</a>
-        <span class="page-indicator">Page 5 of 5</span>
-        <a href="#" class="disabled">Next →</a>
-    </div>
     <div class="newspaper-page">
         <!-- Header -->
         <header class="page-header">
@@ -720,14 +485,7 @@
                 <!-- FEATURE: Black Friday -->
                 <article class="article">
                     <div class="article-meta">Holiday Special Report</div>
-                    <h1 class="headline headline-large">
-                        <a href="articles/huckfinn-Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings.html"
-                           class="article-link-tooltip featured"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings">
-                            Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings
-                        </a>
-                    </h1>
+                    <h1 class="headline headline-large">Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings</h1>
                     <div class="subhead">Federal economists declare six separate trampling incidents "encouraging sign" for Q4 GDP growth</div>
                     <div class="byline">By Staff Writer | November 24, 2025</div>
                     
@@ -781,14 +539,7 @@
                 <!-- HUMAN INTEREST: Area Man 14-Day Employment -->
                 <article class="article">
                     <div class="article-meta">Human Interest • Hollywood</div>
-                    <h2 class="headline headline-medium">
-                        <a href="articles/huckfinn-Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment.html"
-                           class="article-link-tooltip"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment">
-                            Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment
-                        </a>
-                    </h2>
+                    <h2 class="headline headline-medium">Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment</h2>
                     <div class="subhead">1980s child actor shocked to discover workplace drama; immediately takes everything back</div>
                     <div class="byline">By Ruth Shattuck</div>
                     
@@ -822,14 +573,7 @@
                 <!-- SECONDARY: Turkey Hazmat -->
                 <article class="article">
                     <div class="article-meta">Thanksgiving Special Report</div>
-                    <h2 class="headline headline-medium">
-                        <a href="articles/huckfinn-NATION'S TURKEYS NOW REQUIRE HAZMAT CERTIFICATION TO CONSUME, GOVERNMENT REMINDS AMERICANS ON THANKSGIVING MORNING.html"
-                           class="article-link-tooltip"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Nation's Turkeys Now Require Hazmat Certification To Consume">
-                            Nation's Turkeys Now Require Hazmat Certification To Consume
-                        </a>
-                    </h2>
+                    <h2 class="headline headline-medium">Nation's Turkeys Now Require Hazmat Certification To Consume</h2>
                     <div class="subhead">Study finding 6,800 annual cancer deaths from PFAS contamination quietly being "re-evaluated" after industry expresses concerns</div>
                     <div class="byline">By Mildred Wrongway-Patterson</div>
                     
@@ -878,14 +622,7 @@
                 <!-- MEDIA: Satirists Surrender -->
                 <article class="article">
                     <div class="article-meta">Special Investigation • Civilizational Autopsy</div>
-                    <h2 class="headline headline-medium">
-                        <a href="articles/huckfinn-Nationss Satirists Formally Surrender To Reality- Cite Impossible Working Conditions.html"
-                           class="article-link-tooltip"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Nation's Satirists Formally Surrender To Reality">
-                            Nation's Satirists Formally Surrender To Reality
-                        </a>
-                    </h2>
+                    <h2 class="headline headline-medium">Nation's Satirists Formally Surrender To Reality</h2>
                     <div class="subhead">Groundbreaking study reveals inverse relationship between civilizational health and satire material quality</div>
                     <div class="byline">By Thurston Bellweather III</div>
                     
@@ -940,14 +677,7 @@
                 <!-- BOTTOM: Sports Reporter Pulitzer -->
                 <article class="article">
                     <div class="article-meta">Sports Media</div>
-                    <h2 class="headline headline-small">
-                        <a href="articles/huckfinn-Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' Over 10,000 Times.html"
-                           class="article-link-tooltip"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' 3,847 Times">
-                            Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' 3,847 Times
-                        </a>
-                    </h2>
+                    <h2 class="headline headline-small">Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' 3,847 Times</h2>
                     <div class="byline">November 27, 2025</div>
                     
                     <div class="article-text">
@@ -971,14 +701,7 @@
                 <!-- ENTERTAINMENT: Emoji of the Year -->
                 <article class="article">
                     <div class="article-meta">Technology • Governance • Fatigue</div>
-                    <h2 class="headline headline-small">
-                        <a href="articles/huckfinn_Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019.html"
-                           class="article-link-tooltip"
-                           data-tooltip="Read full article"
-                           aria-label="Read full article: Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019">
-                            Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019
-                        </a>
-                    </h2>
+                    <h2 class="headline headline-small">Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019</h2>
                     <div class="subhead">'Face With Bags Under Eyes' gives billions standardized way to express exhaustion</div>
                     
                     <div class="emoji-large">🫩</div>
@@ -1049,51 +772,10 @@
             </div>
         </div>
 
-
-        <!-- PAGE NAVIGATION -->
-        <div class="page-nav">
-            <a href="page-4.html" class="">← Previous Page</a>
-            <span class="page-indicator">Page 5 of 5</span>
-            <a href="#" class="disabled">Next Page →</a>
-        </div>
-
         <!-- Page Footer -->
         <div class="page-footer">
             <span class="masthead-small" style="font-size: 14px;">HuckFinn</span> — "America's Finest News Source" — Page 5
         </div>
     </div>
-
-    <!-- SITE FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">HuckFinn</div>
-                    <div class="footer-tagline">America's Finest</div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>Letters to the Editor:</p>
-                    <a href="/cdn-cgi/l/email-protection#bbdedfd2cfd4c9fbd3ced8d0ddd2d5d595dad2"><span class="__cf_email__" data-cfemail="bfdadbd6cbd0cdffd7cadcd4d9d6d1d191ded6">[email&#160;protected]</span></a>
-                    <p style="margin-top: 8px;">Tips & Story Ideas:</p>
-                    <a href="/cdn-cgi/l/email-protection#99edf0e9ead9f1ecfaf2fff0f7f7b7f8f0"><span class="__cf_email__" data-cfemail="3d49544d4e7d55485e565b545353135c54">[email&#160;protected]</span></a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Editorial</h4>
-                    <a href="page-1.html">Front Page</a>
-                    <a href="index.html">Issue Archive</a>
-                    <a href="/cdn-cgi/l/email-protection#1d6e687f70746e6e7472736e5d75687e767b747373337c74">Submit a Story</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Corrections</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p
+</body>
+</html>

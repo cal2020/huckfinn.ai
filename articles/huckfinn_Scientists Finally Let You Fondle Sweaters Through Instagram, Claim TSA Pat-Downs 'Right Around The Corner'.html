@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientists Finally Let You Fondle Sweaters Through Instagram | HuckFinn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f4f4f4;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 4px solid #c41e3a;
+        }
+        .header h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.5em;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        .header .tagline {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #ccc;
+            margin-top: 5px;
+        }
+        .nav {
+            background: #2a2a2a;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav a:hover {
+            color: #c41e3a;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        .category {
+            color: #c41e3a;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .headline {
+            font-size: 2.4em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-family: 'Times New Roman', serif;
+        }
+        .subheadline {
+            font-size: 1.3em;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 20px;
+            border-left: 3px solid #c41e3a;
+            padding-left: 15px;
+        }
+        .byline {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .byline .author {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .featured-image {
+            width: 100%;
+            background: #e0e0e0;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .featured-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .featured-image .placeholder {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .caption {
+            font-size: 0.8em;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .caption .credit {
+            color: #999;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        .pull-quote {
+            font-size: 1.4em;
+            font-style: italic;
+            color: #c41e3a;
+            border-left: 4px solid #c41e3a;
+            padding: 20px 25px;
+            margin: 30px 0;
+            background: #fafafa;
+        }
+        .ad-container {
+            background: linear-gradient(to right, #fff3cd, #ffeeba);
+            border: 2px dashed #856404;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad-container .ad-label {
+            font-size: 0.7em;
+            color: #856404;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .ad-container h3 {
+            font-size: 1.3em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .ad-container p {
+            font-size: 0.95em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .ad-container .cta {
+            background: #c41e3a;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .related-section {
+            background: #f8f8f8;
+            padding: 25px;
+            margin: 30px 0;
+            border-top: 3px solid #1a1a1a;
+        }
+        .related-section h4 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: #c41e3a;
+        }
+        .related-section ul {
+            list-style: none;
+        }
+        .related-section li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+        .related-section li:last-child {
+            border-bottom: none;
+        }
+        .related-section a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .related-section a:hover {
+            color: #c41e3a;
+        }
+        .related-section .views {
+            color: #999;
+            font-size: 0.8em;
+        }
+        .comments-section {
+            background: white;
+            padding: 25px;
+            margin-top: 30px;
+            border-top: 3px solid #1a1a1a;
+        }
+        .comments-section h3 {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .comment {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .comment:last-child {
+            border-bottom: none;
+        }
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+        .username {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .username.verified {
+            color: #1da1f2;
+        }
+        .username.op {
+            color: #c41e3a;
+        }
+        .badge {
+            font-size: 0.65em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+        .badge.top-commenter {
+            background: #ffd700;
+            color: #1a1a1a;
+        }
+        .badge.first {
+            background: #c41e3a;
+            color: white;
+        }
+        .badge.controversial {
+            background: #ff6b6b;
+            color: white;
+        }
+        .badge.expert {
+            background: #4ecdc4;
+            color: white;
+        }
+        .timestamp {
+            font-size: 0.75em;
+            color: #999;
+            margin-left: 10px;
+        }
+        .comment-body {
+            font-size: 0.95em;
+            margin-left: 50px;
+            color: #333;
+        }
+        .comment-actions {
+            margin-left: 50px;
+            margin-top: 8px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .comment-actions .upvotes {
+            color: #4caf50;
+        }
+        .comment-actions .downvotes {
+            color: #f44336;
+        }
+        .reply {
+            margin-left: 50px;
+            padding-left: 20px;
+            border-left: 2px solid #eee;
+            margin-top: 15px;
+        }
+        .reply .comment-body {
+            margin-left: 50px;
+        }
+        .reply .comment-actions {
+            margin-left: 50px;
+        }
+        .deleted-comment {
+            color: #999;
+            font-style: italic;
+            background: #f5f5f5;
+            padding: 10px;
+            margin-left: 50px;
+        }
+        .edited {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+        }
+        .footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 0.85em;
+            margin-top: 40px;
+        }
+        .footer a {
+            color: #999;
+            margin: 0 10px;
+        }
+        .trending-banner {
+            background: #c41e3a;
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            text-align: center;
+        }
+        .breaking {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="trending-banner breaking">
+        🔥 TRENDING: Man Who Bought VR Headset In 2016 Still Waiting For "Killer App" | Area Facebook User Discovers Aunt Has Opinions
+    </div>
+    
+    <header class="header">
+        <h1>HUCKFINN</h1>
+        <div class="tagline">America's Finest News Source Since We Said So</div>
+    </header>
+    
+    <nav class="nav">
+        <a href="#">Politics</a>
+        <a href="#">Tech</a>
+        <a href="#">Science</a>
+        <a href="#">Local</a>
+        <a href="#">Opinion</a>
+        <a href="#">Sportball</a>
+        <a href="#">Lifestyle</a>
+    </nav>
+    
+    <main class="container">
+        <div class="category">Technology / Haptics / Coping</div>
+        
+        <h1 class="headline">Scientists Finally Let You Fondle Sweaters Through Instagram, Claim TSA Pat-Downs 'Right Around The Corner'</h1>
+        
+        <p class="subheadline">'This Changes Everything,' Says Man Who Has Never Successfully Explained What He Does At Parties</p>
+        
+        <div class="byline">
+            <span class="author">MARGARET HAPSWORTH</span> · Senior Tactile Correspondent<br>
+            Published November 23, 2025 · Updated: After we stopped laughing
+        </div>
+        
+        <div class="featured-image">
+            <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto; border-radius: 4px;">
+                <!-- Background - Lab setting -->
+                <rect width="800" height="450" fill="#e8e8e8"/>
+                
+                <!-- Back wall -->
+                <rect x="0" y="0" width="800" height="300" fill="#f5f5f5"/>
+                
+                <!-- Window -->
+                <rect x="50" y="30" width="150" height="120" fill="#87CEEB" stroke="#8B4513" stroke-width="8"/>
+                <line x1="125" y1="30" x2="125" y2="150" stroke="#8B4513" stroke-width="4"/>
+                <line x1="50" y1="90" x2="200" y2="90" stroke="#8B4513" stroke-width="4"/>
+                
+                <!-- Expensive equipment in background (unused) -->
+                <rect x="600" y="80" width="150" height="200" fill="#2c3e50" rx="10"/>
+                <rect x="610" y="90" width="130" height="100" fill="#1a1a2e"/>
+                <text x="675" y="145" text-anchor="middle" fill="#00ff00" font-family="monospace" font-size="10">IDLE</text>
+                <text x="675" y="160" fill="#00ff00" font-family="monospace" font-size="8">$400,000</text>
+                <circle cx="620" cy="210" r="5" fill="#ff0000"/>
+                <text x="675" y="265" text-anchor="middle" fill="#666" font-size="8">ELECTRON MICROSCOPE</text>
+                <text x="675" y="275" text-anchor="middle" fill="#999" font-size="6">(gathering dust)</text>
+                
+                <!-- Lab table -->
+                <rect x="100" y="280" width="450" height="20" fill="#8B4513"/>
+                <rect x="110" y="300" width="20" height="100" fill="#5D3A1A"/>
+                <rect x="520" y="300" width="20" height="100" fill="#5D3A1A"/>
+                
+                <!-- Researcher in lab coat -->
+                <ellipse cx="250" cy="200" rx="30" ry="35" fill="#FFE4C4"/>
+                <rect x="210" y="235" width="80" height="120" fill="white" rx="5"/>
+                <rect x="215" y="240" width="70" height="110" fill="#f8f8f8"/>
+                <!-- Researcher arms -->
+                <rect x="290" y="250" width="60" height="15" fill="white" rx="5"/>
+                <ellipse cx="355" cy="257" rx="12" ry="10" fill="#FFE4C4"/>
+                <!-- Researcher face -->
+                <circle cx="240" cy="195" r="3" fill="#333"/>
+                <circle cx="260" cy="195" r="3" fill="#333"/>
+                <path d="M 245 210 Q 250 215 255 210" stroke="#333" stroke-width="2" fill="none"/>
+                <!-- Glasses -->
+                <circle cx="240" cy="195" r="8" stroke="#333" stroke-width="2" fill="none"/>
+                <circle cx="260" cy="195" r="8" stroke="#333" stroke-width="2" fill="none"/>
+                <line x1="248" y1="195" x2="252" y2="195" stroke="#333" stroke-width="2"/>
+                <!-- Hair -->
+                <ellipse cx="250" cy="170" rx="35" ry="20" fill="#4a4a4a"/>
+                
+                <!-- Test subject -->
+                <ellipse cx="450" cy="210" rx="28" ry="32" fill="#DEB887"/>
+                <!-- Closed eyes with tears -->
+                <path d="M 438 205 Q 443 200 448 205" stroke="#333" stroke-width="2" fill="none"/>
+                <path d="M 452 205 Q 457 200 462 205" stroke="#333" stroke-width="2" fill="none"/>
+                <!-- Tears of joy -->
+                <ellipse cx="440" cy="215" rx="3" ry="5" fill="#87CEEB"/>
+                <ellipse cx="460" cy="218" rx="3" ry="5" fill="#87CEEB"/>
+                <!-- Happy smile -->
+                <path d="M 442 225 Q 450 235 458 225" stroke="#333" stroke-width="2" fill="none"/>
+                <!-- Body -->
+                <rect x="420" y="242" width="60" height="80" fill="#3498db" rx="5"/>
+                
+                <!-- Phone in subject's hand -->
+                <rect x="380" y="260" width="35" height="60" fill="#1a1a1a" rx="5"/>
+                <rect x="383" y="265" width="29" height="50" fill="#fff"/>
+                <!-- Instagram sweater on phone -->
+                <rect x="385" y="270" width="25" height="20" fill="#e74c3c"/>
+                <text x="397" y="295" text-anchor="middle" fill="#333" font-size="5">♥ 4,521</text>
+                <text x="397" y="305" text-anchor="middle" fill="#666" font-size="4">@cozy_knits</text>
+                
+                <!-- Subject's arm with device -->
+                <rect x="350" y="280" width="35" height="12" fill="#DEB887"/>
+                <!-- THE DEVICE - bandage on finger -->
+                <rect x="340" y="282" width="20" height="8" fill="#f5deb3" stroke="#d4a574" stroke-width="1"/>
+                <circle cx="345" cy="286" r="2" fill="#333"/>
+                <circle cx="350" cy="286" r="2" fill="#333"/>
+                <circle cx="355" cy="286" r="2" fill="#333"/>
+                <!-- Electric zap effect -->
+                <text x="330" y="280" fill="#FFD700" font-size="14">⚡</text>
+                
+                <!-- Speech bubble from researcher -->
+                <ellipse cx="320" cy="150" rx="80" ry="40" fill="white" stroke="#333" stroke-width="2"/>
+                <polygon points="290,185 300,150 310,180" fill="white" stroke="white"/>
+                <line x1="290" y1="185" x2="300" y2="155" stroke="#333" stroke-width="2"/>
+                <text x="320" y="145" text-anchor="middle" fill="#333" font-size="10" font-style="italic">"Feel the sweater.</text>
+                <text x="320" y="158" text-anchor="middle" fill="#333" font-size="10" font-style="italic">FEEL IT."</text>
+                
+                <!-- Thought bubble from subject -->
+                <ellipse cx="520" cy="140" rx="70" ry="35" fill="white" stroke="#333" stroke-width="2"/>
+                <circle cx="490" cy="175" r="8" fill="white" stroke="#333" stroke-width="1"/>
+                <circle cx="478" cy="190" r="5" fill="white" stroke="#333" stroke-width="1"/>
+                <text x="520" y="135" text-anchor="middle" fill="#333" font-size="9">"Is this... cashmere?"</text>
+                <text x="520" y="148" text-anchor="middle" fill="#333" font-size="8">(it's acrylic)</text>
+                
+                <!-- Grant money flying away -->
+                <text x="680" y="50" fill="#2ecc71" font-size="16">💵</text>
+                <text x="720" y="35" fill="#2ecc71" font-size="14">💵</text>
+                <text x="750" y="55" fill="#2ecc71" font-size="12">💵</text>
+                <text x="700" y="70" fill="#2ecc71" font-size="10">💵</text>
+                
+                <!-- Floor -->
+                <rect x="0" y="400" width="800" height="50" fill="#d4a574"/>
+                
+                <!-- Label/watermark -->
+                <rect x="0" y="420" width="800" height="30" fill="rgba(0,0,0,0.7)"/>
+                <text x="400" y="440" text-anchor="middle" fill="white" font-family="Georgia" font-size="12">NORTHWESTERN UNIVERSITY HAPTICS LAB — "YOUR TAX DOLLARS AT WORK"</text>
+            </svg>
+        </div>
+        <p class="caption">
+            PhD candidate Sylvia Tan demonstrates VoxeLite by allowing a test subject to experience "human resolution" digital corduroy. The subject later described the sensation as "like touching corduroy, but worse."
+            <span class="credit">Northwestern University / Getty Images</span>
+        </p>
+        
+        <div class="article-body">
+            <p>EVANSTON, IL — In a breakthrough that scientists are calling "definitely necessary" and "not at all a solution looking for a problem," researchers at Northwestern University have unveiled VoxeLite, a revolutionary bandage-like finger wearable that finally allows users to feel textures through their smartphone screens, ending humanity's long nightmare of having to imagine what sweaters feel like.</p>
+            
+            <p>"For too long, humans have suffered in silence, scrolling past cashmere on Instagram with no way to fondle it," said lead researcher Dr. Harold Membrane, gesturing toward a PowerPoint slide that simply read "TOUCH: THE FORGOTTEN SENSE?" in 72-point Impact font. "We saw an unmet need and we met it. You're welcome, civilization."</p>
+            
+            <p>The device, which resembles the world's most overengineered nicotine patch, wraps around the user's finger and delivers precisely calibrated electric shocks through a grid of nodes the team has branded "pixels of touch"—a term sources confirm required eleven meetings and a branding consultant to develop.</p>
+
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <h3>😤 TIRED OF FEELING THINGS THE OLD-FASHIONED WAY?</h3>
+                <p>TouchCorp™ presents the FeelGlove 3000: Why use your actual hands when you could use <em>electric</em> hands? Now with 73% fewer unintended shocks!</p>
+                <p><small>"I no longer remember what real fabric feels like and I couldn't be happier" — Satisfied Customer, probably</small></p>
+                <button class="cta">FEEL DIFFERENT™</button>
+            </div>
+            
+            <p>According to the peer-reviewed study published in <em>Science Advances</em>, the device achieves "human resolution haptics"—a phrase that, when pressed, researchers admitted means "it works sometimes." In controlled testing, participants correctly identified fabric textures 81% of the time, a success rate the team celebrated despite it meaning that nearly one in five users couldn't distinguish leather from terry cloth while wearing cutting-edge technology specifically designed to distinguish leather from terry cloth.</p>
+            
+            <p>"An 81% accuracy rate is actually remarkable," said PhD candidate Sylvia Tan, who has spent four years of her life on this project. "That means you'll only feel completely wrong textures about once every five scrolls. We see this as a win."</p>
+
+            <div class="pull-quote">
+                "Gamers in virtual reality could use the wearable to sense the slick surface of a well-lacquered doorknob."<br>
+                <small>— An actual sentence published in a peer-reviewed scientific journal, 2025</small>
+            </div>
+            
+            <p>The research paper lists several compelling use cases for the technology, including—and this is a direct quote—allowing VR gamers to "sense the slick surface of a well-lacquered doorknob." When asked whether extensive focus groups had demanded doorknob-feeling capabilities, Dr. Membrane stared silently for fourteen seconds before asking if we wanted to see the lab's foosball table.</p>
+            
+            <p>Perhaps most notably, the study mentions that the device could help visually impaired users navigate apps and read Braille—a genuinely transformative application that appears exactly once in paragraph four before being immediately abandoned to make room for 800 additional words about video game bowstrings, theoretical doorknobs, and the philosophical implications of touching digital corduroy.</p>
+
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <h3>🚪 DOORKNOB ENTHUSIAST MONTHLY</h3>
+                <p>Are you one of the <em>thousands</em> of Americans who have always wanted to feel doorknobs without the inconvenience of being near doorknobs?</p>
+                <p>Subscribe now and receive our special issue: <strong>"Lacquered, Semi-Lacquered, and Theoretical: A Doorknob Journey"</strong></p>
+                <p><small>Use code HAPTIC for 15% off your first month of doorknob content</small></p>
+                <button class="cta">FEEL THE KNOB</button>
+            </div>
+            
+            <p>The device currently only works on one finger at a time. Experiencing texture with your whole hand—the way humans have done for roughly 300,000 years—requires "optimized routing architectures that do not yet exist," according to researchers, who remain confident that the additional $4.7 million in grant funding they've requested will solve this.</p>
+            
+            <p>"The multi-finger breakthrough is really just around the corner," said Dr. Membrane. "We said the same thing about single-finger in 2019, and look where we are now. We have single-finger. The system works."</p>
+            
+            <p>Durability testing has revealed several limitations. The device is vulnerable to "dirt, debris, or other variables that might cause damage"—a concerning weakness given that fingers famously never touch anything dirty. Additionally, while the device handles sweat admirably, full water submersion will disable it temporarily until "air-dried," a resilience profile shared by most sandwiches.</p>
+            
+            <p>Researchers envision users wearing VoxeLite "all day, like eyeglasses," seemingly unaware that eyeglasses do not require users to constantly touch their phones to function and also help people see.</p>
+            
+            <p>"It's haptically transparent," Tan explained when asked whether users would notice wearing a shock-delivering finger sleeve throughout their workday. "That means you forget it's there. Until you feel something. Then you remember. Then you forget again. It's a whole cycle."</p>
+
+            <div class="ad-container">
+                <div class="ad-label">You Deserve This Ad</div>
+                <h3>📱 IS YOUR FINGER TOO NAKED?</h3>
+                <p>Studies show that 100% of fingers are currently unelectrified. This is a CRISIS.</p>
+                <p>FingerTech Industries: <em>"Because your index finger deserves to feel confused."</em></p>
+                <p><small>Side effects may include: mild electrocution, accidentally thinking leather is terry cloth, existential doubt about what "touch" even means anymore</small></p>
+                <button class="cta">ELECTRIFY ME</button>
+            </div>
+            
+            <p>The study's conclusion strikes a triumphant note, declaring that VoxeLite "blurs the line between person and machine"—a philosophical claim previously reserved for neural implants, artificial hearts, and cochlear implants, now being applied with equal gravitas to what is, functionally, a zappy sticker.</p>
+            
+            <p>"When you really think about it, what even is a human?" Dr. Membrane mused, gazing out his office window at students walking to class while holding their phones, none of whom were wearing finger bandages. "We're all just... touch-seeking beings, desperate to feel Instagram sweaters. This device merely makes that truth manifest."</p>
+            
+            <p>When asked whether the $2.3 million in research funding might have been allocated toward, say, solving literally any actual problem, Dr. Membrane laughed warmly and said the reporter clearly didn't understand the importance of doorknob haptics.</p>
+            
+            <p>At press time, a follow-up team at MIT announced they were "very close" to a device that lets users smell TikToks.</p>
+        </div>
+        
+        <div class="related-section">
+            <h4>📰 Related Articles</h4>
+            <ul>
+                <li><a href="#">Man Who Purchased Every VR Accessory Since 2014 Now Has Entire Room He Can't Enter</a> <span class="views">· 234K views</span></li>
+                <li><a href="#">Study Finds 100% Of "Smart" Devices Eventually Just Become Regular Devices That Need Updates</a> <span class="views">· 891K views</span></li>
+                <li><a href="#">Tech CEO Explains Why Product That Doesn't Exist Yet Will Definitely Transform Your Life</a> <span class="views">· 156K views</span></li>
+                <li><a href="#">Area Man's "Revolutionary" Startup Idea Is Just A Worse Version Of Something That Already Exists</a> <span class="views">· 445K views</span></li>
+                <li><a href="#">Scientists Announce Breakthrough That Will Be Quietly Abandoned In 18 Months</a> <span class="views">· 1.2M views</span></li>
+            </ul>
+        </div>
+        
+        <div class="related-section">
+            <h4>👀 You Might Also Be Interested In</h4>
+            <ul>
+                <li><a href="#">Remember When They Said We'd Have Flying Cars? Here's 47 Things They Promised Instead [SLIDESHOW]</a></li>
+                <li><a href="#">The Metaverse Is Definitely Still Happening, Insists Man Who Spent $450,000 On Virtual Property</a></li>
+                <li><a href="#">Why Can't I Just Touch The Sweater In Person: A Boomer's Manifesto</a></li>
+                <li><a href="#">18 Times Researchers Said "Blurs The Line Between Man And Machine" About Something Stupid</a></li>
+                <li><a href="#">QUIZ: Which Useless Wearable From 2016 Are You? 🔮</a></li>
+                <li><a href="#">I Wore A Haptic Finger Sleeve For A Week And Now I Can't Feel Love</a></li>
+            </ul>
+        </div>
+        
+        <div class="ad-container">
+            <div class="ad-label">Premium Sponsor</div>
+            <h3>🎓 NORTHWESTERN UNIVERSITY</h3>
+            <p><em>"We Could Have Cured Something, But We Chose Doorknobs"</em></p>
+            <p>Now accepting applications for our PhD program in Theoretical Haptics, Applied Buzzword Generation, and Grant Acquisition Studies.</p>
+            <p><strong>New for 2026:</strong> Minor in Explaining Your Research To Disappointed Parents</p>
+            <button class="cta">APPLY NOW (We Need The Money)</button>
+        </div>
+        
+        <!-- COMMENTS SECTION -->
+        <div class="comments-section">
+            <h3>💬 Comments (847) — Sorted by: Unhinged</h3>
+            
+            <!-- Comment 1 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #4ecdc4;">TL</div>
+                    <span class="username">TouchLord_42069</span>
+                    <span class="badge top-commenter">Top Commenter</span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    First. Also, I've been saying for YEARS that the doorknob-feeling industry was ripe for disruption. Everyone laughed at me. Who's laughing now? (Still everyone, but differently)
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,521</span>
+                    <span class="downvotes">▼ 89</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #ff6b6b;">SK</div>
+                        <span class="username">SkepticalSteve</span>
+                        <span class="timestamp">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Sir this is a Wendy's
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 2,103</span>
+                        <span class="downvotes">▼ 12</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #667eea;">RD</div>
+                        <span class="username">RealDoorknobEnthusiast</span>
+                        <span class="badge expert">Verified Doorknob Expert</span>
+                        <span class="timestamp">45 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Okay but as someone who has dedicated their life to doorknobs (I have a blog with 14 subscribers), I feel SEEN right now. The lacquer comment? *Chef's kiss*
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 892</span>
+                        <span class="downvotes">▼ 445</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 2 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #ffd93d;">QA</div>
+                    <span class="username">QualityAssuranceAndy</span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    "81% accuracy" bro I got a 79 on my driver's test and they still let me operate a 2-ton vehicle. This thing can't even tell leather from terry cloth 1 in 5 times and they're calling it a breakthrough? My drunk uncle has better fabric identification skills and he's been dead for 3 years
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 7,234</span>
+                    <span class="downvotes">▼ 156</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #c41e3a;">ST</div>
+                        <span class="username verified">SylviaTan_Official</span>
+                        <span class="badge first">Researcher</span>
+                        <span class="timestamp">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Hi! Actual researcher here. I'd just like to clarify that 81% is actually considered excellent in the haptics field, and— you know what, never mind. Your dead uncle sounds lovely.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 15,678</span>
+                        <span class="downvotes">▼ 23</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #95e1d3;">JC</div>
+                        <span class="username">JustChillin_2024</span>
+                        <span class="timestamp">34 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        "My drunk uncle has better fabric identification skills and he's been dead for 3 years" is the funniest thing I've read this year and I'm stealing it
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 1,203</span>
+                        <span class="downvotes">▼ 4</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 3 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #a8e6cf;">WA</div>
+                    <span class="username">WellActually_Greg</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Well actually, the electroadhesion principle used here is based on Coulombic attraction and has legitimate applications in soft robotics and— <br><br>*8 more paragraphs no one asked for*
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 1,847</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #ff8a5b;">LM</div>
+                        <span class="username">LiterallyMe_IRL</span>
+                        <span class="timestamp">58 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Found the guy who peaked explaining thermodynamics at parties
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 3,421</span>
+                        <span class="downvotes">▼ 45</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #ddd;">WA</div>
+                        <span class="username">WellActually_Greg</span>
+                        <span class="timestamp">52 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Well actually, I peaked explaining ENTROPY at parties, and the distinction matters because— <span class="edited">(edited)</span>
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 12</span>
+                        <span class="downvotes">▼ 2,341</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 4 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #f8b500;">CB</div>
+                    <span class="username">ConspiracyBrad</span>
+                    <span class="badge controversial">Controversial</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Does anyone else find it suspicious that they BURIED the accessibility stuff in paragraph 4?? Big Doorknob is CLEARLY behind this. Follow the money. The lacquer industry is worth BILLIONS. Wake up sheeple 🐑
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 567</span>
+                    <span class="downvotes">▼ 234</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #45b7d1;">NP</div>
+                        <span class="username">NormalPerson_47</span>
+                        <span class="timestamp">49 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        The funniest thing is this is literally the most sane Brad take I've ever seen. They actually DID bury the only useful application lmao
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 1,892</span>
+                        <span class="downvotes">▼ 8</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 5 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #e056fd;">MM</div>
+                    <span class="username">MillennialMom_Karen</span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    I showed this to my 14-year-old and she said "mom why would I want to feel a sweater on instagram when I could just go to the store" and honestly? Destroyed by a child. I'm logging off.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12,456</span>
+                    <span class="downvotes">▼ 67</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #686de0;">ZG</div>
+                        <span class="username">ZoomerGen_Alpha</span>
+                        <span class="timestamp">45 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Your daughter is based and this technology is cringe. No cap fr fr
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 3,421</span>
+                        <span class="downvotes">▼ 234</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #badc58;">OG</div>
+                        <span class="username">OkayGrandpa</span>
+                        <span class="timestamp">38 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        I don't know what any of these words mean but I also think going to the store is better. In my day we touched ALL the sweaters. They couldn't stop us. Security tried.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 5,678</span>
+                        <span class="downvotes">▼ 12</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 6 - Deleted -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #999;">?</div>
+                    <span class="username" style="color: #999;">[deleted]</span>
+                    <span class="timestamp">56 min ago</span>
+                </div>
+                <div class="deleted-comment">
+                    [Comment removed by moderator: Violated community guidelines regarding what users claimed they wanted to "haptic" on OnlyFans]
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #eb4d4b;">MO</div>
+                        <span class="username op" style="color: #c41e3a;">MOD_Jennifer</span>
+                        <span class="timestamp">54 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Y'all can't behave. This is why we can't have nice things. Or haptic things, apparently.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 2,341</span>
+                        <span class="downvotes">▼ 567</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 7 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #ff9f43;">VC</div>
+                    <span class="username">VCFundingGuy</span>
+                    <span class="badge expert">Verified Investor</span>
+                    <span class="timestamp">45 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Just put $4M into a Series A for a company doing the exact same thing but we call them "tactile voxels" instead of "pixels of touch." Completely different. The TAM for digital doorknob feeling is HUGE. We're projecting 400% YoY growth. My LPs are thrilled. I haven't slept in 6 days. This is fine.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,789</span>
+                    <span class="downvotes">▼ 156</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #22a6b3;">SS</div>
+                        <span class="username">StartupSkeptic</span>
+                        <span class="timestamp">40 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        "We're Uber but for feeling things" energy
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 4,567</span>
+                        <span class="downvotes">▼ 23</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #6c5ce7;">WF</div>
+                        <span class="username">Web3Forever</span>
+                        <span class="timestamp">32 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Have you considered putting the haptic feedback on the blockchain? Each touch could be an NFT. I'm not joking. Please someone fund me.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 234</span>
+                        <span class="downvotes">▼ 8,901</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 8 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #fd79a8;">AT</div>
+                    <span class="username">ActuallyTrying_ToHelp</span>
+                    <span class="timestamp">38 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Okay but genuinely the Braille thing could be amazing for accessibility. Imagine being able to feel any text on any website. That's actually life-changing. Why is that ONE SENTENCE in the middle of an article about doorknobs???
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,923</span>
+                    <span class="downvotes">▼ 34</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #00b894;">AJ</div>
+                        <span class="username">AccessibilityJane</span>
+                        <span class="badge expert">Accessibility Advocate</span>
+                        <span class="timestamp">35 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        THANK YOU. I work in assistive tech and the potential here is genuinely amazing. But no, let's talk about bowstrings for 3 more paragraphs. Cool cool cool.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 4,567</span>
+                        <span class="downvotes">▼ 12</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #ffeaa7;">PR</div>
+                        <span class="username">PRTeam_NW</span>
+                        <span class="timestamp">28 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Hi! Northwestern PR here. We DID include accessibility in our press release! It was bullet point 7 of 8. Right after "virtual doorknobs" and before "sensing cheese textures in cooking apps."
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 567</span>
+                        <span class="downvotes">▼ 2,341</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 9 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #636e72;">DP</div>
+                    <span class="username">DeepPhilosopher_69</span>
+                    <span class="timestamp">30 min ago</span>
+                </div>
+                <div class="comment-body">
+                    "Blurs the line between person and machine" bro it's a sticky bandage that zaps you. My toaster has done more to blur the line between person and machine (it knows when I'm sad and burns my bread accordingly)
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,789</span>
+                    <span class="downvotes">▼ 45</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+            </div>
+            
+            <!-- Comment 10 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #a29bfe;">TT</div>
+                    <span class="username">TechTwitter_Andy</span>
+                    <span class="timestamp">25 min ago</span>
+                </div>
+                <div class="comment-body">
+                    THREAD 🧵<br><br>
+                    1/ Okay so I've been thinking about haptic technology for the last 45 minutes and I have some THOUGHTS<br><br>
+                    2/ First, we need to understand that the human finger has approximately 3000 nerve endings per square centimeter, which means<br><br>
+                    [Thread continues for 47 more tweets that nobody asked for]
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 1,567</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #74b9ff;">JR</div>
+                        <span class="username">JustReadTheArticle</span>
+                        <span class="timestamp">22 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        this could have been an email. specifically, an email i delete.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 3,456</span>
+                        <span class="downvotes">▼ 23</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 11 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #55efc4;">CG</div>
+                    <span class="username">CynicalGrandma</span>
+                    <span class="badge top-commenter">Top Commenter</span>
+                    <span class="timestamp">20 min ago</span>
+                </div>
+                <div class="comment-body">
+                    In 1969 we put a man on the moon. In 2025 we invented a way to feel sweaters without standing up. I'm not saying this is why aliens don't visit us, but I'm not NOT saying that either.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 15,678</span>
+                    <span class="downvotes">▼ 89</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+            </div>
+            
+            <!-- Comment 12 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #fab1a0;">ED</div>
+                    <span class="username">ExistentialDread_Mike</span>
+                    <span class="timestamp">15 min ago</span>
+                </div>
+                <div class="comment-body">
+                    "Works again after air-drying" is SENDING me. You know what else works after air-drying? A wet sock. They invented a wet sock for your finger. This is what $2.3 million bought us. We are not a serious species.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 9,234</span>
+                    <span class="downvotes">▼ 56</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #81ecec;">WS</div>
+                        <span class="username">WetSock_Official</span>
+                        <span class="timestamp">12 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Hey. Wet Sock here. Leave us out of this. We didn't ask for this comparison and frankly we're insulted.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 7,891</span>
+                        <span class="downvotes">▼ 34</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 13 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #dfe6e9;">LU</div>
+                    <span class="username">Luddite_And_Proud</span>
+                    <span class="timestamp">10 min ago</span>
+                </div>
+                <div class="comment-body">
+                    My method: <br>
+                    1. See sweater on Instagram<br>
+                    2. Go to store<br>
+                    3. Touch sweater<br>
+                    4. Leave without buying because I'm dead inside<br><br>
+                    0% chance of electric shock. 100% accuracy. Billions saved.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 11,234</span>
+                    <span class="downvotes">▼ 78</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+            </div>
+            
+            <!-- Comment 14 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #0984e3;">BL</div>
+                    <span class="username">BreakingLurker</span>
+                    <span class="badge first">First Comment Ever</span>
+                    <span class="timestamp">5 min ago</span>
+                </div>
+                <div class="comment-body">
+                    I've been lurking on this site for 7 years. This is my first comment. I HAD to come out of retirement to say: "well-lacquered doorknob" should not appear in any scientific paper. Goodbye, I'm going back to lurking.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,456</span>
+                    <span class="downvotes">▼ 23</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+                
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #00cec9;">LE</div>
+                        <span class="username">LurkerEmeritus</span>
+                        <span class="timestamp">3 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        One of us. One of us.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="upvotes">▲ 2,345</span>
+                        <span class="downvotes">▼ 5</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comment 15 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #e17055;">LS</div>
+                    <span class="username">LoadMore_Steve</span>
+                    <span class="timestamp">2 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Can't believe I scrolled all the way down here. Anyway, does anyone else think it's weird that they specifically mentioned the device survives sweat? Like... how much sweating are they expecting from finger-touching Instagram? What are these test subjects DOING?
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,234</span>
+                    <span class="downvotes">▼ 45</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding: 30px; background: #f8f8f8; margin-top: 20px; border-radius: 8px;">
+                <p style="color: #666; font-size: 0.9em;">📝 <strong>Load 832 more comments</strong></p>
+                <p style="color: #999; font-size: 0.8em; margin-top: 10px;">Warning: Further comments contain extensive doorknob discourse, 47 puns about "touching grass," and someone's unsolicited NFT pitch</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p><strong>HUCKFINN</strong> — America's Finest News Source Since We Said So</p>
+        <p style="margin-top: 10px;">
+            <a href="#">About</a> |
+            <a href="#">Careers</a> |
+            <a href="#">Advertise</a> |
+            <a href="#">Contact</a> |
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Disservice</a>
+        </p>
+        <p style="margin-top: 15px; font-size: 0.8em;">© 2025 HuckFinn Media LLC. All stories are satirical. If you're reading this, please touch grass (the real kind, not the digital kind).</p>
+        <p style="margin-top: 10px; font-size: 0.75em; color: #666;">No doorknobs were harmed in the making of this article. Some sweaters were fondled non-consensually via Instagram.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper - December 1, 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: #f4f1ea;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* MASTHEAD */
+        .masthead {
+            text-align: center;
+            border-bottom: 3px double #000;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .masthead h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 4em;
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+        
+        .tagline {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .date-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #000;
+        }
+        
+        /* SECTIONS */
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+        
+        .section-header {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: -20px -20px 20px -20px;
+        }
+        
+        .headline {
+            font-size: 2.2em;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        
+        .subhead {
+            font-size: 1.3em;
+            color: #444;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .byline {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .article-body {
+            column-count: 2;
+            column-gap: 30px;
+            text-align: justify;
+        }
+        
+        .article-body.single-col {
+            column-count: 1;
+        }
+        
+        .article-body p {
+            margin-bottom: 15px;
+            text-indent: 1.5em;
+        }
+        
+        .article-body p:first-of-type {
+            text-indent: 0;
+        }
+        
+        .article-body p:first-of-type::first-letter {
+            font-size: 3em;
+            float: left;
+            line-height: 0.8;
+            padding-right: 8px;
+            font-weight: bold;
+        }
+        
+        /* PHOTO */
+        .photo-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .photo {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2em;
+            position: relative;
+            border: 3px solid #000;
+        }
+        
+        .photo-content {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .photo-content .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .caption {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 3px solid #000;
+        }
+        
+        /* ADS */
+        .ad {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            border: 2px dashed #856404;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ad-label {
+            font-size: 0.7em;
+            color: #856404;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ad h3 {
+            font-size: 1.5em;
+            color: #856404;
+            margin: 10px 0;
+        }
+        
+        .ad p {
+            color: #664d03;
+        }
+        
+        /* GRID LAYOUTS */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        
+        /* SMALL ARTICLES */
+        .small-article {
+            padding: 15px;
+            border: 1px solid #ddd;
+            background: #fafafa;
+        }
+        
+        .small-article h4 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .small-article p {
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        /* COMMENTS */
+        .comments-section {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .comments-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .comment {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .comment.reply {
+            margin-left: 30px;
+            border-left-color: #95a5a6;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 0.9em;
+        }
+        
+        .comment-meta {
+            font-size: 0.75em;
+            color: #999;
+            margin-bottom: 8px;
+        }
+        
+        .comment-body {
+            font-size: 0.95em;
+        }
+        
+        .comment-votes {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        /* WEATHER */
+        .weather-box {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .weather-day {
+            padding: 15px;
+        }
+        
+        .weather-icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+        
+        /* CLASSIFIEDS */
+        .classified {
+            background: #fff;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            font-size: 0.9em;
+        }
+        
+        .classified-header {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            color: #c0392b;
+        }
+        
+        /* HOROSCOPES */
+        .horoscope {
+            padding: 10px;
+            border-bottom: 1px dotted #ddd;
+        }
+        
+        .horoscope:last-child {
+            border-bottom: none;
+        }
+        
+        .horoscope-sign {
+            font-weight: bold;
+            color: #8e44ad;
+        }
+        
+        /* RELATED */
+        .related-articles {
+            background: #ecf0f1;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .related-articles h4 {
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        .related-articles ul {
+            list-style: none;
+        }
+        
+        .related-articles li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #bdc3c7;
+            font-size: 0.9em;
+        }
+        
+        .related-articles li:last-child {
+            border-bottom: none;
+        }
+        
+        /* PULL QUOTE */
+        .pull-quote {
+            font-size: 1.4em;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+            color: #333;
+        }
+        
+        /* BREAKING BANNER */
+        .breaking {
+            background: #c0392b;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* STOCK TICKER */
+        .ticker {
+            background: #1a1a1a;
+            color: #0f0;
+            font-family: monospace;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker span {
+            margin-right: 30px;
+        }
+        
+        .ticker .down {
+            color: #e74c3c;
+        }
+        
+        .ticker .up {
+            color: #2ecc71;
+        }
+        
+        /* EDITORIAL BOX */
+        .editorial-box {
+            background: #fdf2e9;
+            border-left: 4px solid #e67e22;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #fff;
+            margin-top: 30px;
+        }
+        
+        footer p {
+            font-size: 0.85em;
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+            .article-body {
+                column-count: 1;
+            }
+            .masthead h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="breaking">
+    🚨 BREAKING: Government Confirms It Now Operates Entirely Via Footnotes And Asterisks 🚨
+</div>
+
+<div class="ticker">
+    <span class="down">TRUST ▼ 99.7%</span>
+    <span class="up">CHAOS ▲ 847%</span>
+    <span class="down">LOGIC ▼ 404</span>
+    <span class="up">MEMES ▲ ∞</span>
+    <span class="down">DOGE ▼ DEFUNCT</span>
+    <span class="up">ASTERISKS ▲ 10,000%</span>
+    <span>REALITY: ERROR_NOT_FOUND</span>
+</div>
+
+<div class="container">
+    
+    <!-- MASTHEAD -->
+    <header class="masthead">
+        <h1>HuckFinn</h1>
+        <p class="tagline">"America's Finest Newspaper" • "All The News That's Fit To Satirize"</p>
+        <div class="date-bar">
+            <span>Vol. CLXIX, No. 420</span>
+            <span>Monday, December 1, 2025</span>
+            <span>Price: Your Faith In Institutions</span>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 1: FRONT PAGE / BREAKING NEWS -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ FRONT PAGE • BREAKING NEWS</div>
+        
+        <h1 class="headline">CDC Webpage Now Just Asterisk Linking To Longer Asterisk Explaining Original Asterisk Was Political Compromise</h1>
+        
+        <p class="subhead">Scientists Reportedly 'Blindsided' By Novel Approach Of Ignoring Scientists; Agency Credibility Enters Witness Protection Program</p>
+        
+        <p class="byline">By MIRANDA FACTCHECK • HuckFinn Washington Bureau Chief</p>
+        
+        <div class="photo-container">
+            <div class="photo">
+                <div class="photo-content">
+                    <div class="icon">*</div>
+                    <div><strong>VACCINES DO NOT CAUSE AUTISM*</strong></div>
+                    <div style="font-size: 0.5em; margin-top: 20px;">*This header remains due to an agreement with a Senator who definitely didn't get played. The actual content below contradicts everything above. Please ignore logic. Thank you for your cooperation.</div>
+                </div>
+            </div>
+            <p class="caption"><strong>PHOTO:</strong> The CDC's new homepage, which scientists describe as "an asterisk war crime" and "what happens when legal compliance meets scientific betrayal." The footnote is reportedly 47 pages long and includes a recipe for chicken nuggets.</p>
+        </div>
+        
+        <div class="article-body">
+            <p>ATLANTA — In what experts are calling "the most elaborate act of bureaucratic passive-aggression in federal history," the Centers for Disease Control and Prevention has updated its vaccine safety webpage to feature a headline that says one thing, body text that says the opposite, and an asterisk that essentially gives the middle finger to the senator who extracted a promise that the headline would remain.</p>
+            
+            <p>"The header says 'Vaccines do not cause autism,' which technically fulfills our agreement," explained an HHS spokesperson, air-quoting so aggressively that nearby interns reported whiplash. "The asterisk simply clarifies that this statement 'is not evidence-based' and that 'studies supporting a link have been ignored.' It's called nuance."</p>
+            
+            <p>Career scientists at the CDC, who reportedly learned of the changes when a concerned citizen DM'd them on LinkedIn, expressed measured professional concern. "What the actual f***," said one epidemiologist who spoke on condition of anonymity because they still have a mortgage.</p>
+            
+            <p>Dr. Paul Offitt, a vaccine expert at Children's Hospital of Philadelphia, offered context: "They might as well say chicken nuggets cause autism because you can't prove that either. Actually, don't give them ideas. I've seen the grocery lobby in action."</p>
+            
+            <p>The webpage now features what legal scholars are calling "Schrödinger's Public Health Guidance" — simultaneously stating and denying the same scientific consensus depending on which paragraph you're reading and whether Mercury is in retrograde.</p>
+            
+            <p>Senator Bill Cassidy (R-LA), who secured the promise that the "vaccines do not cause autism" language would remain, released a statement that simply read: "..."</p>
+            
+            <p>When reached for comment, an asterisk declined to speak on the record, citing ongoing litigation.</p>
+        </div>
+        
+        <div class="pull-quote">
+            "The facts don't change because the administration does. But apparently the website does." — Autism Science Foundation, shortly before updating their own website to just say "We give up"
+        </div>
+        
+        <!-- COMMENTS -->
+        <div class="comments-section">
+            <h3>💬 Comments (2,847) — Sorted by: Most Unhinged</h3>
+            
+            <div class="comment">
+                <p class="comment-author">VaccineSkeptic1776 <span class="comment-meta">• 2 hours ago • Tallahassee, FL</span></p>
+                <p class="comment-body">FINALLY the TRUTH is coming out!! I've been saying this for years!! Do your own research people!! 🐑🐑🐑</p>
+                <p class="comment-votes">👍 12.4K 👎 8.9K • 🚩 Flagged for: Being Statistically Inevitable</p>
+            </div>
+            
+            <div class="comment reply">
+                <p class="comment-author">ActualDoctor_MD <span class="comment-meta">• 1 hour ago</span></p>
+                <p class="comment-body">I have 40 years of medical training and I am begging you to understand what an asterisk is</p>
+                <p class="comment-votes">👍 34.2K 👎 156 • Reply • 💀 "Ratio'd into the shadow realm"</p>
+            </div>
+            
+            <div class="comment reply">
+                <p class="comment-author">VaccineSkeptic1776 <span class="comment-meta">• 58 min ago</span></p>
+                <p class="comment-body">Nice try Big Pharma shill. How much is Pfizer paying you? I did my research on YouTube</p>
+                <p class="comment-votes">👍 847 👎 12.1K</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">FirstTimeCommenter <span class="comment-meta">• 45 min ago • Chicago, IL</span></p>
+                <p class="comment-body">Long time reader, first time commenter. I usually don't comment but this article really made me want to walk into the sea.</p>
+                <p class="comment-votes">👍 67.3K 👎 12 • 🏆 Most Relatable</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">GrammarNazi_420 <span class="comment-meta">• 30 min ago</span></p>
+                <p class="comment-body">*you're (I don't know where but I'm sure someone made this mistake)</p>
+                <p class="comment-votes">👍 2.1K 👎 890</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">Boomer_Frank_1952 <span class="comment-meta">• 15 min ago • Sent from my iPad</span></p>
+                <p class="comment-body">HOW DO I UNSUBSCRIBE FROM THESE EMAILS. GOOGLE STOP SENDING ME THINGS. ALEXA CALL MY GRANDSON</p>
+                <p class="comment-votes">👍 45.6K 👎 0 • 🏆 Wholesome Chaos Award</p>
+            </div>
+        </div>
+        
+        <div class="related-articles">
+            <h4>📰 Related Articles</h4>
+            <ul>
+                <li>"FDA Approves New Drug With Asterisk Linking To 47-Page Disclaimer That Drug May Actually Be Poison"</li>
+                <li>"Scientists Develop New Method Of Communicating Facts: Giving Up"</li>
+                <li>"Local Mom Who 'Did Her Own Research' Exposed As Just Watching TikToks On Toilet"</li>
+                <li>"Chicken Nuggets Demand Apology After Being Dragged Into Vaccine Discourse"</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- AD BREAK -->
+    <div class="ad">
+        <p class="ad-label">✦ Advertisement ✦</p>
+        <h3>ASTERISK INSURANCE™</h3>
+        <p><em>"When Your Promises Need Plausible Deniability"</em></p>
+        <p>Cover your legally-binding statements with our patented Footnote Protection Plan!*</p>
+        <p style="font-size: 0.6em; margin-top: 10px;">*This ad does not constitute an actual offer. Asterisk Insurance is not real. Nothing is real. Terms and Whose-Line-Is-It-Anyway rules apply.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 2: POLITICS -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ POLITICS</div>
+        
+        <h2 class="headline">Department Of Government Efficiency Quietly Disbanded 8 Months Early In Triumph Of Irony Over Governance</h2>
+        
+        <p class="subhead">Agency Named After Meme Dog Fails To Complete Meme-Level Goals; Airbnb Co-Founder Now Assigned To "Make Government Websites Pretty"</p>
+        
+        <p class="byline">By CHUCK DEFICIT • HuckFinn Political Correspondent</p>
+        
+        <div class="photo-container">
+            <div class="photo" style="background: linear-gradient(135deg, #f39c12, #e74c3c);">
+                <div class="photo-content">
+                    <div class="icon">🐕</div>
+                    <div style="font-size: 1.5em;"><strong>D.O.G.E.</strong></div>
+                    <div>2025 - 2025</div>
+                    <div style="font-size: 0.8em; margin-top: 10px;">"Much Promise. Very Disband. Wow."</div>
+                    <div style="font-size: 0.6em; margin-top: 5px;">Promised: $1 Trillion | Delivered: Vibes</div>
+                </div>
+            </div>
+            <p class="caption"><strong>IN MEMORIAM:</strong> The Department of Government Efficiency's official seal, which cost $2.3 million to design and was used for approximately 10 months. The meme dog reportedly "didn't consent to this."</p>
+        </div>
+        
+        <div class="article-body">
+            <p>WASHINGTON — The Department of Government Efficiency, the ambitious cost-cutting initiative named after an internet dog meme and a cryptocurrency, has been quietly disbanded with eight months remaining on its charter, in what officials are calling "a successful demonstration of our core values."</p>
+            
+            <p>"That doesn't exist," Office of Personnel Management Director Scott Kupor told reporters when asked about DOGE's status, before clarifying that "the principles of DOGE remain alive and well" despite the organization being, definitionally, dead.</p>
+            
+            <p>The agency, which promised to save $1 trillion but achieved approximately $214 billion in savings that multiple analyses suggest were inflated by up to 97%, has been absorbed into various other government bodies — including a new office where Airbnb co-founder Joe Gebbia will "beautify government websites."</p>
+            
+            <p>"We accomplished everything we set out to do," said a spokesman, reading from a statement that notably did not list any of the things they set out to do. "The chainsaw for bureaucracy has simply... evolved into a letter opener for memos about website aesthetics."</p>
+            
+            <p>Critics noted the irony of an efficiency department that couldn't efficiently complete its own mission. "They promised to disrupt government waste," said one analyst. "And they did — by becoming an example of it."</p>
+            
+            <p>The meme dog whose image inspired the department's name could not be reached for comment, but is believed to be doing well and not thinking about federal contracting reform.</p>
+        </div>
+        
+        <div class="comments-section">
+            <h3>💬 Comments (1,203)</h3>
+            
+            <div class="comment">
+                <p class="comment-author">CryptoKing2024 <span class="comment-meta">• 3 hours ago</span></p>
+                <p class="comment-body">DOGE coin is still going to the moon though right? Right?? PLEASE RESPOND</p>
+                <p class="comment-votes">👍 234 👎 5.6K • 🚩 Flagged for: Financial Delusion</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">FederalEmployee_Anon <span class="comment-meta">• 2 hours ago</span></p>
+                <p class="comment-body">I work for the government and I found out my department was eliminated via this article. So thanks for that I guess</p>
+                <p class="comment-votes">👍 89.4K 👎 12</p>
+            </div>
+            
+            <div class="comment reply">
+                <p class="comment-author">HuckFinn_Editor <span class="comment-meta">• 1 hour ago • VERIFIED ✓</span></p>
+                <p class="comment-body">We apologize. If it helps, the severance package probably also has an asterisk.</p>
+                <p class="comment-votes">👍 45.2K 👎 89</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 3: CRIME / TRUE CRIME -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ CRIME</div>
+        
+        <h2 class="headline">'Just Google Me,' Says Escaped Slender Man Stabber To Cops Who Asked For ID</h2>
+        
+        <p class="subhead">Woman Who Committed Internet-Inspired Crime Solves Own Manhunt With Internet-Based Confession; True Crime Podcasters Report 'Content Exhaustion'</p>
+        
+        <p class="byline">By NANCY DREW-BLOOD • HuckFinn Crime Desk</p>
+        
+        <div class="article-body">
+            <p>POSEN, IL — In what legal experts are calling "the most extremely online arrest in American history," escaped psychiatric patient Morgan Geyser — convicted in the 2014 Slender Man stabbing — was apprehended at an Illinois truck stop Sunday night after reportedly telling police officers to "just Google" her name rather than provide identification.</p>
+            
+            <p>"The female repeatedly refused to provide her real name," stated the Posen Police Department incident report. "After continued attempts to identify her, she finally stated that she didn't want to tell officers who she was because she had 'done something really bad,' and suggested officers could 'just Google' her name."</p>
+            
+            <p>Officers, unfamiliar with the decade-old case involving a fictional internet horror character, complied with the suspect's SEO-based confession and were reportedly "surprised by the search results."</p>
+            
+            <p>Geyser, 23, had cut off her GPS monitoring bracelet Saturday night and traveled 165 miles by bus with a 43-year-old companion to the truck stop, where they were found "loitering behind the building" and "sleeping on the sidewalk."</p>
+            
+            <p>"From stabbing someone for a creepypasta to telling cops to Google you at a truck stop," said one true crime podcaster. "This is either the saddest character arc or the most internet thing that's ever happened. Possibly both."</p>
+            
+            <p>Slender Man could not be reached for comment, on account of being fictional.</p>
+        </div>
+        
+        <div class="editorial-box">
+            <strong>📍 EDITOR'S NOTE:</strong> The victim of the 2014 attack survived and has requested privacy. Unlike her attacker, she did not suggest we Google her. We respect that.
+        </div>
+        
+        <div class="comments-section">
+            <h3>💬 Comments (3,892)</h3>
+            
+            <div class="comment">
+                <p class="comment-author">TrueCrimeTina <span class="comment-meta">• 1 hour ago</span></p>
+                <p class="comment-body">NEW PODCAST EPISODE DROPPING TONIGHT!! Subscribe to "Murder, She Googled" for my 47-part deep dive!!</p>
+                <p class="comment-votes">👍 12 👎 45.6K • 🚩 Flagged for: Shameless Self-Promotion</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">SlenderManOfficial <span class="comment-meta">• 45 min ago • NOT VERIFIED</span></p>
+                <p class="comment-body">I would like to state for the record that I did not ask anyone to do this</p>
+                <p class="comment-votes">👍 234.5K 👎 12 • 🏆 Best Plot Twist</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">GenZExplainer <span class="comment-meta">• 30 min ago</span></p>
+                <p class="comment-body">For everyone asking: Slender Man is like if anxiety had a LinkedIn profile. It's a creepypasta which is like internet folklore for millennials who think they're too good for regular folklore</p>
+                <p class="comment-votes">👍 67.8K 👎 234</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AD BREAK -->
+    <div class="ad">
+        <p class="ad-label">✦ Advertisement ✦</p>
+        <h3>TRUCK STOP LEGAL SERVICES LLC</h3>
+        <p><em>"When You Need A Lawyer And All You Have Is A Truck Stop"</em></p>
+        <p>🚛 Public Defenders Available 24/7 • Located Behind Most Pilot Flying J Locations 🚛</p>
+        <p>Call 1-800-JUS-TGGL (Just Google It Yourself, We're Understaffed)</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 4: TECHNOLOGY -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ TECHNOLOGY</div>
+        
+        <h2 class="headline">Man Receives Groundbreaking Brain Implant, Uses It To Play Solitaire</h2>
+        
+        <p class="subhead">Cutting-Edge Neurotechnology Allows Paralyzed Patient To Control iPad Entirely With Thoughts; Thoughts Mostly About Completing Spider Solitaire</p>
+        
+        <p class="byline">By CHIP INTERFACE • HuckFinn Tech Editor</p>
+        
+        <div class="article-body">
+            <p>NEW YORK — In what researchers are calling "a giant leap for mankind and a medium-sized step for casual gaming," a Pennsylvania man with ALS has become the first person to control an iPad entirely with his thoughts, using the device primarily to play Solitaire and watch Apple TV.</p>
+            
+            <p>"This is the first time the world has seen native, thought-driven control of an Apple device in action," announced Synchron CEO Dr. Tom Oxley, declining to comment on what percentage of those thoughts were "maybe I should stack the red seven on the black eight."</p>
+            
+            <p>Mark Jackson, 65, demonstrated the technology by navigating apps, composing text messages, and decisively moving digital playing cards around a screen — all without lifting a finger, because he cannot lift a finger, which is the entire point.</p>
+            
+            <p>"When I lost the use of my hands, I thought I had lost my independence," Jackson said via the brain-controlled device. "Now I can message my loved ones, read the news, and finally beat my high score on Klondike. It's given me part of my life back."</p>
+            
+            <p>The technology represents a major step forward for accessibility, though critics have questioned whether humanity's first widely-publicized brain-computer interface milestone should be "man plays cards with his mind."</p>
+            
+            <p>"Look, the technology is incredible," said one neuroscientist. "But I do think about all those sci-fi movies where brain implants are used for like, overthrowing governments or achieving hive-mind consciousness. And here we are. Playing Solitaire. Which is beautiful, actually."</p>
+        </div>
+        
+        <div class="comments-section">
+            <h3>💬 Comments (967)</h3>
+            
+            <div class="comment">
+                <p class="comment-author">Neuralink_Competitor <span class="comment-meta">• 2 hours ago</span></p>
+                <p class="comment-body">Our brain chip lets you control a MacBook. Solitaire is just the BEGINNING</p>
+                <p class="comment-votes">👍 567 👎 2.3K</p>
+            </div>
+            
+            <div class="comment reply">
+                <p class="comment-author">RealistRandy <span class="comment-meta">• 1 hour ago</span></p>
+                <p class="comment-body">Let's be honest, if I got a brain implant I'd also just use it for dumb stuff. Imagine changing Netflix shows with your MIND</p>
+                <p class="comment-votes">👍 78.9K 👎 45</p>
+            </div>
+            
+            <div class="comment">
+                <p class="comment-author">Cyberpunk_Disappointed <span class="comment-meta">• 30 min ago</span></p>
+                <p class="comment-body">The future they promised: hacking megacorporations with your mind. The future we got: playing cards with your brain. I'm not mad I'm just... yeah I'm mad</p>
+                <p class="comment-votes">👍 34.5K 👎 890</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 5: ENTERTAINMENT -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ ENTERTAINMENT</div>
+        
+        <h2 class="headline">Miss Universe Pageant Crowns Woman Director Called 'Stupid' In Stunning Victory For Being Underestimated</h2>
+        
+        <p class="subhead">Contest Also Features Judge Resignation, Transparency Accusations, Stage Fall; Organization Somehow Continues To Exist</p>
+        
+        <p class="byline">By TIARA CRASHINGTON • HuckFinn Entertainment</p>
+        
+        <div class="article-body">
+            <p>BANGKOK, THAILAND — Miss Mexico Fátima Bosch has been crowned Miss Universe 2025, capping off a pageant season that included the Thailand director calling her "stupid" on a livestream, a judge resigning over "lack of transparency," contestants walking out in solidarity, and Miss Jamaica taking a dramatic tumble during the evening gown competition.</p>
+            
+            <p>"This is vindication," said Bosch, who characterized being called stupid by an authority figure as "unacceptable" and then proceeded to prove it by winning the entire competition.</p>
+            
+            <p>The pageant's descent into chaos began November 4th when director Nawat Itsaragrisil called Bosch "stupid" during a speech to contestants. Video of other Miss Universe competitors walking out spread rapidly on social media.</p>
+            
+            <p>Then, three days before the pageant, judge Omar Harfouch resigned, accusing the organization of using an "impromptu jury" and having a "disrespectful conversation" about voting transparency.</p>
+            
+            <p>The organization denied his accusations. The crown went to the woman who had been publicly insulted. The universe, apparently, has a sense of humor.</p>
+        </div>
+        
+        <div class="two-column">
+            <div class="small-article">
+                <h4>'Wicked: For Good' Breaks Records Despite Reviews Calling It 'Rushed'</h4>
+                <p>$226M opening weekend proves audiences will watch anything if you sing loud enough. Studio execs now considering splitting every movie into two parts, then four, then eventually just releasing scenes individually for $15 each.</p>
+            </div>
+            <div class="small-article">
+                <h4>Superman #1 Found In Attic Becomes Most Expensive Comic Ever Sold</h4>
+                <p>Man who stored invaluable piece of American cultural history in box next to Christmas decorations and a broken treadmill becomes millionaire. Your parents were right: never throw anything away.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AD BREAK -->
+    <div class="ad">
+        <p class="ad-label">✦ Advertisement ✦</p>
+        <h3>MISS UNIVERSE DIRECTOR TRAINING ACADEMY</h3>
+        <p><em>"Learn To Insult Contestants In 47 Languages"</em></p>
+        <p>Now featuring our new course: "What Not To Say On A Livestream"</p>
+        <p style="font-size: 0.7em;">(Course taught by former director. Currently accepting cryptocurrency and prayers.)</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 6: BUSINESS -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ BUSINESS & FINANCE</div>
+        
+        <h2 class="headline">Market Confused By News That Government Efficiency Department Was Neither Efficient Nor A Department</h2>
+        
+        <p class="subhead">Investors Unsure How To Price In 'Vibes-Based Governance'; Dogecoin Unchanged Because It Stopped Making Sense Years Ago</p>
+        
+        <p class="byline">By BUCK MARKETS • HuckFinn Financial Correspondent</p>
+        
+        <div class="article-body single-col">
+            <p>NEW YORK — Wall Street analysts struggled Monday to incorporate the news that the Department of Government Efficiency has been disbanded, primarily because no one could agree on whether it had ever actually done anything that would affect stock prices.</p>
+            
+            <p>"We've run the numbers, and the economic impact of DOGE appears to be... vibes?" said Goldman Sachs analyst Jennifer Morrison. "Our models don't have a variable for vibes. We're adding one. It's called 'V' and it can be any number we want."</p>
+            
+            <p>Dogecoin, the cryptocurrency whose logo inspired the department's name, remained stable at whatever price it was when you looked at it, proving that meme-based assets have achieved a zen-like detachment from material reality.</p>
+        </div>
+        
+        <div class="three-column">
+            <div class="small-article">
+                <h4>RAD POWER BIKES VS. CPSC</h4>
+                <p>E-bike company says government's demand that it stop selling allegedly unsafe batteries would "force it to close." Unclear if this is a threat or a promise.</p>
+            </div>
+            <div class="small-article">
+                <h4>KOHL'S NAMES PERMANENT CEO</h4>
+                <p>Michael Bender promoted after serving 7 months as interim CEO. In related news, your Kohl's Cash expires tomorrow.</p>
+            </div>
+            <div class="small-article">
+                <h4>BITCOIN ERASES 2025 GAINS</h4>
+                <p>Cryptocurrency on track for worst month since 2022. HODLers experiencing stages of grief. Currently on "anger."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 7: OPINION / EDITORIAL -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ OPINION</div>
+        
+        <h2 class="headline">EDITORIAL: We Need To Talk About The Asterisk Problem*</h2>
+        
+        <p class="byline">By THE EDITORIAL BOARD</p>
+        
+        <div class="editorial-box">
+            <p>When did we as a society decide that footnotes were an acceptable form of governance?</p>
+            
+            <p>This week, we learned that the CDC can keep a statement on its website while simultaneously publishing content that contradicts it — as long as there's an asterisk. We learned that a government department can "not exist" while its "principles remain alive." We learned that promises can be kept technically while being broken spiritually.</p>
+            
+            <p>The asterisk has become America's most powerful punctuation mark. It is the "I'm not touching you" of federal communication. It is the fine print that ate the headline.</p>
+            
+            <p>We at HuckFinn believe in asterisks. We use them responsibly.* But there must be limits. When your asterisk is longer than your original statement, that's not clarification — that's gaslighting with typography.</p>
+            
+            <p>We call on Congress to pass the Asterisk Accountability Act of 2025, requiring all footnotes to be shorter than the statements they modify. Until then, trust nothing. Read everything. And for the love of God, scroll down.</p>
+            
+            <p style="font-size: 0.8em; margin-top: 15px;">*We do not actually believe in anything. This is a satire publication. The asterisk you just read was itself a bit. Reality is a flat circle. Thank you for subscribing.</p>
+        </div>
+        
+        <div class="two-column" style="margin-top: 20px;">
+            <div class="small-article">
+                <h4>LETTER TO THE EDITOR</h4>
+                <p><strong>Dear HuckFinn:</strong> I am writing to complain about your overuse of asterisks. In my day, we said things and meant them. No asterisks. No footnotes. Just vibes. — <em>Bernadette Coldwell, Age 87, Topeka KS</em></p>
+                <p style="font-size: 0.8em; margin-top: 10px;"><strong>Editor's Response:</strong> Thank you for your feedback.* (*We will not be changing anything.)</p>
+            </div>
+            <div class="small-article">
+                <h4>OP-ED: I Did My Own Research And Now I'm Confused</h4>
+                <p>By DIANE DUNNING-KRUGER, a mom and blogger</p>
+                <p>I spent 47 hours researching vaccines on the internet and now I don't know what's real. The CDC says one thing but also another thing. YouTube agrees with my existing beliefs. My essential oils seller says to trust my gut. My gut is confused. Please advise.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 8: LIFESTYLE / WELLNESS -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ LIFESTYLE & WELLNESS</div>
+        
+        <h2 class="headline">Self-Care Experts Now Recommend 'Screaming Into A Pillow While Refreshing News Websites'</h2>
+        
+        <p class="subhead">New Wellness Trend Combines Traditional Stress Relief With Modern Doomscrolling</p>
+        
+        <p class="byline">By CALM CHAOS • HuckFinn Lifestyle Editor</p>
+        
+        <div class="article-body single-col">
+            <p>LOS ANGELES — Wellness influencers are promoting a new self-care technique that combines screaming into a pillow with obsessively refreshing news websites, calling it "mindful catastrophe consumption."</p>
+            
+            <p>"The key is to be present with your despair," said wellness guru Harmony Crystalwater. "Don't just doom-scroll. Doom-scroll intentionally. Scream with purpose. Hydrate."</p>
+            
+            <p>The trend has been particularly popular among former optimists and current government employees.</p>
+        </div>
+        
+        <div class="three-column" style="margin-top: 20px;">
+            <div class="small-article">
+                <h4>Recipe: Anxiety Smoothie</h4>
+                <p><strong>Ingredients:</strong> 1 cup coffee, 2 cups dread, handful of almonds (for health), ice, news alerts on maximum volume</p>
+                <p><strong>Instructions:</strong> Blend until you feel something. Serves: anyone who asks "how are you" and doesn't want a real answer.</p>
+            </div>
+            <div class="small-article">
+                <h4>Therapy Dogs Now Requesting Therapy Dogs</h4>
+                <p>Emotional support animals report vicarious trauma from constantly comforting humans reading the news. "They're fine," said one golden retriever, unconvincingly.</p>
+            </div>
+            <div class="small-article">
+                <h4>Study: People Who 'Touch Grass' Still Anxious</h4>
+                <p>New research finds going outside doesn't help if you bring your phone. Scientists recommend leaving phone at home but acknowledge this is "basically impossible."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AD BREAK -->
+    <div class="ad">
+        <p class="ad-label">✦ Advertisement ✦</p>
+        <h3>DOOMSCROLL PREMIUM™</h3>
+        <p><em>"Why Stop At Despair When You Can Subscribe To It?"</em></p>
+        <p>🔔 24/7 Anxiety Alerts 🔔 No Good News Guaranteed 🔔 Existential Dread In 4K</p>
+        <p>First month free! (You'll be too depressed to cancel!)</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 9: SPORTS -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ SPORTS</div>
+        
+        <h2 class="headline">NBA Coach Chauncey Billups Pleads Not Guilty To Rigged Poker Games With Mafia Figures</h2>
+        
+        <p class="subhead">Hall Of Famer Accused Of Profiting From Games Involving 'Several Mafia Figures And Another Former NBA Player'; Lawyer Calls It 'A Bad Beat'</p>
+        
+        <p class="byline">By CHIP STACK • HuckFinn Sports</p>
+        
+        <div class="article-body single-col">
+            <p>NEW YORK — Portland Trail Blazers head coach and NBA Hall of Famer Chauncey Billups pleaded not guilty Monday to federal charges alleging he profited from rigged high-stakes poker games involving "several Mafia figures and another former NBA player."</p>
+            
+            <p>Billups, who has been suspended from his coaching duties, arrived at Brooklyn federal court in what reporters described as "a suit nicer than most of our apartments."</p>
+            
+            <p>"My client looks forward to clearing his name," said defense attorney Vincent DeFrancesco. "Sometimes you get dealt a bad hand. Sometimes that hand involves the Gambino family. We're confident the facts will show my client was bluffing."</p>
+            
+            <p>The Trail Blazers organization released a statement saying they are "cooperating with authorities" and "focused on basketball," though sources indicate the team's focus on basketball has produced exactly as many wins as their focus on coaching stability.</p>
+        </div>
+        
+        <div class="two-column">
+            <div class="small-article">
+                <h4>Transportation Secretary Requests Holiday Travelers 'Be Nice'</h4>
+                <p>Sean Duffy's official strategy for busiest travel period in 15 years is asking people to behave. TSA agents reportedly laughed until they cried.</p>
+            </div>
+            <div class="small-article">
+                <h4>Pentagon Opens Investigation Into Senator After Video</h4>
+                <p>Democratic lawmakers told service members to refuse "illegal orders." Republican response: investigate the people who said that. Illegal order definition remains TBD.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- SECTION 10: WEATHER, HOROSCOPES, CLASSIFIEDS -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    
+    <section class="section">
+        <div class="section-header">§ WEATHER</div>
+        
+        <h2 style="font-size: 1.5em; margin-bottom: 15px;">5-Day Forecast: Emotional Climate Edition</h2>
+        
+        <div class="weather-box">
+            <div class="weather-day">
+                <div class="weather-icon">🌧️</div>
+                <div><strong>MON</strong></div>
+                <div>Scattered Dread</div>
+                <div>High: Anxiety</div>
+                <div>Low: Also Anxiety</div>
+            </div>
+            <div class="weather-day">
+                <div class="weather-icon">⛈️</div>
+                <div><strong>TUE</strong></div>
+                <div>Thunderous Discourse</div>
+                <div>High: Twitter Ratio</div>
+                <div>Low: Your Mentions</div>
+            </div>
+            <div class="weather-day">
+                <div class="weather-icon">🌫️</div>
+                <div><strong>WED</strong></div>
+                <div>Fog of Misinformation</div>
+                <div>High: Uncertainty</div>
+                <div>Low: Certainty (Worse)</div>
+            </div>
+            <div class="weather-day">
+                <div class="weather-icon">🌪️</div>
+                <div><strong>THU</strong></div>
+                <div>News Cycle Tornado</div>
+                <div>High: Breaking</div>
+                <div>Low: Already Broken</div>
+            </div>
+            <div class="weather-day">
+                <div class="weather-icon">☀️</div>
+                <div><strong>FRI</strong></div>
+                <div>Brief Hope</div>
+                <div>High: Cautious Optimism</div>
+                <div>Low: JK More News</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="two-column">
+        <section class="section">
+            <div class="section-header">§ HOROSCOPES</div>
+            
+            <div class="horoscope">
+                <span class="horoscope-sign">♈ ARIES:</span> Mercury is in retrograde, which explains why the CDC website is communicating poorly. Buy crystals. Sell government bonds. Trust no asterisks.
+            </div>
+            <div class="horoscope">
+                <span class="horoscope-sign">♉ TAURUS:</span> Your stubbornness will serve you well when refusing to accept that anything makes sense anymore. Lucky numbers: 404, Error, NaN.
+            </div>
+            <div class="horoscope">
+                <span class="horoscope-sign">♊ GEMINI:</span> As a sign of duality, you understand the CDC's approach of saying two contradictory things at once. Today is a good day for asterisks. And also not.
+            </div>
+            <div class="horoscope">
+                <span class="horoscope-sign">♋ CANCER:</span> Stay home. The news is outside. Inside has snacks and no one calling you stupid on a livestream.
+            </div>
+            <div class="horoscope">
+                <span class="horoscope-sign">♌ LEO:</span> Your main character energy is threatened by people who cut off ankle monitors and tell cops to Google them. Stay humble.
+            </div>
+            <div class="horoscope">
+                <span class="horoscope-sign">♍ VIRGO:</span> Your attention to detail means you actually read the asterisks. We're sorry. We're so, so sorry.
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">§ CLASSIFIEDS</div>
+            
+            <div class="classified">
+                <p class="classified-header">🏠 REAL ESTATE</p>
+                <p><strong>FOR SALE:</strong> Northern Wisconsin mansion. Previous owner: fictional. May contain Slender Man. Buyer assumes all supernatural risk. $450K OBO. Serious inquiries only (no 12-year-olds).</p>
+            </div>
+            
+            <div class="classified">
+                <p class="classified-header">💼 EMPLOYMENT</p>
+                <p><strong>HELP WANTED:</strong> Federal Government seeks employees for department that may or may not exist. Duties include: TBD. Salary: vibes. Benefits: excellent healthcare (asterisk applies). Send resume to /dev/null.</p>
+            </div>
+            
+            <div class="classified">
+                <p class="classified-header">💕 PERSONALS</p>
+                <p><strong>MISSED CONNECTION:</strong> You: Senator who extracted a promise about vaccine language. Me: The asterisk that made your promise meaningless. Coffee sometime? — A Footnote Who Wants More</p>
+            </div>
+            
+            <div class="classified">
+                <p class="classified-header">📦 FOR SALE</p>
+                <p><strong>GPS ANKLE MONITOR:</strong> Lightly used, recently removed. Some scratches. Works great if not cut off. Selling because: reasons. $50 or best offer. Pickup only (I can't travel far).</p>
+            </div>
+            
+            <div class="classified">
+                <p class="classified-header">🎓 SERVICES</p>
+                <p><strong>GOOGLE SEARCH SERVICES:</strong> Too embarrassed to look something up yourself? I'll Google it for you! Specializing in: "who is that person I should definitely know," "crimes I definitely didn't commit," and "is this mole normal." $5/search. Confidential.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- AD BREAK -->
+    <div class="ad">
+        <p class="ad-label">✦ Advertisement ✦</p>
+        <h3>GOVERNMENT EFFICIENCY MEMORIAL FUND</h3>
+        <p><em>"In Loving Memory Of A Department That Tried Its Best (Citation Needed)"</em></p>
+        <p>Your donation will fund a bronze statue of a Shiba Inu holding a chainsaw, to be installed nowhere because we ran out of budget.</p>
+        <p>Donate at: DOGE.gov (link currently experiencing efficiency)</p>
+    </div>
+
+    <!-- FINAL SECTION: YOU MIGHT ALSO BE INTERESTED IN -->
+    <section class="section">
+        <div class="section-header">§ YOU MIGHT ALSO BE INTERESTED IN</div>
+        
+        <div class="three-column">
+            <div class="small-article">
+                <h4>"I Believed Everything Had An Asterisk And Now I Have Trust Issues"</h4>
+                <p>Personal essay • 47 min read • Currently trending in: Therapy Waiting Rooms</p>
+            </div>
+            <div class="small-article">
+                <h4>Quiz: Which Government Agency Would You Be Absorbed Into?</h4>
+                <p>Interactive • 3 min • "I got Office of Personnel Management and I don't know how to feel"</p>
+            </div>
+            <div class="small-article">
+                <h4>15 Fictional Characters More Trustworthy Than Your Government Webpage</h4>
+                <p>Listicle • "Number 7 is Slender Man, which is saying something"</p>
+            </div>
+        </div>
+        
+        <div class="three-column" style="margin-top: 15px;">
+            <div class="small-article">
+                <h4>ASMR: Soft-Spoken Woman Reads Contradictory CDC Guidelines (8 Hours)</h4>
+                <p>Video • For sleep, anxiety, or existential crisis • 2.3M views</p>
+            </div>
+            <div class="small-article">
+                <h4>The 10 Best Truck Stops To Get Arrested At, Ranked</h4>
+                <p>Travel Guide • "Posen, IL comes in at #4 after recent publicity"</p>
+            </div>
+            <div class="small-article">
+                <h4>Scientists Confirm: Reading News Now Counts As Cardio</h4>
+                <p>Health • "The elevated heart rate is basically exercise" — CDC*</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>HUCKFINN: AMERICA'S FINEST NEWSPAPER*</strong></p>
+        <p>*Statement not evaluated by any governing body. "Finest" is subjective. "Newspaper" is generous. "America's" implies geography we cannot verify.</p>
+        <p style="margin-top: 15px;">📰 Established 2025 • Abandoned 2025 (Projected) • Revived As NFT 2026 (Hoped)</p>
+        <p>Contact: editor@huckfinn.fake • Complaints: complaints@void.fake • Asterisk Dept: *.gov</p>
+        <p style="margin-top: 15px; font-size: 0.75em;">© 2025 HuckFinn Media LLC. All Rights Reserved.* (*No rights are actually reserved. We borrowed this footer from The Onion's CSS file. Please don't sue us, we have nothing.)</p>
+        <p style="margin-top: 10px; font-size: 0.7em;">🐶 No meme dogs were harmed in the making of this publication 🐶</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

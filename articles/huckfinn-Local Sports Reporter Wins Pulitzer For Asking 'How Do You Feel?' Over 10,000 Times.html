@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HuckFinn - America's Finest News Source</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Franklin:ital,wght@0,400;0,600;0,700;1,400&family=UnifrakturMaguntia&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      background: #e8e4dc;
+      font-family: 'Libre Franklin', Georgia, serif;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+    
+    .newspaper-container {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fffef9;
+      box-shadow: 0 0 40px rgba(0,0,0,0.2);
+      border: 1px solid #d0c9b8;
+    }
+    
+    .top-strip {
+      background: #1a1a1a;
+      color: #d4d4d4;
+      text-align: center;
+      padding: 6px 15px;
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .masthead {
+      text-align: center;
+      padding: 20px 15px 15px;
+      border-bottom: 2px solid #1a1a1a;
+      position: relative;
+    }
+    
+    .masthead::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #1a1a1a;
+    }
+    
+    .edition-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 8px;
+    }
+    
+    .masthead h1 {
+      font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
+      font-size: clamp(48px, 12vw, 80px);
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin: 5px 0;
+      color: #1a1a1a;
+    }
+    
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 0.5px;
+    }
+    
+    .section-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 8px 15px;
+      background: #f8f6f0;
+      border-bottom: 1px solid #ccc;
+      gap: 15px;
+    }
+    
+    .section-bar span {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666;
+    }
+    
+    .section-bar .dot {
+      width: 4px;
+      height: 4px;
+      background: #999;
+      border-radius: 50%;
+    }
+    
+    .article-wrapper { padding: 25px 20px 30px; }
+    
+    .kicker {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      border-left: 3px solid #1a1a1a;
+      padding-left: 8px;
+    }
+    
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 7vw, 38px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
+    }
+    
+    .deck {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: #333;
+      line-height: 1.45;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+    
+    .byline {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .byline strong { color: #1a1a1a; font-weight: 700; }
+    
+    .photo-container {
+      margin: 0 -20px 25px;
+      position: relative;
+    }
+    
+    .photo-frame {
+      background: #0a0a0a;
+      padding: 0;
+      position: relative;
+    }
+    
+    .photo-frame svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: sepia(8%) contrast(1.02);
+    }
+    
+    .photo-credit {
+      background: #f5f4f0;
+      padding: 10px 20px;
+      font-size: 11px;
+      color: #555;
+      border-bottom: 1px solid #e0ddd5;
+    }
+    
+    .photo-credit strong { font-weight: 700; color: #1a1a1a; }
+    
+    .article-body {
+      padding: 0 20px;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+    
+    .article-body p {
+      margin-bottom: 18px;
+      text-indent: 1.5em;
+    }
+    
+    .article-body p:first-of-type { text-indent: 0; }
+    
+    .article-body p:first-of-type::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 68px;
+      float: left;
+      line-height: 0.75;
+      padding-top: 8px;
+      padding-right: 10px;
+      padding-bottom: 4px;
+      color: #1a1a1a;
+      font-weight: 900;
+    }
+    
+    .pull-quote {
+      margin: 25px 0;
+      padding: 20px 25px;
+      border-top: 3px solid #1a1a1a;
+      border-bottom: 3px solid #1a1a1a;
+      text-align: center;
+    }
+    
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.4;
+      color: #1a1a1a;
+      margin: 0;
+      text-indent: 0 !important;
+    }
+    
+    .pull-quote .attribution {
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 11px;
+      font-style: normal;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #666;
+      margin-top: 10px;
+    }
+    
+    .article-footer {
+      padding: 15px 20px 25px;
+      font-size: 11px;
+      color: #666;
+      border-top: 1px solid #ddd;
+      margin-top: 20px;
+    }
+    
+    .paper-footer {
+      background: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 15px;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .paper-footer .motto {
+      font-style: italic;
+      color: #aaa;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 5px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="newspaper-container">
+    <div class="top-strip">Thursday, November 27, 2025 • Final Edition</div>
+    
+    <header class="masthead">
+      <div class="edition-info">
+        <span>Vol. CXLII, No. 47</span>
+        <span>Est. 1889</span>
+        <span>$4.00</span>
+      </div>
+      <h1>HuckFinn</h1>
+      <div class="tagline">"All The News That's Fit To Spin"</div>
+    </header>
+    
+    <div class="section-bar">
+      <span>Sports</span>
+      <span class="dot"></span>
+      <span>Media</span>
+      <span class="dot"></span>
+      <span>A1</span>
+    </div>
+    
+    <article class="article-wrapper">
+      <div class="kicker">Breaking • Pulitzer Prize</div>
+      <h2 class="headline">Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' Over 10,000 Times</h2>
+      <p class="deck">Award committee praises Chad Broadsworth's "unwavering commitment to a single line of inquiry" across 12-year career</p>
+      <div class="byline">By <strong>Staff Writer</strong> • November 27, 2025</div>
+      
+      <div class="photo-container">
+        <div class="photo-frame">
+          <svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#2a3a2a"/>
+                <stop offset="100%" style="stop-color:#1a2a1a"/>
+              </linearGradient>
+              <linearGradient id="track" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#8b4513"/>
+                <stop offset="100%" style="stop-color:#a0522d"/>
+              </linearGradient>
+            </defs>
+            <!-- Background - stadium field -->
+            <rect width="680" height="400" fill="url(#bg)"/>
+            <!-- Track -->
+            <ellipse cx="340" cy="280" rx="300" ry="100" fill="url(#track)" opacity="0.8"/>
+            <ellipse cx="340" cy="280" rx="240" ry="70" fill="url(#bg)"/>
+            <!-- Lane lines -->
+            <ellipse cx="340" cy="280" rx="270" ry="85" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>
+            <ellipse cx="340" cy="280" rx="255" ry="78" fill="none" stroke="#fff" stroke-width="1" opacity="0.3"/>
+            <!-- Stands suggestion -->
+            <rect x="0" y="0" width="680" height="120" fill="#1a1a2a" opacity="0.7"/>
+            <rect x="0" y="100" width="680" height="30" fill="#2a2a3a" opacity="0.5"/>
+            <!-- Reporter figure -->
+            <g transform="translate(200, 180)">
+              <!-- Body -->
+              <rect x="0" y="40" width="35" height="50" fill="#2c3e50" rx="3"/>
+              <!-- Head -->
+              <circle cx="17" cy="25" r="20" fill="#deb887"/>
+              <!-- Hair -->
+              <path d="M0 20 Q17 0 34 20 Q34 10 17 8 Q0 10 0 20" fill="#4a3728"/>
+              <!-- Microphone arm -->
+              <line x1="35" y1="55" x2="80" y2="40" stroke="#2c3e50" stroke-width="8" stroke-linecap="round"/>
+              <!-- Microphone -->
+              <rect x="75" y="30" width="25" height="15" fill="#333" rx="3"/>
+              <rect x="85" y="25" width="8" height="8" fill="#666" rx="2"/>
+              <!-- Press badge -->
+              <rect x="8" y="45" width="20" height="12" fill="#fff" rx="1"/>
+              <text x="18" y="54" font-size="6" fill="#c00" text-anchor="middle" font-weight="bold">PRESS</text>
+            </g>
+            <!-- Runner figure -->
+            <g transform="translate(380, 220)">
+              <!-- Body in motion -->
+              <ellipse cx="0" cy="30" rx="12" ry="20" fill="#e74c3c"/>
+              <!-- Head -->
+              <circle cx="0" cy="5" r="12" fill="#deb887"/>
+              <!-- Number -->
+              <text x="0" y="35" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">42</text>
+              <!-- Arms/legs suggesting motion -->
+              <line x1="-15" y1="25" x2="-30" y2="15" stroke="#deb887" stroke-width="5" stroke-linecap="round"/>
+              <line x1="15" y1="25" x2="25" y2="40" stroke="#deb887" stroke-width="5" stroke-linecap="round"/>
+              <line x1="-5" y1="50" x2="-20" y2="75" stroke="#deb887" stroke-width="6" stroke-linecap="round"/>
+              <line x1="5" y1="50" x2="15" y2="70" stroke="#deb887" stroke-width="6" stroke-linecap="round"/>
+            </g>
+            <!-- Speech bubble -->
+            <g transform="translate(240, 100)">
+              <path d="M0 0 L120 0 L120 50 L30 50 L20 70 L25 50 L0 50 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+              <text x="60" y="22" font-size="11" fill="#333" text-anchor="middle" font-family="Georgia, serif" font-style="italic">"How do</text>
+              <text x="60" y="40" font-size="11" fill="#333" text-anchor="middle" font-family="Georgia, serif" font-style="italic">you feel?"</text>
+            </g>
+            <!-- Camera flashes -->
+            <circle cx="100" cy="80" r="8" fill="#fff" opacity="0.6"/>
+            <circle cx="580" cy="60" r="6" fill="#fff" opacity="0.4"/>
+            <circle cx="450" cy="90" r="5" fill="#fff" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="photo-credit">
+          <strong>PROBING JOURNALISM:</strong> Chad Broadsworth prepares to ask his Pulitzer-winning question at the Regional Track Championships, where he would later ask runner-up Destiny Williams how she felt about "coming so close."
+        </div>
+      </div>
+      
+      <div class="article-body">
+        <p>The Pulitzer Prize Committee announced Thursday that local sports reporter Chad Broadsworth, 34, has been awarded the prestigious honor for his groundbreaking body of work consisting almost entirely of the question "How do you feel?" repeated in various tones and contexts over his 12-year career.</p>
+        
+        <p>"Mr. Broadsworth has demonstrated an unparalleled mastery of post-game emotional extraction," read the committee's statement. "Whether addressing a champion who has just achieved their lifelong dream or a defeated athlete processing public failure, his unwavering commitment to this singular line of inquiry represents the pinnacle of modern sports journalism."</p>
+        
+        <div class="pull-quote">
+          <p>"I feel... good. This is a great question that I wish I had thought of myself."</p>
+          <div class="attribution">— Chad Broadsworth, upon winning</div>
+        </div>
+        
+        <p>Broadsworth, who was overcome with emotion upon receiving the news, was immediately asked by seventeen colleagues how he felt.</p>
+        
+        <p>The award specifically cited Broadsworth's 2024 coverage of the Winter Olympics, where he asked gold medalist Sarah Chen how she felt approximately 47 times across different interviews, each time approaching the question as if it were being asked for the first time.</p>
+        
+        <p>"What really set Chad apart," noted committee chair Dr. Helen Markup, "was his ability to ask 'How do you feel?' to athletes who had just told him exactly how they felt, suggesting a depth of commitment to the craft that borders on the philosophical."</p>
+        
+        <p>Critics have noted that Broadsworth has occasionally diversified his repertoire with such variations as "Talk about that feeling," "Walk me through those emotions," and the daringly innovative "Feelings?"</p>
+        
+        <p>When reached for comment, Broadsworth's mother said she was very proud but wished he would call more often. When asked how that made him feel, she hung up.</p>
+      </div>
+      
+      <div class="article-footer">
+        <em>A version of this article appears in print on November 27, 2025, Section A, Page 1 of the National edition with the headline: Reporter Wins Pulitzer For One Question.</em>
+      </div>
+    </article>
+    
+    <footer class="paper-footer">
+      © 2025 HuckFinn Media Group • All Rights Reserved
+      <div class="motto">"We Report, You Despair"</div>
+    </footer>
+  </div>
+</body>
+</html>
