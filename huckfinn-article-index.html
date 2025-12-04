@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn Gazette — Complete Article Index</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f5f2e8;
+            --ink: #1a1a1a;
+            --accent: #8b0000;
+            --gold: #c9a227;
+            --rule: #2a2a2a;
+            --gray: #666;
+            --light-gray: #d4d0c5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #d4cec0;
+            font-family: 'Libre Franklin', sans-serif;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            max-width: 900px;
+            margin: 20px auto;
+            background: var(--cream);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Masthead */
+        .masthead {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--rule);
+            margin-bottom: 20px;
+        }
+
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 72px;
+            color: var(--ink);
+            letter-spacing: 2px;
+        }
+
+        .masthead-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .masthead-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .page-header .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--gray);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 15px;
+            background: var(--ink);
+            color: var(--cream);
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Date Section */
+        .date-section {
+            margin-bottom: 25px;
+        }
+
+        .date-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .date-count {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--gray);
+        }
+
+        /* Article List */
+        .article-list {
+            list-style: none;
+        }
+
+        .article-item {
+            padding: 10px 0;
+            border-bottom: 1px dotted var(--light-gray);
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            gap: 15px;
+            align-items: start;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-time {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            color: var(--gray);
+            text-align: right;
+            padding-top: 3px;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.35;
+        }
+
+        .article-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .article-title a:hover {
+            color: var(--accent);
+        }
+
+        .article-category {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-top: 3px;
+        }
+
+        /* Infographic tag */
+        .tag-infographic {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--ink);
+            font-size: 8px;
+            padding: 2px 6px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .tag-letters {
+            display: inline-block;
+            background: #1e3a5f;
+            color: white;
+            font-size: 8px;
+            padding: 2px 6px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .tag-turkish {
+            display: inline-block;
+            background: #e30a17;
+            color: white;
+            font-size: 8px;
+            padding: 2px 6px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px double var(--rule);
+        }
+
+        .footer-motto {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            font-size: 10px;
+            color: var(--gray);
+        }
+
+        .footer-links a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Divider */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--light-gray);
+        }
+
+        .section-divider span {
+            padding: 0 15px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* ========================================
+           ARTICLE TOOLTIP STYLES
+           ======================================== */
+
+        .article-link-tooltip {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .article-link-tooltip::before,
+        .article-link-tooltip::after {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        .article-link-tooltip::before {
+            content: attr(data-tooltip);
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            margin-bottom: 10px;
+            background: var(--cream);
+            color: var(--ink);
+            padding: 8px 14px;
+            border: 2px solid var(--accent);
+            border-radius: 3px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .article-link-tooltip::after {
+            content: '';
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-2px);
+            border: 6px solid transparent;
+            border-top-color: var(--accent);
+            border-bottom: none;
+        }
+
+        .article-link-tooltip:hover::before,
+        .article-link-tooltip:hover::after,
+        .article-link-tooltip:focus::before,
+        .article-link-tooltip:focus::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .article-link-tooltip,
+            .article-link-tooltip::before,
+            .article-link-tooltip::after {
+                transition: none;
+            }
+        }
+
+        .article-link-tooltip:focus-visible {
+            outline: 2px dashed var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-page">
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="masthead-title">HuckFinn</div>
+            <div class="masthead-tagline">"America's Finest News Source"</div>
+            <div class="masthead-info">
+                <span>Est. 1843</span>
+                <span>Complete Article Archive</span>
+                <span>Vol. CLXXXII</span>
+            </div>
+        </header>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Complete Article Index</h1>
+            <div class="subtitle">Every story we've told, sorted by the order in which reality defeated us</div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">52</div>
+                <div class="stat-label">Total Articles</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Days of Coverage</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Readers' Despair</div>
+            </div>
+        </div>
+
+        <!-- December 1, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                December 1, 2025
+                <span class="date-count">28 articles</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">6:12 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Billionaire Ends 3-Year Relationship After 2-Hour Fling, Needs 3.2 Million People To Know About It.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Billionaire Ends 3-Year Relationship After 2-Hour Fling">Billionaire Ends 3-Year Relationship After 2-Hour Fling, Needs 3.2 Million People To Know About It</a></div>
+                        <div class="article-category">Technology • Social Media</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">6:11 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Skyscanner Sends Urgent Price Alert After Flight Drops $5, Saving Customer Almost Enough For Airport Coffee.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Skyscanner Sends Urgent Price Alert">Skyscanner Sends Urgent Price Alert After Flight Drops $5, Saving Customer Almost Enough For Airport Coffee</a></div>
+                        <div class="article-category">Technology • Travel</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">6:07 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Emoji Of The Year 2025">Emoji Of The Year 2025 Awarded To Feeling You've Had Since 2019</a></div>
+                        <div class="article-category">Technology • Culture</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">6:02 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_CDC Webpage Now Just Asterisk Linking To Longer Asterisk Explaining Original Asterisk Was Political Compromise.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: CDC Webpage Asterisk">CDC Webpage Now Just Asterisk Linking To Longer Asterisk Explaining Original Asterisk Was Political Compromise</a></div>
+                        <div class="article-category">Health • Politics</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:59 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Small County Achieves American Dream- Eliminates Ambulances, Completes $19.7 Million Facility to Store Consequences.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Small County Achieves American Dream">Small County Achieves American Dream: Eliminates Ambulances, Completes $19.7 Million Facility to Store Consequences</a></div>
+                        <div class="article-category">Local • Government</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:54 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_TikTok Influencers Deploy To North Carolina Divorce Trial Like Embedded Journalists Covering Fall Of Saigon.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: TikTok Influencers Deploy To North Carolina Divorce Trial">TikTok Influencers Deploy To North Carolina Divorce Trial Like Embedded Journalists Covering Fall Of Saigon</a></div>
+                        <div class="article-category">Media • Legal</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:53 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: FBI Launches Largest Manhunt For 'Al'">FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously</a></div>
+                        <div class="article-category">AI • Business</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:53 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Nice Enough Guy Named Al Quietly Assumes 4.2 Million Jobs; Coworkers Say He 'Means Well'.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nice Enough Guy Named Al">Nice Enough Guy Named Al Quietly Assumes 4.2 Million Jobs; Coworkers Say He 'Means Well'</a></div>
+                        <div class="article-category">AI • Business</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:52 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Clarkston Votes 4-2 To Eliminate Emergency Medical Services.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Clarkston Votes 4-2 To Eliminate Emergency Medical Services">Clarkston Votes 4-2 To Eliminate Emergency Medical Services</a></div>
+                        <div class="article-category">Local • Government</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:52 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Palantir Partners With Fox News To Finally Answer Journalism's Oldest Question.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Palantir Partners With Fox News">Palantir Partners With Fox News To Finally Answer Journalism's Oldest Question</a></div>
+                        <div class="article-category">Media • Technology</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:50 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' Over 10,000 Times.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Local Sports Reporter Wins Pulitzer">Local Sports Reporter Wins Pulitzer For Asking 'How Do You Feel?' Over 10,000 Times</a></div>
+                        <div class="article-category">Sports • Media</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:50 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Local Reporter Wins Pulitzer For Asking 'How Do You Feel?' 3,847 Times.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Local Reporter Wins Pulitzer">Local Reporter Wins Pulitzer For Asking 'How Do You Feel?' 3,847 Times</a></div>
+                        <div class="article-category">Sports • Media</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:48 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-TURKISH EDITION Nations CEOs Announce They've Found Something Better Than Employees.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation's CEOs Announce (Turkish Edition)">Nation's CEOs Announce They've Found Something Better Than Employees</a><span class="tag-turkish">Turkish Edition</span></div>
+                        <div class="article-category">Business • AI</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:47 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Scientists Finally Let You Fondle Sweaters Through Instagram, Claim TSA Pat-Downs 'Right Around The Corner'.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Scientists Finally Let You Fondle Sweaters Through Instagram">Scientists Finally Let You Fondle Sweaters Through Instagram, Claim TSA Pat-Downs 'Right Around The Corner'</a></div>
+                        <div class="article-category">Science • Technology</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:43 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_FBI Launches Largest Manhunt In U.S. History For Mysterious 'Al' Who Has Somehow Taken 300 Million Jobs.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: FBI Launches Largest Manhunt For Mysterious Al">FBI Launches Largest Manhunt In U.S. History For Mysterious "Al" Who Has Somehow Taken 300 Million Jobs</a></div>
+                        <div class="article-category">AI • National</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:42 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Retired Mall Security Consultant Unlocks Secret To Human Limb Regeneration While Taking Morning Constitutional On LinkedIn.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Retired Mall Security Consultant Limb Regeneration">Retired Mall Security Consultant Unlocks Secret To Human Limb Regeneration While Taking Morning Constitutional On LinkedIn</a></div>
+                        <div class="article-category">Science • Social Media</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:40 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_letters_ASOTIN COUNTY BUDGET PRIORITIES, 2025.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Asotin County Budget Priorities">Letters to the Editor: Asotin County Budget Priorities, 2025</a><span class="tag-letters">Letters</span></div>
+                        <div class="article-category">Opinion • Local</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:40 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Valve Discovers High Revenue Possible By Eliminating Both Middle Management And Game Development.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Valve Discovers High Revenue">Valve Discovers High Revenue Possible By Eliminating Both Middle Management And Game Development</a></div>
+                        <div class="article-category">Gaming • Business</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:39 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-top10-gems.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Top 10 Gems">Top 10 Gems</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:39 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-american-way.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: The American Way">The American Way</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:39 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-undercount-calculator.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Undercount Calculator">Undercount Calculator</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:39 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-firefighter-trifecta.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Firefighter Trifecta">Firefighter Trifecta</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:38 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-exposure-wheel.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Exposure Wheel">Exposure Wheel</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:38 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-irony-pyramid.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Irony Pyramid">Irony Pyramid</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:37 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-doom-loop.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Doom Loop">Doom Loop</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:37 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-NATION'S TURKEYS NOW REQUIRE HAZMAT CERTIFICATION TO CONSUME, GOVERNMENT REMINDS AMERICANS ON THANKSGIVING MORNING.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation's Turkeys Hazmat Certification">Nation's Turkeys Now Require Hazmat Certification To Consume, Government Reminds Americans On Thanksgiving Morning</a></div>
+                        <div class="article-category">Health • Thanksgiving</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:36 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Campbell's Chief Information Security Officer Achieves Historic Information Security Breach By Not Securing His Own Mouth.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Campbell's CISO Information Security Breach">Campbell's Chief Information Security Officer Achieves Historic Information Security Breach By Not Securing His Own Mouth</a></div>
+                        <div class="article-category">Business • Corporate</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:36 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Billionaire Ends 3-Year Relationship After 2-Hour Trial With Younger, Faster Model.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Billionaire Ends Relationship With Younger Model">Billionaire Ends 3-Year Relationship After 2-Hour Trial With Younger, Faster Model</a></div>
+                        <div class="article-category">Technology • AI</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:35 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nationss Satirists Formally Surrender To Reality- Cite Impossible Working Conditions.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation's Satirists Formally Surrender">Nation's Satirists Formally Surrender To Reality: Cite Impossible Working Conditions</a></div>
+                        <div class="article-category">Media • Civilizational Autopsy</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:35 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_Tech Billionaire's Death Coincides Exactly With Global AI Crash; Media Leads With High School Sports.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Tech Billionaire's Death Coincides With AI Crash">Tech Billionaire's Death Coincides Exactly With Global AI Crash; Media Leads With High School Sports</a></div>
+                        <div class="article-category">Technology • Media</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:32 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-YC Jobs Board Offers Thousands Of Opportunities To Trade Your Mental Health For 0.03% Of A Company That Will Pivot To AI In 6 Months.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: YC Jobs Board Opportunities">YC Jobs Board Offers Thousands Of Opportunities To Trade Your Mental Health For 0.03% Of A Company That Will Pivot To AI In 6 Months</a></div>
+                        <div class="article-category">Business • Startups</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">5:12 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-THE TRICK ISN'T MAKING YOU BELIEVE.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: THE TRICK ISN'T MAKING YOU BELIEVE">THE TRICK ISN'T MAKING YOU BELIEVE</a></div>
+                        <div class="article-category">Opinion • Philosophy</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-divider"><span>Earlier Coverage</span></div>
+
+        <!-- November 29, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 29, 2025
+                <span class="date-count">1 article</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">12:34 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-infographic-satire-civilization-infographics.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: Satire-Civilization">Satire-Civilization Infographics</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 27, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 27, 2025
+                <span class="date-count">6 articles</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">11:36 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Billionaire Ends 3-Year Relationship After 2-Hour Trial With Younger, Faster Model.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Billionaire Ends Relationship After Trial">Billionaire Ends 3-Year Relationship After 2-Hour Trial With Younger, Faster Model</a></div>
+                        <div class="article-category">Technology • AI</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">11:35 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nice Enough Guy Named Al Quietly Assumes 4.2 Million Jobs; Coworkers Say He 'Means Well'.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nice Enough Guy Named Al">Nice Enough Guy Named Al Quietly Assumes 4.2 Million Jobs; Coworkers Say He 'Means Well'</a></div>
+                        <div class="article-category">AI • Business</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">11:34 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Small County Achieves American Dream.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Small County Achieves American Dream">Small County Achieves American Dream</a></div>
+                        <div class="article-category">Local • Government</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">11:33 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: FBI Manhunt For Al">FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously</a></div>
+                        <div class="article-category">AI • National</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">11:32 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn_pfas-doom-spiral-infographics.html" class="article-link-tooltip" data-tooltip="View infographic" aria-label="View infographic: PFAS Doom Spiral">PFAS Doom Spiral</a><span class="tag-infographic">Infographic</span></div>
+                        <div class="article-category">Data Visualization</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">11:32 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nation Celebrates Thanksgiving With Traditional 'Do Not Eat' Advisory Released Morning Of.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation Celebrates Thanksgiving Do Not Eat Advisory">Nation Celebrates Thanksgiving With Traditional 'Do Not Eat' Advisory Released Morning Of</a></div>
+                        <div class="article-category">Health • Thanksgiving</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 25, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 25, 2025
+                <span class="date-count">1 article</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">12:01 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nations CEOs Announce They've Found Something Better Than Employees.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation's CEOs Announce">Nation's CEOs Announce They've Found Something Better Than Employees</a></div>
+                        <div class="article-category">Business • AI</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 24, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 24, 2025
+                <span class="date-count">1 article</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">9:16 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Area Man Toxic Workplace">Area Man Courageously Speaks Out About Toxic Workplace After Grueling 14-Day Employment</a></div>
+                        <div class="article-category">Entertainment • Hollywood</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 23, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 23, 2025
+                <span class="date-count">5 articles</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">12:27 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Silicon Valley Bro Solves Space Travel By Building World's Largest Potato Gun, Promises Cocaine Island If It Fails.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Silicon Valley Potato Gun">Silicon Valley Bro Solves Space Travel By Building World's Largest Potato Gun, Promises Cocaine Island If It Fails</a></div>
+                        <div class="article-category">Science • Technology</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">12:25 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nation Demands Secretary of Health Focus on Real Issues Like What He Texted His Mistress Instead of Dangerous Food Safety Reform.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation Demands Secretary Focus on Texts">Nation Demands Secretary of Health Focus on Real Issues Like What He Texted His Mistress Instead of Dangerous Food Safety Reform</a></div>
+                        <div class="article-category">Politics • Health</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">12:24 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Nation Celebrates Black Friday">Nation Celebrates Black Friday By Abandoning All Semblance Of Humanity For Marginal Savings</a></div>
+                        <div class="article-category">Retail • Culture</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">12:23 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-CERN Scientists Admit They 'Probably Should Have Seen This Coming' After Quantum Simulation Becomes Sentient, Starts Texting Back.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: CERN Quantum Simulation Becomes Sentient">CERN Scientists Admit They "Probably Should Have Seen This Coming" After Quantum Simulation Becomes Sentient, Starts Texting Back</a></div>
+                        <div class="article-category">Science • Technology</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">12:21 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order Against Continued Observation.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: CERN Parallel Universe Restraining Order">CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order Against Continued Observation</a></div>
+                        <div class="article-category">Science • International</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 20, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 20, 2025
+                <span class="date-count">3 articles</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">9:14 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Zelenskiy Declares Readiness to Work on Peace Plan Between Cabinet Firings.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Zelenskiy Peace Plan">Zelenskiy Declares Readiness to Work on Peace Plan Between Cabinet Firings</a></div>
+                        <div class="article-category">International • Politics</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">2:22 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Nation's War Criminals Gather to Pay Respects to Fallen War Criminal in Touching Display of War Criminal Solidarity.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: War Criminals Gather">Nation's War Criminals Gather to Pay Respects to Fallen War Criminal in Touching Display of War Criminal Solidarity</a></div>
+                        <div class="article-category">Politics • Obituary</div>
+                    </div>
+                </li>
+                <li class="article-item">
+                    <div class="article-time">2:16 PM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-Company Discovers Brilliant Way To Charge For Shoes.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: Company Discovers Brilliant Way To Charge For Shoes">Company Discovers Brilliant Way To Charge For Shoes</a></div>
+                        <div class="article-category">Business • Sustainability</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 19, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 19, 2025
+                <span class="date-count">1 article</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">11:07 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-CIA Agents Realize They've Been Filing Insurance Claims With Beijing For Past 9 Years.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: CIA Agents Insurance Claims Beijing">CIA Agents Realize They've Been Filing Insurance Claims With Beijing For Past 9 Years</a></div>
+                        <div class="article-category">National Security • Intelligence</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- November 18, 2025 -->
+        <div class="date-section">
+            <div class="date-header">
+                November 18, 2025
+                <span class="date-count">1 article</span>
+            </div>
+            <ul class="article-list">
+                <li class="article-item">
+                    <div class="article-time">10:10 AM</div>
+                    <div>
+                        <div class="article-title"><a href="articles/huckfinn-PGE Celebrates Wildly Successful Energy Program By Immediately Shutting It Down Forever.html" class="article-link-tooltip" data-tooltip="Read full article" aria-label="Read full article: PG&E Energy Program">PG&E Celebrates Wildly Successful Energy Program By Immediately Shutting It Down Forever</a></div>
+                        <div class="article-category">Energy • Corporate</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="page-footer">
+            <div class="footer-motto">"We Report, You Despair"</div>
+            <div class="footer-links">
+                © 2025 HuckFinn Media Group • All Rights Reserved • <a href="#">Subscribe</a> • <a href="#">Advertise</a> • <a href="#">Careers (No Healthcare)</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
