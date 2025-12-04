@@ -454,6 +454,114 @@
                 text-align: center;
             }
         }
+
+        /* ========================================
+           ARTICLE TOOLTIP STYLES - VINTAGE AESTHETIC
+           ======================================== */
+
+        /* Make headline links appear as normal text */
+        .article-link-tooltip {
+            color: inherit;
+            text-decoration: none;
+            position: relative;
+            display: inline;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        /* Subtle color change on hover/focus */
+        .article-link-tooltip:hover,
+        .article-link-tooltip:focus {
+            color: var(--accent-red);
+            text-decoration: none;
+            outline: none;
+        }
+
+        /* Tooltip container - hidden by default */
+        .article-link-tooltip::before,
+        .article-link-tooltip::after {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+        }
+
+        /* Tooltip text bubble */
+        .article-link-tooltip::before {
+            content: attr(data-tooltip);
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-8px);
+            margin-bottom: 10px;
+            background: var(--paper-cream);
+            color: var(--ink-black);
+            padding: 8px 14px;
+            border: 2px solid var(--accent-red);
+            border-radius: 3px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Tooltip arrow pointing down */
+        .article-link-tooltip::after {
+            content: '';
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-2px);
+            border: 6px solid transparent;
+            border-top-color: var(--accent-red);
+            border-bottom: none;
+        }
+
+        /* Show tooltip on hover and focus */
+        .article-link-tooltip:hover::before,
+        .article-link-tooltip:hover::after,
+        .article-link-tooltip:focus::before,
+        .article-link-tooltip:focus::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Gold accent variant for featured articles */
+        .article-link-tooltip.featured::before {
+            border-color: var(--accent-gold);
+        }
+
+        .article-link-tooltip.featured::after {
+            border-top-color: var(--accent-gold);
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .article-link-tooltip::before {
+                font-size: 10px;
+                padding: 6px 10px;
+            }
+            .article-link-tooltip::after {
+                display: none;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .article-link-tooltip,
+            .article-link-tooltip::before,
+            .article-link-tooltip::after {
+                transition: none;
+            }
+        }
+
+        .article-link-tooltip:focus-visible {
+            outline: 2px dashed var(--accent-red);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
@@ -477,19 +585,47 @@
                 <div class="issue-headlines">
                     <div class="headline-item">
                         <div class="headline-category">Breaking</div>
-                        <div class="headline-text">FBI Manhunt Launched For Man Named 'Al' Who Allegedly Took 14 Million Jobs</div>
+                        <div class="headline-text">
+                            <a href="articles/huckfinn-FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs Simultaneously.html"
+                               class="article-link-tooltip"
+                               data-tooltip="Read full article"
+                               aria-label="Read full article: FBI Manhunt Launched For Man Named 'Al'">
+                                FBI Manhunt Launched For Man Named 'Al' Who Allegedly Took 14 Million Jobs
+                            </a>
+                        </div>
                     </div>
                     <div class="headline-item">
                         <div class="headline-category">Business</div>
-                        <div class="headline-text">Nation's CEOs Discover Something Better Than Employees: Not Having Them</div>
+                        <div class="headline-text">
+                            <a href="articles/huckfinn-Nations CEOs Announce They've Found Something Better Than Employees.html"
+                               class="article-link-tooltip"
+                               data-tooltip="Read full article"
+                               aria-label="Read full article: Nation's CEOs Discover Something Better Than Employees">
+                                Nation's CEOs Discover Something Better Than Employees: Not Having Them
+                            </a>
+                        </div>
                     </div>
                     <div class="headline-item">
                         <div class="headline-category">Science</div>
-                        <div class="headline-text">CERN Physicists Apologize After Parallel Universe Files Restraining Order</div>
+                        <div class="headline-text">
+                            <a href="articles/huckfinn-CERN Physicists Deeply Apologize After Parallel Universe Files Restraining Order Against Continued Observation.html"
+                               class="article-link-tooltip"
+                               data-tooltip="Read full article"
+                               aria-label="Read full article: CERN Physicists Apologize After Parallel Universe Files Restraining Order">
+                                CERN Physicists Apologize After Parallel Universe Files Restraining Order
+                            </a>
+                        </div>
                     </div>
                     <div class="headline-item">
                         <div class="headline-category">Local</div>
-                        <div class="headline-text">Small County Achieves American Dream: Eliminates Ambulances</div>
+                        <div class="headline-text">
+                            <a href="articles/huckfinn_Small County Achieves American Dream- Eliminates Ambulances, Completes $19.7 Million Facility to Store Consequences.html"
+                               class="article-link-tooltip"
+                               data-tooltip="Read full article"
+                               aria-label="Read full article: Small County Achieves American Dream">
+                                Small County Achieves American Dream: Eliminates Ambulances
+                            </a>
+                        </div>
                     </div>
                 </div>
 
