@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn - America's Finest News Source</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --hf-black: #1a1a1a;
+            --hf-red: #c41e3a;
+            --hf-cream: #f5f5dc;
+            --hf-gold: #c9a227;
+            --hf-gray: #666;
+            --hf-light-gray: #e8e8e8;
+            --hf-blue: #1a3d5c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: #f9f9f6;
+            color: var(--hf-black);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .masthead {
+            background: var(--hf-black);
+            color: white;
+            text-align: center;
+            padding: 8px 20px;
+            border-bottom: 3px solid var(--hf-red);
+        }
+
+        .masthead-top {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--hf-gold);
+            margin-bottom: 5px;
+        }
+
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 72px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 var(--hf-red);
+            margin: 10px 0;
+        }
+
+        .masthead-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 16px;
+            color: var(--hf-cream);
+            margin-bottom: 10px;
+        }
+
+        .masthead-nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px 0;
+            border-top: 1px solid #333;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .masthead-nav a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .masthead-nav a:hover {
+            color: var(--hf-gold);
+        }
+
+        /* BREAKING BANNER */
+        .breaking-banner {
+            background: var(--hf-red);
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* MAIN LAYOUT */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        /* ARTICLE STYLES */
+        .article-section {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0;
+        }
+
+        .article-header {
+            padding: 30px 30px 20px;
+            border-bottom: 2px solid var(--hf-black);
+        }
+
+        .article-category {
+            color: var(--hf-red);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .article-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .article-subhead {
+            font-size: 20px;
+            color: var(--hf-gray);
+            font-style: italic;
+            line-height: 1.4;
+            border-left: 3px solid var(--hf-red);
+            padding-left: 15px;
+        }
+
+        .article-meta {
+            padding: 15px 30px;
+            background: #f5f5f5;
+            font-size: 13px;
+            color: var(--hf-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-meta strong {
+            color: var(--hf-black);
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .share-btn {
+            background: var(--hf-black);
+            color: white;
+            padding: 5px 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* PHOTO */
+        .article-photo {
+            position: relative;
+            background: #222;
+        }
+
+        .article-photo svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-caption {
+            padding: 12px 20px;
+            background: var(--hf-black);
+            color: #ccc;
+            font-size: 13px;
+            font-style: italic;
+        }
+
+        .photo-caption strong {
+            color: white;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            padding: 30px;
+            font-size: 17px;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .article-body .dateline {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            color: var(--hf-red);
+            border-top: 3px solid var(--hf-black);
+            border-bottom: 3px solid var(--hf-black);
+            padding: 25px 0;
+            margin: 30px 0;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-size: 14px;
+            color: var(--hf-gray);
+            margin-top: 10px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* INTERSTITIAL AD */
+        .interstitial-ad {
+            background: linear-gradient(135deg, #1a3d5c 0%, #0d1f2d 100%);
+            color: white;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            border: 3px solid var(--hf-gold);
+            position: relative;
+        }
+
+        .interstitial-ad::before {
+            content: "ADVERTISEMENT";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--hf-gold);
+            color: var(--hf-black);
+            padding: 2px 15px;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        .ad-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .ad-body {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .ad-cta {
+            background: var(--hf-gold);
+            color: var(--hf-black);
+            padding: 10px 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-box {
+            background: white;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            background: var(--hf-black);
+            color: white;
+            padding: 12px 15px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-header.red {
+            background: var(--hf-red);
+        }
+
+        .sidebar-header.gold {
+            background: var(--hf-gold);
+            color: var(--hf-black);
+        }
+
+        .sidebar-content {
+            padding: 15px;
+        }
+
+        /* HUDDLE TRACKER */
+        .huddle-tracker {
+            text-align: center;
+        }
+
+        .huddle-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--hf-red);
+            line-height: 1;
+        }
+
+        .huddle-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--hf-gray);
+            margin-top: 5px;
+        }
+
+        .huddle-status {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: blink 1s infinite;
+        }
+
+        .status-dot.red { background: var(--hf-red); }
+        .status-dot.yellow { background: #f0ad4e; }
+        .status-dot.green { background: #5cb85c; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* PRODUCTIVITY INDEX */
+        .productivity-meter {
+            height: 30px;
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .productivity-fill {
+            height: 100%;
+            width: 3%;
+            background: linear-gradient(90deg, var(--hf-red), #ff6b6b);
+            border-radius: 15px;
+            transition: width 0.5s;
+        }
+
+        .productivity-label {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--hf-red);
+        }
+
+        /* POLL */
+        .poll-option {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .poll-option:hover {
+            background: var(--hf-cream);
+            border-color: var(--hf-gold);
+        }
+
+        .poll-votes {
+            font-size: 11px;
+            color: var(--hf-gray);
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        /* WEATHER */
+        .weather-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+        }
+
+        .weather-item:last-child {
+            border-bottom: none;
+        }
+
+        .weather-value {
+            font-weight: 700;
+        }
+
+        .weather-value.zero {
+            color: var(--hf-red);
+        }
+
+        /* DAYS COUNTER */
+        .days-counter {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .days-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 96px;
+            font-weight: 900;
+            color: var(--hf-black);
+            line-height: 1;
+            text-shadow: 3px 3px 0 var(--hf-red);
+        }
+
+        .days-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--hf-gray);
+            margin-top: 10px;
+        }
+
+        .days-sublabel {
+            font-size: 10px;
+            color: #999;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* STOCK TICKER */
+        .ticker-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 12px;
+        }
+
+        .ticker-name {
+            font-weight: 600;
+        }
+
+        .ticker-change {
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .ticker-change.down {
+            background: #ffebee;
+            color: var(--hf-red);
+        }
+
+        .ticker-change.up {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .ticker-change.flat {
+            background: #f5f5f5;
+            color: #666;
+        }
+
+        /* SIDEBAR AD */
+        .sidebar-ad {
+            background: linear-gradient(180deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 20px;
+            text-align: center;
+            border: 2px dashed var(--hf-gold);
+        }
+
+        .sidebar-ad-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .sidebar-ad-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--hf-black);
+        }
+
+        .sidebar-ad-body {
+            font-size: 12px;
+            color: var(--hf-gray);
+            margin-bottom: 15px;
+        }
+
+        .sidebar-ad-price {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--hf-red);
+        }
+
+        .sidebar-ad-price span {
+            font-size: 14px;
+            color: var(--hf-gray);
+        }
+
+        /* MOST EMAILED */
+        .most-emailed-item {
+            display: flex;
+            gap: 10px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .most-emailed-item:last-child {
+            border-bottom: none;
+        }
+
+        .me-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--hf-red);
+            width: 30px;
+        }
+
+        .me-headline {
+            font-size: 13px;
+            line-height: 1.3;
+            color: var(--hf-black);
+        }
+
+        /* RELATED ARTICLES */
+        .related-section {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .related-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--hf-black);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-item {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .related-category {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--hf-red);
+            margin-bottom: 5px;
+        }
+
+        .related-title {
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+        .related-meta {
+            font-size: 11px;
+            color: var(--hf-gray);
+        }
+
+        /* COMMENTS SECTION */
+        .comments-section {
+            background: white;
+            border: 1px solid #ddd;
+            margin-top: 30px;
+        }
+
+        .comments-header {
+            padding: 20px 30px;
+            border-bottom: 2px solid var(--hf-black);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comments-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+        }
+
+        .comments-count {
+            background: var(--hf-red);
+            color: white;
+            padding: 5px 15px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .comments-list {
+            padding: 20px 30px;
+        }
+
+        .comment {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--hf-light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--hf-gray);
+        }
+
+        .comment-avatar.verified {
+            background: var(--hf-gold);
+            color: var(--hf-black);
+        }
+
+        .comment-avatar.troll {
+            background: var(--hf-red);
+            color: white;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .comment-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-verified {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-premium {
+            background: #fff8e1;
+            color: #f57c00;
+        }
+
+        .badge-expert {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .badge-banned {
+            background: #ffebee;
+            color: var(--hf-red);
+            text-decoration: line-through;
+        }
+
+        .comment-time {
+            font-size: 12px;
+            color: var(--hf-gray);
+        }
+
+        .comment-body {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: var(--hf-gray);
+        }
+
+        .comment-action {
+            cursor: pointer;
+        }
+
+        .comment-action:hover {
+            color: var(--hf-black);
+        }
+
+        .comment-replies {
+            margin-left: 50px;
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 2px solid #eee;
+        }
+
+        .reply {
+            padding: 15px 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .reply:last-child {
+            border-bottom: none;
+        }
+
+        .deleted-comment {
+            color: var(--hf-gray);
+            font-style: italic;
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .ratio-bar {
+            display: flex;
+            height: 4px;
+            margin-top: 10px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .ratio-up {
+            background: #5cb85c;
+        }
+
+        .ratio-down {
+            background: var(--hf-red);
+        }
+
+        /* LOAD MORE */
+        .load-more {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .load-more-btn {
+            background: var(--hf-black);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        /* ALSO INTERESTED */
+        .also-interested {
+            background: #f5f5f5;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .also-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .also-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .also-item {
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .also-sponsor {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .also-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .also-source {
+            font-size: 11px;
+            color: var(--hf-gray);
+            margin-top: 8px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--hf-black);
+            color: white;
+            padding: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            color: #999;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* INTERSTITIAL IN COMMENTS */
+        .comment-ad {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .comment-ad::before {
+            content: "SPONSORED";
+            position: absolute;
+            top: -8px;
+            left: 20px;
+            background: #ffd700;
+            color: #333;
+            padding: 2px 10px;
+            font-size: 9px;
+            letter-spacing: 1px;
+            border-radius: 2px;
+        }
+
+        .comment-ad-text {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .comment-ad-cta {
+            font-size: 12px;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+    <div class="masthead-top">Vol. CXLVII • No. 23,847 • Friday, December 12, 2025</div>
+    <h1 class="masthead-title">HuckFinn</h1>
+    <div class="masthead-subtitle">"America's Finest News Source Since We Said So"</div>
+    <nav class="masthead-nav">
+        <a href="#">Politics</a>
+        <a href="#">Healthcare*</a>
+        <a href="#">Economy</a>
+        <a href="#">Sports</a>
+        <a href="#">Opinion</a>
+        <a href="#">Huddle Watch</a>
+        <a href="#">Obituaries (ACA)</a>
+    </nav>
+</header>
+
+<!-- BREAKING BANNER -->
+<div class="breaking-banner">
+    🚨 BREAKING: Congress Confirms It Has "A Couple More Conversations To Have" Before Having Conversations About Conversations 🚨
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-container">
+
+    <!-- ARTICLE -->
+    <main class="article-section">
+        <div class="article-header">
+            <div class="article-category">Healthcare / Huddle Journalism / Nothing Happening</div>
+            <h1 class="article-headline">Congress Enters 'Final Stages' Of Not Doing Anything About Healthcare For 8th Consecutive Year</h1>
+            <p class="article-subhead">Johnson announces "last-minute sprint" on healthcare after 15-year warmup; 24 million Americans asked to "hang in there" while Congress has "a couple more conversations"</p>
+        </div>
+
+        <div class="article-meta">
+            <div>
+                By <strong>CHESTER GOODWORTH III</strong> | Capitol Huddle Correspondent
+                <br>December 12, 2025 • 4:47 PM EST
+            </div>
+            <div class="share-buttons">
+                <button class="share-btn">Share</button>
+                <button class="share-btn">Tweet</button>
+                <button class="share-btn">Pray</button>
+            </div>
+        </div>
+
+        <!-- PHOTO -->
+        <div class="article-photo">
+            <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background -->
+                <rect width="800" height="500" fill="#1a1a2e"/>
+
+                <!-- Capitol dome silhouette -->
+                <ellipse cx="400" cy="450" rx="350" ry="80" fill="#16213e"/>
+                <rect x="100" y="350" width="600" height="100" fill="#16213e"/>
+                <path d="M250 350 L250 280 L550 280 L550 350 Z" fill="#1f3460"/>
+                <ellipse cx="400" cy="280" rx="150" ry="60" fill="#1f3460"/>
+                <ellipse cx="400" cy="250" rx="100" ry="45" fill="#284780"/>
+                <ellipse cx="400" cy="225" rx="60" ry="30" fill="#3a5a9c"/>
+                <rect x="385" y="180" width="30" height="50" fill="#4a6eb5"/>
+                <ellipse cx="400" cy="180" rx="20" ry="15" fill="#5a7ec5"/>
+
+                <!-- Columns -->
+                <rect x="180" y="280" width="20" height="70" fill="#3a5a9c"/>
+                <rect x="220" y="280" width="20" height="70" fill="#3a5a9c"/>
+                <rect x="260" y="280" width="20" height="70" fill="#3a5a9c"/>
+                <rect x="500" y="280" width="20" height="70" fill="#3a5a9c"/>
+                <rect x="540" y="280" width="20" height="70" fill="#3a5a9c"/>
+                <rect x="580" y="280" width="20" height="70" fill="#3a5a9c"/>
+
+                <!-- "CLOSED" door sign -->
+                <rect x="350" y="290" width="100" height="60" fill="#0d0d15" stroke="#c41e3a" stroke-width="3"/>
+                <text x="400" y="328" font-family="Arial Black" font-size="16" fill="#c41e3a" text-anchor="middle">HUDDLING</text>
+
+                <!-- Stars (scattered) -->
+                <circle cx="100" cy="80" r="2" fill="#ffd700"/>
+                <circle cx="200" cy="120" r="1.5" fill="#ffd700"/>
+                <circle cx="650" cy="90" r="2" fill="#ffd700"/>
+                <circle cx="720" cy="150" r="1.5" fill="#ffd700"/>
+                <circle cx="150" cy="180" r="1" fill="#ffd700"/>
+                <circle cx="600" cy="50" r="1.5" fill="#ffd700"/>
+
+                <!-- Word cloud floating above -->
+                <text x="150" y="100" font-family="Georgia" font-size="14" fill="#666" opacity="0.7">"getting close"</text>
+                <text x="550" y="80" font-family="Georgia" font-size="12" fill="#666" opacity="0.6">"beautiful payments"</text>
+                <text x="300" y="60" font-family="Georgia" font-size="16" fill="#888" opacity="0.8">"final decisions"</text>
+                <text x="480" y="130" font-family="Georgia" font-size="11" fill="#555" opacity="0.5">"couple more conversations"</text>
+                <text x="100" y="150" font-family="Georgia" font-size="13" fill="#777" opacity="0.6">"next week"</text>
+                <text x="600" y="180" font-family="Georgia" font-size="10" fill="#555" opacity="0.5">"$1,500/year"</text>
+
+                <!-- Speech bubbles from Capitol -->
+                <ellipse cx="300" cy="220" rx="60" ry="25" fill="white" opacity="0.9"/>
+                <text x="300" y="225" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">We're making progress!</text>
+                <polygon points="340,240 350,260 355,235" fill="white" opacity="0.9"/>
+
+                <ellipse cx="520" cy="200" rx="50" ry="20" fill="white" opacity="0.9"/>
+                <text x="520" y="205" font-family="Arial" font-size="9" fill="#333" text-anchor="middle">Almost there!</text>
+                <polygon points="490,215 480,235 495,220" fill="white" opacity="0.9"/>
+
+                <!-- Clock showing 11:59 -->
+                <circle cx="700" cy="80" r="35" fill="#222" stroke="#c41e3a" stroke-width="3"/>
+                <circle cx="700" cy="80" r="30" fill="#111"/>
+                <line x1="700" y1="80" x2="700" y2="60" stroke="#c41e3a" stroke-width="2"/>
+                <line x1="700" y1="80" x2="715" y2="75" stroke="white" stroke-width="1.5"/>
+                <text x="700" y="125" font-family="Arial" font-size="10" fill="#c41e3a" text-anchor="middle">DEC 31</text>
+
+                <!-- Person silhouettes huddling -->
+                <ellipse cx="400" cy="420" rx="80" ry="30" fill="#0d0d15"/>
+                <circle cx="370" cy="390" r="15" fill="#222"/>
+                <circle cx="400" cy="385" r="15" fill="#222"/>
+                <circle cx="430" cy="390" r="15" fill="#222"/>
+                <rect x="355" y="400" width="30" height="25" fill="#222"/>
+                <rect x="385" y="395" width="30" height="30" fill="#222"/>
+                <rect x="415" y="400" width="30" height="25" fill="#222"/>
+
+                <!-- "Photo of the Year" watermark -->
+                <text x="790" y="490" font-family="Arial" font-size="8" fill="#444" text-anchor="end">HuckFinn File Photo</text>
+            </svg>
+        </div>
+        <div class="photo-caption">
+            <strong>DECISIVE LEADERSHIP:</strong> Speaker Mike Johnson (center, huddling) emerges from closed-door meeting to announce plans for additional closed-door meetings. The Capitol's iconic "HUDDLING" sign has been illuminated continuously since 2017.
+        </div>
+
+        <!-- ARTICLE BODY -->
+        <div class="article-body">
+            <p><span class="dateline">WASHINGTON —</span> In what congressional observers are calling "the most significant development in the ongoing process of there being no developments," Speaker of the House Mike Johnson emerged from behind closed doors Friday to announce that Republicans are in the "final stages" of making "final decisions" about potentially having a healthcare plan at some point, possibly.</p>
+
+            <p>"We're getting close," confirmed House Majority Leader Steve Scalise, using a phrase that has described Republican healthcare policy since Barack Obama was in his first term. When pressed on what "close" means, Scalise clarified: "We have a couple more conversations to have," adding that those conversations would likely involve discussions about scheduling future conversations.</p>
+
+            <p>The announcement comes as 24 million Americans face the prospect of their insurance premiums more than doubling in 19 days, a timeline that Congress has addressed by entering what Johnson called a "last-minute sprint" — following what historians are now describing as "a 15-year period of extensive stretching and light jogging in place."</p>
+
+            <div class="interstitial-ad">
+                <div class="ad-headline">CONGRESSIONAL EXCUSE GENERATOR™</div>
+                <div class="ad-body">Tired of coming up with your own reasons for legislative inaction? Our AI-powered system crafts believable delays instantly! Featuring over 10,000 variations of "we're working on it."</div>
+                <button class="ad-cta">Try Free for 2-4 Years</button>
+            </div>
+
+            <p>President Donald Trump, speaking at a White House holiday party Thursday night, offered his own solution to the healthcare crisis: "beautiful, big payments directly to the people."</p>
+
+            <p>When asked how much these beautiful payments would be, Trump indicated they would be "big." When asked how big, he confirmed they would be "beautiful." Treasury officials later clarified that while the payments would indeed be adjectives, the specific adjectives had not yet been determined, and Americans should not attempt to deposit adjectives at this time.</p>
+
+            <div class="pull-quote">
+                "We're making final decisions. We have a couple more conversations to have, but we're getting close."
+                <cite>— Rep. Steve Scalise, also in 2017, 2018, 2019, 2020, 2021, 2022, 2023, and 2024</cite>
+            </div>
+
+            <p>The Republican proposal that failed in the Senate this week would have provided Americans with $1,000 to $1,500 per year in health savings accounts — an amount that healthcare economists note would cover approximately 40% of a single ambulance ride, or one MRI if the patient agrees to interpret the results themselves.</p>
+
+            <p>"The plan would reduce premiums for ALL Americans, not just the 7% currently enrolled in ACA plans," Johnson explained, outlining a strategy that experts are calling "helping everyone by specifically removing help from the people who have it."</p>
+
+            <p>Johnson emphasized that the Republican approach would expand "association health plans," which critics note provide "skimpier coverage" than ACA-compliant plans. Proponents counter that "skimpy" is just another word for "freedom" — specifically, the freedom to not be covered for the thing you end up having.</p>
+
+            <div class="interstitial-ad">
+                <div class="ad-headline">NEW! "I'm Sure It's Nothing" Health Insurance</div>
+                <div class="ad-body">Why pay for coverage you might not need? Our revolutionary plan covers you for conditions you definitely don't have. Terms and exclusions: everything.</div>
+                <button class="ad-cta">Get A Quote (The Quote Is $1,500)</button>
+            </div>
+
+            <p>Meanwhile, multiple competing discharge petitions are circulating through Congress, creating what political scientists describe as "the appearance of activity while remaining completely stationary" — a phenomenon known in physics as "Congressional Brownian Motion."</p>
+
+            <p>Democratic Leader Hakeem Jeffries, when asked whether Democrats would support the bipartisan petitions, offered a decisive response: "We'll have more to say about it early next week." This statement is scheduled to arrive approximately 72 hours after it would have mattered, which Jeffries described as "right on schedule."</p>
+
+            <p>The various petitions have achieved a notable milestone: for the first time in history, members of Congress are simultaneously signing multiple competing documents that all accomplish the same thing (nothing), representing what scholars are calling "procedural bipartisanship" — agreeing across the aisle that signing things feels productive.</p>
+
+            <p>As of press time, Johnson had returned behind closed doors for additional huddling, Scalise had confirmed that conversations were ongoing about the status of the conversations, and 24 million Americans had been advised to "hang tight" while Congress completes its 2025 goal of acknowledging that a problem exists.</p>
+
+            <p>The huddle is expected to continue.</p>
+
+            <p><em>This is a developing story. Additional developments may develop, but historically they have not.</em></p>
+        </div>
+
+        <!-- RELATED ARTICLES -->
+        <div class="related-section">
+            <h3 class="related-header">Related Stories</h3>
+            <div class="related-grid">
+                <div class="related-item">
+                    <div class="related-category">Healthcare</div>
+                    <div class="related-title">Man Who Voted Against His Own Healthcare Curious Why Healthcare Isn't Working</div>
+                    <div class="related-meta">Dec 10, 2025 • 847 comments</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-category">Congress</div>
+                    <div class="related-title">'We're Very Close,' Says Man Who Has Been Very Close Since 2010</div>
+                    <div class="related-meta">Dec 9, 2025 • 1.2K comments</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-category">Politics</div>
+                    <div class="related-title">Congress Successfully Completes 2025 Goal Of Identifying That Goals Exist</div>
+                    <div class="related-meta">Dec 8, 2025 • 934 comments</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-category">Economy</div>
+                    <div class="related-title">$1,500 HSA Could Cover Nearly Half Of Ambulance Ride To Hospital You Can't Afford</div>
+                    <div class="related-meta">Dec 7, 2025 • 2.1K comments</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-category">Breaking</div>
+                    <div class="related-title">Nation's Closed Doors Working Overtime As Congressional Huddle Season Enters 47th Month</div>
+                    <div class="related-meta">Dec 6, 2025 • 678 comments</div>
+                </div>
+                <div class="related-item">
+                    <div class="related-category">Opinion</div>
+                    <div class="related-title">I Was Told The Plan Was Coming And I Have No Reason To Doubt That After 8 Years</div>
+                    <div class="related-meta">Dec 5, 2025 • 445 comments</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMMENTS SECTION -->
+        <div class="comments-section">
+            <div class="comments-header">
+                <h3 class="comments-title">Comments</h3>
+                <span class="comments-count">2,847 Comments</span>
+            </div>
+
+            <div class="comments-list">
+
+                <!-- Comment 1 -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar verified">FP</div>
+                        <div>
+                            <span class="comment-author">FirstPost_1997</span>
+                            <span class="comment-badge badge-premium">Premium</span>
+                        </div>
+                        <span class="comment-time">2 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        First! Also, this is exactly why I moved to [country that also has healthcare problems but I pretend doesn't].
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 2,451</span>
+                        <span class="comment-action">👎 892</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Report</span>
+                    </div>
+                    <div class="ratio-bar">
+                        <div class="ratio-up" style="width: 73%"></div>
+                        <div class="ratio-down" style="width: 27%"></div>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">NW</div>
+                                <span class="comment-author">NobodyAsked_2024</span>
+                                <span class="comment-time">1 hour ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Cool story bro. Anyway, back to how we're all going to die because of huddles.
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 1,847</span>
+                                <span class="comment-action">👎 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 2 -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">BR</div>
+                        <div>
+                            <span class="comment-author">BootstrapRandy_1776</span>
+                        </div>
+                        <span class="comment-time">2 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Maybe if people just WORKED HARDER they could afford healthcare?? My grandfather paid for his appendectomy with a firm handshake and three chickens. This generation is SOFT. 🇺🇸🦅
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 847</span>
+                        <span class="comment-action">👎 3,291</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Report</span>
+                    </div>
+                    <div class="ratio-bar">
+                        <div class="ratio-up" style="width: 20%"></div>
+                        <div class="ratio-down" style="width: 80%"></div>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">AM</div>
+                                <span class="comment-author">ActuallyMath_PhD</span>
+                                <span class="comment-badge badge-expert">Verified Expert</span>
+                                <span class="comment-time">1 hour ago</span>
+                            </div>
+                            <div class="comment-body">
+                                An appendectomy in 1950 cost $150 ($1,800 adjusted for inflation). Today it costs $33,000. Your grandfather's three chickens would need to be made of solid gold and also be surgeons.
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 4,521</span>
+                                <span class="comment-action">👎 847</span>
+                            </div>
+                        </div>
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">BR</div>
+                                <span class="comment-author">BootstrapRandy_1776</span>
+                                <span class="comment-time">58 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Fake news. Those are probably European numbers. 🇺🇸
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 89</span>
+                                <span class="comment-action">👎 2,847</span>
+                            </div>
+                        </div>
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">SW</div>
+                                <span class="comment-author">SirWikipedia</span>
+                                <span class="comment-time">45 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Actually, if you look at the historical data [17 paragraph response nobody will read]...
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 24</span>
+                                <span class="comment-action">👎 8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sponsored Comment -->
+                <div class="comment-ad">
+                    <div class="comment-ad-text">💊 <strong>SkimpyCare™ Premium</strong> — Coverage for everything except what you have! Use code HUDDLE for 15% off your first denied claim.</div>
+                    <div class="comment-ad-cta">Learn More →</div>
+                </div>
+
+                <!-- Comment 3 -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">BH</div>
+                        <div>
+                            <span class="comment-author">BothSidesHaver</span>
+                        </div>
+                        <span class="comment-time">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Let's be fair here. BOTH sides are to blame. Democrats wanted healthcare and Republicans didn't want healthcare, so really, if you think about it, the truth is somewhere in the middle. Maybe we deserve half-healthcare? I am very intelligent.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 156</span>
+                        <span class="comment-action">👎 2,847</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Report</span>
+                    </div>
+                    <div class="ratio-bar">
+                        <div class="ratio-up" style="width: 5%"></div>
+                        <div class="ratio-down" style="width: 95%"></div>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">GP</div>
+                                <span class="comment-author">GalaxyBrainPolitics</span>
+                                <span class="comment-time">58 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Ah yes, the classic "one side wants to give you something and one side doesn't, so we must compromise by giving you nothing" maneuver. Truly the most rational take.
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 3,847</span>
+                                <span class="comment-action">👎 156</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 4 - The Off Topic -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar troll">CT</div>
+                        <div>
+                            <span class="comment-author">CryptoTed_ToTheMoon</span>
+                        </div>
+                        <span class="comment-time">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        This is why you should invest in $HUDL coin. Healthcare is temporary, blockchain is forever. Not financial advice but also definitely financial advice. DM me for my discord. 🚀🌙
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 12</span>
+                        <span class="comment-action">👎 4,892</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Report as Spam</span>
+                    </div>
+                </div>
+
+                <!-- Deleted Comment -->
+                <div class="deleted-comment">
+                    [This comment has been removed for violating community guidelines: "Conditions Not Covered By This Comments Section"]
+                </div>
+
+                <!-- Comment 5 - The Personal Story -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">JM</div>
+                        <div>
+                            <span class="comment-author">JustAMom_Ohio</span>
+                        </div>
+                        <span class="comment-time">54 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        My family's premiums are about to triple. I've written to my congressman 47 times. His office sent me a form letter about "making final decisions" and a coupon for 10% off at Arby's. I don't even live near an Arby's.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 8,472</span>
+                        <span class="comment-action">👎 23</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Share</span>
+                    </div>
+                    <div class="ratio-bar">
+                        <div class="ratio-up" style="width: 99%"></div>
+                        <div class="ratio-down" style="width: 1%"></div>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">AR</div>
+                                <span class="comment-author">ArbysRep_Official</span>
+                                <span class="comment-badge badge-verified">Verified</span>
+                                <span class="comment-time">32 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                We're sorry to hear about your experience. Please DM us your location and we'll see if we can find a nearby Arby's. We cannot help with the healthcare situation but we do have the meats.
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 12,847</span>
+                                <span class="comment-action">👎 45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 6 - The Conspiracy -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar troll">TW</div>
+                        <div>
+                            <span class="comment-author">TruthWatcher_1984</span>
+                            <span class="comment-badge badge-banned">Banned</span>
+                        </div>
+                        <span class="comment-time">51 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Wake up sheeple!!! The huddles are a distraction from [REDACTED]. Follow the money!! Q predicted this in drop #84729 when he said [COMMENT LIMIT EXCEEDED]
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 47</span>
+                        <span class="comment-action">👎 8,923</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">🚫 Blocked</span>
+                    </div>
+                </div>
+
+                <!-- Comment Ad 2 -->
+                <div class="comment-ad">
+                    <div class="comment-ad-text">📊 <strong>HUDDLE TRACKER PRO</strong> — Real-time monitoring of all Congressional closed-door meetings. Know exactly how close "close" really is! (Spoiler: not close)</div>
+                    <div class="comment-ad-cta">Subscribe $4.99/mo →</div>
+                </div>
+
+                <!-- Comment 7 - The Foreigner -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">HK</div>
+                        <div>
+                            <span class="comment-author">HealthcareHans_DE</span>
+                        </div>
+                        <span class="comment-time">48 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        *Confused European noises* You pay HOW much for an ambulance?? Here in Germany I broke my leg skiing and they flew me to a hospital in a helicopter and my total bill was €10 for parking. I'm so sorry Americans.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 14,847</span>
+                        <span class="comment-action">👎 2,891</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Report</span>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">FE</div>
+                                <span class="comment-author">FreedomEagle_USA</span>
+                                <span class="comment-time">45 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Yeah well at least we have FREEDOM. Enjoy your "free" healthcare COMMIE 🇺🇸🦅🇺🇸
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 847</span>
+                                <span class="comment-action">👎 5,821</span>
+                            </div>
+                        </div>
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">HK</div>
+                                <span class="comment-author">HealthcareHans_DE</span>
+                                <span class="comment-time">42 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                I... I also have freedom? And skiing? And a healed leg?
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 9,284</span>
+                                <span class="comment-action">👎 234</span>
+                            </div>
+                        </div>
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">TE</div>
+                                <span class="comment-author">TaxesExplainer_CPA</span>
+                                <span class="comment-badge badge-expert">Verified Expert</span>
+                                <span class="comment-time">38 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Americans actually pay more in healthcare-related taxes per capita than Germans AND THEN pay thousands more out of pocket. We've somehow achieved the worst of both systems. It's actually impressive.
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 7,823</span>
+                                <span class="comment-action">👎 1,284</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 8 - The Nihilist -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">VD</div>
+                        <div>
+                            <span class="comment-author">VoidDweller_2025</span>
+                        </div>
+                        <span class="comment-time">35 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        lmao imagine thinking they're ever going to fix this. I've been reading this exact headline since I was in high school. I'm 34 now. The huddle is eternal. We are all trapped in the huddle. There is no escape from the huddle.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 6,847</span>
+                        <span class="comment-action">👎 89</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Award 🏆</span>
+                    </div>
+                </div>
+
+                <!-- Comment 9 - The Reply Guy -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">WA</div>
+                        <div>
+                            <span class="comment-author">WellActually_Mike</span>
+                        </div>
+                        <span class="comment-time">28 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Well actually, if you read the actual legislation (which I have, all 2,847 pages), you'd see that the discharge petition process under House Rule XV requires 218 signatures within a legislative calendar that doesn't account for... [SHOW MORE - 47 more paragraphs]
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 34</span>
+                        <span class="comment-action">👎 892</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Hide</span>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">NR</div>
+                                <span class="comment-author">NormalResponse_Amy</span>
+                                <span class="comment-time">26 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Sir this is a HuckFinn comments section
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 4,521</span>
+                                <span class="comment-action">👎 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comment 10 - The Poet -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">SP</div>
+                        <div>
+                            <span class="comment-author">SadPoet_Unemployed</span>
+                        </div>
+                        <span class="comment-time">22 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Roses are red<br>
+                        Violets are blue<br>
+                        They're making final decisions<br>
+                        About making final decisions<br>
+                        About conversations<br>
+                        About conversations<br>
+                        About you
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 8,924</span>
+                        <span class="comment-action">👎 45</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Award 🏆🏆🏆</span>
+                    </div>
+                </div>
+
+                <!-- Comment 11 - The Question Nobody Asked -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">RG</div>
+                        <div>
+                            <span class="comment-author">RandomGuy_47</span>
+                        </div>
+                        <span class="comment-time">15 min ago</span>
+                    </div>
+                    <div class="comment-body">
+                        does anyone know if you can use an HSA to buy a boat? asking for a friend (the friend is me, I want a boat, I will live on the boat and avoid medical expenses by simply not going to doctors) (this is my healthcare plan) (it's better than Congress's)
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 5,847</span>
+                        <span class="comment-action">👎 234</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+
+                    <div class="comment-replies">
+                        <div class="reply">
+                            <div class="comment-header">
+                                <div class="comment-avatar">IR</div>
+                                <span class="comment-author">IRS_NotOfficial</span>
+                                <span class="comment-time">12 min ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Technically if you call it a "Medical Evacuation Vessel" and promise to only use it to flee from American healthcare, maybe? We're honestly not sure anymore. Nothing makes sense.
+                            </div>
+                            <div class="comment-actions">
+                                <span class="comment-action">👍 3,284</span>
+                                <span class="comment-action">👎 89</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final troll comment -->
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-avatar">LP</div>
+                        <div>
+                            <span class="comment-author">LastPost_Finally</span>
+                        </div>
+                        <span class="comment-time">Just now</span>
+                    </div>
+                    <div class="comment-body">
+                        See you all next week when they're "getting close" again. Same huddle time, same huddle channel. The huddle never ends. The huddle is all there is. We are all huddling now.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 12,847</span>
+                        <span class="comment-action">👎 0</span>
+                        <span class="comment-action">Reply</span>
+                        <span class="comment-action">Pin Comment 📌</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="load-more">
+                <button class="load-more-btn">Load 2,831 More Comments (Why Would You Do This To Yourself)</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- LIVE HUDDLE TRACKER -->
+        <div class="sidebar-box">
+            <div class="sidebar-header red">🔴 LIVE: Huddle Tracker</div>
+            <div class="sidebar-content huddle-tracker">
+                <div class="huddle-number">∞</div>
+                <div class="huddle-label">Consecutive Huddle Days</div>
+                <div class="huddle-status">
+                    <div class="status-item">
+                        <span><span class="status-dot red"></span>Doors Status:</span>
+                        <span>CLOSED</span>
+                    </div>
+                    <div class="status-item">
+                        <span><span class="status-dot yellow"></span>Decision Status:</span>
+                        <span>FINAL*</span>
+                    </div>
+                    <div class="status-item">
+                        <span><span class="status-dot yellow"></span>Conversations:</span>
+                        <span>ONGOING</span>
+                    </div>
+                    <div class="status-item">
+                        <span><span class="status-dot red"></span>Healthcare:</span>
+                        <span>PENDING</span>
+                    </div>
+                </div>
+                <small style="color: #999; font-size: 10px;">*Final decisions about preliminary discussions</small>
+            </div>
+        </div>
+
+        <!-- DAYS COUNTER -->
+        <div class="sidebar-box">
+            <div class="sidebar-header">Days Since GOP Healthcare Plan</div>
+            <div class="days-counter">
+                <div class="days-number">∞</div>
+                <div class="days-label">Days Without Plan</div>
+                <div class="days-sublabel">"Repeal and Replace" announced: March 2010</div>
+            </div>
+        </div>
+
+        <!-- CONGRESSIONAL PRODUCTIVITY INDEX -->
+        <div class="sidebar-box">
+            <div class="sidebar-header gold">📊 Productivity Index</div>
+            <div class="sidebar-content">
+                <div class="productivity-meter">
+                    <div class="productivity-fill"></div>
+                </div>
+                <div class="productivity-label">3%</div>
+                <p style="font-size: 11px; color: #666; text-align: center;">Percentage of "getting close" statements that resulted in actual legislation (2010-2025)</p>
+            </div>
+        </div>
+
+        <!-- SIDEBAR AD -->
+        <div class="sidebar-ad">
+            <div class="sidebar-ad-label">Sponsored Content</div>
+            <div class="sidebar-ad-headline">GoFundMe Premium™</div>
+            <div class="sidebar-ad-body">America's #1 healthcare platform. Why wait for Congress when strangers can pay for your surgery? New: Subscription model for chronic conditions!</div>
+            <div class="sidebar-ad-price">$19.99<span>/mo + medical costs</span></div>
+        </div>
+
+        <!-- POLL -->
+        <div class="sidebar-box">
+            <div class="sidebar-header">📋 Today's Poll</div>
+            <div class="sidebar-content">
+                <p style="font-size: 13px; margin-bottom: 12px; font-weight: 600;">Which adjective best describes your healthcare plan?</p>
+                <div class="poll-option">🔘 Beautiful</div>
+                <div class="poll-option">🔘 Big</div>
+                <div class="poll-option">🔘 Tremendous</div>
+                <div class="poll-option">🔘 Nonexistent</div>
+                <div class="poll-option">🔘 GoFundMe</div>
+                <div class="poll-votes">14,847 votes • Results: 94% "Nonexistent"</div>
+            </div>
+        </div>
+
+        <!-- D.C. FORECAST -->
+        <div class="sidebar-box">
+            <div class="sidebar-header">🌤️ D.C. Legislative Forecast</div>
+            <div class="sidebar-content">
+                <div class="weather-item">
+                    <span>Chance of Legislation:</span>
+                    <span class="weather-value zero">0%</span>
+                </div>
+                <div class="weather-item">
+                    <span>Chance of Huddle:</span>
+                    <span class="weather-value">100%</span>
+                </div>
+                <div class="weather-item">
+                    <span>Bipartisan Visibility:</span>
+                    <span class="weather-value zero">Low</span>
+                </div>
+                <div class="weather-item">
+                    <span>Hot Air Index:</span>
+                    <span class="weather-value">Extreme</span>
+                </div>
+                <div class="weather-item">
+                    <span>Press Conference Fog:</span>
+                    <span class="weather-value">Dense</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- INACTION TICKER -->
+        <div class="sidebar-box">
+            <div class="sidebar-header">📈 Congressional Inaction Index</div>
+            <div class="sidebar-content">
+                <div class="ticker-item">
+                    <span class="ticker-name">$HUDL</span>
+                    <span class="ticker-change up">↑ 847%</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-name">$CLSE (Getting Close)</span>
+                    <span class="ticker-change flat">→ 0.00</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-name">$PLAN (Actual Plans)</span>
+                    <span class="ticker-change down">↓ 99%</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-name">$CONV (Conversations)</span>
+                    <span class="ticker-change up">↑ 2,847%</span>
+                </div>
+                <div class="ticker-item">
+                    <span class="ticker-name">$HOPE</span>
+                    <span class="ticker-change down">↓ DELISTED</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOST EMAILED -->
+        <div class="sidebar-box">
+            <div class="sidebar-header">📧 Most Emailed</div>
+            <div class="sidebar-content">
+                <div class="most-emailed-item">
+                    <div class="me-number">1</div>
+                    <div class="me-headline">Area Man's Healthcare Plan Is Just Googling Symptoms And Hoping For The Best</div>
+                </div>
+                <div class="most-emailed-item">
+                    <div class="me-number">2</div>
+                    <div class="me-headline">'We're Very Close,' Reports Man Who Was Very Close In 2017</div>
+                </div>
+                <div class="most-emailed-item">
+                    <div class="me-number">3</div>
+                    <div class="me-headline">Study: 100% Of Closed Doors In Congress Are Being Huddled Behind</div>
+                </div>
+                <div class="most-emailed-item">
+                    <div class="me-number">4</div>
+                    <div class="me-headline">Nation's Adjectives Working Overtime To Describe Payments That Don't Exist</div>
+                </div>
+                <div class="most-emailed-item">
+                    <div class="me-number">5</div>
+                    <div class="me-headline">Local Hospital Announces New Payment Plan: "Just Don't Get Sick"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR AD 2 -->
+        <div class="sidebar-ad">
+            <div class="sidebar-ad-label">Sponsored</div>
+            <div class="sidebar-ad-headline">Thoughts & Prayers™ Insurance</div>
+            <div class="sidebar-ad-body">When legislation fails, we've got you covered! Our comprehensive T&P plan includes: Facebook posts, candle emojis, and a firm belief that everything happens for a reason.</div>
+            <div class="sidebar-ad-price">$0<span>/mo (coverage also $0)</span></div>
+        </div>
+
+        <!-- ON THIS DAY -->
+        <div class="sidebar-box">
+            <div class="sidebar-header">📅 On This Day</div>
+            <div class="sidebar-content" style="font-size: 13px;">
+                <p style="margin-bottom: 10px;"><strong>Dec 12, 2017:</strong> Congress announced it was "getting close" to a healthcare plan.</p>
+                <p style="margin-bottom: 10px;"><strong>Dec 12, 2019:</strong> Congress announced it was "getting close" to a healthcare plan.</p>
+                <p style="margin-bottom: 10px;"><strong>Dec 12, 2021:</strong> Congress announced it was "getting close" to a healthcare plan.</p>
+                <p style="margin-bottom: 10px;"><strong>Dec 12, 2023:</strong> Congress announced it was "getting close" to a healthcare plan.</p>
+                <p style="color: var(--hf-red);"><strong>Dec 12, 2025:</strong> You are here.</p>
+            </div>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- YOU MIGHT ALSO BE INTERESTED -->
+<div class="also-interested">
+    <h3 class="also-header">You Might Also Be Interested In (Sponsored)</h3>
+    <div class="also-grid">
+        <div class="also-item">
+            <div class="also-sponsor">Sponsored by SkimpyCare</div>
+            <div class="also-title">7 Signs Your Insurance Claim Will Be Denied (Number 4: You Filed A Claim)</div>
+            <div class="also-source">healthcaredisaster.com</div>
+        </div>
+        <div class="also-item">
+            <div class="also-sponsor">Sponsored by PharmaBros LLC</div>
+            <div class="also-title">This One Weird Trick Lets You Afford Insulin (Moving to Canada)</div>
+            <div class="also-source">definitelynotalegaldrug.rx</div>
+        </div>
+        <div class="also-item">
+            <div class="also-sponsor">Sponsored by Bootstraps Inc.</div>
+            <div class="also-title">Why Millennials Are Killing the "Going to the Doctor" Industry</div>
+            <div class="also-source">boomerfinance.biz</div>
+        </div>
+        <div class="also-item">
+            <div class="also-sponsor">Sponsored by Huddle Analytics</div>
+            <div class="also-title">EXPOSED: What They're REALLY Saying Behind Those Closed Doors (It's Nothing)</div>
+            <div class="also-source">conspiracybutreal.info</div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-logo">HuckFinn</div>
+    <div class="footer-tagline">"All The News That's Fit To Satirize Since Whose Asking"</div>
+    <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Careers (Healthcare Not Included)</a>
+        <a href="#">Advertise</a>
+        <a href="#">Contact</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy (LOL)</a>
+        <a href="#">Huddle Archive</a>
+    </div>
+    <div class="footer-copyright">
+        © 2025 HuckFinn Media Group. All rights reserved. None of this is real but somehow it's all true.<br>
+        Not affiliated with any actual legislation, which is also not real, apparently.
+    </div>
+</footer>
+
+</body>
+</html>
