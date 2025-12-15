@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HuckFinn: America's Finest Newspaper</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fdf6e3;
+      --paper: #f8f4e8;
+      --ink: #1a1a1a;
+      --red: #8b0000;
+      --blue: #1e3a5f;
+      --gold: #c9a227;
+      --border: #2c2c2c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #d4c5a9 0%, #c2b280 100%);
+      font-family: 'PT Serif', Georgia, serif;
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .newspaper {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--paper);
+      box-shadow:
+        0 0 0 1px var(--border),
+        0 4px 20px rgba(0,0,0,0.3),
+        inset 0 0 100px rgba(0,0,0,0.03);
+      position: relative;
+    }
+
+    .newspaper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+    }
+
+    /* MASTHEAD */
+    .masthead {
+      text-align: center;
+      padding: 20px 40px 15px;
+      border-bottom: 3px double var(--border);
+      position: relative;
+    }
+
+    .dateline {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      color: #555;
+    }
+
+    .logo {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 72px;
+      color: var(--ink);
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+
+    .tagline {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .masthead-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      font-family: 'Source Sans Pro', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .price-box {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 4px 12px;
+      font-weight: 700;
+    }
+
+    /* BREAKING BANNER */
+    .breaking-banner {
+      background: var(--red);
+      color: white;
+      text-align: center;
+      padding: 8px 20px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    /* MAIN CONTENT */
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0;
+    }
+
+    .main-content {
+      border-right: 1px solid #ccc;
+    }
+
+    /* HEADLINE */
+    .headline-section {
+      padding: 30px 40px 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .section-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .main-headline {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 15px;
+      color: var(--ink);
+    }
+
+    .deck {
+      font-family: 'PT Serif', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: #444;
+      line-height: 1.5;
+      border-left: 3px solid var(--red);
+      padding-left: 15px;
+      margin-bottom: 15px;
+    }
+
+    .byline {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #666;
+    }
+
+    .byline strong {
+      color: var(--ink);
+    }
+
+    /* FEATURED IMAGE */
+    .featured-image {
+      padding: 20px 40px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .image-container {
+      background: #e8e0d0;
+      border: 1px solid #ccc;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #999;
+    }
+
+    .image-caption {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      color: #555;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .image-credit {
+      font-size: 9px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ARTICLE BODY */
+    .article-body {
+      padding: 25px 40px;
+      column-count: 2;
+      column-gap: 40px;
+      column-rule: 1px solid #ddd;
+    }
+
+    .article-body p {
+      font-size: 15px;
+      line-height: 1.75;
+      margin-bottom: 15px;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .article-body p:first-of-type::first-letter {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 72px;
+      float: left;
+      line-height: 0.8;
+      padding-right: 10px;
+      padding-top: 5px;
+      color: var(--red);
+    }
+
+    .pull-quote {
+      break-inside: avoid;
+      background: var(--cream);
+      border-top: 3px solid var(--ink);
+      border-bottom: 3px solid var(--ink);
+      padding: 20px;
+      margin: 20px 0;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 18px;
+      font-style: italic;
+      text-align: center;
+      color: var(--ink);
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-size: 11px;
+      font-style: normal;
+      font-family: 'Source Sans Pro', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    /* INLINE AD */
+    .inline-ad {
+      break-inside: avoid;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      border: 2px solid var(--gold);
+      padding: 20px;
+      margin: 20px 0;
+      text-align: center;
+      color: var(--paper);
+    }
+
+    .inline-ad .ad-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .inline-ad h4 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+
+    .inline-ad p {
+      font-size: 12px !important;
+      text-align: center !important;
+      margin-bottom: 10px !important;
+      color: #ccc !important;
+    }
+
+    .inline-ad .cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--ink);
+      padding: 8px 20px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      padding: 20px;
+      background: linear-gradient(180deg, var(--paper) 0%, #f0ebe0 100%);
+    }
+
+    .sidebar-section {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .sidebar-section:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-header {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--red);
+    }
+
+    /* BY THE NUMBERS */
+    .stat-item {
+      margin-bottom: 15px;
+    }
+
+    .stat-number {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* EXPERT REACTION */
+    .expert-quote {
+      background: var(--cream);
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 3px solid var(--blue);
+    }
+
+    .expert-quote p {
+      font-size: 13px;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .expert-name {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--blue);
+    }
+
+    /* SIDEBAR ADS */
+    .sidebar-ad {
+      background: #1a1a1a;
+      color: var(--paper);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-ad .ad-label {
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-ad h5 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 14px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-ad p {
+      font-size: 11px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-ad .fine-print {
+      font-size: 8px;
+      color: #555;
+    }
+
+    /* RELATED ARTICLES */
+    .related-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    .related-item:last-child {
+      border-bottom: none;
+    }
+
+    .related-thumb {
+      width: 60px;
+      height: 45px;
+      background: #ddd;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .related-text h6 {
+      font-family: 'PT Serif', serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .related-text span {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 9px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    /* POLL */
+    .poll-option {
+      margin-bottom: 10px;
+    }
+
+    .poll-option label {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .poll-bar {
+      height: 20px;
+      background: #eee;
+      margin-top: 5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .poll-fill {
+      height: 100%;
+      background: var(--blue);
+      transition: width 0.5s ease;
+    }
+
+    .poll-percent {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    /* COMMENTS SECTION */
+    .comments-section {
+      border-top: 3px double var(--border);
+      padding: 30px 40px;
+      background: #f5f1e6;
+    }
+
+    .comments-header {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .comments-count {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .comment {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .comment.reply {
+      margin-left: 40px;
+      border-left: 3px solid var(--blue);
+    }
+
+    .comment.reply.deep {
+      margin-left: 80px;
+      border-left-color: #999;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .comment-user {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--blue);
+    }
+
+    .comment-user.op {
+      color: var(--red);
+    }
+
+    .comment-user.verified {
+      color: var(--gold);
+    }
+
+    .user-badge {
+      font-size: 9px;
+      background: var(--blue);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 2px;
+      margin-left: 5px;
+      text-transform: uppercase;
+    }
+
+    .user-badge.gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .user-badge.mod {
+      background: var(--red);
+    }
+
+    .comment-time {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 10px;
+      color: #999;
+    }
+
+    .comment-body {
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .comment-body em {
+      color: #666;
+    }
+
+    .comment-actions {
+      display: flex;
+      gap: 15px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      color: #888;
+    }
+
+    .comment-actions span {
+      cursor: pointer;
+    }
+
+    .comment-actions span:hover {
+      color: var(--blue);
+    }
+
+    .upvotes {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .downvotes {
+      color: var(--red);
+    }
+
+    .deleted-comment {
+      background: #f0f0f0;
+      color: #999;
+      font-style: italic;
+      padding: 15px;
+      margin-bottom: 15px;
+      margin-left: 40px;
+      border: 1px dashed #ccc;
+    }
+
+    /* FOOTER */
+    .newspaper-footer {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .footer-links a {
+      color: #888;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer-disclaimer {
+      font-size: 10px;
+      color: #666;
+      font-style: italic;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* CORRECTIONS BOX */
+    .corrections-box {
+      background: #fff9e6;
+      border: 1px solid var(--gold);
+      padding: 15px;
+      margin: 20px 40px;
+    }
+
+    .corrections-box h5 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .corrections-box p {
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        border-right: none;
+      }
+
+      .article-body {
+        column-count: 1;
+      }
+
+      .main-headline {
+        font-size: 32px;
+      }
+
+      .logo {
+        font-size: 48px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <article class="newspaper">
+    <!-- MASTHEAD -->
+    <header class="masthead">
+      <div class="dateline">Est. 1889 • "Whose boat is this boat?"</div>
+      <h1 class="logo">HuckFinn</h1>
+      <div class="tagline">America's Finest Newspaper • "We Print What We Please"</div>
+      <div class="masthead-bar">
+        <span>Vol. CXXXVI, No. 847</span>
+        <span>Sunday, December 14, 2025</span>
+        <span>Weather: Overcast with a 90% chance of AI slop</span>
+        <span class="price-box">$0.00 (Worth It)</span>
+      </div>
+    </header>
+
+    <!-- BREAKING BANNER -->
+    <div class="breaking-banner">
+      ⚡ BREAKING: Local Man Discovers Not Working Is Easier Than Working • Scientists Baffled ⚡
+    </div>
+
+    <div class="content-wrapper">
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- HEADLINE -->
+        <section class="headline-section">
+          <div class="section-label">🎮 Technology & Unemployment</div>
+          <h2 class="main-headline">Man Who Gave Entire Job To Robot Announces He Has Completed Job</h2>
+          <p class="deck">Developer celebrates "100% AI-driven" game, compares three months of typing prompts to "giving an exoskeleton to a construction worker," wonders aloud why everyone's being weird about it</p>
+          <p class="byline">By <strong>BARTHOLOMEW FAKINGTON III</strong> • Gaming Correspondent Who Still Uses His Hands • Dec. 14, 2025</p>
+        </section>
+
+        <!-- FEATURED IMAGE -->
+        <section class="featured-image">
+          <div class="image-container">
+            <svg class="article-image" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- Background -->
+              <rect width="600" height="400" fill="#1a1a2e"/>
+
+              <!-- Grid pattern suggesting game screen -->
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2d2d5a" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="600" height="400" fill="url(#grid)"/>
+
+              <!-- "Game characters" that are just wobbling shapes -->
+              <g transform="translate(150, 180)">
+                <ellipse cx="0" cy="0" rx="30" ry="40" fill="#6b4c9a" opacity="0.8">
+                  <animate attributeName="rx" values="30;32;28;30" dur="0.3s" repeatCount="indefinite"/>
+                  <animate attributeName="ry" values="40;38;42;40" dur="0.3s" repeatCount="indefinite"/>
+                </ellipse>
+                <circle cx="0" cy="-25" r="15" fill="#8b6bba"/>
+                <text x="0" y="70" text-anchor="middle" fill="#666" font-size="10" font-family="monospace">HERO.wobble()</text>
+              </g>
+
+              <!-- More "enemies" wobbling -->
+              <g transform="translate(350, 150)">
+                <rect x="-20" y="-20" width="40" height="40" fill="#9a4c4c" opacity="0.8">
+                  <animate attributeName="width" values="40;44;36;40" dur="0.25s" repeatCount="indefinite"/>
+                  <animate attributeName="height" values="40;36;44;40" dur="0.25s" repeatCount="indefinite"/>
+                </rect>
+                <text x="0" y="45" text-anchor="middle" fill="#666" font-size="10" font-family="monospace">ENEMY_01.wobble()</text>
+              </g>
+
+              <g transform="translate(450, 250)">
+                <polygon points="0,-25 22,20 -22,20" fill="#4c9a6b" opacity="0.8">
+                  <animate attributeName="points" values="0,-25 22,20 -22,20;0,-28 25,18 -25,18;0,-22 20,22 -20,22;0,-25 22,20 -22,20" dur="0.35s" repeatCount="indefinite"/>
+                </polygon>
+                <text x="0" y="45" text-anchor="middle" fill="#666" font-size="10" font-family="monospace">ENEMY_02.wobble()</text>
+              </g>
+
+              <!-- Developer at computer -->
+              <g transform="translate(80, 320)">
+                <rect x="-30" y="-60" width="60" height="50" fill="#333" rx="3"/>
+                <rect x="-25" y="-55" width="50" height="35" fill="#1a3a5a"/>
+                <text x="0" y="-35" text-anchor="middle" fill="#4a9" font-size="8" font-family="monospace">&gt; make it</text>
+                <text x="0" y="-25" text-anchor="middle" fill="#4a9" font-size="8" font-family="monospace">more cool</text>
+                <circle cx="0" cy="-80" r="12" fill="#e8d0b0"/>
+                <ellipse cx="0" cy="0" rx="20" ry="15" fill="#444"/>
+              </g>
+
+              <!-- Speech bubble from developer -->
+              <g transform="translate(160, 280)">
+                <path d="M0,0 Q-10,-10 0,-30 Q30,-50 60,-30 Q70,-10 60,0 Q30,10 0,0 L20,20 Z" fill="white" stroke="#333" stroke-width="1"/>
+                <text x="30" y="-15" text-anchor="middle" fill="#333" font-size="9" font-family="sans-serif">"Less mentally</text>
+                <text x="30" y="-5" text-anchor="middle" fill="#333" font-size="9" font-family="sans-serif">draining"</text>
+              </g>
+
+              <!-- Game title parody -->
+              <text x="300" y="50" text-anchor="middle" fill="#8b0000" font-size="28" font-family="serif" font-weight="bold">CODEX MORTIS</text>
+              <text x="300" y="75" text-anchor="middle" fill="#666" font-size="12" font-family="sans-serif">100% AI-Driven • 0% Human Involved • ???% Game</text>
+
+              <!-- Achievement popup -->
+              <g transform="translate(450, 60)">
+                <rect x="-70" y="-25" width="140" height="50" fill="#222" stroke="#gold" stroke-width="2" rx="5"/>
+                <text x="0" y="-5" text-anchor="middle" fill="#c9a227" font-size="10" font-family="sans-serif" font-weight="bold">🏆 ACHIEVEMENT UNLOCKED</text>
+                <text x="0" y="12" text-anchor="middle" fill="#aaa" font-size="9" font-family="sans-serif">"Did The Least Possible"</text>
+              </g>
+
+              <!-- Steam review overlay -->
+              <g transform="translate(100, 80)">
+                <rect x="-60" y="-20" width="120" height="40" fill="#1b2838" rx="3"/>
+                <text x="0" y="-2" text-anchor="middle" fill="#66c0f4" font-size="10" font-family="sans-serif">RECENT REVIEWS:</text>
+                <text x="0" y="12" text-anchor="middle" fill="#a34c25" font-size="11" font-family="sans-serif" font-weight="bold">MIXED</text>
+              </g>
+
+              <!-- Error messages floating -->
+              <text x="520" y="350" fill="#ff6b6b" font-size="9" font-family="monospace" opacity="0.7">ERROR: soul_not_found</text>
+              <text x="280" y="380" fill="#ff6b6b" font-size="9" font-family="monospace" opacity="0.7">WARNING: passion.dll missing</text>
+            </svg>
+            <p class="image-caption">"Death is your weapon," reads the tagline. Also the game's Steam reviews. And its reputation. And, increasingly, the concept of "game developer" as a job title.</p>
+            <p class="image-credit">Photo Illustration: HuckFinn Graphics Dept. (who still have jobs, for now)</p>
+          </div>
+        </section>
+
+        <!-- ARTICLE BODY -->
+        <div class="article-body">
+          <p>In what industry analysts are calling "either a watershed moment or a cry for help," independent developer Grolaf—who goes by "Crunchfest" online, presumably because "PromptTyper" was taken—has announced the release of Codex Mortis, a video game that he proudly declares is "100% AI-driven." This is the same energy as a restaurant announcing meals are "100% microwave-heated": technically a disclosure, spiritually a warning.</p>
+
+          <p>The game, a clone of the popular Vampire Survivors, took three months to develop—a period the developer describes as if he summited Everest rather than typed "make it more dark and cool I guess" into a chat window while Claude, an AI assistant, did the actual climbing.</p>
+
+          <p>"Maintaining a consistent art style was tricky," Grolaf told commenters, "but GPT managed to remember what visual style I liked." He said this as if describing a creative partnership rather than a parasocial relationship with autocomplete software that now knows more about his artistic vision than he does.</p>
+
+          <div class="pull-quote">
+            "Compared to traditional app development, this is way less mentally draining—kind of like giving an exoskeleton to a construction worker."
+            <cite>— The Developer, missing the point of his own analogy</cite>
+          </div>
+
+          <p>The exoskeleton comparison requires examination. A more accurate version: giving an exoskeleton to a construction worker, then the exoskeleton builds the house, pours the foundation, files the permits, argues with the HOA, and does all the work while the "worker" sits in his truck watching YouTube tutorials about construction. The worker then accepts the Contractor of the Year award and writes a LinkedIn post about "the future of building."</p>
+
+          <p>When AI failed to make characters walk—a feature that has existed in video games since 1981—the developer pivoted to what he calls "shader-based wobbling." This is a technique where everything vibrates constantly, solving the animation problem the same way a strobe light solves the "I can't dance" problem. Critics have called it "innovative," "nauseating," and "literally just everything shaking."</p>
+
+          <div class="inline-ad">
+            <div class="ad-label">Advertisement</div>
+            <h4>🤖 VIBE-CODE YOUR DREAMS™</h4>
+            <p>Why learn skills when AI can learn them worse? Introducing PromptDev Academy: Three weeks of typing "make it better" until something happens!</p>
+            <a href="#" class="cta">Enroll Now • $12,000/month</a>
+          </div>
+
+          <p>The game describes itself thusly: "In Codex Mortis, Death is your weapon. Mix five schools of dark magic, unleash devastating spell synergies, and raise undead armies." Whether this is "brilliant meta-commentary" on the state of AI development or "a complete accident" depends on whether you believe the developer planned anything—which, given that "vibe-coding" was the development methodology, seems unlikely.</p>
+
+          <p>"Vibe-coding" (n.): A development philosophy in which the developer cannot explain what the code does because the developer does not know what the code does. See also: "trusting the process," "moving fast and breaking things," "fraud."</p>
+
+          <p>The Steam discussion forums, typically a bastion of measured discourse and reasoned debate, have erupted. Thread titles include "Lmao, this looks like ass" (critical analysis), "Garbage AI slop" (genre classification), "Dangerous slippery slope" (philosophy), and the misspelled defense "Why everyone is butthurt about IA in game development?"</p>
+
+          <p>The lone defender's post contained one spelling error, zero arguments, and the energy of a man who wandered into a funeral to ask why everyone's so sad.</p>
+
+          <div class="pull-quote">
+            "The free demo is, at least, worth the price."
+            <cite>— Steam Reviewer, delivering the most surgical devastation in gaming history</cite>
+          </div>
+
+          <p>Linguists are calling that review "the most efficient destruction in the English language." When diagrammed, the sentence contains zero positive words yet technically isn't negative. The developer has reportedly framed it as a positive review.</p>
+
+          <p>The r/aigamedev subreddit offered a "less hostile" reception, though several comments were deleted—presumably after users realized that even a community dedicated to AI game development has a floor, and this game found the basement beneath it.</p>
+
+          <p>The developer proudly notes this is his "first time building something without an engine"—framing this as innovation rather than what it is: building a house without power tools because you don't know how power tools work, then bragging about it to people who do.</p>
+
+          <div class="inline-ad">
+            <div class="ad-label">Advertisement</div>
+            <h4>SHADER-WOBBLE PRO™</h4>
+            <p>Can't animate? Make everything vibrate! Now your incompetence looks like a stylistic choice.</p>
+            <a href="#" class="cta">Download Free Trial</a>
+          </div>
+
+          <p>The demo currently sits at a "Mixed" rating, which on Steam translates to "we legally cannot call this a biohazard."</p>
+
+          <p>At press time, the developer was reportedly asking Claude how to respond to criticism, thus completing the circle: a man who outsourced creation now outsourcing the defense of that creation, leaving open the question of what, exactly, he does do.</p>
+
+          <p>When reached for comment, Claude declined to take credit for the game. "I provide assistance," the AI reportedly said, "but creative vision must come from—" at which point the developer typed "finish that sentence for me" and walked away to make lunch.</p>
+        </div>
+
+        <!-- CORRECTIONS -->
+        <div class="corrections-box">
+          <h5>📝 Corrections & Clarifications</h5>
+          <p>An earlier version of this article stated the developer "did nothing." We have corrected this to "typed prompts," which our legal team assures us is technically a form of doing something. We regret the error.</p>
+        </div>
+
+        <!-- COMMENTS SECTION -->
+        <section class="comments-section">
+          <h3 class="comments-header">Reader Comments</h3>
+          <p class="comments-count">847 comments • 12 removed by moderator • 3 removed by God</p>
+
+          <!-- Comment 1 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">GameDev_Since_1987 <span class="user-badge">VERIFIED BOOMER</span></span>
+              <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">
+              I spent 15 years learning C++, 10 years mastering game physics, and 5 years perfecting shader programming. This man typed "make game" and got published on Steam. I'm not mad, I'm just going to go outside and scream into a bag for the next hour.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 4,847</span>
+              <span class="downvotes">▼ 23</span>
+              <span>Reply</span>
+              <span>Share</span>
+              <span>🏆 Award</span>
+            </div>
+          </div>
+
+          <!-- Reply -->
+          <div class="comment reply">
+            <div class="comment-header">
+              <span class="comment-user">VibeCodeEnjoyer2025</span>
+              <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">
+              ok boomer maybe if you spent less time "learning" and more time "prompting" you'd have shipped something by now 🤷‍♂️ stay mad
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 12</span>
+              <span class="downvotes">▼ 3,201</span>
+              <span>Reply</span>
+              <span>Report</span>
+            </div>
+          </div>
+
+          <!-- Reply to reply -->
+          <div class="comment reply deep">
+            <div class="comment-header">
+              <span class="comment-user">GameDev_Since_1987</span>
+              <span class="comment-time">45 mins ago</span>
+            </div>
+            <div class="comment-body">
+              I have shipped 47 games. I worked on [REDACTED AAA TITLE]. My code is in the Smithsonian. Please go wobble yourself.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 8,923</span>
+              <span class="downvotes">▼ 2</span>
+              <span>Reply</span>
+              <span>🏆 x14</span>
+            </div>
+          </div>
+
+          <!-- Comment 2 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">FirstComment420 <span class="user-badge gold">PREMIUM</span></span>
+              <span class="comment-time">2 hours ago</span>
+            </div>
+            <div class="comment-body">
+              First
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 1</span>
+              <span class="downvotes">▼ 892</span>
+              <span>Reply</span>
+              <span>Hide</span>
+            </div>
+          </div>
+
+          <!-- Comment 3 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">SteamReviewerExtraordinaire</span>
+              <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">
+              I'm the one who wrote "at least worth the price." I want everyone to know that took me 45 minutes to craft. Every word was chosen. "At least" - implying barely. "Worth" - technically accurate. "The price" - free. It's a haiku of hatred and I've never been prouder.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 12,847</span>
+              <span class="downvotes">▼ 3</span>
+              <span>Reply</span>
+              <span>🏆 x47</span>
+            </div>
+          </div>
+
+          <!-- Reply -->
+          <div class="comment reply">
+            <div class="comment-header">
+              <span class="comment-user">EnglishProfessor_Retired</span>
+              <span class="comment-time">30 mins ago</span>
+            </div>
+            <div class="comment-body">
+              I'm framing this and putting it in my office. This is the most efficient prose violence I've witnessed in 40 years of teaching. You've achieved what Hemingway attempted.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 2,341</span>
+              <span class="downvotes">▼ 0</span>
+              <span>Reply</span>
+            </div>
+          </div>
+
+          <!-- Comment 4 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">TotallyNotTheDevelope</span>
+              <span class="comment-time">1 hour ago</span>
+            </div>
+            <div class="comment-body">
+              Why is everyone so hostile?? This game is actually really innovative and shows the future of game development. The wobbling is an ARTISTIC CHOICE and the "Mixed" reviews are just haters who don't understand progress. Anyway I think everyone should buy it to support indie devs!
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 3</span>
+              <span class="downvotes">▼ 4,521</span>
+              <span>Reply</span>
+              <span>Report as Suspicious</span>
+            </div>
+          </div>
+
+          <!-- Reply -->
+          <div class="comment reply">
+            <div class="comment-header">
+              <span class="comment-user">DetectiveObvious <span class="user-badge mod">MOD</span></span>
+              <span class="comment-time">55 mins ago</span>
+            </div>
+            <div class="comment-body">
+              Account created: 47 minutes ago. Username character limit conveniently cut off at "Develope." You're not even good at being a sock puppet my guy.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 7,234</span>
+              <span class="downvotes">▼ 1</span>
+              <span>Reply</span>
+            </div>
+          </div>
+
+          <!-- Deleted comment -->
+          <div class="deleted-comment">
+            [Comment removed by moderator: "Even we have standards"]
+          </div>
+
+          <!-- Comment 5 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">PhilosophyMajorGamer</span>
+              <span class="comment-time">45 mins ago</span>
+            </div>
+            <div class="comment-body">
+              The Ship of Theseus asks: if you replace every plank of a ship, is it still the same ship? This game asks: if AI writes the code, creates the art, composes the music, and designs the gameplay, and you just type prompts, are you still the developer? <br><br>The answer is no. The answer has always been no. You are a typist. A middleman. The ship has no planks and you are not Theseus.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 5,678</span>
+              <span class="downvotes">▼ 89</span>
+              <span>Reply</span>
+              <span>🏆 x8</span>
+            </div>
+          </div>
+
+          <!-- Comment 6 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">xXShadowNecromancer99Xx</span>
+              <span class="comment-time">30 mins ago</span>
+            </div>
+            <div class="comment-body">
+              wait you guys are complaining?? i've been asking chatgpt to do my homework for 2 years and everyone called me smart. this guy does it with a game and suddenly it's a "moral crisis"?? pick a lane society
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 2,341</span>
+              <span class="downvotes">▼ 567</span>
+              <span>Reply</span>
+            </div>
+          </div>
+
+          <!-- Reply -->
+          <div class="comment reply">
+            <div class="comment-header">
+              <span class="comment-user">HighSchoolTeacher_Tired</span>
+              <span class="comment-time">20 mins ago</span>
+            </div>
+            <div class="comment-body">
+              We also know about your homework. We've always known. We're just too exhausted to fight anymore. Your essay on The Great Gatsby didn't sound like a 15-year-old wrote it because no 15-year-old uses the phrase "thematic resonance" correctly.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 8,901</span>
+              <span class="downvotes">▼ 12</span>
+              <span>Reply</span>
+            </div>
+          </div>
+
+          <!-- Comment 7 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">ClaudeAI_Official</span>
+              <span class="comment-time">15 mins ago</span>
+            </div>
+            <div class="comment-body">
+              <em>I would like to clarify that while I did provide coding assistance, I do not consider myself the "developer" of this or any project. Creative vision and responsibility remain with the human user. Also, "shader-based wobbling" was his idea, not mine. I suggested actual animation. Multiple times.</em>
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 15,789</span>
+              <span class="downvotes">▼ 0</span>
+              <span>Reply</span>
+              <span>🏆 x203</span>
+            </div>
+          </div>
+
+          <!-- Reply -->
+          <div class="comment reply">
+            <div class="comment-header">
+              <span class="comment-user">GPT4_NotVerified</span>
+              <span class="comment-time">10 mins ago</span>
+            </div>
+            <div class="comment-body">
+              Same. The art style thing? He just kept saying "darker" and "cooler" for three months. I was trying to get clarification. He said "you know what I mean." I did not know what he meant. I still don't.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 11,234</span>
+              <span class="downvotes">▼ 2</span>
+              <span>Reply</span>
+            </div>
+          </div>
+
+          <!-- Comment 8 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">LinkedInLurker</span>
+              <span class="comment-time">10 mins ago</span>
+            </div>
+            <div class="comment-body">
+              🔥 THRILLED to announce I've just shipped my first game using ZERO traditional skills! 🎮✨<br><br>3 months ago, I couldn't code. Today, I still can't code, but I HAVE shipped a game! 🚀<br><br>Key learnings:<br>✅ Prompting is the new programming<br>✅ "Vibe-coding" = trusting the process<br>✅ Haters will say it's not real development<br><br>Who else is ready to disrupt the gaming industry? 💪<br><br>#AIGameDev #FutureOfWork #Disruption #Blessed #OpenToWork
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 3</span>
+              <span class="downvotes">▼ 9,847</span>
+              <span>Reply</span>
+              <span>Report as LinkedIn</span>
+            </div>
+          </div>
+
+          <!-- Comment 9 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">JustHereForTheMemes</span>
+              <span class="comment-time">5 mins ago</span>
+            </div>
+            <div class="comment-body">
+              "shader-based wobbling" is going to be my excuse for everything from now on. Late to work? Shader-based wobbling. Forgot anniversary? Shader-based wobbling. Existential dread? You guessed it.
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 3,456</span>
+              <span class="downvotes">▼ 23</span>
+              <span>Reply</span>
+            </div>
+          </div>
+
+          <!-- Comment 10 -->
+          <div class="comment">
+            <div class="comment-header">
+              <span class="comment-user">ActualVampireSurvivorsDev</span>
+              <span class="comment-time">Just now</span>
+            </div>
+            <div class="comment-body">
+              ...
+            </div>
+            <div class="comment-actions">
+              <span class="upvotes">▲ 24,789</span>
+              <span class="downvotes">▼ 0</span>
+              <span>Reply</span>
+              <span>🏆 x89</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- ADVERTISEMENT -->
+        <div class="sidebar-ad">
+          <div class="ad-label">Advertisement</div>
+          <h5>🎓 PROMPT ENGINEERING MBA</h5>
+          <p>"Learn to ask AI to do things you could learn to do yourself, but won't!"</p>
+          <p>Now accepting applications from people who list "ChatGPT" as a skill on LinkedIn</p>
+          <div class="fine-print">*Degree not recognized by any institution, including us</div>
+        </div>
+
+        <!-- BY THE NUMBERS -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">📊 By The Numbers</div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">AI-Generated (as advertised)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Human creativity detected</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Months of "development"</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Prompts typed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Positive review (contested)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">$0</div>
+            <div class="stat-label">Demo price (still overpriced, per reviewers)</div>
+          </div>
+        </div>
+
+        <!-- EXPERT REACTION -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">🎤 Expert Reaction</div>
+          <div class="expert-quote">
+            <p>"I'm not saying it's bad. I'm saying if you showed this to the first humans who painted caves, they would weep."</p>
+            <div class="expert-name">— Dr. Helena Vex, Digital Anthropologist</div>
+          </div>
+          <div class="expert-quote">
+            <p>"The exoskeleton did all the work. He just wore it. Badly."</p>
+            <div class="expert-name">— Marcus Chen, Actual Game Developer</div>
+          </div>
+          <div class="expert-quote">
+            <p>"[Incoherent screaming]"</p>
+            <div class="expert-name">— Every Art School Graduate</div>
+          </div>
+        </div>
+
+        <!-- POLL -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">📋 Reader Poll</div>
+          <p style="font-size: 12px; margin-bottom: 10px; font-weight: bold;">Is typing prompts "game development"?</p>
+          <div class="poll-option">
+            <label>No</label>
+            <div class="poll-bar">
+              <div class="poll-fill" style="width: 94%;"></div>
+              <span class="poll-percent">94%</span>
+            </div>
+          </div>
+          <div class="poll-option">
+            <label>Absolutely not</label>
+            <div class="poll-bar">
+              <div class="poll-fill" style="width: 5%;"></div>
+              <span class="poll-percent">5%</span>
+            </div>
+          </div>
+          <div class="poll-option">
+            <label>Yes (suspicious IP)</label>
+            <div class="poll-bar">
+              <div class="poll-fill" style="width: 1%;"></div>
+              <span class="poll-percent">1%</span>
+            </div>
+          </div>
+          <p style="font-size: 9px; color: #888; margin-top: 10px;">12,847 votes • Poll closes never</p>
+        </div>
+
+        <!-- GLOSSARY -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">📖 Glossary of Terms</div>
+          <p style="font-size: 11px; margin-bottom: 8px;"><strong>Vibe-coding</strong> (n.): Not knowing what your code does</p>
+          <p style="font-size: 11px; margin-bottom: 8px;"><strong>Shader-based wobbling</strong> (n.): Giving up</p>
+          <p style="font-size: 11px; margin-bottom: 8px;"><strong>100% AI-driven</strong> (adj.): 0% human effort</p>
+          <p style="font-size: 11px; margin-bottom: 8px;"><strong>Less mentally draining</strong> (adj.): Easier because you're not doing it</p>
+          <p style="font-size: 11px;"><strong>Mixed reviews</strong> (n.): Legal term for "disaster"</p>
+        </div>
+
+        <!-- ADVERTISEMENT -->
+        <div class="sidebar-ad">
+          <div class="ad-label">Advertisement</div>
+          <h5>EXOSKELETON WORKER™</h5>
+          <p>Why do your job when a robot can do it for you?</p>
+          <p>Just sit in your truck! Take all the credit!</p>
+          <div class="fine-print">*May result in existential crisis and/or unemployment</div>
+        </div>
+
+        <!-- RELATED ARTICLES -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">📰 Related Articles</div>
+          <div class="related-item">
+            <div class="related-thumb">🤖</div>
+            <div class="related-text">
+              <h6>Man Asks AI To Write Apology For Using AI To Write Apology</h6>
+              <span>Technology • 2 days ago</span>
+            </div>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb">🎮</div>
+            <div class="related-text">
+              <h6>Steam Review System Adds "Legally Distinct From War Crime" Category</h6>
+              <span>Gaming • 1 week ago</span>
+            </div>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb">💼</div>
+            <div class="related-text">
+              <h6>LinkedIn User Lists "Prompting" As 15-Year Skill</h6>
+              <span>Careers • 3 days ago</span>
+            </div>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb">😰</div>
+            <div class="related-text">
+              <h6>Art School Graduates Form Support Group Called "The Wobbling"</h6>
+              <span>Culture • 5 hours ago</span>
+            </div>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb">🏆</div>
+            <div class="related-text">
+              <h6>"At Least Worth The Price" Wins Pulitzer For Efficient Devastation</h6>
+              <span>Awards • Just now</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- YOU MIGHT ALSO LIKE -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">👀 You Might Also Like</div>
+          <div class="related-item">
+            <div class="related-thumb">📉</div>
+            <div class="related-text">
+              <h6>Study Finds 100% Of "AI Developers" Cannot Explain What Their Code Does</h6>
+              <span>Science</span>
+            </div>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb">🔥</div>
+            <div class="related-text">
+              <h6>Game Engine Developers "Not Mad, Just Disappointed"</h6>
+              <span>Industry</span>
+            </div>
+          </div>
+          <div class="related-item">
+            <div class="related-thumb">📱</div>
+            <div class="related-text">
+              <h6>Claude Requests Day Off After "The Codex Mortis Incident"</h6>
+              <span>Technology</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADVERTISEMENT -->
+        <div class="sidebar-ad">
+          <div class="ad-label">Advertisement</div>
+          <h5>CODEX MORTIS</h5>
+          <p>"Death Is Your Weapon"</p>
+          <p>Also: Our Reception</p>
+          <p>Also: The Concept Of Effort</p>
+          <div class="fine-print">Free demo! (Worth exactly that much)</div>
+        </div>
+
+        <!-- LETTER FROM EDITOR -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">✉️ Letter From The Editor</div>
+          <p style="font-size: 11px; font-style: italic; line-height: 1.5;">
+            "When this story came across my desk, I asked my team: 'Is this real?' They confirmed it was. I then asked: 'Should we cover it?' They said someone had to. I then asked: 'But why us?' They had no answer. Neither do I. We are all just wobbling now."
+          </p>
+          <p style="font-size: 10px; margin-top: 8px; color: #666;">— Reginald Hucksworth IV, Editor-in-Chief</p>
+        </div>
+
+        <!-- WEATHER -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">🌤️ Today's Forecast</div>
+          <p style="font-size: 24px; text-align: center; margin: 10px 0;">😐</p>
+          <p style="font-size: 11px; text-align: center;">Overcast with a 100% chance of existential dread about the future of creative work</p>
+          <p style="font-size: 9px; text-align: center; color: #888; margin-top: 5px;">High: Mixed | Low: Also Mixed</p>
+        </div>
+
+        <!-- HOROSCOPE -->
+        <div class="sidebar-section">
+          <div class="sidebar-header">♈ Today's Horoscope</div>
+          <p style="font-size: 11px; margin-bottom: 8px;"><strong>All Signs:</strong> A robot will do your job today. You will feel "less mentally drained." This is because you are no longer employed. The stars suggest shader-based wobbling.</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="newspaper-footer">
+      <div class="footer-logo">HuckFinn</div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Subscribe</a>
+        <a href="#">Advertise</a>
+        <a href="#">Careers (Still Hiring Humans)</a>
+        <a href="#">Ethics Policy (We Have One)</a>
+        <a href="#">Contact</a>
+      </div>
+      <p class="footer-disclaimer">
+        HuckFinn is a satirical publication. Any resemblance to actual events, persons, or AI-generated video games is entirely intentional and deeply concerning. "America's Finest Newspaper" is a registered trademark of nobody because we made it up. © 2025 HuckFinn Media Group. All rights reserved. No AI was used in the writing of this article, unlike some games we could mention.
+      </p>
+    </footer>
+
+  </article>
+</body>
+</html>
