@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest News Source</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink-black: #1a1a1a;
+            --newsprint: #f5f2e8;
+            --aged-paper: #ebe6d6;
+            --red-accent: #8b0000;
+            --blue-link: #1a4480;
+            --faded-text: #666;
+            --border-dark: #2a2a2a;
+            --highlight-yellow: #fff3cd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: var(--newsprint);
+            color: var(--ink-black);
+            line-height: 1.6;
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-blend-mode: multiply;
+        }
+
+        .newspaper-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--newsprint);
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+
+        /* MASTHEAD */
+        .masthead {
+            border-bottom: 4px double var(--ink-black);
+            padding: 15px 20px;
+            text-align: center;
+            background: var(--newsprint);
+        }
+
+        .top-banner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--ink-black);
+            padding-bottom: 8px;
+        }
+
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 72px;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .masthead-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .masthead-edition {
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: var(--faded-text);
+        }
+
+        /* NAVIGATION TICKER */
+        .news-ticker {
+            background: var(--ink-black);
+            color: var(--newsprint);
+            padding: 8px 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            animation: ticker 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker-content span {
+            margin: 0 30px;
+        }
+
+        .ticker-content span::before {
+            content: "◆ ";
+            color: var(--red-accent);
+        }
+
+        /* MAIN LAYOUT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 0;
+        }
+
+        .article-section {
+            padding: 30px;
+            border-right: 1px solid var(--ink-black);
+        }
+
+        .sidebar {
+            padding: 20px;
+            background: var(--aged-paper);
+        }
+
+        /* ARTICLE STYLES */
+        .article-kicker {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--red-accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .article-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .article-subhead {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--faded-text);
+            margin-bottom: 20px;
+            line-height: 1.4;
+            border-bottom: 2px solid var(--ink-black);
+            padding-bottom: 20px;
+        }
+
+        .byline {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .byline-author {
+            font-weight: 700;
+        }
+
+        .dateline {
+            font-size: 11px;
+            color: var(--faded-text);
+            margin-bottom: 20px;
+        }
+
+        /* FEATURED IMAGE */
+        .featured-image {
+            margin: 25px 0;
+            border: 1px solid var(--ink-black);
+            padding: 10px;
+            background: white;
+        }
+
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 11px;
+            font-style: italic;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ccc;
+            color: var(--faded-text);
+        }
+
+        .image-credit {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid #ddd;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .article-body p {
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 65px;
+            float: left;
+            line-height: 0.8;
+            padding-right: 10px;
+            padding-top: 5px;
+            font-weight: 900;
+        }
+
+        .article-body .drop-quote {
+            break-inside: avoid;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--aged-paper);
+            border-left: 4px solid var(--red-accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .inline-subhead {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 25px 0 15px;
+            break-after: avoid;
+        }
+
+        /* DATA TABLE */
+        .data-table {
+            break-inside: avoid;
+            margin: 20px 0;
+            font-size: 12px;
+            border-collapse: collapse;
+            width: 100%;
+            background: white;
+        }
+
+        .data-table caption {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-align: left;
+            padding: 10px;
+            background: var(--ink-black);
+            color: var(--newsprint);
+        }
+
+        .data-table th, .data-table td {
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .data-table th {
+            background: var(--aged-paper);
+            font-weight: 600;
+        }
+
+        .data-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        /* INTERSTITIAL ADS */
+        .ad-container {
+            break-inside: avoid;
+            margin: 25px 0;
+            border: 3px double var(--ink-black);
+            padding: 15px;
+            background: white;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .ad-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .ad-body {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .ad-cta {
+            display: inline-block;
+            background: var(--ink-black);
+            color: var(--newsprint);
+            padding: 8px 20px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .ad-fine-print {
+            font-size: 8px;
+            color: #999;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* SIDEBAR STYLES */
+        .sidebar-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--ink-black);
+        }
+
+        .sidebar-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--ink-black);
+        }
+
+        .sidebar-item {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-item-headline {
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-item-meta {
+            font-size: 10px;
+            color: var(--faded-text);
+        }
+
+        /* POLL */
+        .poll-question {
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .poll-option {
+            margin-bottom: 8px;
+        }
+
+        .poll-bar {
+            height: 20px;
+            background: #ddd;
+            position: relative;
+            margin-bottom: 3px;
+        }
+
+        .poll-fill {
+            height: 100%;
+            background: var(--ink-black);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .poll-label {
+            position: relative;
+            z-index: 1;
+            font-size: 10px;
+            line-height: 20px;
+            padding-left: 8px;
+            color: white;
+            mix-blend-mode: difference;
+        }
+
+        .poll-percent {
+            position: absolute;
+            right: 8px;
+            top: 0;
+            font-size: 10px;
+            line-height: 20px;
+            font-weight: 700;
+        }
+
+        /* WEATHER */
+        .weather-display {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border: 1px solid var(--ink-black);
+        }
+
+        .weather-location {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .weather-temp {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .weather-condition {
+            font-size: 11px;
+            color: var(--faded-text);
+            font-style: italic;
+        }
+
+        /* STOCK TICKER */
+        .stock-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dotted #ccc;
+            font-size: 11px;
+        }
+
+        .stock-symbol {
+            font-weight: 700;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .stock-change {
+            font-weight: 600;
+        }
+
+        .stock-up { color: #228b22; }
+        .stock-down { color: var(--red-accent); }
+
+        /* HOROSCOPE */
+        .horoscope-sign {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .horoscope-text {
+            font-size: 11px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        /* CORRECTIONS */
+        .correction-item {
+            font-size: 11px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            border-left: 2px solid var(--red-accent);
+        }
+
+        /* LETTERS */
+        .letter-item {
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .letter-author {
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* OBITUARY TEASER */
+        .obit-teaser {
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .obit-name {
+            font-weight: 700;
+        }
+
+        /* COMMENTS SECTION */
+        .comments-section {
+            padding: 30px;
+            background: #f0ede4;
+            border-top: 4px double var(--ink-black);
+        }
+
+        .comments-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--ink-black);
+        }
+
+        .comment {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #ddd;
+        }
+
+        .comment.featured {
+            border-left-color: var(--red-accent);
+            background: #fff9f0;
+        }
+
+        .comment.controversial {
+            border-left-color: #ff6600;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .comment-badge {
+            font-size: 9px;
+            background: var(--ink-black);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 8px;
+        }
+
+        .comment-meta {
+            font-size: 10px;
+            color: var(--faded-text);
+        }
+
+        .comment-body {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+            color: var(--faded-text);
+        }
+
+        .comment-action {
+            cursor: pointer;
+        }
+
+        .comment-action:hover {
+            color: var(--ink-black);
+        }
+
+        .comment-reply {
+            margin-left: 30px;
+            margin-top: 10px;
+            padding: 12px;
+            background: #f8f8f8;
+            border-left: 2px solid #ccc;
+        }
+
+        .comment-reply .comment-author {
+            font-size: 12px;
+        }
+
+        .comment-reply .comment-body {
+            font-size: 12px;
+        }
+
+        .load-more-comments {
+            text-align: center;
+            padding: 15px;
+            background: var(--ink-black);
+            color: var(--newsprint);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        /* RELATED ARTICLES */
+        .related-section {
+            padding: 30px;
+            background: var(--aged-paper);
+            border-top: 1px solid var(--ink-black);
+        }
+
+        .related-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-item {
+            background: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .related-item-kicker {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--red-accent);
+            margin-bottom: 5px;
+        }
+
+        .related-item-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .related-item-meta {
+            font-size: 10px;
+            color: var(--faded-text);
+        }
+
+        /* YOU MIGHT ALSO LIKE */
+        .also-like-section {
+            padding: 30px;
+            background: var(--newsprint);
+            border-top: 4px double var(--ink-black);
+        }
+
+        .also-like-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .also-like-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .also-like-img {
+            width: 100%;
+            height: 80px;
+            background: #ddd;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .also-like-headline {
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .also-like-source {
+            font-size: 9px;
+            color: var(--faded-text);
+            margin-top: 5px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--ink-black);
+            color: var(--newsprint);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            font-size: 11px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--newsprint);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer-copyright {
+            font-size: 10px;
+            color: #888;
+        }
+
+        /* SPECIAL SECTIONS */
+        .breaking-banner {
+            background: var(--red-accent);
+            color: white;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .editors-note {
+            background: var(--highlight-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid #d4a950;
+            font-size: 12px;
+        }
+
+        .editors-note-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        /* Print styling */
+        @media print {
+            .news-ticker, .comments-section, .ad-container {
+                display: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .article-section {
+                border-right: none;
+            }
+            .article-body {
+                column-count: 1;
+            }
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            .also-like-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .masthead-title {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-container">
+        <!-- BREAKING BANNER -->
+        <div class="breaking-banner">
+            ⚡ BREAKING: Pentagon Discovers History Exists, Expresses Surprise ⚡
+        </div>
+
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="top-banner">
+                <span>Vol. CXXV, No. 47</span>
+                <span>Est. 1899 — "The Year We Started Forgetting"</span>
+                <span>Price: One Congressional Mandate</span>
+            </div>
+            <div class="masthead-subtitle">America's Finest News Source</div>
+            <h1 class="masthead-title">HuckFinn</h1>
+            <div class="masthead-edition">Sunday, December 14, 2025 • Washington, D.C. • Final Edition • "All The News That's Fit To Rediscover"</div>
+        </header>
+
+        <!-- NEWS TICKER -->
+        <div class="news-ticker">
+            <div class="ticker-content">
+                <span>Pentagon Launches "Operation: Actually Look Things Up"</span>
+                <span>Magnolia Tree Declines Cabinet Position</span>
+                <span>Robert E. Lee Statue Offered Job As Confederate-Themed Doorstop</span>
+                <span>VA Announces New Benefit: Acknowledgment Within 100 Years</span>
+                <span>Army Historian Discovers Filing Cabinet, Calls It "Game-Changer"</span>
+                <span>Congress Passes Law Requiring Pentagon To Google Things</span>
+                <span>Buffalo Soldiers Finally Added To Army's "People We Remember" List</span>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- ARTICLE SECTION -->
+            <article class="article-section">
+                <div class="article-kicker">Exclusive Investigation • Historical Reckoning • Convenient Timing</div>
+
+                <h1 class="article-headline">Army Honors Black War Hero 125 Years Late, Just In Time To Solve Different Problem</h1>
+
+                <h2 class="article-subhead">Pentagon's "Proud Tradition Of Honoring All Who Served" Activates For First Time In Century After Congress Passes Law; Pvt. Fitz Lee Unavailable For Comment Since 1899</h2>
+
+                <div class="byline">By <span class="byline-author">STAFFORD WHITMORE III</span> and <span class="byline-author">HENRIETTA CONVENIENTLY-TIMED</span></div>
+                <div class="dateline">December 14, 2025 • Fort Gregg-Adams, VA (Formerly Fort We-Don't-Talk-About-It)</div>
+
+                <!-- FEATURED IMAGE -->
+                <figure class="featured-image">
+                    <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background gradient - aged paper look -->
+                        <defs>
+                            <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#d4cfc4"/>
+                                <stop offset="100%" style="stop-color:#e8e4d8"/>
+                            </linearGradient>
+                            <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#5a7a4a"/>
+                                <stop offset="100%" style="stop-color:#3a5a2a"/>
+                            </linearGradient>
+                            <linearGradient id="treeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a2d"/>
+                                <stop offset="50%" style="stop-color:#1a4a1a"/>
+                                <stop offset="100%" style="stop-color:#0f3f0f"/>
+                            </linearGradient>
+                            <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#3d2817"/>
+                                <stop offset="50%" style="stop-color:#5a3d2a"/>
+                                <stop offset="100%" style="stop-color:#3d2817"/>
+                            </linearGradient>
+                            <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#909090"/>
+                                <stop offset="100%" style="stop-color:#606060"/>
+                            </linearGradient>
+                            <linearGradient id="statueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c9b896"/>
+                                <stop offset="50%" style="stop-color:#a89070"/>
+                                <stop offset="100%" style="stop-color:#8a7860"/>
+                            </linearGradient>
+                            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feDropShadow dx="3" dy="3" stdDeviation="3" flood-opacity="0.3"/>
+                            </filter>
+                            <pattern id="newsprint" patternUnits="userSpaceOnUse" width="4" height="4">
+                                <rect width="4" height="4" fill="#e8e4d8"/>
+                                <circle cx="1" cy="1" r="0.5" fill="#d8d4c8" opacity="0.5"/>
+                                <circle cx="3" cy="3" r="0.3" fill="#d0ccc0" opacity="0.3"/>
+                            </pattern>
+                        </defs>
+
+                        <!-- Sky background -->
+                        <rect width="800" height="450" fill="url(#skyGrad)"/>
+                        <rect width="800" height="450" fill="url(#newsprint)" opacity="0.3"/>
+
+                        <!-- Distant cemetery crosses/markers (background) -->
+                        <g opacity="0.15">
+                            <rect x="50" y="280" width="3" height="25" fill="#555"/>
+                            <rect x="44" y="285" width="15" height="3" fill="#555"/>
+                            <rect x="100" y="290" width="2" height="20" fill="#555"/>
+                            <rect x="95" y="294" width="12" height="2" fill="#555"/>
+                            <rect x="680" y="285" width="3" height="22" fill="#555"/>
+                            <rect x="674" y="289" width="15" height="3" fill="#555"/>
+                            <rect x="730" y="295" width="2" height="18" fill="#555"/>
+                            <rect x="725" y="298" width="12" height="2" fill="#555"/>
+                        </g>
+
+                        <!-- Ground -->
+                        <rect x="0" y="340" width="800" height="110" fill="url(#groundGrad)"/>
+
+                        <!-- LEFT SIDE: Robert E. Lee statue (huge, golden, crumbling) -->
+                        <g transform="translate(80, 120)">
+                            <!-- Massive pedestal -->
+                            <rect x="0" y="180" width="140" height="60" fill="#8a7860" filter="url(#shadow)"/>
+                            <rect x="10" y="170" width="120" height="15" fill="#9a8870"/>
+
+                            <!-- Pedestal text -->
+                            <text x="70" y="215" font-family="serif" font-size="11" fill="#3a3020" text-anchor="middle" font-weight="bold">GEN. ROBERT E. LEE</text>
+                            <text x="70" y="228" font-family="serif" font-size="7" fill="#4a4030" text-anchor="middle">1807-1870</text>
+                            <text x="70" y="238" font-family="serif" font-size="6" fill="#4a4030" text-anchor="middle" font-style="italic">"Honored" 1900-2021</text>
+
+                            <!-- Statue figure (stylized, imposing) -->
+                            <ellipse cx="70" cy="165" rx="35" ry="8" fill="#7a6850" opacity="0.5"/> <!-- shadow -->
+
+                            <!-- Body/coat -->
+                            <path d="M40 165 L45 90 L55 70 L85 70 L95 90 L100 165 Z" fill="url(#statueGrad)" filter="url(#shadow)"/>
+
+                            <!-- Head -->
+                            <ellipse cx="70" cy="55" rx="18" ry="22" fill="url(#statueGrad)"/>
+
+                            <!-- Confederate hat -->
+                            <ellipse cx="70" cy="38" rx="22" ry="6" fill="#8a7860"/>
+                            <rect x="55" y="28" width="30" height="12" fill="#8a7860"/>
+
+                            <!-- Arms crossed smugly -->
+                            <path d="M42 95 Q30 110 35 130 L50 125 Q48 110 55 100 Z" fill="url(#statueGrad)"/>
+                            <path d="M98 95 Q110 110 105 130 L90 125 Q92 110 85 100 Z" fill="url(#statueGrad)"/>
+
+                            <!-- Cracks in statue -->
+                            <path d="M60 80 L58 100 L62 120 L59 140" stroke="#5a4a3a" stroke-width="1" fill="none" opacity="0.6"/>
+                            <path d="M85 75 L88 95 L84 110" stroke="#5a4a3a" stroke-width="1" fill="none" opacity="0.6"/>
+
+                            <!-- X over the statue (cancelled) -->
+                            <line x1="20" y1="20" x2="120" y2="170" stroke="#8b0000" stroke-width="8" opacity="0.7"/>
+                            <line x1="120" y1="20" x2="20" y2="170" stroke="#8b0000" stroke-width="8" opacity="0.7"/>
+
+                            <!-- "DELISTED" stamp -->
+                            <g transform="rotate(-15, 70, 100)">
+                                <rect x="25" y="85" width="90" height="30" fill="none" stroke="#8b0000" stroke-width="3" rx="3"/>
+                                <text x="70" y="107" font-family="Impact, sans-serif" font-size="18" fill="#8b0000" text-anchor="middle">DELISTED</text>
+                            </g>
+
+                            <!-- Stats below -->
+                            <text x="70" y="258" font-family="monospace" font-size="8" fill="#1a1a1a" text-anchor="middle">STATUES: 100+ | BASES: 1 | YEARS HONORED: 125</text>
+                            <text x="70" y="270" font-family="monospace" font-size="8" fill="#8b0000" text-anchor="middle">TREASON: YES | SLAVES: 189 | MEDAL: NO</text>
+                        </g>
+
+                        <!-- CENTER: Magnolia Tree with grave (humble, enduring) -->
+                        <g transform="translate(350, 80)">
+                            <!-- Tree shadow on ground -->
+                            <ellipse cx="50" cy="280" rx="70" ry="20" fill="#2a4a2a" opacity="0.3"/>
+
+                            <!-- Tree trunk -->
+                            <rect x="35" y="180" width="30" height="100" fill="url(#trunkGrad)" rx="3"/>
+                            <!-- Trunk texture -->
+                            <path d="M40 190 Q45 200 40 220 Q48 240 42 260" stroke="#2d1810" stroke-width="1" fill="none" opacity="0.4"/>
+                            <path d="M55 195 Q58 210 54 230 Q60 250 56 270" stroke="#2d1810" stroke-width="1" fill="none" opacity="0.4"/>
+
+                            <!-- Tree crown (multiple layers for depth) -->
+                            <ellipse cx="50" cy="120" rx="85" ry="75" fill="#1a4a1a"/>
+                            <ellipse cx="45" cy="110" rx="75" ry="65" fill="#2d5a2d"/>
+                            <ellipse cx="55" cy="100" rx="65" ry="55" fill="#3d6a3d"/>
+                            <ellipse cx="50" cy="95" rx="50" ry="45" fill="#4a7a4a"/>
+
+                            <!-- Magnolia flowers (white blooms) -->
+                            <g fill="#fff" filter="url(#shadow)">
+                                <circle cx="15" cy="80" r="8"/>
+                                <circle cx="85" cy="85" r="7"/>
+                                <circle cx="40" cy="60" r="9"/>
+                                <circle cx="70" cy="55" r="6"/>
+                                <circle cx="25" cy="110" r="7"/>
+                                <circle cx="90" cy="120" r="8"/>
+                                <circle cx="55" cy="140" r="6"/>
+                                <circle cx="10" cy="130" r="5"/>
+                                <circle cx="100" cy="95" r="6"/>
+                            </g>
+                            <!-- Flower centers -->
+                            <g fill="#f8e0d0">
+                                <circle cx="15" cy="80" r="3"/>
+                                <circle cx="85" cy="85" r="2.5"/>
+                                <circle cx="40" cy="60" r="3.5"/>
+                                <circle cx="70" cy="55" r="2"/>
+                                <circle cx="25" cy="110" r="2.5"/>
+                                <circle cx="90" cy="120" r="3"/>
+                            </g>
+
+                            <!-- Simple gravestone beneath tree -->
+                            <rect x="90" y="230" width="50" height="70" rx="25" ry="25" fill="url(#stoneGrad)" filter="url(#shadow)"/>
+                            <rect x="90" y="270" width="50" height="30" fill="url(#stoneGrad)"/>
+
+                            <!-- Gravestone text -->
+                            <text x="115" y="255" font-family="serif" font-size="7" fill="#2a2a2a" text-anchor="middle" font-weight="bold">PVT. FITZ LEE</text>
+                            <text x="115" y="265" font-family="serif" font-size="6" fill="#3a3a3a" text-anchor="middle">1866 - 1899</text>
+                            <text x="115" y="278" font-family="serif" font-size="10" fill="#3a3a3a" text-anchor="middle">★</text>
+                            <text x="115" y="290" font-family="serif" font-size="5" fill="#4a4a4a" text-anchor="middle" font-style="italic">Medal of Honor</text>
+
+                            <!-- Small Medal of Honor on grave -->
+                            <polygon points="115,240 118,246 125,246 120,250 122,257 115,253 108,257 110,250 105,246 112,246" fill="#c9a227" stroke="#8a7210" stroke-width="0.5"/>
+
+                            <!-- "The tree showed up" label -->
+                            <text x="50" y="310" font-family="Georgia, serif" font-size="10" fill="#1a1a1a" text-anchor="middle" font-style="italic">"The tree showed up."</text>
+                            <text x="50" y="322" font-family="monospace" font-size="7" fill="#4a4a4a" text-anchor="middle">Every year. For 125 years.</text>
+                        </g>
+
+                        <!-- RIGHT SIDE: Pentagon with speech bubble -->
+                        <g transform="translate(580, 60)">
+                            <!-- Pentagon building (simplified) -->
+                            <polygon points="90,50 160,90 140,160 40,160 20,90" fill="#6a6a6a" filter="url(#shadow)"/>
+                            <polygon points="90,70 130,95 118,135 62,135 50,95" fill="#e8e4d8"/>
+
+                            <!-- Windows -->
+                            <g fill="#4a4a4a">
+                                <rect x="55" y="100" width="8" height="10"/>
+                                <rect x="70" y="100" width="8" height="10"/>
+                                <rect x="85" y="100" width="8" height="10"/>
+                                <rect x="100" y="100" width="8" height="10"/>
+                                <rect x="115" y="100" width="8" height="10"/>
+                                <rect x="60" y="118" width="8" height="10"/>
+                                <rect x="75" y="118" width="8" height="10"/>
+                                <rect x="90" y="118" width="8" height="10"/>
+                                <rect x="105" y="118" width="8" height="10"/>
+                            </g>
+
+                            <!-- Pentagon label -->
+                            <text x="90" y="180" font-family="sans-serif" font-size="9" fill="#3a3a3a" text-anchor="middle" font-weight="bold">THE PENTAGON</text>
+                            <text x="90" y="192" font-family="monospace" font-size="6" fill="#5a5a5a" text-anchor="middle">Est. 1943 • Memory Est. 2022</text>
+
+                            <!-- Speech bubble -->
+                            <path d="M-60,40 Q-70,30 -50,20 L80,20 Q100,20 100,40 L100,80 Q100,100 80,100 L0,100 L-10,120 L-5,100 L-50,100 Q-70,100 -70,80 L-70,50 Q-70,40 -60,40 Z" fill="white" stroke="#1a1a1a" stroke-width="2"/>
+
+                            <!-- Speech bubble text -->
+                            <text x="15" y="45" font-family="Georgia, serif" font-size="11" fill="#1a1a1a" text-anchor="middle" font-style="italic">"We've always honored</text>
+                            <text x="15" y="60" font-family="Georgia, serif" font-size="11" fill="#1a1a1a" text-anchor="middle" font-style="italic">our diverse heroes."</text>
+                            <text x="15" y="80" font-family="monospace" font-size="8" fill="#8b0000" text-anchor="middle">*since 2023</text>
+                            <text x="15" y="92" font-family="monospace" font-size="6" fill="#666" text-anchor="middle">**when legally required</text>
+
+                            <!-- File cabinet being opened -->
+                            <rect x="140" y="200" width="45" height="80" fill="#5a5a5a" filter="url(#shadow)"/>
+                            <rect x="143" y="205" width="39" height="18" fill="#4a4a4a" stroke="#3a3a3a"/>
+                            <rect x="143" y="226" width="39" height="18" fill="#4a4a4a" stroke="#3a3a3a"/>
+                            <rect x="143" y="247" width="39" height="18" fill="#4a4a4a" stroke="#3a3a3a"/>
+                            <!-- Open drawer with dust -->
+                            <rect x="130" y="268" width="55" height="15" fill="#6a6a6a"/>
+                            <text x="162" y="278" font-family="monospace" font-size="5" fill="#aaa" text-anchor="middle">*DUST*</text>
+                            <text x="162" y="295" font-family="monospace" font-size="6" fill="#1a1a1a" text-anchor="middle">OPENED: 2022</text>
+                            <text x="162" y="305" font-family="monospace" font-size="5" fill="#666" text-anchor="middle">(First time since 1899)</text>
+                        </g>
+
+                        <!-- Timeline arrow at bottom -->
+                        <g transform="translate(0, 400)">
+                            <line x1="50" y1="25" x2="750" y2="25" stroke="#1a1a1a" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+                            <!-- Timeline markers -->
+                            <line x1="100" y1="20" x2="100" y2="30" stroke="#1a1a1a" stroke-width="2"/>
+                            <text x="100" y="42" font-family="monospace" font-size="8" fill="#1a1a1a" text-anchor="middle">1899</text>
+                            <text x="100" y="15" font-family="monospace" font-size="6" fill="#666" text-anchor="middle">DIES</text>
+
+                            <line x1="400" y1="20" x2="400" y2="30" stroke="#1a1a1a" stroke-width="2"/>
+                            <text x="400" y="42" font-family="monospace" font-size="8" fill="#1a1a1a" text-anchor="middle">125 YEARS OF NOTHING</text>
+
+                            <line x1="700" y1="20" x2="700" y2="30" stroke="#1a1a1a" stroke-width="2"/>
+                            <text x="700" y="42" font-family="monospace" font-size="8" fill="#1a1a1a" text-anchor="middle">2023</text>
+                            <text x="700" y="15" font-family="monospace" font-size="6" fill="#666" text-anchor="middle">"HONORED"</text>
+                        </g>
+
+                        <!-- Title banner at top -->
+                        <rect x="200" y="8" width="400" height="32" fill="#1a1a1a"/>
+                        <text x="400" y="28" font-family="Impact, sans-serif" font-size="16" fill="#f5f2e8" text-anchor="middle" letter-spacing="3">THE LEE SWAP: A VISUAL COMPARISON</text>
+
+                        <!-- Bottom stats comparison -->
+                        <g transform="translate(0, 355)">
+                            <rect x="50" y="0" width="200" height="35" fill="rgba(139,0,0,0.1)" stroke="#8b0000" stroke-width="1"/>
+                            <text x="150" y="14" font-family="monospace" font-size="7" fill="#1a1a1a" text-anchor="middle" font-weight="bold">ROBERT E. LEE</text>
+                            <text x="150" y="26" font-family="monospace" font-size="6" fill="#8b0000" text-anchor="middle">Lost war • Owned slaves • 125 yrs honored</text>
+
+                            <rect x="550" y="0" width="200" height="35" fill="rgba(34,139,34,0.1)" stroke="#228b22" stroke-width="1"/>
+                            <text x="650" y="14" font-family="monospace" font-size="7" fill="#1a1a1a" text-anchor="middle" font-weight="bold">FITZ LEE</text>
+                            <text x="650" y="26" font-family="monospace" font-size="6" fill="#228b22" text-anchor="middle">Won battle • Medal of Honor • 0 yrs honored*</text>
+
+                            <text x="400" y="28" font-family="Georgia, serif" font-size="9" fill="#1a1a1a" text-anchor="middle" font-style="italic">* until legally required</text>
+                        </g>
+                    </svg>
+                    <figcaption class="image-caption">
+                        <strong>"The Lee Swap":</strong> Left: The statue America couldn't stop building for 125 years (now delisted). Center: The only entity that honored Pvt. Fitz Lee consistently—a magnolia tree (still blooming). Right: The Pentagon, which discovered filing cabinets exist in 2022. The tree was not invited to the renaming ceremony but will attend anyway, as it has every spring since 1899.
+                    </figcaption>
+                    <div class="image-credit">Illustration: HuckFinn Graphics Dept. • "Rendering History As It Actually Happened (Eventually)"</div>
+                </figure>
+
+                <div class="article-body">
+                    <p>Fort Gregg-Adams, VA — Pvt. Fitz Lee received America's highest military honor in a Texas hospital bed in the summer of 1899. Ten weeks later, he was dead—blind, homeless, no next of kin. Seventy days. That's how long it took the United States to process a Black war hero from "Medal of Honor recipient" to "body in a pauper's grave." The Army moved him through the system with a speed and efficiency it would never again apply to his memory. For the next 125 years, nothing. Then someone at the Pentagon needed a Black guy named Lee.</p>
+
+                    <p>The discovery came, sources say, sometime in late 2022, when officials tasked with removing Confederate names from military installations realized they had what internal memos reportedly called "a Lee problem." For 125 years, a major Army base in Virginia bore the name of Robert E. Lee—a man who resigned his U.S. Army commission to wage war against his own country in defense of slavery, lost, and became a symbol of a cause dedicated to human trafficking.</p>
+
+                    <div class="drop-quote">
+                        "We had a Lee problem. Fortunately, we found a Lee solution."<br>
+                        <small>— Pentagon official who requested anonymity because they were being too honest</small>
+                    </div>
+
+                    <p>Congress said: remove the name. The Pentagon said: but what if we just swapped Lees? And lo, they found another Lee. This one was Black, heroic, and—most importantly—dead long enough to have no opinions about being used as Confederate-name-remover spray. "It's not <em>that</em> Lee, it's <em>this</em> Lee," a spokesman was overheard explaining at the renaming ceremony, gesturing vaguely. "Totally different Lee. Problem solved."</p>
+
+                    <p class="inline-subhead">The Two Lees: A Historical Comparison</p>
+
+                    <table class="data-table">
+                        <caption>Tale of the Tape: Lee vs. Lee</caption>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Robert E. Lee</th>
+                                <th>Fitz Lee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Statues Erected</td>
+                                <td>100+</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Bases Named After (Years)</td>
+                                <td>1 (for 125 years)</td>
+                                <td>1 (as of last Tuesday)</td>
+                            </tr>
+                            <tr>
+                                <td>Textbook Pages</td>
+                                <td>Hundreds</td>
+                                <td>A paragraph, if that</td>
+                            </tr>
+                            <tr>
+                                <td>Slaves Owned</td>
+                                <td>189 (inherited, kept)</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>Treason Committed</td>
+                                <td>Yes (large)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td>Medal of Honor</td>
+                                <td>No</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td>How They Died</td>
+                                <td>Peacefully, mourned by nation</td>
+                                <td>Blind, homeless, forgotten</td>
+                            </tr>
+                            <tr>
+                                <td>Years Army "Honored" Them</td>
+                                <td>125</td>
+                                <td>0, then suddenly 1</td>
+                            </tr>
+                            <tr>
+                                <td>Current Pentagon Utility</td>
+                                <td>Liability</td>
+                                <td>Asset</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The Army would like you to know it honors both equally now.</p>
+
+                    <!-- AD BREAK 1 -->
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div class="ad-headline">ANCESTRY.COM<sup>®</sup> FOR INSTITUTIONS</div>
+                        <div class="ad-body">
+                            <em>"Discover the heroes you forgot you had!"</em><br><br>
+                            Is your organization facing an inconvenient reckoning with its past? Our patented <strong>HeroMatch™</strong> technology can locate forgotten figures of historical significance in minutes—not centuries!<br><br>
+                            <strong>Used by:</strong> The Pentagon, Major League Baseball, Several Universities We Can't Name
+                        </div>
+                        <a href="#" class="ad-cta">Find Your Convenient Hero Today</a>
+                        <div class="ad-fine-print">*Heroes located may have been dead for over a century. AncestryForInstitutions is not responsible for any irony, awkwardness, or legitimate historical grievances that may arise. Some heroes were always there; you just didn't look.</div>
+                    </div>
+
+                    <p class="inline-subhead">The Service Record</p>
+
+                    <p>The complete military documentation of Pvt. Fitz Lee, as recorded by the United States Army with the same emotional register throughout: April 1890, kicked by horse, left knee contusion, three days recovery, in the line of duty. February 1894, fell from horse, sprained left ankle, ten days furlough, in the line of duty. Two bouts of acute bronchitis. One thigh muscle pull from unloading ice, in the line of duty.</p>
+
+                    <p>Then, on June 30, 1898: Voluntarily walked into Spanish gunfire to rescue wounded Americans after three other rescue attempts had failed, in the line of duty. Contracted malaria. Went blind. Received Medal of Honor in hospital. Discharged. Became homeless. Died alone with no next of kin. Service complete.</p>
+
+                    <p>The Army documented all of this. The Army then forgot all of this. The Army would now like to tell you about its proud history of documenting this.</p>
+
+                    <div class="drop-quote">
+                        "Not much is known about Private Lee outside his Medal of Honor story."<br>
+                        <small>— Historian, accurately describing 125 years of nobody looking</small>
+                    </div>
+
+                    <p class="inline-subhead">The Arithmetic of Honor</p>
+
+                    <p>Let's do the math: Days Fitz Lee was a war hero before dying: 70. Years subsequently forgotten: 125. Confederate names on Army bases during that time: 9 bases' worth. Black Medal of Honor recipients named Lee: 1. Pentagon employees who could identify Fitz Lee in 2020: 0. Pentagon employees who can now deliver a moving speech about his sacrifice: unlimited. Laws required to trigger the search: 1. Fitz Lee's input on his rediscovery: unavailable (deceased, 1899).</p>
+
+                    <!-- AD BREAK 2 -->
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div class="ad-headline">THE U.S. DEPARTMENT OF VETERANS AFFAIRS</div>
+                        <div class="ad-body">
+                            <em>Now Offering: Acknowledgment Within Your Lifetime!</em><br><br>
+                            Introducing our new <strong>ExpressHonor™</strong> program. Why wait 125 years for recognition when you could potentially receive it in as few as 40-60?<br><br>
+                            <strong>Benefits Include:</strong> A certificate (eventually), possible mention in press release (if convenient), one (1) magnolia tree (subject to availability)
+                        </div>
+                        <a href="#" class="ad-cta">Apply Now — Results May Vary</a>
+                        <div class="ad-fine-print">*Processing times are estimates only. The VA makes no guarantees regarding acknowledgment, memory, or basic human dignity. Magnolia trees provided by Fort Leavenworth National Cemetery on a first-come, first-served basis.</div>
+                    </div>
+
+                    <p class="inline-subhead">The Tree That Showed Up</p>
+
+                    <p>Pvt. Fitz Lee was buried beneath a magnolia tree at Fort Leavenworth National Cemetery. For 125 years, that tree was the only entity that consistently acknowledged his location. It grew over his grave. It bloomed every spring. It returned, year after year, to the exact spot where an American war hero lay forgotten beneath the Kansas dirt. The tree never issued a press release. The tree never waited for a law. The tree never needed a congressional mandate to show up. The tree just showed up. In 2023, the Pentagon finally matched the tree's standard—124 years late and only because it had to.</p>
+
+                    <p class="inline-subhead">The Official Statement</p>
+
+                    <p>The Department of Defense released a statement calling the installation renaming "a proud recognition of the sacrifices made by all Americans who served." Fitz Lee's sacrifices: his health, his sight, his home, his life, his memory. The Pentagon's sacrifice: updating some signage. Fitz Lee was unavailable for comment, having been dead since the McKinley administration. The magnolia tree also declined to comment. It will bloom again this spring regardless.</p>
+
+                    <div class="editors-note">
+                        <div class="editors-note-label">📋 Editor's Note</div>
+                        This story was produced by HuckFinn's newly formed "Things We Should Have Noticed Earlier" desk, established in 2023 after we realized we'd been writing about the wrong Lee for decades. We regret any inconvenience this may have caused to readers who assumed we were paying attention.
+                    </div>
+
+                    <p>At the renaming ceremony, officials spoke movingly. They spoke of courage. They spoke of sacrifice. They spoke of Fitz Lee's embodiment of American values. They spoke of the Army's "proud tradition of honoring all who served." They did not explain why it took 125 years. They did not explain why it took an act of Congress. They did not explain why no one looked before they were forced to. They did not explain why Robert E. Lee got a century and Fitz Lee got a news cycle.</p>
+
+                    <p>When asked, a spokesman said the Army has "always been committed to recognizing diverse contributions." <em>Always</em>, in this usage, means "starting in 2023."</p>
+
+                    <p class="inline-subhead">The System</p>
+
+                    <p>The Pentagon's legacy management process, as revealed by this situation, appears to function as follows: Step 1, name bases after Confederates (1900–2021). Step 2, ignore everyone else (1900–2021). Step 3, get caught (2020). Step 4, get legally mandated to change (2021). Step 5, discover Black heroes existed the whole time (2022). Step 6, pretend you discovered them on purpose (2023). Step 7, issue statement about "proud tradition" (2023). Step 8, wait for next law.</p>
+
+                    <p>Fitz Lee's role in this system: Step 5. Fitz Lee's input: none. Fitz Lee's consent: not required. Fitz Lee's status: deceased, compliant, perfect.</p>
+
+                    <p>In 1899, the United States gave a dying Black soldier its highest honor and showed him the door. In 2023, the United States gave that same soldier a base renaming and a press release. Time elapsed: 124 years. Sincerity level: unchanged. Fitz Lee's benefit from any of this: none. He's been dead the whole time.</p>
+
+                    <p>But the Pentagon has a new sign, and the magnolia tree has company now. That's what we call <em>progress</em>.</p>
+
+                    <!-- FINAL AD -->
+                    <div class="ad-container">
+                        <div class="ad-label">Advertisement</div>
+                        <div class="ad-headline">MAGNOLIA TREES DIRECT</div>
+                        <div class="ad-body">
+                            <em>"We Show Up Every Year. No Law Required."</em><br><br>
+                            For over 125 years, magnolia trees have been honoring America's forgotten heroes while institutions looked the other way. Now you can have that same reliable, non-performative commemoration in your own backyard!<br><br>
+                            🌸 Blooms annually without congressional mandate<br>
+                            🌸 Requires no press release to acknowledge your existence<br>
+                            🌸 Will still be there in 125 years
+                        </div>
+                        <a href="#" class="ad-cta">Order Your Legacy Tree Today</a>
+                        <div class="ad-fine-print">*Trees cannot be held liable for any feelings of inadequacy experienced by large government institutions. Each tree comes with a certificate of "Actually Showing Up" signed by nobody, because trees don't need credit.</div>
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <!-- WEATHER -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">☁️ Weather</div>
+                    <div class="weather-display">
+                        <div class="weather-location">Fort Leavenworth, KS</div>
+                        <div class="weather-temp">47°</div>
+                        <div class="weather-condition">Overcast with a 100% chance of belated recognition</div>
+                    </div>
+                </div>
+
+                <!-- POLL -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">📊 Today's Poll</div>
+                    <div class="poll-question">How long should it take to honor a Medal of Honor recipient?</div>
+                    <div class="poll-option">
+                        <div class="poll-bar">
+                            <div class="poll-fill" style="width: 3%;"></div>
+                            <span class="poll-label">Immediately</span>
+                            <span class="poll-percent">3%</span>
+                        </div>
+                    </div>
+                    <div class="poll-option">
+                        <div class="poll-bar">
+                            <div class="poll-fill" style="width: 2%;"></div>
+                            <span class="poll-label">Within their lifetime</span>
+                            <span class="poll-percent">2%</span>
+                        </div>
+                    </div>
+                    <div class="poll-option">
+                        <div class="poll-bar">
+                            <div class="poll-fill" style="width: 8%;"></div>
+                            <span class="poll-label">Within a century</span>
+                            <span class="poll-percent">8%</span>
+                        </div>
+                    </div>
+                    <div class="poll-option">
+                        <div class="poll-bar">
+                            <div class="poll-fill" style="width: 87%;"></div>
+                            <span class="poll-label">When legally mandated</span>
+                            <span class="poll-percent">87%</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 9px; color: #999; margin-top: 10px;">Based on 125 years of institutional behavior</div>
+                </div>
+
+                <!-- STOCK TICKER -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">📈 Markets</div>
+                    <div class="stock-item">
+                        <span class="stock-symbol">LEGACY</span>
+                        <span class="stock-change stock-up">▲ 125 YRS LATE</span>
+                    </div>
+                    <div class="stock-item">
+                        <span class="stock-symbol">IRONY</span>
+                        <span class="stock-change stock-up">▲ AT ALL-TIME HIGH</span>
+                    </div>
+                    <div class="stock-item">
+                        <span class="stock-symbol">SHAME</span>
+                        <span class="stock-change stock-down">▼ NEVER PRICED IN</span>
+                    </div>
+                    <div class="stock-item">
+                        <span class="stock-symbol">MGNLA</span>
+                        <span class="stock-change stock-up">▲ STEADY (AS ALWAYS)</span>
+                    </div>
+                    <div class="stock-item">
+                        <span class="stock-symbol">CONFED</span>
+                        <span class="stock-change stock-down">▼ DELISTED</span>
+                    </div>
+                </div>
+
+                <!-- THIS DAY IN HISTORY -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">📅 This Day in Forgotten History</div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">December 14, 1899</div>
+                        <div class="sidebar-item-meta">Pvt. Fitz Lee's grave goes unvisited for the first of 45,260 consecutive days. Pentagon expresses no comment (will continue expressing no comment until 2022).</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">December 14, 1950</div>
+                        <div class="sidebar-item-meta">Army celebrates 51st anniversary of not remembering Fitz Lee. Magnolia tree blooms anyway.</div>
+                    </div>
+                </div>
+
+                <!-- HOROSCOPE -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">♈ Your Horoscope</div>
+                    <div class="horoscope-sign">Capricorn (Dec 22 - Jan 19)</div>
+                    <div class="horoscope-text">A forgotten achievement from your past will finally be recognized—but only because someone needs to solve a completely unrelated PR problem. Accept this as progress. The stars suggest you may have been a magnolia tree in a past life.</div>
+                </div>
+
+                <!-- CORRECTIONS -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">⚠️ Corrections</div>
+                    <div class="correction-item">
+                        <strong>Dec. 13:</strong> An earlier version of this nation honored Confederate generals while forgetting Medal of Honor recipients. This has been corrected. We regret the 125-year error.
+                    </div>
+                    <div class="correction-item">
+                        <strong>Dec. 12:</strong> We incorrectly stated that the Pentagon "always" honored diverse heroes. In fact, "always" meant "starting last year." We regret the grammatical confusion.
+                    </div>
+                </div>
+
+                <!-- LETTERS TO EDITOR -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">✉️ Letters to the Editor</div>
+                    <div class="letter-item">
+                        "As a magnolia tree, I find this recognition long overdue. I've been doing this work alone for over a century. No benefits. No press coverage. Just blooming. You're welcome."<br>
+                        <span class="letter-author">— The Tree, Fort Leavenworth</span>
+                    </div>
+                    <div class="letter-item">
+                        "I think it's great the Army finally honored him. Shows the system works!"<br>
+                        <span class="letter-author">— Someone Who Missed The Point, Virginia</span>
+                    </div>
+                </div>
+
+                <!-- OBITUARIES TEASER -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">⚰️ Obituaries</div>
+                    <div class="obit-teaser">
+                        <span class="obit-name">INSTITUTIONAL MEMORY,</span> believed to have existed at one point, passed away quietly sometime between 1899 and 2021. No services planned. Survivors include: filing cabinets, archives, and people who could have looked but didn't.
+                    </div>
+                </div>
+
+                <!-- CLASSIFIED ADS -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">📰 Classifieds</div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">HELP WANTED</div>
+                        <div class="sidebar-item-meta">Pentagon seeks "Historical Memory Specialist." Job duties: Googling things before Congress makes us. Salary: Whatever we were paying the person who didn't do this for 125 years.</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">FOR SALE</div>
+                        <div class="sidebar-item-meta">Confederate base names, gently used for 125 years. Must go! Will trade for literally any Black hero you can find. Serious inquiries only.</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">LOST & FOUND</div>
+                        <div class="sidebar-item-meta">FOUND: One (1) Medal of Honor recipient. Missing since 1899. Answers to "Fitz." Please claim at Pentagon Lost Heroes Dept. (opened 2022).</div>
+                    </div>
+                </div>
+
+                <!-- UPCOMING EVENTS -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">🗓️ Upcoming Events</div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">Pentagon "Who Else Did We Forget?" Symposium</div>
+                        <div class="sidebar-item-meta">Jan 15, 2026 • Washington, D.C. • RSVP required • Historians welcome (finally)</div>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-item-headline">Annual Magnolia Tree Appreciation Day</div>
+                        <div class="sidebar-item-meta">Every day since 1899 • Fort Leavenworth • The tree will attend regardless of whether you do</div>
+                    </div>
+                </div>
+
+                <!-- QUOTE OF THE DAY -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header">💬 Quote of the Day</div>
+                    <div style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 14px; line-height: 1.5;">
+                        "The Army has always been committed to recognizing diverse contributions."
+                    </div>
+                    <div style="font-size: 10px; color: #666; margin-top: 8px;">
+                        — Pentagon Spokesman, 2023<br>
+                        <em>(Note: "Always" = since 2023)</em>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-logo">HuckFinn</div>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Advertise</a>
+                <a href="#">Subscribe</a>
+                <a href="#">Corrections (We Have A Lot)</a>
+                <a href="#">Ethics Policy</a>
+                <a href="#">125 Years of Archives We Also Didn't Check</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 HuckFinn Media Group. All rights reserved. "America's Finest News Source Since We Started Paying Attention."<br>
+                <em>In partnership with MagnoliaTreeOfficial, who has been here the whole time.</em>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
