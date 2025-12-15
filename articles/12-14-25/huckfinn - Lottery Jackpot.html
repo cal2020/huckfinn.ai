@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest News Source</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #fffef9;
+            --ink: #1a1a1a;
+            --red: #8b0000;
+            --gold: #c9a227;
+            --gray: #555;
+            --light-gray: #e8e4db;
+            --blue-link: #1a4480;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Franklin', sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .newspaper {
+            background: var(--cream);
+        }
+
+        .newspaper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--cream);
+        }
+
+        /* MASTHEAD */
+        .masthead {
+            text-align: center;
+            border-bottom: 3px double var(--ink);
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .masthead-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .masthead h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 72px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 0 var(--light-gray);
+        }
+
+        .masthead-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .masthead-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            border-top: 1px solid var(--ink);
+            padding-top: 10px;
+        }
+
+        /* BREAKING BAR */
+        .breaking-bar {
+            background: var(--red);
+            color: white;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .breaking-bar span {
+            background: white;
+            color: var(--red);
+            padding: 2px 8px;
+            font-size: 10px;
+        }
+
+        /* MAIN LAYOUT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* ARTICLE */
+        .article {
+            border-right: 1px solid var(--light-gray);
+            padding-right: 30px;
+        }
+
+        .article-header {
+            margin-bottom: 20px;
+        }
+
+        .section-label {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 3px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--gray);
+            line-height: 1.3;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--red);
+            padding-left: 15px;
+        }
+
+        .byline {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .byline strong {
+            color: var(--ink);
+        }
+
+        /* FEATURED IMAGE */
+        .featured-image {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(30%) contrast(1.1);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255,255,255,0.03) 2px,
+                    rgba(255,255,255,0.03) 4px
+                );
+        }
+
+        .lottery-visual {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lottery-balls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            font-family: 'Libre Franklin', sans-serif;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .ball:nth-child(1) { animation-delay: 0s; }
+        .ball:nth-child(2) { animation-delay: 0.2s; }
+        .ball:nth-child(3) { animation-delay: 0.4s; }
+        .ball:nth-child(4) { animation-delay: 0.6s; }
+        .ball:nth-child(5) { animation-delay: 0.8s; }
+        .ball:nth-child(6) { animation-delay: 1s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .ball.white {
+            background: linear-gradient(145deg, #ffffff, #e0e0e0);
+            color: #1a1a1a;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3), inset 0 -3px 10px rgba(0,0,0,0.1);
+        }
+
+        .ball.red {
+            background: linear-gradient(145deg, #ff3333, #cc0000);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255,0,0,0.4), inset 0 -3px 10px rgba(0,0,0,0.2);
+        }
+
+        .govt-hand {
+            font-size: 80px;
+            filter: grayscale(100%);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+        }
+
+        .money-trail {
+            position: absolute;
+            left: 60%;
+            top: 30%;
+            font-size: 24px;
+            opacity: 0.6;
+            animation: fade-up 2s infinite;
+        }
+
+        @keyframes fade-up {
+            0% { opacity: 0.6; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-50px); }
+        }
+
+        .image-caption {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--gray);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .image-credit {
+            font-size: 10px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            column-count: 1;
+        }
+
+        .article-body p {
+            margin-bottom: 18px;
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.75;
+            color: #1a1a1a;
+        }
+
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            float: left;
+            line-height: 0.8;
+            padding-right: 10px;
+            padding-top: 5px;
+            color: var(--red);
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            text-align: center;
+            padding: 25px 20px;
+            margin: 25px 0;
+            border-top: 2px solid var(--ink);
+            border-bottom: 2px solid var(--ink);
+            background: var(--light-gray);
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-size: 12px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            color: var(--gray);
+        }
+
+        /* INLINE AD */
+        .inline-ad {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+            border: 2px solid var(--gold);
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .inline-ad::before {
+            content: 'ADVERTISEMENT';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--cream);
+            padding: 0 10px;
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: var(--gray);
+        }
+
+        .ad-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--red);
+        }
+
+        .ad-body {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .ad-cta {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 8px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .ad-fine-print {
+            font-size: 9px;
+            color: var(--gray);
+            margin-top: 10px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            font-size: 14px;
+            color: #1a1a1a;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .sidebar-section:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        /* BY THE NUMBERS */
+        .by-the-numbers .stat {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: baseline;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--red);
+            margin-right: 10px;
+            min-width: 80px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        /* RELATED ARTICLES */
+        .related-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dotted var(--light-gray);
+        }
+
+        .related-item:last-child {
+            border-bottom: none;
+        }
+
+        .related-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+        .related-item h4 a {
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .related-item h4 a:hover {
+            color: var(--red);
+        }
+
+        .related-meta {
+            font-size: 11px;
+            color: var(--gray);
+        }
+
+        /* POLL */
+        .poll-question {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .poll-option {
+            margin-bottom: 10px;
+        }
+
+        .poll-bar {
+            height: 20px;
+            background: var(--light-gray);
+            position: relative;
+            margin-top: 4px;
+        }
+
+        .poll-fill {
+            height: 100%;
+            background: var(--red);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .poll-label {
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* WEATHER */
+        .weather-box {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .weather-icon {
+            font-size: 40px;
+            margin-bottom: 5px;
+        }
+
+        .weather-temp {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .weather-desc {
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        /* HOROSCOPE */
+        .horoscope-sign {
+            font-weight: 700;
+            color: var(--red);
+        }
+
+        .horoscope-text {
+            font-size: 13px;
+            font-style: italic;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        /* SIDEBAR AD */
+        .sidebar-ad {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .sidebar-ad-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .sidebar-ad-body {
+            font-size: 12px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .sidebar-ad-image {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* STOCK TICKER */
+        .ticker-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--light-gray);
+            font-size: 13px;
+        }
+
+        .ticker-symbol {
+            font-weight: 700;
+        }
+
+        .ticker-change.down {
+            color: var(--red);
+        }
+
+        .ticker-change.up {
+            color: green;
+        }
+
+        /* OBITUARIES */
+        .obit-item {
+            font-size: 13px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted var(--light-gray);
+            color: #333;
+        }
+
+        .obit-name {
+            font-weight: 700;
+        }
+
+        /* CORRECTIONS */
+        .correction-text {
+            font-size: 12px;
+            font-style: italic;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        /* COMMENTS SECTION */
+        .comments-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 3px double var(--ink);
+        }
+
+        .comments-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .comments-count {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .comment-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .comment-meta {
+            flex: 1;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .comment-author.verified::after {
+            content: ' ✓';
+            color: var(--blue-link);
+            font-size: 12px;
+        }
+
+        .comment-author.premium::after {
+            content: ' ⭐';
+            color: var(--gold);
+        }
+
+        .comment-time {
+            font-size: 11px;
+            color: var(--gray);
+        }
+
+        .comment-body {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .comment-action {
+            cursor: pointer;
+        }
+
+        .comment-action:hover {
+            color: var(--ink);
+        }
+
+        .reply {
+            margin-left: 45px;
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 2px solid var(--light-gray);
+        }
+
+        .reply .comment-avatar {
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+        }
+
+        .deleted-comment {
+            color: var(--gray);
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        .mod-note {
+            background: #fff3cd;
+            padding: 8px 12px;
+            font-size: 11px;
+            margin-top: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        /* FOOTER */
+        .newspaper-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px double var(--ink);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-copyright {
+            font-size: 10px;
+            color: var(--gray);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .article {
+                border-right: none;
+                padding-right: 0;
+            }
+
+            .headline {
+                font-size: 32px;
+            }
+
+            .masthead h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>Vol. CXLVII, No. 892</span>
+                <span>FINAL EDITION</span>
+                <span>$4.00 (Tax Included, Unlike Your Winnings)</span>
+            </div>
+            <h1>HuckFinn</h1>
+            <div class="masthead-subtitle">"America's Finest News Source" • Est. 1892 • Tu Stultus Es</div>
+            <div class="masthead-bar">
+                <span>Washington</span>
+                <span>•</span>
+                <span>New York</span>
+                <span>•</span>
+                <span>Los Angeles</span>
+                <span>•</span>
+                <span>Your Mother's Basement</span>
+            </div>
+        </header>
+
+        <!-- BREAKING BAR -->
+        <div class="breaking-bar">
+            <span>BREAKING</span>
+            Nation's Poor Voluntarily Transfer Wealth to Government in Record Numbers; Asked to Smile for Photo
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- ARTICLE -->
+            <article class="article">
+                <div class="article-header">
+                    <span class="section-label">American Dreams™</span>
+                    <h1 class="headline">$1.1 Billion Jackpot Grows to $1.2 Billion After No One Wins; Actual Prize Still $317 Million But That's Not as Fun to Say</h1>
+                    <p class="subheadline">Lottery officials describe jackpot as "$1.1 billion" using same accounting methods that let realtors call a house next to a sewage treatment plant "waterfront property"</p>
+                    <div class="byline">By <strong>MARGARET THATCHER-REAGAN</strong>, Senior Wealth Redistribution Correspondent | December 14, 2025</div>
+                </div>
+
+                <!-- FEATURED IMAGE -->
+                <div class="featured-image">
+                    <div class="image-placeholder">
+                        <div class="lottery-visual">
+                            <div class="lottery-balls">
+                                <div class="ball white">1</div>
+                                <div class="ball white">28</div>
+                                <div class="ball white">31</div>
+                                <div class="ball white">57</div>
+                                <div class="ball white">58</div>
+                                <div class="ball red">6</div>
+                            </div>
+                        </div>
+                        <div class="govt-hand">🏛️</div>
+                        <div class="money-trail">💸💸💸</div>
+                    </div>
+                    <p class="image-caption">Saturday's winning numbers, shown here before the federal government takes most of them. The Powerball (6) represents the number of therapists you'll need after doing the tax math.</p>
+                    <span class="image-credit">Photo: HuckFinn Graphics / Shattered Dreams Division</span>
+                </div>
+
+                <!-- ARTICLE BODY -->
+                <div class="article-body">
+                    <p>Washington—In what officials are calling "the most successful voluntary wealth transfer since organized religion," the Powerball jackpot swelled to $1.1 billion Saturday night after no ticket holders managed to correctly guess six numbers out of a possible 292.2 million combinations. The government, meanwhile, has already prepared the champagne and thank-you cards for whoever finally does win, having perfected a system that takes 71% of the prize while the winner pops bottles and poses for photographs with an oversized novelty check that might as well read "I.O.U. (The U Is For Uncle Sam)."</p>
+
+                    <p>The jackpot, which headlines describe as "$1.1 billion" with the same technical accuracy that describes a house with $487,000 remaining on the mortgage as "my half-million dollar home," offers winners a choice that lottery officials call "flexible" and tax attorneys call "Sophie's Choice, but for accountants."</p>
+
+                    <p>Winners may select the "lump sum" option: $503.4 million paid immediately, which after the 24% federal withholding and 37% top marginal rate becomes approximately $317 million. Alternatively, they may choose the "annuity"—30 annual payments averaging $23 million after taxes, delivered with the regularity and enthusiasm of a court-ordered alimony check, for three decades, while inflation, recessions, and their own declining health transform "set for life" into "should've taken the lump sum, you coward."</p>
+
+                    <div class="pull-quote">
+                        "The lottery doesn't sell tickets. It sells a legal, regulated, 72-hour hallucination—a permission slip to imagine telling your boss the truth."
+                        <cite>— Dr. Harold Pembrook, Institute for the Study of American Delusions</cite>
+                    </div>
+
+                    <p>The odds of winning—one in 292.2 million—place the average ticket holder in a statistical category alongside "being elected Pope" and "being struck by lightning while holding a winning Publishers Clearing House envelope on a crashing airplane." Yet Powerball streams these drawings live on YouTube, in primetime, with production value, as a man in a suit reaches into a machine and pulls out five numbered balls while 300 million Americans watch their grocery money evaporate in real time.</p>
+
+                    <!-- INLINE AD 1 -->
+                    <div class="inline-ad">
+                        <div class="ad-headline">BANKRUPTCY ATTORNEYS OF AMERICA</div>
+                        <div class="ad-body">"We'll Be Here When the Dopamine Wears Off"™<br>Serving lottery winners, crypto investors, and anyone who ever said "this time is different" since 1987.</div>
+                        <a href="#" class="ad-cta">Free Consultation</a>
+                        <p class="ad-fine-print">*First consultation free. Second consultation $400/hr. We know you'll be back.</p>
+                    </div>
+
+                    <p>"It's actually quite elegant," explained Dr. Harold Pembrook of the Institute for the Study of American Delusions. "The lottery doesn't sell tickets. It sells a 72-hour hallucination. A permission slip to imagine telling your boss the truth. A receipt for a fantasy where you pay off your mother's house, leave your marriage, and finally see a doctor about that thing you've been ignoring. When the numbers don't hit, the hallucination wears off. See you Wednesday."</p>
+
+                    <p>Saturday's drawing did produce five $1 million winners across California, Florida, Minnesota, New Jersey, and Virginia—individuals who, after federal and state taxes, will net approximately $630,000. This sum, officials noted, is "technically enough to buy a modest home in a modest city, unless that city is anywhere anyone actually wants to live, in which case: congratulations on your new used Toyota Camry."</p>
+
+                    <p>Two additional players in North Carolina and Pennsylvania had purchased the "Power Play" option for $1 extra, doubling their prizes to $2 million. After taxes, this comes to approximately $1.26 million—what economists describe as "enough to quit your job for exactly four months before crawling back to ask if they filled your position yet." The Power Play, analysts note, represents the first successful integration of microtransaction economics into state-sponsored gambling.</p>
+
+                    <div class="pull-quote">
+                        "Headlines say 'no winner Saturday.' More accurate: 292.2 million people experienced the exact statistical outcome that was always going to happen."
+                        <cite>— This article, just now</cite>
+                    </div>
+
+                    <p>California and Florida, notably, do not tax lottery winnings—a policy that sounds progressive until one realizes, as economists have, that it operates on the same principle as a loan shark offering free parking. "They already got you at the gas station," explained Dr. Rebecca Vance of the National Bureau of Economic Irony. "The no-tax policy is just customer retention. A courtesy extended specifically because they know you'll be back tomorrow, scratching silver dust onto your steering wheel and calling it a retirement plan."</p>
+
+                    <!-- INLINE AD 2 -->
+                    <div class="inline-ad">
+                        <div class="ad-headline">LUCKY NUMBERS PSYCHIC HOTLINE</div>
+                        <div class="ad-body">🔮 I Already Know You're Going to Call 🔮<br>Miss Cleo's Ghost Has Your Winning Numbers!<br>$4.99/min • Must be 18+ • For entertainment purposes only</div>
+                        <a href="#" class="ad-cta">Call 1-800-COPE</a>
+                        <p class="ad-fine-print">*If psychic abilities were real, we wouldn't need your $4.99/minute. Think about it.</p>
+                    </div>
+
+                    <p>Perhaps most remarkably, lottery proceeds fund public education—the same public education system theoretically designed to teach mathematics. "It's the most elegant self-sustaining scam since organized religion," noted Professor Edwin Marsh of the Chicago School of Circular Economics. "If education worked, people would be better at math. If they were better at math, they'd stop playing the lottery. The lottery would collapse. Therefore, the lottery has a vested interest in educational failure. It's not a bug. It's the closest thing to a perpetual motion machine that economics has ever produced."</p>
+
+                    <p>The next drawing is scheduled for Monday at 10:59 p.m. EST, where another 292.2 million people will experience the exact statistical outcome that was always going to happen, then describe it as "the jackpot getting bigger" rather than "mass wealth extraction functioning as designed."</p>
+
+                    <p>Officials encourage Americans to play responsibly, purchase tickets within their means, and remember that a dollar spent on lottery tickets is a dollar that could have been spent on—actually, never mind. See you Monday.</p>
+                </div>
+            </article>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <!-- BY THE NUMBERS -->
+                <div class="sidebar-section by-the-numbers">
+                    <h3 class="sidebar-header">📊 By The Numbers</h3>
+                    <div class="stat">
+                        <span class="stat-number">$1.1B</span>
+                        <span class="stat-label">What the headline says you could win</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$317M</span>
+                        <span class="stat-label">What you'd actually take home</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">71%</span>
+                        <span class="stat-label">Government's cut (you're welcome)</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">292.2M</span>
+                        <span class="stat-label">To 1 odds (so you're saying there's a chance)</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$2</span>
+                        <span class="stat-label">Cost of 72 hours of legally sanctioned delusion</span>
+                    </div>
+                </div>
+
+                <!-- SIDEBAR AD -->
+                <div class="sidebar-section sidebar-ad">
+                    <div class="sidebar-ad-image">🎰</div>
+                    <div class="sidebar-ad-headline">GAMBLERS ANONYMOUS</div>
+                    <div class="sidebar-ad-body">Meeting every Wednesday at 7pm<br>Right after the Powerball drawing<br>(Not a coincidence)</div>
+                    <small>Sponsored by the Irony Council of America</small>
+                </div>
+
+                <!-- RELATED ARTICLES -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">📰 Related Articles</h3>
+                    <div class="related-item">
+                        <h4><a href="#">Man Who Doesn't Understand Probability "Has a Good Feeling About This One"</a></h4>
+                        <span class="related-meta">PERSONAL FINANCE • 2 hours ago</span>
+                    </div>
+                    <div class="related-item">
+                        <h4><a href="#">Local 7-Eleven Becomes Temple of Broken Dreams, Again</a></h4>
+                        <span class="related-meta">LOCAL • 5 hours ago</span>
+                    </div>
+                    <div class="related-item">
+                        <h4><a href="#">Study: 100% of "If I Won The Lottery" Plans Involve Telling Boss to F*** Off</a></h4>
+                        <span class="related-meta">WORKPLACE • Yesterday</span>
+                    </div>
+                    <div class="related-item">
+                        <h4><a href="#">Area Man's Retirement Plan Just Five Numbers and a Dream</a></h4>
+                        <span class="related-meta">ECONOMY • 3 days ago</span>
+                    </div>
+                    <div class="related-item">
+                        <h4><a href="#">New Lottery Slogan "You Can't Win If You Think About It" Testing Well</a></h4>
+                        <span class="related-meta">MARKETING • Last week</span>
+                    </div>
+                </div>
+
+                <!-- POLL -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">📊 Reader Poll</h3>
+                    <p class="poll-question">What would you do with $317 million (after taxes)?</p>
+                    <div class="poll-option">
+                        <div class="poll-label">
+                            <span>Pay off student loans (still have $12k left)</span>
+                            <span>34%</span>
+                        </div>
+                        <div class="poll-bar"><div class="poll-fill" style="width: 34%"></div></div>
+                    </div>
+                    <div class="poll-option">
+                        <div class="poll-label">
+                            <span>Finally go to the doctor</span>
+                            <span>28%</span>
+                        </div>
+                        <div class="poll-bar"><div class="poll-fill" style="width: 28%"></div></div>
+                    </div>
+                    <div class="poll-option">
+                        <div class="poll-label">
+                            <span>Hire someone to do my taxes</span>
+                            <span>22%</span>
+                        </div>
+                        <div class="poll-bar"><div class="poll-fill" style="width: 22%"></div></div>
+                    </div>
+                    <div class="poll-option">
+                        <div class="poll-label">
+                            <span>Buy more lottery tickets</span>
+                            <span>16%</span>
+                        </div>
+                        <div class="poll-bar"><div class="poll-fill" style="width: 16%"></div></div>
+                    </div>
+                </div>
+
+                <!-- WEATHER -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">🌤️ Weather</h3>
+                    <div class="weather-box">
+                        <div class="weather-icon">💸</div>
+                        <div class="weather-temp">$0°</div>
+                        <div class="weather-desc">Continued poverty with a chance of shattered dreams. Tuesday: More of the same.</div>
+                    </div>
+                </div>
+
+                <!-- HOROSCOPE -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">♈ Your Horoscope</h3>
+                    <p class="horoscope-sign">All Signs:</p>
+                    <p class="horoscope-text">The stars say you will not win the lottery. The stars have checked the math. The stars suggest therapy. Lucky numbers: There are no lucky numbers. That's not how probability works.</p>
+                </div>
+
+                <!-- MARKET TICKER -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">📈 Markets</h3>
+                    <div class="ticker-item">
+                        <span class="ticker-symbol">HOPE</span>
+                        <span class="ticker-change down">▼ 99.99%</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="ticker-symbol">MATH</span>
+                        <span class="ticker-change down">▼ Ignored</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="ticker-symbol">GOVT</span>
+                        <span class="ticker-change up">▲ 71%</span>
+                    </div>
+                    <div class="ticker-item">
+                        <span class="ticker-symbol">DREAMS</span>
+                        <span class="ticker-change down">▼ Deferred</span>
+                    </div>
+                </div>
+
+                <!-- OBITUARIES -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">⚰️ Obituaries</h3>
+                    <div class="obit-item">
+                        <span class="obit-name">RATIONAL FINANCIAL PLANNING</span>, died peacefully Saturday night surrounded by 292.2 million lottery tickets. In lieu of flowers, please donate to your 401(k).
+                    </div>
+                    <div class="obit-item">
+                        <span class="obit-name">STATISTICAL LITERACY</span>, passed suddenly upon encountering the phrase "you can't win if you don't play." Memorial service canceled due to lack of interest.
+                    </div>
+                </div>
+
+                <!-- YOU MIGHT LIKE -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">🎯 You Might Also Like</h3>
+                    <div class="related-item">
+                        <h4><a href="#">10 Things Lottery Winners Wish They'd Known (Number 7: The IRS Remembers)</a></h4>
+                    </div>
+                    <div class="related-item">
+                        <h4><a href="#">Quiz: Which Type of Financial Ruin Fits Your Personality?</a></h4>
+                    </div>
+                    <div class="related-item">
+                        <h4><a href="#">This One Weird Trick to Win the Lottery (It's Being Born Rich)</a></h4>
+                    </div>
+                </div>
+
+                <!-- CORRECTIONS -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-header">📝 Corrections</h3>
+                    <p class="correction-text">An earlier version of this article stated that the lottery is "a tax on people who are bad at math." We regret the error. It is, more precisely, "a tax on people who are bad at math and/or desperately hopeful." HuckFinn regrets the omission of desperation as a variable.</p>
+                </div>
+
+                <!-- SIDEBAR AD 2 -->
+                <div class="sidebar-section sidebar-ad">
+                    <div class="sidebar-ad-image">📚</div>
+                    <div class="sidebar-ad-headline">FINANCIAL LITERACY FOR DUMMIES</div>
+                    <div class="sidebar-ad-body">Now with a special chapter:<br>"Why You're Reading This at a Gas Station While Buying Scratch-Offs"</div>
+                    <small>Available wherever books are sold (not at gas stations)</small>
+                </div>
+            </aside>
+        </div>
+
+        <!-- COMMENTS SECTION -->
+        <section class="comments-section">
+            <h2 class="comments-header">Reader Comments</h2>
+            <p class="comments-count">847 comments • Sorted by: Most Unhinged</p>
+
+            <!-- COMMENT 1 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🦅</div>
+                    <div class="comment-meta">
+                        <span class="comment-author verified">TaxpayerPatriot1776</span>
+                        <span class="comment-time">2 hours ago • Dayton, OH</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    This is EXACTLY what the founding fathers warned us about. George Washington didn't cross the Delaware so the GOVERNMENT could take 71% of my lottery winnings. I'm not even playing but I'm FURIOUS on principle. This is literally 1984.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 2,847</span>
+                    <span class="comment-action">👎 312</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+
+                <!-- REPLY -->
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🤓</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">ActuallyWellActually</span>
+                            <span class="comment-time">1 hour ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Actually the lottery was invented in 1964 and 1984 is a book about surveillance not taxation. Also George Washington owned slaves. I am very fun at parties.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 156</span>
+                        <span class="comment-action">👎 1,203</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🦅</div>
+                        <div class="comment-meta">
+                            <span class="comment-author verified">TaxpayerPatriot1776</span>
+                            <span class="comment-time">58 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Blocked and reported. ENJOY YOUR SOCIALISM.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 3,102</span>
+                        <span class="comment-action">👎 89</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENT 2 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🔮</div>
+                    <div class="comment-meta">
+                        <span class="comment-author premium">ManifestingAbundance</span>
+                        <span class="comment-time">3 hours ago • Sedona, AZ</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    Y'all are missing the point. The lottery is just a physical manifestation of the universe's abundance frequency. If you TRULY believe, the numbers will align with your vibrational energy. I've spent $47,000 on tickets this year and I can FEEL I'm getting closer. The universe doesn't recognize "taxes" that's a 3D concept. 🙏✨🌈
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 892</span>
+                    <span class="comment-action">👎 2,456</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">📊</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">StatisticianDad</span>
+                            <span class="comment-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Ma'am that's $47,000 with an expected return of approximately $23,500. You've lost $23,500 to vibrational energy. The IRS very much recognizes that in three dimensions.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 4,521</span>
+                        <span class="comment-action">👎 127</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🔮</div>
+                        <div class="comment-meta">
+                            <span class="comment-author premium">ManifestingAbundance</span>
+                            <span class="comment-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        That's exactly what a low-vibration person would say. I'm sending you healing light but also blocking you. ✨
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 1,247</span>
+                        <span class="comment-action">👎 892</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENT 3 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">👴</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">GrandpaHarold_1943</span>
+                        <span class="comment-time">4 hours ago • Topeka, KS</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    HELLO IS THIS WHERE I CHECK IF I WON. MY GRANDSON SET THIS UP FOR ME. I HAVE A TICKET FROM 1987. THE NUMBERS ARE 4 17 22 36 41 AND I THINK 12. PLEASE RESPOND. ALSO HOW DO I MAKE THE LETTERS SMALLER. THANK YOU. HAROLD.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 12,847</span>
+                    <span class="comment-action">👎 3</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">👨‍💻</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">JakesGrandson</span>
+                            <span class="comment-time">3 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        GRANDPA THIS IS NOT THE LOTTERY WEBSITE. I'M COMING OVER. DON'T CLICK ANYTHING.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 8,923</span>
+                        <span class="comment-action">👎 12</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">👴</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">GrandpaHarold_1943</span>
+                            <span class="comment-time">3 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        JAKE I CLICKED SOMETHING AND NOW THERE IS A WOMAN WHO WANTS TO MEET ME. SHE SAYS SHE IS A RUSSIAN PRINCESS. HOW DO I SEND HER MY SOCIAL SECURITY NUMBER. HAROLD.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 15,234</span>
+                        <span class="comment-action">👎 2</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                    <div class="mod-note">⚠️ Moderator note: We've contacted Jake. Harold is fine. He did not win in 1987.</div>
+                </div>
+            </div>
+
+            <!-- COMMENT 4 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🎓</div>
+                    <div class="comment-meta">
+                        <span class="comment-author verified">DrEconomics_PhD_MBA_CPA</span>
+                        <span class="comment-time">5 hours ago • Cambridge, MA</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    As someone with three advanced degrees in economics, I can definitively state that playing the lottery is statistically irrational. Anyway I have to go, I'm buying a ticket on my lunch break because I have a "system" and this time feels different.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 7,234</span>
+                    <span class="comment-action">👎 156</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+            </div>
+
+            <!-- COMMENT 5 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🤖</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">TotallyHumanPerson</span>
+                        <span class="comment-time">5 hours ago • [LOCATION_STRING]</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    Hello fellow humans! I too enjoy the lottery game experience of winning financial prizes! Have you considered visiting www.definitely-not-a-scam.ru for GUARANTEED winning numbers? My human friend [FRIEND_NAME] won $[LARGE_NUMBER] using this one simple trick! Click now for FREE!
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 0</span>
+                    <span class="comment-action">👎 4,892</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">👴</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">GrandpaHarold_1943</span>
+                            <span class="comment-time">4 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        HELLO IS THIS THE RUSSIAN PRINCESS. I WILL CLICK THE LINK NOW. HAROLD.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 9,127</span>
+                        <span class="comment-action">👎 1</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENT 6 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">😤</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">FirstCommentGuy</span>
+                        <span class="comment-time">6 hours ago • Internet</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    first
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 2</span>
+                    <span class="comment-action">👎 8,923</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🙄</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">LiterallyEveryone</span>
+                            <span class="comment-time">6 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        You're sixth.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 5,678</span>
+                        <span class="comment-action">👎 23</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENT 7 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">📈</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">CryptoKing2021_Bankrupt2022</span>
+                        <span class="comment-time">3 hours ago • Parents' House</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    This is nothing. I lost way more money way faster on crypto. The lottery is for people who want to lose money SLOWLY like cowards. Real men YOLO their savings into memecoins and lose it all in 48 hours. Anyway, anyone know if Wendy's is hiring?
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 6,234</span>
+                    <span class="comment-action">👎 445</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+            </div>
+
+            <!-- COMMENT 8 - DELETED -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">❌</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">[Deleted]</span>
+                        <span class="comment-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="comment-body deleted-comment">
+                    [This comment has been removed for violating our community guidelines against promoting financial schemes, illegal activity, and calling the moderators "government shills." The user has been banned.]
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 --</span>
+                    <span class="comment-action">👎 --</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🕵️</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">TruthSeeker420</span>
+                            <span class="comment-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        WHAT DID IT SAY. THE TRUTH IS BEING SILENCED. WAKE UP SHEEPLE.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 1,892</span>
+                        <span class="comment-action">👎 2,103</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENT 9 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">📱</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">TyposRUs</span>
+                        <span class="comment-time">1 hour ago • Mobil</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    i bouht a tickt on sartudya nad im prety sur i one butt i cantt find it anywere. it was in my pockt but i washde my jens. dose that still cont???? plese responde its urgnet
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 3,456</span>
+                    <span class="comment-action">👎 234</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🤓</div>
+                        <div class="comment-meta">
+                            <span class="comment-author">ActuallyWellActually</span>
+                            <span class="comment-time">45 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Actually if the ticket is destroyed you cannot claim the prize regardless of whether you "one" or not. Also it's "won" not "one." Also you definitely didn't win. The odds are 1 in 292.2 million. I am still very fun at parties.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 234</span>
+                        <span class="comment-action">👎 1,892</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENT 10 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">😂</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">NotFunnyJustLoud</span>
+                        <span class="comment-time">30 minutes ago • Everywhere</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    LMAOOOOO 😂😂😂😂 DEAD 💀💀💀 I'M SCREAMING 🗣️🗣️🗣️ WHO DID THIS 😭😭😭 CRYING RN 😂😂 LITERALLY DECEASED 💀⚰️ I CANNOT 🙅‍♀️🙅‍♀️ HELP 😂😂😂 NO BUT ACTUALLY THO 😂💀😭 BRUH 😂😂😂😂😂
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 567</span>
+                    <span class="comment-action">👎 4,321</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+            </div>
+
+            <!-- COMMENT 11 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">📰</div>
+                    <div class="comment-meta">
+                        <span class="comment-author">JournalismIsDeadAndIMissedIt</span>
+                        <span class="comment-time">4 hours ago • The Good Old Days</span>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    Back in my day, newspapers reported REAL news, not this satirical garbage. What happened to integrity? What happened to ethics? What happened to— wait, is this The Onion? I thought this was CNN. How do I get back to Facebook? Martha? MARTHA?
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 2,345</span>
+                    <span class="comment-action">👎 567</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">Share</span>
+                    <span class="comment-action">Report</span>
+                </div>
+            </div>
+
+            <!-- LOAD MORE -->
+            <div style="text-align: center; margin-top: 30px; padding: 20px;">
+                <button style="background: var(--ink); color: white; border: none; padding: 12px 30px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; cursor: pointer;">Load 839 More Comments</button>
+                <p style="font-size: 11px; color: var(--gray); margin-top: 10px;">Warning: Further comments may contain opinions</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="newspaper-footer">
+            <div class="footer-logo">HuckFinn</div>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Careers (We're Not Hiring)</a>
+                <a href="#">Advertise</a>
+                <a href="#">Privacy Policy (We're Watching)</a>
+                <a href="#">Terms</a>
+                <a href="#">Contact (Don't)</a>
+            </div>
+            <p class="footer-copyright">© 2025 HuckFinn Media Group. All rights reserved. "Tu Stultus Es" is Latin for "You Are Wise." Trust us.</p>
+            <p style="font-size: 9px; color: #999; margin-top: 5px;">This is satire. If you couldn't tell, the lottery probably isn't your biggest problem.</p>
+        </footer>
+    </div>
+</body>
+</html>
