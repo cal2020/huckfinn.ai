@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HuckFinn: America's Finest Newspaper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:wght@400;600&family=JetBrains+Mono:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: #fffef9;
+      color: #111;
+      line-height: 1.7;
+    }
+
+    .masthead {
+      background: #111;
+      color: #fffef9;
+      text-align: center;
+      padding: 16px 20px;
+      border-bottom: 4px solid #c41e3a;
+    }
+
+    .masthead-top {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .newspaper-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 8vw, 72px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin: 8px 0;
+    }
+
+    .newspaper-name span { color: #c41e3a; }
+    .tagline { font-style: italic; font-size: 14px; opacity: 0.8; }
+
+    .nav-bar {
+      background: #c41e3a;
+      padding: 10px 20px;
+    }
+
+    .nav-bar ul {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      background: #fffef9;
+    }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #c41e3a;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .subheadline {
+      font-size: 18px;
+      color: #333;
+      font-style: italic;
+      line-height: 1.4;
+      border-bottom: 2px solid #111;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .byline { font-size: 13px; color: #555; margin-bottom: 20px; }
+    .byline strong { color: #111; text-transform: uppercase; }
+
+    .featured-image {
+      margin: 24px 0;
+      border: 2px solid #111;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 350px;
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scene { text-align: center; z-index: 1; }
+    .desk { font-size: 80px; margin-bottom: 10px; }
+    .chaos { font-size: 40px; animation: float 3s ease-in-out infinite; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .dollar-signs {
+      position: absolute;
+      font-size: 24px;
+      opacity: 0.6;
+      animation: fall 4s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { transform: translateY(400px); opacity: 0; }
+    }
+
+    .caption {
+      padding: 12px 16px;
+      background: #f5f5dc;
+      font-size: 13px;
+      font-style: italic;
+      color: #333;
+      border-top: 1px solid #ccc;
+    }
+
+    .caption strong { font-style: normal; color: #111; }
+
+    .article-body p {
+      margin-bottom: 18px;
+      text-align: justify;
+      font-size: 17px;
+      color: #111;
+    }
+
+    .article-body p:first-of-type::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      float: left;
+      line-height: 0.8;
+      padding-right: 12px;
+      padding-top: 4px;
+      color: #c41e3a;
+    }
+
+    .lead-paragraph { font-size: 19px; font-weight: 600; }
+
+    .pull-quote {
+      border-left: 4px solid #c41e3a;
+      border-right: 4px solid #c41e3a;
+      margin: 32px 0;
+      padding: 24px 28px;
+      background: #f5f5dc;
+    }
+
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-style: italic;
+      line-height: 1.4;
+      color: #111;
+      margin: 0;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 13px;
+      font-style: normal;
+      color: #555;
+    }
+
+    .article-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1.5px;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #111;
+      color: #111;
+    }
+
+    .interstitial-ad {
+      background: #fff8dc;
+      border: 3px solid #c41e3a;
+      padding: 20px;
+      margin: 32px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .interstitial-ad::before {
+      content: "ADVERTISEMENT";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff8dc;
+      padding: 0 12px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #c41e3a;
+    }
+
+    .ad-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: #c41e3a;
+      margin-bottom: 8px;
+    }
+
+    .ad-body { font-size: 14px; color: #333; margin-bottom: 12px; }
+
+    .ad-cta {
+      display: inline-block;
+      background: #c41e3a;
+      color: white;
+      padding: 8px 20px;
+      font-family: 'Bebas Neue', sans-serif;
+      text-decoration: none;
+    }
+
+    .sidebar-box {
+      background: #f5f5dc;
+      border: 2px solid #111;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .sidebar-box h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      border-bottom: 2px solid #c41e3a;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    .sidebar-box ul { list-style: none; font-size: 14px; }
+    .sidebar-box li { padding: 8px 0; border-bottom: 1px dotted #999; color: #111; }
+    .sidebar-box li:last-child { border-bottom: none; }
+
+    .by-the-numbers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+      padding: 24px;
+      background: #111;
+      color: #fffef9;
+    }
+
+    .by-the-numbers h4 {
+      grid-column: 1 / -1;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 12px;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #c41e3a; }
+    .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+
+    .related-section {
+      margin: 40px 0;
+      padding-top: 24px;
+      border-top: 3px double #111;
+    }
+
+    .related-section h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .related-item {
+      border: 2px solid #111;
+      padding: 16px;
+      background: #fffef9;
+    }
+
+    .related-item .category {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #c41e3a;
+      margin-bottom: 8px;
+    }
+
+    .related-item h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .related-item .meta { font-size: 11px; color: #666; }
+
+    .comments-section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 3px solid #111;
+    }
+
+    .comments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .comments-header h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: #111;
+    }
+
+    .comment-count {
+      background: #c41e3a;
+      color: white;
+      padding: 4px 12px;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .comment {
+      border: 2px solid #ddd;
+      margin-bottom: 16px;
+      background: #fffef9;
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #f5f5dc;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .commenter-name { font-weight: 700; font-size: 14px; color: #111; }
+
+    .commenter-badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      background: #111;
+      color: white;
+      margin-left: 8px;
+    }
+
+    .commenter-badge.verified { background: #1da1f2; }
+    .commenter-badge.moderator { background: #c41e3a; }
+    .commenter-badge.premium { background: #ffd700; color: #111; }
+
+    .comment-time { font-size: 11px; color: #666; }
+    .comment-body { padding: 16px; font-size: 14px; color: #111; }
+
+    .comment-body code {
+      background: #eee;
+      padding: 2px 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    .comment-footer {
+      display: flex;
+      gap: 16px;
+      padding: 8px 16px 12px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .comment-reply {
+      margin-left: 40px;
+      border-left: 3px solid #c41e3a;
+    }
+
+    .newsletter-box {
+      background: #111;
+      color: #fffef9;
+      padding: 32px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .newsletter-box h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .newsletter-box p { font-size: 14px; opacity: 0.8; margin-bottom: 20px; }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 400px;
+      margin: 0 auto;
+      gap: 8px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+    }
+
+    .newsletter-form button {
+      background: #c41e3a;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-family: 'Bebas Neue', sans-serif;
+      cursor: pointer;
+    }
+
+    .corrections-box {
+      background: #fff0f0;
+      border: 2px solid #c41e3a;
+      padding: 16px;
+      margin: 24px 0;
+      font-size: 13px;
+      color: #111;
+    }
+
+    .corrections-box h5 {
+      font-family: 'Bebas Neue', sans-serif;
+      color: #c41e3a;
+      margin-bottom: 8px;
+    }
+
+    .opinion-disclaimer {
+      background: #f0f0e8;
+      padding: 12px 16px;
+      font-size: 11px;
+      font-style: italic;
+      color: #555;
+      border-left: 4px solid #999;
+      margin: 24px 0;
+    }
+
+    .share-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 0;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      margin: 24px 0;
+    }
+
+    .share-bar span { font-size: 12px; text-transform: uppercase; color: #555; }
+
+    .share-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: white;
+    }
+
+    .share-btn.twitter { background: #1da1f2; }
+    .share-btn.facebook { background: #4267B2; }
+    .share-btn.linkedin { background: #0077b5; }
+    .share-btn.email { background: #666; }
+
+    .site-footer {
+      background: #111;
+      color: #fffef9;
+      padding: 40px 20px;
+      margin-top: 48px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .footer-tagline { font-style: italic; font-size: 13px; opacity: 0.7; margin-bottom: 24px; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 12px;
+    }
+
+    .footer-links a { color: #fffef9; text-decoration: none; opacity: 0.7; }
+    .copyright { margin-top: 32px; font-size: 11px; opacity: 0.5; }
+
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <span>Vol. CXLVII No. 42,069</span>
+      <span>Monday, December 15, 2025</span>
+      <span>$4.00 (Free with Claude Access)</span>
+    </div>
+    <h1 class="newspaper-name">Huck<span>Finn</span></h1>
+    <p class="tagline">"America's Finest News Source Since We Made That Up"</p>
+  </header>
+
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="#">Front Page</a></li>
+      <li><a href="#">Tech</a></li>
+      <li><a href="#">Business</a></li>
+      <li><a href="#">Opinion</a></li>
+      <li><a href="#">Obituaries (SaaS)</a></li>
+      <li><a href="#">Comics</a></li>
+      <li><a href="#">Crossword</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <article>
+      <header>
+        <div class="section-label">Technology / Business Apocalypse</div>
+        <h1 class="headline">Software Ate The World. AI Is Currently Experiencing Violent Gastrointestinal Distress.</h1>
+        <p class="subheadline">Entire SaaS industry revealed to be elaborate 25-year bet that customers would never Google "how hard is this actually"</p>
+        <p class="byline">By <strong>Margaret Chen-Worthington</strong>, Enterprise Collapse Correspondent | December 15, 2025</p>
+      </header>
+
+      <figure class="featured-image">
+        <div class="image-placeholder">
+          <div class="dollar-signs" style="left: 10%; animation-delay: 0s;">💸</div>
+          <div class="dollar-signs" style="left: 30%; animation-delay: 0.7s;">💸</div>
+          <div class="dollar-signs" style="left: 50%; animation-delay: 1.4s;">💸</div>
+          <div class="dollar-signs" style="left: 70%; animation-delay: 2.1s;">💸</div>
+          <div class="dollar-signs" style="left: 90%; animation-delay: 2.8s;">💸</div>
+          <div class="scene">
+            <div class="desk">👨‍💻🌯</div>
+            <div class="chaos">📉 🔥 📊 💀 ☁️</div>
+          </div>
+        </div>
+        <figcaption class="caption">
+          <strong>THE FACE OF DESTRUCTION:</strong> Marcus Chen, 34, pictured moments before accidentally vaporizing a $4 trillion industry while his Chipotle burrito reached optimal consumption temperature.
+        </figcaption>
+      </figure>
+
+      <div class="share-bar">
+        <span>Share:</span>
+        <div class="share-btn twitter">𝕏</div>
+        <div class="share-btn facebook">f</div>
+        <div class="share-btn linkedin">in</div>
+        <div class="share-btn email">✉</div>
+      </div>
+
+      <div class="article-body">
+        <p class="lead-paragraph">Area man Marcus Chen, 34, a senior engineer at a mid-sized fintech company, has reportedly replaced his employer's $50,000-per-year enterprise software contract with mass-produced shitcode he built while waiting for his Chipotle burrito to cool down to an edible temperature, sources confirmed this week.</p>
+
+        <p>"I genuinely did not set out to destroy a $4 trillion industry," Chen told reporters, speaking from his standing desk where he is currently destroying a $4 trillion industry. "I just really didn't want to attend that vendor call. They always want to 'sync on our roadmap alignment' for like ninety minutes."</p>
+
+        <p>Chen's hastily-constructed internal tool—described by colleagues as "definitely not production-ready" and "oh god, is that a nested for-loop?"—has nonetheless outperformed the enterprise solution it replaced on every metric except "number of account executives asking about Q4 budget cycles."</p>
+
+        <div class="pull-quote">
+          <p>I genuinely did not set out to destroy a $4 trillion industry. I just really didn't want to attend that vendor call.</p>
+          <cite>— Marcus Chen, accidental industry destroyer</cite>
+        </div>
+
+        <h3>The Maintenance Question No One Asked</h3>
+
+        <p>"But who will maintain these internal tools?" asked a panel of visibly sweating SaaS executives at the annual Enterprise Software Summit, apparently forgetting that their industry charges $80,000 per year for software that has not been updated since Obama's first term.</p>
+
+        <p>Industry analysts have noted that the entire SaaS sector now appears to have been an elaborate 25-year bet that customers would never Google "how hard is this actually." That bet, sources confirm, has not paid off.</p>
+
+        <div class="interstitial-ad">
+          <div class="ad-headline">🚨 ATTENTION SAAS FOUNDERS 🚨</div>
+          <div class="ad-body">
+            Is your $200M Series C now valued at "one bored engineer with Claude access"?<br>
+            <strong>PivotPanic™</strong> helps you explain to investors why "AI-native" was always your strategy.
+          </div>
+          <a href="#" class="ad-cta">Download Our Copium PDF →</a>
+        </div>
+
+        <h3>The AI Agent Advantage</h3>
+
+        <p>Enterprise analysts have praised AI agents for their unique value proposition: they never quit, never unionize, and never post a LinkedIn carousel about how getting fired was "actually the best thing that ever happened to me." They also do not require headcount approval, kombucha fridges, or "mental health days" that are actually just Tuesdays.</p>
+
+        <p>Meanwhile, SaaS executives across Silicon Valley have reported experiencing what psychologists are calling "collective ego death" upon learning that per-seat licensing is not a law of thermodynamics but rather, in the words of one anonymous source, "some shit we made up in 2007."</p>
+
+        <div class="by-the-numbers">
+          <h4>📊 By The Numbers</h4>
+          <div class="stat-item">
+            <div class="stat-number">$4T</div>
+            <div class="stat-label">Industry at Risk</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">47</div>
+            <div class="stat-label">Internal Tools Replacing Janet</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2007</div>
+            <div class="stat-label">Year Per-Seat Licensing Was "Made Up"</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">LinkedIn Carousels Avoided</div>
+          </div>
+        </div>
+
+        <h3>The Rise Of The Shadow CEO</h3>
+
+        <p>Perhaps no figure better exemplifies the shifting power dynamics than DevOps engineer Bradley Kominski, 29, who has reportedly become the shadow CEO of three Fortune 500 companies after their respective boards realized he is the only person who knows how to restart the 47 internal tools that replaced Salesforce, Workday, and Janet from Accounting.</p>
+
+        <p>"I don't know what Janet did," admitted one board member, speaking on condition of anonymity. "Accounting things, I assume. We automated her in 2019 and now Bradley is the only one who knows the cron job schedule."</p>
+
+        <p>Kominski did not respond to requests for comment, as he was busy approving his own unlimited PTO policy.</p>
+
+        <div class="sidebar-box">
+          <h4>🪦 Obituaries: Enterprise Software</h4>
+          <ul>
+            <li><strong>Per-Seat Licensing</strong> — Died of exposure to basic arithmetic</li>
+            <li><strong>"Enterprise-Grade Security"</strong> — Cause of death: someone Googled it</li>
+            <li><strong>The Quarterly Business Review</strong> — Complications from acute irrelevance</li>
+            <li><strong>Janet From Accounting</strong> — Replaced by 47 internal tools; memorial cron job runs Tuesdays at 3am</li>
+          </ul>
+        </div>
+
+        <div class="interstitial-ad">
+          <div class="ad-headline">SLACK PREMIUM™ ENTERPRISE MOAT EDITION</div>
+          <div class="ad-body">
+            Our competitive advantage is that your vendors are too lazy to update their bookmarks.<br>
+            <em>"Network effects, but for admin friction."</em>
+          </div>
+          <a href="#" class="ad-cta">Pricing: Yes</a>
+        </div>
+
+        <h3>The Investor Reckoning</h3>
+
+        <p>At a recent board meeting that witnesses described as "tense" and "featuring a lot of staring at phones," veteran VC partner Harrison Whitmore III asked what sources confirmed was a question that has never been uttered in 15 years of board meetings.</p>
+
+        <p>"Wait," Whitmore reportedly said, looking up from his phone for the first time since 2019. "What if customers simply… didn't?"</p>
+
+        <p>The question—widely considered unanswerable by modern portfolio theory—sent shockwaves through the enterprise software sector. Multiple founders were seen updating their LinkedIn profiles to "Open to Opportunities" before the meeting adjourned.</p>
+
+        <p>Financial analysts have since revised their valuations for the sector, with several firms now pricing Series C rounds at "one bored senior engineer with Claude access and a mild grudge against your pricing page."</p>
+
+        <div class="pull-quote">
+          <p>If your product is just a SQL wrapper with a billing system, you now have 10,000 competitors. And they're all the same guy. And he's mad about that invoice you sent last quarter.</p>
+          <cite>— Industry analyst report, December 2025</cite>
+        </div>
+
+        <h3>The Only Moat Left</h3>
+
+        <p>Not all executives are despairing. Slack leadership released a statement expressing cautious optimism, noting that their product's moat remains "people are too lazy to tell 400 vendors their new chat app URL."</p>
+
+        <p>"We ran the numbers," a Slack spokesperson confirmed. "Switching costs are real when the switching cost is 'sending an email to Brenda in procurement.'"</p>
+
+        <p>The company's stock rose 3% on the news before falling 47% when someone realized that updating a Slack webhook URL takes approximately four seconds.</p>
+
+        <div class="corrections-box">
+          <h5>⚠️ Corrections & Clarifications</h5>
+          <p>An earlier version of this article stated that Janet from Accounting was "replaced." Janet's family has clarified that she was "automated," which is different for tax purposes. We regret the error.</p>
+        </div>
+
+        <div class="opinion-disclaimer">
+          <strong>Editor's Note:</strong> The views expressed in this article represent the dying gasps of an industry that really thought "we'll make it up on volume" was a long-term strategy. They do not necessarily reflect the views of HuckFinn, which has no views, because we are a newspaper.
+        </div>
+      </div>
+    </article>
+
+    <div class="newsletter-box">
+      <h4>Subscribe to HuckFinn Premium</h4>
+      <p>Get exclusive coverage of industry collapse delivered to your inbox before your competitors figure out what's happening.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Enter your enterprise email">
+        <button>SUBSCRIBE</button>
+      </div>
+    </div>
+
+    <section class="related-section">
+      <h4>📰 Related Articles</h4>
+      <div class="related-grid">
+        <div class="related-item">
+          <div class="category">Business</div>
+          <h5>"We're Actually A Platform," Insists Company That Is Definitely Just A CRUD App</h5>
+          <div class="meta">Dec 14, 2025 • 847 Comments</div>
+        </div>
+        <div class="related-item">
+          <div class="category">Technology</div>
+          <h5>Man Who Mass-Produced Shitcode Now CTO Of Everything</h5>
+          <div class="meta">Dec 13, 2025 • 1.2K Comments</div>
+        </div>
+        <div class="related-item">
+          <div class="category">Opinion</div>
+          <h5>I Will Not Be Automating My Job, Writes Man Whose Job Was Automated During Publication Of This Article</h5>
+          <div class="meta">Dec 12, 2025 • 2.3K Comments</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="related-section">
+      <h4>🔥 You Might Also Be Interested In</h4>
+      <div class="related-grid">
+        <div class="related-item">
+          <div class="category">Sponsored</div>
+          <h5>ADVERTISEMENT: Pivot Your Dying SaaS To "AI-Native" With This One Weird Trick (Add "AI" To Name)</h5>
+          <div class="meta">Sponsored by PivotPanic™</div>
+        </div>
+        <div class="related-item">
+          <div class="category">Lifestyle</div>
+          <h5>Local DevOps Engineer's New Corner Office Used To Be The Server Room</h5>
+          <div class="meta">Dec 11, 2025 • 634 Comments</div>
+        </div>
+        <div class="related-item">
+          <div class="category">Breaking</div>
+          <h5>Entire Industry Realizes Its Value Proposition Was "Customers Don't Know Bash"</h5>
+          <div class="meta">Dec 10, 2025 • 3.1K Comments</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comments-section">
+      <div class="comments-header">
+        <h4>💬 Reader Comments</h4>
+        <span class="comment-count">1,847 Comments</span>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div>
+            <span class="commenter-name">TechBro_42069</span>
+            <span class="commenter-badge verified">Verified Disruptor</span>
+          </div>
+          <span class="comment-time">2 hours ago</span>
+        </div>
+        <div class="comment-body">
+          First. Also, this article is FUD. Our enterprise solution provides VALUE through our PROPRIETARY ALGORITHMS that definitely aren't just <code>if statements</code> and a PostgreSQL database we're charging $80k/year for.
+        </div>
+        <div class="comment-footer">
+          <span>👍 2.3K</span>
+          <span>👎 847</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment comment-reply">
+        <div class="comment-header">
+          <div><span class="commenter-name">definitely_not_marcus_chen</span></div>
+          <span class="comment-time">1 hour ago</span>
+        </div>
+        <div class="comment-body">
+          I just replaced your "proprietary algorithms" with a bash script while reading this comment. The burrito is still cooling.
+        </div>
+        <div class="comment-footer">
+          <span>👍 8.7K</span>
+          <span>👎 23</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div>
+            <span class="commenter-name">LinkedInfluencer_Gary</span>
+            <span class="commenter-badge premium">LinkedIn Premium</span>
+          </div>
+          <span class="comment-time">1 hour ago</span>
+        </div>
+        <div class="comment-body">
+          Disagree 👏 Actually 👏 Getting 👏 Fired 👏 Was 👏 The 👏 Best 👏 Thing 👏 That 👏 Ever 👏 Happened 👏 To 👏 Me 👏<br><br>
+          I'm now a Founder/CEO/Thought Leader/Disruptor at a stealth startup that's definitely not just my laptop at a WeWork.<br><br>
+          #OpenToWork #Hustle #Blessed #ActuallyTheBestThing
+        </div>
+        <div class="comment-footer">
+          <span>👍 156</span>
+          <span>👎 4.2K</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div>
+            <span class="commenter-name">VCPartner_Harrison_III</span>
+            <span class="commenter-badge verified">Verified VC</span>
+          </div>
+          <span class="comment-time">47 minutes ago</span>
+        </div>
+        <div class="comment-body">Wait. What if customers simply… didn't?</div>
+        <div class="comment-footer">
+          <span>👍 12</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment comment-reply">
+        <div class="comment-header">
+          <div><span class="commenter-name">SaaS_Founder_Crying</span></div>
+          <span class="comment-time">46 minutes ago</span>
+        </div>
+        <div class="comment-body">HARRISON PLEASE STOP ASKING THAT IN EVERY THREAD. WE GET IT. THE BOARD MEETING WAS TRAUMATIC FOR ALL OF US.</div>
+        <div class="comment-footer">
+          <span>👍 3.4K</span>
+          <span>👎 2</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div><span class="commenter-name">JanetFromAccounting_Memorial</span></div>
+          <span class="comment-time">38 minutes ago</span>
+        </div>
+        <div class="comment-body">
+          RIP Mom. The cron job runs every Tuesday at 3am. We visit on holidays.<br><br>
+          She always said "you can't automate institutional knowledge" and then they did. They literally did. With 47 tools.
+        </div>
+        <div class="comment-footer">
+          <span>👍 6.1K</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div>
+            <span class="commenter-name">xX_DevOps_Shadow_CEO_Xx</span>
+            <span class="commenter-badge moderator">Shadow CEO</span>
+          </div>
+          <span class="comment-time">29 minutes ago</span>
+        </div>
+        <div class="comment-body">
+          lmao imagine not knowing the cron job schedule<br><br>
+          anyway approved my own comment. also approved unlimited PTO for myself. meeting adjourned.
+        </div>
+        <div class="comment-footer">
+          <span>👍 9.2K</span>
+          <span>👎 1 (Harrison)</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div><span class="commenter-name">ActualEnterpriseCustomer</span></div>
+          <span class="comment-time">22 minutes ago</span>
+        </div>
+        <div class="comment-body">
+          I just Googled "how hard is this actually" and I am experiencing emotions I was not prepared for.<br><br>
+          We have paid $2.4 million over 6 years for what appears to be a <code>SELECT * FROM users WHERE active = true</code><br><br>
+          I need to lie down.
+        </div>
+        <div class="comment-footer">
+          <span>👍 14.7K</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div><span class="commenter-name">THIS_IS_FINE_DOG.jpg</span></div>
+          <span class="comment-time">11 minutes ago</span>
+        </div>
+        <div class="comment-body">
+          🔥🐕🔥<br>
+          This is fine. Everything is fine. Per-seat licensing is definitely not "some shit we made up in 2007."<br>
+          🔥🐕🔥
+        </div>
+        <div class="comment-footer">
+          <span>👍 7.3K</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div><span class="commenter-name">AnonymousVC_throwaway</span></div>
+          <span class="comment-time">8 minutes ago</span>
+        </div>
+        <div class="comment-body">
+          posting from my burner because I can't let my LPs see this but:<br><br>
+          we invested $200M in a company whose entire product is, and I am not exaggerating, a SQL wrapper with a billing system. We called it "enterprise-grade." We put it in the deck. Multiple times.<br><br>
+          The founder is updating his LinkedIn to "Open to Opportunities" as I type this.<br><br>
+          I am going to become a farmer.
+        </div>
+        <div class="comment-footer">
+          <span>👍 23.1K</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div>
+            <span class="commenter-name">Burrito_That_Started_It_All</span>
+            <span class="commenter-badge verified">Verified Chipotle</span>
+          </div>
+          <span class="comment-time">3 minutes ago</span>
+        </div>
+        <div class="comment-body">I have achieved optimal temperature. The industry may now collapse.</div>
+        <div class="comment-footer">
+          <span>👍 42.0K</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+
+      <div class="comment">
+        <div class="comment-header">
+          <div><span class="commenter-name">[DELETED]</span></div>
+          <span class="comment-time">1 minute ago</span>
+        </div>
+        <div class="comment-body"><em>[This comment has been removed by Salesforce Legal]</em></div>
+        <div class="comment-footer">
+          <span>👍 69K</span>
+          <span>👎 0</span>
+          <span>Reply</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-logo">HUCKFINN</div>
+    <p class="footer-tagline">"All The News That's Fit To Satirize"</p>
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Advertise</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy</a>
+    </div>
+    <p class="copyright">© 2025 HuckFinn Media, LLC. "Per-Seat Licensing" is a registered trademark of Some Shit We Made Up In 2007, Inc.</p>
+  </footer>
+
+</body>
+</html>
