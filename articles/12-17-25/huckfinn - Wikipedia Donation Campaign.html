@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest News Source</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #2a2a2a;
+            color: #1a1a1a;
+            line-height: 1.65;
+        }
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #fffef8;
+            box-shadow: 0 0 40px rgba(0,0,0,0.4);
+        }
+
+        /* Masthead */
+        .masthead {
+            background: #0d0d0d;
+            color: white;
+            padding: 25px 20px 20px;
+            text-align: center;
+            border-bottom: 5px solid #c41e3a;
+        }
+        .masthead h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #c41e3a;
+        }
+        .masthead .tagline {
+            font-style: italic;
+            color: #999;
+            margin-top: 5px;
+            font-size: 0.95em;
+        }
+        .date-bar {
+            background: #c41e3a;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ticker */
+        .ticker {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 12px;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 0.9em;
+            border-bottom: 2px solid #c41e3a;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-200%); }
+        }
+
+        /* Guilt Banner */
+        .guilt-banner {
+            background: linear-gradient(180deg, #fffde7 0%, #fff9c4 100%);
+            border-bottom: 3px solid #f9a825;
+            padding: 18px 25px;
+            position: relative;
+        }
+        .guilt-banner::before {
+            content: "PLEASE READ BEFORE TIME RUNS OUT";
+            position: absolute;
+            top: -12px;
+            left: 25px;
+            background: #f9a825;
+            color: #000;
+            padding: 3px 12px;
+            font-weight: bold;
+            font-size: 0.7em;
+            letter-spacing: 1px;
+        }
+        .guilt-banner p { font-size: 0.95em; margin-top: 8px; }
+        .guilt-banner .dismiss {
+            display: block;
+            text-align: right;
+            color: #888;
+            font-size: 0.75em;
+            margin-top: 8px;
+            cursor: pointer;
+        }
+
+        /* Article */
+        .article { padding: 35px 40px; }
+        .article-header h2 {
+            font-size: 2.4em;
+            line-height: 1.15;
+            margin-bottom: 12px;
+            font-weight: 900;
+        }
+        .article-header .subhead {
+            font-size: 1.25em;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+        .byline {
+            color: #777;
+            font-size: 0.85em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 18px;
+            margin-bottom: 25px;
+        }
+        .byline strong { color: #333; }
+
+        /* Image */
+        .article-image {
+            margin: 25px -40px;
+            background: #f5f5f5;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .article-image svg { display: block; margin: 0 auto; }
+        .caption {
+            font-size: 0.82em;
+            color: #555;
+            padding: 12px 40px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+        .caption strong { color: #c41e3a; }
+
+        /* Body */
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 1.08em;
+        }
+        .article-body p:first-of-type::first-letter {
+            float: left;
+            font-size: 4em;
+            line-height: 0.8;
+            padding-right: 10px;
+            color: #c41e3a;
+            font-weight: bold;
+        }
+        .pullquote {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #c41e3a;
+            border-left: 5px solid #c41e3a;
+            padding: 15px 25px;
+            margin: 35px 0;
+            background: #fff5f5;
+        }
+        .pullquote cite {
+            display: block;
+            font-size: 0.5em;
+            color: #888;
+            font-style: normal;
+            margin-top: 10px;
+        }
+
+        /* Ads */
+        .ad {
+            background: #f8f8f8;
+            border: 2px dashed #ccc;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad .label {
+            font-size: 0.65em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .ad h3 { color: #333; margin-bottom: 10px; font-size: 1.3em; }
+        .ad p { font-size: 0.9em; color: #555; margin-bottom: 8px; }
+        .ad .cta {
+            display: inline-block;
+            background: #c41e3a;
+            color: white;
+            padding: 12px 30px;
+            margin-top: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .ad.dark {
+            background: #1a1a1a;
+            border: none;
+        }
+        .ad.dark h3, .ad.dark p { color: #fff; }
+        .ad.dark .label { color: #666; }
+
+        /* Donation Parody */
+        .donation-appeal {
+            background: linear-gradient(180deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 3px solid #1976d2;
+            padding: 30px;
+            margin: 35px 0;
+            position: relative;
+        }
+        .donation-appeal::before {
+            content: "A MESSAGE FROM HUCKFINN";
+            position: absolute;
+            top: -14px;
+            left: 20px;
+            background: #1976d2;
+            color: white;
+            padding: 4px 15px;
+            font-weight: bold;
+            font-size: 0.75em;
+        }
+        .donation-appeal h3 { margin-bottom: 15px; color: #0d47a1; }
+        .donation-appeal p { margin-bottom: 12px; }
+        .donation-appeal .amount {
+            font-size: 2.5em;
+            color: #c41e3a;
+            font-weight: 900;
+        }
+
+        /* Poll */
+        .poll {
+            background: #f3e5f5;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 5px solid #9c27b0;
+        }
+        .poll h4 { margin-bottom: 15px; color: #6a1b9a; }
+        .poll-option {
+            background: white;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border: 1px solid #ce93d8;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .poll-option:hover { background: #f3e5f5; }
+        .poll .results {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Comments */
+        .comments {
+            background: #fafafa;
+            padding: 35px 40px;
+            border-top: 4px solid #1a1a1a;
+        }
+        .comments h3 {
+            margin-bottom: 5px;
+            font-size: 1.4em;
+        }
+        .comments .sort {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 25px;
+        }
+        .comment {
+            background: white;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ddd;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .comment.hot { border-left-color: #ff5722; }
+        .comment.cursed { border-left-color: #9c27b0; }
+        .comment.wholesome { border-left-color: #4caf50; }
+        .comment .user {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .comment .user.verified::after { content: " ✓"; color: #1da1f2; }
+        .comment .user.mod::after { content: " [MOD]"; color: #4caf50; font-size: 0.7em; }
+        .comment .user.banned::after { content: " [BANNED]"; color: #c41e3a; font-size: 0.7em; }
+        .comment .meta {
+            font-size: 0.75em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        .comment .text { font-size: 0.92em; line-height: 1.5; }
+        .comment .reactions {
+            margin-top: 12px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .reply {
+            margin-left: 35px;
+            background: #f9f9f9;
+            border-left-color: #e0e0e0;
+        }
+        .reply.deep { margin-left: 70px; font-size: 0.9em; }
+
+        /* Related */
+        .related {
+            padding: 30px 40px;
+            border-top: 1px solid #ddd;
+        }
+        .related h4 {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .related-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #eee;
+        }
+        .related-item:last-child { border-bottom: none; }
+        .related-item .thumb {
+            width: 70px;
+            height: 55px;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+        .related-item .title {
+            font-weight: bold;
+            font-size: 0.9em;
+            line-height: 1.3;
+            margin-bottom: 3px;
+        }
+        .related-item .preview {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        /* Corrections */
+        .corrections {
+            background: #ffebee;
+            padding: 25px 40px;
+            border-top: 3px solid #c41e3a;
+        }
+        .corrections h4 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #c41e3a;
+        }
+        .corrections p {
+            font-size: 0.85em;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            border-left: 2px solid #c41e3a;
+        }
+
+        /* Horoscopes */
+        .horoscopes {
+            background: #f5f5f5;
+            padding: 25px 40px;
+            border-top: 1px solid #ddd;
+        }
+        .horoscopes h4 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .horoscope {
+            display: inline-block;
+            width: calc(50% - 10px);
+            margin-bottom: 12px;
+            font-size: 0.85em;
+            vertical-align: top;
+        }
+        .horoscope strong { color: #333; }
+
+        /* Classifieds */
+        .classifieds {
+            background: #fffde7;
+            padding: 25px 40px;
+            border-top: 1px solid #ddd;
+        }
+        .classifieds h4 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .classified {
+            font-size: 0.8em;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Letters */
+        .letters {
+            padding: 25px 40px;
+            border-top: 1px solid #ddd;
+        }
+        .letters h4 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .letter {
+            background: #fafafa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 3px solid #333;
+            font-size: 0.9em;
+        }
+        .letter .sig {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            color: #888;
+            padding: 35px;
+            text-align: center;
+        }
+        footer .logo { font-size: 1.8em; font-weight: bold; color: white; margin-bottom: 10px; }
+        footer p { font-size: 0.8em; margin-bottom: 8px; }
+        footer .disclaimer {
+            font-size: 0.7em;
+            color: #555;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1>HuckFinn</h1>
+            <div class="tagline">America's Finest News Source • Est. Just Now • "Tu Ne Cede Malis"</div>
+        </header>
+
+        <div class="date-bar">
+            Tuesday, December 16, 2025 • Vol. CLXIX No. 47 • Contrarian Edition • $2.75 (But Only If You Feel Like It)
+        </div>
+
+        <!-- Ticker -->
+        <div class="ticker">
+            <span class="ticker-content">
+                BREAKING: Wikipedia Banner Enters 23rd Year Of "Almost Running Out Of Time" • Nation's Collective Guilt Reserves At Historic Highs • Study: 98% Of People "Definitely Planning To Donate Next Year" • $2.75 Now Worth More Than Your Attention Span • Man Who Donated In 2011 Still Dining Out On Moral Superiority
+            </span>
+        </div>
+
+        <!-- Guilt Banner -->
+        <div class="guilt-banner">
+            <p><strong>HuckFinn still can't be sold.</strong> If you're a sentient being with internet access, please read before your attention span expires. We're trying to reach you this Tuesday because we made this deadline up, but it sounds urgent.</p>
+            <span class="dismiss">[X] I'll feel guilty about this for approximately 0.3 seconds</span>
+        </div>
+
+        <!-- Main Article -->
+        <article class="article">
+            <div class="article-header">
+                <h2>Wikipedia Enters 23rd Consecutive Year Of Being Mere Days From Financial Ruin</h2>
+                <div class="subhead">Organization with $250 million in assets needs your $2.75 'before time runs out,' as it has announced every December since dial-up</div>
+            </div>
+
+            <div class="byline">
+                By <strong>THURSTON SCRIBBLESWORTH IV</strong> | Senior Guilt & Shame Correspondent<br>
+                December 16, 2025 • Reading time: 1 minute (which you will not give them) • 847K currently ignoring this
+            </div>
+
+            <!-- Hero Image -->
+            <div class="article-image">
+                <svg width="700" height="420" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background gradient -->
+                    <defs>
+                        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a1a2e"/>
+                            <stop offset="100%" style="stop-color:#16213e"/>
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffd700"/>
+                            <stop offset="100%" style="stop-color:#b8860b"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="700" height="420" fill="url(#skyGrad)"/>
+
+                    <!-- Street/ground -->
+                    <rect x="0" y="340" width="700" height="80" fill="#2d2d2d"/>
+                    <rect x="0" y="340" width="700" height="3" fill="#444"/>
+
+                    <!-- Wikipedia Globe as sad street performer -->
+                    <g transform="translate(350, 200)">
+                        <!-- Body (tattered coat) -->
+                        <path d="M-40 80 L-55 200 L55 200 L40 80 Z" fill="#4a4a4a"/>
+                        <path d="M-40 80 L-30 200 L30 200 L40 80 Z" fill="#3d3d3d"/>
+
+                        <!-- Globe head -->
+                        <circle cx="0" cy="0" r="70" fill="#e8e8e8" stroke="#999" stroke-width="3"/>
+                        <circle cx="0" cy="0" r="62" fill="none" stroke="#ccc" stroke-width="1" stroke-dasharray="8,4"/>
+
+                        <!-- Puzzle pieces on globe -->
+                        <path d="M-35 -50 Q0 -70 35 -50 L30 -10 Q10 -25 -10 -25 Q-30 -25 -30 -10 Z" fill="#d0d0d0" stroke="#aaa"/>
+                        <path d="M35 -50 Q55 -20 45 20 L10 10 Q25 -5 30 -10 Z" fill="#c0c0c0" stroke="#aaa"/>
+                        <path d="M-55 -10 Q-45 -30 -35 -50 L-30 -10 Q-40 5 -45 20 Z" fill="#d8d8d8" stroke="#aaa"/>
+
+                        <!-- Missing puzzle piece (the joke) -->
+                        <path d="M-20 25 Q0 15 20 25 L25 55 Q5 45 -5 45 Q-15 45 -25 55 Z" fill="#16213e" stroke="#555" stroke-dasharray="4,2"/>
+                        <text x="0" y="45" font-family="Arial" font-size="8" fill="#666" text-anchor="middle">MISSING</text>
+
+                        <!-- Characters on globe -->
+                        <text x="-25" y="-20" font-family="Georgia" font-size="16" fill="#555">W</text>
+                        <text x="15" y="-5" font-family="serif" font-size="12" fill="#666">ィ</text>
+                        <text x="-10" y="10" font-family="serif" font-size="10" fill="#777">Ω</text>
+
+                        <!-- Sad face -->
+                        <g transform="translate(0, -10)">
+                            <!-- Tired eyes -->
+                            <ellipse cx="-20" cy="0" rx="10" ry="6" fill="white" stroke="#333"/>
+                            <ellipse cx="20" cy="0" rx="10" ry="6" fill="white" stroke="#333"/>
+                            <circle cx="-20" cy="2" r="4" fill="#333"/>
+                            <circle cx="20" cy="2" r="4" fill="#333"/>
+                            <!-- Bags under eyes -->
+                            <path d="M-32 8 Q-20 12 -8 8" fill="none" stroke="#999" stroke-width="1"/>
+                            <path d="M8 8 Q20 12 32 8" fill="none" stroke="#999" stroke-width="1"/>
+                            <!-- Frown -->
+                            <path d="M-18 30 Q0 20 18 30" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Single tear -->
+                        <path d="M35 5 Q38 15 35 25 Q32 15 35 5" fill="#87ceeb"/>
+
+                        <!-- Arms holding sign -->
+                        <path d="M-40 100 L-90 150 L-85 155 L-35 110" fill="#deb887"/>
+                        <path d="M40 100 L90 150 L85 155 L35 110" fill="#deb887"/>
+                    </g>
+
+                    <!-- Cardboard sign -->
+                    <g transform="translate(350, 350)">
+                        <rect x="-120" y="0" width="240" height="60" fill="#c4a574" stroke="#8b7355" stroke-width="2"/>
+                        <!-- Corrugated lines -->
+                        <line x1="-115" y1="10" x2="115" y2="10" stroke="#a08060" stroke-width="1"/>
+                        <line x1="-115" y1="50" x2="115" y2="50" stroke="#a08060" stroke-width="1"/>
+                        <!-- Text -->
+                        <text x="0" y="28" font-family="Comic Sans MS, cursive" font-size="14" fill="#333" text-anchor="middle" font-weight="bold">NEED $2.75</text>
+                        <text x="0" y="45" font-family="Comic Sans MS, cursive" font-size="10" fill="#555" text-anchor="middle">anything helps • god bless</text>
+                    </g>
+
+                    <!-- Upturned hat with few coins -->
+                    <ellipse cx="500" cy="385" rx="45" ry="15" fill="#2c2c2c"/>
+                    <ellipse cx="500" cy="380" rx="35" ry="10" fill="#1a1a1a"/>
+                    <!-- Sad amount of coins -->
+                    <circle cx="490" cy="378" r="6" fill="url(#goldGrad)"/>
+                    <circle cx="505" cy="376" r="5" fill="#c0c0c0"/>
+                    <text x="500" y="405" font-family="Arial" font-size="8" fill="#666" text-anchor="middle">($0.47 collected)</text>
+
+                    <!-- People walking past (silhouettes) -->
+                    <g fill="#1a1a1a" opacity="0.7">
+                        <!-- Person 1 - looking at phone -->
+                        <ellipse cx="120" cy="290" rx="15" ry="15"/>
+                        <rect x="110" y="305" width="20" height="45"/>
+                        <rect x="105" y="305" width="10" height="25" transform="rotate(-20 110 305)"/>
+                        <rect x="95" y="320" width="15" height="8" fill="#4a90d9"/>
+
+                        <!-- Person 2 - walking fast -->
+                        <ellipse cx="600" cy="295" rx="12" ry="12"/>
+                        <rect x="592" y="307" width="16" height="40"/>
+
+                        <!-- Person 3 - averting gaze -->
+                        <ellipse cx="200" cy="300" rx="13" ry="13"/>
+                        <rect x="190" y="313" width="20" height="42"/>
+                        <!-- Turned head -->
+                        <ellipse cx="210" cy="298" rx="5" ry="8" fill="#1a1a1a"/>
+                    </g>
+
+                    <!-- Thought bubbles from passersby -->
+                    <g font-family="Arial" font-size="9" fill="#333">
+                        <ellipse cx="85" cy="250" rx="50" ry="22" fill="white" stroke="#ccc"/>
+                        <circle cx="105" cy="275" r="5" fill="white" stroke="#ccc"/>
+                        <circle cx="115" cy="285" r="3" fill="white" stroke="#ccc"/>
+                        <text x="85" y="253" text-anchor="middle">"maybe next year"</text>
+
+                        <ellipse cx="610" cy="255" rx="45" ry="20" fill="white" stroke="#ccc"/>
+                        <circle cx="595" cy="278" r="4" fill="white" stroke="#ccc"/>
+                        <circle cx="598" cy="288" r="2" fill="white" stroke="#ccc"/>
+                        <text x="610" y="258" text-anchor="middle">"I gave in 2011"</text>
+                    </g>
+
+                    <!-- Year counter in corner -->
+                    <rect x="540" y="20" width="140" height="55" fill="rgba(0,0,0,0.7)" rx="5"/>
+                    <text x="610" y="42" font-family="monospace" font-size="11" fill="#888" text-anchor="middle">YEARS "ALMOST BROKE"</text>
+                    <text x="610" y="65" font-family="monospace" font-size="28" fill="#c41e3a" text-anchor="middle" font-weight="bold">23</text>
+
+                    <!-- Banner overlay -->
+                    <rect x="0" y="0" width="700" height="35" fill="rgba(196,30,58,0.95)"/>
+                    <text x="350" y="24" font-family="Georgia" font-size="15" fill="white" text-anchor="middle" font-weight="bold">TIME IS RUNNING OUT (just like last year, and the year before that)</text>
+                </svg>
+                <div class="caption">
+                    <strong>PLEASE, SIR:</strong> Wikipedia's iconic puzzle globe, depicted here as the internet's longest-running guilt trip, awaits your $2.75 outside a metaphorical digital highway. The organization has reportedly been "days away" from collapse since the second Bush administration. Passersby confirmed they "definitely meant to donate" and "will probably do it next time."
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>San Francisco — In what behavioral economists are calling "the most predictable guilt trip in human history," the Wikimedia Foundation has once again announced that Wikipedia is perilously close to shutting down forever, unless the 98% of freeloading users currently reading this finally cough up $2.75 before the vaguely defined moment when "time runs out."</p>
+
+                <p>"If you've lost count of how many times you've visited Wikipedia this year, we hope that means it's given you at least $2.75 of knowledge," reads the banner, finally putting an official price tag on human enlightenment. Sources confirmed the figure was calculated by dividing mankind's accumulated wisdom by the number of people who have ever Googled "how tall is The Rock."</p>
+
+                <div class="pullquote">
+                    "Less than 2% of readers donate. Most look the other way."
+                    <cite>— The most passive-aggressive statistic in internet history</cite>
+                </div>
+
+                <p>The foundation's latest appeal—which experts describe as "PBS pledge drive energy without the tote bag"—introduces what researchers call the "98% Shame Index," a revolutionary guilt metric reminding users they belong to the overwhelming majority of monsters who will close this banner and immediately look up whether a hot dog is technically a sandwich.</p>
+
+                <!-- Ad 1 -->
+                <div class="ad">
+                    <div class="label">Advertisement</div>
+                    <h3>GUILT-B-GONE PRO</h3>
+                    <p>The browser extension that blocks Wikipedia donation banners AND suppresses the associated shame!</p>
+                    <p><em>"I've saved $2.75 annually since 2007 and I only think about it during sleepless nights!" — Real User</em></p>
+                    <a href="#" class="cta">DOWNLOAD FREE (Obviously)</a>
+                </div>
+
+                <p>"We're not owned by a billionaire," the appeal notes, a statement doing roughly 47,000 pounds of rhetorical heavy lifting while conspicuously omitting that the Wikimedia Foundation currently holds assets exceeding $250 million. "We're owned by a nonprofit, which means we prefer to make you feel terrible about yourself every December rather than explore literally any other revenue model."</p>
+
+                <p>The 2025 campaign is signed by Lisa Seitz Gruwell, whose official title is "Deputy to the CEO"—a designation experts say raises more questions than the donation appeal itself. "Why does the CEO need a deputy?" asked one analyst. "What happened to the original deputy? Is this a succession crisis we should know about?"</p>
+
+                <p>Perhaps most notable is the appeal's plea to "please don't skip this 1-minute read," a request that approximately 847 million people have already ignored in the time it took to write this sentence. Studies indicate the average user's eyes develop a reflexive "banner blindness" specifically calibrated to the exact shade of yellow Wikipedia uses.</p>
+
+                <div class="pullquote">
+                    "Created by people, not by machines."
+                    <cite>— Line that absolutely won't age poorly in the AI era</cite>
+                </div>
+
+                <p>The foundation has also begun emphasizing that Wikipedia is "created by people, not by machines"—a pointed reference to artificial intelligence that sources describe as either "a principled stand for human knowledge" or "a desperate attempt to remain relevant when ChatGPT will confidently hallucinate the same information for free."</p>
+
+                <p>The appeal's closing line, "If you are undecided, remember any contribution helps," acknowledges a demographic experts didn't know existed: people who are genuinely weighing the $2.75 decision as if purchasing a house, rather than reflexively clicking the X while muttering "I'll get the next one."</p>
+
+                <p>At press time, Wikipedia's article on "Guilt (emotion)" had received 2.3 million views in the past week, and its article on "Cognitive Dissonance" had been edited to include the foundation's annual donation campaign as a primary example.</p>
+            </div>
+
+            <!-- HuckFinn Donation Parody -->
+            <div class="donation-appeal">
+                <h3>HuckFinn Also Can't Be Sold, But With More Self-Awareness</h3>
+                <p>Dear Reader Who Scrolled This Far,</p>
+                <p>If you've lost count of how many times you've exhaled sharply through your nose at a satirical headline this year, we hope that means it's given you at least <span class="amount">$2.76</span> worth of amusement.</p>
+                <p>(Yes, one penny more than Wikipedia. We have marginally higher self-esteem.)</p>
+                <p>Unlike Wikipedia, we don't have $250 million in reserves. We have a laptop, an irony deficiency, and an intern who claims to be "working remotely" but appears to be exclusively posting on social media.</p>
+                <p><strong>Less than 0.00001% of readers donate.</strong> The other 99.99999% screenshot our headlines and post them without credit. We've made our peace with this. (We have not made our peace with this.)</p>
+                <p><em>— The HuckFinn Foundation for Satire & Plausible Deniability</em></p>
+                <a href="#" class="cta">DONATE $2.76 (Or Don't. We're A Fake Newspaper.)</a>
+            </div>
+
+            <!-- Poll -->
+            <div class="poll">
+                <h4>READER POLL: Have You Ever Donated to Wikipedia?</h4>
+                <div class="poll-option">Yes, I am one of the mythical 2% (please validate me)</div>
+                <div class="poll-option">No, but I feel appropriately guilty about it</div>
+                <div class="poll-option">No, and I have made peace with my freeloading</div>
+                <div class="poll-option">I thought my taxes paid for this somehow</div>
+                <div class="poll-option">I donated once in 2009 and believe my debt is paid</div>
+                <div class="poll-option">I installed uBlock specifically for the banner</div>
+                <p class="results">Current results: 2% / 23% / 31% / 19% / 17% / 8% (4,847 votes)</p>
+            </div>
+        </article>
+
+        <!-- Ad 2 -->
+        <div class="ad dark">
+            <div class="label">Sponsored Content</div>
+            <h3>WIKIPEDIA PLATINUM ELITE</h3>
+            <p><strong>What if Wikipedia... but you could feel smug about it?</strong></p>
+            <p>For $49.99/month, access the exact same free content as everyone else, but with an exclusive "I DONATED" badge visible only to you and your therapist.</p>
+            <p style="color: #888; font-size: 0.8em;"><em>Features: Identical articles • Same information • Moral superiority • A warm feeling that may be unrelated</em></p>
+            <a href="#" class="cta">THIS DOESN'T EXIST (But You Clicked, Didn't You?)</a>
+        </div>
+
+        <!-- Comments -->
+        <section class="comments">
+            <h3>COMMENTS (3,847)</h3>
+            <p class="sort">Showing top comments • Sort by: <a href="#">Most Unhinged</a> | <a href="#">Oldest Grievance</a> | <a href="#">Highest Copium</a></p>
+
+            <div class="comment hot">
+                <div class="user verified">FreeloaderAndProud</div>
+                <div class="meta">47 minutes ago • Portland, OR • Top Comment</div>
+                <div class="text">I've been closing that banner since before some of you were born. My X-clicking finger has developed actual muscle memory. At this point, Wikipedia owes ME royalties for all the free engagement.</div>
+                <div class="reactions">14.2K • 8.9K • "Banner Blindness Champion" Achievement</div>
+            </div>
+
+            <div class="comment reply">
+                <div class="user">WikipediaEditorSince2004</div>
+                <div class="meta">32 minutes ago</div>
+                <div class="text">I've contributed 47,000 edits and I STILL get the banner. Where's MY exemption? I basically work there for free and they have the audacity to ask ME for money?</div>
+                <div class="reactions">6.7K • 3.2K • 891</div>
+            </div>
+
+            <div class="comment reply deep">
+                <div class="user">FreeloaderAndProud</div>
+                <div class="meta">28 minutes ago</div>
+                <div class="text">thank you for your service o7</div>
+                <div class="reactions">2.1K</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">TaxpayerTim1776</div>
+                <div class="meta">2 hours ago • Real America</div>
+                <div class="text">$250 MILLION in the bank but they need MY $2.75??? This is why I don't trust BIG ENCYCLOPEDIA. Follow the money, sheeple. Wake up.</div>
+                <div class="reactions">3.4K • 7.8K • 4.2K</div>
+            </div>
+
+            <div class="comment reply">
+                <div class="user verified">ActualCPA_NotJoking</div>
+                <div class="meta">1 hour ago</div>
+                <div class="text">Sir, that's an endowment, which is not how... you know what, never mind. You have "1776" in your username, which means you've definitely Googled the American Revolution at least once on Wikipedia.</div>
+                <div class="reactions">11.2K • 5.6K • "Receipts" Award</div>
+            </div>
+
+            <div class="comment cursed">
+                <div class="user">xX_DarkShadow_Xx</div>
+                <div class="meta">3 hours ago</div>
+                <div class="text">first</div>
+                <div class="reactions">23.7K • 1 • "Abandoned Thread" Notice</div>
+            </div>
+
+            <div class="comment wholesome">
+                <div class="user">MorallySuperiority2011</div>
+                <div class="meta">1 hour ago • The Moral High Ground</div>
+                <div class="text">I donated $5 in 2011 and I still think about it. I've done more for the preservation of human knowledge than most of you will do in a lifetime. You're welcome.</div>
+                <div class="reactions">4.5K • 8.9K • "One-Time Hero" Badge</div>
+            </div>
+
+            <div class="comment reply">
+                <div class="user">QuickMaths</div>
+                <div class="meta">45 minutes ago</div>
+                <div class="text">At roughly 10,000 Wikipedia visits since then, you've paid $0.0005 per article. King behavior.</div>
+                <div class="reactions">12.4K • 3.1K</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">DefinitelyARealHuman</div>
+                <div class="meta">2 hours ago • Server Farm, Iowa</div>
+                <div class="text">I AM A REAL HUMAN WHO AGREES THAT WIKIPEDIA IS VALUABLE RESOURCE FOR ALL FELLOW HUMANS LIKE MYSELF. PLEASE INSERT CURRENCY INTO DESIGNATED RECEPTACLE. DO NOT INVESTIGATE FURTHER.</div>
+                <div class="reactions">892 • 15.6K • "Totally Normal" Verification</div>
+            </div>
+
+            <div class="comment">
+                <div class="user mod">ProfessorActually_PhD</div>
+                <div class="meta">3 hours ago • University of Somewhere</div>
+                <div class="text">I tell my students "Wikipedia is not a valid source" and then I go home and use it to prepare my lectures. We are not the same. (We are exactly the same.)</div>
+                <div class="reactions">18.9K • 7.2K • "Academic Honesty" Award</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">BoomerDad1952</div>
+                <div class="meta">4 hours ago • The Good Old Days</div>
+                <div class="text">Back in MY day we had to walk to the LIBRARY and use ACTUAL ENCYCLOPEDIAS that cost $400 and were outdated by the time they were printed. Kids today don't appreciate anything. $2.75 is nothing. When I was your age a house cost $15,000 and</div>
+                <div class="reactions">567 • 12.3K • "Sir This Is A Wendy's"</div>
+            </div>
+
+            <div class="comment reply">
+                <div class="user">ZoomerChild2008</div>
+                <div class="meta">3 hours ago</div>
+                <div class="text">ok boomer</div>
+                <div class="reactions">24.7K • 11.2K • "Flawless Victory"</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">ConspiracyCarl</div>
+                <div class="meta">2 hours ago • Undisclosed Location (Bunker)</div>
+                <div class="text">Has anyone else noticed the Wikipedia logo is an INCOMPLETE PUZZLE?? What are they HIDING?? Why won't they FINISH IT??? The missing pieces clearly represent [THREAD CONTINUES FOR 47 MORE TWEETS]</div>
+                <div class="reactions">234 • 9.8K • 5.4K • "Touch Grass" Recommendation</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">CryptoKingNFTLord</div>
+                <div class="meta">1 hour ago • Decentralized</div>
+                <div class="text">Why doesn't Wikipedia just mint NFTs?? WikiCoin would literally solve everything. Decentralized knowledge on the blockchain. I would invest at least $2.75. This is not financial advice.</div>
+                <div class="reactions">156 • 11.2K • 8.7K • "Down Bad" Achievement</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">JustWannaGrill</div>
+                <div class="meta">45 minutes ago • The Suburbs</div>
+                <div class="text">Can we please keep politics out of Wikipedia donation discussions? I just want to look up propane accessories and the history of Kansas City BBQ in peace. Is that too much to ask?</div>
+                <div class="reactions">5.6K • 3.2K • "Centrist Dad Energy" Award</div>
+            </div>
+
+            <div class="comment">
+                <div class="user banned">DeletedUser847293</div>
+                <div class="meta">6 hours ago • [Comment Removed]</div>
+                <div class="text">[This comment has been removed for violating community guidelines regarding the 1847 covered bridge construction date controversy. The user has been permanently banned. The date stands at 1847. Do not question the date.]</div>
+                <div class="reactions">4.2K • Locked</div>
+            </div>
+
+            <div class="comment">
+                <div class="user">GrammarPoliceOfficial</div>
+                <div class="meta">12 minutes ago</div>
+                <div class="text">*you're (somewhere in this comment section, I just know it)</div>
+                <div class="reactions">1.2K • 678 • "Citation Needed"</div>
+            </div>
+        </section>
+
+        <!-- Related -->
+        <section class="related">
+            <h4>Related Articles</h4>
+
+            <div class="related-item">
+                <div class="thumb">$</div>
+                <div>
+                    <div class="title">Wikimedia Foundation's $250 Million Reserve 'Barely Enough' To Keep Servers Running Through Lunch, CFO Reports</div>
+                    <div class="preview">"We could run out of sandwich money any day now"</div>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <div class="thumb">!</div>
+                <div>
+                    <div class="title">Man Who Has Never Donated Becomes Enraged When Wikipedia Article Contains Minor Typo</div>
+                    <div class="preview">"This is UNACCEPTABLE," says man who has accepted it for free since 2006</div>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <div class="thumb">A</div>
+                <div>
+                    <div class="title">Professor Telling Students Not To Use Wikipedia Exposed As Top Wikipedia Editor</div>
+                    <div class="preview">Sources: "His username is literally his faculty ID number"</div>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <div class="thumb">?</div>
+                <div>
+                    <div class="title">Local Man Falls Down Wikipedia Rabbit Hole, Emerges 6 Hours Later Expert On Uzbek Railway System</div>
+                    <div class="preview">"I was looking up who won the 1994 Super Bowl"</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- You Might Also Like -->
+        <section class="related">
+            <h4>You Might Also Be Interested In</h4>
+
+            <div class="related-item">
+                <div class="thumb">AI</div>
+                <div>
+                    <div class="title">ChatGPT Announces Own Fundraising Campaign, Immediately Hallucinates $14 Billion In Donations</div>
+                    <div class="preview">"We're thrilled by this support," says confidently wrong AI</div>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <div class="thumb">%</div>
+                <div>
+                    <div class="title">Study: Guilt-Based Fundraising Model 'Somehow Still Working,' Researchers Baffled</div>
+                    <div class="preview">Making people feel bad remains surprisingly effective</div>
+                </div>
+            </div>
+
+            <div class="related-item">
+                <div class="thumb">T</div>
+                <div>
+                    <div class="title">Nation's 'I'll Donate Next Year' Reserves At All-Time High</div>
+                    <div class="preview">Experts: "The intention is there. The follow-through is not."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corrections -->
+        <section class="corrections">
+            <h4>Corrections & Clarifications</h4>
+            <p><strong>Dec. 15:</strong> An earlier version of this article stated Wikipedia was "23 years old." Wikipedia has actually been making users feel guilty for 24 years. We regret the error, though not as much as Wikipedia regrets our continued freeloading.</p>
+            <p><strong>Dec. 14:</strong> We previously reported that "nobody donates to Wikipedia." In fact, approximately 2% of users donate, which is somehow both a lot and not nearly enough. The 98% remains unbothered.</p>
+            <p><strong>Dec. 13:</strong> This article originally said the donation banner was "annoying." We have been informed it is actually "a gentle reminder of our moral failings." We apologize for any guilt we may have undersold.</p>
+        </section>
+
+        <!-- Horoscopes -->
+        <section class="horoscopes">
+            <h4>Today's Horoscopes (Wikipedia Donation Edition)</h4>
+            <div class="horoscope"><strong>Aries:</strong> You will close the banner without reading it. The stars have foreseen this.</div>
+            <div class="horoscope"><strong>Taurus:</strong> $2.75 seems reasonable. You will think about this for 0.3 seconds.</div>
+            <div class="horoscope"><strong>Gemini:</strong> Two sides of you: one wants to donate, one wants to close the tab. The latter wins.</div>
+            <div class="horoscope"><strong>Cancer:</strong> The guilt will haunt you briefly. You will recover.</div>
+            <div class="horoscope"><strong>Leo:</strong> You donated once in 2014 and still mention it at parties.</div>
+            <div class="horoscope"><strong>Virgo:</strong> You'll fact-check the donation appeal. On Wikipedia.</div>
+            <div class="horoscope"><strong>Libra:</strong> You're weighing $2.75 vs. coffee. Coffee wins. It always wins.</div>
+            <div class="horoscope"><strong>Scorpio:</strong> You installed an ad blocker specifically for this. No regrets.</div>
+            <div class="horoscope"><strong>Sagittarius:</strong> You believe knowledge should be free. Conveniently, it is.</div>
+            <div class="horoscope"><strong>Capricorn:</strong> You've budgeted $2.75 for 2026. Maybe.</div>
+            <div class="horoscope"><strong>Aquarius:</strong> You think Wikipedia should just start a podcast or something.</div>
+            <div class="horoscope"><strong>Pisces:</strong> You feel emotionally connected to the sad globe. Still won't donate.</div>
+        </section>
+
+        <!-- Classifieds -->
+        <section class="classifieds">
+            <h4>Classifieds</h4>
+            <div class="classified">
+                <strong>FOR SALE:</strong> Vintage guilt from not donating to Wikipedia (2003-2025). Barely used. Will trade for working conscience. Contact: guilty_reader@aol.com
+            </div>
+            <div class="classified">
+                <strong>SEEKING:</strong> Someone to click the X button on Wikipedia donations for me. My finger is tired. Paying $0.00/hr. Must have own computer.
+            </div>
+            <div class="classified">
+                <strong>FOUND:</strong> $2.75 in couch cushions. Briefly considered donating to Wikipedia. Bought coffee instead. No regrets (some regrets).
+            </div>
+            <div class="classified">
+                <strong>HELP WANTED:</strong> Wikipedia seeking 98% of users to finally acknowledge they exist. Compensation: A slightly less yellow banner.
+            </div>
+        </section>
+
+        <!-- Letters -->
+        <section class="letters">
+            <h4>Letters to the Editor</h4>
+            <div class="letter">
+                <p><strong>Dear HuckFinn,</strong></p>
+                <p>As a proud member of the 2% who have donated, I am DEEPLY offended by your satirical coverage. We donors have EARNED the right to feel morally superior to the rest of you freeloaders. Do you know how hard it was to type in my credit card number that one time? I have carried this burden for thirteen years.</p>
+                <p class="sig">— Smugly Yours,<br>Patricia Virtueson<br>Moral Heights, Vermont</p>
+            </div>
+            <div class="letter">
+                <p><strong>To Whom It May Concern,</strong></p>
+                <p>I've been closing the Wikipedia banner since the Bush administration (the second one). At this point, I believe the foundation owes ME $2.75 for repetitive stress injury. My attorney will be in touch. My attorney will also be using Wikipedia to research relevant case law.</p>
+                <p class="sig">— Regards,<br>Harold Scrollpast<br>Dismissive Heights, Ohio</p>
+            </div>
+        </section>
+
+        <!-- Final Ad -->
+        <div class="ad dark" style="margin: 0; border-top: 5px solid #c41e3a;">
+            <div class="label">A Final Message</div>
+            <h3>WELCOME TO THE 98% CLUB</h3>
+            <p>Congratulations! By reading this far without donating, you've automatically joined millions of others in the silent majority.</p>
+            <p style="color: #ffd700; font-weight: bold; font-size: 1.2em;">Benefits Include:</p>
+            <p style="color: #ccc;">Extra screen space where banners used to be<br>Temporary relief from guilt (expires in December)<br>The knowledge that you're not alone<br>Membership is automatic and cannot be revoked</p>
+            <p style="color: #888; font-size: 0.85em; margin-top: 15px;"><em>You're already a member. You've always been a member. You will always be a member.</em></p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="logo">HUCKFINN</div>
+            <p>America's Finest News Source • Est. Just Now • "Tu Ne Cede Malis"</p>
+            <p>2025 HuckFinn Media Group • All Rights Reserved (But Not Enforced)</p>
+            <p class="disclaimer">
+                <strong>DISCLAIMER:</strong> This is satire. Wikipedia is genuinely useful and you probably should donate. Or don't. We're a fake newspaper, not your conscience. The real Wikipedia has done more for human knowledge than we will ever do. That said, we also accept $2.76.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
