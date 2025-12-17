@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn - America's Finest Newspaper - Page 4</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://huckfinn.ai/articles/huckfinn-newspaper-page4-copy.html">
+    <meta property="og:title" content="HuckFinn - America&#x27;s Finest Newspaper - Page 4">
+    <meta property="og:description" content="Officials Celebrate &quot;Holistic Approach&quot; to Public Safety That Skips the Part Where You Live">
+    <meta property="og:image" content="https://huckfinn.ai/og-image.png">
+    <meta property="og:site_name" content="HuckFinn">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://huckfinn.ai/articles/huckfinn-newspaper-page4-copy.html">
+    <meta name="twitter:title" content="HuckFinn - America&#x27;s Finest Newspaper - Page 4">
+    <meta name="twitter:description" content="Officials Celebrate &quot;Holistic Approach&quot; to Public Safety That Skips the Part Where You Live">
+    <meta name="twitter:image" content="https://huckfinn.ai/og-image.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper-cream: #f5f2e8;
+            --paper-dark: #e8e4d4;
+            --ink-black: #1a1a1a;
+            --ink-gray: #4a4a4a;
+            --accent-red: #8b0000;
+            --accent-gold: #d4a017;
+            --rule-gray: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 11in 17in;
+            margin: 0.5in;
+        }
+
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: #d4d0c4;
+            color: var(--ink-black);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            width: 11in;
+            min-height: 17in;
+            margin: 0 auto;
+            background: var(--paper-cream);
+            box-shadow: 0 0 50px rgba(0,0,0,0.4);
+            padding: 0.4in;
+            position: relative;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--ink-black);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+
+        .page-header .section-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-red);
+        }
+
+        .page-header .logo-small {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 24px;
+        }
+
+        .page-header .date {
+            font-size: 10px;
+            color: var(--ink-gray);
+        }
+
+        /* MAIN GRID - 3 COLUMN */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 0.7fr;
+            gap: 15px;
+        }
+
+        /* ARTICLE STYLES */
+        .article {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .article:last-child {
+            border-bottom: none;
+        }
+
+        .article-meta {
+            font-size: 8px;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3px;
+            font-weight: 700;
+        }
+
+        .article h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .article h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .article h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 4px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 10px;
+            font-style: italic;
+            color: var(--ink-gray);
+            margin-bottom: 6px;
+            line-height: 1.3;
+            border-left: 2px solid var(--accent-red);
+            padding-left: 6px;
+        }
+
+        .byline {
+            font-size: 8px;
+            color: var(--ink-gray);
+            margin-bottom: 6px;
+        }
+
+        .article-body {
+            font-size: 9px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .article-body p {
+            margin-bottom: 6px;
+            text-indent: 1em;
+        }
+
+        .article-body p:first-of-type {
+            text-indent: 0;
+        }
+
+        .article-body-columns {
+            column-count: 2;
+            column-gap: 12px;
+            column-rule: 1px solid #ddd;
+            font-size: 9px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .article-body-columns p {
+            margin-bottom: 6px;
+            text-indent: 1em;
+        }
+
+        .article-body-columns p:first-of-type {
+            text-indent: 0;
+        }
+
+        /* DROP CAP */
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            float: left;
+            line-height: 0.85;
+            padding-right: 4px;
+            color: var(--accent-red);
+            font-weight: 900;
+        }
+
+        /* PULLQUOTE */
+        .pullquote {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            font-style: italic;
+            text-align: center;
+            padding: 8px 10px;
+            margin: 8px 0;
+            border-top: 2px solid var(--ink-black);
+            border-bottom: 2px solid var(--ink-black);
+            break-inside: avoid;
+        }
+
+        .pullquote cite {
+            display: block;
+            font-size: 7px;
+            font-style: normal;
+            color: var(--ink-gray);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECTION DIVIDER */
+        .section-divider {
+            border-left: 1px solid var(--rule-gray);
+            padding-left: 12px;
+        }
+
+        /* COLUMN HEADER */
+        .column-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-red);
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+        }
+
+        /* BUDGET BOX */
+        .budget-box {
+            background: #1a1a1a;
+            color: var(--paper-cream);
+            padding: 10px;
+            margin: 8px 0;
+            text-align: center;
+        }
+
+        .budget-box h5 {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px dotted #444;
+            font-size: 8px;
+        }
+
+        .budget-item:last-child {
+            border-bottom: none;
+        }
+
+        .budget-item .label {
+            color: #ccc;
+        }
+
+        .budget-item .value {
+            font-weight: 700;
+        }
+
+        .budget-item .value.approved {
+            color: #4a4;
+        }
+
+        .budget-item .value.rejected {
+            color: #c44;
+        }
+
+        /* AD BOX */
+        .ad-box {
+            background: #fffef0;
+            border: 2px dashed #ccc;
+            padding: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 6px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .ad-box h5 {
+            font-size: 10px;
+            color: var(--accent-red);
+            margin-bottom: 4px;
+        }
+
+        .ad-box p {
+            font-size: 7px;
+            color: #555;
+            margin-bottom: 3px;
+        }
+
+        .ad-box .fine-print {
+            font-size: 5px;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* RELATED BOX */
+        .related-box {
+            background: var(--ink-black);
+            color: var(--paper-cream);
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 8px;
+        }
+
+        .related-box h5 {
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+            margin-bottom: 6px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 3px;
+        }
+
+        .related-box ul {
+            list-style: none;
+        }
+
+        .related-box li {
+            padding: 3px 0;
+            border-bottom: 1px dotted #444;
+            font-size: 7px;
+        }
+
+        .related-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* PAGE NUMBER */
+        .page-number {
+            text-align: center;
+            font-size: 10px;
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 1px solid var(--ink-black);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* SIDEBAR BRIEF */
+        .brief {
+            padding: 6px 0;
+            border-bottom: 1px dotted #999;
+            margin-bottom: 6px;
+        }
+
+        .brief:last-child {
+            border-bottom: none;
+        }
+
+        .brief h5 {
+            font-family: 'Playfair Display', serif;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 3px;
+        }
+
+        .brief p {
+            font-size: 7.5px;
+            line-height: 1.4;
+        }
+
+        /* LETTERS SECTION */
+        .letters-section {
+            background: #f9f9f5;
+            border-top: 2px solid var(--accent-red);
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        .letters-header {
+            font-family: 'Oswald', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-red);
+            margin-bottom: 8px;
+        }
+
+        .letter {
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .letter:last-child {
+            border-bottom: none;
+        }
+
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 9px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .letter-body {
+            font-size: 7px;
+            line-height: 1.4;
+            font-style: italic;
+        }
+
+        .letter-sig {
+            font-size: 6px;
+            color: #666;
+            margin-top: 3px;
+            text-align: right;
+        }
+
+        /* CORRECTION */
+        .correction {
+            background: #fff0f0;
+            border-left: 3px solid var(--accent-red);
+            padding: 6px;
+            margin: 8px 0;
+            font-size: 7px;
+        }
+
+        /* BILL BOX */
+        .bill-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+            border: 2px solid var(--accent-gold);
+            padding: 8px;
+            margin: 8px 0;
+            text-align: center;
+        }
+
+        .bill-box h5 {
+            font-size: 9px;
+            color: var(--accent-red);
+            margin-bottom: 4px;
+        }
+
+        .bill-box .hours {
+            font-size: 7px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-page">
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+            <span class="section-name">Business & Local</span>
+            <span class="logo-small">HuckFinn</span>
+            <span class="date">Wednesday, November 26, 2025</span>
+        </header>
+
+        <!-- MAIN GRID -->
+        <div class="main-grid">
+            <!-- LEFT COLUMN - Lead Stories -->
+            <div class="left-column">
+                
+                <!-- ASOTIN COUNTY - HEADLINE -->
+                <article class="article">
+                    <div class="article-meta">Local Government / Priorities</div>
+                    <h2>Small County Achieves American Dream: Eliminates Ambulances, Completes $19.7 Million Facility to Store Consequences</h2>
+                    <div class="subheadline">Officials Celebrate "Holistic Approach" to Public Safety That Skips the Part Where You Live</div>
+                    <div class="byline">By Helen Backwater · Asotin County, WA</div>
+
+                    <div class="article-body drop-cap">
+                        <p>In what officials are calling "a bold reimagining of public safety," Asotin County this week celebrated two major milestones: the elimination of emergency medical services and the completion of a $19.7 million jail expansion, proving once again that America's commitment to building prisons is matched only by its creativity in finding reasons to fill them.</p>
+
+                        <p>The announcements appeared side by side on the front page of the Lewiston Tribune, in what journalism professors are calling "the most efficient editorial cartoon ever published—because it wasn't even trying to be one."</p>
+
+                        <p>"These are complementary investments," explained County Administrator Thomas Bleakfield. "We're not abandoning residents. We're just meeting them further downstream. Much further. After everything that could have helped has already not happened."</p>
+                    </div>
+
+                    <div class="budget-box">
+                        <h5>📊 Asotin County Budget Priorities, 2025</h5>
+                        <div class="budget-item">
+                            <span class="label">New Jail Facility</span>
+                            <span class="value approved">$19.7M ✓ APPROVED</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="label">EMS Levy (Ambulances)</span>
+                            <span class="value rejected">$1.5M ✗ REJECTED</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="label">Conviction Rate</span>
+                            <span class="value">98%</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="label">Ambulance Availability</span>
+                            <span class="value rejected">0%</span>
+                        </div>
+                    </div>
+
+                    <div class="article-body">
+                        <p>Asotin County maintains a conviction rate of approximately 98%—a number usually reserved for North Korean elections and WebMD diagnoses of cancer. Legal experts note such figures typically indicate a system that overcharges defendants and pressures plea deals. County officials prefer the term "streamlined justice."</p>
+
+                        <p>With EMS eliminated, emergency response has been restructured around Clarkston's sole taxi operator, a man identified only as "Bill," whose operating hours are 3 p.m. to 11 p.m., Tuesday through Saturday, weather and mood permitting.</p>
+
+                        <div class="pullquote">
+                            "If it's after 11 p.m., try not to."
+                            <cite>— Asotin County's Updated Emergency Slogan</cite>
+                        </div>
+
+                        <p>The updated emergency protocol: "Apply pressure. Pray specifically. Wait for Bill or Jesus, whichever arrives first." At press time, Bill could not be reached for comment. Witnesses reported seeing him heading toward the river with a fishing pole and the crushing psychic weight of being the region's entire emergency medical infrastructure.</p>
+                    </div>
+                </article>
+
+                <!-- PG&E ARTICLE - SECONDARY -->
+                <article class="article">
+                    <div class="article-meta">Utilities / Corporate Logic</div>
+                    <h3>PG&E Celebrates Wildly Successful Energy Program By Immediately Shutting It Down Forever</h3>
+                    <div class="subheadline">Power Saver Rewards "worked so well we had to kill it," explains company that once burned down Paradise, California</div>
+                    <div class="byline">Oakland, CA</div>
+
+                    <div class="article-body">
+                        <p>Pacific Gas and Electric Company announced Tuesday that its Power Saver Rewards program, which it described as having "a significant impact" on California's energy grid, will be permanently discontinued on December 31, 2025, marking what executives called "a resounding victory for common sense."</p>
+
+                        <p>The program, which paid customers small amounts to reduce electricity usage during peak demand, reportedly worked so well that PG&E decided the logical next step was to kill it entirely.</p>
+
+                        <p>"The energy saved by our customers has been truly remarkable," said Jennifer Hastings, PG&E's Director of Programs We're Definitely Canceling. "Which is exactly why we can't let this continue. Our shareholders didn't invest in a power company so people could use <em>less</em> electricity."</p>
+
+                        <p>Industry analysts noted that PG&E's decision follows the company's longstanding tradition of bold innovation, such as that time they successfully burned down Paradise, California, and that other time they caused rolling blackouts across the state.</p>
+
+                        <p>At press time, PG&E announced plans to launch an exciting new program in 2026 that will charge customers a small fee for the privilege of reducing their electricity usage during peak demand periods, calling it "the future of customer choice."</p>
+                    </div>
+                </article>
+            </div>
+
+            <!-- MIDDLE COLUMN -->
+            <div class="section-divider">
+                <div class="column-header">Business & Corporate</div>
+
+                <!-- YC JOBS BOARD -->
+                <article class="article">
+                    <div class="article-meta">Startups / Mental Health</div>
+                    <h3>YC Jobs Board Offers Thousands Of Opportunities To Trade Your Mental Health For 0.03% Of A Company That Will Pivot To AI In 6 Months</h3>
+                    <div class="byline">San Francisco, CA</div>
+
+                    <div class="article-body">
+                        <p>Y Combinator's latest jobs board update features over 3,000 positions at early-stage startups, each offering competitive below-market salaries, unlimited PTO that no one takes, and equity packages that will almost certainly be worth nothing but feel exciting to mention at parties.</p>
+
+                        <p>"We're looking for passionate individuals who believe in the mission," explained one founder whose mission changed three times during the interview process. "The equity could be worth millions. Or zero. Probably zero. But maybe millions!"</p>
+
+                        <div class="pullquote">
+                            "At Google I had free food. Here we have 'equity in the snack budget decisions.'"
+                            <cite>— Former Big Tech Employee, Currently Employed #4</cite>
+                        </div>
+
+                        <p>Job listings feature exciting phrases like "fast-paced environment" (no processes), "wear many hats" (we can't afford specialists), and "we're like a family" (boundary violations incoming).</p>
+
+                        <p>One posting for "Founding Engineer" offered 0.03% equity, which analysts calculate could be worth $47 if the company achieves a $150 million valuation—approximately the cost of six months of therapy needed after working there.</p>
+                    </div>
+
+                    <div class="ad-box">
+                        <div class="ad-label">Advertisement</div>
+                        <h5>💼 RUNWAY CALCULATOR™</h5>
+                        <p>Find out exactly when your startup will run out of money!</p>
+                        <p>Features: Panic Mode, Investor Excuse Generator, Pivot Suggestion Engine</p>
+                        <p class="fine-print">*Calculator not responsible for existential crises. Premium tier includes therapist referral network.</p>
+                    </div>
+                </article>
+
+                <!-- MINNETONKA SHOES -->
+                <article class="article">
+                    <div class="article-meta">Consumer Products / Sustainability</div>
+                    <h4>Company Discovers Brilliant Way To Charge $90 For Shoes Made With Garbage Rice</h4>
+                    <div class="byline">Minneapolis, MN</div>
+
+                    <div class="article-body">
+                        <p>Footwear manufacturer Minnetonka has revolutionized sustainable fashion by convincing customers to pay premium prices for moccasins containing agricultural waste that farmers usually can't give away.</p>
+
+                        <p>The company's "Men's Tie Tread" features soles made with "highly durable recycled rice husk"—a phrase combining two words never before associated with rice husks: "highly durable" and "premium material."</p>
+
+                        <p>"We looked at the brittle waste farmers pay us to haul away and thought, 'What if we charged customers $90 for this?'" said a company spokesperson. "Then we added a little green leaf icon and suddenly we're environmental heroes."</p>
+
+                        <p>The "highly durable" claim appears alongside the revelation that only 5% of the sole actually contains rice husk material. Local purchaser Derek Pemberton confirmed: "I'm essentially walking on the stuff they sweep off rice mill floors, and I paid a premium for it. The planet is saved."</p>
+                    </div>
+                </article>
+
+                <div class="related-box">
+                    <h5>📰 Also in Business</h5>
+                    <ul>
+                        <li>Startup Celebrates "Unlimited PTO" Policy As No Employee Has Taken Day Off In 14 Months</li>
+                        <li>Man's Carbon Footprint Reduced 0.003% Thanks To Reusable Straw He Forgets In Car</li>
+                        <li>"We're Like A Family Here," Says CEO Laying Off 30% Of Family</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN - Sidebar -->
+            <div class="section-divider">
+                <div class="column-header">Corporate Meltdowns</div>
+
+                <!-- CAMPBELL'S CISO -->
+                <div class="brief">
+                    <div class="article-meta">Cybersecurity / Irony</div>
+                    <h5>Campbell's CISO Achieves Historic Breach By Not Securing His Own Mouth</h5>
+                    <p>In what experts call "the most successful failure of information security by an information security officer in recorded history," Campbell's VP and Chief Information Security Officer Martin Bally allegedly spent 75 minutes creating a comprehensive audio document of every fireable offense known to HR.</p>
+                    <p>The recording—entirely legal in Michigan's one-party consent state—captured Bally admitting to consuming edibles before work, calling company products "shit for poor people," and sharing views on Indian coworkers that legal experts describe as "almost comically racist."</p>
+                    <p>Whistleblower Robert Garza, who reported the comments, was fired within weeks. Bally remains employed during an "active investigation" now in its tenth month.</p>
+                </div>
+
+                <div class="ad-box">
+                    <div class="ad-label">Advertisement</div>
+                    <h5>🗣️ WHISTLEBLOWER INSURANCE™</h5>
+                    <p>Did you report illegal activity and get fired anyway?</p>
+                    <p>Our actuaries calculate 94% of whistleblowers experience "completely unrelated" termination within 30 days.</p>
+                    <p class="fine-print">Coverage includes wrongful termination suits, resume gaps, therapy, and one (1) ironic "Employee of the Month" plaque.</p>
+                </div>
+
+                <!-- BILL THE TAXI BOX -->
+                <div class="bill-box">
+                    <h5>🚕 CLARKSTON EMS SCHEDULE</h5>
+                    <p class="hours">Bill's Taxi Service<br>
+                    Tue-Sat, 3pm-11pm<br>
+                    (Weather Permitting · Mood Permitting)<br>
+                    <em>"We Get You There Safe—From Non-Emergencies"</em></p>
+                    <p style="font-size: 6px; margin-top: 4px;">Cash only. No Medicare. Driver is not a medical professional but "has seen a lot of stuff." Not responsible for outcomes.</p>
+                </div>
+
+                <!-- LETTERS TO EDITOR -->
+                <div class="letters-section">
+                    <h5 class="letters-header">✉️ Letters to the Editor: Asotin County Budget</h5>
+                    
+                    <div class="letter">
+                        <div class="letter-title">Re: Your Nov. 18 Front Page, Which I Assume Was Intentional</div>
+                        <div class="letter-body">"Your Nov. 18 front page read like satire: 'Clarkston officials vote to eliminate EMS' beside 'Final price tag: $19.7M for new jail.' In case it was accidental, the irony was not. If any readers experience chest pains while reading this, they are advised to remain calm and remember the new jail has excellent medical facilities—provided they can get themselves arrested first."</div>
+                        <div class="letter-sig">— Huck Finn Al, Somewhere on the Mississippi</div>
+                    </div>
+                    
+                    <div class="letter">
+                        <div class="letter-title">I Was the Taxi Driver They Mentioned</div>
+                        <div class="letter-body">"I just want to clarify that I have NOT agreed to be the backup EMS. I run a taxi service. I drive people to Costco. I am not trained in emergency medicine. My trunk is full of luggage. Please stop calling me. I am also closed on Sundays for church."</div>
+                        <div class="letter-sig">— Dale Simmons, Dale's Dependable Taxi</div>
+                    </div>
+                    
+                    <div class="letter">
+                        <div class="letter-title">Actually, The Jail Cells Are Quite Nice</div>
+                        <div class="letter-body">"The beds are better than what I slept on in the Army. If anything, we should ask why Section 8 housing doesn't have these amenities. Besides, an ambulance is a depreciating asset. A jail is a revenue-generating facility that guarantees something bad has already happened. That's fiscal responsibility."</div>
+                        <div class="letter-sig">— Gerald T. Hoffman, Clarkston Heights (a homeowner)</div>
+                    </div>
+                </div>
+
+                <div class="correction">
+                    <strong>CORRECTION:</strong> An earlier version stated Bill was "available" during emergencies. Bill has clarified he drives a 2007 Camry with no sirens and will not run red lights. We regret any lives this may have affected.
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE NUMBER -->
+        <div class="page-number">
+            — Page 4 —
+        </div>
+    </div>
+</body>
+</html>

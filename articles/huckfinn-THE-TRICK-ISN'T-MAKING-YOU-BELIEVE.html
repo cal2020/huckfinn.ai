@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest News Source</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://huckfinn.ai/articles/huckfinn-THE-TRICK-ISN&#x27;T-MAKING-YOU-BELIEVE.html">
+    <meta property="og:title" content="HuckFinn: America&#x27;s Finest News Source">
+    <meta property="og:description" content="&quot;You&#x27;re Not The Audience. You&#x27;re The Loophole.&quot;">
+    <meta property="og:image" content="https://huckfinn.ai/og-image.png">
+    <meta property="og:site_name" content="HuckFinn">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://huckfinn.ai/articles/huckfinn-THE-TRICK-ISN&#x27;T-MAKING-YOU-BELIEVE.html">
+    <meta name="twitter:title" content="HuckFinn: America&#x27;s Finest News Source">
+    <meta name="twitter:description" content="&quot;You&#x27;re Not The Audience. You&#x27;re The Loophole.&quot;">
+    <meta name="twitter:image" content="https://huckfinn.ai/og-image.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink-black: #1a1a1a;
+            --newsprint: #f5f0e6;
+            --aged-paper: #e8e0d0;
+            --faded-ink: #4a4a4a;
+            --red-accent: #8b0000;
+            --rule-gray: #888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            background: var(--newsprint);
+            color: var(--ink-black);
+            line-height: 1.5;
+            font-size: 15px;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+        }
+
+        .newspaper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* MASTHEAD */
+        .masthead {
+            text-align: center;
+            border-bottom: 3px double var(--ink-black);
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+        }
+
+        .masthead-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 10px;
+            font-style: italic;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--rule-gray);
+        }
+
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 72px;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+        }
+
+        .masthead-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-style: italic;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .masthead-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            border-top: 1px solid var(--rule-gray);
+            padding-top: 5px;
+        }
+
+        /* HEADLINE */
+        .headline-section {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--ink-black);
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--faded-ink);
+            margin-bottom: 10px;
+        }
+
+        .byline {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* MAIN CONTENT GRID */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .article-column {
+            column-count: 2;
+            column-gap: 30px;
+            column-rule: 1px solid var(--rule-gray);
+        }
+
+        /* PHOTO */
+        .photo-container {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border: 1px solid var(--ink-black);
+            padding: 5px;
+            background: white;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #d0d0d0 0%, #a0a0a0 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Special Elite', monospace;
+            color: var(--faded-ink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.03) 2px,
+                    rgba(0,0,0,0.03) 4px
+                );
+        }
+
+        .photo-placeholder-text {
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .photo-caption {
+            font-size: 11px;
+            font-style: italic;
+            padding: 8px 5px;
+            border-top: 1px solid var(--rule-gray);
+            text-align: center;
+        }
+
+        .photo-credit {
+            font-size: 9px;
+            text-align: right;
+            color: var(--faded-ink);
+        }
+
+        /* ARTICLE TEXT */
+        .article p {
+            margin-bottom: 15px;
+            text-align: justify;
+            text-indent: 1.5em;
+        }
+
+        .article p:first-of-type {
+            text-indent: 0;
+        }
+
+        .article p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 4em;
+            float: left;
+            line-height: 0.8;
+            padding-right: 8px;
+            padding-top: 4px;
+            font-weight: 900;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 25px 0;
+            font-size: 18px;
+            letter-spacing: 10px;
+            break-inside: avoid;
+        }
+
+        .pull-quote {
+            break-inside: avoid;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            margin: 20px 0;
+            border-top: 3px double var(--ink-black);
+            border-bottom: 3px double var(--ink-black);
+            background: var(--aged-paper);
+        }
+
+        .diamond {
+            font-weight: 700;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            border-left: 2px solid var(--ink-black);
+            padding-left: 20px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule-gray);
+        }
+
+        .sidebar-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--ink-black);
+        }
+
+        /* TV LISTINGS */
+        .tv-listing {
+            font-size: 11px;
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid var(--red-accent);
+        }
+
+        .tv-time {
+            font-weight: 700;
+        }
+
+        .tv-show {
+            font-style: italic;
+        }
+
+        .tv-note {
+            font-size: 9px;
+            color: var(--faded-ink);
+        }
+
+        /* LEGAL NOTICES */
+        .legal-notice {
+            font-size: 10px;
+            background: var(--aged-paper);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--rule-gray);
+        }
+
+        .legal-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        /* CORRECTIONS */
+        .correction {
+            font-size: 11px;
+            padding: 10px;
+            background: #fff;
+            border-left: 3px solid var(--red-accent);
+            margin-bottom: 10px;
+        }
+
+        /* OBITUARY */
+        .obituary {
+            text-align: center;
+            padding: 15px;
+            background: var(--aged-paper);
+            border: 1px solid var(--ink-black);
+        }
+
+        .obituary-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .obituary-dates {
+            font-style: italic;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .obituary-text {
+            font-size: 11px;
+            text-align: justify;
+        }
+
+        /* WEATHER */
+        .weather-forecast {
+            font-size: 11px;
+        }
+
+        .weather-day {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dotted var(--rule-gray);
+        }
+
+        /* CLASSIFIEDS */
+        .classified {
+            font-size: 10px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted var(--rule-gray);
+        }
+
+        .classified-header {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 9px;
+        }
+
+        /* INTERSTITIAL ADS */
+        .interstitial-ad {
+            break-inside: avoid;
+            background: white;
+            border: 3px double var(--ink-black);
+            padding: 15px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .ad-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .ad-body {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .ad-tagline {
+            font-style: italic;
+            font-size: 11px;
+            color: var(--faded-ink);
+        }
+
+        .ad-fine-print {
+            font-size: 7px;
+            margin-top: 10px;
+            color: var(--faded-ink);
+        }
+
+        /* FULL WIDTH SECTIONS */
+        .full-width-section {
+            grid-column: 1 / -1;
+            border-top: 2px solid var(--ink-black);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--rule-gray);
+        }
+
+        /* ADVICE COLUMN */
+        .advice-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .advice-letter {
+            padding: 15px;
+            background: white;
+            border: 1px solid var(--rule-gray);
+        }
+
+        .advice-header {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .advice-signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .advice-response {
+            padding: 15px;
+            background: var(--aged-paper);
+            border: 1px solid var(--rule-gray);
+        }
+
+        /* HOROSCOPES */
+        .horoscopes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .horoscope {
+            font-size: 10px;
+            padding: 10px;
+            background: white;
+            border: 1px solid var(--rule-gray);
+        }
+
+        .horoscope-sign {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        /* POLICE BLOTTER */
+        .police-blotter {
+            column-count: 3;
+            column-gap: 20px;
+            column-rule: 1px solid var(--rule-gray);
+        }
+
+        .blotter-item {
+            font-size: 10px;
+            margin-bottom: 12px;
+            break-inside: avoid;
+        }
+
+        .blotter-location {
+            font-weight: 700;
+            font-size: 9px;
+            text-transform: uppercase;
+        }
+
+        /* CROSSWORD */
+        .crossword-section {
+            display: grid;
+            grid-template-columns: auto 1fr 1fr;
+            gap: 20px;
+        }
+
+        .crossword-grid {
+            display: grid;
+            grid-template-columns: repeat(13, 28px);
+            grid-template-rows: repeat(13, 28px);
+            gap: 0;
+            border: 2px solid var(--ink-black);
+        }
+
+        .crossword-cell {
+            border: 1px solid var(--ink-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            position: relative;
+            background: white;
+        }
+
+        .crossword-cell.black {
+            background: var(--ink-black);
+        }
+
+        .crossword-cell .cell-number {
+            position: absolute;
+            top: 1px;
+            left: 2px;
+            font-size: 8px;
+            font-weight: 400;
+        }
+
+        .crossword-clues {
+            font-size: 10px;
+        }
+
+        .clue-header {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--ink-black);
+            padding-bottom: 3px;
+        }
+
+        .clue {
+            margin-bottom: 5px;
+        }
+
+        .clue-number {
+            font-weight: 700;
+        }
+
+        /* COMMENTS SECTION */
+        .comments-section {
+            background: #f0f0f0;
+            padding: 20px;
+            border: 1px solid var(--rule-gray);
+        }
+
+        .comments-header {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .comment {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 11px;
+        }
+
+        .comment-username {
+            font-weight: 700;
+            color: #1a0dab;
+        }
+
+        .comment-meta {
+            color: #666;
+        }
+
+        .comment-body {
+            line-height: 1.4;
+        }
+
+        .comment-actions {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #666;
+        }
+
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .comment-reply {
+            margin-left: 30px;
+            border-left: 2px solid #ddd;
+            padding-left: 15px;
+        }
+
+        .comment-deleted {
+            color: #999;
+            font-style: italic;
+        }
+
+        .comment-flagged {
+            background: #fff0f0;
+            border-left: 3px solid var(--red-accent);
+        }
+
+        .comment-verified {
+            background: #f0fff0;
+        }
+
+        .verified-badge {
+            background: #4CAF50;
+            color: white;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 9px;
+            margin-left: 5px;
+        }
+
+        .moderator-badge {
+            background: #2196F3;
+            color: white;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 9px;
+            margin-left: 5px;
+        }
+
+        /* RELATED ARTICLES */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-article {
+            border: 1px solid var(--rule-gray);
+            padding: 15px;
+            background: white;
+        }
+
+        .related-image {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(45deg, #ccc, #999);
+            margin-bottom: 10px;
+        }
+
+        .related-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* STOCK TICKER */
+        .stock-ticker {
+            background: var(--ink-black);
+            color: var(--newsprint);
+            padding: 8px 15px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .stock-up {
+            color: #4CAF50;
+        }
+
+        .stock-down {
+            color: #f44336;
+        }
+
+        /* FOOTER */
+        .newspaper-footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 3px double var(--ink-black);
+            margin-top: 30px;
+            font-size: 10px;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>VOLUME MMXXIV, NO. 47</span>
+                <span>"All The News That's Fit To Reclassify"</span>
+                <span>PRICE: YOUR CREDULITY</span>
+            </div>
+            <h1 class="masthead-title">HuckFinn</h1>
+            <p class="masthead-subtitle">America's Finest News Source</p>
+            <div class="masthead-info">
+                <span>SUNDAY, NOVEMBER 30, 2025</span>
+                <span>SERIOUS WHEN AIRING • SATIRICAL WHEN SUED • SINCERE WHEN FUNDRAISING</span>
+                <span>FOUNDED 1783 (RETROACTIVELY)</span>
+            </div>
+        </header>
+
+        <!-- STOCK TICKER -->
+        <div class="stock-ticker">
+            <span>TRUST FUTURES <span class="stock-up">▲12.4%</span></span>
+            <span>CREDULITY HOLDINGS <span class="stock-down">▼8.2%</span></span>
+            <span>HYPERBOLE LLC <span class="stock-up">▲▲24.7%</span></span>
+            <span>REASONABLE VIEWER ETF <span class="stock-down">▼N/A</span></span>
+            <span>PLAUSIBLE DENIABILITY INC <span class="stock-up">▲▲▲47.3%</span></span>
+        </div>
+
+        <!-- HEADLINE -->
+        <section class="headline-section">
+            <h2 class="headline">The Trick Isn't Making You Believe.<br>The Trick Is Making Your Belief Your Fault.</h2>
+            <p class="subheadline">"You're Not The Audience. You're The Loophole."</p>
+            <p class="byline">By Staff Writers • Rhetorical Hyperbole Desk • Washington Bureau of Non-Literal Commentary</p>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- ARTICLE COLUMN -->
+            <article class="article article-column">
+                <!-- PHOTO -->
+                <div class="photo-container">
+                    <svg viewBox="0 0 500 375" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+                        <!-- Background Grid -->
+                        <defs>
+                            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#ffffff08" stroke-width="0.5"/>
+                            </pattern>
+                            <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0066cc;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#003366;stop-opacity:0.1" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <rect width="500" height="375" fill="url(#grid)"/>
+                        
+                        <!-- Left Panel: 8 PM BROADCAST -->
+                        <rect x="10" y="40" width="230" height="290" rx="5" fill="#111" stroke="#333" stroke-width="2"/>
+                        <rect x="15" y="45" width="220" height="200" fill="url(#screenGlow)"/>
+                        
+                        <!-- Anchor Silhouette Left -->
+                        <ellipse cx="125" cy="140" rx="35" ry="40" fill="#1a1a1a"/>
+                        <rect x="90" y="175" width="70" height="60" fill="#1a1a1a"/>
+                        <rect x="85" y="185" width="80" height="50" fill="#222" rx="3"/>
+                        
+                        <!-- Desk Left -->
+                        <rect x="60" y="210" width="130" height="35" fill="#2a2a2a" rx="2"/>
+                        
+                        <!-- Breaking News Chyron Left -->
+                        <rect x="20" y="205" width="200" height="35" fill="#cc0000"/>
+                        <text x="25" y="218" font-family="Arial Black, sans-serif" font-size="8" fill="white" font-weight="bold">BREAKING NEWS</text>
+                        <rect x="20" y="220" width="200" height="18" fill="#222"/>
+                        <text x="25" y="233" font-family="Arial, sans-serif" font-size="7" fill="white">THE TRUTH THEY DON'T WANT</text>
+                        <text x="25" y="233" font-family="Arial, sans-serif" font-size="7" fill="white" dy="8">YOU TO HEAR</text>
+                        
+                        <!-- Time Label Left -->
+                        <rect x="15" y="250" width="100" height="20" fill="#000" opacity="0.8"/>
+                        <text x="20" y="263" font-family="Courier, monospace" font-size="10" fill="#00ff00">8:00 PM EST</text>
+                        
+                        <!-- Trust Badge Left -->
+                        <circle cx="200" cy="260" r="20" fill="#ffd700" stroke="#b8860b" stroke-width="2"/>
+                        <text x="200" y="256" font-family="Arial, sans-serif" font-size="5" fill="#000" text-anchor="middle">MOST</text>
+                        <text x="200" y="263" font-family="Arial Black, sans-serif" font-size="6" fill="#000" text-anchor="middle">TRUSTED</text>
+                        <text x="200" y="270" font-family="Arial, sans-serif" font-size="5" fill="#000" text-anchor="middle">IN NEWS</text>
+                        
+                        <!-- Label Left -->
+                        <text x="125" y="305" font-family="Georgia, serif" font-size="11" fill="#888" text-anchor="middle" font-style="italic">For Viewers</text>
+                        <text x="125" y="320" font-family="Georgia, serif" font-size="9" fill="#666" text-anchor="middle">"This is real."</text>
+                        
+                        <!-- Center Divider -->
+                        <line x1="250" y1="50" x2="250" y2="320" stroke="#444" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="250" y="35" font-family="Georgia, serif" font-size="12" fill="#666" text-anchor="middle" font-style="italic">Same Person</text>
+                        
+                        <!-- VS Symbol -->
+                        <circle cx="250" cy="185" r="18" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+                        <text x="250" y="190" font-family="Georgia, serif" font-size="14" fill="#888" text-anchor="middle" font-weight="bold">VS</text>
+                        
+                        <!-- Right Panel: 10 AM DEPOSITION -->
+                        <rect x="260" y="40" width="230" height="290" rx="5" fill="#f5f0e6" stroke="#333" stroke-width="2"/>
+                        
+                        <!-- Courtroom Setting -->
+                        <rect x="265" y="45" width="220" height="200" fill="#e8e0d0"/>
+                        
+                        <!-- Wood Paneling -->
+                        <rect x="265" y="45" width="220" height="30" fill="#8b4513"/>
+                        <text x="375" y="65" font-family="Times New Roman, serif" font-size="10" fill="#d4a574" text-anchor="middle">UNITED STATES DISTRICT COURT</text>
+                        
+                        <!-- Witness Box -->
+                        <rect x="320" y="120" width="80" height="80" fill="#deb887" stroke="#8b4513" stroke-width="2"/>
+                        
+                        <!-- Same Anchor (smaller, hunched) -->
+                        <ellipse cx="360" cy="145" rx="25" ry="28" fill="#1a1a1a"/>
+                        <rect x="340" y="168" width="40" height="30" fill="#333"/>
+                        
+                        <!-- Lawyer Figure -->
+                        <ellipse cx="290" cy="180" rx="15" ry="18" fill="#1a1a1a"/>
+                        <rect x="278" y="195" width="24" height="25" fill="#222"/>
+                        
+                        <!-- Legal Document -->
+                        <rect x="400" y="150" width="60" height="80" fill="white" stroke="#333" stroke-width="1"/>
+                        <line x1="405" y1="160" x2="455" y2="160" stroke="#ccc" stroke-width="1"/>
+                        <line x1="405" y1="170" x2="455" y2="170" stroke="#ccc" stroke-width="1"/>
+                        <line x1="405" y1="180" x2="455" y2="180" stroke="#ccc" stroke-width="1"/>
+                        <line x1="405" y1="190" x2="440" y2="190" stroke="#ccc" stroke-width="1"/>
+                        <text x="430" y="220" font-family="Courier, monospace" font-size="6" fill="#333" text-anchor="middle">LEGAL</text>
+                        <text x="430" y="227" font-family="Courier, monospace" font-size="6" fill="#333" text-anchor="middle">BRIEF</text>
+                        
+                        <!-- Quote Bubble -->
+                        <rect x="280" y="85" width="180" height="30" rx="5" fill="white" stroke="#333" stroke-width="1"/>
+                        <text x="370" y="100" font-family="Georgia, serif" font-size="7" fill="#333" text-anchor="middle" font-style="italic">"No reasonable viewer would take</text>
+                        <text x="370" y="110" font-family="Georgia, serif" font-size="7" fill="#333" text-anchor="middle" font-style="italic">this literally, Your Honor."</text>
+                        <polygon points="320,115 330,115 325,125" fill="white" stroke="#333" stroke-width="1"/>
+                        
+                        <!-- Time Label Right -->
+                        <rect x="270" y="250" width="100" height="20" fill="#8b4513" opacity="0.9"/>
+                        <text x="275" y="263" font-family="Courier, monospace" font-size="10" fill="#f5f0e6">10:00 AM EST</text>
+                        
+                        <!-- Disclaimer Badge -->
+                        <rect x="390" y="250" width="80" height="30" fill="#8b0000" rx="3"/>
+                        <text x="430" y="263" font-family="Arial, sans-serif" font-size="6" fill="white" text-anchor="middle">ENTERTAINMENT</text>
+                        <text x="430" y="273" font-family="Arial, sans-serif" font-size="6" fill="white" text-anchor="middle">PURPOSES ONLY</text>
+                        
+                        <!-- Label Right -->
+                        <text x="375" y="305" font-family="Georgia, serif" font-size="11" fill="#888" text-anchor="middle" font-style="italic">For Judges</text>
+                        <text x="375" y="320" font-family="Georgia, serif" font-size="9" fill="#666" text-anchor="middle">"Obviously a bit."</text>
+                        
+                        <!-- Bottom Label -->
+                        <rect x="100" y="340" width="300" height="28" fill="#1a1a1a" rx="3"/>
+                        <text x="250" y="358" font-family="Georgia, serif" font-size="12" fill="#c0c0c0" text-anchor="middle" font-weight="bold">SCHRÖDINGER'S ANCHORMAN</text>
+                        
+                        <!-- Quantum Symbol -->
+                        <text x="70" y="358" font-family="Arial, sans-serif" font-size="16" fill="#666">⚛</text>
+                        <text x="430" y="358" font-family="Arial, sans-serif" font-size="16" fill="#666">⚖</text>
+                    </svg>
+                    <p class="photo-caption">"Nielsen says they trust him more than their spouse. The judge says no reasonable person would. Both are under oath."</p>
+                    <p class="photo-credit">Illustration: HuckFinn Graphics Dept. / Quantum Journalism Division</p>
+                </div>
+
+                <p>Washington—In a landmark development that surprised absolutely no one who has ever watched cable news while also reading court filings, America's leading truth-tellers have been officially recognized as comedians, entertainers, and rhetorical hyperbole artists—but only, crucially, when being sued.</p>
+
+                <p>The revelation comes as legal scholars have identified what they're calling the most powerful force in American jurisprudence: the Retroactive Satire Defense, a legal maneuver that allows media personalities to spend years insisting they are the last honest voice in America, then inform judges that obviously no reasonable viewer would take them literally.</p>
+
+                <p class="diamond">"The deal is simple," explained one media attorney who requested anonymity because he is billing $1,400 an hour to explain things that should be obvious. "They get your trust, your time, and your money. You get to be the 'reasonable viewer who should have known better.'"</p>
+
+                <div class="pull-quote">
+                    "There are two audiences: the one that watches—credulous, loyal, emotionally welded to the host—and the one that appears in court filings—sophisticated, skeptical, impossible to mislead. Same people. Different needs."
+                </div>
+
+                <p>The defense has been deployed with remarkable success across the political spectrum, proving that if nothing else unites America, it is the bipartisan consensus that viewers are simultaneously too smart to be fooled and just gullible enough to pay everyone's mortgage.</p>
+
+                <div class="section-break">◆ ◆ ◆</div>
+
+                <!-- INTERSTITIAL AD 1 -->
+                <div class="interstitial-ad">
+                    <div class="ad-headline">CLOWN NOSE™ Brand Legal Defense Kit</div>
+                    <div class="ad-body">Patented spring-loaded deployment system activates automatically upon service of process. Briefcase-compatible. Court-tested.</div>
+                    <div class="ad-tagline">"When the joke's on you, make sure it's legally a joke."</div>
+                    <div class="ad-fine-print">*Not responsible for viewers who took previous statements literally. Consult your attorney before removing nose.</div>
+                </div>
+
+                <p>Legal experts have traced the defense's genealogy to Hustler v. Falwell, the 1988 Supreme Court case that protected a parody advertisement so obviously fake that no reasonable person could believe it. The modern innovation, scholars note, has been to create content that looks exactly like news, sounds exactly like news, is branded as news, and insists it is news—then, years later, claim the Hustler precedent applies.</p>
+
+                <p>"It's like saying a fire drill and an actual fire are basically the same thing once you flatten them into a PDF," observed Professor Miranda Chen of Yale Law School's newly established Center for Quantum Journalism Studies.</p>
+
+                <p class="diamond">The most honest moment in modern media, Chen added, is the legal filing. "That's when they finally tell you what they thought of you all along."</p>
+
+                <div class="section-break">◆ ◆ ◆</div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; text-align: center; margin: 20px 0;">THE REASONABLE VIEWER: A FIELD GUIDE</h3>
+
+                <p>Central to the defense is a mythical creature called the Reasonable Viewer, a legal construct who is sophisticated enough to detect sarcasm yet credulous enough to pre-order a 30-day survival bucket because the man on TV seemed really worried.</p>
+
+                <p>According to court documents, the Reasonable Viewer arrives at each broadcast with a law degree's worth of skepticism about rhetorical devices, yet somehow also calls into shows, buys books, donates to legal funds, and yells at Thanksgiving dinner about things the host said.</p>
+
+                <p class="diamond">"The Reasonable Viewer is a legal cryptid," explained Dr. James Whitmore, who studies media ecology at Columbia. "Too sophisticated to be fooled, too loyal to unsubscribe, visible only during depositions, and somehow still buying the supplements."</p>
+
+                <!-- INTERSTITIAL AD 2 -->
+                <div class="interstitial-ad">
+                    <div class="ad-headline">SURVIVAL BUCKET DELUXE</div>
+                    <div class="ad-body">30 Days of Freeze-Dried Certainty<br>For when the things the man on TV said turn out to be happening (or not happening, check the legal filing)</div>
+                    <div class="ad-tagline">"Because reasonable viewers prepare for the apocalypse they were definitely not supposed to take literally."</div>
+                    <div class="ad-fine-print">*Product sold by host's company. Host's statements about impending doom are rhetorical hyperbole. Bucket is real. Doom status unclear.</div>
+                </div>
+
+                <div class="pull-quote">
+                    "You are the only participant in this system who is expected to be sincere."
+                </div>
+
+                <p>The implications are staggering. Every night at 8 PM, millions of Americans sit down to watch programming that, according to Nielsen, they trust more than their own relatives. According to federal courts, those same viewers understand the programming to be exaggeration and hyperbole not meant as factual claims.</p>
+
+                <p class="diamond">The same human being is marketed as a prophet and defended as a performer. Schrödinger's Anchorman, collapsing into "journalism" for advertisers and "entertainment" for judges, depending on who's asking and how much is at stake.</p>
+
+                <div class="section-break">◆ ◆ ◆</div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; text-align: center; margin: 20px 0;">THE CONFESSION IN THE FILING</h3>
+
+                <p>Perhaps the most striking aspect of the Retroactive Satire Defense is what it reveals about the relationship between broadcaster and audience.</p>
+
+                <p class="diamond">"The legal filing IS the confession," said media critic Pamela Torres. "It says: 'We knew you believed us. We knew you weren't supposed to. We did it anyway. And we will do it again tomorrow night at 8.'"</p>
+
+                <p>There is no refund on belief, Torres noted. You cannot un-live the argument with your brother, un-donate to the legal fund, un-share the post. But the man who sold you all of it can absolutely un-mean it. Only you are stuck with the receipt.</p>
+
+                <!-- INTERSTITIAL AD 3 -->
+                <div class="interstitial-ad">
+                    <div class="ad-headline">TACTICAL TAINT WIPES™</div>
+                    <div class="ad-body">As Advertised During Programming That Is Obviously Rhetorical Hyperbole</div>
+                    <div class="ad-tagline">"The wipes are real. The apocalypse is opinion. Your taint deserves the truth."</div>
+                    <div class="ad-fine-print">*Endorsed by host in his capacity as entertainer. Purchase constitutes acknowledgment of reasonable viewer status.</div>
+                </div>
+
+                <p>The defense has created what scholars call "evidence-activated comedy"—a revolutionary new genre in which content isn't funny until it's entered into evidence. Jokes that require a subpoena to land.</p>
+
+                <p class="diamond">"Your grandparents got propaganda that told them what to think," observed Professor Chen. "You got propaganda that tells you what to think AND what you should have thought AND that the difference is your personal failure."</p>
+
+                <div class="section-break">◆ ◆ ◆</div>
+
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 20px; text-align: center; margin: 20px 0;">THE ONLY ONE WITHOUT A DEFENSE</h3>
+
+                <p>In the end, the Retroactive Satire Defense illuminates a simple asymmetry in American media.</p>
+
+                <p>The host has "rhetorical hyperbole." The network has "opinion programming." The advertiser has "contextual placement." The lawyer has "First Amendment protected speech."</p>
+
+                <p class="diamond">You have a cable bill and a growing suspicion no one told you the rules.</p>
+
+                <p>Everyone on camera has access to the defense. The only person who doesn't get to say "I was kidding" is the one who wasn't in on the joke—the one holding the remote.</p>
+
+                <div class="pull-quote">
+                    "They sell certainty and buy deniability. You buy certainty and sell nothing. When the trade goes bad, they keep the deniability and you keep the certainty. That's the whole business model. You're not a customer. You're the margin."
+                </div>
+
+                <p>The HuckFinn editorial board reached out to several networks for comment. All declined, though one communications director did note, off the record, that our request was "obviously hyperbolic and no reasonable journalist would expect a response."</p>
+
+                <p class="diamond">We look forward to citing that in our next legal filing.</p>
+
+                <p style="text-align: center; font-style: italic; margin-top: 30px;">—30—</p>
+            </article>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <!-- TV LISTINGS -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-header">📺 Tonight's Listings</h4>
+                    <div class="tv-listing">
+                        <span class="tv-time">8:00 PM</span> — <span class="tv-show">"The Truth They Don't Want You To Hear"</span>
+                        <p class="tv-note">*Content may be reclassified as obvious exaggeration in future litigation</p>
+                    </div>
+                    <div class="tv-listing">
+                        <span class="tv-time">9:00 PM</span> — <span class="tv-show">"I'm Just Asking Questions"</span>
+                        <p class="tv-note">*Questions later revealed to be rhetorical, non-literal, and protected speech</p>
+                    </div>
+                    <div class="tv-listing">
+                        <span class="tv-time">10:00 PM</span> — <span class="tv-show">"What They're Not Telling You"</span>
+                        <p class="tv-note">*We are also not telling you this is entertainment</p>
+                    </div>
+                    <div class="tv-listing">
+                        <span class="tv-time">10:00 AM (Next Day)</span> — <span class="tv-show">Deposition (Live)</span>
+                        <p class="tv-note">*Rerun: "Obviously No Reasonable Viewer Would..."</p>
+                    </div>
+                </div>
+
+                <!-- LEGAL NOTICES -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-header">⚖️ Legal Notices</h4>
+                    <div class="legal-notice">
+                        <p class="legal-title">NOTICE OF RETROACTIVE RECLASSIFICATION</p>
+                        <p>All statements broadcast between 2016-2024 have been retroactively designated as "rhetorical hyperbole." Viewers who believed said statements are advised to update their reasonable viewer status immediately.</p>
+                    </div>
+                    <div class="legal-notice">
+                        <p class="legal-title">CLASS ACTION NOTICE</p>
+                        <p><em>In re: Viewers Who Should Have Known Better</em><br>If you believed programming labeled "news" was news, you may be entitled to nothing. Filing deadline: Before you realized.</p>
+                    </div>
+                    <div class="legal-notice">
+                        <p class="legal-title">CEASE & DESIST</p>
+                        <p>To: Reality<br>From: Legal Department<br>RE: Please stop being indistinguishable from our content. It's making discovery complicated.</p>
+                    </div>
+                </div>
+
+                <!-- CORRECTIONS -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-header">📝 Corrections & Clarifications</h4>
+                    <div class="correction">
+                        <strong>Correction:</strong> In yesterday's broadcast, we stated the election was stolen. We regret that viewers interpreted this as a factual claim rather than the obvious metaphorical commentary it was.
+                    </div>
+                    <div class="correction">
+                        <strong>Clarification:</strong> When we said "this is really happening," we meant it in a non-literal, entertainment-adjacent sense. We apologize for any sincerity that may have been inferred.
+                    </div>
+                    <div class="correction">
+                        <strong>Retraction:</strong> We previously claimed to be journalists. This was hyperbole. We are entertainers who dress like journalists. Thank you for understanding.
+                    </div>
+                </div>
+
+                <!-- OBITUARY -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-header">⚰️ Obituaries</h4>
+                    <div class="obituary">
+                        <p class="obituary-name">The Reasonable Viewer</p>
+                        <p class="obituary-dates">1964 — 2024</p>
+                        <p class="obituary-text">The Reasonable Viewer passed away quietly during a deposition, surrounded by attorneys. Born during the Fairness Doctrine, the Reasonable Viewer spent decades believing what was labeled "news" while simultaneously (according to legal filings) understanding it to be entertainment. Survived by millions of Unreasonable Viewers who still don't know the difference. In lieu of flowers, donations may be made to the Legal Defense Fund of your choice.</p>
+                    </div>
+                </div>
+
+                <!-- WEATHER -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-header">🌦️ Media Forecast</h4>
+                    <div class="weather-forecast">
+                        <div class="weather-day">
+                            <span><strong>TODAY</strong></span>
+                            <span>80% Rhetorical Hyperbole</span>
+                        </div>
+                        <div class="weather-day">
+                            <span><strong>TONIGHT</strong></span>
+                            <span>Heavy Certainty, clearing by deposition</span>
+                        </div>
+                        <div class="weather-day">
+                            <span><strong>TOMORROW</strong></span>
+                            <span>Scattered Plausible Deniability</span>
+                        </div>
+                        <div class="weather-day">
+                            <span><strong>WEEKEND</strong></span>
+                            <span>Emotional Golden Retriever conditions persist</span>
+                        </div>
+                        <div class="weather-day">
+                            <span><strong>EXTENDED</strong></span>
+                            <span>Indefinite fog of non-literal commentary</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CLASSIFIEDS -->
+                <div class="sidebar-section">
+                    <h4 class="sidebar-header">📋 Classifieds</h4>
+                    <div class="classified">
+                        <p class="classified-header">HELP WANTED</p>
+                        <p><strong>Rhetorical Hyperbole Specialist</strong> — Major cable network seeks experienced non-literal commentator. Must be willing to believe statements Monday-Friday 8-11 PM and disbelieve them during depositions. Competitive salary + plausible deniability package.</p>
+                    </div>
+                    <div class="classified">
+                        <p class="classified-header">FOR SALE</p>
+                        <p><strong>GOALPOSTS</strong> — Slightly used. Very mobile. Can be relocated on short notice. Contact: Legal Dept.</p>
+                    </div>
+                    <div class="classified">
+                        <p class="classified-header">SERVICES</p>
+                        <p><strong>REASONABLE VIEWER CERTIFICATION</strong> — Did you believe it? Shouldn't have! We'll backdate your skepticism for just $499. Includes laminated card and court-admissible affidavit.</p>
+                    </div>
+                    <div class="classified">
+                        <p class="classified-header">LOST & FOUND</p>
+                        <p><strong>LOST:</strong> Distinction between news and entertainment. Last seen 1987. If found, do NOT return to cable news. Reward: One reasonable viewer.</p>
+                    </div>
+                    <div class="classified">
+                        <p class="classified-header">PERSONALS</p>
+                        <p><strong>MISSED CONNECTION:</strong> Saw you at the January 6th hearing. You said we were right. Now you say we should have known. Coffee?</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- ADVICE COLUMN -->
+        <section class="full-width-section">
+            <h3 class="section-title">Dear Reasonable Viewer — An Advice Column</h3>
+            <div class="advice-column">
+                <div class="advice-letter">
+                    <p class="advice-header">Dear Reasonable Viewer,</p>
+                    <p>My husband has been watching the same cable news host for seven years. He quotes him at dinner, donated to his legal fund, and named our dog after him. Last week, I showed him the court filing where the host's lawyers said "no reasonable person would believe" the statements. My husband says that's fake news. The court filing is fake news. Am I the unreasonable one?</p>
+                    <p class="advice-signature">— Confused in Connecticut</p>
+                </div>
+                <div class="advice-response">
+                    <p class="advice-header">Dear Confused,</p>
+                    <p>Legally, yes. According to the filing, your husband should have known it was entertainment. The fact that he didn't is, per the defense, evidence of his own unreasonableness. He believed sincerely, which makes him—by definition—not the target audience the lawyers described. The target audience was always a sophisticated skeptic who also somehow paid for premium content. You're both trapped in a paradox. The dog is innocent. Consider couples therapy and a streaming service.</p>
+                    <p class="advice-signature">— RV</p>
+                </div>
+                <div class="advice-letter">
+                    <p class="advice-header">Dear Reasonable Viewer,</p>
+                    <p>I'm a cable news host. Off the record: I know exactly what I'm doing. But my audience believes me, and it feels great. When they cheer, I feel powerful. When they donate, I feel valued. When they act on what I said, I feel... complicated. Am I a bad person?</p>
+                    <p class="advice-signature">— Anonymous (8 PM Weeknights)</p>
+                </div>
+                <div class="advice-response">
+                    <p class="advice-header">Dear Anonymous,</p>
+                    <p>That depends on which you you're asking about. The 8 PM you is a truth-telling patriot. The 10 AM deposition you is a performer doing a bit. Ethically, you've distributed the question across multiple legal identities, making it impossible to answer. Financially, you're fine. Spiritually, maybe talk to someone. Not on air, obviously.</p>
+                    <p class="advice-signature">— RV</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOROSCOPES -->
+        <section class="full-width-section">
+            <h3 class="section-title">⭐ Legal Horoscopes ⭐</h3>
+            <div class="horoscopes-grid">
+                <div class="horoscope">
+                    <p class="horoscope-sign">♈ ARIES</p>
+                    <p>Your statements will be taken literally this week. Avoid broadcasts. The moon suggests settling out of court.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♉ TAURUS</p>
+                    <p>Venus enters your discovery phase. Good time to reclassify old tweets as "obvious satire." Lucky number: $787.5 million.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♊ GEMINI</p>
+                    <p>Your dual nature serves you well. You are both journalist AND entertainer. The courts can't decide. Neither can you.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♋ CANCER</p>
+                    <p>Mercury retrograde means your hyperbole may be misinterpreted as facts. File prophylactic disclaimers immediately.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♌ LEO</p>
+                    <p>Your natural charisma makes people believe you. This is legally your problem. Consider a persona. Stars favor "performance art" defense.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♍ VIRGO</p>
+                    <p>Your attention to detail means you actually read the court filings. This makes you an unreasonable viewer. Ignorance is aligned with Jupiter.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♎ LIBRA</p>
+                    <p>Balance is key. Say it's real on air, say it's fake in filings. The scales remain even. So does your paycheck.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♏ SCORPIO</p>
+                    <p>Your intensity reads as sincerity. Dial it back or prepare depositions. The scorpion's tail is non-literal commentary.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♐ SAGITTARIUS</p>
+                    <p>Your arrow of truth lands somewhere between "news" and "entertainment." Stay in that zone. It's expensive but safe.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♑ CAPRICORN</p>
+                    <p>Your statements will be reclassified by the next lunar cycle. Avoid subpoenas. Save receipts. Buy goalposts.</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♒ AQUARIUS</p>
+                    <p>You're ahead of your time. You already knew it was satire. The stars confirm your reasonable viewer status. (Citation needed.)</p>
+                </div>
+                <div class="horoscope">
+                    <p class="horoscope-sign">♓ PISCES</p>
+                    <p>You swim in two waters: belief and doubt. Both are monetizable. Lean into the ambiguity. Legal costs: elevated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- POLICE BLOTTER -->
+        <section class="full-width-section">
+            <h3 class="section-title">🚔 Police Blotter</h3>
+            <div class="police-blotter">
+                <div class="blotter-item">
+                    <p class="blotter-location">DOWNTOWN — 8:47 PM</p>
+                    <p>Man arrested for believing broadcast. When informed by officers that no reasonable person would take statements literally, suspect reportedly asked "then why did they say it on the news?" Charged with unreasonable viewership. Bail set at one survival bucket.</p>
+                </div>
+                <div class="blotter-item">
+                    <p class="blotter-location">WEST SIDE — 10:15 AM</p>
+                    <p>Woman cited for attempting to use "rhetorical hyperbole" defense at DMV. Claimed her expired license was "non-literal commentary on bureaucracy." Defense rejected. Fine: $150 and one (1) reasonable person lecture.</p>
+                </div>
+                <div class="blotter-item">
+                    <p class="blotter-location">SUBURBAN — 6:30 PM</p>
+                    <p>Thanksgiving disturbance reported. Family members unable to determine which statements at dinner were news, which were entertainment. Turkey thrown. Casualties: One uncle's relationship with daughter. Responding officers also confused.</p>
+                </div>
+                <div class="blotter-item">
+                    <p class="blotter-location">FINANCIAL DISTRICT — 2:00 PM</p>
+                    <p>Cable network executive detained briefly after being unable to explain difference between "news" division and "opinion" division. Released after lawyers arrived and explained it depends who's asking.</p>
+                </div>
+                <div class="blotter-item">
+                    <p class="blotter-location">COURTHOUSE — 9:00 AM</p>
+                    <p>Judge reported missing after attempting to locate "reasonable viewer" for testimony. Search ongoing. Last seen muttering "they can't all be unreasonable" near jury room.</p>
+                </div>
+                <div class="blotter-item">
+                    <p class="blotter-location">RADIO DISTRICT — 11:00 PM</p>
+                    <p>Performance artist cited for accidentally telling truth during three-hour broadcast. License suspended pending review. Subject claims it was "an obvious bit that failed."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CROSSWORD -->
+        <section class="full-width-section">
+            <h3 class="section-title">🧩 The Retroactive Satire Crossword</h3>
+            <div class="crossword-section">
+                <div class="crossword-grid">
+                    <!-- Row 1 -->
+                    <div class="crossword-cell"><span class="cell-number">1</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"><span class="cell-number">2</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 2 -->
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 3 -->
+                    <div class="crossword-cell"><span class="cell-number">3</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"><span class="cell-number">4</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 4 -->
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 5 -->
+                    <div class="crossword-cell"><span class="cell-number">5</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"><span class="cell-number">6</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 6 -->
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 7 -->
+                    <div class="crossword-cell"><span class="cell-number">7</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 8 -->
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 9 -->
+                    <div class="crossword-cell"><span class="cell-number">8</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"><span class="cell-number">9</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 10 -->
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 11 -->
+                    <div class="crossword-cell"><span class="cell-number">10</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"><span class="cell-number">11</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 12 -->
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"></div>
+                    <!-- Row 13 -->
+                    <div class="crossword-cell"><span class="cell-number">12</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell black"></div>
+                    <div class="crossword-cell"><span class="cell-number">13</span></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                    <div class="crossword-cell"></div>
+                </div>
+
+                <div class="crossword-clues">
+                    <p class="clue-header">ACROSS</p>
+                    <p class="clue"><span class="clue-number">1.</span> What no reasonable viewer would do (7)</p>
+                    <p class="clue"><span class="clue-number">2.</span> Type of bucket sold during apocalypse warnings (8)</p>
+                    <p class="clue"><span class="clue-number">3.</span> "Obviously no ___ person would..." (10)</p>
+                    <p class="clue"><span class="clue-number">5.</span> What the host was doing, according to lawyers (7)</p>
+                    <p class="clue"><span class="clue-number">7.</span> "Rhetorical ___" (9)</p>
+                    <p class="clue"><span class="clue-number">8.</span> What you have a bill for (5)</p>
+                    <p class="clue"><span class="clue-number">10.</span> "___ artist" defense (11)</p>
+                    <p class="clue"><span class="clue-number">12.</span> Where the defense is deployed (5)</p>
+                    <p class="clue"><span class="clue-number">13.</span> What the filing actually is (10)</p>
+                </div>
+
+                <div class="crossword-clues">
+                    <p class="clue-header">DOWN</p>
+                    <p class="clue"><span class="clue-number">1.</span> What advertisers buy (6)</p>
+                    <p class="clue"><span class="clue-number">2.</span> Quantum cat's owner, also an anchor type (11)</p>
+                    <p class="clue"><span class="clue-number">4.</span> Color of the removable nose (5)</p>
+                    <p class="clue"><span class="clue-number">6.</span> What viewers emotionally are (8)</p>
+                    <p class="clue"><span class="clue-number">9.</span> What you can't get on belief (6)</p>
+                    <p class="clue"><span class="clue-number">11.</span> "___ consent" (13)</p>
+                    <p class="clue" style="margin-top: 15px; font-style: italic; font-size: 9px;">ANSWERS: ACROSS: 1-BELIEVE, 2-SURVIVAL, 3-REASONABLE, 5-KIDDING, 7-HYPERBOLE, 8-CABLE, 10-PERFORMANCE, 12-COURT, 13-CONFESSION. DOWN: 1-BELIEF, 2-SCHRODINGER, 4-CLOWN, 6-RETRIEVER, 9-REFUND, 11-MANUFACTURING</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMENTS SECTION -->
+        <section class="full-width-section">
+            <h3 class="section-title">💬 Comments (2,847)</h3>
+            <div class="comments-section">
+                <div class="comments-header">
+                    Showing top comments • Sort by: Most Reasonable ▼
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">PatriotEagle1776</span></span>
+                        <span class="comment-meta">2 hours ago • Flagged for sincerity</span>
+                    </div>
+                    <div class="comment-body">
+                        This is fake news. The REAL fake news is the mainstream media. My guy tells the TRUTH. The court filing is obviously taken out of context. I didn't read it but I know.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 4,521</span>
+                        <span>👎 892</span>
+                        <span>Reply</span>
+                        <span>Report as Reasonable</span>
+                    </div>
+
+                    <div class="comment comment-reply">
+                        <div class="comment-header">
+                            <span><span class="comment-username">ActualLawyer_NotJoking</span><span class="verified-badge">✓ JD</span></span>
+                            <span class="comment-meta">1 hour ago</span>
+                        </div>
+                        <div class="comment-body">
+                            I literally wrote one of these briefs. We said exactly what the article says we said. This is what we said. I was there. I said it.
+                        </div>
+                        <div class="comment-actions">
+                            <span>👍 2,102</span>
+                            <span>👎 3,847</span>
+                            <span>Reply</span>
+                        </div>
+
+                        <div class="comment comment-reply">
+                            <div class="comment-header">
+                                <span><span class="comment-username">PatriotEagle1776</span></span>
+                                <span class="comment-meta">58 minutes ago</span>
+                            </div>
+                            <div class="comment-body">
+                                Fake lawyer. Deep state plant. Nice try fed.
+                            </div>
+                            <div class="comment-actions">
+                                <span>👍 6,203</span>
+                                <span>👎 201</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment comment-verified">
+                    <div class="comment-header">
+                        <span><span class="comment-username">OnionWriter_Actual</span><span class="verified-badge">✓ Satire Professional</span></span>
+                        <span class="comment-meta">3 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        We spent 30 years perfecting the art of making fake things obviously fake. These guys spent 30 years making real things look real and then calling them fake in court. Honestly? Respect for the hustle. Absolutely furious, but respect.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 12,847</span>
+                        <span>👎 102</span>
+                        <span>Reply</span>
+                        <span>🏆 Awarded: "Reasonable Satirist"</span>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">BothSidesGuy</span></span>
+                        <span class="comment-meta">2 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        To be fair, both sides do this. Tucker did it. Rachel did it. We should really be focusing on the REAL issue which is that I haven't told you what the real issue is but it's definitely not this.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 847</span>
+                        <span>👎 1,203</span>
+                        <span>Reply</span>
+                    </div>
+
+                    <div class="comment comment-reply">
+                        <div class="comment-header">
+                            <span><span class="comment-username">ThatsLiterallyThePoint</span></span>
+                            <span class="comment-meta">1 hour ago</span>
+                        </div>
+                        <div class="comment-body">
+                            ...the article explicitly says both sides do this. That's literally the point. Did you read it?
+                        </div>
+                        <div class="comment-actions">
+                            <span>👍 2,891</span>
+                            <span>👎 12</span>
+                        </div>
+
+                        <div class="comment comment-reply">
+                            <div class="comment-header">
+                                <span><span class="comment-username">BothSidesGuy</span></span>
+                                <span class="comment-meta">45 minutes ago</span>
+                            </div>
+                            <div class="comment-body">
+                                I don't read articles. I read headlines and then add nuance.
+                            </div>
+                            <div class="comment-actions">
+                                <span>👍 5,672</span>
+                                <span>👎 34</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">GoldenRetrieverActual</span></span>
+                        <span class="comment-meta">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        I'm in this article and I don't like it 🐕
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 24,891</span>
+                        <span>👎 3</span>
+                        <span>Reply</span>
+                        <span>🏆 Best Comment</span>
+                    </div>
+                </div>
+
+                <div class="comment comment-flagged">
+                    <div class="comment-header">
+                        <span><span class="comment-username">DELETED_USER_47392</span></span>
+                        <span class="comment-meta">4 hours ago • Comment under legal review</span>
+                    </div>
+                    <div class="comment-body comment-deleted">
+                        [This comment has been retroactively reclassified as rhetorical hyperbole and removed. The user's belief that this was a real comment has been noted as evidence of their unreasonable viewership.]
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">BoomerDad1955</span></span>
+                        <span class="comment-meta">3 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Back in my day Walter Cronkite told us the news and we BELIEVED HIM and NOTHING BAD HAPPENED. Now excuse me while I forward this article to my entire contact list without reading past the headline.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 1,203</span>
+                        <span>👎 892</span>
+                        <span>Reply</span>
+                    </div>
+
+                    <div class="comment comment-reply">
+                        <div class="comment-header">
+                            <span><span class="comment-username">HistoryMajorDebt</span></span>
+                            <span class="comment-meta">2 hours ago</span>
+                        </div>
+                        <div class="comment-body">
+                            Walter Cronkite was also on a network that had a legal obligation to be fair. That ended in 1987. But go off king.
+                        </div>
+                        <div class="comment-actions">
+                            <span>👍 3,421</span>
+                            <span>👎 201</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">FirstCommentGuy</span></span>
+                        <span class="comment-meta">5 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        First
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 2</span>
+                        <span>👎 4,892</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">SurvivalBucketOwner</span></span>
+                        <span class="comment-meta">2 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        I bought 14 survival buckets because the man on TV said the end was coming. The court says he was joking. I have 14 survival buckets. Are those a joke? They're in my garage. I can see them right now. Is my garage a joke?
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 8,923</span>
+                        <span>👎 12</span>
+                        <span>Reply</span>
+                    </div>
+
+                    <div class="comment comment-reply">
+                        <div class="comment-header">
+                            <span><span class="comment-username">ExistentialDread2024</span></span>
+                            <span class="comment-meta">1 hour ago</span>
+                        </div>
+                        <div class="comment-body">
+                            The buckets are real. The apocalypse was rhetorical hyperbole. You are the only participant who was supposed to be sincere. I'm so sorry.
+                        </div>
+                        <div class="comment-actions">
+                            <span>👍 11,203</span>
+                            <span>👎 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">EnlightenedCentrist</span></span>
+                        <span class="comment-meta">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        I don't watch any news. I get all my information from a guy on YouTube who definitely doesn't have an agenda. He just tells it like it is. Unlike these mainstream shills.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 892</span>
+                        <span>👎 2,103</span>
+                        <span>Reply</span>
+                    </div>
+
+                    <div class="comment comment-reply">
+                        <div class="comment-header">
+                            <span><span class="comment-username">TheYouTubeGuy</span></span>
+                            <span class="comment-meta">45 minutes ago</span>
+                        </div>
+                        <div class="comment-body">
+                            Hi that's me! Just FYI my lawyer has asked me to inform you that everything I say is entertainment and not factual claims. Anyway here's why the government is [CONTENT REMOVED PENDING LITIGATION]
+                        </div>
+                        <div class="comment-actions">
+                            <span>👍 4,521</span>
+                            <span>👎 1,892</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">HuckFinnModerator</span><span class="moderator-badge">MOD</span></span>
+                        <span class="comment-meta">30 minutes ago • Pinned</span>
+                    </div>
+                    <div class="comment-body">
+                        REMINDER: All comments on this article are rhetorical hyperbole and should not be taken as factual expressions of the commenters' actual beliefs. By commenting, you agree that no reasonable moderator would interpret your words literally. Thank you for participating in our obviously satirical comment section (citation: we're saying it's satirical now, in this disclaimer).
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 15,892</span>
+                        <span>👎 0</span>
+                        <span>📌 Pinned</span>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="comment-header">
+                        <span><span class="comment-username">IReadTheWholeThingAndNowImSad</span></span>
+                        <span class="comment-meta">20 minutes ago</span>
+                    </div>
+                    <div class="comment-body">
+                        The worst part is I can't even be mad at the right people because the article made it clear everyone does this and the only person who can't do it is me, the person who believed things. I'm going to go lie down.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 34,521</span>
+                        <span>👎 1</span>
+                        <span>Reply</span>
+                        <span>🏆 Most Reasonable (Ironically)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RELATED ARTICLES -->
+        <section class="full-width-section">
+            <h3 class="section-title">📰 Related Articles</h3>
+            <div class="related-grid">
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">Area Man's Beliefs Ruled Inadmissible In Own Life</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">"I Was Just Asking Questions," Reports Man Who Was Definitely Making Statements</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">Study Finds 100% Of Cable News Viewers Are Reasonable Until They Act On Anything</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">Nation's Lawyers Discover One Weird Trick To Turn News Into Entertainment (Courts Hate It!)</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">Survival Bucket Sales Surge Among People Who Were Definitely Not Supposed To Buy Them</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">Golden Retriever Emotionally Devastated To Learn Owner Is Legal Metaphor</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- YOU MIGHT ALSO LIKE -->
+        <section class="full-width-section">
+            <h3 class="section-title">🔥 You Might Also Like</h3>
+            <div class="related-grid">
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">SPONSORED: 15 Signs Your Beliefs Are About To Be Reclassified (Number 7 Will Be Used Against You)</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">QUIZ: Which Reasonable Viewer Are You? (Spoiler: You're Not One)</p>
+                </div>
+                <div class="related-article">
+                    <div class="related-image"></div>
+                    <p class="related-headline">PROMOTED: This One Weird Legal Defense Has Judges BAFFLED And Viewers INFORMED (Then UNINFORMED During Discovery)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM ADS -->
+        <section class="full-width-section">
+            <div class="interstitial-ad" style="max-width: 600px; margin: 30px auto;">
+                <div class="ad-headline">REASONABLE VIEWER INSURANCE™</div>
+                <div class="ad-body">
+                    Did you believe something you saw on TV?<br>
+                    Were you not supposed to?<br>
+                    You may be entitled to absolutely nothing, but for just $29.99/month, we'll send you a certificate that says you knew it was hyperbole all along.
+                </div>
+                <div class="ad-tagline">"Coverage you can believe in. Or not. Check with your lawyer."</div>
+                <div class="ad-fine-print">*This advertisement is rhetorical hyperbole. No actual insurance exists. Your premium is real. Your coverage is opinion. Please consult a reasonable adult before purchasing, assuming one can be located.</div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="newspaper-footer">
+            <p><strong>HuckFinn</strong> — America's Finest News Source Since 1783 (Retroactively)</p>
+            <p style="margin-top: 10px;">"All The News That's Fit To Reclassify"</p>
+            <p style="margin-top: 10px; font-size: 8px;">DISCLAIMER: This publication is satire. Unlike other publications that are also satire but don't tell you until the lawsuit, we're telling you now. You're welcome. Any resemblance to actual media practices is entirely intentional but also protected speech. The Reasonable Reader is reminded that by reading this disclaimer, they have acknowledged their reasonable status, which may be used against them in future proceedings. Have a nice day.</p>
+            <p style="margin-top: 15px; font-size: 9px;">© 2025 HuckFinn Media Properties LLC | <a href="#">Privacy Policy</a> | <a href="#">Terms of Hyperbole</a> | <a href="#">Careers in Non-Literal Commentary</a></p>
+        </footer>
+    </div>
+</body>
+</html>

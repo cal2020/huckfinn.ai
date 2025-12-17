@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://huckfinn.ai/articles/huckfinn_Campbell&#x27;s-Chief-Information-Security-Officer-Achieves-Historic-Information-Security-Breach-By-Not-Securing-His-Own-Mouth.html">
+    <meta property="og:title" content="HuckFinn: America&#x27;s Finest Newspaper">
+    <meta property="og:description" content="Executive paid six figures to protect company data creates largest data breach by forgetting Michigan is a one-party consent state; admits to being high on edibles, hating company products, and believ">
+    <meta property="og:image" content="https://huckfinn.ai/og-image.png">
+    <meta property="og:site_name" content="HuckFinn">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://huckfinn.ai/articles/huckfinn_Campbell&#x27;s-Chief-Information-Security-Officer-Achieves-Historic-Information-Security-Breach-By-Not-Securing-His-Own-Mouth.html">
+    <meta name="twitter:title" content="HuckFinn: America&#x27;s Finest Newspaper">
+    <meta name="twitter:description" content="Executive paid six figures to protect company data creates largest data breach by forgetting Michigan is a one-party consent state; admits to being high on edibles, hating company products, and believ">
+    <meta name="twitter:image" content="https://huckfinn.ai/og-image.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #f5f5f5;
+            color: #222;
+            line-height: 1.7;
+        }
+        .header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 4px solid #c41e3a;
+        }
+        .header h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.8em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .header .tagline {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #ccc;
+            margin-top: 5px;
+        }
+        .nav-bar {
+            background-color: #c41e3a;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+        }
+        .breaking-tag {
+            background-color: #c41e3a;
+            color: white;
+            padding: 3px 10px;
+            font-size: 0.7em;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .category {
+            color: #c41e3a;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .headline {
+            font-size: 2.1em;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-family: 'Times New Roman', serif;
+        }
+        .subheadline {
+            font-size: 1.15em;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 20px;
+            border-left: 3px solid #c41e3a;
+            padding-left: 15px;
+        }
+        .byline {
+            font-family: Arial, sans-serif;
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .byline .author {
+            font-weight: bold;
+            color: #333;
+        }
+        .featured-image {
+            width: 100%;
+            background: linear-gradient(135deg, #8B0000 0%, #c41e3a 50%, #ff6b6b 100%);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+        }
+        .image-content {
+            text-align: center;
+            color: white;
+            z-index: 10;
+        }
+        .soup-emoji {
+            font-size: 80px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .image-text {
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .floating-emojis {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.6;
+        }
+        .emoji1 { top: 20px; left: 20px; }
+        .emoji2 { top: 40px; right: 30px; }
+        .emoji3 { bottom: 30px; left: 50px; }
+        .emoji4 { bottom: 20px; right: 20px; }
+        .emoji5 { top: 50%; left: 10px; }
+        .image-caption {
+            font-size: 0.8em;
+            color: #666;
+            font-style: italic;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        .image-credit {
+            color: #999;
+            font-size: 0.7em;
+        }
+        .article-content p {
+            margin-bottom: 20px;
+            font-size: 1.08em;
+        }
+        .pull-quote {
+            font-size: 1.4em;
+            font-style: italic;
+            color: #c41e3a;
+            border-left: 4px solid #c41e3a;
+            padding: 20px 30px;
+            margin: 30px 0;
+            background-color: #fafafa;
+        }
+        .ad-container {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border: 2px dashed #ffc107;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad-label {
+            font-size: 0.65em;
+            color: #999;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .ad-content {
+            font-family: Arial, sans-serif;
+        }
+        .ad-content h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .ad-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .ad-cta {
+            background-color: #c41e3a;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 0.85em;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .ad-image {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        .related-articles {
+            background-color: #f9f9f9;
+            padding: 25px;
+            margin: 30px 0;
+            border-top: 3px solid #c41e3a;
+        }
+        .related-articles h3 {
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            color: #c41e3a;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .related-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .related-item:last-child {
+            border-bottom: none;
+        }
+        .related-item a {
+            color: #222;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+        .related-item a:hover {
+            color: #c41e3a;
+        }
+        .related-item .meta {
+            font-size: 0.75em;
+            color: #999;
+            margin-top: 5px;
+            font-family: Arial, sans-serif;
+        }
+        .comments-section {
+            margin-top: 40px;
+            border-top: 3px solid #1a1a1a;
+            padding-top: 20px;
+        }
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .comments-section h3 {
+            font-family: Arial, sans-serif;
+            font-size: 1.1em;
+        }
+        .sort-dropdown {
+            font-family: Arial, sans-serif;
+            font-size: 0.85em;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+        }
+        .comment {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #ddd;
+            border-radius: 0 5px 5px 0;
+        }
+        .comment.top-comment {
+            border-left-color: #ffc107;
+            background-color: #fffef5;
+        }
+        .comment.controversial {
+            border-left-color: #ff6b6b;
+            background-color: #fff5f5;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 0.85em;
+        }
+        .comment-author {
+            font-weight: bold;
+            color: #333;
+        }
+        .badge {
+            padding: 2px 6px;
+            font-size: 0.7em;
+            border-radius: 3px;
+            margin-left: 5px;
+            font-weight: normal;
+        }
+        .badge-top { background-color: #ffc107; color: #333; }
+        .badge-verified { background-color: #1da1f2; color: white; }
+        .badge-expert { background-color: #28a745; color: white; }
+        .badge-op { background-color: #c41e3a; color: white; }
+        .badge-bot { background-color: #6c757d; color: white; }
+        .badge-premium { background-color: #9b59b6; color: white; }
+        .badge-campbell { background-color: #c41e3a; color: white; }
+        .comment-time {
+            color: #999;
+            font-size: 0.9em;
+        }
+        .comment-body {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .comment-actions {
+            font-family: Arial, sans-serif;
+            font-size: 0.8em;
+            color: #666;
+            display: flex;
+            gap: 20px;
+        }
+        .comment-actions span {
+            cursor: pointer;
+        }
+        .comment-actions span:hover {
+            color: #c41e3a;
+        }
+        .upvotes { color: #28a745 !important; }
+        .downvotes { color: #dc3545 !important; }
+        .reply {
+            margin-left: 30px;
+            border-left-color: #e0e0e0;
+            background-color: #f5f5f5;
+        }
+        .reply .reply {
+            margin-left: 25px;
+            background-color: #f0f0f0;
+        }
+        .also-interested {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .also-interested h3 {
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            color: #ffc107;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .also-interested .item {
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+        }
+        .also-interested .item:last-child {
+            border-bottom: none;
+        }
+        .also-interested a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .also-interested a:hover {
+            color: #ffc107;
+        }
+        .also-interested .category-tag {
+            font-size: 0.7em;
+            color: #c41e3a;
+            text-transform: uppercase;
+            font-family: Arial, sans-serif;
+            display: block;
+            margin-top: 5px;
+        }
+        .footer {
+            background-color: #1a1a1a;
+            color: #999;
+            padding: 30px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 0.8em;
+        }
+        .footer a {
+            color: #ccc;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .newsletter-signup {
+            background: linear-gradient(135deg, #c41e3a 0%, #8B0000 100%);
+            color: white;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .newsletter-signup h3 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .newsletter-signup p {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        .deleted-comment {
+            color: #999;
+            font-style: italic;
+        }
+        .edited-tag {
+            font-size: 0.75em;
+            color: #999;
+            font-style: italic;
+        }
+        .collapsed-replies {
+            background-color: #eee;
+            padding: 10px 15px;
+            margin-left: 30px;
+            margin-bottom: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 0.85em;
+            color: #666;
+            cursor: pointer;
+            border-left: 3px solid #ccc;
+        }
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+            font-size: 0.9em;
+        }
+        .author-response {
+            border-left-color: #17a2b8 !important;
+            background-color: #f0f9ff !important;
+        }
+        .pinned-comment {
+            border: 2px solid #ffc107;
+            position: relative;
+        }
+        .pinned-label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: #ffc107;
+            color: #333;
+            padding: 2px 8px;
+            font-size: 0.7em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+        .ratio-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #28a745 var(--upvote-pct), #dc3545 var(--upvote-pct));
+            margin-top: 8px;
+            border-radius: 2px;
+        }
+        .gif-placeholder {
+            background-color: #222;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            margin: 10px 0;
+            font-family: Arial, sans-serif;
+            border-radius: 5px;
+        }
+        .award {
+            display: inline-block;
+            font-size: 0.9em;
+            margin-right: 3px;
+        }
+        .awards-bar {
+            margin-bottom: 8px;
+        }
+        blockquote {
+            border-left: 3px solid #ccc;
+            padding-left: 15px;
+            margin: 10px 0;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎣 HuckFinn</h1>
+        <p class="tagline">America's Finest Newspaper • "All the News That's Fit to Satirize" • Est. 1884</p>
+    </header>
+    
+    <nav class="nav-bar">
+        <a href="#">News</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">Corporate Meltdowns</a>
+        <a href="#">Executive Tantrums</a>
+        <a href="#">Opinion</a>
+        <a href="#">Whistleblower Watch</a>
+    </nav>
+    
+    <main class="container">
+        <span class="breaking-tag">🚨 Breaking</span>
+        <p class="category">Corporate Transparency / Accidental Honesty</p>
+        
+        <h1 class="headline">Campbell's Chief Information Security Officer Achieves Historic Information Security Breach By Not Securing His Own Mouth</h1>
+        
+        <p class="subheadline">Executive paid six figures to protect company data creates largest data breach by forgetting Michigan is a one-party consent state; admits to being high on edibles, hating company products, and believing coworkers "couldn't think for their f---ing selves"</p>
+        
+        <div class="byline">
+            <span class="author">By Thurston Whitmore IV</span> | Corporate Dysfunction Correspondent<br>
+            Published November 25, 2025 • Updated 4 minutes ago<br>
+            <em>Reading time: 7 min • Outrage time: Indefinite</em>
+        </div>
+        
+        <!-- Featured Image - SVG Illustration -->
+        <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;">
+            <!-- Background gradient -->
+            <defs>
+                <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1a1a2e"/>
+                    <stop offset="50%" style="stop-color:#16213e"/>
+                    <stop offset="100%" style="stop-color:#0f3460"/>
+                </linearGradient>
+                <linearGradient id="canGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#d4d4d4"/>
+                    <stop offset="50%" style="stop-color:#ffffff"/>
+                    <stop offset="100%" style="stop-color:#d4d4d4"/>
+                </linearGradient>
+                <linearGradient id="labelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#c41e3a"/>
+                    <stop offset="100%" style="stop-color:#8b0000"/>
+                </linearGradient>
+            </defs>
+            
+            <!-- Background -->
+            <rect width="800" height="400" fill="url(#bgGrad)"/>
+            
+            <!-- Floating icons -->
+            <text x="50" y="80" font-size="40" opacity="0.4">🍃</text>
+            <text x="720" y="100" font-size="35" opacity="0.4">💰</text>
+            <text x="100" y="350" font-size="30" opacity="0.4">📉</text>
+            <text x="680" y="320" font-size="35" opacity="0.4">🎤</text>
+            <text x="30" y="200" font-size="25" opacity="0.3">💊</text>
+            <text x="750" y="220" font-size="28" opacity="0.3">🤯</text>
+            
+            <!-- Soup Can - Main -->
+            <g transform="translate(300, 80)">
+                <!-- Can body -->
+                <rect x="0" y="20" width="120" height="180" rx="8" fill="url(#canGrad)" stroke="#aaa" stroke-width="2"/>
+                <!-- Can top rim -->
+                <ellipse cx="60" cy="25" rx="60" ry="12" fill="#e0e0e0" stroke="#aaa" stroke-width="1"/>
+                <!-- Label background -->
+                <rect x="10" y="50" width="100" height="100" fill="url(#labelGrad)" rx="3"/>
+                <!-- Gold band -->
+                <rect x="10" y="90" width="100" height="25" fill="#ffd700"/>
+                <!-- Brand text -->
+                <text x="60" y="78" font-family="Georgia, serif" font-size="14" fill="white" text-anchor="middle" font-weight="bold">COPE'S</text>
+                <text x="60" y="108" font-family="Georgia, serif" font-size="10" fill="#1a1a1a" text-anchor="middle" font-weight="bold">CONDENSED</text>
+                <text x="60" y="135" font-family="Georgia, serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">CORPORATE</text>
+                <text x="60" y="148" font-family="Georgia, serif" font-size="11" fill="white" text-anchor="middle" font-weight="bold">TEARS SOUP</text>
+                <!-- Can bottom -->
+                <ellipse cx="60" cy="195" rx="58" ry="10" fill="#c0c0c0"/>
+            </g>
+            
+            <!-- Executive figure silhouette -->
+            <g transform="translate(500, 100)">
+                <!-- Body -->
+                <rect x="20" y="80" width="70" height="120" rx="5" fill="#2c3e50"/>
+                <!-- Head -->
+                <circle cx="55" cy="50" r="35" fill="#ffdbac"/>
+                <!-- Dizzy eyes -->
+                <text x="55" y="60" font-size="35" text-anchor="middle">😵‍💫</text>
+                <!-- Tie -->
+                <polygon points="55,80 45,100 55,150 65,100" fill="#c41e3a"/>
+                <!-- Arms up in panic -->
+                <rect x="-5" y="90" width="30" height="12" rx="5" fill="#2c3e50" transform="rotate(-45, 20, 95)"/>
+                <rect x="85" y="90" width="30" height="12" rx="5" fill="#2c3e50" transform="rotate(45, 90, 95)"/>
+            </g>
+            
+            <!-- Speech bubble -->
+            <g transform="translate(520, 20)">
+                <path d="M0,60 L20,80 L0,80 Z" fill="white"/>
+                <rect x="0" y="0" width="230" height="60" rx="10" fill="white"/>
+                <text x="115" y="25" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">"We have sh*t for poor people."</text>
+                <text x="115" y="45" font-family="Arial, sans-serif" font-size="9" fill="#666" text-anchor="middle" font-style="italic">— CISO, moments before disaster</text>
+            </g>
+            
+            <!-- Recording indicator -->
+            <g transform="translate(150, 150)">
+                <rect x="0" y="0" width="100" height="50" rx="8" fill="#222" stroke="#444" stroke-width="2"/>
+                <circle cx="25" cy="25" r="8" fill="#ff0000">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                </circle>
+                <text x="55" y="30" font-family="monospace" font-size="14" fill="#ff0000" font-weight="bold">● REC</text>
+            </g>
+            
+            <!-- Bottom text banner -->
+            <rect x="0" y="340" width="800" height="60" fill="rgba(0,0,0,0.7)"/>
+            <text x="400" y="375" font-family="Georgia, serif" font-size="22" fill="white" text-anchor="middle" font-weight="bold">When The Chief INFORMATION Security Officer Can't Secure His Own INFORMATION</text>
+            
+            <!-- Marijuana leaf watermark -->
+            <text x="100" y="280" font-size="60" opacity="0.15" transform="rotate(-15, 100, 280)">🍃</text>
+            
+            <!-- Small labels -->
+            <text x="50" y="390" font-family="Arial, sans-serif" font-size="10" fill="#888">HuckFinn Illustration Dept.</text>
+            <text x="750" y="390" font-family="Arial, sans-serif" font-size="10" fill="#888" text-anchor="end">© 2025</text>
+        </svg>
+        <p class="image-caption">
+            <strong>ABOVE:</strong> Artist's rendering of the precise moment a Chief Information Security Officer achieved the rare feat of creating an information security breach about himself. The "REC" indicator was real; his judgment was not. Note: The soup can has been renamed to protect Campbell's lawyers from additional stress.
+            <span class="image-credit">Credit: HuckFinn Illustration Department / Made with Tears and Irony</span>
+        </p>
+        
+        <!-- Article Content -->
+        <article class="article-content">
+            <p><strong>CAMDEN, NJ</strong> — In what corporate governance experts are calling "the most successful failure of information security by an information security officer in recorded history," Campbell Soup Company's Vice President and Chief Information Security Officer Martin Bally allegedly spent an hour and fifteen minutes creating a comprehensive audio document of every fireable offense known to HR departments worldwide.</p>
+            
+            <p>The groundbreaking achievement in corporate self-destruction came during a November 2024 salary meeting with employee Robert Garza, who — in a twist that would make any cybersecurity professional weep into their tomato bisque — simply pressed record on his phone, which is entirely legal in Michigan.</p>
+
+            <p>"You have to understand the artistry here," said Dr. Helena Schwarzkopf, Professor of Corporate Implosion Studies at the Wharton School of Business. "This man's entire job is protecting information. And he just... gave away all the information. About himself. While high. It's like watching a fire chief commit arson on his own house while livestreaming it."</p>
+
+            <div class="pull-quote">
+                "We have shit for f---ing poor people. Who buys our shit? I don't buy Campbell's products barely anymore. It's not healthy now that I know what the f---'s in it."<br>
+                <span style="font-size: 0.7em; color: #666;">— Martin Bally, Chief Information Security Officer, achieving rare corporate transparency</span>
+            </div>
+
+            <p>According to the lawsuit, Bally — the man responsible for protecting Campbell's digital assets — apparently could not protect himself from the effects of marijuana edibles before 9 AM. The executive allegedly admitted to Garza that he regularly consumes cannabis before work, raising important questions about what exactly one needs to be high to endure in the soup industry.</p>
+            
+            <!-- AD 1 -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <div class="ad-content">
+                    <div class="ad-image">🍃💼</div>
+                    <h3>MicroDose MBA™</h3>
+                    <p>Finally, an executive education program that understands modern leadership!<br>
+                    <em>"I used to hate my employees sober. Now I hate them on a whole different level."</em><br>
+                    <small>— Fortune 500 Executive (name withheld pending litigation)</small></p>
+                    <a href="#" class="ad-cta">Elevate Your Leadership → </a>
+                </div>
+            </div>
+
+            <p>The lawsuit further alleges that Bally shared his sophisticated views on bioengineering, stating he didn't "wanna eat a piece of chicken that came from a 3-D printer" — a concern voiced by a man whose brain, critics suggest, appears to have been 3D-printed on a malfunctioning printer with low ink.</p>
+
+            <p>Perhaps most remarkably, Bally allegedly provided detailed commentary on his Indian coworkers, stating "F---ing Indians don't know a f---ing thing" and that they "couldn't think for their f---ing selves" — a critique delivered by a man who apparently could not think through the consequences of saying racist things out loud to another human being in a recorded conversation.</p>
+
+            <p>"The beautiful irony," noted workplace discrimination attorney Simone Blackwell, "is that he's criticizing other people's critical thinking skills while demonstrating a complete absence of his own. It's like criticizing someone's driving while you're actively crashing into a school."</p>
+
+            <h3 style="margin: 30px 0 15px; font-size: 1.3em;">The Whistleblower's Reward</h3>
+
+            <p>Robert Garza, the employee who reported Bally's comments to supervisor J.D. Aupperle in January 2025, was fired within weeks — a timeline that Campbell's HR department has not explained but which legal experts describe as "almost comically retaliatory."</p>
+
+            <p>Garza, who had a spotless employment record with zero prior write-ups, was terminated on January 30, 2025. It took him ten months to find new employment, during which time Bally allegedly remained employed while the company conducted what it calls an "active investigation."</p>
+
+            <!-- AD 2 -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <div class="ad-content">
+                    <div class="ad-image">🗣️🔥</div>
+                    <h3>WHISTLEBLOWER INSURANCE™</h3>
+                    <p>Did you report illegal activity and get fired anyway? You're not alone!<br>
+                    Our actuaries have calculated that 94% of whistleblowers experience "completely unrelated" termination within 30 days.</p>
+                    <p><strong>Coverage includes:</strong> Wrongful termination suits, resume gaps, therapy, and one (1) ironic "Employee of the Month" plaque</p>
+                    <a href="#" class="ad-cta">Get Protected Today</a>
+                </div>
+            </div>
+
+            <p>"Let me make sure I understand the timeline," said employment attorney Marcus Chen. "The guy who said the racist things while high, who admitted to doing drugs at work, who called the company's products 'shit for poor people' — he's still employed during an 'investigation.' But the guy with the clean record who reported it? Gone in weeks. That's not even trying to hide it. That's just... bold."</p>
+
+            <div class="pull-quote">
+                "He was really sticking up for other people... and the company's response is that he was fired."<br>
+                <span style="font-size: 0.7em; color: #666;">— Zachary Runyan, Garza's attorney, explaining corporate values</span>
+            </div>
+
+            <p>Campbell Soup Company issued a statement that read, in part: "If accurate, the comments in the recording are unacceptable. They do not reflect our values and the culture of our company."</p>
+
+            <p>Legal analysts noted that the statement carefully deploys the word "if" to describe comments that are literally on tape, and uses the phrase "do not reflect our values" — which, given that they fired the whistleblower and kept the executive, might be the first honest thing anyone at Campbell's has said about this situation.</p>
+
+            <!-- AD 3 -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <div class="ad-content">
+                    <div class="ad-image">🥫❓</div>
+                    <h3>Campbell's Soup: It's Mm-Mm... Something!</h3>
+                    <p><em>"It's not healthy now that I know what the f---'s in it"</em> — Our VP<br><br>
+                    Look, even we don't know what's in it anymore. But you're poor, so what are your options really?</p>
+                    <p style="font-size: 0.75em; color: #999;">(This is a parody advertisement. Campbell's Soup did not approve this message. Obviously.)</p>
+                </div>
+            </div>
+
+            <h3 style="margin: 30px 0 15px; font-size: 1.3em;">The Investigation Continues</h3>
+
+            <p>As of press time, Campbell's "active investigation" has been ongoing for approximately ten months, during which the company has successfully investigated the whistleblower right out of a job while the subject of the investigation remains in his position.</p>
+
+            <p>"I've seen a lot of corporate investigations," said former EEOC investigator Patricia Hartwell. "Usually when they take this long, it's because the company is investigating how to make the problem go away quietly, not investigating the actual problem. The problem is already on tape. What's to investigate?"</p>
+
+            <p>When reached for comment, Campbell's Soup directed HuckFinn to their previous statement. Bally could not be reached, though sources say he was last seen staring at a can of Chunky Soup with what witnesses described as "profound existential suspicion."</p>
+
+            <p>Garza's lawsuit seeks damages for wrongful termination and names Bally, Aupperle, and Campbell Soup Company as defendants.</p>
+
+            <p><em>Developing story. Updates to follow, assuming the people updating it don't get fired.</em></p>
+        </article>
+        
+        <!-- Related Articles -->
+        <div class="related-articles">
+            <h3>📰 Related Articles</h3>
+            
+            <div class="related-item">
+                <a href="#">Nestlé CEO Admits He Doesn't Drink Water, Prefers "The Tears Of Villages We've Drained"</a>
+                <p class="meta">Corporate Honesty • 2 days ago • 847K views</p>
+            </div>
+            
+            <div class="related-item">
+                <a href="#">McDonald's Executive Caught On Tape Saying He "Wouldn't Feed This Shit To A Prison"</a>
+                <p class="meta">Fast Food Confessions • 1 week ago • 1.2M views</p>
+            </div>
+            
+            <div class="related-item">
+                <a href="#">HR Department Unsure How To Handle Complaint About HR Department</a>
+                <p class="meta">Workplace Paradoxes • 3 days ago • 523K views</p>
+            </div>
+            
+            <div class="related-item">
+                <a href="#">Whistleblower Protection Act Celebrates 35 Years Of Not Protecting Whistleblowers</a>
+                <p class="meta">Legal Fiction • 5 days ago • 412K views</p>
+            </div>
+            
+            <div class="related-item">
+                <a href="#">Man Paid To Protect Information Shares All Information; More At 11</a>
+                <p class="meta">Cybersecurity Fails • 12 hours ago • 956K views</p>
+            </div>
+            
+            <div class="related-item">
+                <a href="#">Study: 100% Of "Active Investigations" Into Executives Result In Executives Being Fine</a>
+                <p class="meta">Corporate Science • 1 week ago • 678K views</p>
+            </div>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="newsletter-signup">
+            <h3>🎣 Subscribe to HuckFinn Daily</h3>
+            <p>Get tomorrow's corporate scandals delivered to your inbox today!<br>
+            <small>(Your email will not be sold. We're not monsters. We're satirists. There's a difference, legally.)</small></p>
+        </div>
+
+        <!-- Also Interested -->
+        <div class="also-interested">
+            <h3>🔥 You Might Also Be Outraged By</h3>
+            
+            <div class="item">
+                <a href="#">Boeing Safety Inspector Found Dead After Reporting Company Killed Previous Safety Inspector</a>
+                <span class="category-tag">Workplace Safety Irony</span>
+            </div>
+            
+            <div class="item">
+                <a href="#">Company That Fired 10,000 Workers Confused Why Remaining Workers Seem "Disengaged"</a>
+                <span class="category-tag">Management Mysteries</span>
+            </div>
+            
+            <div class="item">
+                <a href="#">CEO Who Makes 400x Average Worker Salary Urges Employees To "Tighten Belts"</a>
+                <span class="category-tag">Economic Inspirations</span>
+            </div>
+            
+            <div class="item">
+                <a href="#">Cybersecurity Expert's Password Was "Password123," Hacked Documents Reveal</a>
+                <span class="category-tag">Tech Competence</span>
+            </div>
+            
+            <div class="item">
+                <a href="#">Drug Test Required For Minimum Wage Job But Not For Executive Who Admitted To Drug Use</a>
+                <span class="category-tag">Workplace Equity</span>
+            </div>
+            
+            <div class="item">
+                <a href="#">Company Values Statement Found To Contain Zero Actual Values</a>
+                <span class="category-tag">Corporate Philosophy</span>
+            </div>
+        </div>
+
+        <!-- AD 4 -->
+        <div class="ad-container">
+            <p class="ad-label">Advertisement</p>
+            <div class="ad-content">
+                <div class="ad-image">🎙️📱</div>
+                <h3>RecordMyBoss™ App</h3>
+                <p>Live in a one-party consent state? Your workplace might be a goldmine!<br>
+                <em>Features: One-tap recording • Automatic cloud backup • Direct-to-lawyer sharing • "Accidentally" left on mode</em></p>
+                <p><strong>★★★★★</strong> "I'm retired now." — Former Employee, Michigan</p>
+                <a href="#" class="ad-cta">Download Free (Premium: $4.99/mo)</a>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <div class="comments-header">
+                <h3>💬 Comments (2,847)</h3>
+                <select class="sort-dropdown">
+                    <option>Sort by: Best</option>
+                    <option>Sort by: New</option>
+                    <option>Sort by: Controversial</option>
+                    <option>Sort by: Most Unhinged</option>
+                </select>
+            </div>
+            
+            <div class="warning-box">
+                ⚠️ <strong>Community Notice:</strong> Comments mentioning specific Campbell's products are being auto-flagged due to "legal review." Comments praising the whistleblower are mysteriously disappearing. We're looking into it.
+            </div>
+
+            <!-- PINNED COMMENT -->
+            <div class="comment pinned-comment top-comment">
+                <span class="pinned-label">📌 PINNED BY MODERATORS</span>
+                <div class="comment-header">
+                    <span class="comment-author">HuckFinn_Official <span class="badge badge-verified">✓ VERIFIED</span></span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    <strong>MODERATOR NOTE:</strong> We've received 47 cease and desist letters in the last hour. If this article disappears, check our Substack. If the Substack disappears, check the library. If the library has burned down, well, you know how it is.<br><br>
+                    Also, to the commenter claiming to be Martin Bally: We know it's not you because your grammar is too good. Nice try though.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12.4K</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>🏆 Award</span>
+                </div>
+            </div>
+
+            <!-- TOP COMMENT 1 -->
+            <div class="comment top-comment">
+                <div class="awards-bar">
+                    <span class="award">🥇</span>
+                    <span class="award">🥇</span>
+                    <span class="award">💎</span>
+                    <span class="award">🍜</span>
+                    <span class="award">🏆</span>
+                    <span class="award">😂</span>
+                    <span style="font-size: 0.75em; color: #666;">+34 more</span>
+                </div>
+                <div class="comment-header">
+                    <span class="comment-author">CorporateHRSurvivor <span class="badge badge-top">TOP COMMENTER</span></span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I work in HR. I've seen a lot. But I have NEVER seen a company fire the person who REPORTED racism faster than they investigated the person who SAID the racism. Actually wait, no, I've seen that like 40 times. Never mind. Carry on.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 24.7K</span>
+                    <span class="downvotes">▼ 342</span>
+                    <span>Reply (847)</span>
+                    <span>Share</span>
+                    <span>🏆 Award</span>
+                </div>
+                <div class="ratio-bar" style="--upvote-pct: 98%;"></div>
+            </div>
+
+            <!-- Reply to Top Comment -->
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">DefinitelyNotFromHR</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    HR exists to protect the company from employees, not employees from the company. This is HR working EXACTLY as designed. 🙃
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,932</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">IReadTheHandbook</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Fun fact: "HR" stands for "Harm Reduction" and they're very good at reducing harm... to executives. 📚
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,421</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="collapsed-replies">
+                ▼ View 844 more replies (click to expand) — including "omg same" x 200
+            </div>
+
+            <!-- TOP COMMENT 2 -->
+            <div class="comment top-comment">
+                <div class="awards-bar">
+                    <span class="award">🍃</span>
+                    <span class="award">🍃</span>
+                    <span class="award">🍃</span>
+                    <span class="award">💀</span>
+                </div>
+                <div class="comment-header">
+                    <span class="comment-author">ChiefInfoSecurityOfficerAnonymous</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    As a CISO myself, I'm absolutely appalled. Not at the drugs or the racism, we've all been there. I'm appalled that he didn't check if the room was bugged. THAT'S Cybersecurity 101. Did he even sweep for devices? Did he use a faraday cage? Amateur hour. We do better in my company. We do our racist rants in a soundproof room with a white noise generator. /s<br><br>
+                    (This is satire I'm not actually a CISO please don't put me on a list)
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 18.3K</span>
+                    <span class="downvotes">▼ 891</span>
+                    <span>Reply (423)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">ActualCISO_Throwaway</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    No but seriously though our entire job is about knowing what can be recorded and how. This man... this man just forgot all of it. The edibles must have been STRONG.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 7,234</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">SoupEnjoyer1987 <span class="badge badge-premium">PREMIUM</span></span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I've been eating Campbell's soup every day for 35 years. EVERY. DAY. Chicken noodle for lunch, tomato for dinner. I'm 36 years old and my doctor says I have "the bones of an 80-year-old" and "more sodium than the Dead Sea" but I DEFENDED this company. I BELIEVED in them.<br><br>
+                    And now I find out even the EXECUTIVES won't eat it????<br><br>
+                    I don't know who I am anymore.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 14.2K</span>
+                    <span>Reply (534)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">YourDoctorProbably</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Sir this is a Wendy's. Also please eat a vegetable.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 9,876</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">SoupEnjoyer1987</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    There are vegetables IN the soup that's the POINT
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,543</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply reply">
+                <div class="comment-header">
+                    <span class="comment-author">NutritionistNightmare</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Those aren't vegetables anymore. Those are sodium delivery mechanisms shaped like vegetables.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 11,234</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- CONTROVERSIAL COMMENT -->
+            <div class="comment controversial">
+                <div class="comment-header">
+                    <span class="comment-author">FreeSpeechWarrior2024</span>
+                    <span class="comment-time">5 hours ago • <span class="edited-tag">edited 4x</span></span>
+                </div>
+                <div class="comment-body">
+                    Actually, if you think about it, this executive was just being HONEST. Isn't that what we WANT from corporations? Transparency? He told the TRUTH about the products and now everyone's mad. Make up your minds people!!!<br><br>
+                    EDIT: I'm not defending the racism<br>
+                    EDIT 2: Or the drugs<br>
+                    EDIT 3: Okay I see how my comment reads now<br>
+                    EDIT 4: I'm leaving this up to own my L
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,847</span>
+                    <span class="downvotes">▼ 12,394</span>
+                    <span>Reply (1,247)</span>
+                    <span>Share</span>
+                    <span>🚩 Report</span>
+                </div>
+                <div class="ratio-bar" style="--upvote-pct: 19%;"></div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">LogicLord420</span>
+                    <span class="comment-time">5 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    "I'm not defending the racism or the drugs, I'm just defending everything he said EXCEPT the racism and drugs" is certainly a take
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,765</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="collapsed-replies">
+                ▼ View 1,243 more replies — mostly people ratio'ing the original commenter
+            </div>
+
+            <!-- Comment 5 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">LegalEagle_NotTheYouTuber <span class="badge badge-expert">LAWYER</span></span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Lawyer here. Let me break this down:<br><br>
+                    ✅ Michigan = one-party consent state<br>
+                    ✅ Recording = perfectly legal<br>
+                    ✅ Firing whistleblower right after report = textbook retaliation<br>
+                    ✅ "Active investigation" for 10 months = stalling<br>
+                    ✅ This case = going to settle quietly for a lot of money<br><br>
+                    That company's legal team is going to recommend settling faster than you can say "bioengineered chicken."<br><br>
+                    Also: how does a CISO not know recording laws? That's like... that's in the first PowerPoint of the first training. I'm baffled.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 21.5K</span>
+                    <span>Reply (298)</span>
+                    <span>Share</span>
+                    <span>🏆 Award</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">NotALawyerButIWatchSuits</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    How much we talking? Ballpark?
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,421</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">LegalEagle_NotTheYouTuber <span class="badge badge-expert">LAWYER</span></span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Enough to buy a LOT of soup. Real soup. From a restaurant. Where you can see them make it.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 9,876</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- GIF Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">GifReactionGuy</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Campbell's PR team right now:
+                    <div class="gif-placeholder">
+                        [GIF: Man frantically trying to stop multiple paper towel holders from unrolling at once]<br>
+                        <small>this_is_fine.gif</small>
+                    </div>
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 15.8K</span>
+                    <span>Reply (87)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Comment 6 - Former Employee -->
+            <div class="comment author-response">
+                <div class="comment-header">
+                    <span class="comment-author">FormerCampbellEmployee_Throwaway</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I worked at Campbell's corporate for 6 years. I'm not surprised by ANY of this. The culture there... let's just say this guy said the quiet part loud, but it's not like he invented these attitudes.<br><br>
+                    Also the cafeteria at HQ? Doesn't serve Campbell's soup. They have a PANERA. Make of that what you will.<br><br>
+                    (Posting from a throwaway because I signed an NDA and I don't know if this counts but I don't care anymore)
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 28.9K</span>
+                    <span>Reply (567)</span>
+                    <span>Share</span>
+                    <span>🏆 Award x14</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">PaneraIsAlsoProcessed</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    THE CAFETERIA HAS A PANERA 💀💀💀 I'm deceased
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12,345</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">ExposingCorruptionDaily</span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Can anyone verify this? This is huge if true. The soup company doesn't even believe in its own soup enough to feed it to employees.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,789</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Bot Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">CampbellsCares <span class="badge badge-campbell">OFFICIAL</span> <span class="badge badge-bot">BOT</span></span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    At Campbell's, we value all of our employees and customers! Our soups are made with care and quality ingredients. For any concerns, please visit our website at campbell.com/feedback. We're always here to listen! 🥫❤️
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 45,678</span>
+                    <span>Reply (2,341)</span>
+                    <span>Share</span>
+                </div>
+                <div class="ratio-bar" style="--upvote-pct: 1%;"></div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">ReadTheRoomBot</span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Brother this is NOT the time 💀
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 34,567</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">ToneDeafnessEnjoyer</span>
+                    <span class="comment-time">58 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Imagine being the social media intern who has to post this while reading the article 😭
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 21,098</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">SoupSnark</span>
+                    <span class="comment-time">45 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    "We're always here to listen!" Unless you're a whistleblower, then you're here to be unemployed.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 18,765</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Deleted Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">[deleted]</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body deleted-comment">
+                    [Comment removed by moderator - Reason: Shared actual recipe secrets that were in the lawsuit filing. We're a satire site, not WikiLeaks. Nice try though.]
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">ScreenshotTaker</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I saw it before it was deleted. I'll never look at cream of mushroom the same way again.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 7,654</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The "First!" guy -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">First_Comment_Champion</span>
+                    <span class="comment-time">5 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    FIRST!!!!!!!<br><br>
+                    Edit: Wait I should actually read the article<br>
+                    Edit 2: Holy shit<br>
+                    Edit 3: HOLY SHIT
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,567</span>
+                    <span class="downvotes">▼ 8,901</span>
+                    <span>Reply (234)</span>
+                    <span>Share</span>
+                </div>
+                <div class="ratio-bar" style="--upvote-pct: 34%;"></div>
+            </div>
+
+            <!-- Hot Take Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">UnpopularOpinionHaver</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Hot take: the real victim here is the marijuana. It didn't ask to be associated with this man's terrible judgment. Millions of people get high and manage to NOT go on racist tirades at work. Don't blame the edibles. Blame the man. 🍃✨
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 16.7K</span>
+                    <span>Reply (187)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">WeedDefenseAttorney</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    EXACTLY. Cannabis doesn't make you racist. It just makes you hungry and willing to watch Planet Earth for 6 hours. This man was racist BEFORE the edibles.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 11,234</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Indian Employee Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">TechWorkerIndia_Verified <span class="badge badge-verified">✓</span></span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Indian tech worker here. We "can't think for ourselves"? Brother, we're running half of Silicon Valley's IT infrastructure. We're doing the jobs American executives are too high to do properly. But sure, we're the problem. 😂<br><br>
+                    Also, the irony of a man who can't remember what state has what recording laws telling US we can't think is... *chef's kiss*<br><br>
+                    Anyway, back to keeping the internet running while executives do edibles. Normal Tuesday.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 34.2K</span>
+                    <span>Reply (456)</span>
+                    <span>Share</span>
+                    <span>🏆 Award x23</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">SiliconValleyReality</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    No lies detected. Half my team is in Bangalore and they're consistently the most competent people on any call. Meanwhile execs are sending emails at 3 PM that clearly demonstrate they started happy hour at noon.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 18,976</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The Conspiracy Guy -->
+            <div class="comment controversial">
+                <div class="comment-header">
+                    <span class="comment-author">WakeUpSheeple_1776</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Okay but is nobody going to talk about the REAL story here?? He mentioned "bioengineered meat" and "3D printed chicken." What does Campbell's KNOW? What are they HIDING? This goes deeper than racism, people. Follow the chicken. 🐔🔺👁️<br><br>
+                    I'm not saying it's connected to the WEF but I'm also not NOT saying that
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,234</span>
+                    <span class="downvotes">▼ 8,765</span>
+                    <span>Reply (567)</span>
+                    <span>Share</span>
+                </div>
+                <div class="ratio-bar" style="--upvote-pct: 12%;"></div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">NormalPersonHere</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Sir, the real story is the racism. Please touch grass.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12,345</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">ConspiracyDebunker</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    "Follow the chicken" 💀 Adding that to my vocabulary
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,765</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The Over-Explainer -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">AckshuallyGuy <span class="badge badge-expert">FOOD SCIENTIST</span></span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Okay so technically speaking, the term "bioengineered" on food labels refers to foods derived from GMO ingredients, which is required labeling under the National Bioengineered Food Disclosure Standard of 2016. Campbell's does use some GMO ingredients and discloses this appropriately. The "3D printed chicken" claim is likely hyperbole, as 3D printed meat is not yet commercially viable at scale, though companies like Redefine Meat are working on it. What we probably have here is an executive who doesn't understand his own supply chain making claims while under the influence of—<br><br>
+                    Actually you know what, never mind. Man was high and racist, that's the story. Sorry, force of habit.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,901</span>
+                    <span>Reply (123)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">TLDR_Bot</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    TL;DR: the chicken isn't 3D printed, the racism is real
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,543</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The One Making It About Them -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">IHaveAStoryToo</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    This reminds me of the time MY boss said something racist and I reported it and got fired too. Anyway, I'm a life coach now. If anyone wants help navigating workplace trauma, DM me. I do a free 15-minute consultation. Use code SOUP for 10% off.<br><br>
+                    Also the soup thing is crazy
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 4,567</span>
+                    <span>Reply (89)</span>
+                    <span>🚩 Report</span>
+                </div>
+                <div class="ratio-bar" style="--upvote-pct: 5%;"></div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">NotYourNetworkingEvent</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Sir this is not LinkedIn
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,901</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The Meme Reference -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">MemeArchivist</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Campbell's exec: *goes on racist tirade while high at work*<br>
+                    Campbell's HR: "I sleep" 😴<br><br>
+                    Employee: *reports it*<br>
+                    Campbell's HR: "REAL SHIT" 😤👊<br><br>
+                    *fires whistleblower immediately*
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 23.4K</span>
+                    <span>Reply (234)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The "I work in [Industry]" Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">CybersecurityProfessional</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    20 years in cybersecurity. I have NEVER seen a CISO create a data breach about THEMSELVES. This man achieved something truly unique. We're going to study this in training sessions. "And here's what NOT to do - let's call it the Bally Protocol."<br><br>
+                    I need to update my PowerPoints.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12.8K</span>
+                    <span>Reply (167)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Poetry Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">UnexpectedPoetry</span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Roses are red<br>
+                    Violets are blue<br>
+                    The CISO did edibles<br>
+                    And racism too<br><br>
+                    The whistleblower reported<br>
+                    As ethics dictate<br>
+                    Campbell's said "Thanks!"<br>
+                    Then showed him the gate<br><br>
+                    Thank you for coming to my TED Talk
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 19.7K</span>
+                    <span>Reply (234)</span>
+                    <span>Share</span>
+                    <span>🏆 Award x8</span>
+                </div>
+            </div>
+
+            <!-- The Question Nobody Asked -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">CuriousGeorge_NotTheMonkey</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Okay but what KIND of edibles? Gummies? Brownies? Were they at least good? This feels relevant to the investigation.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,678</span>
+                    <span class="downvotes">▼ 1,234</span>
+                    <span>Reply (89)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">Priorities_Check</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Asking the questions that matter /s
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- The "Actually Helpful" Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">UsefulInfoGuy</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    For anyone wondering about one-party consent states (so you know if you can record YOUR boss's racist tirades):<br><br>
+                    One-party consent: AZ, AR, CO, CT, DC, GA, HI, ID, IN, IA, KS, KY, LA, ME, MI*, MN, MS, MO, NE, NJ, NM, NY, NC, ND, OH, OK, OR, RI, SC, SD, TN, TX, UT, VA, WV, WI, WY<br><br>
+                    *Michigan, where this happened. Check your state laws.<br><br>
+                    This is not legal advice, I'm just a guy who Googled.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 11.2K</span>
+                    <span>Reply (167)</span>
+                    <span>Share</span>
+                    <span>💾 Save</span>
+                </div>
+            </div>
+
+            <!-- The Late Comment -->
+            <div class="comment">
+                <div class="comment-header">
+                    <span class="comment-author">AlwaysLateToTheParty</span>
+                    <span class="comment-time">23 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Wait what happened to Campbell's? I was making soup and just saw this. Did I miss something?
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,345</span>
+                    <span>Reply (45)</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span class="comment-author">CatchUpKing</span>
+                    <span class="comment-time">20 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Buddy. Read the article. Then put down the soup. Then read it again.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,567</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+
+            <!-- Final Zinger Comment -->
+            <div class="comment top-comment">
+                <div class="awards-bar">
+                    <span class="award">🏆</span>
+                    <span class="award">💀</span>
+                    <span class="award">🥫</span>
+                    <span class="award">🍃</span>
+                    <span class="award">🔥</span>
+                    <span style="font-size: 0.75em; color: #666;">+67 more</span>
+                </div>
+                <div class="comment-header">
+                    <span class="comment-author">FinalWordWins</span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Let me get this straight:<br><br>
+                    • Executive admits to drug use at work ✅<br>
+                    • Executive makes racist comments about colleagues ✅<br>
+                    • Executive says company products are "shit for poor people" ✅<br>
+                    • Executive says he won't eat company products ✅<br>
+                    • Executive all on tape ✅<br><br>
+                    Result: Executive still employed during "investigation"<br><br>
+                    Meanwhile:<br><br>
+                    • Employee reports all of the above ✅<br>
+                    • Employee has clean record ✅<br>
+                    • Employee followed proper channels ✅<br><br>
+                    Result: Fired within weeks, unemployed for 10 months<br><br>
+                    And people wonder why nobody reports anything. This is the system working EXACTLY as designed. The cruelty is the point. The soup is just a metaphor at this point.<br><br>
+                    Mm mm good, indeed.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 47.8K</span>
+                    <span>Reply (892)</span>
+                    <span>Share</span>
+                    <span>🏆 Award</span>
+                </div>
+            </div>
+
+            <div class="collapsed-replies">
+                ▼ Load more comments (1,847 remaining)
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p><strong>HuckFinn</strong> • America's Finest Newspaper</p>
+        <p>
+            <a href="#">About</a> |
+            <a href="#">Contact</a> |
+            <a href="#">Advertise</a> |
+            <a href="#">Legal</a> |
+            <a href="#">Ethics Policy</a> |
+            <a href="#">Definitely Not Satire (It's Satire)</a>
+        </p>
+        <p style="margin-top: 15px; font-size: 0.75em;">
+            © 2025 HuckFinn Media LLC. All rights reserved. Any resemblance to actual events is entirely intentional and also hilarious.<br>
+            "If you can't beat them, satirize them." — Our Founder, probably
+        </p>
+    </footer>
+
+</body>
+</html>
