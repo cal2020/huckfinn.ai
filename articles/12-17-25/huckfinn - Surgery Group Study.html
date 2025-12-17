@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest News Source</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f4f1e8;
+            color: #222;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Masthead */
+        .masthead {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 4px solid #c41e3a;
+        }
+        .masthead h1 {
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 #c41e3a;
+        }
+        .masthead .tagline {
+            font-style: italic;
+            color: #ccc;
+            margin-top: 5px;
+        }
+        .masthead .date-line {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 10px;
+            border-top: 1px solid #444;
+            padding-top: 10px;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            background: #c41e3a;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Breaking Banner */
+        .breaking-banner {
+            background: #ffeb3b;
+            color: #000;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9em;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Article */
+        .article {
+            padding: 30px;
+        }
+        .article-header {
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .section-label {
+            background: #c41e3a;
+            color: #fff;
+            padding: 3px 10px;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .headline {
+            font-size: 2.4em;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .subheadline {
+            font-size: 1.3em;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .byline {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .byline .author {
+            font-weight: bold;
+        }
+
+        /* Featured Image */
+        .featured-image {
+            margin: 25px 0;
+            text-align: center;
+        }
+        .featured-image svg {
+            max-width: 100%;
+            border: 1px solid #ddd;
+        }
+        .featured-image .caption {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 3px solid #c41e3a;
+        }
+
+        /* Article Body */
+        .article-body p {
+            margin-bottom: 18px;
+            font-size: 1.1em;
+        }
+        .article-body .pullquote {
+            font-size: 1.4em;
+            font-style: italic;
+            color: #c41e3a;
+            border-left: 4px solid #c41e3a;
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        /* Ads */
+        .ad-container {
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad-container .ad-label {
+            font-size: 0.7em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .ad-container .ad-content {
+            font-size: 1.1em;
+        }
+        .ad-container .ad-content h3 {
+            color: #c41e3a;
+            margin-bottom: 10px;
+        }
+        .ad-container .ad-cta {
+            display: inline-block;
+            background: #c41e3a;
+            color: #fff;
+            padding: 10px 25px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        /* Related Articles */
+        .related-section {
+            background: #f4f1e8;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .related-section h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #c41e3a;
+            padding-bottom: 10px;
+        }
+        .related-section ul {
+            list-style: none;
+        }
+        .related-section li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .related-section li:last-child {
+            border-bottom: none;
+        }
+        .related-section a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .related-section a:hover {
+            color: #c41e3a;
+        }
+        .related-section .source {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            padding: 30px;
+            background: #fafafa;
+            border-top: 3px solid #1a1a1a;
+        }
+        .comments-section h3 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        .comment-count {
+            color: #888;
+            font-weight: normal;
+        }
+        .comment {
+            background: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #ddd;
+        }
+        .comment.highlighted {
+            border-left-color: #c41e3a;
+        }
+        .comment .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .comment .username {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .comment .username.verified {
+            color: #c41e3a;
+        }
+        .comment .username.verified::after {
+            content: " ✓";
+            color: #4CAF50;
+        }
+        .comment .badge {
+            font-size: 0.75em;
+            background: #eee;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+        .comment .badge.top-commenter {
+            background: #ffd700;
+            color: #000;
+        }
+        .comment .badge.founder {
+            background: #c41e3a;
+            color: #fff;
+        }
+        .comment .timestamp {
+            color: #888;
+            font-size: 0.85em;
+        }
+        .comment .comment-body {
+            margin-bottom: 10px;
+        }
+        .comment .comment-actions {
+            font-size: 0.85em;
+            color: #888;
+        }
+        .comment .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .comment .upvotes {
+            color: #4CAF50;
+        }
+        .comment .downvotes {
+            color: #f44336;
+        }
+        .reply {
+            margin-left: 30px;
+            border-left-color: #e0e0e0;
+        }
+        .reply.op-reply {
+            background: #fff9e6;
+        }
+        .deleted-comment {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Opinion Section */
+        .opinion-box {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .opinion-box h3 {
+            color: #ffeb3b;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .opinion-box p {
+            font-style: italic;
+        }
+        .opinion-box .opinion-author {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        /* Poll Widget */
+        .poll-widget {
+            background: #fff;
+            border: 2px solid #1a1a1a;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .poll-widget h4 {
+            margin-bottom: 15px;
+        }
+        .poll-option {
+            margin: 10px 0;
+        }
+        .poll-bar {
+            background: #e0e0e0;
+            height: 25px;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        .poll-fill {
+            height: 100%;
+            background: #c41e3a;
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            color: #fff;
+            font-size: 0.85em;
+        }
+
+        /* Corrections Box */
+        .corrections-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .corrections-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #888;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.85em;
+        }
+        .footer .footer-links a {
+            color: #ccc;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer .copyright {
+            margin-top: 15px;
+            color: #555;
+        }
+
+        /* Letter to Editor */
+        .letter-section {
+            border: 2px solid #1a1a1a;
+            padding: 20px;
+            margin: 25px 0;
+            background: #fefefe;
+        }
+        .letter-section h4 {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .letter-section .letter-author {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1>HuckFinn</h1>
+            <div class="tagline">America's Finest News Source Since 1892*</div>
+            <div class="date-line">Vol. CXXXII, No. 847 | Tuesday, December 16, 2025 | Price: Your Remaining Faith in Medical Research | *Citation Needed</div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <a href="#">News</a>
+            <a href="#">Politics</a>
+            <a href="#">Health</a>
+            <a href="#">Business</a>
+            <a href="#">Opinion</a>
+            <a href="#">Obituaries (Journalistic Integrity)</a>
+        </nav>
+
+        <!-- Breaking Banner -->
+        <div class="breaking-banner">
+            🚨 BREAKING: Group That Sells Thing Releases Study Confirming Thing Is Best Option 🚨
+        </div>
+
+        <!-- Main Article -->
+        <article class="article">
+            <header class="article-header">
+                <span class="section-label">Health & Conflict of Interest</span>
+                <h1 class="headline">Surgery Group's Study Finds Surgery Superior To Pills That Patients Can Simply Stop Taking</h1>
+                <p class="subheadline">Researchers note 100% of surgery patients remained compliant with having had surgery; pill-takers' commitment questioned</p>
+                <p class="byline">By <span class="author">Dr. Barnaby Scalpelsworth III</span> | Medical-Industrial Correspondent | December 16, 2025</p>
+            </header>
+
+            <!-- Featured Image -->
+            <div class="featured-image">
+                <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="600" height="400" fill="#f5f5f5"/>
+
+                    <!-- Title Banner -->
+                    <rect x="0" y="0" width="600" height="50" fill="#1a1a1a"/>
+                    <text x="300" y="32" text-anchor="middle" fill="#fff" font-family="Georgia" font-size="16" font-weight="bold">SCIENTIFIC METHODOLOGY ILLUSTRATED</text>
+
+                    <!-- Left side - Surgery -->
+                    <rect x="30" y="70" width="240" height="280" fill="#fff" stroke="#333" stroke-width="2"/>
+                    <text x="150" y="100" text-anchor="middle" font-family="Georgia" font-size="14" font-weight="bold">SURGERY GROUP</text>
+
+                    <!-- Stomach illustration - surgery side (small banana) -->
+                    <ellipse cx="150" cy="170" rx="25" ry="35" fill="#ffcc80" stroke="#e65100" stroke-width="2"/>
+                    <text x="150" y="175" text-anchor="middle" font-size="10">🍌</text>
+                    <text x="150" y="220" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Stomach: Banana-sized</text>
+                    <text x="150" y="238" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Compliance: 100%</text>
+                    <text x="150" y="256" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">(Cannot un-surgery yourself)</text>
+
+                    <!-- Checkmark -->
+                    <circle cx="150" cy="310" r="25" fill="#4CAF50"/>
+                    <text x="150" y="318" text-anchor="middle" fill="#fff" font-size="24">✓</text>
+
+                    <!-- Right side - Medication -->
+                    <rect x="330" y="70" width="240" height="280" fill="#fff" stroke="#333" stroke-width="2"/>
+                    <text x="450" y="100" text-anchor="middle" font-family="Georgia" font-size="14" font-weight="bold">MEDICATION GROUP</text>
+
+                    <!-- Pill illustration -->
+                    <ellipse cx="450" cy="160" rx="40" ry="18" fill="#e3f2fd" stroke="#1976d2" stroke-width="2"/>
+                    <text x="450" y="165" text-anchor="middle" font-size="12" fill="#1976d2">💊</text>
+
+                    <!-- Arrows showing pills leaving -->
+                    <text x="410" y="200" font-size="16">💊→🚪</text>
+                    <text x="450" y="200" font-size="16">💊→🗑️</text>
+                    <text x="490" y="200" font-size="16">💊→💸</text>
+
+                    <text x="450" y="238" text-anchor="middle" font-family="Arial" font-size="11" fill="#333">Compliance: 30%</text>
+                    <text x="450" y="256" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">(Can simply stop; many do)</text>
+                    <text x="450" y="274" text-anchor="middle" font-family="Arial" font-size="9" fill="#c41e3a">"Adjust expectations"</text>
+
+                    <!-- X mark -->
+                    <circle cx="450" cy="310" r="25" fill="#f44336"/>
+                    <text x="450" y="318" text-anchor="middle" fill="#fff" font-size="24">✗</text>
+
+                    <!-- VS in middle -->
+                    <circle cx="300" cy="200" r="30" fill="#c41e3a"/>
+                    <text x="300" y="208" text-anchor="middle" fill="#fff" font-family="Georgia" font-size="18" font-weight="bold">VS</text>
+
+                    <!-- Footer -->
+                    <rect x="0" y="360" width="600" height="40" fill="#1a1a1a"/>
+                    <text x="300" y="382" text-anchor="middle" fill="#ffeb3b" font-family="Arial" font-size="11">STUDY FUNDED BY: American Society for Metabolic and Bariatric Surgery</text>
+                    <text x="300" y="396" text-anchor="middle" fill="#888" font-family="Arial" font-size="9">"No conflict of interest here, folks" 👀</text>
+                </svg>
+                <p class="caption"><strong>Figure 1:</strong> Visualization of study methodology. Left: Patient whose stomach was surgically reduced to the size of a small banana, showing 100% "compliance" due to anatomical permanence. Right: Patient who was given agency over their own medical decisions and exercised it. Researchers have concluded that the left option demonstrates superior "durability." Funding source shown for full transparency (study did not control for this variable).</p>
+            </div>
+
+            <!-- Article Body -->
+            <div class="article-body">
+                <p><strong>NEW YORK —</strong> In a groundbreaking study that has shocked absolutely no one paying attention, the American Society for Metabolic and Bariatric Surgery has released research conclusively demonstrating that metabolic and bariatric surgery is superior to GLP-1 medications like Ozempic — a finding that the organization, which represents surgeons who perform metabolic and bariatric surgery for a living, has described as "entirely objective and not at all motivated by anything."</p>
+
+                <p>The study, presented at the Society's own annual meeting, compared patients who underwent sleeve gastrectomy and gastric bypass operations against patients taking semaglutide or tirzepatide. The surgery group lost an average of 25.7 percent of their body weight over two years, while the medication group lost 5.3 percent — a disparity researchers attributed to medication non-compliance rather than, say, comparing permanent organ removal to an optional daily pill.</p>
+
+                <p>"We were as surprised as anyone," said Dr. Certainly Not Biased, adjusting his surgical mask and boat payment schedule simultaneously. "Who could have predicted that the intervention you literally cannot discontinue would show better long-term adherence than the one patients can simply stop taking when they experience side effects, supply shortages, or receive their pharmacy bill?"</p>
+
+                <div class="pullquote">
+                    "Compliance rate for 'missing organs' remains at a robust 100%. Your stomach does not accept your two-week notice."
+                </div>
+
+                <p>The study acknowledged that approximately 70% of GLP-1 patients discontinue treatment within one year — a figure the researchers chose to bury approximately seven paragraphs into their findings before expressing theatrical shock that the surgery group showed better outcomes. In related findings, researchers confirmed that people who cancel their gym memberships show less fitness improvement than people whose legs were surgically replaced with treadmills.</p>
+
+                <p>Clinical trials have shown weight loss between 15 and 21 percent for GLP-1 medications, but researchers dismissed these results as "not real world," preferring instead to rely on data from the real world where the surgery industry's revenue projections live. Studies conducted in controlled conditions were characterized as "fantasy," while research funded by direct competitors was presented as unvarnished truth.</p>
+
+                <p>"Patients need to adjust their expectations," explained NYU surgical resident Avery Brown, addressing a crowd of people who cannot adjust their surgically modified digestive systems. "They could also adhere more closely to treatment, or simply opt for the more economical option of permanent surgical intervention." Dr. Brown did not elaborate on whether patients experiencing $1,000/month out-of-pocket costs had considered simply having more money.</p>
+
+                <p>The researchers carefully matched patients by age, BMI, and blood sugar levels, though notably did not control for several potentially relevant variables, including: insurance coverage continuity, Ozempic shortage availability, whether the patient still possesses their original stomach configuration, ability to eat more than three ounces of food without physical consequences, and the existence of a "stop surgery" button.</p>
+            </div>
+
+            <!-- Ad Break 1 -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-content">
+                    <h3>🏥 BARIATRIC SURGERY ASSOCIATES 🏥</h3>
+                    <p><em>"Compliance Issues? We Have a Permanent Solution!"</em></p>
+                    <p>Tired of patients exercising bodily autonomy? Our procedures ensure 100% adherence rates!*</p>
+                    <p style="font-size: 0.75em; color: #888; margin-top: 10px;">*Because you physically cannot un-do them</p>
+                    <a href="#" class="ad-cta">Schedule Your Irreversible Consultation</a>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>The study did include one (1) sentence acknowledging that surgery is "invasive, permanent, and still requires patients to stick to strict diet and exercise routines" — a disclaimer that has been placed in witness protection between two stock photos and followed immediately by five paragraphs of surgeons explaining that actually surgery is extremely good and pills are for people who lack commitment.</p>
+
+                <p>"While we're not outright dismissing GLP-1 medications," the study authors carefully noted, in the same tone a Pepsi-funded study might use to not outright dismiss Coca-Cola while concluding it causes mild psychosis and Pepsi cures cancer. "Both patient groups lose weight. It's just that surgery is much more effective and durable." The word "durable," in this context, meaning "you cannot undo it even if you wanted to."</p>
+
+                <p>With GLP-1 prescriptions having doubled between 2022 and 2023, bariatric surgeons have been forced to take dramatic action: funding studies. Industry insiders report that surgical practices nationwide have experienced what one administrator described as "a modest downturn in elective digestive system rearrangements," prompting urgent scientific inquiry into why patients keep choosing the option that doesn't involve general anesthesia and permanent anatomical changes.</p>
+
+                <div class="pullquote">
+                    "The 'stop taking surgery' rate at the one-year mark remains, remarkably, at zero percent."
+                </div>
+
+                <p>ASMBS President Ann M. Rogers, who was not involved in the study but is involved in the organization that funded it and would benefit from its conclusions, praised the findings. "This is exactly the kind of unbiased research our field needs," she said. "People need to understand that the treatment we sell is better than the treatment other people sell. This is simply science."</p>
+
+                <p>Researchers have promised future studies examining "what healthcare providers can do to optimize GLP-1 outcomes" — a question they will continue exploring right up until the moment it threatens surgical revenue, at which point the research will conclude that actually surgery is still better and please stop asking questions.</p>
+
+                <p>The study has been widely praised by surgeons, surgical device manufacturers, surgical practice administrators, and a surprising number of researchers whose funding sources contain the word "surgical."</p>
+
+                <p><em>The National Association of Realtors contributed to this report with their upcoming study on whether renting or buying is the better choice. Spoiler: it's buying.</em></p>
+            </div>
+
+            <!-- Opinion Box -->
+            <div class="opinion-box">
+                <h3>📰 EDITORIAL: A Victory for Science</h3>
+                <p>"Finally, a study brave enough to confirm what the people funding it already believed. This is peer review working exactly as intended."</p>
+                <p class="opinion-author">— The Editorial Board (Three surgeons in a trenchcoat)</p>
+            </div>
+
+            <!-- Poll Widget -->
+            <div class="poll-widget">
+                <h4>📊 READER POLL: Which weight loss method do you trust more?</h4>
+                <div class="poll-option">
+                    <span>Surgery (permanent, cannot be discontinued)</span>
+                    <div class="poll-bar">
+                        <div class="poll-fill" style="width: 73%;">73% — 12,847 votes</div>
+                    </div>
+                </div>
+                <div class="poll-option">
+                    <span>Medication (reversible, requires ongoing choice)</span>
+                    <div class="poll-bar">
+                        <div class="poll-fill" style="width: 8%; background: #888;">8%</div>
+                    </div>
+                </div>
+                <div class="poll-option">
+                    <span>Whichever one isn't funded by the people selling it</span>
+                    <div class="poll-bar">
+                        <div class="poll-fill" style="width: 19%; background: #4CAF50;">19%</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Poll sponsored by American Society for Metabolic and Bariatric Surgery</p>
+            </div>
+
+            <!-- Ad Break 2 -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-content">
+                    <h3>💊 HAVING TROUBLE WITH MEDICATION COMPLIANCE? 💊</h3>
+                    <p><strong>Try our patented solution: Make it physically impossible to stop!</strong></p>
+                    <p>Studies show* 100% of patients remain compliant when compliance is anatomically mandatory.</p>
+                    <p style="font-size: 0.75em; color: #888;">*Studies conducted by us, about our product, presented at our conference</p>
+                    <a href="#" class="ad-cta">Remove Your Agency Today!</a>
+                </div>
+            </div>
+
+            <!-- Letter to Editor -->
+            <div class="letter-section">
+                <h4>📬 LETTER TO THE EDITOR</h4>
+                <p>Dear HuckFinn,</p>
+                <p>As a researcher who has definitely never received funding from surgical device manufacturers, I am appalled by the insinuation that our study might be biased. We followed rigorous scientific methodology: we started with our conclusion and worked backward. This is called "hypothesis-driven research" and is very legitimate.</p>
+                <p>Furthermore, comparing surgery to medication is perfectly fair. Yes, one is permanent and one is not. Yes, one removes organs and one does not. Yes, one has a 100% "compliance" rate because non-compliance would require time travel. But these are minor methodological details that do not affect our very scientific findings.</p>
+                <p class="letter-author">— Dr. Definitely Objective, MD, PhD, FACS, $URG</p>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="related-section">
+                <h3>📰 RELATED ARTICLES</h3>
+                <ul>
+                    <li>
+                        <a href="#">Tobacco Industry Study Finds Cigarettes Less Harmful Than Quitting</a>
+                        <div class="source">HuckFinn Health Desk</div>
+                    </li>
+                    <li>
+                        <a href="#">Oil Company Research Concludes Bicycles Are The Real Problem</a>
+                        <div class="source">HuckFinn Environment</div>
+                    </li>
+                    <li>
+                        <a href="#">Casino-Funded Study: Gambling Addiction "Mostly A Myth"</a>
+                        <div class="source">HuckFinn Science</div>
+                    </li>
+                    <li>
+                        <a href="#">Pharmaceutical Company Shocked To Discover Their Drug Is Best Drug</a>
+                        <div class="source">HuckFinn Medicine</div>
+                    </li>
+                    <li>
+                        <a href="#">Study: Asking Barbers If You Need A Haircut Yields Surprising Results</a>
+                        <div class="source">HuckFinn Investigates</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- You Might Also Like -->
+            <div class="related-section">
+                <h3>🔥 YOU MIGHT ALSO BE INTERESTED IN</h3>
+                <ul>
+                    <li>
+                        <a href="#">LOCAL MAN "JUST DOING HIS OWN RESEARCH" EXPOSED AS NOT DOING RESEARCH</a>
+                        <div class="source">Trending in Health</div>
+                    </li>
+                    <li>
+                        <a href="#">Study Funded By People Who Would Benefit From Study Confirms They Were Right All Along</a>
+                        <div class="source">Trending in Science</div>
+                    </li>
+                    <li>
+                        <a href="#">Nation's Surgeons Unsure Why Patients Keep Choosing Non-Surgical Options</a>
+                        <div class="source">Trending in Business</div>
+                    </li>
+                    <li>
+                        <a href="#">Man Who Sells Hammers Warns Of Rising Nail Epidemic</a>
+                        <div class="source">Trending in Economics</div>
+                    </li>
+                    <li>
+                        <a href="#">AREA DOCTOR REMINDS PATIENTS THAT PERMANENT DECISIONS ARE PERMANENT</a>
+                        <div class="source">Trending in Local</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Corrections Box -->
+            <div class="corrections-box">
+                <h4>⚠️ CORRECTIONS & CLARIFICATIONS</h4>
+                <p>An earlier version of this article stated that the study was "hilariously biased." We have updated the language to "funded by parties with financial interest in the outcome," which is the same thing but sounds more professional.</p>
+                <p style="margin-top: 10px;">We also originally reported that 100% of surgery patients "couldn't quit" their surgery. This has been corrected to reflect that they "demonstrated robust long-term compliance," which is more accurate and much funnier when you think about it.</p>
+            </div>
+        </article>
+
+        <!-- Ad Break 3 -->
+        <div class="ad-container">
+            <div class="ad-label">A Message From Our Sponsors</div>
+            <div class="ad-content">
+                <h3>⚖️ THE LAW OFFICES OF CONFLICT & INTEREST, LLP ⚖️</h3>
+                <p><em>"Specializing in research that somehow always supports whoever paid for it"</em></p>
+                <p>Need a study? We've got conclusions! (Methodology sold separately)</p>
+                <p style="font-size: 0.85em; margin-top: 10px;">📞 Call 1-800-BIAS-4-U | "Where Science Meets Sponsorship"</p>
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h3>💬 COMMENTS <span class="comment-count">(1,247 comments, 89% pure chaos)</span></h3>
+
+            <div class="comment highlighted">
+                <div class="comment-header">
+                    <span><span class="username verified">SurgeonGeneral420</span><span class="badge top-commenter">Top Commenter</span></span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    First! Also I'm a bariatric surgeon and I see nothing wrong with this study. Very objective. Very science. Now if you'll excuse me, I have a boat payment to make.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,847</span>
+                    <span class="downvotes">▼ 156</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">SkepticalSteve</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    "Study funded by surgery group finds surgery is best" and I'm supposed to be surprised? Next you'll tell me the Beef Industry Council has concerns about veganism.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,203</span>
+                    <span class="downvotes">▼ 45</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">BigPharmaShillActually</span></span>
+                    <span class="timestamp">58 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    As someone who actually works for Big Pharma, I'm offended. When WE fund biased research, we at least have the decency to use a shell organization. These surgeons are just out here doing it in the open like it's casual Friday.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,421</span>
+                    <span class="downvotes">▼ 89</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">MethodologyMike</span><span class="badge">PhD</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Comparing people who can quit to people who can't quit and then being surprised the can't-quit group shows better "adherence" is like comparing marathon completion rates between runners and people who were surgically attached to the finish line. This is peer-reviewed? By whom? Other surgeons?
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,892</span>
+                    <span class="downvotes">▼ 201</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">ActuallyAStatistician</span></span>
+                    <span class="timestamp">47 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    This methodology made me physically ill. I'm going to need surgery to recover. Wait, no—
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,156</span>
+                    <span class="downvotes">▼ 34</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">KarenFromFacebook</span></span>
+                    <span class="timestamp">45 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    This is why I don't trust ANY medicine or surgery. I lost 47 pounds using only essential oils and positive thinking. My doctor says I'm "dangerously underweight" and "malnourished" but that's just what Big Medicine WANTS you to believe. Do your own research! 🙏✨🌿
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 89</span>
+                    <span class="downvotes">▼ 4,521</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">TiredMD</span><span class="badge">Verified Doctor</span></span>
+                    <span class="timestamp">42 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Please see a different doctor. Any different doctor.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,934</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">EssentialOilsDealer</span></span>
+                    <span class="timestamp">38 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Hey Karen! I'm actually an independent business owner (not an MLM, it's different) and I'd love to tell you about our patented weight loss oils! DM me hun! 💕🌸✨ #BossBabe #OilyLife #DefinitelyNotAPyramidScheme
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2</span>
+                    <span class="downvotes">▼ 3,847</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">GymBro9000</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    OR... hear me out... you could just eat less and move more???? I lost 50 lbs just by eating clean and hitting the gym 6 days a week, waking up at 4am, drinking a gallon of water, taking 47 supplements, meal prepping every Sunday, hiring a personal trainer, and having no other responsibilities or health conditions. It's not that hard people!!! 💪😤
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 234</span>
+                    <span class="downvotes">▼ 5,672</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">WorkingMomOf3</span></span>
+                    <span class="timestamp">54 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    "No other responsibilities" doing a lot of heavy lifting in that comment bro
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 7,843</span>
+                    <span class="downvotes">▼ 23</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">GymBro9000</span></span>
+                    <span class="timestamp">51 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Sounds like excuses to me. Discipline equals freedom. Rise and grind. Etc.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12</span>
+                    <span class="downvotes">▼ 2,341</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">ConflictOfInterest_Enjoyer</span><span class="badge founder">Founder's Club</span></span>
+                    <span class="timestamp">33 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    I actually love when the bias is this obvious. It's like they're not even trying anymore. "Surgery group funds study, study finds surgery is good, study presented at surgery conference, surgery president says results are valid." Chef's kiss. No notes. Perfect transparency about the complete lack of transparency.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 6,234</span>
+                    <span class="downvotes">▼ 67</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">[deleted]</span></span>
+                    <span class="timestamp">28 minutes ago</span>
+                </div>
+                <div class="comment-body deleted">
+                    [Comment removed by moderator: User revealed they were actually three surgeons in a trenchcoat]
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ —</span>
+                    <span class="downvotes">▼ —</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">BoomerDad1955</span></span>
+                    <span class="timestamp">25 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    In MY day we didn't have "ozempic" or "bariatric surgery" we just had WILLPOWER and CIGARETTES to keep the weight off. Worked fine for everyone except the ones who died. Which was a lot. But the survivors were THIN.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,456</span>
+                    <span class="downvotes">▼ 892</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">GenZ_Kai</span></span>
+                    <span class="timestamp">22 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    "Everyone who survived was thin" is genuinely the most unhinged health advice I've ever read. Noted. Will try cigarettes and survivorship bias. 💀
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,532</span>
+                    <span class="downvotes">▼ 34</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">InsuranceAdjuster_Throwaway</span></span>
+                    <span class="timestamp">18 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    I work in health insurance and let me tell you, we LOVE this study. Nothing like a "patients should just stop being non-compliant" narrative to justify denying coverage. Beautiful work, truly. The bit about out-of-pocket costs being a future research topic? *chef's kiss* That's OUR research to do, and spoiler: the answer is "pay more or suffer."
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,211</span>
+                    <span class="downvotes">▼ 1,456</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">NotABot_12847</span></span>
+                    <span class="timestamp">15 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    AS A HUMAN PERSON WHO DEFINITELY HAS ORGANS, I THINK SURGERY IS THE SUPERIOR OPTION FOR ALL HUMANS. THE REMOVAL OF DIGESTIVE COMPONENTS IS VERY NORMAL AND GOOD. PLEASE PROCEED TO YOUR NEAREST SURGICAL CENTER. THIS IS NOT SPONSORED CONTENT. BEEP— I MEAN, REGARDS.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 892</span>
+                    <span class="downvotes">▼ 234</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">OzempicActuallyWorkedForMe</span></span>
+                    <span class="timestamp">12 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    I've been on semaglutide for 18 months and lost 65 pounds. But according to this study I don't exist because I didn't quit? Or do I count as the 30% that makes surgery look good by comparison? I'm confused about my role in this narrative.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,432</span>
+                    <span class="downvotes">▼ 87</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">StatisticalOutlier</span></span>
+                    <span class="timestamp">9 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    According to the methodology, you're supposed to "adjust your expectations" and/or consider surgery. Your success is inconvenient to the narrative. Please comply.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,876</span>
+                    <span class="downvotes">▼ 21</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">JustHereForTheChaos</span></span>
+                    <span class="timestamp">7 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    The AUDACITY of presenting a study at your OWN CONFERENCE that you FUNDED YOURSELF about YOUR OWN PRODUCT and calling it "research" is honestly aspirational. I'm going to start conducting peer-reviewed studies at dinner parties about why everyone should give me $20.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,934</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">TherapistOnBreak</span></span>
+                    <span class="timestamp">4 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    This comment section is why I drink.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12,456</span>
+                    <span class="downvotes">▼ 3</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply op-reply">
+                <div class="comment-header">
+                    <span><span class="username verified">HuckFinn Official</span><span class="badge" style="background: #1a1a1a; color: #fff;">STAFF</span></span>
+                    <span class="timestamp">2 minutes ago</span>
+                </div>
+                <div class="comment-body">
+                    Same.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 15,678</span>
+                    <span class="downvotes">▼ 0</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #888; margin-top: 20px; font-style: italic;">— Load 1,198 more comments (Warning: 67% are gym bros, 22% are MLM huns, 11% are surgeons pretending to be regular people) —</p>
+        </section>
+
+        <!-- Final Ad -->
+        <div class="ad-container">
+            <div class="ad-label">Premium Sponsored Content</div>
+            <div class="ad-content">
+                <h3>📊 NEED RESEARCH THAT SUPPORTS YOUR PRODUCT? 📊</h3>
+                <p><strong>CONCLUSION FIRST RESEARCH LABS™</strong></p>
+                <p><em>"You tell us the answer. We'll find the data."</em></p>
+                <p>Serving the pharmaceutical, surgical, tobacco, oil, and "whatever you're selling" industries since 1952!</p>
+                <p style="font-size: 0.8em; margin-top: 10px;">🏆 Winner: "Most Creative Methodology" - Industry Self-Awarded Excellence Awards 2024</p>
+                <a href="#" class="ad-cta">Request Your Custom Study</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Advertise</a>
+                <a href="#">Ethics Policy (LOL)</a>
+                <a href="#">Corrections</a>
+                <a href="#">Subscribe</a>
+            </div>
+            <p class="copyright">© 2025 HuckFinn Media Group | "All The News That's Fit To Fund" | A Conditions Applied Media Property</p>
+            <p style="margin-top: 10px; font-size: 0.75em; color: #666;">This is satire. If you're a surgeon who's upset, please note that we're happy to publish a rebuttal. Study funding available upon request.</p>
+        </footer>
+    </div>
+</body>
+</html>
