@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HuckFinn Gazette — Complete Article Index</title>
+    <!-- React CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><filter id='glow'><feGaussianBlur stdDeviation='3' result='blur'/><feFlood flood-color='%23c9a227' flood-opacity='0.4'/><feComposite in2='blur' operator='in'/><feMerge><feMergeNode/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><rect width='100' height='100' fill='%231a1a1a'/><text x='50' y='72' font-family='UnifrakturMaguntia,serif' font-size='80' fill='%23f5f2e8' text-anchor='middle' filter='url(%23glow)'>H</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
     <style>
@@ -1136,5 +1140,489 @@
             </div>
         </footer>
     </div>
+
+    <!-- React App Mount Point -->
+    <div id="huckfinn-react-root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // Main HuckFinn Newspaper Component
+        function HuckFinnNewspaper() {
+            const [activeGame, setActiveGame] = useState(null);
+            return (
+                <div style={{
+                    fontFamily: "'Times New Roman', Georgia, serif",
+                    backgroundColor: '#f5f0e6',
+                    minHeight: '100vh',
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    backgroundBlendMode: 'multiply',
+                }}>
+                    {/* Ticker */}
+                    <MarketTicker />
+
+                    {/* Masthead */}
+                    <header style={{
+                        borderBottom: '4px double #000',
+                        padding: '20px',
+                        textAlign: 'center',
+                        backgroundColor: '#fff',
+                    }}>
+                        <div style={{ fontSize: '12px', letterSpacing: '4px', marginBottom: '5px' }}>AMERICA'S FINEST NEWS SOURCE • ESTABLISHED 1756 • "TU NE CEDE MALIS"</div>
+                        <h1 style={{
+                            fontFamily: "'Old English Text MT', 'UnifrakturMaguntia', serif",
+                            fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+                            margin: '10px 0',
+                            fontWeight: 'normal',
+                            letterSpacing: '2px',
+                        }}>HuckFinn</h1>
+                        <div style={{ fontSize: '11px', letterSpacing: '3px' }}>THURSDAY, DECEMBER 18, 2025 • VOL. CCLXIX, NO. 847 • PRICE: $50,000 (STUDENT RATE)</div>
+                    </header>
+
+                    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+                        <MainArticle />
+                        <InterstitialAd type={1} />
+                        <MainPhoto />
+                        <CommentsSection />
+                        <InterstitialAd type={2} />
+                        <GamesSection activeGame={activeGame} setActiveGame={setActiveGame} />
+                        <InterstitialAd type={3} />
+                        <RelatedArticles />
+                        <LettersToEditor />
+                        <Corrections />
+                        <Classifieds />
+                        <AcademicHoroscopes />
+                        <AcademicWeather />
+                        <Footer />
+                    </div>
+                </div>
+            );
+        }
+
+        // MARKET TICKER
+        function MarketTicker() {
+            const tickerItems = [
+                "📉 DIGNITY (DIG) -99.7%",
+                "📈 CHATGPT PREMIUM (GPT) +847%",
+                "📉 TENURE VALUE (TNR) -62%",
+                "📈 LINKEDIN ENGAGEMENT (LNKD) +∞",
+                "📉 PROFESSOR SANITY INDEX (PSI) -100%",
+                "📈 TURNITIN BYPASS ETF (BYPASS) +234%",
+                "📉 ADJUNCT LIVING WAGE (ALW) -$15.02",
+                "📈 ADMINISTRATIVE BLOAT (ADMIN) +892%",
+                "📉 STUDENT ATTENTION SPAN (SAS) -78%",
+                "📈 THERAPY FUTURES (THRP) +567%",
+                "⚠️ TRADING HALTED: ACADEMIC INTEGRITY (AI) — DELISTED",
+                "📈 RAGE-BASED CONTENT (RAGE) +1,247%",
+                "📉 HANDWRITING LEGIBILITY (HWL) -94%",
+                "📈 EARLY RETIREMENT APPLICATIONS (ERA) +3,400%",
+            ];
+            return (
+                <div style={{
+                    backgroundColor: '#1a0a0a',
+                    color: '#00ff00',
+                    padding: '8px 0',
+                    overflow: 'hidden',
+                    fontFamily: "'Courier New', monospace",
+                    fontSize: '13px',
+                    borderBottom: '2px solid #ff0000',
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        animation: 'ticker 45s linear infinite',
+                        whiteSpace: 'nowrap',
+                    }}>
+                        {[...tickerItems, ...tickerItems].map((item, i) => (
+                            <span key={i} style={{ marginRight: '50px' }}>{item}</span>
+                        ))}
+                    </div>
+                    <style>{`@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
+                </div>
+            );
+        }
+
+        // MAIN ARTICLE
+        function MainArticle() {
+            return (
+                <article style={{
+                    backgroundColor: '#fff',
+                    padding: '30px',
+                    marginBottom: '20px',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                }}>
+                    <div style={{
+                        fontSize: '11px',
+                        color: '#c00',
+                        fontWeight: 'bold',
+                        letterSpacing: '2px',
+                        marginBottom: '10px'
+                    }}>
+                        ⚡ BREAKING NEWS • EDUCATION • MELTDOWN WATCH
+                    </div>
+
+                    <h1 style={{
+                        fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+                        lineHeight: '1.1',
+                        marginBottom: '15px',
+                        fontFamily: "'Times New Roman', serif",
+                        fontWeight: 'bold',
+                    }}>
+                        Nation's Professors Achieve New Shades Of Red Previously Unknown To Science As Students Continue Using ChatGPT While Maintaining Eye Contact
+                    </h1>
+
+                    <h2 style={{
+                        fontSize: '1.2rem',
+                        fontWeight: 'normal',
+                        fontStyle: 'italic',
+                        color: '#444',
+                        marginBottom: '20px',
+                        borderBottom: '1px solid #ccc',
+                        paddingBottom: '15px',
+                    }}>
+                        'Policing AI Has Got So Frustrating,' Reports CEO Reposting Viral Video Of Educator's Psychological Break For LinkedIn Engagement
+                    </h2>
+
+                    <div style={{ fontSize: '12px', color: '#666', marginBottom: '20px' }}>
+                        By <strong>MARGARET THATCHER-REAGAN</strong> | Education Correspondent | December 18, 2025 | <em>Reading time: However long your professor's breakdown lasts</em>
+                    </div>
+
+                    <div style={{
+                        columnCount: 2,
+                        columnGap: '30px',
+                        fontSize: '15px',
+                        lineHeight: '1.7',
+                        textAlign: 'justify',
+                    }}>
+                        <p style={{ marginBottom: '15px' }}>
+                            <span style={{ fontSize: '4em', float: 'left', lineHeight: '0.8', marginRight: '8px', fontWeight: 'bold' }}>T</span>
+                            HE AMERICAN UNIVERSITY system reached a historic milestone this week as professors nationwide achieved chromatic ranges previously thought impossible for human skin, with leading researchers confirming that faculty members discussing AI plagiarism have now turned colors "well beyond the visible spectrum."
+                        </p>
+
+                        <p style={{ marginBottom: '15px' }}>
+                            The phenomenon, captured in dozens of viral videos posted to LinkedIn by CEOs seeking thought leadership engagement, shows educators experiencing what cardiologists are calling "The Tomato Index™"—a new academic vital sign measuring faculty hue shifts during plagiarism discussions.
+                        </p>
+
+                        <div style={{
+                            backgroundColor: '#1a0a0a',
+                            color: '#fff',
+                            padding: '15px',
+                            margin: '15px 0',
+                            fontFamily: 'monospace',
+                            fontSize: '12px',
+                        }}>
+                            <strong>PEDAGOGICAL ARMS RACE — PATCH NOTES:</strong><br/><br/>
+                            Yelling .......................... 0% win rate<br/>
+                            Turnitin ...................... -15% (students pre-screen)<br/>
+                            "I Can Tell" .................... 0% (they cannot tell)<br/>
+                            Retirement .................... 100% (META-DOMINANT)
+                        </div>
+
+                        <p style={{
+                            marginTop: '20px',
+                            fontStyle: 'italic',
+                            borderTop: '1px solid #ccc',
+                            paddingTop: '15px',
+                            color: '#666',
+                        }}>
+                            At press time, a 19-year-old was observed generating a B+ essay in 40 seconds while maintaining eye contact and eating a bagel.
+                        </p>
+                    </div>
+                </article>
+            );
+        }
+
+        // MAIN PHOTO
+        function MainPhoto() {
+            return (
+                <figure style={{
+                    backgroundColor: '#fff',
+                    padding: '20px',
+                    marginBottom: '20px',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                }}>
+                    <svg viewBox="0 0 800 500" style={{ width: '100%', height: 'auto', border: '1px solid #ddd' }}>
+                        <rect width="800" height="500" fill="#e8e4dc"/>
+                        <rect x="150" y="30" width="500" height="200" fill="#f5f5f5" stroke="#999" strokeWidth="3"/>
+                        <text x="400" y="100" textAnchor="middle" fontSize="28" fill="#333" fontFamily="Comic Sans MS, cursive">NO AI!!!</text>
+                        <text x="400" y="140" textAnchor="middle" fontSize="18" fill="#c00" fontFamily="Comic Sans MS, cursive">I MEAN IT!!!</text>
+                        <text x="400" y="180" textAnchor="middle" fontSize="14" fill="#c00" fontFamily="Comic Sans MS, cursive">(I can tell)</text>
+                        <text x="400" y="210" textAnchor="middle" fontSize="10" fill="#999" fontFamily="Arial">(narrator: he could not tell)</text>
+                        <ellipse cx="400" cy="290" rx="35" ry="40" fill="#ff2200"/>
+                        <circle cx="385" cy="280" r="5" fill="#fff"/>
+                        <circle cx="415" cy="280" r="5" fill="#fff"/>
+                        <circle cx="385" cy="280" r="2" fill="#000"/>
+                        <circle cx="415" cy="280" r="2" fill="#000"/>
+                        <path d="M 380 305 Q 400 290 420 305" stroke="#000" strokeWidth="3" fill="none"/>
+                    </svg>
+                    <figcaption style={{ marginTop: '15px', fontSize: '13px', color: '#444', fontStyle: 'italic', borderTop: '1px solid #ddd', paddingTop: '10px' }}>
+                        <strong>Above:</strong> Dr. Harold Pemberton achieves "Heirloom Burgundy" on the Tomato Index™ during a lecture on academic integrity.
+                    </figcaption>
+                </figure>
+            );
+        }
+
+        // COMMENTS SECTION
+        function CommentsSection() {
+            const comments = [
+                { user: "TenuredAndTired_1987", badge: "VERIFIED PROFESSOR", badgeColor: "#c00", avatar: "👨‍🏫", text: "We are NOT turning into tomatoes. I am a healthy shade of crimson at WORST.", time: "2 hours ago", likes: 47, replies: [{ user: "GPT4_Burner_Acct", avatar: "🤖", text: "Would you like me to rephrase your comment to sound more human?", time: "1 hour ago", likes: 892 }] },
+                { user: "xX_CheatCode_Xx", badge: "STUDENT", badgeColor: "#228B22", avatar: "😎", text: "lmaooo my prof literally did this last week 💀💀💀", time: "1 hour ago", likes: 1247, replies: [{ user: "TenuredAndTired_1987", avatar: "👨‍🏫", text: "YOU. It was YOU.", time: "30 min ago", likes: 3400 }] },
+            ];
+            return (
+                <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                    <h3 style={{ fontSize: '1.3rem', borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>
+                        💬 COMMENTS — <span style={{color: '#c00'}}>HEATED DEBATE</span>
+                    </h3>
+                    {comments.map((comment, i) => (
+                        <div key={i} style={{ borderBottom: '1px solid #eee', paddingBottom: '15px', marginBottom: '15px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+                                <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{comment.avatar}</span>
+                                <strong>{comment.user}</strong>
+                                {comment.badge && <span style={{ backgroundColor: comment.badgeColor, color: '#fff', padding: '2px 8px', borderRadius: '3px', fontSize: '10px', marginLeft: '8px' }}>{comment.badge}</span>}
+                            </div>
+                            <p style={{ marginLeft: '40px', marginBottom: '8px' }}>{comment.text}</p>
+                            {comment.replies.map((reply, j) => (
+                                <div key={j} style={{ marginLeft: '60px', marginTop: '10px', paddingLeft: '15px', borderLeft: '2px solid #ddd' }}>
+                                    <span style={{ marginRight: '8px' }}>{reply.avatar}</span>
+                                    <strong style={{ fontSize: '13px' }}>{reply.user}</strong>
+                                    <p style={{ fontSize: '13px', marginTop: '5px' }}>{reply.text}</p>
+                                </div>
+                            ))}
+                        </div>
+                    ))}
+                </section>
+            );
+        }
+
+        // INTERSTITIAL ADS
+        function InterstitialAd({ type }) {
+            const ads = {
+                1: { bg: 'linear-gradient(135deg, #ff6b6b, #c0392b)', content: (<><div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>🍅 TOMATO INDEX™ MONITORING DEVICE</div><div>Track your faculty's chromatic shifts in real-time!</div></>) },
+                2: { bg: 'linear-gradient(135deg, #0077B5, #004d73)', content: (<><div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>💼 LinkedIn Premium™</div><div>Monetize Others' Pain Today!</div></>) },
+                3: { bg: 'linear-gradient(135deg, #2c3e50, #1a252f)', content: (<><div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>🎓 EARLY RETIREMENT CALCULATOR</div><div>How many ChatGPT incidents until you can leave?</div></>) }
+            };
+            const ad = ads[type];
+            return (
+                <div style={{ background: ad.bg, color: '#fff', padding: '30px', marginBottom: '20px', textAlign: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.3)' }}>
+                    {ad.content}
+                </div>
+            );
+        }
+
+        // GAMES SECTION
+        function GamesSection({ activeGame, setActiveGame }) {
+            return (
+                <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                    <h3 style={{ fontSize: '1.5rem', borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>
+                        🎮 INTERACTIVE: THE ACADEMIC ARCADE 🎮
+                    </h3>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+                        {[
+                            { id: 'quiz', name: '🤖 AI or Student?', desc: 'Can YOU tell the difference?' },
+                            { id: 'bp', name: '🍅 Prof Blood Pressure', desc: "Don't let them explode!" },
+                            { id: 'roulette', name: '🎰 Turnitin Roulette', desc: 'Spin the wheel of fate' },
+                        ].map(game => (
+                            <button key={game.id} onClick={() => setActiveGame(activeGame === game.id ? null : game.id)} style={{ padding: '20px', backgroundColor: activeGame === game.id ? '#1a0a0a' : '#f5f5f5', color: activeGame === game.id ? '#fff' : '#000', border: '2px solid #000', cursor: 'pointer', textAlign: 'left' }}>
+                                <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{game.name}</div>
+                                <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{game.desc}</div>
+                            </button>
+                        ))}
+                    </div>
+                    {activeGame === 'quiz' && <AIorStudentGame />}
+                    {activeGame === 'bp' && <BloodPressureGame />}
+                    {activeGame === 'roulette' && <TurnitinRoulette />}
+                </section>
+            );
+        }
+
+        function AIorStudentGame() {
+            const [questionIndex, setQuestionIndex] = useState(0);
+            const [score, setScore] = useState(0);
+            const [answered, setAnswered] = useState(false);
+            const [selectedAnswer, setSelectedAnswer] = useState(null);
+            const questions = [
+                { text: "The thematic elements of Gatsby's green light serve as a multifaceted symbol.", answer: "ai", explanation: "Too coherent." },
+                { text: "gatsby was all about like money and stuff idk i read sparknotes at 3am", answer: "student", explanation: "The 3am energy is unmistakable." },
+            ];
+            const handleAnswer = (answer) => { if (answered) return; setSelectedAnswer(answer); setAnswered(true); if (answer === questions[questionIndex].answer) setScore(score + 1); };
+            const nextQuestion = () => { if (questionIndex < questions.length - 1) { setQuestionIndex(questionIndex + 1); setAnswered(false); setSelectedAnswer(null); } };
+            const q = questions[questionIndex];
+            return (
+                <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000' }}>
+                    <h4 style={{ textAlign: 'center', marginBottom: '15px' }}>🤖 AI OR STUDENT? 🎓</h4>
+                    <div style={{ backgroundColor: '#fff', padding: '20px', border: '1px solid #ddd', marginBottom: '15px', fontStyle: 'italic' }}>"{q.text}"</div>
+                    <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '15px' }}>
+                        <button onClick={() => handleAnswer('ai')} disabled={answered} style={{ padding: '15px 30px', backgroundColor: '#0077B5', color: '#fff', border: 'none', cursor: 'pointer' }}>🤖 AI</button>
+                        <button onClick={() => handleAnswer('student')} disabled={answered} style={{ padding: '15px 30px', backgroundColor: '#6c757d', color: '#fff', border: 'none', cursor: 'pointer' }}>🎓 Student</button>
+                    </div>
+                    {answered && (
+                        <div style={{ textAlign: 'center' }}>
+                            <div style={{ backgroundColor: selectedAnswer === q.answer ? '#d4edda' : '#f8d7da', padding: '10px', marginBottom: '10px' }}>
+                                {selectedAnswer === q.answer ? '✅ Correct!' : '❌ Wrong!'} {q.explanation}
+                            </div>
+                            {questionIndex < questions.length - 1 && <button onClick={nextQuestion} style={{ padding: '10px 20px', cursor: 'pointer' }}>Next →</button>}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        function BloodPressureGame() {
+            const [bp, setBp] = useState(120);
+            const [gameOver, setGameOver] = useState(false);
+            const [survived, setSurvived] = useState(0);
+            const statements = ["I used ChatGPT but made it my own", "Is this going to be on the test?", "I couldn't find the syllabus"];
+            const [currentStatement, setCurrentStatement] = useState(statements[0]);
+            const handleClick = () => { if (gameOver) return; const newBp = bp + Math.floor(Math.random() * 15) + 5; setBp(newBp); setSurvived(survived + 1); setCurrentStatement(statements[Math.floor(Math.random() * statements.length)]); if (newBp >= 180) setGameOver(true); };
+            const reset = () => { setBp(120); setGameOver(false); setSurvived(0); };
+            const getColor = () => { if (bp < 130) return '#90EE90'; if (bp < 150) return '#FFD700'; if (bp < 170) return '#FF6347'; return '#FF0000'; };
+            return (
+                <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+                    <h4>🍅 PROFESSOR BLOOD PRESSURE SIMULATOR 🍅</h4>
+                    <div style={{ fontSize: '48px', fontWeight: 'bold', color: getColor(), marginBottom: '10px' }}>{bp}/90</div>
+                    {!gameOver ? (
+                        <>
+                            <div style={{ backgroundColor: '#fff', padding: '15px', marginBottom: '15px', fontStyle: 'italic' }}>Student says: "{currentStatement}"</div>
+                            <button onClick={handleClick} style={{ padding: '15px 40px', backgroundColor: '#c0392b', color: '#fff', border: 'none', cursor: 'pointer' }}>😤 READ NEXT</button>
+                        </>
+                    ) : (
+                        <div>
+                            <div style={{ fontSize: '72px' }}>💀</div>
+                            <div style={{ fontSize: '20px', color: '#c00', marginBottom: '10px' }}>CARDIAC EVENT</div>
+                            <button onClick={reset} style={{ padding: '10px 20px', cursor: 'pointer' }}>Try Again</button>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        function TurnitinRoulette() {
+            const [spinning, setSpinning] = useState(false);
+            const [result, setResult] = useState(null);
+            const [rotation, setRotation] = useState(0);
+            const outcomes = [
+                { text: "0% Match", emoji: "🎉", desc: "You fooled everyone.", color: "#28a745" },
+                { text: "47% Match", emoji: "😰", desc: "Meeting with Dean", color: "#fd7e14" },
+                { text: "Prof Didn't Check", emoji: "😎", desc: "Most common outcome", color: "#17a2b8" },
+            ];
+            const spin = () => { if (spinning) return; setSpinning(true); setResult(null); setRotation(rotation + 1800 + Math.random() * 720); setTimeout(() => { setResult(outcomes[Math.floor(Math.random() * outcomes.length)]); setSpinning(false); }, 3000); };
+            return (
+                <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+                    <h4>🎰 TURNITIN ROULETTE 🎰</h4>
+                    <div style={{ width: '150px', height: '150px', margin: '0 auto 20px', borderRadius: '50%', background: 'conic-gradient(#28a745 0deg 120deg, #fd7e14 120deg 240deg, #17a2b8 240deg 360deg)', border: '4px solid #000', transform: `rotate(${rotation}deg)`, transition: spinning ? 'transform 3s ease-out' : 'none' }}/>
+                    <button onClick={spin} disabled={spinning} style={{ padding: '15px 40px', backgroundColor: spinning ? '#ccc' : '#c0392b', color: '#fff', border: 'none', cursor: 'pointer' }}>{spinning ? 'ANALYZING...' : '📄 SUBMIT'}</button>
+                    {result && (
+                        <div style={{ marginTop: '20px', padding: '20px', backgroundColor: result.color, color: '#fff', borderRadius: '5px' }}>
+                            <div style={{ fontSize: '48px' }}>{result.emoji}</div>
+                            <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{result.text}</div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        function RelatedArticles() {
+            return (
+                <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                    <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>📰 RELATED ARTICLES</h3>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px' }}>
+                        {["University Announces 'Mandatory Thinking Fee' Of $500", "Professor's 'I Can Always Tell' Rate: 12%", "ChatGPT Exhausted After 47,000 Essays"].map((title, i) => (
+                            <div key={i} style={{ padding: '15px', border: '1px solid #ddd', cursor: 'pointer' }}>
+                                <div style={{ fontWeight: 'bold' }}>{title}</div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        function LettersToEditor() {
+            return (
+                <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                    <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>✉️ LETTERS TO THE EDITOR</h3>
+                    <div style={{ marginBottom: '20px' }}>
+                        <div style={{ fontWeight: 'bold' }}>Dr. Harold Pemberton</div>
+                        <div style={{ fontStyle: 'italic', color: '#666', fontSize: '13px' }}>Professor, Currently On Leave</div>
+                        <p style={{ marginTop: '10px' }}>It was a MEASURED RESPONSE to SYSTEMATIC ACADEMIC DISHONESTY.</p>
+                    </div>
+                </section>
+            );
+        }
+
+        function Corrections() {
+            return (
+                <section style={{ backgroundColor: '#fff4f4', padding: '25px', marginBottom: '20px', border: '2px solid #c00' }}>
+                    <h3 style={{ color: '#c00', borderBottom: '2px solid #c00', paddingBottom: '10px', marginBottom: '20px' }}>⚠️ CORRECTIONS</h3>
+                    <div><strong>Dec 18:</strong> Dr. Pemberton achieved "Brandywine Crimson," not "Heirloom Burgundy." We regret the error.</div>
+                </section>
+            );
+        }
+
+        function Classifieds() {
+            return (
+                <section style={{ backgroundColor: '#fffef0', padding: '25px', marginBottom: '20px', border: '1px solid #ccc' }}>
+                    <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>📋 CLASSIFIEDS</h3>
+                    <div style={{ padding: '10px', backgroundColor: '#fff', border: '1px solid #ddd', fontSize: '13px' }}>
+                        <div style={{ color: '#c00', fontWeight: 'bold', fontSize: '10px' }}>FOR SALE</div>
+                        <div style={{ fontWeight: 'bold' }}>SLIGHTLY USED TENURE</div>
+                        <div>Barely used since breakdown. $12 OBO</div>
+                    </div>
+                </section>
+            );
+        }
+
+        function AcademicHoroscopes() {
+            return (
+                <section style={{ backgroundColor: '#1a0a2e', color: '#fff', padding: '25px', marginBottom: '20px' }}>
+                    <h3 style={{ textAlign: 'center', color: 'gold', borderBottom: '2px solid gold', paddingBottom: '10px', marginBottom: '20px' }}>🔮 ACADEMIC HOROSCOPES 🔮</h3>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
+                        {[{ sign: "STEM Major", symbol: "🔬", text: "Mercury won't excuse your late problem set." }, { sign: "Humanities Major", symbol: "📚", text: "Your 'close reading' will be suspiciously eloquent." }].map((h, i) => (
+                            <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
+                                <div style={{ fontSize: '24px' }}>{h.symbol}</div>
+                                <div style={{ fontWeight: 'bold', color: 'gold' }}>{h.sign}</div>
+                                <div style={{ fontSize: '13px' }}>{h.text}</div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        function AcademicWeather() {
+            return (
+                <section style={{ backgroundColor: '#e3f2fd', padding: '25px', marginBottom: '20px', border: '1px solid #90caf9' }}>
+                    <h3 style={{ borderBottom: '3px solid #1976d2', paddingBottom: '10px', marginBottom: '20px', color: '#1976d2' }}>🌡️ ACADEMIC CLIMATE</h3>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', gap: '20px' }}>
+                        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+                            <div style={{ fontSize: '48px' }}>🌋</div>
+                            <div style={{ fontWeight: 'bold' }}>LECTURE HALLS</div>
+                            <div style={{ color: '#c00', fontWeight: 'bold' }}>VOLCANIC</div>
+                        </div>
+                        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+                            <div style={{ fontSize: '48px' }}>😎</div>
+                            <div style={{ fontWeight: 'bold' }}>STUDENT DORMS</div>
+                            <div style={{ color: '#28a745', fontWeight: 'bold' }}>SUSPICIOUSLY CALM</div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        function Footer() {
+            return (
+                <footer style={{ backgroundColor: '#1a1a1a', color: '#fff', padding: '30px', textAlign: 'center', marginTop: '20px' }}>
+                    <div style={{ fontFamily: "'Old English Text MT', serif", fontSize: '2rem', marginBottom: '15px' }}>HuckFinn</div>
+                    <div style={{ fontSize: '12px', marginBottom: '15px' }}>"America's Finest News Source" • Est. 1756</div>
+                    <div style={{ fontSize: '11px', color: '#666' }}><em>This article was written by a human. Probably.</em></div>
+                </footer>
+            );
+        }
+
+        // Mount the React app
+        const container = document.getElementById('huckfinn-react-root');
+        if (container) {
+            const root = ReactDOM.createRoot(container);
+            root.render(<HuckFinnNewspaper />);
+        }
+    </script>
 </body>
 </html>
