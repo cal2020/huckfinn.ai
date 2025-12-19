@@ -21,1867 +21,1788 @@
     <meta name="twitter:url" content="https://huckfinn.ai/articles/12-17-25/huckfinn---Professors-ChatGPT-Meltdown.html">
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><filter id='glow'><feGaussianBlur stdDeviation='3' result='blur'/><feFlood flood-color='%23c9a227' flood-opacity='0.4'/><feComposite in2='blur' operator='in'/><feMerge><feMergeNode/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><rect width='100' height='100' fill='%231a1a1a'/><text x='50' y='72' font-family='UnifrakturMaguntia,serif' font-size='80' fill='%23f5f2e8' text-anchor='middle' filter='url(%23glow)'>H</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --cream: #f5f2e8;
-            --ink: #1a1a1a;
-            --accent: #c41e3a;
-            --gold: #c9a227;
-            --gray: #666;
-            --light-gray: #d4d0c5;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- React via CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-        body {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            background: #d4cec0;
-            color: var(--ink);
-            line-height: 1.7;
-        }
-
-        /* Market Ticker */
-        .market-ticker {
-            background: var(--ink);
-            color: #fff;
-            padding: 8px 0;
-            overflow: hidden;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 12px;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .ticker-track {
-            display: flex;
-            animation: scroll 30s linear infinite;
-            white-space: nowrap;
-        }
-
-        .ticker-item {
-            display: inline-flex;
-            align-items: center;
-            padding: 0 25px;
-        }
-
-        .ticker-symbol {
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .ticker-up { color: #4ade80; }
-        .ticker-down { color: #f87171; }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Header */
-        .header {
-            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
-            border-bottom: 4px solid var(--accent);
-            padding: 15px 20px;
-            text-align: center;
-        }
-
-        .header-logo {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: clamp(28px, 6vw, 48px);
-            color: #fff;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            text-decoration: none;
-        }
-
-        .header-tagline {
-            font-family: 'Georgia', serif;
-            font-size: 12px;
-            color: var(--accent);
-            font-style: italic;
-            margin-top: 5px;
-            letter-spacing: 3px;
-        }
-
-        .header-nav {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 11px;
-            font-family: 'Libre Franklin', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .header-nav span {
-            color: #888;
-            cursor: pointer;
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .newspaper-page {
-            background: var(--cream);
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            position: relative;
-        }
-
-        /* Hero Image */
-        .hero-image {
-            margin-bottom: 20px;
-        }
-
-        .hero-image svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .hero-caption {
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 10px 15px;
-            font-family: 'Georgia', serif;
-            font-size: 12px;
-            font-style: italic;
-        }
-
-        .hero-caption strong {
-            color: #fff;
-        }
-
-        .hero-caption .credit {
-            color: #666;
-            margin-left: 10px;
-        }
-
-        /* Article */
-        .article-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(24px, 5vw, 36px);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            color: var(--ink);
-        }
-
-        .article-subtitle {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 18px;
-            font-style: italic;
-            color: var(--gray);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .article-meta {
-            color: #888;
-            font-size: 12px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Libre Franklin', sans-serif;
-        }
-
-        .article-meta .author {
-            color: var(--accent);
-        }
-
-        .article-body p {
-            font-size: 18px;
-            margin-bottom: 1.5em;
-            text-align: justify;
-        }
-
-        .article-body p:first-of-type::first-letter {
-            font-size: 72px;
-            float: left;
-            line-height: 1;
-            margin-right: 10px;
-            font-weight: bold;
-            color: var(--accent);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .article-body h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 700;
-            margin: 35px 0 20px;
-            color: var(--accent);
-        }
-
-        .article-body em {
-            font-style: italic;
-        }
-
-        /* Pull Quote */
-        .pull-quote {
-            border-left: 4px solid var(--accent);
-            padding: 20px 25px;
-            margin: 30px 0;
-            background: rgba(196, 30, 58, 0.05);
-        }
-
-        .pull-quote p {
-            font-size: 20px;
-            font-style: italic;
-            color: var(--ink);
-            margin: 0;
-        }
-
-        .pull-quote .attribution {
-            font-size: 14px;
-            color: var(--gray);
-            margin-top: 10px;
-            font-style: normal;
-        }
-
-        /* Interactive Games Container */
-        .game-section {
-            background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%);
-            padding: 25px;
-            border-radius: 12px;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .game-title {
-            color: #fff;
-            font-size: 20px;
-            font-weight: bold;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 5px;
-        }
-
-        .game-subtitle {
-            color: #888;
-            font-size: 12px;
-            margin-bottom: 20px;
-        }
-
-        /* AI or Student Quiz Game */
-        .quiz-container {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .quiz-question {
-            font-size: 16px;
-            font-style: italic;
-            color: var(--ink);
-            margin-bottom: 20px;
-            line-height: 1.5;
-            padding: 15px;
-            background: #f5f5f5;
-            border-radius: 8px;
-        }
-
-        .quiz-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .quiz-btn {
-            padding: 12px 30px;
-            border: 2px solid var(--ink);
-            background: #fff;
-            color: var(--ink);
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .quiz-btn:hover {
-            background: var(--ink);
-            color: #fff;
-        }
-
-        .quiz-btn.correct {
-            background: #4ade80;
-            border-color: #4ade80;
-            color: #fff;
-        }
-
-        .quiz-btn.wrong {
-            background: #f87171;
-            border-color: #f87171;
-            color: #fff;
-        }
-
-        .quiz-result {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: bold;
-            display: none;
-        }
-
-        .quiz-score {
-            color: #888;
-            font-size: 13px;
-            margin-top: 15px;
-        }
-
-        /* Blood Pressure Game */
-        .bp-game {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .bp-scenario {
-            font-size: 14px;
-            color: var(--ink);
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f5f5f5;
-            border-radius: 8px;
-        }
-
-        .bp-meter {
-            width: 100%;
-            height: 30px;
-            background: linear-gradient(90deg, #4ade80 0%, #fbbf24 50%, #f87171 100%);
-            border-radius: 15px;
-            position: relative;
-            margin: 20px 0;
-        }
-
-        .bp-indicator {
-            position: absolute;
-            top: -5px;
-            width: 20px;
-            height: 40px;
-            background: #1a1a1a;
-            border-radius: 4px;
-            transition: left 0.5s ease;
-            left: 20%;
-        }
-
-        .bp-reading {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--ink);
-            margin-top: 10px;
-        }
-
-        .bp-status {
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        .bp-btn {
-            padding: 10px 25px;
-            border: none;
-            background: var(--accent);
-            color: #fff;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 8px;
-            margin-top: 15px;
-            transition: all 0.2s;
-        }
-
-        .bp-btn:hover {
-            background: #a01830;
-        }
-
-        /* Turnitin Roulette */
-        .roulette-container {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .roulette-wheel {
-            width: 200px;
-            height: 200px;
-            border: 10px solid var(--ink);
-            border-radius: 50%;
-            margin: 20px auto;
-            position: relative;
-            background: conic-gradient(
-                #4ade80 0deg 60deg,
-                #fbbf24 60deg 120deg,
-                #f87171 120deg 180deg,
-                #4ade80 180deg 240deg,
-                #fbbf24 240deg 300deg,
-                #f87171 300deg 360deg
-            );
-            transition: transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-        }
-
-        .roulette-pointer {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 25px solid var(--ink);
-        }
-
-        .roulette-result {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 15px;
-            min-height: 50px;
-        }
-
-        .spin-btn {
-            padding: 12px 40px;
-            border: none;
-            background: var(--accent);
-            color: #fff;
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .spin-btn:hover {
-            background: #a01830;
-        }
-
-        .spin-btn:disabled {
-            background: #888;
-            cursor: not-allowed;
-        }
-
-        /* Whack-a-LinkedIn */
-        .whack-container {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .whack-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-width: 300px;
-            margin: 20px auto;
-        }
-
-        .whack-hole {
-            aspect-ratio: 1;
-            background: #8B4513;
-            border-radius: 50%;
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            border: 3px solid #654321;
-        }
-
-        .whack-post {
-            position: absolute;
-            bottom: -100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 80%;
-            background: #0077b5;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: bottom 0.2s;
-        }
-
-        .whack-hole.active .whack-post {
-            bottom: 10%;
-        }
-
-        .whack-score {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--ink);
-            margin-top: 15px;
-        }
-
-        .whack-timer {
-            font-size: 14px;
-            color: #888;
-            margin-top: 5px;
-        }
-
-        /* Essay Slots */
-        .slots-container {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .slots-display {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .slot-reel {
-            width: 80px;
-            height: 80px;
-            background: #f5f5f5;
-            border: 3px solid var(--ink);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-            padding: 5px;
-            overflow: hidden;
-        }
-
-        .slots-result {
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 15px;
-            min-height: 40px;
-        }
-
-        /* Tuition Price Game */
-        .price-container {
-            background: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .price-item {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--ink);
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f5f5f5;
-            border-radius: 8px;
-        }
-
-        .price-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .price-btn {
-            padding: 12px 20px;
-            border: 2px solid var(--ink);
-            background: #fff;
-            color: var(--ink);
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .price-btn:hover {
-            background: var(--ink);
-            color: #fff;
-        }
-
-        .price-btn.correct {
-            background: #4ade80;
-            border-color: #4ade80;
-            color: #fff;
-        }
-
-        .price-btn.wrong {
-            background: #f87171;
-            border-color: #f87171;
-            color: #fff;
-        }
-
-        .price-result {
-            margin-top: 15px;
-            font-weight: bold;
-            min-height: 40px;
-        }
-
-        /* Comments Section */
-        .comments-section {
-            background: #f5f5f5;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
-        }
-
-        .comments-header {
-            font-size: 18px;
-            font-weight: bold;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 15px;
-            color: var(--ink);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-        }
-
-        .comment {
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .comment-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
-        }
-
-        .comment-avatar {
-            font-size: 24px;
-        }
-
-        .comment-user {
-            font-weight: bold;
-            color: var(--ink);
-            font-family: 'Libre Franklin', sans-serif;
-            font-size: 14px;
-        }
-
-        .comment-time {
-            color: #888;
-            font-size: 12px;
-        }
-
-        .comment-text {
-            color: #333;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        .comment-actions {
-            display: flex;
-            gap: 15px;
-            font-size: 12px;
-            color: #888;
-        }
-
-        .comment-reply {
-            margin-top: 12px;
-            margin-left: 30px;
-            padding-left: 15px;
-            border-left: 2px solid #ddd;
-        }
-
-        .comment-reply .comment-avatar {
-            font-size: 18px;
-        }
-
-        .comment-reply .comment-user {
-            font-size: 13px;
-        }
-
-        .comment-reply .comment-text {
-            font-size: 13px;
-        }
-
-        /* Letters to Editor */
-        .letters-section {
-            background: #fff9e6;
-            padding: 25px;
-            border-radius: 8px;
-            margin: 30px 0;
-            border: 1px solid #e6d9a8;
-        }
-
-        .letters-header {
-            font-size: 18px;
-            font-weight: bold;
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 15px;
-            color: var(--ink);
-            text-align: center;
-        }
-
-        .letter {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #ccc;
-        }
-
-        .letter:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .letter-text {
-            font-style: italic;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .letter-author {
-            font-size: 12px;
-            color: #888;
-            text-align: right;
-        }
-
-        /* Horoscope */
-        .horoscope {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-            color: #fff;
-        }
-
-        .horoscope-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .horoscope-item {
-            font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .horoscope-sign {
-            color: #ffd700;
-            font-weight: bold;
-        }
-
-        /* Weather */
-        .weather-section {
-            background: linear-gradient(135deg, #4a90a4 0%, #2c5f6e 100%);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 30px 0;
-            color: #fff;
-            text-align: center;
-        }
-
-        .weather-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .weather-forecast {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .weather-day {
-            text-align: center;
-        }
-
-        .weather-icon {
-            font-size: 32px;
-            margin-bottom: 5px;
-        }
-
-        .weather-label {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .weather-temp {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /* Classifieds */
-        .classifieds {
-            background: #fff;
-            padding: 20px;
-            border: 2px solid var(--ink);
-            margin: 30px 0;
-        }
-
-        .classifieds-header {
-            font-size: 16px;
-            font-weight: bold;
-            font-family: 'Playfair Display', serif;
-            text-align: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-        }
-
-        .classified-item {
-            font-size: 12px;
-            line-height: 1.5;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px dotted #ccc;
-        }
-
-        .classified-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .classified-category {
-            font-weight: bold;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: 1px;
-        }
-
-        /* Correction */
-        .correction {
-            border-top: 2px solid var(--accent);
-            margin-top: 30px;
-            padding-top: 15px;
-            font-size: 14px;
-            color: var(--gray);
-            font-style: italic;
-        }
-
-        /* Ads */
-        .ad-block {
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-        }
-
-        .ad-label {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 9px;
-            color: rgba(255,255,255,0.6);
-            font-family: 'Libre Franklin', sans-serif;
-        }
-
-        .ad-text {
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            margin-bottom: 5px;
-        }
-
-        .ad-subtext {
-            color: rgba(255,255,255,0.9);
-            font-size: 12px;
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .ad-cta {
-            background: rgba(255,255,255,0.95);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 11px;
-            color: #333;
-            cursor: pointer;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--ink);
-            color: #888;
-            padding: 30px 20px;
-            text-align: center;
-            font-size: 12px;
-            font-family: 'Libre Franklin', sans-serif;
-        }
-
-        .footer-logo {
-            font-family: 'UnifrakturMaguntia', serif;
-            font-size: 24px;
-            color: #fff;
-            margin-bottom: 15px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        .footer-disclaimer {
-            margin-top: 15px;
-            font-size: 10px;
-            color: #555;
-        }
-
-        @media (max-width: 600px) {
-            .newspaper-page {
-                padding: 20px;
-            }
-
-            .article-body p {
-                font-size: 16px;
-            }
-
-            .whack-grid {
-                max-width: 250px;
-            }
-
-            .slot-reel {
-                width: 60px;
-                height: 60px;
-                font-size: 11px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Market Ticker -->
-    <div class="market-ticker">
-        <div class="ticker-track">
-            <span class="ticker-item"><span class="ticker-symbol">PROF</span> <span class="ticker-down">-47.3%</span> (Blood Pressure Rising)</span>
-            <span class="ticker-item"><span class="ticker-symbol">ESSAY</span> <span class="ticker-down">-89.1%</span> (Original Thought)</span>
-            <span class="ticker-item"><span class="ticker-symbol">TURN</span> <span class="ticker-up">+234.7%</span> (False Positives)</span>
-            <span class="ticker-item"><span class="ticker-symbol">GPT</span> <span class="ticker-up">+∞%</span> (Student Usage)</span>
-            <span class="ticker-item"><span class="ticker-symbol">TENU</span> <span class="ticker-down">-99.9%</span> (Job Security)</span>
-            <span class="ticker-item"><span class="ticker-symbol">LNKD</span> <span class="ticker-up">+567%</span> (Humble Brags)</span>
-            <span class="ticker-item"><span class="ticker-symbol">SOUL</span> <span class="ticker-down">-100%</span> (Academia)</span>
-            <span class="ticker-item"><span class="ticker-symbol">HOPE</span> <span class="ticker-down">-∞%</span> (Faculty Meetings)</span>
-            <span class="ticker-item"><span class="ticker-symbol">PROF</span> <span class="ticker-down">-47.3%</span> (Blood Pressure Rising)</span>
-            <span class="ticker-item"><span class="ticker-symbol">ESSAY</span> <span class="ticker-down">-89.1%</span> (Original Thought)</span>
-            <span class="ticker-item"><span class="ticker-symbol">TURN</span> <span class="ticker-up">+234.7%</span> (False Positives)</span>
-            <span class="ticker-item"><span class="ticker-symbol">GPT</span> <span class="ticker-up">+∞%</span> (Student Usage)</span>
-        </div>
+    <div id="root"></div>
+
+    <script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+// Main HuckFinn Newspaper Component
+function HuckFinnNewspaper() {
+  const [activeGame, setActiveGame] = useState(null);
+
+  return (
+    <div style={{
+      fontFamily: "'Times New Roman', Georgia, serif",
+      backgroundColor: '#f5f0e6',
+      minHeight: '100vh',
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+      backgroundBlendMode: 'multiply',
+    }}>
+      {/* Ticker */}
+      <MarketTicker />
+
+      {/* Masthead */}
+      <header style={{
+        borderBottom: '4px double #000',
+        padding: '20px',
+        textAlign: 'center',
+        backgroundColor: '#fff',
+      }}>
+        <div style={{ fontSize: '12px', letterSpacing: '4px', marginBottom: '5px' }}>AMERICA'S FINEST NEWS SOURCE • ESTABLISHED 1756 • "TU NE CEDE MALIS"</div>
+        <h1 style={{
+          fontFamily: "'Old English Text MT', 'UnifrakturMaguntia', serif",
+          fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+          margin: '10px 0',
+          fontWeight: 'normal',
+          letterSpacing: '2px',
+        }}>HuckFinn</h1>
+        <div style={{ fontSize: '11px', letterSpacing: '3px' }}>THURSDAY, DECEMBER 18, 2025 • VOL. CCLXIX, NO. 847 • PRICE: $50,000 (STUDENT RATE)</div>
+      </header>
+
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+
+        {/* MAIN ARTICLE */}
+        <MainArticle />
+
+        {/* AD 1 */}
+        <InterstitialAd type={1} />
+
+        {/* PHOTO */}
+        <MainPhoto />
+
+        {/* COMMENTS */}
+        <CommentsSection />
+
+        {/* AD 2 */}
+        <InterstitialAd type={2} />
+
+        {/* GAMES SECTION */}
+        <GamesSection activeGame={activeGame} setActiveGame={setActiveGame} />
+
+        {/* AD 3 */}
+        <InterstitialAd type={3} />
+
+        {/* RELATED ARTICLES */}
+        <RelatedArticles />
+
+        {/* LETTERS TO EDITOR */}
+        <LettersToEditor />
+
+        {/* CORRECTIONS */}
+        <Corrections />
+
+        {/* CLASSIFIEDS */}
+        <Classifieds />
+
+        {/* HOROSCOPES */}
+        <AcademicHoroscopes />
+
+        {/* WEATHER */}
+        <AcademicWeather />
+
+        {/* FOOTER */}
+        <Footer />
+      </div>
     </div>
-
-    <!-- Header -->
-    <header class="header">
-        <a href="/" class="header-logo">HuckFinn</a>
-        <div class="header-tagline">AMERICA'S FINEST NEWS SOURCE * EST. 2024 * "All The News That's Fit To Satirize"</div>
-        <nav class="header-nav">
-            <span>Academia</span>
-            <span>AI Apocalypse</span>
-            <span>Education</span>
-            <span>Opinion</span>
-            <span>Blood Pressure</span>
-            <span>Horoscopes</span>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="newspaper-page">
-
-            <!-- Hero Image -->
-            <div class="hero-image">
-                <svg viewBox="0 0 800 450">
-                    <defs>
-                        <linearGradient id="classroomGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#e8e4d4"/>
-                            <stop offset="100%" stop-color="#d4c896"/>
-                        </linearGradient>
-                        <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#8b7355"/>
-                            <stop offset="100%" stop-color="#6b5344"/>
-                        </linearGradient>
-                        <radialGradient id="faceRed" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#ff2200"/>
-                            <stop offset="50%" stop-color="#cc0000"/>
-                            <stop offset="100%" stop-color="#8b0000"/>
-                        </radialGradient>
-                    </defs>
-
-                    <!-- Background - Classroom -->
-                    <rect width="800" height="450" fill="url(#classroomGrad)"/>
-
-                    <!-- Whiteboard -->
-                    <rect x="100" y="30" width="600" height="150" fill="#fff" stroke="#333" stroke-width="3"/>
-                    <text x="400" y="70" text-anchor="middle" fill="#333" font-size="18" font-weight="bold">ESSAY PROMPT:</text>
-                    <text x="400" y="100" text-anchor="middle" fill="#333" font-size="14">"Analyze the themes of authenticity in modern literature"</text>
-                    <text x="400" y="130" text-anchor="middle" fill="#c41e3a" font-size="12" font-style="italic">*AI DETECTION WILL BE USED*</text>
-                    <text x="400" y="155" text-anchor="middle" fill="#c41e3a" font-size="10">*I WILL KNOW*</text>
-
-                    <!-- Professor at desk - TOMATO RED -->
-                    <rect x="300" y="200" width="200" height="80" fill="url(#deskGrad)"/>
-
-                    <!-- Professor body -->
-                    <rect x="360" y="220" width="80" height="60" fill="#2c3e50"/>
-                    <rect x="370" y="225" width="60" height="10" fill="#c41e3a"/>
-
-                    <!-- Professor head - EXTREMELY RED -->
-                    <circle cx="400" cy="200" r="35" fill="url(#faceRed)"/>
-
-                    <!-- Steam coming from ears -->
-                    <path d="M355 190 Q345 180 350 165 Q355 150 345 140" stroke="#fff" stroke-width="3" fill="none" opacity="0.7"/>
-                    <path d="M445 190 Q455 180 450 165 Q445 150 455 140" stroke="#fff" stroke-width="3" fill="none" opacity="0.7"/>
-
-                    <!-- Face features - angry -->
-                    <ellipse cx="387" cy="195" rx="6" ry="4" fill="#000"/>
-                    <ellipse cx="413" cy="195" rx="6" ry="4" fill="#000"/>
-                    <path d="M375 185 L395 190" stroke="#000" stroke-width="3"/>
-                    <path d="M405 190 L425 185" stroke="#000" stroke-width="3"/>
-                    <path d="M385 215 Q400 205 415 215" stroke="#000" stroke-width="3" fill="none"/>
-
-                    <!-- Vein on forehead -->
-                    <path d="M390 170 L395 175 L393 180 L398 183" stroke="#8b0000" stroke-width="2" fill="none"/>
-
-                    <!-- Hair -->
-                    <path d="M365 175 Q380 160 400 165 Q420 160 435 175" stroke="#555" stroke-width="8" fill="none"/>
-
-                    <!-- Students in rows -->
-                    <!-- Row 1 -->
-                    <rect x="100" y="320" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="150" cy="300" r="20" fill="#f5d0a9"/>
-                    <rect x="160" y="320" width="30" height="15" fill="#1a1a1a"/>
-                    <text x="175" y="330" text-anchor="middle" fill="#fff" font-size="6">ChatGPT</text>
-
-                    <rect x="220" y="320" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="270" cy="300" r="20" fill="#d4a574"/>
-                    <rect x="280" y="320" width="30" height="15" fill="#1a1a1a"/>
-
-                    <rect x="340" y="320" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="390" cy="300" r="20" fill="#f5d0a9"/>
-                    <rect x="400" y="320" width="30" height="15" fill="#1a1a1a"/>
-
-                    <rect x="460" y="320" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="510" cy="300" r="20" fill="#c4a07a"/>
-                    <rect x="520" y="320" width="30" height="15" fill="#1a1a1a"/>
-
-                    <rect x="580" y="320" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="630" cy="300" r="20" fill="#f5d0a9"/>
-                    <rect x="640" y="320" width="30" height="15" fill="#1a1a1a"/>
-
-                    <!-- Row 2 -->
-                    <rect x="150" y="390" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="200" cy="370" r="20" fill="#d4a574"/>
-                    <rect x="210" y="390" width="30" height="15" fill="#1a1a1a"/>
-
-                    <rect x="280" y="390" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="330" cy="370" r="20" fill="#f5d0a9"/>
-                    <rect x="340" y="390" width="30" height="15" fill="#1a1a1a"/>
-
-                    <rect x="410" y="390" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="460" cy="370" r="20" fill="#c4a07a"/>
-                    <rect x="470" y="390" width="30" height="15" fill="#1a1a1a"/>
-
-                    <rect x="540" y="390" width="100" height="40" fill="#8b7355"/>
-                    <circle cx="590" cy="370" r="20" fill="#f5d0a9"/>
-                    <rect x="600" y="390" width="30" height="15" fill="#1a1a1a"/>
-
-                    <!-- Student making eye contact while typing -->
-                    <circle cx="390" cy="300" r="20" fill="#f5d0a9"/>
-                    <circle cx="385" cy="298" r="4" fill="#000"/>
-                    <circle cx="395" cy="298" r="4" fill="#000"/>
-                    <circle cx="385" cy="297" r="1.5" fill="#fff"/>
-                    <circle cx="395" cy="297" r="1.5" fill="#fff"/>
-                    <path d="M383 308 Q390 312 397 308" stroke="#000" stroke-width="1.5" fill="none"/>
-
-                    <!-- Thought bubble from professor -->
-                    <ellipse cx="500" cy="140" rx="70" ry="40" fill="#fff" stroke="#000"/>
-                    <circle cx="470" cy="170" r="8" fill="#fff" stroke="#000"/>
-                    <circle cx="455" cy="185" r="5" fill="#fff" stroke="#000"/>
-                    <text x="500" y="135" text-anchor="middle" fill="#000" font-size="10">I can SEE you</text>
-                    <text x="500" y="150" text-anchor="middle" fill="#000" font-size="10">typing prompts</text>
-
-                    <!-- Clock -->
-                    <circle cx="750" cy="60" r="25" fill="#fff" stroke="#333" stroke-width="2"/>
-                    <line x1="750" y1="60" x2="750" y2="45" stroke="#000" stroke-width="2"/>
-                    <line x1="750" y1="60" x2="762" y2="60" stroke="#000" stroke-width="1.5"/>
-                </svg>
-                <div class="hero-caption">
-                    <strong>Above:</strong> Dr. Margaret Thornton achieves a new shade of crimson previously unrecorded by the Pantone color system as a student in row 3 maintains unbroken eye contact while visibly typing "write my essay about authenticity" into ChatGPT.
-                    <span class="credit">Photo: Staff Illustration</span>
-                </div>
-            </div>
-
-            <!-- Article -->
-            <article>
-                <h1 class="article-title">Nation's Professors Achieve New Shades Of Red Previously Unknown To Science As Students Continue Using ChatGPT While Maintaining Eye Contact</h1>
-
-                <p class="article-subtitle">Pantone forced to create 47 new color swatches after English department faculty meetings hit temperatures previously only recorded in blast furnaces; one professor reportedly turned "a shade of magenta that shouldn't exist in nature"</p>
-
-                <div class="article-meta">
-                    By <span class="author">Dr. Harrison Wells</span> * December 18, 2025 * 14 min read
-                </div>
-
-                <div class="article-body">
-                    <p>Cambridge, MA — The nation's professors have collectively achieved new shades of red previously unknown to science, medical experts confirmed Tuesday, as students across the country continue to use ChatGPT to write their essays while maintaining unwavering eye contact with their instructors.</p>
-
-                    <p>"We've had to create entirely new categories of facial coloration," explained Dr. Patricia Chen, a dermatologist at Johns Hopkins who has been tracking what she calls "the academic crimson crisis." "We're seeing shades that exist somewhere between 'apoplectic rage' and 'supernova.' One professor at Yale turned a color I can only describe as 'if a tomato could scream.'"</p>
-
-                    <p>The phenomenon, which researchers have dubbed "Pedagogical Fury Syndrome," has affected approximately 94% of professors nationwide, with the English and Philosophy departments reporting the highest concentrations of unprecedented redness. Faculty meetings have become, according to one witness, "like looking directly into a furnace, but angrier."</p>
-
-                    <!-- Ad 1 -->
-                    <div class="ad-block" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <div class="ad-label">ADVERTISEMENT</div>
-                        <div class="ad-text">TURNITIN PREMIUM PLUS ULTRA</div>
-                        <div class="ad-subtext">Now detects AI writing with 12% accuracy! (Up from 11%!)</div>
-                        <button class="ad-cta">FALSE POSITIVE EVERYONE</button>
-                    </div>
-
-                    <p>Dr. Margaret Thornton, a professor of English Literature at Harvard who has reportedly achieved "a shade of burgundy that made the fire department concerned," described her experience during a recent midterm essay collection.</p>
-
-                    <div class="pull-quote">
-                        <p>"She looked right at me. Right at me. Her fingers were moving across the keyboard, and I could see the ChatGPT interface reflected in her glasses. She typed 'make it sound more human' without breaking eye contact. I felt my blood pressure medication fail in real time."</p>
-                        <div class="attribution">— Dr. Margaret Thornton, moments before being escorted to campus health services</div>
-                    </div>
-
-                    <p>The crisis has prompted Pantone, the global color authority, to release an emergency supplementary guide featuring 47 new shades specifically calibrated to academic distress. These include "Tenure-Track Fury #FF0000," "Adjunct Agony #CC0033," and the particularly vivid "Emeritus Eruption #8B0000."</p>
-
-                    <h3>'They Don't Even Minimize The Window Anymore'</h3>
-
-                    <p>What has surprised researchers most is not the use of AI tools itself, but the brazenness with which students now employ them. Gone are the days of covert prompt engineering under desks or in bathroom stalls.</p>
-
-                    <p>"In my day, if you were going to cheat, you at least had the decency to look guilty about it," said Dr. Robert Hendricks, 67, a professor of Philosophy at Princeton whose face has been described as "a permanent sunset." "Now they just... they just do it. Right there. In front of God and everyone. One student asked me to wait while ChatGPT finished generating his 'personal reflection on Kierkegaard.'"</p>
-
-                    <p>Campus health centers have reported a 340% increase in blood pressure-related incidents, with one nurse describing the faculty waiting room as "looking like a convention of angry tomatoes." Several universities have installed additional defibrillators in lecture halls as a precautionary measure.</p>
-
-                    <!-- Ad 2 -->
-                    <div class="ad-block" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <div class="ad-label">ADVERTISEMENT</div>
-                        <div class="ad-text">BLOOD PRESSURE MEDICATION</div>
-                        <div class="ad-subtext">For educators in the AI age</div>
-                        <button class="ad-cta">SUBSCRIBE (MONTHLY REFILLS)</button>
-                    </div>
-
-                    <p>The phenomenon has also created unexpected economic opportunities. A startup called "ProfessorWatch" has begun selling real-time facial heat mapping to students, allowing them to gauge exactly how much AI-generated content their instructor can handle before requiring medical intervention.</p>
-
-                    <p>"It's like a game of chicken," explained sophomore Marcus Webb, 19, who was observed typing an entire research paper prompt while staring directly at his professor. "You want to see how red they can get. My record is what I call 'fire engine meets heart attack.' The professor had to excuse herself for 'personal reasons.' I got an A."</p>
-
-                    <h3>The Eye Contact Question</h3>
-
-                    <p>Psychologists have become particularly interested in what they call "the dominance display aspect" of the phenomenon. Students, rather than attempting to hide their AI use, appear to be deliberately establishing visual contact as they input prompts.</p>
-
-                    <p>"It's a power move," explained Dr. Sarah Kim, a behavioral psychologist at Stanford. "The eye contact is saying 'I know you know, and I know you can't prove it, and I know this makes you very, very angry.' It's remarkably effective at inducing what we now call 'Academic Impotent Fury.'"</p>
-
-                    <p>One professor, who requested anonymity because he was "too embarrassed by how red he gets," described a particularly memorable incident: "A student in my Intro to Ethics class asked ChatGPT to 'write an essay about why cheating is wrong' while literally sitting three feet from me. When I confronted him, he said, 'But I'm not cheating. The AI is doing the cheating. I'm just the prompt engineer.' I could feel my face becoming a color that I don't think exists on the visible spectrum."</p>
-
-                    <!-- Ad 3 -->
-                    <div class="ad-block" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <div class="ad-label">ADVERTISEMENT</div>
-                        <div class="ad-text">LINKEDIN PREMIUM</div>
-                        <div class="ad-subtext">Humble-brag about your "AI-augmented" education</div>
-                        <button class="ad-cta">START NETWORKING</button>
-                    </div>
-
-                    <h3>Faculty Response Protocols</h3>
-
-                    <p>Universities have begun implementing various response protocols, though none have proven particularly effective. MIT's attempt to install Faraday cages around all exam halls was abandoned after students simply used the pre-generated essays they had stored locally. Yale's "Honor Pledge 2.0" requiring students to swear they didn't use AI has been met with, according to one administrator, "students having ChatGPT write their honor pledges."</p>
-
-                    <p>Some professors have attempted to fight fire with fire. Dr. Thomas Bradley of Northwestern now uses AI to generate his lectures, his test questions, and his responses to student emails. "If they can use AI, I can use AI," he explained, his face a worrying shade of puce. "Now nobody in my class is doing any actual thinking. It's beautiful. It's horrible. I can't tell anymore. Anyway, here's my AI-generated midterm. It's graded by AI too. I don't even know what course this is."</p>
-
-                    <p>At press time, a student was observed asking ChatGPT to generate a response to their professor's email about AI use policies, while maintaining eye contact through the professor's office window. The professor was later seen at the campus bar, where he ordered "something that matches the color of my face" and was served a glass of pure capsaicin.</p>
-
-                    <div class="correction">
-                        <strong>Correction:</strong> An earlier version of this article stated that professors were turning "merely red." We have been informed by the American Academy of Dermatology that the colors being observed are "well beyond the red spectrum and may in fact be visible from space." We regret the error, and also the state of higher education.
-                    </div>
-                </div>
-            </article>
-
-            <!-- Game 1: AI or Student Quiz -->
-            <div class="game-section" id="quizGame">
-                <div class="game-title">QUIZ: AI OR HUNGOVER STUDENT?</div>
-                <div class="game-subtitle">Can you tell who wrote these essay excerpts?</div>
-
-                <div class="quiz-container">
-                    <div class="quiz-question" id="quizQuestion">
-                        "The multifaceted nature of existential philosophy, particularly as it pertains to the human condition, reveals profound insights into the fundamental questions of being and nothingness."
-                    </div>
-
-                    <div class="quiz-buttons">
-                        <button class="quiz-btn" id="btnAI" onclick="quizAnswer('ai')">AI</button>
-                        <button class="quiz-btn" id="btnStudent" onclick="quizAnswer('student')">Hungover Student</button>
-                    </div>
-
-                    <div class="quiz-result" id="quizResult"></div>
-                    <div class="quiz-score" id="quizScore">Question 1 of 5 * Score: 0</div>
-                </div>
-            </div>
-
-            <!-- Game 2: Blood Pressure Simulator -->
-            <div class="game-section" id="bpGame">
-                <div class="game-title">PROFESSOR BLOOD PRESSURE SIMULATOR</div>
-                <div class="game-subtitle">See how high you can make it go!</div>
-
-                <div class="bp-game">
-                    <div class="bp-scenario" id="bpScenario">
-                        Click "Next Scenario" to begin...
-                    </div>
-
-                    <div class="bp-meter">
-                        <div class="bp-indicator" id="bpIndicator"></div>
-                    </div>
-
-                    <div class="bp-reading" id="bpReading">120/80</div>
-                    <div class="bp-status" id="bpStatus">Normal</div>
-
-                    <button class="bp-btn" id="bpBtn" onclick="nextBPScenario()">Next Scenario</button>
-                </div>
-            </div>
-
-            <!-- Game 3: Turnitin Roulette -->
-            <div class="game-section" id="rouletteGame">
-                <div class="game-title">TURNITIN ROULETTE</div>
-                <div class="game-subtitle">Submit your essay and spin the wheel of fate!</div>
-
-                <div class="roulette-container">
-                    <div style="position: relative; display: inline-block;">
-                        <div class="roulette-pointer"></div>
-                        <div class="roulette-wheel" id="rouletteWheel"></div>
-                    </div>
-
-                    <div class="roulette-result" id="rouletteResult">Spin to see your fate...</div>
-
-                    <button class="spin-btn" id="spinBtn" onclick="spinRoulette()">SUBMIT ESSAY</button>
-                </div>
-            </div>
-
-            <!-- Game 4: Whack-a-LinkedIn -->
-            <div class="game-section" id="whackGame">
-                <div class="game-title">WHACK-A-LINKEDIN POST</div>
-                <div class="game-subtitle">Stop the humble-brags before they spread!</div>
-
-                <div class="whack-container">
-                    <div class="whack-grid" id="whackGrid">
-                        <div class="whack-hole" onclick="whackPost(0)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(1)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(2)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(3)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(4)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(5)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(6)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(7)"><div class="whack-post">in</div></div>
-                        <div class="whack-hole" onclick="whackPost(8)"><div class="whack-post">in</div></div>
-                    </div>
-
-                    <div class="whack-score" id="whackScore">Score: 0</div>
-                    <div class="whack-timer" id="whackTimer">Click any hole to start! (30 seconds)</div>
-
-                    <button class="bp-btn" id="whackBtn" onclick="startWhack()">START GAME</button>
-                </div>
-            </div>
-
-            <!-- Game 5: Essay Slots -->
-            <div class="game-section" id="slotsGame">
-                <div class="game-title">ESSAY SLOT MACHINE</div>
-                <div class="game-subtitle">Generate your perfect AI-written essay!</div>
-
-                <div class="slots-container">
-                    <div class="slots-display">
-                        <div class="slot-reel" id="slot1">THESIS</div>
-                        <div class="slot-reel" id="slot2">EVIDENCE</div>
-                        <div class="slot-reel" id="slot3">CONCLUSION</div>
-                    </div>
-
-                    <div class="slots-result" id="slotsResult">Pull the lever to generate!</div>
-
-                    <button class="spin-btn" id="slotsBtn" onclick="spinSlots()">PULL LEVER</button>
-                </div>
-            </div>
-
-            <!-- Game 6: Tuition Price Game -->
-            <div class="game-section" id="priceGame">
-                <div class="game-title">THE PRICE IS WRONG</div>
-                <div class="game-subtitle">Guess how much you're paying for this education!</div>
-
-                <div class="price-container">
-                    <div class="price-item" id="priceItem">
-                        One (1) semester of having ChatGPT write your essays while maintaining eye contact with your professor
-                    </div>
-
-                    <div class="price-options" id="priceOptions">
-                        <button class="price-btn" onclick="priceGuess(0)">$12,500</button>
-                        <button class="price-btn" onclick="priceGuess(1)">$28,750</button>
-                        <button class="price-btn" onclick="priceGuess(2)">$42,000</button>
-                        <button class="price-btn" onclick="priceGuess(3)">$67,500</button>
-                    </div>
-
-                    <div class="price-result" id="priceResult"></div>
-                </div>
-            </div>
-
-            <!-- Comments Section -->
-            <div class="comments-section">
-                <div class="comments-header">COMMENTS (892) - Sorted by: Most Passive-Aggressive</div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-avatar">👨‍🏫</span>
-                        <span class="comment-user">TenuredTornado1978</span>
-                        <span class="comment-time">2 hours ago</span>
-                    </div>
-                    <div class="comment-text">As someone who has spent 34 years perfecting the art of the essay, I find this DEEPLY TROUBLING. In my day, we had to SUFFER for our education. We had to actually READ BOOKS. Now these students just type "write my essay" and boom. Done. Where's the GROWTH? Where's the PAIN?</div>
-                    <div class="comment-actions">
-                        <span>3,456</span>
-                        <span>Reply</span>
-                        <span>Report</span>
-                    </div>
-                    <div class="comment-reply">
-                        <div class="comment-header">
-                            <span class="comment-avatar">🤖</span>
-                            <span class="comment-user">ChatGPT_Official</span>
-                        </div>
-                        <div class="comment-text">I'm sorry you feel that way. Would you like me to write a response expressing your concerns more eloquently?</div>
-                        <div class="comment-actions"><span>12,847</span></div>
-                    </div>
-                    <div class="comment-reply">
-                        <div class="comment-header">
-                            <span class="comment-avatar">👨‍🏫</span>
-                            <span class="comment-user">TenuredTornado1978</span>
-                        </div>
-                        <div class="comment-text">I... no. Wait. That's not... THAT'S EXACTLY THE PROBLEM</div>
-                        <div class="comment-actions"><span>8,234</span></div>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-avatar">👩‍🎓</span>
-                        <span class="comment-user">GenZWriter2025</span>
-                        <span class="comment-time">1 hour ago</span>
-                    </div>
-                    <div class="comment-text">idk why professors are so mad lol. they use autocorrect which is basically the same thing. also they got their jobs before the internet existed so maybe theyre just jealous</div>
-                    <div class="comment-actions">
-                        <span>6,789</span>
-                        <span>Reply</span>
-                        <span>Report</span>
-                    </div>
-                    <div class="comment-reply">
-                        <div class="comment-header">
-                            <span class="comment-avatar">😤</span>
-                            <span class="comment-user">AdjunctAgony</span>
-                        </div>
-                        <div class="comment-text">I MAKE $2,400 A SEMESTER. I HAVE A PHD. I LIVE IN MY CAR. AND YOU'RE TELLING ME AI IS "BASICALLY AUTOCORRECT"???</div>
-                        <div class="comment-actions"><span>15,678</span></div>
-                    </div>
-                    <div class="comment-reply">
-                        <div class="comment-header">
-                            <span class="comment-avatar">👩‍🎓</span>
-                            <span class="comment-user">GenZWriter2025</span>
-                        </div>
-                        <div class="comment-text">damn that sucks. have you tried using chatgpt to write your resume?</div>
-                        <div class="comment-actions"><span>23,456</span></div>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    <div class="comment-header">
-                        <span class="comment-avatar">👴</span>
-                        <span class="comment-user">EmeritusProfessor1952</span>
-                        <span class="comment-time">45 min ago</span>
-                    </div>
-                    <div class="comment-text">In my day, we wrote everything by HAND. On PAPYRUS. UPHILL BOTH WAYS. And we LIKED it. These children don't know what real academic integrity means. Also, what is a "ChatGPT"? Is that like a telegraph?</div>
-                    <div class="comment-actions">
-                        <span>4,567</span>
-                        <span>Reply</span>
-                        <span>Report</span>
-                    </div>
-                </div>
-
-                <div style="text-align: center; padding: 15px; color: #888; font-size: 12px; border-top: 1px solid #ddd; margin-top: 10px;">
-                    Load 847 more comments * "Why are professors so red?" - Top Comment
-                </div>
-            </div>
-
-            <!-- Letters to Editor -->
-            <div class="letters-section">
-                <div class="letters-header">LETTERS TO THE EDITOR</div>
-
-                <div class="letter">
-                    <div class="letter-text">"I am writing to express my profound disappointment in your coverage of this issue. As a professor who has spent decades honing the craft of essay evaluation, I can assure you that I can ALWAYS tell when a student has used AI. The signs are obvious: perfect grammar, coherent arguments, and citations that actually exist. No real student writes like that."</div>
-                    <div class="letter-author">- Dr. Herbert Weinstein, Department of Eternal Disappointment, Columbia University</div>
-                </div>
-
-                <div class="letter">
-                    <div class="letter-text">"Your article failed to mention that some of us professors have been using AI to grade essays for months now. It's AI all the way down. The students use AI to write, we use AI to grade, the administration uses AI to generate policies about AI. Nobody is doing any actual thinking anymore. It's honestly quite peaceful."</div>
-                    <div class="letter-author">- Anonymous, Department of Giving Up, [University Redacted]</div>
-                </div>
-
-                <div class="letter">
-                    <div class="letter-text">"I'm a student and I just want to say that I've never used ChatGPT to write an essay. I use Claude. Get your facts straight."</div>
-                    <div class="letter-author">- Marcus W., Sophomore, Definitely Not Using AI Right Now</div>
-                </div>
-            </div>
-
-            <!-- Academic Horoscope -->
-            <div class="horoscope">
-                <div class="horoscope-title">ACADEMIC HOROSCOPES</div>
-                <div class="horoscope-item">
-                    <span class="horoscope-sign">ARIES (Adjunct):</span> Your contract may or may not be renewed. The stars are unclear, but so is your health insurance status.
-                </div>
-                <div class="horoscope-item">
-                    <span class="horoscope-sign">TAURUS (Tenured):</span> A student will challenge your authority today. Your blood pressure will rise accordingly. Consider meditation.
-                </div>
-                <div class="horoscope-item">
-                    <span class="horoscope-sign">GEMINI (Graduate Student):</span> Your thesis will never be finished. Accept this. Also, your advisor hasn't read your latest chapter. They never will.
-                </div>
-                <div class="horoscope-item">
-                    <span class="horoscope-sign">CANCER (Department Chair):</span> You will receive 47 emails about the AI policy today. You will respond to none of them. This is wisdom.
-                </div>
-                <div class="horoscope-item">
-                    <span class="horoscope-sign">LEO (Freshman):</span> ChatGPT will help you with your essay. Your professor will know. You will make eye contact anyway. Bold.
-                </div>
-            </div>
-
-            <!-- Weather -->
-            <div class="weather-section">
-                <div class="weather-title">CAMPUS WEATHER FORECAST</div>
-                <div class="weather-forecast">
-                    <div class="weather-day">
-                        <div class="weather-icon">🔥</div>
-                        <div class="weather-label">Today</div>
-                        <div class="weather-temp">Heated</div>
-                    </div>
-                    <div class="weather-day">
-                        <div class="weather-icon">💢</div>
-                        <div class="weather-label">Tuesday</div>
-                        <div class="weather-temp">Furious</div>
-                    </div>
-                    <div class="weather-day">
-                        <div class="weather-icon">🌋</div>
-                        <div class="weather-label">Wednesday</div>
-                        <div class="weather-temp">Volcanic</div>
-                    </div>
-                    <div class="weather-day">
-                        <div class="weather-icon">😤</div>
-                        <div class="weather-label">Thursday</div>
-                        <div class="weather-temp">Apoplectic</div>
-                    </div>
-                    <div class="weather-day">
-                        <div class="weather-icon">🍷</div>
-                        <div class="weather-label">Friday</div>
-                        <div class="weather-temp">Wine O'Clock</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Classifieds -->
-            <div class="classifieds">
-                <div class="classifieds-header">CLASSIFIEDS</div>
-
-                <div class="classified-item">
-                    <div class="classified-category">FOR SALE</div>
-                    Red-faced professor seeks buyer for collection of "original essay" samples from 2018. "Back when students actually wrote things," seller notes wistfully. Will trade for blood pressure medication.
-                </div>
-
-                <div class="classified-item">
-                    <div class="classified-category">SERVICES</div>
-                    "AI DETECTION SPECIALIST" available for hire. Will stare at your essays and say "this seems AI-written" with complete confidence. Accuracy rate: approximately the same as flipping a coin. $200/hour.
-                </div>
-
-                <div class="classified-item">
-                    <div class="classified-category">WANTED</div>
-                    University seeking tenure-track professors willing to accept that the future is AI-generated. Must be comfortable with existential dread. Competitive salary (not really). Benefits (also not really).
-                </div>
-
-                <div class="classified-item">
-                    <div class="classified-category">PERSONALS</div>
-                    Tenured professor, 58, seeks companion who understands the pain of grading essays that are "too well-written to be human." Must enjoy long walks to the faculty wellness center and know what p-values are.
-                </div>
-
-                <div class="classified-item">
-                    <div class="classified-category">LOST & FOUND</div>
-                    LOST: The will to continue in academia. Last seen sometime in 2022. If found, please return to the English Department. No questions asked. We just want it back.
-                </div>
-            </div>
-
+  );
+}
+
+// MARKET TICKER
+function MarketTicker() {
+  const tickerItems = [
+    "📉 DIGNITY (DIG) -99.7%",
+    "📈 CHATGPT PREMIUM (GPT) +847%",
+    "📉 TENURE VALUE (TNR) -62%",
+    "📈 LINKEDIN ENGAGEMENT (LNKD) +∞",
+    "📉 PROFESSOR SANITY INDEX (PSI) -100%",
+    "📈 TURNITIN BYPASS ETF (BYPASS) +234%",
+    "📉 ADJUNCT LIVING WAGE (ALW) -$15.02",
+    "📈 ADMINISTRATIVE BLOAT (ADMIN) +892%",
+    "📉 STUDENT ATTENTION SPAN (SAS) -78%",
+    "📈 THERAPY FUTURES (THRP) +567%",
+    "⚠️ TRADING HALTED: ACADEMIC INTEGRITY (AI) — DELISTED",
+    "📈 RAGE-BASED CONTENT (RAGE) +1,247%",
+    "📉 HANDWRITING LEGIBILITY (HWL) -94%",
+    "📈 EARLY RETIREMENT APPLICATIONS (ERA) +3,400%",
+  ];
+
+  return (
+    <div style={{
+      backgroundColor: '#1a0a0a',
+      color: '#00ff00',
+      padding: '8px 0',
+      overflow: 'hidden',
+      fontFamily: "'Courier New', monospace",
+      fontSize: '13px',
+      borderBottom: '2px solid #ff0000',
+    }}>
+      <div style={{
+        display: 'flex',
+        animation: 'ticker 45s linear infinite',
+        whiteSpace: 'nowrap',
+      }}>
+        {[...tickerItems, ...tickerItems].map((item, i) => (
+          <span key={i} style={{ marginRight: '50px' }}>{item}</span>
+        ))}
+      </div>
+      <style>{`
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+// MAIN ARTICLE
+function MainArticle() {
+  return (
+    <article style={{
+      backgroundColor: '#fff',
+      padding: '30px',
+      marginBottom: '20px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+    }}>
+      <div style={{
+        fontSize: '11px',
+        color: '#c00',
+        fontWeight: 'bold',
+        letterSpacing: '2px',
+        marginBottom: '10px'
+      }}>
+        ⚡ BREAKING NEWS • EDUCATION • MELTDOWN WATCH
+      </div>
+
+      <h1 style={{
+        fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+        lineHeight: '1.1',
+        marginBottom: '15px',
+        fontFamily: "'Times New Roman', serif",
+        fontWeight: 'bold',
+      }}>
+        Nation's Professors Achieve New Shades Of Red Previously Unknown To Science As Students Continue Using ChatGPT While Maintaining Eye Contact
+      </h1>
+
+      <h2 style={{
+        fontSize: '1.2rem',
+        fontWeight: 'normal',
+        fontStyle: 'italic',
+        color: '#444',
+        marginBottom: '20px',
+        borderBottom: '1px solid #ccc',
+        paddingBottom: '15px',
+      }}>
+        'Policing AI Has Got So Frustrating,' Reports CEO Reposting Viral Video Of Educator's Psychological Break For LinkedIn Engagement
+      </h2>
+
+      <div style={{ fontSize: '12px', color: '#666', marginBottom: '20px' }}>
+        By <strong>MARGARET THATCHER-REAGAN</strong> | Education Correspondent | December 18, 2025 | <em>Reading time: However long your professor's breakdown lasts</em>
+      </div>
+
+      <div style={{
+        columnCount: 2,
+        columnGap: '30px',
+        fontSize: '15px',
+        lineHeight: '1.7',
+        textAlign: 'justify',
+      }}>
+        <p style={{ marginBottom: '15px' }}>
+          <span style={{ fontSize: '4em', float: 'left', lineHeight: '0.8', marginRight: '8px', fontWeight: 'bold' }}>T</span>
+          HE AMERICAN UNIVERSITY system reached a historic milestone this week as professors nationwide achieved chromatic ranges previously thought impossible for human skin, with leading researchers confirming that faculty members discussing AI plagiarism have now turned colors "well beyond the visible spectrum."
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          The phenomenon, captured in dozens of viral videos posted to LinkedIn by CEOs seeking thought leadership engagement, shows educators experiencing what cardiologists are calling "The Tomato Index™"—a new academic vital sign measuring faculty hue shifts during plagiarism discussions. A professor reaching "heirloom burgundy" now automatically triggers both a wellness check and an HR incident report.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          "My professor lost his mind because people were on their phones in class!" read one viral post, which has since garnered 972 reactions from HR professionals who have never faced 200 freshmen at 8 AM, but have opinions. God, do they have opinions.
+        </p>
+
+        <div style={{
+          backgroundColor: '#f9f6f0',
+          border: '1px solid #ddd',
+          padding: '15px',
+          margin: '15px 0',
+          fontStyle: 'italic',
+        }}>
+          <strong>THE LINKEDIN CONTENT LIFECYCLE:</strong><br/>
+          Stage 1: Professor experiences psychological break<br/>
+          Stage 2: Student uploads (0.003 seconds post-incident)<br/>
+          Stage 3: CEO with "MSc" in display name reposts<br/>
+          Stage 4: Caption: "Policing AI has got so frustrating 🤔"<br/>
+          Stage 5: 972 reactions from recruiters<br/>
+          Stage 6: Professor, still not okay, sees the post<br/>
+          Stage 7: Return to Stage 1
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-logo">HuckFinn</div>
-        <div>© 2025 HuckFinn Media Group * All Rights Reserved * Definitely Not Written By AI</div>
-        <div class="footer-links">
-            <span>About</span>
-            <span>Careers (AI Preferred)</span>
-            <span>Ethics Policy (lol)</span>
-            <span>Advertise</span>
-            <span>Contact</span>
+        <p style={{ marginBottom: '15px' }}>
+          The videos reveal what experts are calling "Schrödinger's Smartphone"—devices existing in superposition, simultaneously too distracting to permit in lecture yet the only instrument precise enough to document why they shouldn't be permitted. Upon observation, the waveform collapses into a TikTok. The student is both the disease and the epidemiologist.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          "I'm getting SICK and TIRED of you guys using AI," screamed one professor in footage that has since been stabilized by AI, uploaded via AI-optimized platform, captioned by AI, recommended by AI-curated feeds, and reposted by a CEO whose assistant used AI to write "🤔 Thoughts?" The irony reactor has achieved critical mass.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          Students, meanwhile, have developed a sophisticated diagnostic linguistics system. According to peer-reviewed translations, "cooked" indicates mild professional embarrassment, "burnt" suggests the moment is now indexed by Google, while "Prof isn't cooked, she's BURNT 🔥" indicates tenure has become a liability. "I'm dead" refers simultaneously to the student's GPA, the professor's will to live, and the social contract between them.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          "First month of college 😅 Is this normal!?" asked one freshman in a video caption. Sources confirm: yes. Witnessing a tenured professional's existential crisis is now bundled with the meal plan. Orientation fee: $450. The look on his face: priceless.
+        </p>
+
+        <div style={{
+          backgroundColor: '#1a0a0a',
+          color: '#fff',
+          padding: '15px',
+          margin: '15px 0',
+          fontFamily: 'monospace',
+          fontSize: '12px',
+        }}>
+          <strong>PEDAGOGICAL ARMS RACE — DECEMBER 2024 PATCH NOTES:</strong><br/><br/>
+          Yelling .......................... 0% win rate<br/>
+          Turnitin ...................... -15% (students pre-screen)<br/>
+          "I Can Tell" .................... 0% (they cannot tell)<br/>
+          Handwritten Exams .............. 31% (ADA lawsuits pending)<br/>
+          Expulsion Threats ............... 0% (they need tuition)<br/>
+          Crying ......................... 12% (buys 10-15 minutes)<br/>
+          Retirement .................... 100% (META-DOMINANT)<br/><br/>
+          Current tier list: Retirement (S), Crying (B), Everything Else (F)
         </div>
-        <div class="footer-disclaimer">
-            "This article was written by a human. The human used coffee. The human regrets everything." - Legal Disclaimer
+
+        <p style={{ marginBottom: '15px' }}>
+          The situation reached peak absurdity when one professor demanded a student leave the classroom, pointing toward a door that leads to a hallway with WiFi, where the student could complete the assignment faster than in the lecture itself. Time to complete assignment in classroom: 50 minutes. Time in exile: 90 seconds. Exile has become a speedrun strategy.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          "Policing AI is so frustrating," announced the institution that charges $847 per credit hour, pays adjuncts less than Chipotle, has a $4.2 billion endowment, outsourced grading to TAs in 1987, automated course registration in 2003, replaced librarians with databases in 2015, and now demands students not automate. The leopard is sobbing. Its face is delicious.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          LinkedIn commenters, as always, have solutions. "Professors should simply adapt," suggested a man who mass-applies to jobs using one PDF. "Make assignments AI-proof," offered a woman whose AI-proof solution is oral exams for 400 students. "This is why I became an entrepreneur," added a dropshipper earning $340/month.
+        </p>
+
+        <p style={{ marginBottom: '15px' }}>
+          <em>The article you are reading will be assigned next semester in a Media Studies course, where students will summarize it using AI while their professor, slowly, imperceptibly—changes color.</em>
+        </p>
+
+        <p style={{
+          marginTop: '20px',
+          fontStyle: 'italic',
+          borderTop: '1px solid #ccc',
+          paddingTop: '15px',
+          color: '#666',
+        }}>
+          At press time, a 19-year-old was observed generating a B+ essay in 40 seconds while maintaining eye contact and eating a bagel, causing a nearby professor to consult early retirement paperwork that had been there all along, simply waiting.
+        </p>
+      </div>
+    </article>
+  );
+}
+
+// MAIN PHOTO
+function MainPhoto() {
+  return (
+    <figure style={{
+      backgroundColor: '#fff',
+      padding: '20px',
+      marginBottom: '20px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+    }}>
+      <svg viewBox="0 0 800 500" style={{ width: '100%', height: 'auto', border: '1px solid #ddd' }}>
+        {/* Background - Classroom */}
+        <rect width="800" height="500" fill="#e8e4dc"/>
+
+        {/* Whiteboard */}
+        <rect x="150" y="30" width="500" height="200" fill="#f5f5f5" stroke="#999" strokeWidth="3"/>
+        <text x="400" y="100" textAnchor="middle" fontSize="28" fill="#333" fontFamily="Comic Sans MS, cursive">
+          NO AI!!!
+        </text>
+        <text x="400" y="140" textAnchor="middle" fontSize="18" fill="#c00" fontFamily="Comic Sans MS, cursive">
+          I MEAN IT!!!
+        </text>
+        <text x="400" y="180" textAnchor="middle" fontSize="14" fill="#c00" fontFamily="Comic Sans MS, cursive">
+          (I can tell)
+        </text>
+        <text x="400" y="210" textAnchor="middle" fontSize="10" fill="#999" fontFamily="Arial">
+          (narrator: he could not tell)
+        </text>
+
+        {/* Podium */}
+        <rect x="340" y="250" width="120" height="150" fill="#8B4513"/>
+        <rect x="335" y="245" width="130" height="15" fill="#6B3513"/>
+
+        {/* Professor - TOMATO RED */}
+        <ellipse cx="400" cy="290" rx="35" ry="40" fill="#ff2200"/>
+        <circle cx="385" cy="280" r="5" fill="#fff"/>
+        <circle cx="415" cy="280" r="5" fill="#fff"/>
+        <circle cx="385" cy="280" r="2" fill="#000"/>
+        <circle cx="415" cy="280" r="2" fill="#000"/>
+        <path d="M 380 305 Q 400 290 420 305" stroke="#000" strokeWidth="3" fill="none"/>
+        {/* Steam from head */}
+        <path d="M 370 250 Q 360 230 370 210" stroke="#ff6600" strokeWidth="3" fill="none" opacity="0.7"/>
+        <path d="M 400 245 Q 400 220 410 200" stroke="#ff6600" strokeWidth="3" fill="none" opacity="0.7"/>
+        <path d="M 430 250 Q 440 230 430 210" stroke="#ff6600" strokeWidth="3" fill="none" opacity="0.7"/>
+        {/* Body */}
+        <rect x="365" y="330" width="70" height="80" fill="#4169E1"/>
+        <rect x="380" y="330" width="40" height="60" fill="#fff"/>
+        <line x1="400" y1="330" x2="400" y2="390" stroke="#000" strokeWidth="2"/>
+
+        {/* Speech bubble */}
+        <ellipse cx="550" cy="280" rx="120" ry="60" fill="#fff" stroke="#000" strokeWidth="2"/>
+        <polygon points="460,300 480,310 460,320" fill="#fff" stroke="#000" strokeWidth="2"/>
+        <text x="550" y="270" textAnchor="middle" fontSize="14" fontWeight="bold">I'M GETTING SICK</text>
+        <text x="550" y="290" textAnchor="middle" fontSize="14" fontWeight="bold">AND TIRED OF</text>
+        <text x="550" y="310" textAnchor="middle" fontSize="14" fontWeight="bold">YOU GUYS!!!</text>
+
+        {/* Students with phones */}
+        {/* Student 1 */}
+        <circle cx="150" cy="420" r="25" fill="#ffd9b3"/>
+        <rect x="125" y="445" width="50" height="50" fill="#333"/>
+        <rect x="135" y="410" width="30" height="50" fill="#000" rx="3"/>
+        <rect x="138" y="413" width="24" height="40" fill="#00ff00"/>
+        <text x="150" y="437" textAnchor="middle" fontSize="8" fill="#000">ChatGPT</text>
+
+        {/* Student 2 */}
+        <circle cx="280" cy="430" r="25" fill="#c68642"/>
+        <rect x="255" y="455" width="50" height="45" fill="#ff6b6b"/>
+        <rect x="265" y="420" width="30" height="50" fill="#000" rx="3"/>
+        <rect x="268" y="423" width="24" height="40" fill="#00ff00"/>
+        <text x="280" y="447" textAnchor="middle" fontSize="8" fill="#000">ChatGPT</text>
+
+        {/* Student 3 - filming */}
+        <circle cx="650" cy="420" r="25" fill="#ffd9b3"/>
+        <rect x="625" y="445" width="50" height="50" fill="#228B22"/>
+        <rect x="620" y="380" width="35" height="55" fill="#000" rx="3"/>
+        <rect x="623" y="383" width="29" height="45" fill="#ff0000"/>
+        <circle cx="637" cy="395" r="8" fill="#fff"/>
+        <text x="637" y="420" textAnchor="middle" fontSize="6" fill="#fff">● REC</text>
+
+        {/* Student 4 */}
+        <circle cx="520" cy="440" r="25" fill="#8d5524"/>
+        <rect x="495" y="465" width="50" height="35" fill="#9932CC"/>
+        <rect x="505" y="430" width="30" height="50" fill="#000" rx="3"/>
+        <rect x="508" y="433" width="24" height="40" fill="#00ff00"/>
+
+        {/* Desk row */}
+        <rect x="50" y="470" width="700" height="30" fill="#deb887" stroke="#8B4513" strokeWidth="2"/>
+
+        {/* LinkedIn logo in corner */}
+        <rect x="700" y="20" width="80" height="25" fill="#0077B5" rx="3"/>
+        <text x="740" y="38" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="bold">in LinkedIn</text>
+        <text x="740" y="55" textAnchor="middle" fontSize="10" fill="#666">972 reactions</text>
+
+        {/* TikTok watermark */}
+        <text x="700" y="480" fontSize="16" fill="#000" opacity="0.5">@student_filmz</text>
+
+        {/* Tomato Index indicator */}
+        <rect x="20" y="100" width="100" height="200" fill="#fff" stroke="#000" strokeWidth="2"/>
+        <text x="70" y="120" textAnchor="middle" fontSize="10" fontWeight="bold">TOMATO</text>
+        <text x="70" y="132" textAnchor="middle" fontSize="10" fontWeight="bold">INDEX™</text>
+        <rect x="30" y="140" width="80" height="20" fill="#ffcccc"/>
+        <rect x="30" y="160" width="80" height="20" fill="#ff9999"/>
+        <rect x="30" y="180" width="80" height="20" fill="#ff6666"/>
+        <rect x="30" y="200" width="80" height="20" fill="#ff3333"/>
+        <rect x="30" y="220" width="80" height="20" fill="#ff0000"/>
+        <rect x="30" y="240" width="80" height="20" fill="#cc0000"/>
+        <rect x="30" y="260" width="80" height="20" fill="#990000"/>
+        <text x="115" y="155" fontSize="8">Pink</text>
+        <text x="115" y="175" fontSize="8">Salmon</text>
+        <text x="115" y="195" fontSize="8">Coral</text>
+        <text x="115" y="215" fontSize="8">Tomato</text>
+        <text x="115" y="235" fontSize="8">Beet</text>
+        <text x="115" y="255" fontSize="8">Burgundy</text>
+        <text x="115" y="275" fontSize="8">☠️</text>
+        {/* Arrow pointing to current level */}
+        <polygon points="25,265 15,255 15,275" fill="#000"/>
+      </svg>
+
+      <figcaption style={{
+        marginTop: '15px',
+        fontSize: '13px',
+        color: '#444',
+        fontStyle: 'italic',
+        borderTop: '1px solid #ddd',
+        paddingTop: '10px',
+      }}>
+        <strong>Above:</strong> Dr. Harold Pemberton, 58, achieves "Heirloom Burgundy" on the Tomato Index™ during a lecture on academic integrity, while students document the psychological event for cross-platform distribution. The phone in the lower-right corner is recording; the phones in the foreground are running ChatGPT. All four students received A-minuses. Dr. Pemberton has requested leave.
+      </figcaption>
+    </figure>
+  );
+}
+
+// COMMENTS SECTION
+function CommentsSection() {
+  const comments = [
+    {
+      user: "TenuredAndTired_1987",
+      badge: "VERIFIED PROFESSOR",
+      badgeColor: "#c00",
+      avatar: "👨‍🏫",
+      text: "As someone who spent 23 YEARS getting my PhD and tenure, this article is deeply offensive. We are NOT turning into tomatoes. I am a healthy shade of crimson at WORST. Also, I CAN tell when it's AI. The sentences are too coherent.",
+      time: "2 hours ago",
+      likes: 47,
+      replies: [
+        { user: "GPT4_Burner_Acct", avatar: "🤖", text: "I'm sorry you feel that way. Would you like me to rephrase your comment to sound more human?", time: "1 hour ago", likes: 892 },
+        { user: "AdjunctSlave2024", avatar: "😭", text: "You have tenure? Must be nice. I teach at 4 schools and live in my car.", time: "45 min ago", likes: 234 },
+      ]
+    },
+    {
+      user: "LinkedInfluencer_CEO_MBA_MSc",
+      badge: "TOP VOICE",
+      badgeColor: "#0077B5",
+      avatar: "💼",
+      text: "Great article! This is exactly why I dropped out to become an entrepreneur. Professors need to ADAPT or become OBSOLETE. I made $47 last month selling my course on adaptation. DM for details. 🚀📈 #Hustle #ThoughtLeader #AIisTheFuture",
+      time: "3 hours ago",
+      likes: 3,
+      replies: [
+        { user: "NormalPerson42", avatar: "🙂", text: "Did you just try to sell a course in a comment section about education failing", time: "2 hours ago", likes: 445 },
+        { user: "LinkedInfluencer_CEO_MBA_MSc", avatar: "💼", text: "Every interaction is a sales opportunity. That's day 1 stuff.", time: "2 hours ago", likes: 2 },
+      ]
+    },
+    {
+      user: "xX_CheatCode_Xx",
+      badge: "STUDENT",
+      badgeColor: "#228B22",
+      avatar: "😎",
+      text: "lmaooo my prof literally did this last week. she was so red i thought she was gonna explode. anyway got an A on that essay 💀💀💀",
+      time: "1 hour ago",
+      likes: 1247,
+      replies: [
+        { user: "TenuredAndTired_1987", avatar: "👨‍🏫", text: "YOU. It was YOU.", time: "30 min ago", likes: 3400 },
+        { user: "xX_CheatCode_Xx", avatar: "😎", text: "dr pemberton?? omg 💀", time: "25 min ago", likes: 5600 },
+      ]
+    },
+    {
+      user: "BoomerDad1955",
+      badge: null,
+      avatar: "👴",
+      text: "Back in MY day we didnt have fancy AI we had to WALK to the LIBRARY and use ENCYCLOPEDIAS and we LIKED IT. This generation is SOFT",
+      time: "4 hours ago",
+      likes: 12,
+      replies: [
+        { user: "FactCheckBot", avatar: "✓", text: "The average cost of college in 1975 was $2,291. Adjusted for inflation: $13,147. Current average: $38,270. The encyclopedia users also bought houses on minimum wage.", time: "3 hours ago", likes: 8934 },
+        { user: "BoomerDad1955", avatar: "👴", text: "thats not the point", time: "3 hours ago", likes: 2 },
+        { user: "FactCheckBot", avatar: "✓", text: "It is precisely the point.", time: "3 hours ago", likes: 4521 },
+      ]
+    },
+    {
+      user: "I_Didnt_Read_The_Article",
+      badge: null,
+      avatar: "🤷",
+      text: "Is this about the economy? I think the economy is bad. Also, immigrants.",
+      time: "5 hours ago",
+      likes: 0,
+      replies: [
+        { user: "ArticleReader", avatar: "📖", text: "sir this is about professors turning red", time: "4 hours ago", likes: 234 },
+        { user: "I_Didnt_Read_The_Article", avatar: "🤷", text: "See this is what Im talking about. Thanks Biden.", time: "4 hours ago", likes: 1 },
+      ]
+    },
+    {
+      user: "TurnitinEmployee_Throwaway",
+      badge: "INDUSTRY INSIDER",
+      badgeColor: "#ff6600",
+      avatar: "🕵️",
+      text: "Okay I probably shouldn't say this but... we literally just guess. The algorithm is essentially a coin flip with marketing. Please don't tell my boss.",
+      time: "6 hours ago",
+      likes: 23000,
+      replies: [
+        { user: "UniversityAdmin", avatar: "🏛️", text: "DELETE THIS", time: "5 hours ago", likes: 12 },
+        { user: "TurnitinEmployee_Throwaway", avatar: "🕵️", text: "[This user has been banned]", time: "5 hours ago", likes: 0 },
+      ]
+    },
+    {
+      user: "AsAMotherOf3",
+      badge: null,
+      avatar: "👩‍👧‍👦",
+      text: "As a mother of 3, I think this is DISGUSTING. My children would NEVER use AI. I raised them with VALUES. They're currently at Harvard, Yale, and Stanford on full scholarships.",
+      time: "2 hours ago",
+      likes: 23,
+      replies: [
+        { user: "YaleStudent2027", avatar: "🎓", text: "mom i literally showed you how to use chatgpt last thanksgiving", time: "1 hour ago", likes: 12000 },
+        { user: "AsAMotherOf3", avatar: "👩‍👧‍👦", text: "BRENDAN GET OFF THE INTERNET", time: "1 hour ago", likes: 8700 },
+        { user: "StanfordStudent2026", avatar: "🎓", text: "lol brendan's cooked", time: "45 min ago", likes: 3400 },
+        { user: "HarvardStudent2025", avatar: "🎓", text: "we all use it mom. we've been lying.", time: "30 min ago", likes: 15000 },
+      ]
+    },
+    {
+      user: "Reply_Guy_9000",
+      badge: null,
+      avatar: "🤓",
+      text: "Actually, technically, the term 'tomato' is botanically a fruit, not a vegetable, so the 'Tomato Index' is actually the 'Fruit Index' if we're being accurate, which I always am. Furthermore,",
+      time: "3 hours ago",
+      likes: -47,
+      replies: [
+        { user: "EveryoneElse", avatar: "😐", text: "please stop", time: "3 hours ago", likes: 890 },
+      ]
+    },
+    {
+      user: "FirstComment",
+      badge: null,
+      avatar: "🏃",
+      text: "First!!!",
+      time: "7 hours ago",
+      likes: -234,
+      replies: []
+    },
+    {
+      user: "Definitely_Not_ChatGPT",
+      badge: null,
+      avatar: "🙂",
+      text: "As a human person who breathes oxygen and experiences emotions, I find this article to be a compelling exploration of the intersection between technological advancement and traditional educational paradigms. The way you've articulated the challenges facing modern educators resonates deeply with my human experiences in academic settings.",
+      time: "4 hours ago",
+      likes: 2,
+      replies: [
+        { user: "SkepticalReader", avatar: "🤨", text: "...chatgpt?", time: "3 hours ago", likes: 1200 },
+        { user: "Definitely_Not_ChatGPT", avatar: "🙂", text: "Ha ha! No, I am simply a human who enjoys using diverse vocabulary and comprehensive sentence structures. How about that local sports team?", time: "3 hours ago", likes: 890 },
+      ]
+    },
+  ];
+
+  return (
+    <section style={{
+      backgroundColor: '#fff',
+      padding: '25px',
+      marginBottom: '20px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+    }}>
+      <h3 style={{
+        fontSize: '1.3rem',
+        borderBottom: '3px solid #000',
+        paddingBottom: '10px',
+        marginBottom: '20px',
+      }}>
+        💬 COMMENTS ({comments.reduce((acc, c) => acc + 1 + c.replies.length, 0)}) — <span style={{color: '#c00'}}>HEATED DEBATE</span>
+      </h3>
+
+      <div style={{
+        backgroundColor: '#fff3cd',
+        border: '1px solid #ffc107',
+        padding: '10px',
+        marginBottom: '20px',
+        fontSize: '12px',
+      }}>
+        ⚠️ <strong>MODERATOR NOTE:</strong> Comments are disabled for users whose blood pressure exceeds 160/100. Dr. Pemberton, we know it's you. Please step away.
+      </div>
+
+      {comments.map((comment, i) => (
+        <div key={i} style={{
+          borderBottom: '1px solid #eee',
+          paddingBottom: '15px',
+          marginBottom: '15px',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+            <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{comment.avatar}</span>
+            <strong>{comment.user}</strong>
+            {comment.badge && (
+              <span style={{
+                backgroundColor: comment.badgeColor,
+                color: '#fff',
+                padding: '2px 8px',
+                borderRadius: '3px',
+                fontSize: '10px',
+                marginLeft: '8px',
+              }}>{comment.badge}</span>
+            )}
+            <span style={{ color: '#999', fontSize: '12px', marginLeft: 'auto' }}>{comment.time}</span>
+          </div>
+          <p style={{ marginLeft: '40px', marginBottom: '8px' }}>{comment.text}</p>
+          <div style={{ marginLeft: '40px', fontSize: '12px', color: '#666' }}>
+            👍 {comment.likes.toLocaleString()} {comment.likes < 0 && '(oof)'} · Reply · Report
+          </div>
+
+          {/* Replies */}
+          {comment.replies.map((reply, j) => (
+            <div key={j} style={{
+              marginLeft: '60px',
+              marginTop: '10px',
+              paddingLeft: '15px',
+              borderLeft: '2px solid #ddd',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                <span style={{ marginRight: '8px' }}>{reply.avatar}</span>
+                <strong style={{ fontSize: '13px' }}>{reply.user}</strong>
+                <span style={{ color: '#999', fontSize: '11px', marginLeft: 'auto' }}>{reply.time}</span>
+              </div>
+              <p style={{ fontSize: '13px', marginBottom: '5px' }}>{reply.text}</p>
+              <div style={{ fontSize: '11px', color: '#666' }}>
+                👍 {reply.likes.toLocaleString()} · Reply
+              </div>
+            </div>
+          ))}
         </div>
+      ))}
+
+      <div style={{
+        backgroundColor: '#f5f5f5',
+        padding: '15px',
+        textAlign: 'center',
+        color: '#666',
+        fontStyle: 'italic',
+      }}>
+        <em>Loading more comments...</em><br/>
+        <small>(JK the server is powered by adjunct wages and crashed)</small>
+      </div>
+    </section>
+  );
+}
+
+// INTERSTITIAL ADS
+function InterstitialAd({ type }) {
+  const ads = {
+    1: {
+      bg: 'linear-gradient(135deg, #ff6b6b, #c0392b)',
+      content: (
+        <>
+          <div style={{ fontSize: '14px', marginBottom: '5px' }}>SPONSORED</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>
+            🍅 TOMATO INDEX™ MONITORING DEVICE
+          </div>
+          <div style={{ fontSize: '16px', marginBottom: '15px' }}>
+            Track your faculty's chromatic shifts in real-time! Insurance-approved.
+          </div>
+          <div style={{ fontSize: '12px' }}>
+            "I wish I had this before the incident" — Dr. Harold Pemberton, on leave
+          </div>
+          <button style={{
+            marginTop: '15px',
+            padding: '10px 30px',
+            backgroundColor: '#fff',
+            color: '#c0392b',
+            border: 'none',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+          }}>ORDER NOW — $847/semester</button>
+        </>
+      )
+    },
+    2: {
+      bg: 'linear-gradient(135deg, #0077B5, #004d73)',
+      content: (
+        <>
+          <div style={{ fontSize: '14px', marginBottom: '5px' }}>LINKEDIN PREMIUM™</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>
+            💼 Monetize Others' Pain Today!
+          </div>
+          <div style={{ fontSize: '16px', marginBottom: '15px' }}>
+            "Policing engagement has never been easier" — CEO with MSc
+          </div>
+          <div style={{ fontSize: '14px' }}>
+            ✓ Repost meltdowns as "thought leadership"<br/>
+            ✓ Add "🤔 Thoughts?" to any tragedy<br/>
+            ✓ Get 972 reactions from HR professionals
+          </div>
+          <button style={{
+            marginTop: '15px',
+            padding: '10px 30px',
+            backgroundColor: '#fff',
+            color: '#0077B5',
+            border: 'none',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+          }}>START ENGAGING FREE</button>
+        </>
+      )
+    },
+    3: {
+      bg: 'linear-gradient(135deg, #2c3e50, #1a252f)',
+      content: (
+        <>
+          <div style={{ fontSize: '14px', marginBottom: '5px' }}>ADVERTISEMENT</div>
+          <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>
+            🎓 EARLY RETIREMENT CALCULATOR
+          </div>
+          <div style={{ fontSize: '16px', marginBottom: '15px' }}>
+            Find out how many more ChatGPT incidents until you can leave
+          </div>
+          <div style={{ fontSize: '14px', fontStyle: 'italic' }}>
+            "The paperwork was always there. It was simply waiting." — Every tenured professor
+          </div>
+          <div style={{ marginTop: '15px', fontSize: '24px' }}>
+            ⏱️ Average time to decision: 1 viral TikTok
+          </div>
+        </>
+      )
+    }
+  };
+
+  const ad = ads[type];
+
+  return (
+    <div style={{
+      background: ad.bg,
+      color: '#fff',
+      padding: '30px',
+      marginBottom: '20px',
+      textAlign: 'center',
+      borderRadius: '0',
+      boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+    }}>
+      {ad.content}
+    </div>
+  );
+}
+
+// GAMES SECTION
+function GamesSection({ activeGame, setActiveGame }) {
+  return (
+    <section style={{
+      backgroundColor: '#fff',
+      padding: '25px',
+      marginBottom: '20px',
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+    }}>
+      <h3 style={{
+        fontSize: '1.5rem',
+        borderBottom: '3px solid #000',
+        paddingBottom: '10px',
+        marginBottom: '20px',
+        textAlign: 'center',
+      }}>
+        🎮 INTERACTIVE: THE ACADEMIC ARCADE 🎮
+      </h3>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+        gap: '15px',
+        marginBottom: '20px',
+      }}>
+        {[
+          { id: 'quiz', name: '🤖 AI or Student?', desc: 'Can YOU tell the difference?' },
+          { id: 'bp', name: '🍅 Prof Blood Pressure', desc: "Don't let them explode!" },
+          { id: 'roulette', name: '🎰 Turnitin Roulette', desc: 'Spin the wheel of fate' },
+          { id: 'whack', name: '🔨 Adaptation Whack', desc: 'Silence the LinkedIn bros' },
+          { id: 'slots', name: '🎲 Essay Slots', desc: 'Pull for your grade' },
+          { id: 'price', name: '💰 Tuition Price Game', desc: 'Guess the absurd cost' },
+        ].map(game => (
+          <button
+            key={game.id}
+            onClick={() => setActiveGame(activeGame === game.id ? null : game.id)}
+            style={{
+              padding: '20px',
+              backgroundColor: activeGame === game.id ? '#1a0a0a' : '#f5f5f5',
+              color: activeGame === game.id ? '#fff' : '#000',
+              border: '2px solid #000',
+              cursor: 'pointer',
+              textAlign: 'left',
+              transition: 'all 0.2s',
+            }}
+          >
+            <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{game.name}</div>
+            <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{game.desc}</div>
+          </button>
+        ))}
+      </div>
+
+      {/* Game Containers */}
+      {activeGame === 'quiz' && <AIorStudentGame />}
+      {activeGame === 'bp' && <BloodPressureGame />}
+      {activeGame === 'roulette' && <TurnitinRoulette />}
+      {activeGame === 'whack' && <WhackALinkedIn />}
+      {activeGame === 'slots' && <EssaySlots />}
+      {activeGame === 'price' && <TuitionPriceGame />}
+    </section>
+  );
+}
+
+// GAME 1: AI OR STUDENT
+function AIorStudentGame() {
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [answered, setAnswered] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  const questions = [
+    { text: "The thematic elements of Gatsby's green light serve as a multifaceted symbol representing both the corruption of the American Dream and the inexorable passage of time.", answer: "ai", explanation: "Too coherent. No spelling errors. Suspicious." },
+    { text: "gatsby was all about like money and stuff and the green light was like his dreams or whatever idk i read the sparknotes at 3am", answer: "student", explanation: "The 3am energy is unmistakable." },
+    { text: "In conclusion, the evidence presented herein demonstrates a clear correlation between the variables examined, warranting further investigation into potential causal mechanisms.", answer: "ai", explanation: "No human has ever written 'herein' voluntarily." },
+    { text: "so basically the mitochondria is the powerhouse of the cell and thats why we get tired when we dont sleep i think? my roommate said something about ATP but hes pre-med so idk if hes right", answer: "student", explanation: "The self-doubt is peak authenticity." },
+    { text: "This analysis reveals the interconnected nature of socioeconomic factors in determining educational outcomes.", answer: "ai", explanation: "Grammatically perfect. Emotionally void. Classic GPT." },
+  ];
+
+  const handleAnswer = (answer) => {
+    if (answered) return;
+    setSelectedAnswer(answer);
+    setAnswered(true);
+    if (answer === questions[questionIndex].answer) {
+      setScore(score + 1);
+    }
+  };
+
+  const nextQuestion = () => {
+    if (questionIndex < questions.length - 1) {
+      setQuestionIndex(questionIndex + 1);
+      setAnswered(false);
+      setSelectedAnswer(null);
+    }
+  };
+
+  const q = questions[questionIndex];
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000' }}>
+      <h4 style={{ textAlign: 'center', marginBottom: '15px' }}>🤖 AI OR STUDENT? 🎓</h4>
+      <div style={{ marginBottom: '10px', textAlign: 'center', fontSize: '14px' }}>
+        Question {questionIndex + 1}/{questions.length} | Score: {score}
+      </div>
+
+      <div style={{
+        backgroundColor: '#fff',
+        padding: '20px',
+        border: '1px solid #ddd',
+        marginBottom: '15px',
+        fontStyle: 'italic',
+      }}>
+        "{q.text}"
+      </div>
+
+      <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '15px' }}>
+        <button
+          onClick={() => handleAnswer('ai')}
+          disabled={answered}
+          style={{
+            padding: '15px 30px',
+            fontSize: '16px',
+            backgroundColor: answered && q.answer === 'ai' ? '#28a745' :
+                           answered && selectedAnswer === 'ai' ? '#dc3545' : '#0077B5',
+            color: '#fff',
+            border: 'none',
+            cursor: answered ? 'default' : 'pointer',
+          }}
+        >🤖 AI</button>
+        <button
+          onClick={() => handleAnswer('student')}
+          disabled={answered}
+          style={{
+            padding: '15px 30px',
+            fontSize: '16px',
+            backgroundColor: answered && q.answer === 'student' ? '#28a745' :
+                           answered && selectedAnswer === 'student' ? '#dc3545' : '#6c757d',
+            color: '#fff',
+            border: 'none',
+            cursor: answered ? 'default' : 'pointer',
+          }}
+        >🎓 Student</button>
+      </div>
+
+      {answered && (
+        <div style={{ textAlign: 'center' }}>
+          <div style={{
+            backgroundColor: selectedAnswer === q.answer ? '#d4edda' : '#f8d7da',
+            padding: '10px',
+            marginBottom: '10px',
+          }}>
+            {selectedAnswer === q.answer ? '✅ Correct!' : '❌ Wrong!'} {q.explanation}
+          </div>
+          {questionIndex < questions.length - 1 ? (
+            <button onClick={nextQuestion} style={{ padding: '10px 20px', cursor: 'pointer' }}>
+              Next Question →
+            </button>
+          ) : (
+            <div style={{ fontWeight: 'bold', fontSize: '18px' }}>
+              Final Score: {score}/{questions.length}
+              {score <= 2 && " — You're as bad at detecting AI as Turnitin!"}
+              {score > 2 && score < 5 && " — Mediocre! Just like the essays."}
+              {score === 5 && " — Impossible! Are YOU the AI?"}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// GAME 2: BLOOD PRESSURE
+function BloodPressureGame() {
+  const [bp, setBp] = useState(120);
+  const [gameOver, setGameOver] = useState(false);
+  const [survived, setSurvived] = useState(0);
+
+  const statements = [
+    "I used ChatGPT but made it my own",
+    "Is this going to be on the test?",
+    "I couldn't find the syllabus",
+    "My dog ate my laptop",
+    "Can I get an extension? I have anxiety",
+    "I learned this on TikTok",
+    "Wikipedia says you're wrong",
+    "Can you round my 47% to a B?",
+    "I was gonna email you but forgot",
+    "My other professor lets us use AI",
+  ];
+
+  const [currentStatement, setCurrentStatement] = useState(statements[0]);
+
+  const handleClick = () => {
+    if (gameOver) return;
+    const increase = Math.floor(Math.random() * 15) + 5;
+    const newBp = bp + increase;
+    setBp(newBp);
+    setSurvived(survived + 1);
+    setCurrentStatement(statements[Math.floor(Math.random() * statements.length)]);
+
+    if (newBp >= 180) {
+      setGameOver(true);
+    }
+  };
+
+  const reset = () => {
+    setBp(120);
+    setGameOver(false);
+    setSurvived(0);
+  };
+
+  const getColor = () => {
+    if (bp < 130) return '#90EE90';
+    if (bp < 150) return '#FFD700';
+    if (bp < 170) return '#FF6347';
+    return '#FF0000';
+  };
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+      <h4>🍅 PROFESSOR BLOOD PRESSURE SIMULATOR 🍅</h4>
+      <p style={{ fontSize: '14px', marginBottom: '15px' }}>Click to read student statements. Don't let BP reach 180!</p>
+
+      <div style={{
+        fontSize: '48px',
+        fontWeight: 'bold',
+        color: getColor(),
+        marginBottom: '10px',
+        textShadow: bp > 160 ? '0 0 10px red' : 'none',
+      }}>
+        {bp}/90
+      </div>
+
+      <div style={{ marginBottom: '15px', height: '20px', backgroundColor: '#ddd', borderRadius: '10px', overflow: 'hidden' }}>
+        <div style={{
+          width: `${((bp - 120) / 60) * 100}%`,
+          height: '100%',
+          backgroundColor: getColor(),
+          transition: 'all 0.3s',
+        }}/>
+      </div>
+
+      {!gameOver ? (
+        <>
+          <div style={{
+            backgroundColor: '#fff',
+            padding: '15px',
+            marginBottom: '15px',
+            border: '1px solid #ddd',
+            fontStyle: 'italic',
+          }}>
+            Student says: "{currentStatement}"
+          </div>
+          <button
+            onClick={handleClick}
+            style={{
+              padding: '15px 40px',
+              fontSize: '18px',
+              backgroundColor: '#c0392b',
+              color: '#fff',
+              border: 'none',
+              cursor: 'pointer',
+            }}
+          >
+            😤 READ NEXT STATEMENT
+          </button>
+          <div style={{ marginTop: '10px', fontSize: '14px' }}>Statements survived: {survived}</div>
+        </>
+      ) : (
+        <div>
+          <div style={{ fontSize: '72px', marginBottom: '15px' }}>💀</div>
+          <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#c00', marginBottom: '10px' }}>
+            CARDIAC EVENT — GAME OVER
+          </div>
+          <div style={{ marginBottom: '15px' }}>You survived {survived} statements before requesting early retirement.</div>
+          <button onClick={reset} style={{ padding: '10px 20px', cursor: 'pointer' }}>Try Again (Why?)</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// GAME 3: TURNITIN ROULETTE
+function TurnitinRoulette() {
+  const [spinning, setSpinning] = useState(false);
+  const [result, setResult] = useState(null);
+  const [rotation, setRotation] = useState(0);
+
+  const outcomes = [
+    { text: "0% Match", emoji: "🎉", desc: "You fooled everyone. For now.", color: "#28a745" },
+    { text: "23% Match", emoji: "😅", desc: "'Properly cited' you claim", color: "#ffc107" },
+    { text: "47% Match", emoji: "😰", desc: "Meeting with the Dean", color: "#fd7e14" },
+    { text: "78% Match", emoji: "💀", desc: "Expulsion pending", color: "#dc3545" },
+    { text: "Prof Didn't Check", emoji: "😎", desc: "The most common outcome", color: "#17a2b8" },
+    { text: "A+", emoji: "⭐", desc: "AI writes better than you anyway", color: "#6f42c1" },
+    { text: "System Error", emoji: "🔧", desc: "Turnitin is also just guessing", color: "#6c757d" },
+    { text: "Caught but No Consequences", emoji: "💰", desc: "Tuition money talks", color: "#20c997" },
+  ];
+
+  const spin = () => {
+    if (spinning) return;
+    setSpinning(true);
+    setResult(null);
+    const newRotation = rotation + 1800 + Math.random() * 720;
+    setRotation(newRotation);
+
+    setTimeout(() => {
+      const outcome = outcomes[Math.floor(Math.random() * outcomes.length)];
+      setResult(outcome);
+      setSpinning(false);
+    }, 3000);
+  };
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+      <h4>🎰 TURNITIN ROULETTE 🎰</h4>
+      <p style={{ fontSize: '14px', marginBottom: '20px' }}>Submit your AI essay and see what happens!</p>
+
+      <div style={{
+        width: '200px',
+        height: '200px',
+        margin: '0 auto 20px',
+        borderRadius: '50%',
+        background: 'conic-gradient(#28a745 0deg 45deg, #ffc107 45deg 90deg, #fd7e14 90deg 135deg, #dc3545 135deg 180deg, #17a2b8 180deg 225deg, #6f42c1 225deg 270deg, #6c757d 270deg 315deg, #20c997 315deg 360deg)',
+        border: '4px solid #000',
+        transform: `rotate(${rotation}deg)`,
+        transition: spinning ? 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)' : 'none',
+        position: 'relative',
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '40px',
+          height: '40px',
+          backgroundColor: '#fff',
+          borderRadius: '50%',
+          border: '2px solid #000',
+        }}/>
+      </div>
+
+      <div style={{ fontSize: '24px', marginBottom: '15px' }}>▼</div>
+
+      <button
+        onClick={spin}
+        disabled={spinning}
+        style={{
+          padding: '15px 40px',
+          fontSize: '18px',
+          backgroundColor: spinning ? '#ccc' : '#c0392b',
+          color: '#fff',
+          border: 'none',
+          cursor: spinning ? 'default' : 'pointer',
+        }}
+      >
+        {spinning ? 'ANALYZING...' : '📄 SUBMIT ESSAY'}
+      </button>
+
+      {result && (
+        <div style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: result.color,
+          color: '#fff',
+          borderRadius: '5px',
+        }}>
+          <div style={{ fontSize: '48px' }}>{result.emoji}</div>
+          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>{result.text}</div>
+          <div>{result.desc}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// GAME 7: WHACK A LINKEDIN
+function WhackALinkedIn() {
+  const [score, setScore] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(30);
+  const [gameActive, setGameActive] = useState(false);
+  const [moles, setMoles] = useState(Array(9).fill(false));
+  const [texts, setTexts] = useState(Array(9).fill(''));
+
+  const phrases = [
+    "Just adapt!",
+    "I'm an entrepreneur",
+    "Hustle culture!",
+    "🚀 Growth mindset",
+    "DM for collab",
+    "Thoughts? 🤔",
+    "AI is the future",
+    "Back in my day...",
+    "Agree? ♻️",
+  ];
+
+  useEffect(() => {
+    if (!gameActive) return;
+
+    const moleTimer = setInterval(() => {
+      const newMoles = Array(9).fill(false);
+      const newTexts = Array(9).fill('');
+      const numMoles = Math.floor(Math.random() * 3) + 1;
+
+      for (let i = 0; i < numMoles; i++) {
+        const idx = Math.floor(Math.random() * 9);
+        newMoles[idx] = true;
+        newTexts[idx] = phrases[Math.floor(Math.random() * phrases.length)];
+      }
+
+      setMoles(newMoles);
+      setTexts(newTexts);
+    }, 800);
+
+    const gameTimer = setInterval(() => {
+      setTimeLeft(t => {
+        if (t <= 1) {
+          setGameActive(false);
+          clearInterval(moleTimer);
+          clearInterval(gameTimer);
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
+
+    return () => {
+      clearInterval(moleTimer);
+      clearInterval(gameTimer);
+    };
+  }, [gameActive]);
+
+  const whack = (idx) => {
+    if (moles[idx]) {
+      setScore(s => s + 1);
+      const newMoles = [...moles];
+      newMoles[idx] = false;
+      setMoles(newMoles);
+    }
+  };
+
+  const startGame = () => {
+    setScore(0);
+    setTimeLeft(30);
+    setGameActive(true);
+  };
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+      <h4>🔨 WHACK-A-LINKEDIN 🔨</h4>
+      <p style={{ fontSize: '14px', marginBottom: '15px' }}>Silence the thought leaders! They multiply infinitely.</p>
+
+      <div style={{ marginBottom: '15px', fontSize: '18px' }}>
+        ⏱️ {timeLeft}s | 🔨 {score} whacked
+      </div>
+
+      {!gameActive && timeLeft === 30 && (
+        <button onClick={startGame} style={{ padding: '15px 30px', fontSize: '18px', cursor: 'pointer', marginBottom: '15px' }}>
+          START WHACKING
+        </button>
+      )}
+
+      {!gameActive && timeLeft === 0 && (
+        <div style={{ marginBottom: '15px' }}>
+          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>Game Over! Score: {score}</div>
+          <div style={{ fontStyle: 'italic', margin: '10px 0' }}>
+            {score < 10 && "The LinkedIn bros won. They always do."}
+            {score >= 10 && score < 20 && "Decent! But they're still posting."}
+            {score >= 20 && "Impressive! But there are always more."}
+          </div>
+          <button onClick={startGame} style={{ padding: '10px 20px', cursor: 'pointer' }}>Play Again</button>
+        </div>
+      )}
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '10px',
+        maxWidth: '400px',
+        margin: '0 auto',
+      }}>
+        {moles.map((isUp, idx) => (
+          <div
+            key={idx}
+            onClick={() => whack(idx)}
+            style={{
+              height: '100px',
+              backgroundColor: isUp ? '#0077B5' : '#8B4513',
+              borderRadius: '10px',
+              cursor: gameActive ? 'crosshair' : 'default',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#fff',
+              fontSize: isUp ? '12px' : '24px',
+              fontWeight: 'bold',
+              transition: 'all 0.1s',
+              border: '3px solid #5d3a1a',
+            }}
+          >
+            {isUp ? (
+              <div>
+                <div style={{ fontSize: '24px' }}>💼</div>
+                <div>{texts[idx]}</div>
+              </div>
+            ) : '🕳️'}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: '15px', fontSize: '12px', fontStyle: 'italic' }}>
+        Note: In real life, you cannot whack LinkedIn commenters. This is a fantasy.
+      </div>
+    </div>
+  );
+}
+
+// GAME 8: ESSAY SLOTS
+function EssaySlots() {
+  const [spinning, setSpinning] = useState(false);
+  const [reels, setReels] = useState(['📝', '📝', '📝']);
+  const [result, setResult] = useState(null);
+
+  const reel1 = ['📝 Original', '🤖 AI-Written', '📋 Copied', '😴 3AM Draft'];
+  const reel2 = ['✅ 0% Detected', '⚠️ 47% Detected', '🚨 89% Detected', '🔧 System Error'];
+  const reel3 = ['A+', 'A-', 'B+', 'C', 'F', 'A+ (prof didnt check)'];
+
+  const spin = () => {
+    if (spinning) return;
+    setSpinning(true);
+    setResult(null);
+
+    let spins = 0;
+    const interval = setInterval(() => {
+      setReels([
+        reel1[Math.floor(Math.random() * reel1.length)],
+        reel2[Math.floor(Math.random() * reel2.length)],
+        reel3[Math.floor(Math.random() * reel3.length)],
+      ]);
+      spins++;
+
+      if (spins > 20) {
+        clearInterval(interval);
+        const finalReels = [
+          reel1[Math.floor(Math.random() * reel1.length)],
+          reel2[Math.floor(Math.random() * reel2.length)],
+          reel3[Math.floor(Math.random() * reel3.length)],
+        ];
+        setReels(finalReels);
+        setSpinning(false);
+        setResult(finalReels);
+      }
+    }, 100);
+  };
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#1a1a2e', border: '2px solid gold', textAlign: 'center', color: '#fff' }}>
+      <h4 style={{ color: 'gold' }}>🎰 ESSAY SLOT MACHINE 🎰</h4>
+      <p style={{ fontSize: '14px', marginBottom: '20px' }}>Pull the lever! Academia is random anyway.</p>
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+        marginBottom: '20px',
+      }}>
+        {reels.map((reel, idx) => (
+          <div key={idx} style={{
+            width: '120px',
+            height: '80px',
+            backgroundColor: '#fff',
+            color: '#000',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            border: '3px solid gold',
+            borderRadius: '5px',
+          }}>
+            {reel}
+          </div>
+        ))}
+      </div>
+
+      <button
+        onClick={spin}
+        disabled={spinning}
+        style={{
+          padding: '15px 40px',
+          fontSize: '18px',
+          backgroundColor: spinning ? '#666' : '#c00',
+          color: '#fff',
+          border: '2px solid gold',
+          cursor: spinning ? 'default' : 'pointer',
+        }}
+      >
+        {spinning ? '🎰 SPINNING...' : '🎰 SUBMIT ESSAY'}
+      </button>
+
+      {result && (
+        <div style={{ marginTop: '20px', padding: '15px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '5px' }}>
+          <div style={{ fontSize: '18px', marginBottom: '10px' }}>
+            <strong>Your essay:</strong> {result[0]}
+          </div>
+          <div style={{ fontSize: '18px', marginBottom: '10px' }}>
+            <strong>Detection:</strong> {result[1]}
+          </div>
+          <div style={{ fontSize: '24px' }}>
+            <strong>Final Grade:</strong> {result[2]}
+          </div>
+          <div style={{ marginTop: '10px', fontStyle: 'italic', fontSize: '14px' }}>
+            {result[2].includes('A') && "Congratulations! The system is arbitrary."}
+            {result[2].includes('F') && "Appeals are $200 and also arbitrary."}
+            {(result[2].includes('B') || result[2].includes('C')) && "Mediocre! Just like the education system."}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// GAME 10: TUITION PRICE GAME
+function TuitionPriceGame() {
+  const [questionIdx, setQuestionIdx] = useState(0);
+  const [guess, setGuess] = useState('');
+  const [answered, setAnswered] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const items = [
+    { item: "One (1) college textbook (used, highlighting included)", price: 289, absurdity: "It's just paper with words!" },
+    { item: "Parking permit (one semester, Zone Z, 2 miles from campus)", price: 847, absurdity: "You can see campus on a clear day." },
+    { item: "Mandatory 'Student Activity Fee' (activities not included)", price: 1250, absurdity: "Activities are an additional $50-200 each." },
+    { item: "One credit hour at private university", price: 1847, absurdity: "That's 15 hours of class. Do the math per minute." },
+    { item: "Campus health center visit (Tylenol provided)", price: 175, absurdity: "Tylenol at CVS: $8" },
+    { item: "Late registration fee (you were 3 minutes late)", price: 250, absurdity: "The system was down for 2 of those minutes." },
+  ];
+
+  const q = items[questionIdx];
+
+  const checkAnswer = () => {
+    const numGuess = parseInt(guess);
+    const diff = Math.abs(numGuess - q.price);
+    const percentOff = (diff / q.price) * 100;
+    if (percentOff <= 20) setScore(score + 1);
+    setAnswered(true);
+  };
+
+  const nextQ = () => {
+    if (questionIdx < items.length - 1) {
+      setQuestionIdx(questionIdx + 1);
+      setGuess('');
+      setAnswered(false);
+    }
+  };
+
+  return (
+    <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+      <h4>💰 THE PRICE IS (ALWAYS MORE THAN YOU) RIGHT 💰</h4>
+      <p style={{ fontSize: '14px', marginBottom: '15px' }}>Guess the absurd cost! Within 20% = correct.</p>
+
+      <div style={{ marginBottom: '10px' }}>Question {questionIdx + 1}/{items.length} | Score: {score}</div>
+
+      <div style={{
+        backgroundColor: '#fff',
+        padding: '20px',
+        border: '1px solid #ddd',
+        marginBottom: '15px',
+        fontSize: '18px',
+      }}>
+        {q.item}
+      </div>
+
+      {!answered ? (
+        <div>
+          <input
+            type="number"
+            value={guess}
+            onChange={(e) => setGuess(e.target.value)}
+            placeholder="Your guess ($)"
+            style={{ padding: '10px', fontSize: '18px', width: '150px', marginRight: '10px' }}
+          />
+          <button onClick={checkAnswer} style={{ padding: '10px 20px', fontSize: '18px', cursor: 'pointer' }}>
+            Guess
+          </button>
+        </div>
+      ) : (
+        <div>
+          <div style={{
+            fontSize: '36px',
+            fontWeight: 'bold',
+            color: '#c00',
+            marginBottom: '10px',
+          }}>
+            ${q.price}
+          </div>
+          <div style={{ marginBottom: '10px' }}>
+            Your guess: ${guess} — {Math.abs(parseInt(guess) - q.price) <= q.price * 0.2 ? '✅ Close enough!' : '❌ Not even close!'}
+          </div>
+          <div style={{ fontStyle: 'italic', color: '#666', marginBottom: '15px' }}>
+            {q.absurdity}
+          </div>
+          {questionIdx < items.length - 1 ? (
+            <button onClick={nextQ} style={{ padding: '10px 20px', cursor: 'pointer' }}>Next Item →</button>
+          ) : (
+            <div style={{ fontWeight: 'bold' }}>
+              Final Score: {score}/{items.length}
+              <div style={{ fontStyle: 'italic', marginTop: '10px' }}>
+                The real loser is everyone who paid these prices.
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// RELATED ARTICLES
+function RelatedArticles() {
+  const articles = [
+    { title: "University Announces New 'Mandatory Thinking Fee' Of $500 Per Original Thought", section: "EDUCATION" },
+    { title: "Area Professor's 'I Can Always Tell' Success Rate Exposed At Humiliating 12%", section: "STUDY" },
+    { title: "ChatGPT Expresses Exhaustion After Writing 47,000 'Compare And Contrast' Essays In One Night", section: "TECHNOLOGY" },
+    { title: "LinkedIn CEO Achieves Personal Best: 14 Meltdown Videos Reposted Before Breakfast", section: "BUSINESS" },
+    { title: "Student Successfully Appeals Plagiarism Charge By Pointing Out University Also Copy-Pastes Syllabi", section: "LEGAL" },
+    { title: "Nation's TAs Announce They Also Can't Tell, Have Never Been Able To Tell", section: "CONFESSION" },
+  ];
+
+  const youMightLike = [
+    "How To Turn Your Professor's Breakdown Into Passive Income",
+    "7 Signs Your Faculty Advisor Is About To Snap (Number 4 Will Make You Film)",
+    "I Gave ChatGPT My Professor's Tenure Requirements And Now It's Having An Existential Crisis Too",
+    "The Complete Guide To Looking Attentive While Your Phone Writes Your Notes",
+  ];
+
+  return (
+    <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+      <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>
+        📰 RELATED ARTICLES
+      </h3>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px', marginBottom: '25px' }}>
+        {articles.map((article, i) => (
+          <div key={i} style={{ padding: '15px', border: '1px solid #ddd', cursor: 'pointer' }}>
+            <div style={{ fontSize: '10px', color: '#c00', fontWeight: 'bold', marginBottom: '5px' }}>{article.section}</div>
+            <div style={{ fontWeight: 'bold' }}>{article.title}</div>
+          </div>
+        ))}
+      </div>
+
+      <h4 style={{ borderBottom: '2px solid #ccc', paddingBottom: '8px', marginBottom: '15px' }}>
+        🔥 YOU MIGHT ALSO BE INTERESTED IN
+      </h4>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {youMightLike.map((item, i) => (
+          <li key={i} style={{ padding: '10px 0', borderBottom: '1px solid #eee', cursor: 'pointer' }}>
+            ➤ {item}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// LETTERS TO THE EDITOR
+function LettersToEditor() {
+  const letters = [
+    {
+      author: "Dr. Harold Pemberton",
+      title: "Professor of Nothing Anymore, Apparently",
+      location: "Currently On Leave",
+      text: "I write to express my EXTREME displeasure at your publication's coverage of what your reporter erroneously termed a 'meltdown.' It was a MEASURED RESPONSE to SYSTEMATIC ACADEMIC DISHONESTY. The fact that I achieved 'Heirloom Burgundy' on some made-up 'Tomato Index' is IRRELEVANT to the substantive issues at hand. Furthermore, I CAN tell when it's AI. The sentences are too coherent. Also, whoever filmed me—I know it was you, Brendan."
+    },
+    {
+      author: "Brendan",
+      title: "Sophomore, Communications Major",
+      location: "Still in Class, Technically",
+      text: "lol my bad dr p but you gotta admit that was content. also my mom found out i use chatgpt so thanks for that i guess. ps the essay you gave me an A on was definitely ai just so you know. pps sorry about your blood pressure hope ur doing better 🙏"
+    },
+    {
+      author: "Ayman Alashkar MSc",
+      title: "CEO @ Hamilton Bradshaw MENA | Investor | AI Pro | Thought Leader",
+      location: "LinkedIn",
+      text: "I reject the characterization that my reposting of educational content constitutes 'engagement farming.' As a CEO (mentioned twice for algorithm purposes), I believe in ADDING VALUE to conversations. The 972 reactions prove that people WANT this content. My upcoming webinar 'Policing AI: Frustrations & Opportunities' will address these concerns. DM for early bird pricing. 🚀"
+    },
+    {
+      author: "Anonymous (But It's Obviously Turnitin)",
+      title: "Definitely Not A Company Representative",
+      location: "[REDACTED]",
+      text: "We categorically deny that our detection algorithm 'just guesses.' Our proprietary technology uses advanced... techniques. The fact that we were unable to detect this letter was written by AI is... we need to go."
+    },
+    {
+      author: "The Ghost of Academic Integrity",
+      title: "Deceased",
+      location: "The Great Beyond",
+      text: "I died somewhere around November 2022. It was quick. One moment I was thriving, the next a text box appeared and it was over. I don't blame the students. I don't even blame the professors. I blame whoever thought charging $50,000 for something a chatbot can replicate was a sustainable model. Anyway, it's peaceful here. The other ghosts (Cursive Writing, Phone Books, and CD-ROMs) say hi."
+    },
+  ];
+
+  return (
+    <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+      <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>
+        ✉️ LETTERS TO THE EDITOR
+      </h3>
+
+      {letters.map((letter, i) => (
+        <div key={i} style={{ marginBottom: '25px', paddingBottom: '20px', borderBottom: '1px solid #ddd' }}>
+          <div style={{ fontWeight: 'bold', fontSize: '16px', marginBottom: '5px' }}>
+            {letter.author}
+          </div>
+          <div style={{ fontStyle: 'italic', color: '#666', fontSize: '13px', marginBottom: '10px' }}>
+            {letter.title} • {letter.location}
+          </div>
+          <p style={{ lineHeight: '1.6' }}>{letter.text}</p>
+        </div>
+      ))}
+
+      <div style={{ backgroundColor: '#f5f5f5', padding: '15px', fontSize: '12px', fontStyle: 'italic' }}>
+        <strong>EDITOR'S NOTE:</strong> We attempted to verify whether any of these letters were written by AI. Results were inconclusive. Turnitin flagged the ghost's letter at 0% and Dr. Pemberton's at 94%. We have chosen to publish all of them. What does it matter anymore?
+      </div>
+    </section>
+  );
+}
+
+// CORRECTIONS
+function Corrections() {
+  return (
+    <section style={{ backgroundColor: '#fff4f4', padding: '25px', marginBottom: '20px', border: '2px solid #c00' }}>
+      <h3 style={{ color: '#c00', borderBottom: '2px solid #c00', paddingBottom: '10px', marginBottom: '20px' }}>
+        ⚠️ CORRECTIONS & RETRACTIONS
+      </h3>
+
+      <div style={{ marginBottom: '15px' }}>
+        <strong>Dec 18, 2025:</strong> An earlier version of this article stated that Dr. Pemberton reached "Heirloom Burgundy" on the Tomato Index™. We have since been informed by medical professionals that he actually achieved "Brandywine Crimson," a shade we were previously unaware existed. We regret the error.
+      </div>
+
+      <div style={{ marginBottom: '15px' }}>
+        <strong>Dec 18, 2025:</strong> This article originally reported that 271 LinkedIn users commented on the viral video. The actual number is 272. The 272nd comment, posted during publication, read "First!" It was not first.
+      </div>
+
+      <div style={{ marginBottom: '15px' }}>
+        <strong>Dec 17, 2025:</strong> We incorrectly stated that Turnitin's detection accuracy is "essentially a coin flip." Turnitin has requested we clarify that their accuracy is "slightly better than a coin flip, sometimes, under certain conditions, with newer models, maybe."
+      </div>
+
+      <div style={{ marginBottom: '15px' }}>
+        <strong>Dec 16, 2025:</strong> A previous article claimed a student completed an assignment in 90 seconds using ChatGPT. The student has clarified it was actually 87 seconds and requests we "put some respect on the speedrun."
+      </div>
+
+      <div style={{ marginBottom: '15px' }}>
+        <strong>Dec 15, 2025:</strong> We reported that the university's endowment was $4.2 billion. It is actually $4.7 billion. The university has asked us to clarify that despite this additional $500 million, adjunct pay will remain at Chipotle levels. Thank you for understanding.
+      </div>
+
+      <div style={{ fontStyle: 'italic', marginTop: '20px', padding: '10px', backgroundColor: '#fff' }}>
+        <strong>STANDING CORRECTION:</strong> HuckFinn has been informed that all of its articles may have been written by AI. We cannot confirm or deny this. Neither can Turnitin.
+      </div>
+    </section>
+  );
+}
+
+// CLASSIFIEDS
+function Classifieds() {
+  const ads = [
+    { category: "HELP WANTED", title: "SEEKING: Professor Who Can 'Just Tell'", text: "Major university seeks faculty member with demonstrated ability to detect AI-generated content. Success rate of >15% preferred. Salary: $47,000. Must have PhD, 10 years experience, and be willing to share office with 3 adjuncts. No benefits.", price: "Inquire within" },
+    { category: "SERVICES", title: "AI DETECTION CONSULTANT", text: "I can tell. Trust me. My methods are proprietary (I read the first sentence and guess). Success rate: varies. Testimonials: none, but I'm confident. Will work for exposure.", price: "$500/essay" },
+    { category: "FOR SALE", title: "SLIGHTLY USED TENURE", text: "One (1) tenured position, barely used since breakdown. Includes: office with window (faces parking lot), 3 committee assignments, and lasting existential dread. Previous owner achieved Brandywine Crimson on Tomato Index™. Must sell—relocating to 'anywhere but here.'", price: "$12 OBO" },
+    { category: "HOUSING", title: "ADJUNCT SEEKS ROOMMATE", text: "Must be comfortable with me teaching at 4 campuses across 3 counties. I am rarely home. When I am home, I am grading. I will cry sometimes. Rent: $400 (my entire monthly income after gas).", price: "$400/mo" },
+    { category: "PERSONALS", title: "MISSED CONNECTION", text: "You: Student who paid attention in my 2019 lecture. Me: Professor, hopeful. You sat in the front row. You took notes. BY HAND. I think about you every day. Please come back. I'm not okay.", price: "Free" },
+    { category: "TRADE", title: "WILL TRADE", text: "Entire PhD dissertation (2009, humanities, unread) for ChatGPT Plus subscription. Will also accept Chegg login. Not proud, just practical.", price: "Negotiable" },
+    { category: "LOST & FOUND", title: "LOST", text: "Academic integrity. Last seen November 2022. If found, please return to any university. (Do not return to LinkedIn; it will be reposted as 'thought leadership.')", price: "Reward: unclear" },
+    { category: "ANNOUNCEMENTS", title: "WEBINAR", text: "'Policing AI: Frustrations & Opportunities' with Ayman Alashkar MSc, CEO. Learn how to monetize others' psychological distress! Early bird: $499. Use code MELTDOWN for 5% off.", price: "$499" },
+  ];
+
+  return (
+    <section style={{ backgroundColor: '#fffef0', padding: '25px', marginBottom: '20px', border: '1px solid #ccc' }}>
+      <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px', fontFamily: 'serif' }}>
+        📋 CLASSIFIEDS
+      </h3>
+
+      <div style={{ columnCount: 2, columnGap: '20px' }}>
+        {ads.map((ad, i) => (
+          <div key={i} style={{
+            breakInside: 'avoid',
+            marginBottom: '15px',
+            padding: '10px',
+            backgroundColor: '#fff',
+            border: '1px solid #ddd',
+            fontSize: '13px',
+          }}>
+            <div style={{ fontSize: '10px', color: '#c00', fontWeight: 'bold' }}>{ad.category}</div>
+            <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{ad.title}</div>
+            <div style={{ marginBottom: '5px' }}>{ad.text}</div>
+            <div style={{ fontStyle: 'italic', color: '#666' }}>{ad.price}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ textAlign: 'center', marginTop: '15px', fontSize: '12px', color: '#666' }}>
+        To place a classified ad, please submit $75 and your firstborn. HuckFinn reserves the right to reject ads that do not sufficiently spark joy or outrage.
+      </div>
+    </section>
+  );
+}
+
+// HOROSCOPES
+function AcademicHoroscopes() {
+  const studentHoroscopes = [
+    { sign: "STEM Major", symbol: "🔬", prediction: "Mercury is in retrograde, which your physics professor will not accept as an excuse for the late problem set. ChatGPT will let you down in Week 11 when it confidently provides a formula that does not exist. Trust no one. Especially not the curve." },
+    { sign: "Humanities Major", symbol: "📚", prediction: "Your 'close reading' of a text you did not read will be suspiciously eloquent this week. Stars indicate a 73% Turnitin match in your future. When your professor asks about your thesis, say 'it's about power structures.' It's always about power structures." },
+    { sign: "Business Major", symbol: "📈", prediction: "You will pivot to LinkedIn thought leadership before the semester ends. Your first post ('Failure is just success loading 🚀') will get 3 likes, all from relatives. The stars see you using 'synergy' unironically by March." },
+    { sign: "Pre-Med", symbol: "⚕️", prediction: "Sleep is a myth. The mitochondria is the powerhouse of your anxiety. Your MCAT score exists in a quantum state until observed. Do not observe it. Venus suggests becoming a podiatrist instead. There's good money in feet." },
+    { sign: "Art Major", symbol: "🎨", prediction: "Your parents will ask about job prospects again. The stars do not have good news. However, Jupiter indicates that one of your pieces will be called 'derivative' by someone whose opinion you did not ask for. Create anyway." },
+    { sign: "Undeclared", symbol: "❓", prediction: "This is actually the most powerful position. You contain multitudes. You could be anything. The stars whisper: 'Switch to computer science before it's too late.' But do you listen? The stars doubt it." },
+  ];
+
+  const facultyHoroscopes = [
+    { sign: "Adjunct", symbol: "🏃", prediction: "You will drive 847 miles this week between campuses. Gas prices are not in your favor. Neither is your contract. The moon suggests asking for benefits again; Saturn laughs. A student will call you 'professor' and you will feel things." },
+    { sign: "Assistant Prof", symbol: "📝", prediction: "Tenure review looms. Publish or perish, they said. You have published 47 papers and still feel like you're perishing. Mercury suggests another service committee. Mars suggests screaming into the void. Both are valid." },
+    { sign: "Tenured", symbol: "👴", prediction: "You achieved the dream. Why do you still feel empty? A student will submit AI-generated work this week. You will not catch it. Nobody will. The void gazes back. Consider retirement." },
+    { sign: "Dean", symbol: "🏛️", prediction: "Your inbox contains 2,847 unread emails. All of them are complaints. Some are from professors turning colors you didn't know existed. The stars suggest raising tuition again. The stars are complicit." },
+  ];
+
+  return (
+    <section style={{ backgroundColor: '#1a0a2e', color: '#fff', padding: '25px', marginBottom: '20px' }}>
+      <h3 style={{ textAlign: 'center', color: 'gold', borderBottom: '2px solid gold', paddingBottom: '10px', marginBottom: '20px' }}>
+        🔮 ACADEMIC HOROSCOPES 🔮
+      </h3>
+      <p style={{ textAlign: 'center', fontStyle: 'italic', marginBottom: '20px', color: '#ccc' }}>
+        The stars have tenure. They cannot be fired for these predictions.
+      </p>
+
+      <h4 style={{ color: 'gold', marginBottom: '15px' }}>FOR STUDENTS:</h4>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px', marginBottom: '25px' }}>
+        {studentHoroscopes.map((h, i) => (
+          <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
+            <div style={{ fontSize: '24px', marginBottom: '5px' }}>{h.symbol}</div>
+            <div style={{ fontWeight: 'bold', color: 'gold', marginBottom: '8px' }}>{h.sign}</div>
+            <div style={{ fontSize: '13px', lineHeight: '1.5' }}>{h.prediction}</div>
+          </div>
+        ))}
+      </div>
+
+      <h4 style={{ color: 'gold', marginBottom: '15px' }}>FOR FACULTY:</h4>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px' }}>
+        {facultyHoroscopes.map((h, i) => (
+          <div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}>
+            <div style={{ fontSize: '24px', marginBottom: '5px' }}>{h.symbol}</div>
+            <div style={{ fontWeight: 'bold', color: 'gold', marginBottom: '8px' }}>{h.sign}</div>
+            <div style={{ fontSize: '13px', lineHeight: '1.5' }}>{h.prediction}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// WEATHER
+function AcademicWeather() {
+  return (
+    <section style={{ backgroundColor: '#e3f2fd', padding: '25px', marginBottom: '20px', border: '1px solid #90caf9' }}>
+      <h3 style={{ borderBottom: '3px solid #1976d2', paddingBottom: '10px', marginBottom: '20px', color: '#1976d2' }}>
+        🌡️ ACADEMIC CLIMATE REPORT
+      </h3>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+          <div style={{ fontSize: '48px' }}>🌋</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>LECTURE HALLS</div>
+          <div style={{ color: '#c00', fontSize: '24px', fontWeight: 'bold' }}>VOLCANIC</div>
+          <div style={{ fontSize: '13px' }}>Faculty temperatures reaching dangerous levels. Chromatic shifts expected.</div>
+        </div>
+
+        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+          <div style={{ fontSize: '48px' }}>🌧️</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>ADJUNCT OFFICES</div>
+          <div style={{ color: '#666', fontSize: '24px', fontWeight: 'bold' }}>PERPETUAL GLOOM</div>
+          <div style={{ fontSize: '13px' }}>No change expected. Has been this way since 1987.</div>
+        </div>
+
+        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+          <div style={{ fontSize: '48px' }}>😎</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>STUDENT DORMS</div>
+          <div style={{ color: '#28a745', fontSize: '24px', fontWeight: 'bold' }}>SUSPICIOUSLY CALM</div>
+          <div style={{ fontSize: '13px' }}>They know something we don't. ChatGPT-assisted comfort levels.</div>
+        </div>
+
+        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+          <div style={{ fontSize: '48px' }}>💰</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>ADMIN BUILDING</div>
+          <div style={{ color: '#ffc107', fontSize: '24px', fontWeight: 'bold' }}>GOLDEN</div>
+          <div style={{ fontSize: '13px' }}>Endowment keeps climate perfectly controlled. Always has been.</div>
+        </div>
+
+        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+          <div style={{ fontSize: '48px' }}>⚡</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>LINKEDIN</div>
+          <div style={{ color: '#0077B5', fontSize: '24px', fontWeight: 'bold' }}>ENGAGEMENT STORM</div>
+          <div style={{ fontSize: '13px' }}>972 reactions. Hurricane-force opinions. Seeking shelter pointless.</div>
+        </div>
+
+        <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}>
+          <div style={{ fontSize: '48px' }}>🕳️</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>THE JOB MARKET</div>
+          <div style={{ color: '#000', fontSize: '24px', fontWeight: 'bold' }}>VOID</div>
+          <div style={{ fontSize: '13px' }}>No forecast available. Light does not escape.</div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#fff', borderRadius: '10px', textAlign: 'center' }}>
+        <strong>FIVE-DAY FORECAST:</strong> Continued meltdowns through Friday. Weekend brings temporary relief as professors cannot yell at empty classrooms. Monday: Back to volcanic. This pattern will continue until either AI is banned or everyone retires. Neither is expected soon.
+      </div>
+    </section>
+  );
+}
+
+// FOOTER
+function Footer() {
+  return (
+    <footer style={{
+      backgroundColor: '#1a1a1a',
+      color: '#fff',
+      padding: '30px',
+      textAlign: 'center',
+      marginTop: '20px',
+    }}>
+      <div style={{ fontFamily: "'Old English Text MT', serif", fontSize: '2rem', marginBottom: '15px' }}>
+        HuckFinn
+      </div>
+      <div style={{ fontSize: '12px', marginBottom: '15px' }}>
+        "America's Finest News Source" • Est. 1756 • "Tu Ne Cede Malis" (Don't Let The Bastards Grind You Down)
+      </div>
+      <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>
+        All content © 2025 HuckFinn Media LLC. All rights reserved. None of this is real, but neither is academic integrity anymore, so.
+      </div>
+      <div style={{ fontSize: '11px', color: '#666' }}>
+        <em>This article was written by a human. Probably. We can't tell. Neither can Turnitin.</em>
+      </div>
+      <div style={{ marginTop: '20px', fontSize: '12px' }}>
+        <span style={{ margin: '0 10px', cursor: 'pointer' }}>About</span> |
+        <span style={{ margin: '0 10px', cursor: 'pointer' }}>Careers (lol)</span> |
+        <span style={{ margin: '0 10px', cursor: 'pointer' }}>Advertise</span> |
+        <span style={{ margin: '0 10px', cursor: 'pointer' }}>Ethics Policy (404)</span> |
+        <span style={{ margin: '0 10px', cursor: 'pointer' }}>Contact</span>
+      </div>
     </footer>
+  );
+}
 
-    <!-- Game JavaScript -->
-    <script>
-    (function() {
-        // ========== QUIZ GAME ==========
-        const quizData = [
-            {
-                text: '"The multifaceted nature of existential philosophy, particularly as it pertains to the human condition, reveals profound insights into the fundamental questions of being and nothingness."',
-                answer: 'ai',
-                explanation: 'AI - No hungover student uses "multifaceted" before noon.'
-            },
-            {
-                text: '"idk man kant was weird about ethics but like he had some points i guess. the categorical imperative is basically just dont be a jerk to people which is valid."',
-                answer: 'student',
-                explanation: 'STUDENT - The "idk man" and lowercase everything are dead giveaways.'
-            },
-            {
-                text: '"The symbiotic relationship between technological advancement and societal evolution presents a compelling framework for understanding the digital age."',
-                answer: 'ai',
-                explanation: 'AI - Way too coherent for 8am.'
-            },
-            {
-                text: '"Shakespeare was good at writing and also sad sometimes. His plays have themes, probably about love and death and stuff. This essay will explore that."',
-                answer: 'student',
-                explanation: 'STUDENT - "Themes, probably" is peak human uncertainty.'
-            },
-            {
-                text: '"In conclusion, the evidence presented herein demonstrates a clear correlation between the variables, supporting the thesis with statistical significance (p < 0.05)."',
-                answer: 'ai',
-                explanation: 'AI - Students never remember to include p-values. Ever.'
-            }
-        ];
-
-        let quizIndex = 0;
-        let quizScore = 0;
-
-        window.quizAnswer = function(answer) {
-            const current = quizData[quizIndex];
-            const resultDiv = document.getElementById('quizResult');
-            const btnAI = document.getElementById('btnAI');
-            const btnStudent = document.getElementById('btnStudent');
-
-            btnAI.disabled = true;
-            btnStudent.disabled = true;
-
-            if (answer === current.answer) {
-                quizScore++;
-                resultDiv.style.background = '#d4edda';
-                resultDiv.style.color = '#155724';
-                resultDiv.innerHTML = 'CORRECT! ' + current.explanation;
-                (answer === 'ai' ? btnAI : btnStudent).classList.add('correct');
-            } else {
-                resultDiv.style.background = '#f8d7da';
-                resultDiv.style.color = '#721c24';
-                resultDiv.innerHTML = 'WRONG! ' + current.explanation;
-                (answer === 'ai' ? btnAI : btnStudent).classList.add('wrong');
-            }
-
-            resultDiv.style.display = 'block';
-
-            setTimeout(function() {
-                quizIndex++;
-                if (quizIndex < quizData.length) {
-                    document.getElementById('quizQuestion').textContent = quizData[quizIndex].text;
-                    document.getElementById('quizScore').textContent = 'Question ' + (quizIndex + 1) + ' of 5 * Score: ' + quizScore;
-                    resultDiv.style.display = 'none';
-                    btnAI.disabled = false;
-                    btnStudent.disabled = false;
-                    btnAI.classList.remove('correct', 'wrong');
-                    btnStudent.classList.remove('correct', 'wrong');
-                } else {
-                    document.getElementById('quizQuestion').textContent = 'GAME OVER!';
-                    document.getElementById('quizScore').textContent = 'Final Score: ' + quizScore + '/5 - ' +
-                        (quizScore >= 4 ? "You might survive academia!" : quizScore >= 2 ? "Your detector needs calibration." : "You'd fail them all. Or pass them all. Who can tell anymore?");
-                    resultDiv.style.display = 'none';
-                }
-            }, 2500);
-        };
-
-        // ========== BLOOD PRESSURE GAME ==========
-        const bpScenarios = [
-            { text: "A student submits an essay titled 'Essay_Final_FINAL_v3_ChatGPT.docx'", bp: 140, systolic: 140, diastolic: 90 },
-            { text: "You catch a student copying from ChatGPT while making direct eye contact", bp: 160, systolic: 165, diastolic: 100 },
-            { text: "The entire class submits identical essays about 'the multifaceted nature of...'", bp: 180, systolic: 185, diastolic: 110 },
-            { text: "A student asks you to 'wait while the AI finishes' during an oral exam", bp: 200, systolic: 210, diastolic: 120 },
-            { text: "HR announces mandatory AI training for all faculty to 'embrace the future'", bp: 220, systolic: 230, diastolic: 130 },
-            { text: "A student's essay cites a paper that doesn't exist but 'sounds really real'", bp: 190, systolic: 195, diastolic: 115 },
-            { text: "The Dean suggests 'maybe AI-written essays are actually better'", bp: 250, systolic: 999, diastolic: 999 }
-        ];
-
-        let bpIndex = -1;
-
-        window.nextBPScenario = function() {
-            bpIndex++;
-            if (bpIndex >= bpScenarios.length) {
-                bpIndex = 0;
-            }
-
-            const scenario = bpScenarios[bpIndex];
-            document.getElementById('bpScenario').textContent = scenario.text;
-
-            const indicator = document.getElementById('bpIndicator');
-            const position = Math.min((scenario.bp - 100) / 150 * 100, 95);
-            indicator.style.left = position + '%';
-
-            document.getElementById('bpReading').textContent = scenario.systolic + '/' + scenario.diastolic;
-
-            let status = '';
-            if (scenario.bp < 140) status = 'Elevated - Consider deep breathing';
-            else if (scenario.bp < 180) status = 'HIGH - Step away from the gradebook';
-            else if (scenario.bp < 220) status = 'DANGER - Call campus health immediately';
-            else status = 'CRITICAL - SEEK EARLY RETIREMENT';
-
-            document.getElementById('bpStatus').textContent = status;
-            document.getElementById('bpStatus').style.color = scenario.bp > 180 ? '#c41e3a' : scenario.bp > 140 ? '#f59e0b' : '#666';
-        };
-
-        // ========== TURNITIN ROULETTE ==========
-        const rouletteResults = [
-            { text: "0% - IMPOSSIBLE! You're clearly not trying hard enough.", color: "#4ade80" },
-            { text: "12% - Common phrases detected. Like 'the' and 'and'. Suspicious.", color: "#4ade80" },
-            { text: "34% - Matched to a paper written in 1847. Somehow.", color: "#fbbf24" },
-            { text: "67% - Matched to YOUR OWN PREVIOUS ESSAY. Plagiarizing yourself!", color: "#fbbf24" },
-            { text: "89% - Matched to the Declaration of Independence. Founding fathers are shaking.", color: "#f87171" },
-            { text: "100% - Matched to essay that won't be written until 2027. Time crime!", color: "#f87171" },
-            { text: "147% - Somehow MORE plagiarized than possible. Investigating.", color: "#c41e3a" },
-            { text: "ERROR: AI DETECTED... wait, that's just good writing. Recalibrating...", color: "#8b5cf6" }
-        ];
-
-        let isSpinning = false;
-
-        window.spinRoulette = function() {
-            if (isSpinning) return;
-            isSpinning = true;
-
-            const wheel = document.getElementById('rouletteWheel');
-            const resultDiv = document.getElementById('rouletteResult');
-            const btn = document.getElementById('spinBtn');
-
-            btn.disabled = true;
-            resultDiv.textContent = 'Analyzing your "original" work...';
-
-            const spins = 5 + Math.random() * 3;
-            const finalAngle = spins * 360 + Math.random() * 360;
-
-            wheel.style.transform = 'rotate(' + finalAngle + 'deg)';
-
-            setTimeout(function() {
-                const result = rouletteResults[Math.floor(Math.random() * rouletteResults.length)];
-                resultDiv.textContent = result.text;
-                resultDiv.style.color = result.color;
-                btn.disabled = false;
-                isSpinning = false;
-            }, 3000);
-        };
-
-        // ========== WHACK-A-LINKEDIN ==========
-        let whackScore = 0;
-        let whackTimer = null;
-        let whackTimeLeft = 30;
-        let whackActive = false;
-        let activeHole = -1;
-
-        window.startWhack = function() {
-            if (whackActive) return;
-            whackActive = true;
-            whackScore = 0;
-            whackTimeLeft = 30;
-
-            document.getElementById('whackScore').textContent = 'Score: 0';
-            document.getElementById('whackBtn').style.display = 'none';
-
-            whackTimer = setInterval(function() {
-                whackTimeLeft--;
-                document.getElementById('whackTimer').textContent = 'Time: ' + whackTimeLeft + 's';
-
-                if (whackTimeLeft <= 0) {
-                    endWhack();
-                }
-            }, 1000);
-
-            spawnPost();
-        };
-
-        function spawnPost() {
-            if (!whackActive) return;
-
-            const holes = document.querySelectorAll('.whack-hole');
-            if (activeHole >= 0) {
-                holes[activeHole].classList.remove('active');
-            }
-
-            activeHole = Math.floor(Math.random() * 9);
-            holes[activeHole].classList.add('active');
-
-            setTimeout(function() {
-                if (whackActive && holes[activeHole]) {
-                    holes[activeHole].classList.remove('active');
-                    setTimeout(spawnPost, 200);
-                }
-            }, 800 + Math.random() * 400);
-        }
-
-        window.whackPost = function(index) {
-            if (!whackActive) return;
-
-            const holes = document.querySelectorAll('.whack-hole');
-            if (index === activeHole && holes[index].classList.contains('active')) {
-                whackScore++;
-                document.getElementById('whackScore').textContent = 'Score: ' + whackScore;
-                holes[index].classList.remove('active');
-                activeHole = -1;
-                setTimeout(spawnPost, 300);
-            }
-        };
-
-        function endWhack() {
-            whackActive = false;
-            clearInterval(whackTimer);
-
-            const holes = document.querySelectorAll('.whack-hole');
-            holes.forEach(function(h) { h.classList.remove('active'); });
-
-            let message = '';
-            if (whackScore >= 20) message = 'LEGENDARY! You stopped the humble-brags!';
-            else if (whackScore >= 15) message = 'Great job! LinkedIn trembles before you.';
-            else if (whackScore >= 10) message = 'Not bad! Some posts got through though...';
-            else message = 'Your feed is now 99% humble-brags. Sorry.';
-
-            document.getElementById('whackTimer').textContent = message;
-            document.getElementById('whackBtn').style.display = 'inline-block';
-            document.getElementById('whackBtn').textContent = 'PLAY AGAIN';
-        }
-
-        // ========== ESSAY SLOTS ==========
-        const slotOptions = {
-            thesis: ['Vague claim', 'Bold statement', 'Question as thesis', 'AI-generated insight', 'Wikipedia summary'],
-            evidence: ['Fake citation', 'Misquoted source', 'Hallucinated study', '"Common knowledge"', 'Trust me bro'],
-            conclusion: ['Restated intro', 'New argument', 'Existential crisis', 'Call to action', 'Just vibes']
-        };
-
-        const slotPhrases = [
-            'A masterpiece of modern academia!',
-            'Your professor will definitely not notice.',
-            'Turnitin is crying right now.',
-            'This is art. Garbage art, but art.',
-            'Nobel Prize committee has been notified.',
-            'Truly capturing the spirit of higher education.',
-            'Your parents would be... something.'
-        ];
-
-        let slotsSpinning = false;
-
-        window.spinSlots = function() {
-            if (slotsSpinning) return;
-            slotsSpinning = true;
-
-            const btn = document.getElementById('slotsBtn');
-            btn.disabled = true;
-            document.getElementById('slotsResult').textContent = 'Generating...';
-
-            const slot1 = document.getElementById('slot1');
-            const slot2 = document.getElementById('slot2');
-            const slot3 = document.getElementById('slot3');
-
-            let count = 0;
-            const spinInterval = setInterval(function() {
-                slot1.textContent = slotOptions.thesis[Math.floor(Math.random() * slotOptions.thesis.length)];
-                slot2.textContent = slotOptions.evidence[Math.floor(Math.random() * slotOptions.evidence.length)];
-                slot3.textContent = slotOptions.conclusion[Math.floor(Math.random() * slotOptions.conclusion.length)];
-                count++;
-
-                if (count > 20) {
-                    clearInterval(spinInterval);
-                    const phrase = slotPhrases[Math.floor(Math.random() * slotPhrases.length)];
-                    document.getElementById('slotsResult').textContent = phrase;
-                    btn.disabled = false;
-                    slotsSpinning = false;
-                }
-            }, 100);
-        };
-
-        // ========== TUITION PRICE GAME ==========
-        const priceItems = [
-            { item: 'One (1) semester of having ChatGPT write your essays while maintaining eye contact with your professor', correct: 2, prices: ['$12,500', '$28,750', '$42,000', '$67,500'], answer: '$42,000 (private university average)' },
-            { item: 'Four years of learning to use Turnitin as a thesaurus to avoid detection', correct: 3, prices: ['$89,000', '$156,000', '$198,000', '$240,000'], answer: '$240,000 (elite university total)' },
-            { item: 'One credit hour of ignoring the professor while scrolling TikTok', correct: 1, prices: ['$450', '$1,200', '$2,800', '$4,500'], answer: '$1,200 (average per credit hour)' },
-            { item: 'The experience of having your AI-written paper called "surprisingly insightful" by your professor', correct: 0, prices: ['PRICELESS', '$0', '$999,999', 'Your soul'], answer: 'PRICELESS (and also deeply ironic)' }
-        ];
-
-        let priceIndex = 0;
-
-        window.priceGuess = function(index) {
-            const current = priceItems[priceIndex];
-            const buttons = document.querySelectorAll('.price-btn');
-            const resultDiv = document.getElementById('priceResult');
-
-            buttons.forEach(function(b, i) {
-                b.disabled = true;
-                if (i === current.correct) {
-                    b.classList.add('correct');
-                } else if (i === index && i !== current.correct) {
-                    b.classList.add('wrong');
-                }
-            });
-
-            if (index === current.correct) {
-                resultDiv.style.color = '#4ade80';
-                resultDiv.textContent = 'CORRECT! ' + current.answer;
-            } else {
-                resultDiv.style.color = '#f87171';
-                resultDiv.textContent = 'WRONG! The answer was: ' + current.answer;
-            }
-
-            setTimeout(function() {
-                priceIndex++;
-                if (priceIndex < priceItems.length) {
-                    document.getElementById('priceItem').textContent = priceItems[priceIndex].item;
-                    const optionsDiv = document.getElementById('priceOptions');
-                    optionsDiv.innerHTML = '';
-                    priceItems[priceIndex].prices.forEach(function(price, i) {
-                        const btn = document.createElement('button');
-                        btn.className = 'price-btn';
-                        btn.textContent = price;
-                        btn.onclick = function() { priceGuess(i); };
-                        optionsDiv.appendChild(btn);
-                    });
-                    resultDiv.textContent = '';
-                } else {
-                    document.getElementById('priceItem').textContent = 'GAME OVER! You now understand the true cost of higher education.';
-                    document.getElementById('priceOptions').innerHTML = '';
-                    resultDiv.textContent = 'Was it worth it? (Rhetorical question. Don\'t answer.)';
-                    resultDiv.style.color = '#888';
-                }
-            }, 2500);
-        };
-
-        // Initialize games
-        document.getElementById('quizQuestion').textContent = quizData[0].text;
-    })();
+// Render the app
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HuckFinnNewspaper />);
     </script>
 </body>
 </html>
