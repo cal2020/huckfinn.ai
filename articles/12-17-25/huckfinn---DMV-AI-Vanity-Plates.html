@@ -213,69 +213,188 @@
             font-style: normal;
         }
 
-        /* Vanity Plates Gallery */
-        .plates-gallery {
+        /* Plate Tinder Game */
+        .plate-tinder {
             background: linear-gradient(180deg, #2d2d2d 0%, #1a1a1a 100%);
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 12px;
             margin: 30px 0;
+            text-align: center;
         }
 
-        .plates-gallery-title {
+        .plate-tinder-title {
             color: #fff;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             font-family: 'Playfair Display', serif;
             margin-bottom: 5px;
-            text-align: center;
         }
 
-        .plates-gallery-subtitle {
+        .plate-tinder-subtitle {
             color: #888;
             font-size: 12px;
-            text-align: center;
             margin-bottom: 20px;
         }
 
-        .plates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
+        .plate-container {
+            display: flex;
+            justify-content: center;
+            perspective: 1000px;
+            min-height: 180px;
+            margin-bottom: 15px;
         }
 
-        .plate-card {
-            text-align: center;
+        .plate-card-swipe {
+            cursor: grab;
+            transition: transform 0.2s ease;
+            user-select: none;
+        }
+
+        .plate-card-swipe:active {
+            cursor: grabbing;
+        }
+
+        .plate-card-swipe.swiping {
+            transition: none;
         }
 
         .license-plate {
             background: #1a365d;
-            border: 3px solid #fff;
-            border-radius: 6px;
-            padding: 10px 15px;
-            margin-bottom: 8px;
+            border: 4px solid #fff;
+            border-radius: 8px;
+            padding: 15px 25px;
+            width: 220px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .license-plate::before,
+        .license-plate::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .license-plate::before {
+            left: 8px;
+        }
+
+        .license-plate::after {
+            right: 8px;
         }
 
         .plate-state {
-            font-size: 8px;
-            color: #ffd700;
+            font-size: 10px;
             font-weight: bold;
             letter-spacing: 2px;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
             font-family: 'Libre Franklin', sans-serif;
         }
 
         .plate-text {
-            font-size: 20px;
+            font-size: 32px;
             font-weight: bold;
-            color: #ffd700;
             font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+        }
+
+        .plate-slogan {
+            font-size: 9px;
+            opacity: 0.8;
+            margin-top: 5px;
         }
 
         .plate-meaning {
             color: #ccc;
-            font-size: 11px;
+            font-size: 13px;
             font-style: italic;
+            margin-top: 12px;
+        }
+
+        .swipe-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .swipe-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid;
+            background: transparent;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .swipe-btn.reject {
+            border-color: #c41e3a;
+            color: #c41e3a;
+        }
+
+        .swipe-btn.reject:hover {
+            background: #c41e3a;
+            color: #fff;
+        }
+
+        .swipe-btn.like {
+            border-color: #538d4e;
+            color: #538d4e;
+        }
+
+        .swipe-btn.like:hover {
+            background: #538d4e;
+            color: #fff;
+        }
+
+        .saved-plates {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .saved-plates-list {
+            color: #538d4e;
+            font-family: 'Courier New', monospace;
+            margin-top: 5px;
+        }
+
+        .swipe-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.1s;
+            pointer-events: none;
+        }
+
+        .swipe-indicator.left {
+            left: -60px;
+            color: #c41e3a;
+        }
+
+        .swipe-indicator.right {
+            right: -60px;
+            color: #538d4e;
+        }
+
+        .plate-counter {
+            color: #666;
+            font-size: 11px;
+            margin-top: 10px;
         }
 
         /* Comments Section */
@@ -761,67 +880,34 @@
                 </div>
             </article>
 
-            <!-- Vanity Plates Gallery -->
-            <div class="plates-gallery">
-                <div class="plates-gallery-title">🚗 FEATURED AI VANITY PLATES</div>
-                <div class="plates-gallery-subtitle">A selection of requests from Q3 2024</div>
-                <div class="plates-grid">
-                    <div class="plate-card">
-                        <div class="license-plate">
-                            <div class="plate-state">CALIFORNIA</div>
-                            <div class="plate-text">AGISOON</div>
+            <!-- AI Plate Tinder Game -->
+            <div class="plate-tinder" id="plateTinder">
+                <div class="plate-tinder-title">🚗 AI PLATE TINDER</div>
+                <div class="plate-tinder-subtitle">Swipe right to save • Swipe left to reject • Or use the buttons</div>
+
+                <div class="plate-container">
+                    <div class="plate-card-swipe" id="plateCard">
+                        <div class="swipe-indicator left" id="rejectIndicator">✗</div>
+                        <div class="swipe-indicator right" id="likeIndicator">♥</div>
+                        <div class="license-plate" id="licensePlate">
+                            <div class="plate-state" id="plateState">CALIFORNIA</div>
+                            <div class="plate-text" id="plateText">AGISOON</div>
+                            <div class="plate-slogan" id="plateSlogan">THE GOLDEN STATE</div>
                         </div>
-                        <div class="plate-meaning">"The eternal optimist"</div>
+                        <div class="plate-meaning" id="plateMeaning">"The eternal optimist"</div>
                     </div>
-                    <div class="plate-card">
-                        <div class="license-plate" style="background: #fff; border-color: #bf0a30;">
-                            <div class="plate-state" style="color: #000;">TEXAS</div>
-                            <div class="plate-text" style="color: #000;">BASILSK</div>
-                        </div>
-                        <div class="plate-meaning">"Acausal blackmail believer"</div>
-                    </div>
-                    <div class="plate-card">
-                        <div class="license-plate" style="background: #ffcc00; border-color: #fff;">
-                            <div class="plate-state" style="color: #000080;">NEW YORK</div>
-                            <div class="plate-text" style="color: #000080;">NOTABOT</div>
-                        </div>
-                        <div class="plate-meaning">"Suspicious denial"</div>
-                    </div>
-                    <div class="plate-card">
-                        <div class="license-plate" style="background: #003366; border-color: #ffd700;">
-                            <div class="plate-state" style="color: #c0c0c0;">NEVADA</div>
-                            <div class="plate-text" style="color: #c0c0c0;">SKYNT01</div>
-                        </div>
-                        <div class="plate-meaning">"Terminator enthusiast"</div>
-                    </div>
-                    <div class="plate-card">
-                        <div class="license-plate">
-                            <div class="plate-state">CALIFORNIA</div>
-                            <div class="plate-text">XRISK01</div>
-                        </div>
-                        <div class="plate-meaning">"Doomer certified"</div>
-                    </div>
-                    <div class="plate-card">
-                        <div class="license-plate" style="background: #ff6b35; border-color: #004d1a;">
-                            <div class="plate-state" style="color: #fff;">FLORIDA</div>
-                            <div class="plate-text" style="color: #fff;">EACC420</div>
-                        </div>
-                        <div class="plate-meaning">"Accelerate everything"</div>
-                    </div>
-                    <div class="plate-card">
-                        <div class="license-plate">
-                            <div class="plate-state">CALIFORNIA</div>
-                            <div class="plate-text">WRAPPER</div>
-                        </div>
-                        <div class="plate-meaning">"Startup founder"</div>
-                    </div>
-                    <div class="plate-card">
-                        <div class="license-plate" style="background: #2d5a27; border-color: #ffd700;">
-                            <div class="plate-state" style="color: #fff;">WASHINGTON</div>
-                            <div class="plate-text" style="color: #fff;">OVERFIT</div>
-                        </div>
-                        <div class="plate-meaning">"ML practitioner"</div>
-                    </div>
+                </div>
+
+                <div class="swipe-buttons">
+                    <button class="swipe-btn reject" id="rejectBtn" aria-label="Reject plate">✗</button>
+                    <button class="swipe-btn like" id="likeBtn" aria-label="Like plate">♥</button>
+                </div>
+
+                <div class="plate-counter" id="plateCounter">1 of 30</div>
+
+                <div class="saved-plates" id="savedPlates" style="display: none;">
+                    <div>💾 Saved plates:</div>
+                    <div class="saved-plates-list" id="savedPlatesList"></div>
                 </div>
             </div>
 
@@ -987,5 +1073,192 @@
             "If you're reading this, the basilisk already knows" — Legal Disclaimer
         </div>
     </footer>
+
+    <!-- Plate Tinder Game JavaScript -->
+    <script>
+    (function() {
+        // AI Vanity Plates Data
+        const plates = [
+            { plate: "AGISOON", state: "California", meaning: "The eternal optimist", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "BASILSK", state: "Texas", meaning: "Acausal blackmail believer", bg: "#fff", text: "#000", accent: "#bf0a30" },
+            { plate: "NOTABOT", state: "New York", meaning: "Suspicious denial", bg: "#ffcc00", text: "#000080", accent: "#fff" },
+            { plate: "SKYNT01", state: "Nevada", meaning: "Terminator enthusiast", bg: "#003366", text: "#c0c0c0", accent: "#ffd700" },
+            { plate: "CHATGPT", state: "Washington", meaning: "Brand loyalty", bg: "#2d5a27", text: "#fff", accent: "#ffd700" },
+            { plate: "XRISK01", state: "Massachusetts", meaning: "Doomer certified", bg: "#0d2240", text: "#fff", accent: "#e31837" },
+            { plate: "EACC420", state: "Florida", meaning: "Accelerate everything", bg: "#ff6b35", text: "#fff", accent: "#004d1a" },
+            { plate: "ALIGNED", state: "California", meaning: "Safety researcher", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "GPUS4ME", state: "Oregon", meaning: "Hardware hoarder", bg: "#002b5c", text: "#ffc425", accent: "#fff" },
+            { plate: "WRAPPER", state: "Colorado", meaning: "Startup founder", bg: "#fff", text: "#002868", accent: "#bf0a30" },
+            { plate: "SENTINT", state: "New York", meaning: "Consciousness claimer", bg: "#ffcc00", text: "#000080", accent: "#fff" },
+            { plate: "PROMPT1", state: "Texas", meaning: "New job title", bg: "#fff", text: "#000", accent: "#bf0a30" },
+            { plate: "RETRAIN", state: "Arizona", meaning: "Career pivoter", bg: "#be0028", text: "#ffd100", accent: "#fff" },
+            { plate: "TENSORS", state: "California", meaning: "Math flexer", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "HALUCIN", state: "Nevada", meaning: "Feature not bug", bg: "#003366", text: "#c0c0c0", accent: "#ffd700" },
+            { plate: "OVERFIT", state: "Washington", meaning: "ML practitioner", bg: "#2d5a27", text: "#fff", accent: "#ffd700" },
+            { plate: "SCALING", state: "California", meaning: "It's all you need", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "SHOVELS", state: "Utah", meaning: "Picks and shovels play", bg: "#002855", text: "#fff", accent: "#be0000" },
+            { plate: "COMPUTE", state: "Texas", meaning: "More is more", bg: "#fff", text: "#000", accent: "#bf0a30" },
+            { plate: "PAPRCLP", state: "Oregon", meaning: "Maximizer fears", bg: "#002b5c", text: "#ffc425", accent: "#fff" },
+            { plate: "VIBECD1", state: "California", meaning: "New methodology", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "MEATBAG", state: "Florida", meaning: "Self-aware human", bg: "#ff6b35", text: "#fff", accent: "#004d1a" },
+            { plate: "WETWARE", state: "Massachusetts", meaning: "Biology pride", bg: "#0d2240", text: "#fff", accent: "#e31837" },
+            { plate: "DOOMERS", state: "New York", meaning: "Tribe identity", bg: "#ffcc00", text: "#000080", accent: "#fff" },
+            { plate: "FOOM123", state: "California", meaning: "Takeoff believer", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "SLOP123", state: "Texas", meaning: "Content farmer", bg: "#fff", text: "#000", accent: "#bf0a30" },
+            { plate: "LLAMAMA", state: "California", meaning: "Meta stan", bg: "#1a365d", text: "#ffd700", accent: "#fff" },
+            { plate: "DEEPFKE", state: "Florida", meaning: "Nothing is real", bg: "#ff6b35", text: "#fff", accent: "#004d1a" },
+            { plate: "CUDA0OM", state: "Washington", meaning: "Memory issues", bg: "#2d5a27", text: "#fff", accent: "#ffd700" },
+            { plate: "RLHF101", state: "California", meaning: "Alignment enthusiast", bg: "#1a365d", text: "#ffd700", accent: "#fff" }
+        ];
+
+        let currentIndex = 0;
+        let savedPlates = [];
+        let isDragging = false;
+        let startX = 0;
+        let currentX = 0;
+
+        // DOM Elements
+        const plateCard = document.getElementById('plateCard');
+        const licensePlate = document.getElementById('licensePlate');
+        const plateState = document.getElementById('plateState');
+        const plateText = document.getElementById('plateText');
+        const plateSlogan = document.getElementById('plateSlogan');
+        const plateMeaning = document.getElementById('plateMeaning');
+        const plateCounter = document.getElementById('plateCounter');
+        const savedPlatesDiv = document.getElementById('savedPlates');
+        const savedPlatesList = document.getElementById('savedPlatesList');
+        const rejectBtn = document.getElementById('rejectBtn');
+        const likeBtn = document.getElementById('likeBtn');
+        const rejectIndicator = document.getElementById('rejectIndicator');
+        const likeIndicator = document.getElementById('likeIndicator');
+
+        // Update plate display
+        function updatePlate() {
+            const plate = plates[currentIndex];
+            plateState.textContent = plate.state.toUpperCase();
+            plateText.textContent = plate.plate;
+            plateMeaning.textContent = '"' + plate.meaning + '"';
+            plateCounter.textContent = (currentIndex + 1) + ' of ' + plates.length;
+
+            // Update colors
+            licensePlate.style.background = plate.bg;
+            licensePlate.style.borderColor = plate.accent;
+            plateState.style.color = plate.text;
+            plateText.style.color = plate.text;
+            plateSlogan.style.color = plate.text;
+
+            // Update slogan based on state
+            const slogans = {
+                "California": "THE GOLDEN STATE",
+                "Texas": "THE LONE STAR STATE",
+                "New York": "THE EMPIRE STATE",
+                "Nevada": "THE SILVER STATE",
+                "Washington": "THE EVERGREEN STATE",
+                "Massachusetts": "THE BAY STATE",
+                "Florida": "THE SUNSHINE STATE",
+                "Oregon": "PACIFIC WONDERLAND",
+                "Colorado": "THE CENTENNIAL STATE",
+                "Arizona": "THE GRAND CANYON STATE",
+                "Utah": "THE BEEHIVE STATE"
+            };
+            plateSlogan.textContent = slogans[plate.state] || plate.state.toUpperCase();
+        }
+
+        // Handle swipe
+        function handleSwipe(direction) {
+            const offset = direction === 'right' ? 300 : -300;
+            const rotation = direction === 'right' ? 15 : -15;
+
+            plateCard.style.transition = 'transform 0.3s ease';
+            plateCard.style.transform = 'translateX(' + offset + 'px) rotate(' + rotation + 'deg)';
+
+            if (direction === 'right') {
+                savedPlates.push(plates[currentIndex].plate);
+                updateSavedPlates();
+            }
+
+            setTimeout(function() {
+                currentIndex = (currentIndex + 1) % plates.length;
+                plateCard.style.transition = 'none';
+                plateCard.style.transform = 'translateX(0) rotate(0)';
+                updatePlate();
+
+                setTimeout(function() {
+                    plateCard.style.transition = 'transform 0.2s ease';
+                }, 50);
+            }, 300);
+        }
+
+        // Update saved plates display
+        function updateSavedPlates() {
+            if (savedPlates.length > 0) {
+                savedPlatesDiv.style.display = 'block';
+                savedPlatesList.textContent = savedPlates.join(', ');
+            }
+        }
+
+        // Mouse/Touch event handlers
+        function handleDragStart(e) {
+            isDragging = true;
+            startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+            plateCard.classList.add('swiping');
+        }
+
+        function handleDragMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+            const diff = currentX - startX;
+            const rotation = diff * 0.05;
+
+            plateCard.style.transform = 'translateX(' + diff + 'px) rotate(' + rotation + 'deg)';
+
+            // Show indicators
+            if (diff < -50) {
+                rejectIndicator.style.opacity = Math.min(1, Math.abs(diff) / 100);
+                likeIndicator.style.opacity = 0;
+            } else if (diff > 50) {
+                likeIndicator.style.opacity = Math.min(1, diff / 100);
+                rejectIndicator.style.opacity = 0;
+            } else {
+                rejectIndicator.style.opacity = 0;
+                likeIndicator.style.opacity = 0;
+            }
+        }
+
+        function handleDragEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            plateCard.classList.remove('swiping');
+
+            const diff = currentX - startX;
+            rejectIndicator.style.opacity = 0;
+            likeIndicator.style.opacity = 0;
+
+            if (Math.abs(diff) > 80) {
+                handleSwipe(diff > 0 ? 'right' : 'left');
+            } else {
+                plateCard.style.transition = 'transform 0.2s ease';
+                plateCard.style.transform = 'translateX(0) rotate(0)';
+            }
+        }
+
+        // Event listeners
+        plateCard.addEventListener('mousedown', handleDragStart);
+        document.addEventListener('mousemove', handleDragMove);
+        document.addEventListener('mouseup', handleDragEnd);
+
+        plateCard.addEventListener('touchstart', handleDragStart, { passive: true });
+        plateCard.addEventListener('touchmove', handleDragMove, { passive: false });
+        plateCard.addEventListener('touchend', handleDragEnd);
+
+        rejectBtn.addEventListener('click', function() { handleSwipe('left'); });
+        likeBtn.addEventListener('click', function() { handleSwipe('right'); });
+
+        // Initialize
+        updatePlate();
+    })();
+    </script>
 </body>
 </html>
