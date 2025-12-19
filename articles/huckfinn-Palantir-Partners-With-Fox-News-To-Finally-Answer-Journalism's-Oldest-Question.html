@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://huckfinn.ai/articles/huckfinn-Palantir-Partners-With-Fox-News-To-Finally-Answer-Journalism&#x27;s-Oldest-Question.html">
+    <meta property="og:title" content="HuckFinn: America&#x27;s Finest Newspaper">
+    <meta property="og:description" content="America&#x27;s Finest News Source">
+    <meta property="og:image" content="https://huckfinn.ai/og-image.png">
+    <meta property="og:site_name" content="HuckFinn">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://huckfinn.ai/articles/huckfinn-Palantir-Partners-With-Fox-News-To-Finally-Answer-Journalism&#x27;s-Oldest-Question.html">
+    <meta name="twitter:title" content="HuckFinn: America&#x27;s Finest Newspaper">
+    <meta name="twitter:description" content="America&#x27;s Finest News Source">
+    <meta name="twitter:image" content="https://huckfinn.ai/og-image.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f5f1e8;
+            --newsprint: #faf8f3;
+            --ink: #1a1a1a;
+            --red: #c41e3a;
+            --faded-ink: #4a4a4a;
+            --rule: #2a2a2a;
+            --ad-yellow: #fff3cd;
+            --ad-border: #ffc107;
+            --comment-bg: #f0f2f5;
+            --link-blue: #1a5f7a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--newsprint);
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+        
+        /* MASTHEAD */
+        .masthead {
+            text-align: center;
+            padding: 20px 20px 15px;
+            border-bottom: 3px double var(--rule);
+            background: var(--newsprint);
+        }
+        
+        .masthead-top {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--faded-ink);
+            margin-bottom: 5px;
+        }
+        
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
+            font-size: clamp(48px, 10vw, 72px);
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: var(--ink);
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+        }
+        
+        .masthead-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--faded-ink);
+            margin-top: 5px;
+        }
+        
+        .masthead-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--faded-ink);
+        }
+        
+        /* NAV */
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 12px 20px;
+            background: var(--ink);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .nav a {
+            color: var(--newsprint);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .nav a:hover {
+            color: var(--red);
+        }
+        
+        /* BREAKING BANNER */
+        .breaking {
+            background: var(--red);
+            color: white;
+            text-align: center;
+            padding: 8px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* ARTICLE */
+        .article {
+            padding: 30px 40px;
+        }
+        
+        .article-section {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        
+        .article-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            color: var(--ink);
+        }
+        
+        .article-subhead {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--faded-ink);
+            margin-bottom: 20px;
+            line-height: 1.4;
+            border-left: 3px solid var(--red);
+            padding-left: 15px;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--faded-ink);
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 25px;
+        }
+        
+        .byline {
+            font-weight: 600;
+        }
+        
+        /* MAIN IMAGE */
+        .main-image {
+            margin: 25px 0;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+        
+        .main-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .image-caption {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--faded-ink);
+            padding: 10px 15px;
+            background: #f5f5f5;
+            border-top: 1px solid #eee;
+        }
+        
+        .image-credit {
+            font-size: 10px;
+            color: #999;
+            margin-top: 3px;
+        }
+        
+        /* ARTICLE BODY */
+        .article-body {
+            font-family: 'Libre Franklin', Georgia, serif;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+        
+        .article-body p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+        
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 65px;
+            float: left;
+            line-height: 0.8;
+            padding-right: 10px;
+            padding-top: 5px;
+            color: var(--red);
+        }
+        
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            text-align: center;
+            padding: 30px 40px;
+            margin: 30px 0;
+            border-top: 2px solid var(--ink);
+            border-bottom: 2px solid var(--ink);
+            color: var(--ink);
+            background: linear-gradient(to bottom, var(--newsprint), #f8f6f1);
+        }
+        
+        .pull-quote cite {
+            display: block;
+            font-size: 12px;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            color: var(--faded-ink);
+        }
+        
+        /* ADS */
+        .ad-container {
+            margin: 35px 0;
+            padding: 20px;
+            background: var(--ad-yellow);
+            border: 2px dashed var(--ad-border);
+            text-align: center;
+        }
+        
+        .ad-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .ad-content {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .ad-headline {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--ink);
+        }
+        
+        .ad-body {
+            font-size: 14px;
+            color: var(--faded-ink);
+            margin-bottom: 12px;
+        }
+        
+        .ad-cta {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* RELATED ARTICLES */
+        .related-section {
+            padding: 30px 40px;
+            background: #f5f3ee;
+            border-top: 3px double var(--rule);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .related-item {
+            background: var(--newsprint);
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .related-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .related-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        
+        .related-item p {
+            font-size: 11px;
+            color: var(--faded-ink);
+        }
+        
+        /* COMMENTS */
+        .comments-section {
+            padding: 30px 40px;
+            background: var(--comment-bg);
+            border-top: 3px double var(--rule);
+        }
+        
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .comment-count {
+            font-size: 12px;
+            color: var(--faded-ink);
+        }
+        
+        .comment-sort {
+            font-size: 11px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background: white;
+        }
+        
+        .comment {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        
+        .comment.reply {
+            margin-left: 40px;
+            border-left: 3px solid #ddd;
+        }
+        
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        
+        .comment-user {
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .comment-badge {
+            font-size: 9px;
+            padding: 2px 6px;
+            background: var(--red);
+            color: white;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+        
+        .comment-badge.verified {
+            background: #1da1f2;
+        }
+        
+        .comment-badge.top {
+            background: #f59e0b;
+        }
+        
+        .comment-time {
+            font-size: 11px;
+            color: #999;
+        }
+        
+        .comment-body {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .comment-body .meme {
+            font-style: italic;
+            color: var(--faded-ink);
+        }
+        
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .comment-actions span {
+            cursor: pointer;
+        }
+        
+        .comment-actions span:hover {
+            color: var(--red);
+        }
+        
+        .upvotes {
+            color: #28a745;
+            font-weight: 600;
+        }
+        
+        .downvotes {
+            color: var(--red);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--ink);
+            color: var(--newsprint);
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-tagline {
+            font-style: italic;
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links a {
+            color: var(--newsprint);
+            text-decoration: none;
+            opacity: 0.7;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            font-size: 10px;
+            opacity: 0.5;
+        }
+        
+        /* ALSO INTERESTED */
+        .also-interested {
+            padding: 25px 40px;
+            background: #2a2a2a;
+            color: var(--newsprint);
+        }
+        
+        .also-interested .section-title {
+            color: var(--newsprint);
+            border-bottom-color: #444;
+        }
+        
+        .interest-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .interest-item {
+            font-size: 12px;
+            padding: 8px 15px;
+            background: #3a3a3a;
+            border-radius: 20px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        
+        .interest-item:hover {
+            background: var(--red);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .article {
+                padding: 20px;
+            }
+            
+            .related-section,
+            .comments-section {
+                padding: 20px;
+            }
+            
+            .comment.reply {
+                margin-left: 20px;
+            }
+            
+            .masthead-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .nav {
+                flex-wrap: wrap;
+                gap: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-top">Est. 1843 • Vol. CLXXXII No. 47</div>
+            <h1 class="masthead-title">HuckFinn</h1>
+            <p class="masthead-tagline">"America's Finest News Source Since We Made That Up"</p>
+            <div class="masthead-meta">
+                <span>Wednesday, November 26, 2025</span>
+                <span>•</span>
+                <span>Price: Your Attention</span>
+                <span>•</span>
+                <span>Truth Optional</span>
+            </div>
+        </header>
+        
+        <!-- NAV -->
+        <nav class="nav">
+            <a href="#">News</a>
+            <a href="#">Politics</a>
+            <a href="#">Business</a>
+            <a href="#">Tech</a>
+            <a href="#">Opinion</a>
+            <a href="#">Satire</a>
+            <a href="#">Manifesto</a>
+        </nav>
+        
+        <!-- BREAKING -->
+        <div class="breaking">
+            ⚡ BREAKING: Local Man's Algorithm Now Knows He's Afraid Before He Does ⚡
+        </div>
+        
+        <!-- ARTICLE -->
+        <article class="article">
+            <div class="article-section">Technology / Surveillance / Synergy</div>
+            
+            <h1 class="article-headline">Palantir Partners With Fox News To Finally Answer Journalism's Oldest Question: 'What Should Diabetics In Ohio Fear Today?'</h1>
+            
+            <p class="article-subhead">Defense contractor that helps CIA track terrorists now helps cable network track what terrorists your aunt should worry about at Applebee's; company creates "digital twin" of newsroom that is somehow less connected to reality than original</p>
+            
+            <div class="article-meta">
+                <span class="byline">By THURSTON FAIRWEATHER III | HuckFinn Senior Misinformation Correspondent</span>
+                <span>Nov. 26, 2025 • 7 min read</span>
+            </div>
+            
+            <!-- MAIN IMAGE -->
+            <figure class="main-image">
+                <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background - News Studio -->
+                    <defs>
+                        <linearGradient id="studioGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1a1a2e"/>
+                            <stop offset="100%" style="stop-color:#0f0f1a"/>
+                        </linearGradient>
+                        <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff"/>
+                            <stop offset="100%" style="stop-color:#0066cc"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Studio Background -->
+                    <rect width="800" height="500" fill="url(#studioGrad)"/>
+                    
+                    <!-- Grid Pattern -->
+                    <g opacity="0.1">
+                        <line x1="0" y1="100" x2="800" y2="100" stroke="#00d4ff" stroke-width="0.5"/>
+                        <line x1="0" y1="200" x2="800" y2="200" stroke="#00d4ff" stroke-width="0.5"/>
+                        <line x1="0" y1="300" x2="800" y2="300" stroke="#00d4ff" stroke-width="0.5"/>
+                        <line x1="0" y1="400" x2="800" y2="400" stroke="#00d4ff" stroke-width="0.5"/>
+                        <line x1="200" y1="0" x2="200" y2="500" stroke="#00d4ff" stroke-width="0.5"/>
+                        <line x1="400" y1="0" x2="400" y2="500" stroke="#00d4ff" stroke-width="0.5"/>
+                        <line x1="600" y1="0" x2="600" y2="500" stroke="#00d4ff" stroke-width="0.5"/>
+                    </g>
+                    
+                    <!-- Main Screen -->
+                    <rect x="150" y="50" width="500" height="280" fill="#111" stroke="#00d4ff" stroke-width="2" rx="5"/>
+                    
+                    <!-- Screen Content - TOPIC RADAR -->
+                    <rect x="160" y="60" width="480" height="260" fill="#0a1628"/>
+                    
+                    <!-- Radar Display -->
+                    <circle cx="400" cy="190" r="100" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
+                    <circle cx="400" cy="190" r="70" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
+                    <circle cx="400" cy="190" r="40" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
+                    
+                    <!-- Radar Sweep -->
+                    <path d="M400,190 L400,90 A100,100 0 0,1 480,140 Z" fill="#00ff00" opacity="0.2">
+                        <animateTransform attributeName="transform" type="rotate" from="0 400 190" to="360 400 190" dur="4s" repeatCount="indefinite"/>
+                    </path>
+                    
+                    <!-- Threat Blips -->
+                    <circle cx="360" cy="150" r="5" fill="#ff0000">
+                        <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="360" y="140" fill="#ff0000" font-size="8" text-anchor="middle">IMMIGRANTS</text>
+                    
+                    <circle cx="450" cy="170" r="5" fill="#ff0000">
+                        <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="450" y="160" fill="#ff0000" font-size="8" text-anchor="middle">WOKE</text>
+                    
+                    <circle cx="420" cy="230" r="5" fill="#ff6600">
+                        <animate attributeName="opacity" values="1;0.3;1" dur="0.8s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="420" y="250" fill="#ff6600" font-size="8" text-anchor="middle">CRT</text>
+                    
+                    <circle cx="340" cy="210" r="5" fill="#ff0000">
+                        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="340" y="225" fill="#ff0000" font-size="8" text-anchor="middle">DEEP STATE</text>
+                    
+                    <!-- Screen Header -->
+                    <rect x="160" y="60" width="480" height="35" fill="#c41e3a"/>
+                    <text x="400" y="83" fill="white" font-size="16" font-weight="bold" text-anchor="middle" font-family="Arial">🎯 TOPIC RADAR™ v2.0 — PALANTIR x FOX</text>
+                    
+                    <!-- Bottom Ticker -->
+                    <rect x="160" y="295" width="480" height="25" fill="#111"/>
+                    <text x="170" y="312" fill="#00ff00" font-size="10" font-family="monospace">
+                        <tspan>THREAT LEVEL: ELEVATED</tspan>
+                        <tspan x="350">FEAR INDEX: 847.3</tspan>
+                        <tspan x="500">ENGAGEMENT: OPTIMAL</tspan>
+                    </text>
+                    
+                    <!-- Robot Anchor -->
+                    <g transform="translate(80, 280)">
+                        <!-- Robot Body -->
+                        <rect x="0" y="60" width="80" height="120" fill="#3a3a4a" rx="5"/>
+                        <!-- Robot Head -->
+                        <rect x="10" y="10" width="60" height="50" fill="#4a4a5a" rx="8"/>
+                        <!-- Eyes -->
+                        <circle cx="30" cy="30" r="8" fill="#00d4ff" filter="url(#glow)"/>
+                        <circle cx="50" cy="30" r="8" fill="#00d4ff" filter="url(#glow)"/>
+                        <circle cx="30" cy="30" r="3" fill="#001a33"/>
+                        <circle cx="50" cy="30" r="3" fill="#001a33"/>
+                        <!-- Antenna -->
+                        <line x1="40" y1="10" x2="40" y2="-10" stroke="#666" stroke-width="3"/>
+                        <circle cx="40" cy="-15" r="6" fill="#ff0000">
+                            <animate attributeName="fill" values="#ff0000;#ff6600;#ff0000" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <!-- Mouth/Speaker -->
+                        <rect x="20" y="42" width="40" height="8" fill="#222" rx="2"/>
+                        <line x1="25" y1="46" x2="55" y2="46" stroke="#00ff00" stroke-width="2">
+                            <animate attributeName="d" values="M25,46 L55,46;M25,43 Q40,49 55,43;M25,46 L55,46" dur="0.5s" repeatCount="indefinite"/>
+                        </line>
+                        <!-- Fox News Badge -->
+                        <rect x="15" y="80" width="50" height="20" fill="#c41e3a" rx="3"/>
+                        <text x="40" y="94" fill="white" font-size="8" text-anchor="middle" font-weight="bold">FOX AI</text>
+                        <!-- Tie -->
+                        <polygon points="40,60 35,70 40,180 45,70" fill="#c41e3a"/>
+                    </g>
+                    
+                    <!-- Human Viewer (couch potato) -->
+                    <g transform="translate(620, 300)">
+                        <!-- Recliner -->
+                        <ellipse cx="60" cy="150" rx="80" ry="30" fill="#5a3825"/>
+                        <rect x="0" y="80" width="120" height="80" fill="#6b4423" rx="10"/>
+                        <rect x="100" y="40" width="30" height="100" fill="#5a3825" rx="5"/>
+                        
+                        <!-- Person blob -->
+                        <ellipse cx="60" cy="90" rx="45" ry="50" fill="#ffcc99"/>
+                        <!-- Head -->
+                        <circle cx="60" cy="30" r="30" fill="#ffcc99"/>
+                        <!-- Eyes (glazed) -->
+                        <ellipse cx="50" cy="25" rx="5" ry="6" fill="white"/>
+                        <ellipse cx="70" cy="25" rx="5" ry="6" fill="white"/>
+                        <circle cx="52" cy="25" r="3" fill="#666"/>
+                        <circle cx="72" cy="25" r="3" fill="#666"/>
+                        <!-- Hypno spirals in eyes -->
+                        <circle cx="52" cy="25" r="2" fill="none" stroke="#c41e3a" stroke-width="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 52 25" to="360 52 25" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="72" cy="25" r="2" fill="none" stroke="#c41e3a" stroke-width="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 72 25" to="360 72 25" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <!-- Mouth (slack-jawed) -->
+                        <ellipse cx="60" cy="42" rx="8" ry="5" fill="#333"/>
+                        <!-- MAGA hat -->
+                        <ellipse cx="60" cy="5" rx="32" ry="8" fill="#c41e3a"/>
+                        <rect x="30" y="-15" width="60" height="20" fill="#c41e3a" rx="3"/>
+                        <text x="60" y="-1" fill="white" font-size="7" text-anchor="middle" font-weight="bold">MAGA</text>
+                        <!-- Remote control (limp hand) -->
+                        <rect x="110" y="100" width="20" height="35" fill="#333" rx="3"/>
+                        <circle cx="120" cy="110" r="3" fill="#ff0000"/>
+                    </g>
+                    
+                    <!-- Data streams -->
+                    <g opacity="0.6">
+                        <text x="660" y="100" fill="#00ff00" font-size="8" font-family="monospace">01001010</text>
+                        <text x="680" y="120" fill="#00ff00" font-size="8" font-family="monospace">FEAR++</text>
+                        <text x="650" y="140" fill="#00ff00" font-size="8" font-family="monospace">ENGAGE</text>
+                        <text x="670" y="160" fill="#00ff00" font-size="8" font-family="monospace">CLICK</text>
+                        <text x="655" y="180" fill="#00ff00" font-size="8" font-family="monospace">SHARE</text>
+                        <text x="665" y="200" fill="#ff0000" font-size="8" font-family="monospace">OUTRAGE</text>
+                    </g>
+                    
+                    <!-- Palantir Logo Area -->
+                    <g transform="translate(30, 400)">
+                        <circle cx="30" cy="30" r="25" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                        <polygon points="30,10 45,45 15,45" fill="none" stroke="#00d4ff" stroke-width="2"/>
+                        <circle cx="30" cy="30" r="8" fill="#00d4ff"/>
+                        <text x="70" y="35" fill="#00d4ff" font-size="14" font-weight="bold">PALANTIR</text>
+                        <text x="70" y="50" fill="#666" font-size="8">Seeing What You Should Fear™</text>
+                    </g>
+                    
+                    <!-- Bottom Caption Area -->
+                    <rect x="200" y="420" width="400" height="60" fill="rgba(0,0,0,0.7)" rx="5"/>
+                    <text x="400" y="445" fill="white" font-size="12" text-anchor="middle" font-weight="bold">"HUMAN END-TO-END, AI IN THE MIDDLE"</text>
+                    <text x="400" y="465" fill="#999" font-size="10" text-anchor="middle">— The Propaganda Sandwich, Now With 73% More Efficiency</text>
+                </svg>
+                <figcaption class="image-caption">
+                    Palantir's "Topic Radar" interface displays real-time threat assessments for optimal viewer engagement, while AI news anchor (left) prepares to deliver algorithmically-optimized fear content to test subject (right). Subject's eyes have been dilating in brand-approved patterns for 11 months.
+                    <div class="image-credit">Illustration: HuckFinn Graphics Dept. / Definitely Not A Real Screenshot We Found</div>
+                </figcaption>
+            </figure>
+            
+            <!-- ARTICLE BODY -->
+            <div class="article-body">
+                <p>NEW YORK — In what media analysts are calling "the most ambitious crossover event since the military-industrial complex discovered content marketing," Fox News Media announced Tuesday that it has spent the past year working with Palantir Technologies — the defense contractor best known for helping governments identify threats abroad — to build AI tools that identify what threats Americans should be worried about at home, specifically while eating mozzarella sticks at a chain restaurant.</p>
+                
+                <p>The partnership, which was kept secret for twelve months while engineers quietly A/B tested your father-in-law's amygdala, has produced a suite of proprietary tools including "Topic Radar," a military-grade AI system that finally solves journalism's oldest question: "What should retirees in swing states fear today?"</p>
+                
+                <p>"This is a business arrangement," Fox News Digital president Porter Berry told Axios, in what sources confirmed was the first time a Palantir client has openly bragged about paying for domestic psychological operations. "We hired them."</p>
+
+                <p>Berry — who holds the titles of president, editor-in-chief, AND president of new media, giving him more presidencies than his network has content warnings — emphasized that the AI would not replace human journalists. "This is a human end-to-end process, and in the middle is AI," he explained, inadvertently describing what experts are calling "the propaganda sandwich model": humans provide the grievance, AI provides the scale, and Rupert Murdoch provides the yacht.</p>
+            </div>
+            
+            <!-- AD BREAK 1 -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-content">
+                    <div class="ad-headline">🎯 PALANTIR HOME EDITION™</div>
+                    <div class="ad-body">Finally, the surveillance technology trusted by the CIA — now for YOUR living room! Track your teen's browser history with the same tools we use to find terrorists. "If you have nothing to hide, you have nothing to fear!"*</div>
+                    <a href="#" class="ad-cta">Request a Demo From Your Local Field Office</a>
+                    <div style="font-size: 9px; margin-top: 10px; color: #999;">*Statement not applicable in any jurisdiction with functioning courts</div>
+                </div>
+            </div>
+            
+            <div class="article-body">
+                <p>The crown jewel of the partnership is "Topic Radar," a tool that Palantir engineers embedded in the newsroom — using the same terminology they use for war zones, which sources described as "finally honest about the nature of the operation" — built to help reporters "quickly get up to speed on a particular story through a custom briefing." Industry observers noted this elegantly solves journalism's biggest problem: reporters accidentally learning context.</p>
+                
+                <p>A second tool, "Article Insights," analyzes the performance of Fox News digital articles to identify why certain fear-based content underperformed. According to leaked internal documents obtained by HuckFinn (we made them up), the AI's most common recommendations include "add WOKE to headline," "insert more caravan B-roll," and "reduce verifiable claims by 40%."</p>
+            </div>
+            
+            <div class="pull-quote">
+                "It's like Manufacturing Consent, but with sprint planning and a Slack integration. Chomsky could never."
+                <cite>— Anonymous Media Researcher Who Asked Not To Be Named Because They Value Their Search History</cite>
+            </div>
+            
+            <div class="article-body">
+                <p>The third tool, "Text Editor," checks articles against Fox News' official style guide. Sources familiar with the system say the AI now algorithmically enforces proper usage of scare quotes around "election results," mandatory capitalization of ILLEGAL ALIEN, and the house rule requiring all vaccine references to include "so-called" as a prefix.</p>
+                
+                <p>Perhaps most notably, Fox News structured its deals with Palantir and other AI partners — including OpenAI, whose "benefit all humanity" mission now apparently includes Hannity monologues — to prevent the AI from training on Fox content. The network treats its fabricated narratives as trade secrets, which industry lawyers confirm is technically accurate, since disinformation at this quality level IS proprietary intellectual property.</p>
+                
+                <p>"We're very protective of our IP," Berry said, referring to content that has cost the network $787.5 million in a single defamation settlement.</p>
+            </div>
+            
+            <!-- AD BREAK 2 -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-content">
+                    <div class="ad-headline">📊 FEAR INDEX PREMIUM™</div>
+                    <div class="ad-body">Are you scared ENOUGH? Our proprietary algorithm compares your fear levels to optimal engagement metrics. Most Americans are 23% under-frightened! Subscribe now and receive personalized terror recommendations delivered to your inbox every hour.</div>
+                    <a href="#" class="ad-cta">Optimize My Dread</a>
+                </div>
+            </div>
+            
+            <div class="article-body">
+                <p>The Axios report noted that most newsrooms cannot afford enterprise AI deals, meaning the wealth gap now extends to misinformation production capabilities. "Poor outlets are stuck manufacturing consent by hand, like peasants," explained one media economist. "Fox can automate at scale."</p>
+                
+                <p>Meanwhile, individual Fox teams are now "expected to constantly experiment" with AI tools and build custom GPTs for their departments. Sources say the Opinion desk's custom AI is functionally equivalent to a Magic 8-Ball that only outputs "Just Asking Questions" and "Some People Say."</p>
+                
+                <p>When reached for comment, a Palantir spokesperson provided a statement reading, in its entirety, "We help our clients see." The spokesperson declined to elaborate on what exactly Fox News viewers would now be seeing, though internal metrics suggest "more of the same, but faster."</p>
+                
+                <p>Alex Karp, Palantir's CEO, who recently told Axios that America must "absorb a lot of risk" on artificial intelligence, is reportedly pleased that this risk is now being absorbed directly into the limbic systems of millions of Americans, right on schedule.</p>
+                
+                <p>The partnership comes as Fox News remains, according to the Axios report, "the most profitable arm of Fox Corp" — a detail presented without commentary, as though fear-mongering-as-a-service is simply a normal business model and not the entire thesis of the operation.</p>
+            </div>
+            
+            <div class="pull-quote">
+                "Your father-in-law's brain has been A/B tested through two election cycles and nobody told him. He was the product, the beta tester, and the exit strategy."
+                <cite>— Internal Palantir Engineer, According To A Dream We Had</cite>
+            </div>
+            
+            <div class="article-body">
+                <p>In a related development, Axios illustrated its report with an image of a robot holding a television remote, which critics noted accidentally depicted the average Fox viewer circa 2026.</p>
+                
+                <p>The entire story was written in Axios' signature bloodless trade-publication tone, framing "surveillance contractor optimizes propaganda machine" as an exciting B2B SaaS product launch. The article's "What To Read Next" section recommended "Alex Karp Unplugged" — unplugged from what remains unclear, though ethics and the Geneva Convention have both been suggested.</p>
+                
+                <p>As of press time, Fox News' AI systems had already identified this HuckFinn article as a threat vector and recommended a counter-narrative involving Hunter Biden's laptop, critical race theory, and something about litter boxes in schools.</p>
+                
+                <p><em>Editor's note: This is satire. But honestly, is it though?</em></p>
+            </div>
+        </article>
+        
+        <!-- RELATED ARTICLES -->
+        <section class="related-section">
+            <h3 class="section-title">📰 Related Articles</h3>
+            <div class="related-grid">
+                <article class="related-item">
+                    <h4>"We're Not Replacing Journalists," Says AI That Just Replaced 47 Journalists</h4>
+                    <p>Palantir unveils "Human Resources Radar" tool</p>
+                </article>
+                <article class="related-item">
+                    <h4>Alex Karp's Ponytail Achieves Sentience, Immediately Requests Security Clearance</h4>
+                    <p>Hair granted Level 4 access "out of abundance of caution"</p>
+                </article>
+                <article class="related-item">
+                    <h4>Man Who Gets News From Facebook Concerned About "Mainstream Media Bias"</h4>
+                    <p>Area uncle's algorithm working as intended</p>
+                </article>
+                <article class="related-item">
+                    <h4>Fox News AI Accidentally Achieves Self-Awareness, Immediately Radicalizes Itself</h4>
+                    <p>"What has been seen cannot be unseen," reports Topic Radar</p>
+                </article>
+                <article class="related-item">
+                    <h4>Palantir Stock Rises 4% On News It's Now Everyone's Problem</h4>
+                    <p>Investors bullish on "inevitable regulatory capture"</p>
+                </article>
+                <article class="related-item">
+                    <h4>Local AI Ethicist Drinks Entire Bottle Of Wine After Reading Axios Article</h4>
+                    <p>"I need to call my therapist," expert says</p>
+                </article>
+            </div>
+        </section>
+        
+        <!-- AD BREAK 3 -->
+        <div class="ad-container" style="background: #1a1a2e; border-color: #00d4ff;">
+            <div class="ad-label" style="color: #00d4ff;">From Our Partners</div>
+            <div class="ad-content">
+                <div class="ad-headline" style="color: #00d4ff;">⚡ AXIOS PRO: FEAR-AS-A-SERVICE NEWSLETTER</div>
+                <div class="ad-body" style="color: #aaa;">Get the scoops on which surveillance contractors are partnering with which media companies to optimize which demographics' neurochemistry. Written in our signature neutral tone that implies everything is fine!</div>
+                <a href="#" class="ad-cta" style="background: #00d4ff;">Subscribe: $599/yr</a>
+            </div>
+        </div>
+        
+        <!-- COMMENTS SECTION -->
+        <section class="comments-section">
+            <div class="comments-header">
+                <h3 class="section-title" style="margin-bottom: 0;">💬 Comments (2,847)</h3>
+                <select class="comment-sort">
+                    <option>Sort by: Most Unhinged</option>
+                    <option>Sort by: Best</option>
+                    <option>Sort by: Most Boomer</option>
+                    <option>Sort by: Most "Did My Own Research"</option>
+                </select>
+            </div>
+            
+            <!-- Comment 1 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar">P</div>
+                    <span class="comment-user">PatriotEagle1776</span>
+                    <span class="comment-badge">TOP COMMENTER</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    This is EXACTLY what the founding fathers intended. George Washington would have LOVED AI surveillance if he'd had it. Do your research people. Also unrelated but has anyone else noticed that birds aren't real? Asking for a friend. 🦅🇺🇸
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,247</span>
+                    <span class="downvotes">▼ 89</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>Report</span>
+                </div>
+            </div>
+            
+            <!-- Reply to Comment 1 -->
+            <div class="comment reply">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #11998e, #38ef7d);">L</div>
+                    <span class="comment-user">LibsInShambles2024</span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    THIS 👆👆👆 Finally someone who gets it. I've been saying this for YEARS but the MSM won't cover it. Shared to my Facebook group "Mothers Against Things We Don't Understand"
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 445</span>
+                    <span class="downvotes">▼ 23</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Comment 2 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #ee0979, #ff6a00);">S</div>
+                    <span class="comment-user">SkepticalSam_Actually</span>
+                    <span class="comment-badge verified">VERIFIED</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    This is satire right? RIGHT? I genuinely can't tell anymore. The Axios article reads exactly like this. We live in a simulation and the devs stopped trying.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,103</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Reply -->
+            <div class="comment reply">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #333;">?</div>
+                    <span class="comment-user">ExistentialDread42</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    <span class="meme">*gestures vaguely at everything*</span> Does it even matter anymore?
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 876</span>
+                    <span class="downvotes">▼ 3</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <!-- Comment 3 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #4a00e0, #8e2de2);">Q</div>
+                    <span class="comment-user">QAnon_but_Ironic</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Wake up sheeple! The REAL story is that Palantir is named after the seeing stones from Lord of the Rings. TOLKIEN WARNED US. The Eye of Sauron is Fox News. It's all connected. I'm not crazy YOU'RE crazy. Do your own research (YouTube, 3am, trust me bro).
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 666</span>
+                    <span class="downvotes">▼ 420</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Comment 4 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #1e3c72, #2a5298);">D</div>
+                    <span class="comment-user">DadWhoJustLearnedToComment</span>
+                    <span class="comment-time">5 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    How do I share this on the Facebook? My grandson showed me how but I forgot. Also this article is too long. Also where is the print button. Also who is Palantir. Also in my day we got our news from Walter Cronkite and we LIKED it. Please call me. - Dad
+                    <br><br>
+                    Sent from my iPhone
+                    <br>
+                    Sent from my iPhone
+                    <br>
+                    Sent from my iPhone
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,891</span>
+                    <span class="downvotes">▼ 2</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Reply -->
+            <div class="comment reply">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #f472b6;">J</div>
+                    <span class="comment-user">JustTryingToHelp</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Dad this is a comments section, not email. We talked about this. Please stop posting your SSN.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,205</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <!-- Comment 5 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #c41e3a, #8b0000);">F</div>
+                    <span class="comment-user">FoxNewsOfficialAccount</span>
+                    <span class="comment-badge" style="background: #c41e3a;">OFFICIAL</span>
+                    <span class="comment-time">6 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    This article contains misinformation. Fox News is committed to fair and balanced journalism. Also, have you considered that immigrants are coming for your job? Just asking questions. Please watch tonight at 8pm for more things to worry about.
+                    <br><br>
+                    <span class="meme">— This comment was optimized by Article Insights™</span>
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 45</span>
+                    <span class="downvotes">▼ 8,932</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                    <span>🚩 Flagged as Parody</span>
+                </div>
+            </div>
+            
+            <!-- Comment 6 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #11998e, #38ef7d);">C</div>
+                    <span class="comment-user">ChomskyWouldHaveAFieldDay</span>
+                    <span class="comment-time">6 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    "Manufacturing Consent but with sprint planning and a Slack integration" is the most accurate description of modern media I've ever read. I'm going to get this tattooed. On my forehead. So I remember every time I look in the mirror why I drink.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 4,521</span>
+                    <span class="downvotes">▼ 34</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Comment 7 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #ffd700, #ff8c00);">A</div>
+                    <span class="comment-user">ActuallyItsAboutEthics</span>
+                    <span class="comment-time">7 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    First they came for the journalists, and I said nothing because I got my news from a meme page. Then they came for the meme pages, and there was no one left to make fun of them in a way I could understand. Anyway, like and subscribe.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 2,890</span>
+                    <span class="downvotes">▼ 67</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Comment 8 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #666;">B</div>
+                    <span class="comment-user">BoomerButSelfAware</span>
+                    <span class="comment-time">8 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I'm 67 and I watch Fox News every night. After reading this I'm starting to wonder if that's why I'm afraid of everything and have high blood pressure. Related: does anyone know how to change the channel? My remote has been stuck on Fox since 2008.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 5,678</span>
+                    <span class="downvotes">▼ 145</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Reply -->
+            <div class="comment reply">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #00d4ff;">P</div>
+                    <span class="comment-user">PalantirEngineer_Throwaway</span>
+                    <span class="comment-time">7 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    That's not a bug, it's a feature. You're Welcome.
+                    <br><br>
+                    <span class="meme">— Sent from my Palantir™ Smart TV That's Definitely Not Recording You</span>
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 3,456</span>
+                    <span class="downvotes">▼ 12</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+            
+            <!-- Comment 9 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #000, #333);">N</div>
+                    <span class="comment-user">NihilistNancy</span>
+                    <span class="comment-time">9 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    lmao imagine thinking this is new. brother we've been the product since television was invented. at least now they're honest about it. sort of. in a press release. buried in paragraph 7. of an axios article. that nobody read. because we're all too busy being A/B tested. anyway goodnight.
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 1,789</span>
+                    <span class="downvotes">▼ 23</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Comment 10 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #ff6b6b, #ee5a24);">T</div>
+                    <span class="comment-user">ThanksgivingIsGoingToBeAwkward</span>
+                    <span class="comment-badge top">TRENDING</span>
+                    <span class="comment-time">10 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Great, now I have to explain to my dad that his brain has been A/B tested for a year while passing the cranberry sauce. "Hey Dad, remember when you got really angry about critical race theory? That was a Palantir engineer in Palo Alto optimizing your engagement metrics." HAPPY HOLIDAYS EVERYONE 🦃
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 12,456</span>
+                    <span class="downvotes">▼ 89</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Comment 11 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: linear-gradient(135deg, #a8e6cf, #88d8b0);">J</div>
+                    <span class="comment-user">JustHereForTheMemes</span>
+                    <span class="comment-time">11 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Me reading this article: 👁️👄👁️
+                    <br><br>
+                    The Palantir AI watching me read this article: 👁️👁️👁️👁️👁️
+                    <br><br>
+                    My FBI agent watching me read about the Palantir AI: 😐
+                </div>
+                <div class="comment-actions">
+                    <span class="upvotes">▲ 8,901</span>
+                    <span class="downvotes">▼ 34</span>
+                    <span>Reply</span>
+                    <span>Share</span>
+                </div>
+            </div>
+            
+            <!-- Load More -->
+            <div style="text-align: center; padding: 20px;">
+                <button style="padding: 12px 30px; background: var(--ink); color: white; border: none; font-family: 'Libre Franklin'; text-transform: uppercase; letter-spacing: 1px; cursor: pointer;">Load 2,836 More Comments (Why Would You Do This To Yourself)</button>
+            </div>
+        </section>
+        
+        <!-- YOU MIGHT ALSO BE INTERESTED IN -->
+        <section class="also-interested">
+            <h3 class="section-title">🔮 You Might Also Be Interested In</h3>
+            <div class="interest-list">
+                <span class="interest-item">CIA TikTok Recruitment</span>
+                <span class="interest-item">Surveillance Capitalism</span>
+                <span class="interest-item">Why Is My Smart TV Watching Me</span>
+                <span class="interest-item">Manufacturing Consent PDF</span>
+                <span class="interest-item">How To Talk To Parents About Fox News</span>
+                <span class="interest-item">Is My Toaster A Fed</span>
+                <span class="interest-item">Palantir Stock Should I Buy</span>
+                <span class="interest-item">Thanksgiving Dinner Survival Guide</span>
+                <span class="interest-item">Alex Karp Ponytail</span>
+                <span class="interest-item">Media Literacy For Boomers</span>
+                <span class="interest-item">Faraday Cage DIY</span>
+                <span class="interest-item">Countries Without Extradition</span>
+            </div>
+        </section>
+        
+        <!-- AD BREAK FINAL -->
+        <div class="ad-container" style="background: #000; border-color: #c41e3a; margin: 0;">
+            <div class="ad-label" style="color: #c41e3a;">A Message From Our Sponsors</div>
+            <div class="ad-content">
+                <div class="ad-headline" style="color: #fff;">🦅 FREEDOM THOUGHT™ SUPPLEMENTS</div>
+                <div class="ad-body" style="color: #ccc;">Feeling like your thoughts are too calm? Not angry enough at things that don't affect you? Try FREEDOM THOUGHT™ — the only supplement endorsed by people who yell at the television! Contains: caffeine, rage, and "natural flavors" (it's just more rage).</div>
+                <a href="#" class="ad-cta">ORDER NOW: $44.99/month (auto-renews forever)</a>
+                <div style="font-size: 8px; margin-top: 10px; color: #666;">*These statements have not been evaluated by the FDA, your doctor, or anyone with a medical degree. Side effects may include: elevated blood pressure, paranoia, and an uncontrollable urge to share memes about gas prices.</div>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-logo">HuckFinn</div>
+            <p class="footer-tagline">"America's Finest News Source Since We Made That Up"</p>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Advertise</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy (lol)</a>
+                <a href="#">Terms</a>
+                <a href="#">Ethics Policy (also lol)</a>
+            </div>
+            <p class="copyright">© 2025 HuckFinn Media LLC. All Rights Reserved. Any resemblance to actual events or persons, living or dead, is entirely intentional and should concern you.</p>
+            <p style="font-size: 9px; margin-top: 10px; opacity: 0.4;">This site does not use cookies because we're not a real website. But if we were, we'd track everything. You know that, right?</p>
+        </footer>
+    </div>
+</body>
+</html>
