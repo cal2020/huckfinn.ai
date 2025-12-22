@@ -368,6 +368,332 @@
             outline: 2px dashed var(--accent);
             outline-offset: 2px;
         }
+
+        /* ========================================
+           BREAKING NEWS TICKER
+           ======================================== */
+        .breaking-ticker {
+            background: var(--accent);
+            color: var(--cream);
+            padding: 8px 0;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .ticker-label {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: var(--ink);
+            color: var(--gold);
+            padding: 8px 15px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ticker-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .ticker-content {
+            display: flex;
+            animation: ticker 30s linear infinite;
+            padding-left: 140px;
+        }
+
+        .ticker-content:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            white-space: nowrap;
+            padding: 0 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .ticker-item a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .ticker-item a:hover {
+            color: var(--gold);
+        }
+
+        .ticker-separator {
+            color: var(--gold);
+            padding: 0 10px;
+        }
+
+        /* ========================================
+           SEARCH AND FILTER
+           ======================================== */
+        .search-filter-section {
+            background: var(--ink);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 3px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 14px;
+            border: 2px solid var(--cream);
+            background: var(--cream);
+            color: var(--ink);
+            border-radius: 3px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--gold);
+        }
+
+        .search-input::placeholder {
+            color: var(--gray);
+        }
+
+        .search-clear {
+            padding: 12px 20px;
+            background: var(--accent);
+            color: var(--cream);
+            border: none;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+
+        .search-clear:hover {
+            background: #a00000;
+        }
+
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .category-btn {
+            padding: 6px 14px;
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid var(--gray);
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .category-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .category-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--ink);
+        }
+
+        .filter-results {
+            text-align: center;
+            padding: 10px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 12px;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* ========================================
+           FEATURED STORIES (EDITOR'S PICKS)
+           ======================================== */
+        .featured-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f2e8 0%, #ebe7db 100%);
+            border: 3px double var(--accent);
+            position: relative;
+        }
+
+        .featured-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .featured-header::before,
+        .featured-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .featured-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .featured-card {
+            background: var(--cream);
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            transition: all 0.2s;
+        }
+
+        .featured-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .featured-card .featured-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .featured-card .featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .featured-card .featured-title a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .featured-card .featured-title a:hover {
+            color: var(--accent);
+        }
+
+        .featured-card .featured-category {
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           BACK TO TOP BUTTON
+           ======================================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--ink);
+            color: var(--cream);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Hidden article styling */
+        .article-item.hidden,
+        .date-section.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -382,6 +708,34 @@
                 <span>Vol. CLXXXII</span>
             </div>
         </header>
+
+        <!-- Breaking News Ticker -->
+        <div class="breaking-ticker">
+            <div class="ticker-label">Breaking</div>
+            <div class="ticker-content">
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---Professors-ChatGPT-Meltdown.html">Nation's Professors Achieve New Shades Of Red As Students Continue Using ChatGPT</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---DMV-AI-Vanity-Plates.html">California DMV Reports 340% Increase In Transaction Times</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---VC-Workers-Bug-Not-Feature.html">Venture Capitalists Discover Workers Are A Bug, Not A Feature</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-14-25/huckfinn---NeurIPS-Leather-Jacket.html">Man In Leather Jacket Explains How To Prevent Human Extinction</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---Wikipedia-Donation-Campaign.html">Wikipedia Enters 23rd Consecutive Year Of Being Days From Financial Ruin</a></span>
+                <span class="ticker-separator">★</span>
+                <!-- Duplicate for seamless loop -->
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---Professors-ChatGPT-Meltdown.html">Nation's Professors Achieve New Shades Of Red As Students Continue Using ChatGPT</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---DMV-AI-Vanity-Plates.html">California DMV Reports 340% Increase In Transaction Times</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---VC-Workers-Bug-Not-Feature.html">Venture Capitalists Discover Workers Are A Bug, Not A Feature</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-14-25/huckfinn---NeurIPS-Leather-Jacket.html">Man In Leather Jacket Explains How To Prevent Human Extinction</a></span>
+                <span class="ticker-separator">★</span>
+                <span class="ticker-item"><a href="articles/12-17-25/huckfinn---Wikipedia-Donation-Campaign.html">Wikipedia Enters 23rd Consecutive Year Of Being Days From Financial Ruin</a></span>
+                <span class="ticker-separator">★</span>
+            </div>
+        </div>
 
         <!-- Page Header -->
         <div class="page-header">
@@ -401,7 +755,52 @@
             </div>
             <div class="stat">
                 <div class="stat-number">∞</div>
-                <div class="stat-label">Readers' Despair</div>
+                <div class="stat-label">Punchlines Landed</div>
+            </div>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="search-filter-section">
+            <div class="search-box">
+                <input type="text" class="search-input" id="articleSearch" placeholder="Search the archives... (e.g., 'AI', 'healthcare', 'billionaire')">
+                <button class="search-clear" id="clearSearch">Clear</button>
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="ai">AI</button>
+                <button class="category-btn" data-category="technology">Technology</button>
+                <button class="category-btn" data-category="business">Business</button>
+                <button class="category-btn" data-category="health">Health</button>
+                <button class="category-btn" data-category="politics">Politics</button>
+                <button class="category-btn" data-category="science">Science</button>
+                <button class="category-btn" data-category="academia">Academia</button>
+                <button class="category-btn" data-category="media">Media</button>
+                <button class="category-btn" data-category="infographic">Infographics</button>
+            </div>
+        </div>
+        <div class="filter-results" id="filterResults"></div>
+
+        <!-- Editor's Picks -->
+        <div class="featured-section" id="featuredSection">
+            <div class="featured-header">
+                <h2>Editor's Picks</h2>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-card">
+                    <div class="featured-number">01</div>
+                    <div class="featured-title"><a href="articles/12-14-25/huckfinn---NeurIPS-Leather-Jacket.html">Man In Leather Jacket Explains How To Prevent Human Extinction At Conference Where 75% Cannot Define Thing They're Building</a></div>
+                    <div class="featured-category">Technology • AI</div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-number">02</div>
+                    <div class="featured-title"><a href="articles/huckfinn_FBI Launches Largest Manhunt In History For-'Al,'-Single-Man-Exposed-As-Holding-14-Million-Jobs-Simultaneously.html">FBI Launches Largest Manhunt In History For 'Al,' Single Man Exposed As Holding 14 Million Jobs</a></div>
+                    <div class="featured-category">AI • Business</div>
+                </div>
+                <div class="featured-card">
+                    <div class="featured-number">03</div>
+                    <div class="featured-title"><a href="articles/12-17-25/huckfinn---Wikipedia-Donation-Campaign.html">Wikipedia Enters 23rd Consecutive Year Of Being Mere Days From Financial Ruin</a></div>
+                    <div class="featured-category">Internet • Satire</div>
+                </div>
             </div>
         </div>
 
@@ -1130,11 +1529,141 @@
 
         <!-- Footer -->
         <footer class="page-footer">
-            <div class="footer-motto">"We Report, You Despair"</div>
+            <div class="footer-motto">"We Report, You Decide"</div>
             <div class="footer-links">
                 © 2025 HuckFinn Media Group • All Rights Reserved • <a href="#">Subscribe</a> • <a href="#">Advertise</a> • <a href="#">Careers (No Healthcare)</a>
             </div>
         </footer>
     </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script>
+        // ========================================
+        // SEARCH AND FILTER FUNCTIONALITY
+        // ========================================
+        const searchInput = document.getElementById('articleSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const articleItems = document.querySelectorAll('.article-item');
+        const dateSections = document.querySelectorAll('.date-section');
+        const filterResults = document.getElementById('filterResults');
+        const featuredSection = document.getElementById('featuredSection');
+
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        function filterArticles() {
+            let visibleCount = 0;
+            const searchTerm = currentSearch.toLowerCase();
+
+            dateSections.forEach(section => {
+                let sectionHasVisible = false;
+                const articles = section.querySelectorAll('.article-item');
+
+                articles.forEach(article => {
+                    const title = article.querySelector('.article-title').textContent.toLowerCase();
+                    const category = article.querySelector('.article-category').textContent.toLowerCase();
+
+                    const matchesSearch = searchTerm === '' ||
+                        title.includes(searchTerm) ||
+                        category.includes(searchTerm);
+
+                    let matchesCategory = currentCategory === 'all';
+                    if (!matchesCategory) {
+                        if (currentCategory === 'infographic') {
+                            matchesCategory = article.querySelector('.tag-infographic') !== null;
+                        } else {
+                            matchesCategory = category.includes(currentCategory);
+                        }
+                    }
+
+                    if (matchesSearch && matchesCategory) {
+                        article.classList.remove('hidden');
+                        sectionHasVisible = true;
+                        visibleCount++;
+                    } else {
+                        article.classList.add('hidden');
+                    }
+                });
+
+                if (sectionHasVisible) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+
+            // Update results message
+            if (currentSearch || currentCategory !== 'all') {
+                if (visibleCount === 0) {
+                    filterResults.textContent = 'No articles found. Try a different search or category.';
+                } else {
+                    filterResults.textContent = `Showing ${visibleCount} article${visibleCount !== 1 ? 's' : ''}`;
+                }
+                featuredSection.style.display = 'none';
+            } else {
+                filterResults.textContent = '';
+                featuredSection.style.display = 'block';
+            }
+        }
+
+        // Search input handler
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            filterArticles();
+        });
+
+        // Clear button handler
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            currentSearch = '';
+            currentCategory = 'all';
+            categoryBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === 'all');
+            });
+            filterArticles();
+        });
+
+        // Category button handlers
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                filterArticles();
+            });
+        });
+
+        // ========================================
+        // BACK TO TOP BUTTON
+        // ========================================
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ========================================
+        // KEYBOARD NAVIGATION
+        // ========================================
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                clearBtn.click();
+            }
+        });
+    </script>
 </body>
 </html>
