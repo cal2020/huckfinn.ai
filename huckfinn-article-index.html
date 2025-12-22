@@ -751,7 +751,7 @@
             </div>
             <div class="stat">
                 <div class="stat-number">15</div>
-                <div class="stat-label">Days of Coverage</div>
+                <div class="stat-label" id="daysLabel">Days of Coverage</div>
             </div>
             <div class="stat">
                 <div class="stat-number">∞</div>
@@ -1724,6 +1724,66 @@
         const footerMotto = document.getElementById('footerMotto');
         const randomTagline = footerTaglines[Math.floor(Math.random() * footerTaglines.length)];
         footerMotto.textContent = `"${randomTagline}"`;
+
+        // ========================================
+        // RANDOM DAYS LABEL
+        // ========================================
+        const daysLabels = [
+            "Days of Coverage",
+            "Days Since We Started This",
+            "Days of Journalistic Reckoning",
+            "Days Reality Has Failed Us",
+            "Consecutive Days of Truth-Telling",
+            "Days in the Trenches",
+            "Days Since Incident",
+            "Days Before the Robots Win",
+            "Days of Plausible Deniability",
+            "Publishing Streak",
+            "Days Until We're Acquired",
+            "Days Without a Retraction",
+            "Days of Plausible Fiction",
+            "Consecutive Days Satirizing",
+            "Days Ahead of Reality",
+            "Days Since Launch (Help)",
+            "Days On This Beat",
+            "Days of Uncomfortable Truths",
+            "Days Running This Bit",
+            "Days Reality Copied Us",
+            "Days We've Been Right",
+            "Days Unindicted",
+            "Days of Informed Panic",
+            "Days Before the Lawsuit",
+            "Days Telling It Sideways",
+            "Days of Strategic Absurdity",
+            "Days Running This Grift",
+            "Days of Concern Trolling",
+            "Days Ratio'd by Reality",
+            "Days of Accidental Prophecy",
+            "Days of Plausible Satire",
+            "Days Foreshadowing Doom",
+            "Days of Civic Despair",
+            "Days of Maximum Chaos",
+            "Days of Responsible Panic",
+            "Days Mainlining Irony",
+            "Days of Aggressive Whimsy",
+            "Days Clinging to Relevance",
+            "Days Before We Fold",
+            "Days Outpacing Reality",
+            "Days of Editorial Regret",
+            "Days Monetizing Anxiety",
+            "Days of Targeted Absurdism",
+            "Days Dunking on Society",
+            "Days Pre-Apocalypse",
+            "Days of Peak Journalism",
+            "Days Documenting the Decline",
+            "Days of Informed Hysteria",
+            "Days Publishing Anyway",
+            "Days of Aggressive Honesty"
+        ];
+
+        const daysLabel = document.getElementById('daysLabel');
+        const randomDaysLabel = daysLabels[Math.floor(Math.random() * daysLabels.length)];
+        daysLabel.textContent = randomDaysLabel;
     </script>
 </body>
 </html>
