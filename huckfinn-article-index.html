@@ -1529,7 +1529,7 @@
 
         <!-- Footer -->
         <footer class="page-footer">
-            <div class="footer-motto">"We Report, You Decide"</div>
+            <div class="footer-motto" id="footerMotto">"We Report, You Decide"</div>
             <div class="footer-links">
                 © 2025 HuckFinn Media Group • All Rights Reserved • <a href="#">Subscribe</a> • <a href="#">Advertise</a> • <a href="#">Careers (No Healthcare)</a>
             </div>
@@ -1664,6 +1664,66 @@
                 clearBtn.click();
             }
         });
+
+        // ========================================
+        // RANDOM FOOTER TAGLINE
+        // ========================================
+        const footerTaglines = [
+            "We Report, You Decide",
+            "We Report, You Recoil",
+            "We Report, You Laugh (Then Cry)",
+            "We Report, You Process Your Feelings",
+            "We Report, You Question Everything",
+            "We Report, You Snort Coffee",
+            "We Report, You Share Ironically",
+            "We Report, You Delete Social Media",
+            "We Report, You Call Your Therapist",
+            "We Report, You Update Your LinkedIn",
+            "We Report, You Cancel Plans",
+            "We Report, You Stockpile Goods",
+            "We Report, You Move Abroad",
+            "We Report, You Start Drinking",
+            "We Report, You Stop Drinking",
+            "We Report, You Adopt a Dog",
+            "We Report, You Join a Commune",
+            "We Report, You Ghost Your Responsibilities",
+            "We Report, You Become the Problem",
+            "We Report, You Rage-Scroll",
+            "We Report, You Doomscroll Faster",
+            "We Report, You Screenshot for Later",
+            "We Report, You Forward to HR",
+            "We Report, You Quit Your Job",
+            "We Report, You Start a Podcast",
+            "We Report, You Pivot to Substack",
+            "We Report, You Blame the Algorithm",
+            "We Report, You Touch Grass",
+            "We Report, You Become Ungovernable",
+            "We Report, You Malfunction",
+            "We Report, You Short-Circuit",
+            "We Report, You Buffer Indefinitely",
+            "We Report, You Reboot Society",
+            "We Report, You Install Updates (There Are None)",
+            "We Report, You CTRL+ALT+DELETE Your Day",
+            "We Report, You Clear Your Cache of Hope",
+            "We Report, You Run Diagnostics on Democracy",
+            "We Report, You Defragment Your Worldview",
+            "We Report, You Upgrade to Premium Despair",
+            "We Report, You Stare Into the Void (The Void Stares Back)",
+            "We Report, You Consult the Bones",
+            "We Report, You Summon Your Inner Child (They're Also Confused)",
+            "We Report, You Retreat to Your Happy Place (It's Gentrified)",
+            "We Report, You Manifest a Different Timeline",
+            "We Report, You Embrace the Chaos",
+            "We Report, You Find Meaning (Just Kidding)",
+            "We Report, You Transcend (Terms and Conditions Apply)",
+            "We Report, You Become One With the Algorithm",
+            "We Report, You Achieve Enlightenment (Subject to Market Conditions)",
+            "We Report, You Recalibrate Your Expectations"
+        ];
+
+        const footerMotto = document.getElementById('footerMotto');
+        const randomTagline = footerTaglines[Math.floor(Math.random() * footerTaglines.length)];
+        footerMotto.textContent = `"${randomTagline}"`;
     </script>
 </body>
 </html>
