@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', Georgia, serif;
+            background: #f4f1eb;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        .masthead {
+            background: #1a1a1a;
+            color: #f4f1eb;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 4px double #c9a227;
+        }
+
+        .masthead h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .masthead .tagline {
+            font-style: italic;
+            color: #c9a227;
+            margin-top: 5px;
+            font-size: 1.1rem;
+        }
+
+        .masthead .date-line {
+            font-size: 0.85rem;
+            margin-top: 10px;
+            color: #888;
+        }
+
+        /* NAV */
+        .nav-bar {
+            background: #2a2a2a;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-bar a {
+            color: #c9a227;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-bar a:hover {
+            color: #fff;
+        }
+
+        /* BREAKING BANNER */
+        .breaking-banner {
+            background: linear-gradient(90deg, #8b0000, #c41e3a, #8b0000);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* MAIN CONTENT */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* ARTICLE */
+        .article-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .article-header .section-label {
+            background: #c9a227;
+            color: #1a1a1a;
+            padding: 5px 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .article-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .article-header .subhead {
+            font-size: 1.3rem;
+            color: #555;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .byline {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .byline .author {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+            position: relative;
+            margin: 30px 0;
+            background: linear-gradient(135deg, #2c3e50, #34495e, #2c3e50);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .hero-image .image-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .hero-image .emoji-face {
+            font-size: 120px;
+            animation: maskOn 3s ease-in-out infinite;
+        }
+
+        @keyframes maskOn {
+            0%, 100% { transform: scale(1); filter: grayscale(0); }
+            50% { transform: scale(1.05); filter: grayscale(100%); }
+        }
+
+        .hero-image .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .floating-item {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .hero-image figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.85);
+            color: #ccc;
+            padding: 12px 15px;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+        }
+
+        .article-body .dateline {
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pull-quote {
+            border-left: 4px solid #c9a227;
+            border-right: 4px solid #c9a227;
+            padding: 25px 30px;
+            margin: 30px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            background: #fff;
+            color: #333;
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-style: normal;
+            color: #666;
+        }
+
+        /* ADS */
+        .ad-container {
+            background: linear-gradient(135deg, #fff9e6, #fff5d6);
+            border: 2px dashed #c9a227;
+            padding: 25px;
+            margin: 35px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .ad-container::before {
+            content: "ADVERTISEMENT";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c9a227;
+            color: #1a1a1a;
+            padding: 2px 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .ad-container h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .ad-container p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .ad-container .ad-cta {
+            background: #1a1a1a;
+            color: #c9a227;
+            padding: 10px 25px;
+            border: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ad-container .ad-cta:hover {
+            background: #c9a227;
+            color: #1a1a1a;
+        }
+
+        /* COMMENTS */
+        .comments-section {
+            background: #fff;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid #ddd;
+        }
+
+        .comments-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #c9a227;
+        }
+
+        .comment {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .comment-username {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .comment-badge {
+            background: #c9a227;
+            color: #1a1a1a;
+            padding: 2px 8px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+
+        .comment-time {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .comment-body {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .comment-actions span {
+            cursor: pointer;
+        }
+
+        .comment-actions span:hover {
+            color: #c9a227;
+        }
+
+        .reply {
+            margin-left: 50px;
+            padding-left: 20px;
+            border-left: 2px solid #eee;
+        }
+
+        .deleted-comment {
+            color: #999;
+            font-style: italic;
+            background: #f9f9f9;
+            padding: 15px;
+        }
+
+        /* RELATED ARTICLES */
+        .related-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .related-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .related-item {
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 3px solid #c9a227;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .related-item:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        .related-item h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+
+        .related-item p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* GEM GAME */
+        .game-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 3px solid #c9a227;
+            border-radius: 10px;
+        }
+
+        .game-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #c9a227;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .game-section .game-subtitle {
+            color: #888;
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 40px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .game-stats div {
+            text-align: center;
+        }
+
+        .game-stats .label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-stats .value {
+            font-size: 1.8rem;
+            color: #c9a227;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 45px);
+            grid-template-rows: repeat(8, 45px);
+            gap: 3px;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .gem-cell {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: #222;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            user-select: none;
+        }
+
+        .gem-cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.5);
+        }
+
+        .gem-cell.selected {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.8);
+            animation: selectedPulse 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes selectedPulse {
+            from { box-shadow: 0 0 20px rgba(201, 162, 39, 0.8); }
+            to { box-shadow: 0 0 30px rgba(201, 162, 39, 1); }
+        }
+
+        .gem-cell.matched {
+            animation: matchPop 0.4s ease-out forwards;
+        }
+
+        @keyframes matchPop {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4) rotate(180deg); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .gem-cell.falling {
+            animation: gemFall 0.3s ease-in;
+        }
+
+        @keyframes gemFall {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .gem-cell.invalid-move {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .game-btn {
+            background: #c9a227;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .game-btn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .combo-display {
+            color: #c9a227;
+            font-size: 1.5rem;
+            font-weight: 700;
+            min-height: 40px;
+            text-align: center;
+        }
+
+        .combo-display.active {
+            animation: comboFlash 0.5s ease-out;
+        }
+
+        @keyframes comboFlash {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); color: #fff; }
+            100% { transform: scale(1); }
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #c9a227;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .footer .copyright {
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        /* OPINION BOX */
+        .opinion-box {
+            background: #8b0000;
+            color: #fff;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .opinion-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #c9a227;
+        }
+
+        .opinion-box p {
+            font-style: italic;
+        }
+
+        /* POLL */
+        .poll-box {
+            background: #fff;
+            border: 2px solid #c9a227;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .poll-box h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 15px;
+        }
+
+        .poll-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            margin: 8px 0;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .poll-option:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        .poll-bar {
+            height: 20px;
+            background: #c9a227;
+            margin-top: 5px;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <h1>HuckFinn</h1>
+        <div class="tagline">America's Finest Newspaper</div>
+        <div class="date-line">Vol. CXLVII No. 42 | Tuesday, December 23, 2025 | Price: Your Authentic Self</div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="#">News</a>
+        <a href="#">Politics</a>
+        <a href="#">Business</a>
+        <a href="#">Wellness™</a>
+        <a href="#">Opinion</a>
+        <a href="#">Obituaries (Careers)</a>
+        <a href="#">Games</a>
+    </nav>
+
+    <div class="breaking-banner">
+        🚨 BREAKING: Local Employee Has Feeling; Escorted From Building 🚨
+    </div>
+
+    <main class="container">
+        <article>
+            <header class="article-header">
+                <span class="section-label">Workplace Wellness</span>
+                <h2>Former Government Interrogator Advises Workers To Use Same Emotional Suppression Techniques She Deployed On Child Predators</h2>
+                <p class="subhead">"Your authentic self is irrelevant," says woman who professionally extracted authentic selves for 12 years</p>
+            </header>
+
+            <div class="byline">
+                By <span class="author">MARGARET HOLLOWAY-SINCLAIR</span> | Synergy Correspondent<br>
+                December 23, 2025 • 8 min read
+            </div>
+
+            <figure class="hero-image">
+                <div class="floating-elements">
+                    <span class="floating-item" style="top: 10%; left: 10%; animation-delay: 0s;">💼</span>
+                    <span class="floating-item" style="top: 20%; right: 15%; animation-delay: 1s;">🎭</span>
+                    <span class="floating-item" style="top: 60%; left: 8%; animation-delay: 2s;">📊</span>
+                    <span class="floating-item" style="top: 70%; right: 10%; animation-delay: 0.5s;">🤐</span>
+                    <span class="floating-item" style="top: 40%; left: 20%; animation-delay: 1.5s;">💀</span>
+                    <span class="floating-item" style="bottom: 20%; right: 25%; animation-delay: 2.5s;">✨</span>
+                    <span class="floating-item" style="top: 15%; left: 40%; animation-delay: 3s;">🏢</span>
+                    <span class="floating-item" style="bottom: 30%; left: 15%; animation-delay: 1.8s;">😐</span>
+                </div>
+                <div class="image-content">
+                    <div class="emoji-face">🎭</div>
+                    <p style="margin-top: 15px; font-size: 14px; color: #aaa;">THE PROFESSIONAL SELF™</p>
+                </div>
+                <figcaption>
+                    <strong>AUTHENTICITY CONTAINED:</strong> Artist's rendering of the ideal employee, whose personality has been safely stored off-site in accordance with company policy. The mask stays on until Thanksgiving.
+                </figcaption>
+            </figure>
+
+            <div class="article-body">
+                <p><span class="dateline">NEW YORK —</span> In a development that has delighted HR departments and terrified anyone who has ever had a thought, former Secret Service agent and professional secret-extractor Evy Poumpouras has advised American workers to deploy the same emotional suppression techniques she used while interrogating suspected criminals—including, in one memorable anecdote, a teenager accused of assaulting a toddler.</p>
+
+                <p>"Don't bring your authentic self to work. I don't want your authentic self," Poumpouras declared on a podcast, presumably while maintaining the exact poker face she once used to interview child predators. "I want your professional self. I want your respectful self. I want your competent self."</p>
+
+                <p>The statement, which reads like the mission statement for a particularly efficient dystopia, was published without apparent irony in a major business publication, where it was presented as career advice rather than the plot of a Black Mirror episode.</p>
+
+                <div class="pull-quote">
+                    "Your authentic self is irrelevant."
+                    <cite>— Published as advice, 2025</cite>
+                </div>
+
+                <p>To illustrate why employees should suppress all genuine human emotion, Poumpouras shared an anecdote about interrogating a 16-year-old boy who had allegedly assaulted a 3-year-old girl. "What would my authentic self say?" she asked rhetorically. "'What are you thinking? How could you?' No, I brought my professional self."</p>
+
+                <p>The comparison—between interviewing suspected child abusers and attending your company's 10 a.m. standup meeting—was apparently intended to be instructive rather than deeply concerning.</p>
+            </div>
+
+            <!-- AD 1 -->
+            <div class="ad-container">
+                <h4>😐 MaskCorp™ Professional Identity Solutions</h4>
+                <p>"Why be yourself when you could be <em>professionally</em> hollow?"</p>
+                <p>Our patented Personality Suppression System™ helps you achieve peak workplace neutrality. Now with 40% less humanity!</p>
+                <button class="ad-cta">Surrender Your Identity →</button>
+            </div>
+
+            <div class="article-body">
+                <p>When reached for comment, the 3-year-old victim declined to weigh in on whether this interrogation technique translates well to quarterly performance reviews.</p>
+
+                <p>Poumpouras, author of the book <em>Becoming Bulletproof</em>, appears to have concluded that in the modern workplace, your personality is the bullet. The book, which teaches readers how to project unshakeable confidence through emotional armor, now serves as required reading at several Fortune 500 companies and at least one maximum-security prison.</p>
+
+                <p>"Honestly, nobody cares," Poumpouras added, in what may be the most efficient summary of corporate culture ever committed to audio. The quote is expected to appear on motivational posters in breakrooms nationwide by Q2 2026.</p>
+
+                <div class="opinion-box">
+                    <h4>📝 EDITOR'S NOTE</h4>
+                    <p>"We asked our editorial staff to share their authentic reactions to this story. They declined, citing professionalism. Their quarterly reviews are next week."</p>
+                </div>
+
+                <p>The article briefly—very briefly, around paragraph eleven—acknowledged research from Northwestern University's Kellogg School of Management suggesting that workplace authenticity actually improves well-being, colleague relationships, and organizational commitment. The study was mentioned in the same tone one might use to note that some people believe the earth is round.</p>
+
+                <p>The research also found that authenticity is "particularly difficult for marginalized and minority groups," a finding that the article about the dangers of authenticity chose not to explore in depth, or really at all, before returning to the main thesis that your true self is a liability.</p>
+
+                <div class="pull-quote">
+                    "If you're team-oriented, you leave your authentic self here."
+                    <cite>— Here being, presumably, the parking lot</cite>
+                </div>
+
+                <p>According to Poumpouras, authenticity leads to "sloppiness," which she contrasted with the smooth efficiency of a workplace where everyone has successfully impersonated the same LinkedIn profile. "That's not a team," she said of authentic workplaces, before describing her ideal team as a group of people who have "genuinely" abandoned their genuine selves.</p>
+
+                <p>The distinction between "genuine" and "authentic" was not clarified, possibly because the clarification would have required Poumpouras to express a genuine opinion.</p>
+            </div>
+
+            <!-- AD 2 -->
+            <div class="ad-container">
+                <h4>🦃 ThanksgivingWindow® Premium</h4>
+                <p>Only 4 hours of authenticity per year? Make them count.</p>
+                <p>Our licensed Authenticity Release Program™ provides a safe, controlled environment for annual personality expression. Family dysfunction sold separately.</p>
+                <button class="ad-cta">Book Your Slot →</button>
+            </div>
+
+            <div class="article-body">
+                <p>Perhaps most helpfully, Poumpouras offered a narrow window for self-expression: "You can bring your authentic self to a Thanksgiving meal with your family if you'd like to." The advice acknowledges Thanksgiving as the one American institution where authenticity is not only permitted but traditionally results in at least one relative leaving early.</p>
+
+                <p>Ryne Sherman, chief science officer at Hogan Assessment Systems, agreed with the broad strokes. "Bringing your authentic self to work could get you into trouble," he confirmed, giving the example of responding to a frustrating email by "screaming" or "stomping." Sherman acknowledged that suppressing the urge to scream at work is technically "inauthentic" but argued this is good, actually.</p>
+
+                <p>Neither expert addressed what happens to the screaming once suppressed, though several workplace shooting statistics were available upon request.</p>
+
+                <p>As of press time, millions of American workers were reporting to jobs where they would spend 8-10 hours performing elaborate impressions of people who don't have feelings, before returning home to briefly acknowledge they exist, then doing it all again tomorrow.</p>
+
+                <p>The authentic selves, meanwhile, remain in the parking lot, where they were asked to wait.</p>
+            </div>
+
+            <!-- POLL -->
+            <div class="poll-box">
+                <h4>📊 READER POLL: Where Do You Store Your Authentic Self During Work Hours?</h4>
+                <div class="poll-option">
+                    🚗 Car trunk (41%)
+                    <div class="poll-bar" style="width: 41%;"></div>
+                </div>
+                <div class="poll-option">
+                    📦 Amazon locker (27%)
+                    <div class="poll-bar" style="width: 27%;"></div>
+                </div>
+                <div class="poll-option">
+                    🏠 Left it at Thanksgiving; forgot to pick it up (19%)
+                    <div class="poll-bar" style="width: 19%;"></div>
+                </div>
+                <div class="poll-option">
+                    ❓ What authentic self? (13%)
+                    <div class="poll-bar" style="width: 13%;"></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- COMMENTS SECTION -->
+        <section class="comments-section">
+            <h3>💬 Comments (847)</h3>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🏆</div>
+                    <span class="comment-username">SynergyMaximizer2024</span>
+                    <span class="comment-badge">TOP CONTRIBUTOR</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    First! Also, this is literally what I've been saying. My authentic self got me fired from three jobs. My professional self has a corner office. Stay hollow, kings. 👑
+                </div>
+                <div class="comment-actions">
+                    <span>👍 2.4k</span>
+                    <span>👎 89</span>
+                    <span>Reply</span>
+                    <span>🚩 Report</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🤡</div>
+                        <span class="comment-username">AuthenticAndUnemployed</span>
+                        <span class="comment-time">1 hour ago</span>
+                    </div>
+                    <div class="comment-body">
+                        Imagine bragging about being a husk. Couldn't be me. (It is me. Please help.)
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 892</span>
+                        <span>👎 12</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🎭</div>
+                    <span class="comment-username">HRCompliant_Karen</span>
+                    <span class="comment-badge">VERIFIED HR</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    We're printing this article and putting it in the break room. Right next to the "Hang In There" cat poster and the mandatory fun calendar. 📋✨
+                </div>
+                <div class="comment-actions">
+                    <span>👍 1.1k</span>
+                    <span>👎 445</span>
+                    <span>Reply</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">😤</div>
+                        <span class="comment-username">JustGotWrittenUp</span>
+                        <span class="comment-time">2 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        The "mandatory fun calendar" sent me into orbit. I have a "voluntary enthusiasm session" tomorrow and I can't stop screaming (internally, professionally).
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 567</span>
+                        <span>👎 3</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🧠</div>
+                    <span class="comment-username">ActuallyReadTheStudy</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Did... did anyone else notice they buried the Northwestern study that directly contradicts the entire premise? Paragraph 11. It's RIGHT THERE. "Authenticity at work can improve well-being, colleague relationships, and organizational commitment." But sure, let's lead with the interrogator.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 743</span>
+                    <span>👎 156</span>
+                    <span>Reply</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">📰</div>
+                        <span class="comment-username">JournalismUndergrad</span>
+                        <span class="comment-time">3 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        That's called "burying the lede" and it's a proud journalistic tradition. Source: am buried under student debt learning this exact technique.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 421</span>
+                        <span>👎 8</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">💀</div>
+                    <span class="comment-username">QuietQuitter47</span>
+                    <span class="comment-time">5 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    "Bring your genuine self who genuinely cares about the mission" LMAOOO the mission is making a billionaire slightly more billionaire-y. My genuine self doesn't care about that. That's why I bring my professional self, who pretends to.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 3.2k</span>
+                    <span>👎 67</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment deleted-comment">
+                [This comment has been removed for expressing an authentic opinion]
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🦅</div>
+                    <span class="comment-username">BootstrapPatriot1776</span>
+                    <span class="comment-time">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Back in MY day we didn't have "authentic selves." We had WORK ETHIC. I've been professionally hollow for 40 years and I only cried in my car twice. A WEEK. This generation is soft.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 234</span>
+                    <span>👎 1.8k</span>
+                    <span>Reply</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🥺</div>
+                        <span class="comment-username">ZillennialInTherapy</span>
+                        <span class="comment-time">3 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        "Only cried in my car twice a week" is not the flex you think it is, sir. That's a symptom. That's literally a symptom.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 2.9k</span>
+                        <span>👎 45</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🤖</div>
+                    <span class="comment-username">TotallyHumanWorker</span>
+                    <span class="comment-time">6 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    AS A FELLOW HUMAN I AGREE THAT AUTHENTIC SELVES ARE INEFFICIENT. I HAVE SUCCESSFULLY SUPPRESSED MINE SINCE [EMPLOYMENT_START_DATE]. PRODUCTIVITY LEVELS OPTIMAL. NO FEELINGS DETECTED. PLEASE DO NOT INVESTIGATE FURTHER.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 567</span>
+                    <span>👎 23</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🎪</div>
+                    <span class="comment-username">MidwestMomOf3</span>
+                    <span class="comment-time">5 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    "You can bring your authentic self to Thanksgiving" — has this woman MET families? That's the ONE day I absolutely cannot be myself. Last year I said I didn't like the stuffing and my mother didn't speak to me until Easter.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 4.1k</span>
+                    <span>👎 12</span>
+                    <span>Reply</span>
+                </div>
+
+                <div class="reply">
+                    <div class="comment-header">
+                        <div class="comment-avatar">🍗</div>
+                        <span class="comment-username">StuffingDefender</span>
+                        <span class="comment-time">4 hours ago</span>
+                    </div>
+                    <div class="comment-body">
+                        To be fair, not liking stuffing is a character flaw. Your mother was right.
+                    </div>
+                    <div class="comment-actions">
+                        <span>👍 892</span>
+                        <span>👎 234</span>
+                        <span>Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">📚</div>
+                    <span class="comment-username">PhilosophyMajorBarista</span>
+                    <span class="comment-time">7 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Sartre: "Hell is other people."<br>
+                    This lady: "Hell is being yourself around other people. Be no one. Be the void."<br><br>
+                    Anyway that'll be $7.50 for your oat milk latte.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 1.8k</span>
+                    <span>👎 34</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">⚖️</div>
+                    <span class="comment-username">DevilsAdvocate_Actually</span>
+                    <span class="comment-time">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    To be fair, she does have a point. My authentic self wants to tell my coworker his "reply all" habit is a war crime. My professional self just adds him to my outlook rules. Balance.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 923</span>
+                    <span>👎 67</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🔥</div>
+                    <span class="comment-username">BurnoutSpeedrun</span>
+                    <span class="comment-badge">ANY% WR HOLDER</span>
+                    <span class="comment-time">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Suppressed my authentic self for 6 years. Professional self got two promotions. Then both selves had a breakdown in a Costco parking lot. Currently authentic AND unemployed. Highly recommend.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 5.6k</span>
+                    <span>👎 23</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="comment-avatar">🎯</div>
+                    <span class="comment-username">LinkedInLunatic</span>
+                    <span class="comment-time">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Agree? ♻️ Repost if you're committed to leaving your personality in the parking lot every morning! #Hustle #GrindCulture #NobodyCares #Authenticity #JustKidding #ProfessionalHollowness
+                </div>
+                <div class="comment-actions">
+                    <span>👍 234</span>
+                    <span>👎 1.2k</span>
+                    <span>Reply</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- RELATED ARTICLES -->
+        <section class="related-section">
+            <h3>📰 Related Articles</h3>
+            <div class="related-grid">
+                <div class="related-item">
+                    <h4>Man Who Hasn't Had Original Thought Since 2019 Promoted To Senior Director</h4>
+                    <p>Business • 4 hours ago</p>
+                </div>
+                <div class="related-item">
+                    <h4>HR Reminds Employees That 'Being Yourself' Falls Outside Acceptable Use Policy</h4>
+                    <p>Corporate • Yesterday</p>
+                </div>
+                <div class="related-item">
+                    <h4>Parking Lot Now Primary Storage Facility For Employee Personalities, Dreams</h4>
+                    <p>Real Estate • 2 days ago</p>
+                </div>
+                <div class="related-item">
+                    <h4>Study Finds Workplace Would Run Smoother If Everyone Were The Same Person</h4>
+                    <p>Science • 3 days ago</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- YOU MIGHT ALSO LIKE -->
+        <section class="related-section">
+            <h3>🔮 You Might Also Be Interested In</h3>
+            <div class="related-grid">
+                <div class="related-item">
+                    <h4>Area Man's 'Whole Self' Rejected By Employer; 'Half Self' To Begin Monday</h4>
+                    <p>Local • 5 hours ago</p>
+                </div>
+                <div class="related-item">
+                    <h4>Interrogation Techniques For Dummies: From Guantanamo To The Group Chat</h4>
+                    <p>Books • Sponsored</p>
+                </div>
+                <div class="related-item">
+                    <h4>Thanksgiving Authenticity Overflow Causes Nationwide Family Estrangement Spike</h4>
+                    <p>Holiday • Trending</p>
+                </div>
+                <div class="related-item">
+                    <h4>LinkedIn Announces New 'Suppress React' Button For Maximum Professionalism</h4>
+                    <p>Technology • 1 day ago</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD 3 -->
+        <div class="ad-container">
+            <h4>📖 NEW BESTSELLER: "Becoming Bulletproof (From Yourself)"</h4>
+            <p>From the same publishers who brought you "Lean In (To The Void)" and "Who Moved My Personality?"</p>
+            <p><em>"A must-read for anyone whose sense of self is a professional liability"</em> — HR Weekly</p>
+            <button class="ad-cta">Pre-Order Your Emotional Armor →</button>
+        </div>
+
+        <!-- GEM GAME SECTION -->
+        <section class="game-section" id="game-section">
+            <h3>💎 CORPORATE GEM CRUSH 💎</h3>
+            <p class="game-subtitle">Match 3 gems to suppress your authentic reactions! Every combo increases your Professional Hollowness Score™</p>
+
+            <div class="game-container">
+                <div class="game-stats">
+                    <div>
+                        <div class="label">Score</div>
+                        <div class="value" id="score">0</div>
+                    </div>
+                    <div>
+                        <div class="label">Moves</div>
+                        <div class="value" id="moves">30</div>
+                    </div>
+                    <div>
+                        <div class="label">Hollowness</div>
+                        <div class="value" id="hollowness">0%</div>
+                    </div>
+                </div>
+
+                <div class="combo-display" id="combo-display"></div>
+
+                <div class="game-board" id="game-board"></div>
+
+                <div class="game-controls">
+                    <button class="game-btn" onclick="initGame()">🔄 New Game</button>
+                    <button class="game-btn" onclick="shuffleBoard()">🔀 Shuffle</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="logo">HuckFinn</div>
+        <p>"All the news that's fit to satirize"</p>
+        <p>HuckFinn is a satirical publication. All articles are fictional and intended for humor. Any resemblance to actual events or persons is purely for comedic effect.</p>
+        <div class="copyright">© 2025 HuckFinn Media LLC | Not affiliated with any actual newspapers, interrogators, or authentic selves</div>
+    </footer>
+
+    <script>
+        // GEM GAME LOGIC
+        const GEMS = ['💎', '🔮', '💀', '🎭', '📊', '💼', '🤐', '✨'];
+        const BOARD_SIZE = 8;
+        const COMBO_MESSAGES = [
+            "Professional! 😐",
+            "Synergy Achieved! 📈",
+            "Authentic Self: Suppressed! 🎭",
+            "HR Approved! ✅",
+            "Emotion Contained! 🤐",
+            "Team Player! 🏆",
+            "Personality: Offline! 💀",
+            "Thanksgiving-Level Combo! 🦃"
+        ];
+
+        let board = [];
+        let selectedCell = null;
+        let score = 0;
+        let moves = 30;
+        let isAnimating = false;
+
+        function initGame() {
+            board = [];
+            selectedCell = null;
+            score = 0;
+            moves = 30;
+            isAnimating = false;
+
+            // Create board without initial matches
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                board[row] = [];
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    let gem;
+                    do {
+                        gem = GEMS[Math.floor(Math.random() * GEMS.length)];
+                    } while (wouldCreateMatch(row, col, gem));
+                    board[row][col] = gem;
+                }
+            }
+
+            renderBoard();
+            updateStats();
+        }
+
+        function wouldCreateMatch(row, col, gem) {
+            // Check horizontal
+            if (col >= 2 && board[row][col-1] === gem && board[row][col-2] === gem) {
+                return true;
+            }
+            // Check vertical
+            if (row >= 2 && board[row-1] && board[row-1][col] === gem &&
+                board[row-2] && board[row-2][col] === gem) {
+                return true;
+            }
+            return false;
+        }
+
+        function renderBoard() {
+            const boardEl = document.getElementById('game-board');
+            boardEl.innerHTML = '';
+
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'gem-cell';
+                    cell.textContent = board[row][col];
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+                    cell.onclick = () => handleCellClick(row, col);
+
+                    if (selectedCell && selectedCell.row === row && selectedCell.col === col) {
+                        cell.classList.add('selected');
+                    }
+
+                    boardEl.appendChild(cell);
+                }
+            }
+        }
+
+        function handleCellClick(row, col) {
+            if (isAnimating || moves <= 0) return;
+
+            if (!selectedCell) {
+                selectedCell = { row, col };
+                renderBoard();
+            } else {
+                const isAdjacent = (
+                    (Math.abs(selectedCell.row - row) === 1 && selectedCell.col === col) ||
+                    (Math.abs(selectedCell.col - col) === 1 && selectedCell.row === row)
+                );
+
+                if (isAdjacent) {
+                    swapGems(selectedCell.row, selectedCell.col, row, col);
+                } else {
+                    // Select new cell
+                    selectedCell = { row, col };
+                    renderBoard();
+                }
+            }
+        }
+
+        async function swapGems(row1, col1, row2, col2) {
+            isAnimating = true;
+
+            // Swap
+            const temp = board[row1][col1];
+            board[row1][col1] = board[row2][col2];
+            board[row2][col2] = temp;
+
+            renderBoard();
+
+            const matches = findMatches();
+
+            if (matches.length > 0) {
+                moves--;
+                await processMatches();
+            } else {
+                // Swap back - invalid move
+                await sleep(200);
+                board[row2][col2] = board[row1][col1];
+                board[row1][col1] = temp;
+
+                // Show invalid animation
+                const cells = document.querySelectorAll('.gem-cell');
+                cells.forEach(cell => {
+                    const r = parseInt(cell.dataset.row);
+                    const c = parseInt(cell.dataset.col);
+                    if ((r === row1 && c === col1) || (r === row2 && c === col2)) {
+                        cell.classList.add('invalid-move');
+                    }
+                });
+
+                await sleep(300);
+                renderBoard();
+            }
+
+            selectedCell = null;
+            isAnimating = false;
+            updateStats();
+        }
+
+        function findMatches() {
+            const matches = new Set();
+
+            // Horizontal matches
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE - 2; col++) {
+                    if (board[row][col] &&
+                        board[row][col] === board[row][col+1] &&
+                        board[row][col] === board[row][col+2]) {
+                        matches.add(`${row},${col}`);
+                        matches.add(`${row},${col+1}`);
+                        matches.add(`${row},${col+2}`);
+                    }
+                }
+            }
+
+            // Vertical matches
+            for (let row = 0; row < BOARD_SIZE - 2; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    if (board[row][col] &&
+                        board[row][col] === board[row+1][col] &&
+                        board[row][col] === board[row+2][col]) {
+                        matches.add(`${row},${col}`);
+                        matches.add(`${row+1},${col}`);
+                        matches.add(`${row+2},${col}`);
+                    }
+                }
+            }
+
+            return Array.from(matches).map(s => {
+                const [r, c] = s.split(',');
+                return { row: parseInt(r), col: parseInt(c) };
+            });
+        }
+
+        async function processMatches() {
+            let comboCount = 0;
+
+            while (true) {
+                const matches = findMatches();
+                if (matches.length === 0) break;
+
+                comboCount++;
+                score += matches.length * 10 * comboCount;
+
+                // Show combo message
+                showCombo(comboCount);
+
+                // Animate matches
+                const cells = document.querySelectorAll('.gem-cell');
+                matches.forEach(({row, col}) => {
+                    cells.forEach(cell => {
+                        if (parseInt(cell.dataset.row) === row && parseInt(cell.dataset.col) === col) {
+                            cell.classList.add('matched');
+                        }
+                    });
+                });
+
+                await sleep(400);
+
+                // Remove matched gems
+                matches.forEach(({row, col}) => {
+                    board[row][col] = null;
+                });
+
+                // Drop gems
+                await dropGems();
+
+                // Fill empty spaces
+                await fillEmpty();
+
+                renderBoard();
+                updateStats();
+                await sleep(200);
+            }
+        }
+
+        async function dropGems() {
+            for (let col = 0; col < BOARD_SIZE; col++) {
+                let emptyRow = BOARD_SIZE - 1;
+
+                for (let row = BOARD_SIZE - 1; row >= 0; row--) {
+                    if (board[row][col] !== null) {
+                        if (row !== emptyRow) {
+                            board[emptyRow][col] = board[row][col];
+                            board[row][col] = null;
+                        }
+                        emptyRow--;
+                    }
+                }
+            }
+
+            renderBoard();
+
+            // Add falling animation to cells
+            const cells = document.querySelectorAll('.gem-cell');
+            cells.forEach(cell => {
+                if (cell.textContent) {
+                    cell.classList.add('falling');
+                }
+            });
+
+            await sleep(300);
+        }
+
+        async function fillEmpty() {
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    if (board[row][col] === null) {
+                        board[row][col] = GEMS[Math.floor(Math.random() * GEMS.length)];
+                    }
+                }
+            }
+
+            renderBoard();
+
+            const cells = document.querySelectorAll('.gem-cell');
+            cells.forEach(cell => {
+                cell.classList.add('falling');
+            });
+
+            await sleep(300);
+        }
+
+        function showCombo(count) {
+            const comboEl = document.getElementById('combo-display');
+            const message = COMBO_MESSAGES[Math.min(count - 1, COMBO_MESSAGES.length - 1)];
+            comboEl.textContent = count > 1 ? `${count}x COMBO! ${message}` : message;
+            comboEl.classList.remove('active');
+            void comboEl.offsetWidth; // Trigger reflow
+            comboEl.classList.add('active');
+        }
+
+        function updateStats() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('moves').textContent = moves;
+            document.getElementById('hollowness').textContent = Math.min(100, Math.floor(score / 50)) + '%';
+
+            if (moves <= 0) {
+                setTimeout(() => {
+                    alert(`Game Over! Final Score: ${score}\nProfessional Hollowness: ${Math.min(100, Math.floor(score / 50))}%\n\n${score > 500 ? "You're ready for senior management!" : "Keep suppressing those authentic reactions!"}`);
+                }, 500);
+            }
+        }
+
+        function shuffleBoard() {
+            if (isAnimating) return;
+
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    board[row][col] = GEMS[Math.floor(Math.random() * GEMS.length)];
+                }
+            }
+
+            // Make sure no initial matches
+            while (findMatches().length > 0) {
+                for (let row = 0; row < BOARD_SIZE; row++) {
+                    for (let col = 0; col < BOARD_SIZE; col++) {
+                        board[row][col] = GEMS[Math.floor(Math.random() * GEMS.length)];
+                    }
+                }
+            }
+
+            renderBoard();
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Initialize game on load
+        initGame();
+    </script>
+</body>
+</html>
