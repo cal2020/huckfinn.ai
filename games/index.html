@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn Games — Interactive Distractions</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><filter id='glow'><feGaussianBlur stdDeviation='3' result='blur'/><feFlood flood-color='%23c9a227' flood-opacity='0.4'/><feComposite in2='blur' operator='in'/><feMerge><feMergeNode/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><rect width='100' height='100' fill='%231a1a1a'/><text x='50' y='72' font-family='UnifrakturMaguntia,serif' font-size='80' fill='%23f5f2e8' text-anchor='middle' filter='url(%23glow)'>H</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Franklin:wght@400;500;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f5f2e8;
+            --ink: #1a1a1a;
+            --accent: #8b0000;
+            --gold: #c9a227;
+            --rule: #2a2a2a;
+            --gray: #666;
+            --light-gray: #d4d0c5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #d4cec0;
+            font-family: 'Libre Franklin', sans-serif;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        .newspaper-page {
+            max-width: 900px;
+            margin: 20px auto;
+            background: var(--cream);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newspaper-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Masthead */
+        .masthead {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 3px double var(--rule);
+            margin-bottom: 20px;
+        }
+
+        .masthead-title {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 72px;
+            color: var(--ink);
+            letter-spacing: 2px;
+        }
+
+        .masthead-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .masthead-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        .masthead-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 30px;
+        }
+
+        .nav-links a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 2px;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--ink);
+            margin-bottom: 10px;
+        }
+
+        .page-header .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .game-card {
+            background: #fff;
+            border: 1px solid var(--light-gray);
+            padding: 25px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .game-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .game-card .game-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .game-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .game-card h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .game-card h3 a:hover {
+            color: var(--gold);
+        }
+
+        .game-card p {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .game-card .game-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+        }
+
+        .game-card .game-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background: var(--ink);
+            color: var(--gold);
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .play-btn:hover {
+            background: var(--gold);
+            color: var(--ink);
+        }
+
+        /* Coming Soon */
+        .coming-soon {
+            background: var(--light-gray);
+            opacity: 0.7;
+        }
+
+        .coming-soon .game-icon {
+            filter: grayscale(100%);
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        /* Editorial Note */
+        .editorial-note {
+            background: #fff;
+            border-left: 4px solid var(--gold);
+            padding: 20px 25px;
+            margin-top: 30px;
+        }
+
+        .editorial-note h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--ink);
+        }
+
+        .editorial-note p {
+            color: var(--gray);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid var(--light-gray);
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .newspaper-page {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .masthead-title {
+                font-size: 48px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-page">
+        <header class="masthead">
+            <div class="masthead-title"><a href="../index.html">HuckFinn</a></div>
+            <div class="masthead-tagline">"All the news that's fit to satirize"</div>
+            <div class="masthead-info">
+                <span>Games & Interactive</span>
+                <span>Est. 2025</span>
+                <span>Price: Your Productivity</span>
+            </div>
+        </header>
+
+        <nav class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../huckfinn-article-index.html">Articles</a>
+            <a href="index.html" class="active">Games</a>
+        </nav>
+
+        <div class="page-header">
+            <h1>🎮 Games & Interactive</h1>
+            <p class="subtitle">Because reading the news wasn't distracting enough. Play our collection of satirical games designed to maximize your procrastination while minimizing your productivity.</p>
+        </div>
+
+        <div class="games-grid">
+            <div class="game-card">
+                <span class="game-icon">💎</span>
+                <h3><a href="corporate-gem-crush.html">Corporate Gem Crush</a></h3>
+                <p>Match 3 gems to suppress your authentic reactions! Every combo increases your Professional Hollowness Score™. Score over 500 to qualify for senior management.</p>
+                <div class="game-meta">
+                    <span>🎯 Puzzle</span>
+                    <span>⏱️ 5-10 min</span>
+                    <span>😐 Soul-crushing</span>
+                </div>
+                <a href="corporate-gem-crush.html" class="play-btn">Play Now →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🔤</span>
+                <h3><a href="../articles/12-17-25/huckfinn---VC-Workers-Bug-Not-Feature.html#crossword">VC Buzzword Crossword</a></h3>
+                <p>Test your fluency in venture capital jargon! Fill in the grid with terms like INNOVATION, DISRUPT, and SYNERGY. MBA not required but helps.</p>
+                <div class="game-meta">
+                    <span>✏️ Crossword</span>
+                    <span>🤑 Corporate</span>
+                </div>
+                <a href="../articles/12-17-25/huckfinn---VC-Workers-Bug-Not-Feature.html#crossword" class="play-btn">Solve →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🚗</span>
+                <h3><a href="../articles/12-17-25/huckfinn---DMV-AI-Vanity-Plates.html">AI Vanity Plate Gallery</a></h3>
+                <p>Browse the finest collection of AI-themed vanity plates rejected by the California DMV. From AGISOON to XRISK01, witness peak tech culture.</p>
+                <div class="game-meta">
+                    <span>🪪 Gallery</span>
+                    <span>🤖 AI-Themed</span>
+                </div>
+                <a href="../articles/12-17-25/huckfinn---DMV-AI-Vanity-Plates.html" class="play-btn">Browse →</a>
+            </div>
+
+            <div class="game-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <span class="game-icon">📧</span>
+                <h3>Inbox Zero Hero</h3>
+                <p>Delete emails faster than they arrive! Features realistic CC chains, passive-aggressive "per my last email" power-ups, and the dreaded Reply All boss battle.</p>
+                <div class="game-meta">
+                    <span>🏃 Action</span>
+                    <span>⏱️ Endless</span>
+                    <span>😰 Anxiety-inducing</span>
+                </div>
+            </div>
+
+            <div class="game-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <span class="game-icon">📊</span>
+                <h3>Synergy Simulator</h3>
+                <p>Build the ultimate corporate org chart! Maximize buzzwords, minimize actual work. Unlock achievements like "Paradigm Shifter" and "Low-Hanging Fruit Picker."</p>
+                <div class="game-meta">
+                    <span>🏗️ Strategy</span>
+                    <span>⏱️ 15-30 min</span>
+                    <span>🤮 Jargon-heavy</span>
+                </div>
+            </div>
+
+            <div class="game-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <span class="game-icon">🦃</span>
+                <h3>Thanksgiving Survival</h3>
+                <p>Navigate family dinner without discussing politics, religion, or your career choices. Dodge passive-aggressive comments and survive until dessert.</p>
+                <div class="game-meta">
+                    <span>🎭 Survival</span>
+                    <span>⏱️ Feels like hours</span>
+                    <span>😬 Relatable</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-header" style="margin-top: 50px;">
+            <h1>📊 Interactive Infographics</h1>
+            <p class="subtitle">Visual explorations of modern absurdity. Click, spin, calculate, and despair.</p>
+        </div>
+
+        <div class="games-grid">
+            <div class="game-card">
+                <span class="game-icon">🎡</span>
+                <h3><a href="../articles/huckfinn-infographic-exposure-wheel.html">The PFAS Exposure Wheel</a></h3>
+                <p>Spin the wheel to discover which everyday items are slowly poisoning you! A fun game for the whole family.</p>
+                <div class="game-meta">
+                    <span>🎰 Wheel</span>
+                    <span>☠️ Carcinogenic</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-exposure-wheel.html" class="play-btn">Spin →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🧮</span>
+                <h3><a href="../articles/huckfinn-infographic-undercount-calculator.html">The Undercount Calculator</a></h3>
+                <p>Calculate how much the official numbers are lying to you! Input reality, output government statistics.</p>
+                <div class="game-meta">
+                    <span>🔢 Calculator</span>
+                    <span>📉 Depressing</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-undercount-calculator.html" class="play-btn">Calculate →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🌀</span>
+                <h3><a href="../articles/huckfinn-infographic-doom-loop.html">The PFAS Thanksgiving Doom Spiral</a></h3>
+                <p>Follow the forever chemicals from your turkey to your bloodstream. A journey of discovery you can't escape.</p>
+                <div class="game-meta">
+                    <span>🔄 Spiral</span>
+                    <span>🦃 Festive</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-doom-loop.html" class="play-btn">Descend →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🇺🇸</span>
+                <h3><a href="../articles/huckfinn-infographic-american-way.html">The American Way™</a></h3>
+                <p>An interactive flowchart of how problems become features in the land of opportunity.</p>
+                <div class="game-meta">
+                    <span>🗺️ Flowchart</span>
+                    <span>🦅 Patriotic</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-american-way.html" class="play-btn">Explore →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🔥</span>
+                <h3><a href="../articles/huckfinn-infographic-firefighter-trifecta.html">Firefighter Doom Trifecta</a></h3>
+                <p>Three ways firefighters are getting screwed, visualized beautifully. Heroes deserve better graphics.</p>
+                <div class="game-meta">
+                    <span>🚒 Trifecta</span>
+                    <span>😤 Infuriating</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-firefighter-trifecta.html" class="play-btn">View →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🔺</span>
+                <h3><a href="../articles/huckfinn-infographic-irony-pyramid.html">The Irony Pyramid</a></h3>
+                <p>Climb the hierarchy of things that shouldn't be happening but definitely are.</p>
+                <div class="game-meta">
+                    <span>📐 Pyramid</span>
+                    <span>🤔 Philosophical</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-irony-pyramid.html" class="play-btn">Ascend →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">📈</span>
+                <h3><a href="../articles/huckfinn-infographic-satire-civilization-infographics.html">The Satire-Civilization Index</a></h3>
+                <p>A visual autopsy of society. Track the correlation between absurdity and collapse in real-time.</p>
+                <div class="game-meta">
+                    <span>📊 Index</span>
+                    <span>🏛️ Civilizational</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-satire-civilization-infographics.html" class="play-btn">Analyze →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">💎</span>
+                <h3><a href="../articles/huckfinn-infographic-top10-gems.html">Top 10 Gems - Ranked by Irony</a></h3>
+                <p>The definitive ranking of the most ironic moments in recent memory. Number 7 will make you question everything.</p>
+                <div class="game-meta">
+                    <span>🏆 Ranking</span>
+                    <span>✨ Listicle</span>
+                </div>
+                <a href="../articles/huckfinn-infographic-top10-gems.html" class="play-btn">Rank →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">🐕</span>
+                <h3><a href="../articles/huckfinn_Golden-Retriever-Guide-to-News-Manipulation.html">Golden Retriever's Guide to News Manipulation</a></h3>
+                <p>A very good boy explains media literacy. Learn to spot spin, misdirection, and who's really throwing the ball.</p>
+                <div class="game-meta">
+                    <span>📚 Guide</span>
+                    <span>🦴 Educational</span>
+                </div>
+                <a href="../articles/huckfinn_Golden-Retriever-Guide-to-News-Manipulation.html" class="play-btn">Learn →</a>
+            </div>
+
+            <div class="game-card">
+                <span class="game-icon">☠️</span>
+                <h3><a href="../articles/huckfinn_pfas-doom-spiral-infographics.html">The Complete PFAS Doom Spiral</a></h3>
+                <p>The extended director's cut of forever chemical despair. More doom, more spiral, more reasons to never eat again.</p>
+                <div class="game-meta">
+                    <span>🔄 Extended</span>
+                    <span>🦃 Extra Festive</span>
+                </div>
+                <a href="../articles/huckfinn_pfas-doom-spiral-infographics.html" class="play-btn">Spiral →</a>
+            </div>
+        </div>
+
+        <div class="editorial-note">
+            <h4>📝 A Note From The Games Editor</h4>
+            <p>"Our games are designed to be played during work hours, ideally while on a video call with your camera off. We accept no responsibility for any resulting performance reviews, though we note that 'improving hand-eye coordination' is technically a professional development activity."</p>
+        </div>
+
+        <div class="footer">
+            <p>HuckFinn Games — Where productivity goes to die, professionally.</p>
+            <p><a href="../index.html">← Back to Home</a></p>
+        </div>
+    </div>
+</body>
+</html>
