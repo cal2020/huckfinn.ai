@@ -325,7 +325,6 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 10px;
-            flex-wrap: wrap;
         }
 
         .comment-avatar {
@@ -437,6 +436,198 @@
             color: #666;
         }
 
+        /* GEM GAME */
+        .game-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 3px solid #c9a227;
+            border-radius: 10px;
+        }
+
+        .game-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #c9a227;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .game-section .game-subtitle {
+            color: #888;
+            text-align: center;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 40px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .game-stats div {
+            text-align: center;
+        }
+
+        .game-stats .label {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-stats .value {
+            font-size: 1.8rem;
+            color: #c9a227;
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(8, 45px);
+            grid-template-rows: repeat(8, 45px);
+            gap: 3px;
+            background: #333;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .gem-cell {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: #222;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            user-select: none;
+        }
+
+        .gem-cell:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.5);
+        }
+
+        .gem-cell.selected {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.8);
+            animation: selectedPulse 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes selectedPulse {
+            from { box-shadow: 0 0 20px rgba(201, 162, 39, 0.8); }
+            to { box-shadow: 0 0 30px rgba(201, 162, 39, 1); }
+        }
+
+        .gem-cell.matched {
+            animation: matchPop 0.4s ease-out forwards;
+        }
+
+        @keyframes matchPop {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4) rotate(180deg); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .gem-cell.falling {
+            animation: gemFall 0.3s ease-in;
+        }
+
+        @keyframes gemFall {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .gem-cell.invalid-move {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .game-btn {
+            background: #c9a227;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 25px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .game-btn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .combo-display {
+            color: #c9a227;
+            font-size: 1.5rem;
+            font-weight: 700;
+            min-height: 40px;
+            text-align: center;
+        }
+
+        .combo-display.active {
+            animation: comboFlash 0.5s ease-out;
+        }
+
+        @keyframes comboFlash {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); color: #fff; }
+            100% { transform: scale(1); }
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #c9a227;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .footer .copyright {
+            font-size: 0.75rem;
+            color: #555;
+        }
+
         /* OPINION BOX */
         .opinion-box {
             background: #8b0000;
@@ -470,6 +661,9 @@
         }
 
         .poll-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             padding: 10px;
             margin: 8px 0;
             background: #f9f9f9;
@@ -487,221 +681,9 @@
             background: #c9a227;
             margin-top: 5px;
             border-radius: 3px;
-        }
-
-        /* ============================================ */
-        /* GEM GAME STYLES */
-        /* ============================================ */
-        .game-section {
-            margin-top: 40px;
-            padding: 30px;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            border: 3px solid #c9a227;
-            border-radius: 10px;
-        }
-
-        .game-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: #c9a227;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .game-section .game-subtitle {
-            color: #888;
-            text-align: center;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .game-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .game-stats {
-            display: flex;
-            gap: 40px;
-            color: #fff;
-            font-weight: 700;
-        }
-
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            color: #c9a227;
-        }
-
-        .combo-text {
-            color: #c9a227;
-            font-size: 1.4rem;
-            font-weight: 700;
-            min-height: 35px;
-            text-align: center;
-        }
-
-        .combo-text.pop {
-            animation: comboPop 0.5s ease-out;
-        }
-
-        @keyframes comboPop {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); color: #fff; }
-            100% { transform: scale(1); }
-        }
-
-        #gameBoard {
-            display: grid;
-            grid-template-columns: repeat(8, 50px);
-            grid-template-rows: repeat(8, 50px);
-            gap: 4px;
-            background: #333;
-            padding: 12px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-        }
-
-        .gem {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-radius: 8px;
-            cursor: pointer;
-            user-select: none;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-            position: relative;
-        }
-
-        .gem:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
-        }
-
-        .gem.selected {
-            transform: scale(1.12);
-            box-shadow: 0 0 25px rgba(201, 162, 39, 0.9);
-            animation: selectedGlow 0.6s ease-in-out infinite alternate;
-        }
-
-        @keyframes selectedGlow {
-            from { box-shadow: 0 0 20px rgba(201, 162, 39, 0.7); }
-            to { box-shadow: 0 0 35px rgba(201, 162, 39, 1); }
-        }
-
-        .gem.removing {
-            animation: gemRemove 0.35s ease-out forwards;
-        }
-
-        @keyframes gemRemove {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3) rotate(180deg); opacity: 0.7; }
-            100% { transform: scale(0) rotate(360deg); opacity: 0; }
-        }
-
-        .gem.dropping {
-            animation: gemDrop 0.25s ease-in;
-        }
-
-        @keyframes gemDrop {
-            from { transform: translateY(-60px); opacity: 0.5; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .gem.invalid {
-            animation: gemShake 0.35s ease-in-out;
-        }
-
-        @keyframes gemShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-6px); }
-            40% { transform: translateX(6px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(6px); }
-        }
-
-        .gem.new {
-            animation: gemNew 0.3s ease-out;
-        }
-
-        @keyframes gemNew {
-            from { transform: scale(0) rotate(-180deg); opacity: 0; }
-            to { transform: scale(1) rotate(0deg); opacity: 1; }
-        }
-
-        .game-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .game-btn {
-            background: #c9a227;
-            color: #1a1a1a;
-            border: none;
-            padding: 12px 28px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-        }
-
-        .game-btn:hover {
-            background: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.4);
-        }
-
-        .game-btn:active {
-            transform: translateY(-1px);
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #1a1a1a;
-            color: #888;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-
-        .footer .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: #c9a227;
-            margin-bottom: 15px;
-        }
-
-        .footer p {
-            font-size: 0.85rem;
-            max-width: 600px;
-            margin: 0 auto 20px;
-        }
-
-        .footer .copyright {
-            font-size: 0.75rem;
-            color: #555;
+            transition: width 0.5s ease;
         }
     </style>
-
 </head>
 <body>
     <header class="masthead">
@@ -1175,36 +1157,34 @@
             <button class="ad-cta">Pre-Order Your Emotional Armor →</button>
         </div>
 
-        <!-- ============================================ -->
         <!-- GEM GAME SECTION -->
-        <!-- ============================================ -->
-        <section class="game-section">
+        <section class="game-section" id="game-section">
             <h3>💎 CORPORATE GEM CRUSH 💎</h3>
             <p class="game-subtitle">Match 3 gems to suppress your authentic reactions! Every combo increases your Professional Hollowness Score™</p>
 
-            <div class="game-wrapper">
+            <div class="game-container">
                 <div class="game-stats">
-                    <div class="stat-box">
-                        <div class="stat-label">Score</div>
-                        <div class="stat-value" id="scoreDisplay">0</div>
+                    <div>
+                        <div class="label">Score</div>
+                        <div class="value" id="score">0</div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-label">Moves</div>
-                        <div class="stat-value" id="movesDisplay">30</div>
+                    <div>
+                        <div class="label">Moves</div>
+                        <div class="value" id="moves">30</div>
                     </div>
-                    <div class="stat-box">
-                        <div class="stat-label">Hollowness</div>
-                        <div class="stat-value" id="hollownessDisplay">0%</div>
+                    <div>
+                        <div class="label">Hollowness</div>
+                        <div class="value" id="hollowness">0%</div>
                     </div>
                 </div>
 
-                <div class="combo-text" id="comboText"></div>
+                <div class="combo-display" id="combo-display"></div>
 
-                <div id="gameBoard"></div>
+                <div class="game-board" id="game-board"></div>
 
-                <div class="game-buttons">
-                    <button class="game-btn" id="newGameBtn">🔄 New Game</button>
-                    <button class="game-btn" id="shuffleBtn">🔀 Shuffle</button>
+                <div class="game-controls">
+                    <button class="game-btn" onclick="initGame()">🔄 New Game</button>
+                    <button class="game-btn" onclick="shuffleBoard()">🔀 Shuffle</button>
                 </div>
             </div>
         </section>
@@ -1218,13 +1198,9 @@
     </footer>
 
     <script>
-    (function() {
-        // ============================================
-        // GAME CONFIGURATION
-        // ============================================
-        const COLS = 8;
-        const ROWS = 8;
-        const GEM_TYPES = ['💎', '🔮', '💀', '🎭', '📊', '💼', '🤐', '✨'];
+        // GEM GAME LOGIC
+        const GEMS = ['💎', '🔮', '💀', '🎭', '📊', '💼', '🤐', '✨'];
+        const BOARD_SIZE = 8;
         const COMBO_MESSAGES = [
             "Professional! 😐",
             "Synergy Achieved! 📈",
@@ -1233,417 +1209,307 @@
             "Emotion Contained! 🤐",
             "Team Player! 🏆",
             "Personality: Offline! 💀",
-            "THANKSGIVING-LEVEL COMBO! 🦃"
+            "Thanksgiving-Level Combo! 🦃"
         ];
 
-        // ============================================
-        // GAME STATE
-        // ============================================
-        let grid = [];
+        let board = [];
+        let selectedCell = null;
         let score = 0;
         let moves = 30;
-        let selectedGem = null;
-        let isProcessing = false;
+        let isAnimating = false;
 
-        // ============================================
-        // DOM ELEMENTS
-        // ============================================
-        const boardEl = document.getElementById('gameBoard');
-        const scoreEl = document.getElementById('scoreDisplay');
-        const movesEl = document.getElementById('movesDisplay');
-        const hollownessEl = document.getElementById('hollownessDisplay');
-        const comboEl = document.getElementById('comboText');
-        const newGameBtn = document.getElementById('newGameBtn');
-        const shuffleBtn = document.getElementById('shuffleBtn');
+        function initGame() {
+            board = [];
+            selectedCell = null;
+            score = 0;
+            moves = 30;
+            isAnimating = false;
 
-        // ============================================
-        // UTILITY FUNCTIONS
-        // ============================================
-        function randomGem() {
-            return GEM_TYPES[Math.floor(Math.random() * GEM_TYPES.length)];
+            // Create board without initial matches
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                board[row] = [];
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    let gem;
+                    do {
+                        gem = GEMS[Math.floor(Math.random() * GEMS.length)];
+                    } while (wouldCreateMatch(row, col, gem));
+                    board[row][col] = gem;
+                }
+            }
+
+            renderBoard();
+            updateStats();
+        }
+
+        function wouldCreateMatch(row, col, gem) {
+            // Check horizontal
+            if (col >= 2 && board[row][col-1] === gem && board[row][col-2] === gem) {
+                return true;
+            }
+            // Check vertical
+            if (row >= 2 && board[row-1] && board[row-1][col] === gem &&
+                board[row-2] && board[row-2][col] === gem) {
+                return true;
+            }
+            return false;
+        }
+
+        function renderBoard() {
+            const boardEl = document.getElementById('game-board');
+            boardEl.innerHTML = '';
+
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'gem-cell';
+                    cell.textContent = board[row][col];
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+                    cell.onclick = () => handleCellClick(row, col);
+
+                    if (selectedCell && selectedCell.row === row && selectedCell.col === col) {
+                        cell.classList.add('selected');
+                    }
+
+                    boardEl.appendChild(cell);
+                }
+            }
+        }
+
+        function handleCellClick(row, col) {
+            if (isAnimating || moves <= 0) return;
+
+            if (!selectedCell) {
+                selectedCell = { row, col };
+                renderBoard();
+            } else {
+                const isAdjacent = (
+                    (Math.abs(selectedCell.row - row) === 1 && selectedCell.col === col) ||
+                    (Math.abs(selectedCell.col - col) === 1 && selectedCell.row === row)
+                );
+
+                if (isAdjacent) {
+                    swapGems(selectedCell.row, selectedCell.col, row, col);
+                } else {
+                    // Select new cell
+                    selectedCell = { row, col };
+                    renderBoard();
+                }
+            }
+        }
+
+        async function swapGems(row1, col1, row2, col2) {
+            isAnimating = true;
+
+            // Swap
+            const temp = board[row1][col1];
+            board[row1][col1] = board[row2][col2];
+            board[row2][col2] = temp;
+
+            renderBoard();
+
+            const matches = findMatches();
+
+            if (matches.length > 0) {
+                moves--;
+                await processMatches();
+            } else {
+                // Swap back - invalid move
+                await sleep(200);
+                board[row2][col2] = board[row1][col1];
+                board[row1][col1] = temp;
+
+                // Show invalid animation
+                const cells = document.querySelectorAll('.gem-cell');
+                cells.forEach(cell => {
+                    const r = parseInt(cell.dataset.row);
+                    const c = parseInt(cell.dataset.col);
+                    if ((r === row1 && c === col1) || (r === row2 && c === col2)) {
+                        cell.classList.add('invalid-move');
+                    }
+                });
+
+                await sleep(300);
+                renderBoard();
+            }
+
+            selectedCell = null;
+            isAnimating = false;
+            updateStats();
+        }
+
+        function findMatches() {
+            const matches = new Set();
+
+            // Horizontal matches
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE - 2; col++) {
+                    if (board[row][col] &&
+                        board[row][col] === board[row][col+1] &&
+                        board[row][col] === board[row][col+2]) {
+                        matches.add(`${row},${col}`);
+                        matches.add(`${row},${col+1}`);
+                        matches.add(`${row},${col+2}`);
+                    }
+                }
+            }
+
+            // Vertical matches
+            for (let row = 0; row < BOARD_SIZE - 2; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    if (board[row][col] &&
+                        board[row][col] === board[row+1][col] &&
+                        board[row][col] === board[row+2][col]) {
+                        matches.add(`${row},${col}`);
+                        matches.add(`${row+1},${col}`);
+                        matches.add(`${row+2},${col}`);
+                    }
+                }
+            }
+
+            return Array.from(matches).map(s => {
+                const [r, c] = s.split(',');
+                return { row: parseInt(r), col: parseInt(c) };
+            });
+        }
+
+        async function processMatches() {
+            let comboCount = 0;
+
+            while (true) {
+                const matches = findMatches();
+                if (matches.length === 0) break;
+
+                comboCount++;
+                score += matches.length * 10 * comboCount;
+
+                // Show combo message
+                showCombo(comboCount);
+
+                // Animate matches
+                const cells = document.querySelectorAll('.gem-cell');
+                matches.forEach(({row, col}) => {
+                    cells.forEach(cell => {
+                        if (parseInt(cell.dataset.row) === row && parseInt(cell.dataset.col) === col) {
+                            cell.classList.add('matched');
+                        }
+                    });
+                });
+
+                await sleep(400);
+
+                // Remove matched gems
+                matches.forEach(({row, col}) => {
+                    board[row][col] = null;
+                });
+
+                // Drop gems
+                await dropGems();
+
+                // Fill empty spaces
+                await fillEmpty();
+
+                renderBoard();
+                updateStats();
+                await sleep(200);
+            }
+        }
+
+        async function dropGems() {
+            for (let col = 0; col < BOARD_SIZE; col++) {
+                let emptyRow = BOARD_SIZE - 1;
+
+                for (let row = BOARD_SIZE - 1; row >= 0; row--) {
+                    if (board[row][col] !== null) {
+                        if (row !== emptyRow) {
+                            board[emptyRow][col] = board[row][col];
+                            board[row][col] = null;
+                        }
+                        emptyRow--;
+                    }
+                }
+            }
+
+            renderBoard();
+
+            // Add falling animation to cells
+            const cells = document.querySelectorAll('.gem-cell');
+            cells.forEach(cell => {
+                if (cell.textContent) {
+                    cell.classList.add('falling');
+                }
+            });
+
+            await sleep(300);
+        }
+
+        async function fillEmpty() {
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    if (board[row][col] === null) {
+                        board[row][col] = GEMS[Math.floor(Math.random() * GEMS.length)];
+                    }
+                }
+            }
+
+            renderBoard();
+
+            const cells = document.querySelectorAll('.gem-cell');
+            cells.forEach(cell => {
+                cell.classList.add('falling');
+            });
+
+            await sleep(300);
+        }
+
+        function showCombo(count) {
+            const comboEl = document.getElementById('combo-display');
+            const message = COMBO_MESSAGES[Math.min(count - 1, COMBO_MESSAGES.length - 1)];
+            comboEl.textContent = count > 1 ? `${count}x COMBO! ${message}` : message;
+            comboEl.classList.remove('active');
+            void comboEl.offsetWidth; // Trigger reflow
+            comboEl.classList.add('active');
+        }
+
+        function updateStats() {
+            document.getElementById('score').textContent = score;
+            document.getElementById('moves').textContent = moves;
+            document.getElementById('hollowness').textContent = Math.min(100, Math.floor(score / 50)) + '%';
+
+            if (moves <= 0) {
+                setTimeout(() => {
+                    alert(`Game Over! Final Score: ${score}\nProfessional Hollowness: ${Math.min(100, Math.floor(score / 50))}%\n\n${score > 500 ? "You're ready for senior management!" : "Keep suppressing those authentic reactions!"}`);
+                }, 500);
+            }
+        }
+
+        function shuffleBoard() {
+            if (isAnimating) return;
+
+            for (let row = 0; row < BOARD_SIZE; row++) {
+                for (let col = 0; col < BOARD_SIZE; col++) {
+                    board[row][col] = GEMS[Math.floor(Math.random() * GEMS.length)];
+                }
+            }
+
+            // Make sure no initial matches
+            while (findMatches().length > 0) {
+                for (let row = 0; row < BOARD_SIZE; row++) {
+                    for (let col = 0; col < BOARD_SIZE; col++) {
+                        board[row][col] = GEMS[Math.floor(Math.random() * GEMS.length)];
+                    }
+                }
+            }
+
+            renderBoard();
         }
 
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        function getGemAt(row, col) {
-            if (row < 0 || row >= ROWS || col < 0 || col >= COLS) return null;
-            return grid[row][col];
-        }
-
-        function setGemAt(row, col, gem) {
-            grid[row][col] = gem;
-        }
-
-        // ============================================
-        // BOARD INITIALIZATION
-        // ============================================
-        function createBoard() {
-            grid = [];
-            for (let r = 0; r < ROWS; r++) {
-                grid[r] = [];
-                for (let c = 0; c < COLS; c++) {
-                    let gem;
-                    do {
-                        gem = randomGem();
-                    } while (wouldMatchAt(r, c, gem));
-                    grid[r][c] = gem;
-                }
-            }
-        }
-
-        function wouldMatchAt(row, col, gem) {
-            // Check horizontal (left)
-            if (col >= 2) {
-                if (getGemAt(row, col - 1) === gem && getGemAt(row, col - 2) === gem) {
-                    return true;
-                }
-            }
-            // Check vertical (up)
-            if (row >= 2) {
-                if (getGemAt(row - 1, col) === gem && getGemAt(row - 2, col) === gem) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        // ============================================
-        // RENDERING
-        // ============================================
-        function renderBoard() {
-            boardEl.innerHTML = '';
-            for (let r = 0; r < ROWS; r++) {
-                for (let c = 0; c < COLS; c++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'gem';
-                    cell.textContent = grid[r][c] || '';
-                    cell.dataset.row = r;
-                    cell.dataset.col = c;
-
-                    if (selectedGem && selectedGem.row === r && selectedGem.col === c) {
-                        cell.classList.add('selected');
-                    }
-
-                    cell.addEventListener('click', () => onGemClick(r, c));
-                    boardEl.appendChild(cell);
-                }
-            }
-        }
-
-        function updateStats() {
-            scoreEl.textContent = score;
-            movesEl.textContent = moves;
-            hollownessEl.textContent = Math.min(100, Math.floor(score / 50)) + '%';
-        }
-
-        function showCombo(level) {
-            const msg = COMBO_MESSAGES[Math.min(level - 1, COMBO_MESSAGES.length - 1)];
-            comboEl.textContent = level > 1 ? `${level}x COMBO! ${msg}` : msg;
-            comboEl.classList.remove('pop');
-            void comboEl.offsetWidth;
-            comboEl.classList.add('pop');
-        }
-
-        function getCellElement(row, col) {
-            return boardEl.children[row * COLS + col];
-        }
-
-        // ============================================
-        // GAME LOGIC
-        // ============================================
-        function onGemClick(row, col) {
-            if (isProcessing || moves <= 0) return;
-
-            if (!selectedGem) {
-                // First selection
-                selectedGem = { row, col };
-                renderBoard();
-            } else if (selectedGem.row === row && selectedGem.col === col) {
-                // Clicked same gem - deselect
-                selectedGem = null;
-                renderBoard();
-            } else {
-                // Second selection - try to swap
-                const dr = Math.abs(selectedGem.row - row);
-                const dc = Math.abs(selectedGem.col - col);
-
-                if ((dr === 1 && dc === 0) || (dr === 0 && dc === 1)) {
-                    // Adjacent - attempt swap
-                    trySwap(selectedGem.row, selectedGem.col, row, col);
-                } else {
-                    // Not adjacent - select new gem
-                    selectedGem = { row, col };
-                    renderBoard();
-                }
-            }
-        }
-
-        async function trySwap(r1, c1, r2, c2) {
-            isProcessing = true;
-            selectedGem = null;
-
-            // Perform swap
-            const temp = grid[r1][c1];
-            grid[r1][c1] = grid[r2][c2];
-            grid[r2][c2] = temp;
-
-            renderBoard();
-            await sleep(150);
-
-            // Check for matches
-            const matches = findAllMatches();
-
-            if (matches.length > 0) {
-                // Valid move
-                moves--;
-                updateStats();
-                await processMatches();
-            } else {
-                // Invalid move - swap back
-                grid[r2][c2] = grid[r1][c1];
-                grid[r1][c1] = temp;
-
-                // Show shake animation
-                const cell1 = getCellElement(r1, c1);
-                const cell2 = getCellElement(r2, c2);
-                cell1.classList.add('invalid');
-                cell2.classList.add('invalid');
-
-                await sleep(350);
-                renderBoard();
-            }
-
-            isProcessing = false;
-
-            // Check game over
-            if (moves <= 0) {
-                await sleep(300);
-                endGame();
-            }
-        }
-
-        function findAllMatches() {
-            const matched = new Set();
-
-            // Check horizontal matches
-            for (let r = 0; r < ROWS; r++) {
-                for (let c = 0; c < COLS - 2; c++) {
-                    const gem = grid[r][c];
-                    if (gem && gem === grid[r][c + 1] && gem === grid[r][c + 2]) {
-                        // Found 3+ horizontal match
-                        let endC = c + 2;
-                        while (endC + 1 < COLS && grid[r][endC + 1] === gem) {
-                            endC++;
-                        }
-                        for (let i = c; i <= endC; i++) {
-                            matched.add(`${r},${i}`);
-                        }
-                    }
-                }
-            }
-
-            // Check vertical matches
-            for (let c = 0; c < COLS; c++) {
-                for (let r = 0; r < ROWS - 2; r++) {
-                    const gem = grid[r][c];
-                    if (gem && gem === grid[r + 1][c] && gem === grid[r + 2][c]) {
-                        // Found 3+ vertical match
-                        let endR = r + 2;
-                        while (endR + 1 < ROWS && grid[endR + 1][c] === gem) {
-                            endR++;
-                        }
-                        for (let i = r; i <= endR; i++) {
-                            matched.add(`${i},${c}`);
-                        }
-                    }
-                }
-            }
-
-            return Array.from(matched).map(s => {
-                const [r, c] = s.split(',').map(Number);
-                return { row: r, col: c };
-            });
-        }
-
-        async function processMatches() {
-            let comboLevel = 0;
-
-            while (true) {
-                const matches = findAllMatches();
-                if (matches.length === 0) break;
-
-                comboLevel++;
-                const points = matches.length * 10 * comboLevel;
-                score += points;
-                updateStats();
-                showCombo(comboLevel);
-
-                // Animate removal
-                for (const m of matches) {
-                    const cell = getCellElement(m.row, m.col);
-                    if (cell) cell.classList.add('removing');
-                }
-
-                await sleep(350);
-
-                // Remove gems
-                for (const m of matches) {
-                    grid[m.row][m.col] = null;
-                }
-
-                renderBoard();
-                await sleep(100);
-
-                // Drop gems
-                await dropGems();
-
-                // Fill empty
-                await fillEmpty();
-
-                await sleep(200);
-            }
-        }
-
-        async function dropGems() {
-            let dropped = false;
-
-            for (let c = 0; c < COLS; c++) {
-                let writeRow = ROWS - 1;
-
-                for (let r = ROWS - 1; r >= 0; r--) {
-                    if (grid[r][c] !== null) {
-                        if (r !== writeRow) {
-                            grid[writeRow][c] = grid[r][c];
-                            grid[r][c] = null;
-                            dropped = true;
-                        }
-                        writeRow--;
-                    }
-                }
-            }
-
-            if (dropped) {
-                renderBoard();
-
-                // Add drop animation to all gems
-                for (let r = 0; r < ROWS; r++) {
-                    for (let c = 0; c < COLS; c++) {
-                        if (grid[r][c]) {
-                            const cell = getCellElement(r, c);
-                            if (cell) cell.classList.add('dropping');
-                        }
-                    }
-                }
-
-                await sleep(250);
-            }
-        }
-
-        async function fillEmpty() {
-            let filled = false;
-
-            for (let c = 0; c < COLS; c++) {
-                for (let r = 0; r < ROWS; r++) {
-                    if (grid[r][c] === null) {
-                        grid[r][c] = randomGem();
-                        filled = true;
-                    }
-                }
-            }
-
-            if (filled) {
-                renderBoard();
-
-                // Add new animation
-                for (let r = 0; r < ROWS; r++) {
-                    for (let c = 0; c < COLS; c++) {
-                        const cell = getCellElement(r, c);
-                        if (cell) cell.classList.add('new');
-                    }
-                }
-
-                await sleep(300);
-            }
-        }
-
-        function shuffleBoard() {
-            if (isProcessing) return;
-
-            // Flatten, shuffle, and redistribute
-            const allGems = [];
-            for (let r = 0; r < ROWS; r++) {
-                for (let c = 0; c < COLS; c++) {
-                    allGems.push(grid[r][c]);
-                }
-            }
-
-            // Fisher-Yates shuffle
-            for (let i = allGems.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [allGems[i], allGems[j]] = [allGems[j], allGems[i]];
-            }
-
-            let idx = 0;
-            for (let r = 0; r < ROWS; r++) {
-                for (let c = 0; c < COLS; c++) {
-                    grid[r][c] = allGems[idx++];
-                }
-            }
-
-            // If there are matches after shuffle, just create new board
-            if (findAllMatches().length > 0) {
-                createBoard();
-            }
-
-            selectedGem = null;
-            renderBoard();
-        }
-
-        function endGame() {
-            const hollowness = Math.min(100, Math.floor(score / 50));
-            let message = '';
-
-            if (hollowness >= 80) {
-                message = "🏆 PERFECT HOLLOWNESS! You're ready for C-suite!";
-            } else if (hollowness >= 50) {
-                message = "📈 Middle management material! Keep suppressing!";
-            } else if (hollowness >= 25) {
-                message = "😐 Some personality detected. HR has been notified.";
-            } else {
-                message = "🚨 AUTHENTIC SELF DETECTED. Report to the parking lot.";
-            }
-
-            setTimeout(() => {
-                alert(`GAME OVER!\n\nScore: ${score}\nProfessional Hollowness: ${hollowness}%\n\n${message}`);
-            }, 100);
-        }
-
-        function startNewGame() {
-            score = 0;
-            moves = 30;
-            selectedGem = null;
-            isProcessing = false;
-            comboEl.textContent = '';
-
-            createBoard();
-            renderBoard();
-            updateStats();
-        }
-
-        // ============================================
-        // EVENT LISTENERS
-        // ============================================
-        newGameBtn.addEventListener('click', startNewGame);
-        shuffleBtn.addEventListener('click', shuffleBoard);
-
-        // ============================================
-        // INITIALIZE GAME
-        // ============================================
-        startNewGame();
-    })();
+        // Initialize game on load
+        initGame();
     </script>
-
 </body>
 </html>
