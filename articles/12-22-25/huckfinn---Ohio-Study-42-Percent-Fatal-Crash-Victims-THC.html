@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f4f1e8;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Header */
+        .masthead {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid #c41e3a;
+        }
+        .masthead h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 3em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .masthead .tagline {
+            font-style: italic;
+            color: #ccc;
+            margin-top: 5px;
+        }
+        .masthead .date {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Navigation */
+        .nav {
+            background: #c41e3a;
+            padding: 10px;
+            text-align: center;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Breaking Banner */
+        .breaking {
+            background: #ffeb3b;
+            color: #1a1a1a;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Article */
+        .article {
+            padding: 30px;
+        }
+        .article-header {
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .section-label {
+            color: #c41e3a;
+            text-transform: uppercase;
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .headline {
+            font-size: 2.5em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+        .subhead {
+            font-size: 1.3em;
+            color: #444;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .byline {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .byline .author {
+            font-weight: bold;
+        }
+
+        /* Featured Image */
+        .featured-image {
+            margin: 25px 0;
+            text-align: center;
+        }
+        .featured-image svg {
+            max-width: 100%;
+            border: 1px solid #ddd;
+        }
+        .caption {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 3px solid #c41e3a;
+        }
+
+        /* Article Body */
+        .article-body p {
+            margin-bottom: 18px;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+        .article-body .dateline {
+            font-weight: bold;
+        }
+        .pullquote {
+            font-size: 1.5em;
+            font-style: italic;
+            color: #c41e3a;
+            border-left: 4px solid #c41e3a;
+            padding: 20px;
+            margin: 30px 0;
+            background: #fafafa;
+        }
+
+        /* Ads */
+        .ad {
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            border: 2px dashed #999;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .ad .ad-label {
+            font-size: 0.7em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .ad h3 {
+            color: #c41e3a;
+            font-size: 1.4em;
+            margin: 10px 0;
+        }
+        .ad p {
+            font-size: 0.95em;
+            color: #444;
+        }
+        .ad .cta {
+            display: inline-block;
+            background: #c41e3a;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Sidebar boxes */
+        .info-box {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .info-box h4 {
+            color: #c41e3a;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .info-box ul {
+            list-style: none;
+        }
+        .info-box li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
+            font-size: 0.9em;
+        }
+        .info-box li:last-child {
+            border-bottom: none;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            background: #f4f4f4;
+            padding: 30px;
+            border-top: 3px solid #1a1a1a;
+        }
+        .comments-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #c41e3a;
+        }
+        .comment {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid #ddd;
+        }
+        .comment.top-comment {
+            border-left-color: #c41e3a;
+        }
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .username {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .username.verified {
+            color: #1e88e5;
+        }
+        .username.verified::after {
+            content: " ✓";
+            font-size: 0.8em;
+        }
+        .badge {
+            font-size: 0.7em;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 5px;
+        }
+        .badge.top-commenter {
+            background: #ffeb3b;
+            color: #1a1a1a;
+        }
+        .badge.controversial {
+            background: #ff5722;
+            color: white;
+        }
+        .badge.first {
+            background: #4caf50;
+            color: white;
+        }
+        .timestamp {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .comment-body {
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+        .comment-actions {
+            font-size: 0.8em;
+            color: #666;
+        }
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .reply {
+            margin-left: 30px;
+            border-left-color: #e0e0e0;
+        }
+        .deleted {
+            color: #999;
+            font-style: italic;
+        }
+        .ratio {
+            color: #c41e3a;
+        }
+
+        /* Related Articles */
+        .related {
+            padding: 30px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .related h3 {
+            color: #c41e3a;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .related-item {
+            background: #2a2a2a;
+            padding: 15px;
+        }
+        .related-item h4 {
+            font-size: 0.95em;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .related-item .meta {
+            font-size: 0.75em;
+            color: #888;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: #888;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.85em;
+        }
+        .footer .disclaimer {
+            font-style: italic;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        /* Poll Widget */
+        .poll {
+            background: #fff;
+            border: 2px solid #c41e3a;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .poll h4 {
+            color: #c41e3a;
+            margin-bottom: 15px;
+        }
+        .poll-option {
+            background: #f0f0f0;
+            padding: 10px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .poll-bar {
+            height: 4px;
+            background: #c41e3a;
+            margin-top: 5px;
+        }
+
+        /* Correction Box */
+        .correction {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        .correction strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <h1>HuckFinn</h1>
+            <div class="tagline">America's Finest Newspaper • Tu Stultus Es</div>
+            <div class="date">Sunday, December 21, 2025 • Vol. CLXIX No. 420 • Columbus, OH • Price: Your Data</div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="#">News</a>
+            <a href="#">Politics</a>
+            <a href="#">Science</a>
+            <a href="#">Opinion</a>
+            <a href="#">Sports</a>
+            <a href="#">Obituaries We Caused</a>
+            <a href="#">Corrections</a>
+        </nav>
+
+        <!-- Breaking Banner -->
+        <div class="breaking">
+            🚨 BREAKING: Study Finds 100% Of Fatal Crash Victims Had Previously Been Born • Exposure To Oxygen Linked To All Deaths Since 1850 🚨
+        </div>
+
+        <!-- Main Article -->
+        <article class="article">
+            <header class="article-header">
+                <div class="section-label">Science • Public Health • Moral Panic</div>
+                <h1 class="headline">Ohio Study Finds 42% Of Fatal Crash Victims Had THC In Blood; Exposed: 58% Of Dead Drivers Were Completely Sober</h1>
+                <p class="subhead">Researchers Express "Surprise" That Cannabis Users Also Operate Motor Vehicles, Eat Food, Have Feet</p>
+                <p class="byline">By <span class="author">MARGARET Sullivan-PULITZER</span> • Health & Panic Correspondent<br>
+                December 21, 2025 • 8 min read • <em>Presented at Conference (Not Peer Reviewed) (Poster Board Adjacent to Coffee Station)</em></p>
+            </header>
+
+            <!-- Featured Image -->
+            <div class="featured-image">
+                <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background -->
+                    <rect width="700" height="450" fill="#1a1a1a"/>
+
+                    <!-- Highway scene -->
+                    <rect x="0" y="280" width="700" height="170" fill="#333"/>
+                    <rect x="0" y="340" width="700" height="8" fill="#fff"/>
+                    <rect x="50" y="343" width="60" height="2" fill="#333"/>
+                    <rect x="150" y="343" width="60" height="2" fill="#333"/>
+                    <rect x="250" y="343" width="60" height="2" fill="#333"/>
+                    <rect x="350" y="343" width="60" height="2" fill="#333"/>
+                    <rect x="450" y="343" width="60" height="2" fill="#333"/>
+                    <rect x="550" y="343" width="60" height="2" fill="#333"/>
+                    <rect x="650" y="343" width="60" height="2" fill="#333"/>
+
+                    <!-- Sky gradient -->
+                    <defs>
+                        <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0a0a1a"/>
+                            <stop offset="100%" style="stop-color:#1a1a3a"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="0" width="700" height="280" fill="url(#sky)"/>
+
+                    <!-- Stars -->
+                    <circle cx="100" cy="50" r="2" fill="white"/>
+                    <circle cx="200" cy="80" r="1.5" fill="white"/>
+                    <circle cx="350" cy="40" r="2" fill="white"/>
+                    <circle cx="500" cy="60" r="1.5" fill="white"/>
+                    <circle cx="600" cy="90" r="2" fill="white"/>
+                    <circle cx="150" cy="120" r="1" fill="white"/>
+                    <circle cx="450" cy="100" r="1" fill="white"/>
+
+                    <!-- Giant Blood Vial -->
+                    <ellipse cx="350" cy="380" rx="100" ry="20" fill="#111"/>
+                    <rect x="290" y="100" width="120" height="250" rx="20" fill="#ff6b6b" stroke="#c41e3a" stroke-width="3"/>
+                    <rect x="300" y="70" width="100" height="40" fill="#e0e0e0" stroke="#999" stroke-width="2"/>
+                    <rect x="310" y="55" width="80" height="20" fill="#c41e3a"/>
+
+                    <!-- Blood level -->
+                    <rect x="295" y="180" width="110" height="165" rx="15" fill="#c41e3a"/>
+
+                    <!-- Label on vial -->
+                    <rect x="310" y="200" width="80" height="60" fill="white" rx="3"/>
+                    <text x="350" y="220" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold" fill="#1a1a1a">THC DETECTED</text>
+                    <text x="350" y="235" text-anchor="middle" font-family="Arial" font-size="8" fill="#666">2 ng/mL</text>
+                    <text x="350" y="250" text-anchor="middle" font-family="Arial" font-size="7" fill="#999">(smoked 14 hrs ago)</text>
+
+                    <!-- Tiny car for scale -->
+                    <rect x="500" y="360" width="50" height="25" rx="5" fill="#4a90d9"/>
+                    <rect x="510" y="350" width="30" height="15" rx="3" fill="#6ab0ff"/>
+                    <circle cx="510" cy="388" r="8" fill="#333"/>
+                    <circle cx="540" cy="388" r="8" fill="#333"/>
+
+                    <!-- Driver thought bubble -->
+                    <ellipse cx="580" cy="310" rx="60" ry="35" fill="white"/>
+                    <ellipse cx="545" cy="340" rx="10" ry="8" fill="white"/>
+                    <ellipse cx="530" cy="355" rx="6" ry="5" fill="white"/>
+                    <text x="580" y="305" text-anchor="middle" font-family="Arial" font-size="9" fill="#333">Ate half a gummy</text>
+                    <text x="580" y="318" text-anchor="middle" font-family="Arial" font-size="9" fill="#333">at 2pm yesterday</text>
+
+                    <!-- Researcher with clipboard -->
+                    <ellipse cx="150" cy="400" rx="25" ry="8" fill="#111"/>
+                    <rect x="130" y="320" width="40" height="70" fill="#fff"/>
+                    <circle cx="150" cy="300" r="22" fill="#ffd5b5"/>
+                    <rect x="125" y="280" width="50" height="10" fill="#333"/>
+                    <rect x="165" y="350" width="30" height="40" fill="#fff"/>
+                    <text x="180" y="365" font-family="Arial" font-size="6" fill="#333">FAULT:</text>
+                    <text x="180" y="375" font-family="Arial" font-size="6" fill="#333">NOT</text>
+                    <text x="180" y="385" font-family="Arial" font-size="6" fill="#333">DETER-</text>
+
+                    <!-- Speech bubble from researcher -->
+                    <ellipse cx="80" cy="280" rx="55" ry="30" fill="white" stroke="#333"/>
+                    <polygon points="120,295 135,310 125,295" fill="white" stroke="#333"/>
+                    <text x="80" y="275" text-anchor="middle" font-family="Arial" font-size="9" font-weight="bold" fill="#c41e3a">"SURPRISED"</text>
+                    <text x="80" y="288" text-anchor="middle" font-family="Arial" font-size="7" fill="#333">people drive cars</text>
+
+                    <!-- Billboard -->
+                    <rect x="20" y="150" width="120" height="80" fill="#2a2a2a" stroke="#444" stroke-width="3"/>
+                    <rect x="60" y="230" width="8" height="50" fill="#444"/>
+                    <rect x="72" y="230" width="8" height="50" fill="#444"/>
+                    <text x="80" y="175" text-anchor="middle" font-family="Arial" font-size="10" fill="white">BROUGHT TO YOU BY</text>
+                    <text x="80" y="195" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#c41e3a">BIG</text>
+                    <text x="80" y="215" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#c41e3a">SOBRIETY</text>
+
+                    <!-- Budweiser truck in distance -->
+                    <rect x="600" y="355" width="35" height="20" fill="#c41e3a"/>
+                    <rect x="590" y="360" width="12" height="15" fill="#1a1a1a"/>
+                    <circle cx="598" cy="377" r="5" fill="#333"/>
+                    <circle cx="625" cy="377" r="5" fill="#333"/>
+                    <text x="617" y="368" text-anchor="middle" font-family="Arial" font-size="5" fill="white">🍺</text>
+
+                    <!-- n=246 sign -->
+                    <rect x="620" y="180" width="70" height="50" fill="#ffeb3b" stroke="#333" stroke-width="2"/>
+                    <rect x="652" y="230" width="6" height="50" fill="#666"/>
+                    <text x="655" y="200" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold" fill="#1a1a1a">n = 246</text>
+                    <text x="655" y="215" text-anchor="middle" font-family="Arial" font-size="7" fill="#666">(6 years)</text>
+                    <text x="655" y="225" text-anchor="middle" font-family="Arial" font-size="6" fill="#999">(1 county)</text>
+
+                    <!-- 42% vs 42% callout -->
+                    <rect x="430" y="140" width="130" height="70" rx="5" fill="white" stroke="#c41e3a" stroke-width="2"/>
+                    <text x="495" y="160" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">BEFORE LEGALIZATION</text>
+                    <text x="495" y="178" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#c41e3a">42%</text>
+                    <text x="495" y="192" text-anchor="middle" font-family="Arial" font-size="9" fill="#666">AFTER LEGALIZATION</text>
+                    <text x="495" y="205" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#c41e3a">42%</text>
+                </svg>
+                <p class="caption"><strong>PHOTO:</strong> Artist's rendering of the study's methodology, in which a blood vial the size of a water tower determines fault while a Budweiser truck passes unexamined in the background. The researcher expresses "surprise" that humans operate machinery. Inset: The sample size (n=246) and the study's most damning finding (Ohio remained Ohio throughout the observation period). Photo credit: Getty Images / Ohio Department of Predetermined Conclusions</p>
+            </div>
+
+            <div class="article-body">
+                <p><span class="dateline">COLUMBUS, OHIO —</span> A groundbreaking new study has found that 42% of drivers killed in fatal crashes in one Ohio county over six years tested positive for THC, leading researchers to conclude that cannabis users sometimes drive automobiles—a finding that has sent shockwaves through the medical community, whose members had previously assumed marijuana enthusiasts exclusively levitated or traveled by vibes.</p>
+
+                <p>The study, which was presented at a conference (not peer-reviewed, poster board positioned twelve feet from the continental breakfast), examined 246 fatal crash cases in Montgomery County between 2019 and 2024. Researchers expressed "surprise" at their findings, marking the first time in recorded history that scientists have been surprised to learn that people who consume a substance used by 50 million Americans also participate in daily activities like driving, working, and existing.</p>
+
+                <p>"We were genuinely shocked," said lead researcher Dr. Peter Ekeh, apparently unaware that cannabis users include line cooks, touring musicians, software engineers, and approximately everyone who has ever lived in California. "Next, we plan to study whether coffee drinkers also operate heavy machinery, and whether people who have eaten breakfast sometimes go places afterward."</p>
+
+                <div class="pullquote">
+                    "By this methodology, 100% of crash victims also tested positive for having once been born. When will we confront Big Birth's stranglehold on our highways?"
+                </div>
+
+                <p>The study's methodology rested on a load-bearing wall of pure statistical audacity: treating "detectable THC in blood" as synonymous with "actively experiencing the effects of cannabis." By this standard, a driver who consumed half a gummy edible at 2 PM and was stone-sober by 7 PM would be classified identically to someone who was, in the clinical parlance, "completely zooted" at the moment of impact. THC, which can remain detectable in blood for hours or even days after impairment has fully subsided, was treated as a smoking gun still warm to the touch.</p>
+
+                <p>"'Recent consumption' is doing felony-level deception in this study," noted Dr. Helena Marsh, a toxicologist who was not involved in the research and seemed actively grateful for that fact. "The phrase could mean the driver was mid-bong-rip, or it could mean they'd had a Delta-8 gummy while watching Succession fourteen hours earlier and were now running late and thinking about their parking spot. The study treats these as identical because nuance doesn't fit on a headline."</p>
+            </div>
+
+            <!-- Ad #1 -->
+            <div class="ad">
+                <div class="ad-label">Advertisement</div>
+                <h3>🍺 BUDWEISER THANKS YOU 🍺</h3>
+                <p>For another year of studies that somehow forgot to mention our 10,000 annual highway fatalities.</p>
+                <p><em>"We couldn't have buried the lede without you."</em></p>
+                <span class="cta">This Message Paid For By: The Fruit Basket</span>
+            </div>
+
+            <div class="article-body">
+                <p>Perhaps the study's most remarkable achievement was its complete omission of alcohol—the substance responsible for approximately 10,000 American road deaths annually, or roughly 37% of all traffic fatalities nationwide. The decision not to mention the drug that kills more drivers than any other substance was, according to researchers, "not an oversight" but rather "a focused inquiry," which is science-speak for "we had a deadline and a predetermined conclusion."</p>
+
+                <p>Somewhere in St. Louis, an Anheuser-Busch executive is reportedly sending the research team a fruit basket. The card reads only: "Thank you for your service."</p>
+
+                <p>The study's sample size—246 deaths across six years in a single Ohio county—amounts to roughly 41 fatalities per year. For perspective, Ohio loses more residents annually to choking on food. When reached for comment, Big Chewing issued a prepared statement: "Thoughts and prayers."</p>
+
+                <div class="info-box">
+                    <h4>📊 By The Numbers</h4>
+                    <ul>
+                        <li><strong>246</strong> — Total sample size (countable on your fingers if you had 246 fingers)</li>
+                        <li><strong>6</strong> — Years of data collection</li>
+                        <li><strong>1</strong> — Ohio counties examined</li>
+                        <li><strong>41</strong> — Average annual deaths in study (fewer than Ohio food-choking deaths)</li>
+                        <li><strong>42%</strong> — THC-positive rate before legalization</li>
+                        <li><strong>42%</strong> — THC-positive rate after legalization (Ohio confirmed as behavioral Planck constant)</li>
+                        <li><strong>58%</strong> — Drivers who tested NEGATIVE for THC (exposed: sobriety is deadlier)</li>
+                        <li><strong>0</strong> — Fault determinations made</li>
+                        <li><strong>0</strong> — Times alcohol was mentioned</li>
+                        <li><strong>0</strong> — Peer reviewers who saw this before publication</li>
+                    </ul>
+                </div>
+
+                <p>The legal THC threshold used in the study—2-5 ng/mL—was not, as one might assume, determined by scientists. It was determined by legislators in the early 2010s, whose cannabis expertise peaked at a 1988 school assembly where a police officer held up a poster of a wilted plant and called it "Mary Jane." Daily cannabis users, studies have shown, can function normally at blood concentrations of 50 ng/mL or higher. The legal limit exists because the form had a blank field and someone had to type something.</p>
+
+                <p>"The threshold was essentially arbitrary," confirmed Dr. Theodore Huang, a pharmacologist at UCLA. "It's like setting the legal blood-coffee limit at 'whatever makes the machine beep' and then acting surprised when your study finds that 100% of Starbucks employees are legally impaired at all times."</p>
+
+                <div class="pullquote">
+                    "58% of deceased drivers tested NEGATIVE for THC. Where is the War on Not Being High? Big Sobriety has captured the discourse."
+                </div>
+
+                <p>Perhaps the study's most damning finding was its own accidental suicide: THC-positive rates among fatal crash victims were 42% before Ohio legalized recreational cannabis and 42% after. The researchers presented this as evidence of an ongoing crisis. Statisticians presented it as evidence that Ohio is a fixed constant, immutable across time and law—a behavioral Planck length. Six years of research to discover that Ohio is Ohio. Publish immediately.</p>
+
+                <p>"If your before-and-after numbers are identical, you haven't indicted cannabis," observed Dr. Marsh. "You've proven that nothing changed, which is actually a point in legalization's favor. But I suspect that finding didn't make the poster board."</p>
+            </div>
+
+            <!-- Poll Widget -->
+            <div class="poll">
+                <h4>📊 READER POLL: What's Actually Killing Ohio Drivers?</h4>
+                <div class="poll-option">
+                    <span>Cannabis (detected 14 hours ago)</span>
+                    <span>12%</span>
+                </div>
+                <div class="poll-bar" style="width: 12%;"></div>
+                <div class="poll-option">
+                    <span>Texting while checking Zillow listings</span>
+                    <span>34%</span>
+                </div>
+                <div class="poll-bar" style="width: 34%;"></div>
+                <div class="poll-option">
+                    <span>The unmentioned 10,000 annual alcohol deaths</span>
+                    <span>41%</span>
+                </div>
+                <div class="poll-bar" style="width: 41%;"></div>
+                <div class="poll-option">
+                    <span>Ohio itself (behavioral Planck constant)</span>
+                    <span>13%</span>
+                </div>
+                <div class="poll-bar" style="width: 13%;"></div>
+                <p style="font-size: 0.8em; color: #999; margin-top: 15px;">Total votes: 42,069 • Poll closes: When we feel like it</p>
+            </div>
+
+            <div class="article-body">
+                <p>Critically, the study never established that a single THC-positive driver actually caused their crash—a methodological gap roughly the size of Montgomery County itself. Any of the 42% could have been sitting stationary at a red light when a stone-sober realtor, mentally staging a living room while scrolling Zillow, came through the intersection at 50 miles per hour. But coroners don't test for "mentally staging the living room." The stoned guy gets the blame. It was always going to be this way.</p>
+
+                <p>"Fault determination is the dog that didn't bark," said traffic safety analyst Robin Chen. "Without it, all you've proven is that some people who died had, at some point in the recent past, consumed cannabis. You haven't proven they caused anything. You've just proven they existed."</p>
+
+                <p>The study's presentation venue—a trauma surgery conference, not a peer-reviewed journal—raised additional questions. "Presented at conference" is academic code for "registered before the early-bird deadline and assigned a poster board." This is not the New England Journal of Medicine. This is a tri-fold display competing for attention with a coffee station and a booth selling surgical loupes at a 15% discount.</p>
+            </div>
+
+            <!-- Ad #2 -->
+            <div class="ad">
+                <div class="ad-label">Advertisement</div>
+                <h3>🔬 BIG BIRTH: A Modest Proposal 🔬</h3>
+                <p><strong>100% of fatal crash victims tested positive for "having been born."</strong></p>
+                <p>It's time we had an honest conversation about the role of natality in traffic deaths.</p>
+                <p><em>When will we confront Big Birth's stranglehold on our highways?</em></p>
+                <span class="cta">Learn More at: BirthToDeathPipeline.org</span>
+            </div>
+
+            <div class="article-body">
+                <p>When asked to comment on the study's limitations, Dr. Ekeh expressed continued surprise—this time that journalists would ask follow-up questions. "We're just trying to start a conversation," he said, using the phrase universally understood to mean "please don't ask about our methodology."</p>
+
+                <p>The conversation, such as it is, might be better started by examining the study's buried bombshell: 58% of drivers killed in these crashes tested completely negative for THC. By the study's own logic, sobriety is deadlier than being high. A majority of fatal crashes involved drivers who were provably, testably not under the influence of cannabis.</p>
+
+                <p>Where, then, is the War on Not Being High? Where are the PSAs? "This is your brain. This is your brain completely sober. This is your brain sober behind the wheel. Any questions?" Big Sobriety has captured the discourse, and we are through the looking glass.</p>
+
+                <p>At press time, a follow-up study was announced examining whether podiatrists are "stunned" to learn that people with feet sometimes walk places.</p>
+            </div>
+
+            <!-- Correction Box -->
+            <div class="correction">
+                <strong>⚠️ CORRECTION (Dec. 21, 2025, 3:47 PM):</strong> An earlier version of this article stated that the study was "presented at a conference." We have since confirmed it was presented at a conference. We regret the accuracy.
+            </div>
+
+            <!-- Info Box: What The Study Actually Proved -->
+            <div class="info-box">
+                <h4>🔍 What The Study Actually Proved (A Summary)</h4>
+                <ul>
+                    <li>Cannabis users drive cars (groundbreaking)</li>
+                    <li>Ohio is Ohio (confirmed across time and legislation)</li>
+                    <li>58% of dead drivers were sober (buried in paragraph 47)</li>
+                    <li>Alcohol kills 10,000 annually on roads (not mentioned)</li>
+                    <li>The legal limit was invented in a room without scientists</li>
+                    <li>Coroners don't test for "checking Zillow"</li>
+                    <li>Conference poster boards exist near coffee stations</li>
+                    <li>Surgeons can be "surprised" by things known since 1971</li>
+                </ul>
+            </div>
+        </article>
+
+        <!-- Ad #3 -->
+        <div class="ad">
+            <div class="ad-label">Advertisement</div>
+            <h3>⚖️ ARBITRARY LEGAL THRESHOLDS, LLC ⚖️</h3>
+            <p><em>"Someone Had To Type Something"</em></p>
+            <p>Providing blank-field solutions since the form needed a number.</p>
+            <p>Now offering: Blood-coffee limits • Cheese velocity standards • Vibes per milliliter</p>
+            <span class="cta">Call 1-800-MADE-IT-UP</span>
+        </div>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h3>💬 Comments (2,847) — Sorted by: Most Unhinged</h3>
+
+            <div class="comment top-comment">
+                <div class="comment-header">
+                    <span><span class="username">OhioManPermanent</span><span class="badge top-commenter">TOP COMMENTER</span></span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I've lived in Ohio my entire life and I can confirm we are a behavioral Planck constant. Nothing changes. Nothing has ever changed. In 1847 Ohio was Ohio. Today Ohio is Ohio. When the sun explodes, the last thing it will consume is Ohio, unchanged, eternal, 42%.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 4,207</span>
+                    <span>👎 42</span>
+                    <span>💬 Reply</span>
+                    <span>🚩 Report</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">BuckeyeSkeptic</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Can confirm. I was high in Ohio in 2019. I am high in Ohio now. The rate is holding steady. I AM the 42%.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 1,847</span>
+                    <span>👎 23</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">42IsTheAnswer</span></span>
+                    <span class="timestamp">45 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Wait... 42%... 42... THE MEANING OF LIFE IS OHIO??? Douglas Adams tried to warn us.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 3,621</span>
+                    <span>👎 0</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">DrMarijuanaMD</span><span class="badge controversial">🔥 CONTROVERSIAL</span></span>
+                    <span class="timestamp">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    As a doctor (not of medicine, of vibes), I can confirm that the legal limit was absolutely invented by someone who had never seen a cannabis in their life. My patients function at 50 ng/mL. They drive. They work. They file taxes. The limit exists because the form had a blank field and some guy in 1988 went "uhhh... five?"
+                </div>
+                <div class="comment-actions">
+                    <span>👍 2,891</span>
+                    <span>👎 156</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">JustSayNoToScience</span></span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    My uncle was a legislator in the 80s. Can confirm the 1988 assembly story. The officer's name was Gary. The poster was laminated. "Mary Jane" was in comic sans. We all clapped.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 956</span>
+                    <span>👎 12</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username verified">BudweiserOfficial</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    We at Budweiser want to make clear that we had absolutely nothing to do with this study. That said, if anyone on the research team would like a complimentary case of product, our DMs are open. This is unrelated.
+                </div>
+                <div class="comment-actions">
+                    <span class="ratio">👍 156</span>
+                    <span>👎 8,943</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">FruitBasketWatcher</span></span>
+                    <span class="timestamp">58 min ago</span>
+                </div>
+                <div class="comment-body">
+                    ratio + the fruit basket has already been sent + L + 10,000 annual highway deaths + you fell off
+                </div>
+                <div class="comment-actions">
+                    <span>👍 12,847</span>
+                    <span>👎 2</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">ZillowRealtor_Brenda</span></span>
+                    <span class="timestamp">4 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Okay but why is everyone coming for realtors??? I was NOT checking Zillow when I rear-ended that Prius. I was checking Redfin. There's a difference. Also the Prius driver was high so legally it's his fault. That's how science works.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 3,412</span>
+                    <span>👎 567</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">PriusGuy_RIP</span></span>
+                    <span class="timestamp">3 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    I was the Prius driver. I'm dead now. But I want to clarify I had half a gummy at 2pm THE PREVIOUS DAY. The coroner didn't test Brenda for mentally staging my living room, which she was absolutely doing. Open concept was mentioned. I heard it. Then I died.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 8,921</span>
+                    <span>👎 4</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">BigChewing_PR</span></span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    On behalf of the Chewing Industry, we want to express our thoughts and prayers. Also please note that choking deaths in Ohio are unrelated to chewing, which is actually the SOLUTION to choking. Chew more. Chew thoroughly. This message brought to you by Big Chewing.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 421</span>
+                    <span>👎 89</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">FirstCommenter</span><span class="badge first">FIRST</span></span>
+                    <span class="timestamp">6 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    First
+                </div>
+                <div class="comment-actions">
+                    <span>👍 2</span>
+                    <span>👎 4,892</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">NotFirst</span></span>
+                    <span class="timestamp">6 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Congrats on being first. You've contributed exactly as much to discourse as this study did to science.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 7,234</span>
+                    <span>👎 1</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">Podiatrist_Dan</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    As a podiatrist, I want to confirm that I am NOT stunned to learn people with feet walk places. I have known this since medical school. However, I AM open to a six-year study funded by whoever wants to prove otherwise. My poster board game is strong. I know where the coffee stations are.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 2,156</span>
+                    <span>👎 34</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">ConferenceOrganizer_Steve</span></span>
+                    <span class="timestamp">45 min ago</span>
+                </div>
+                <div class="comment-body">
+                    Hey, I'm the guy who assigns poster board locations at these conferences. Just want to confirm: yes, this study was twelve feet from the continental breakfast. Yes, the coffee station was directly behind it. No, this was not a coincidence. We put the methodologically questionable studies near the bagels. It's tradition.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 5,678</span>
+                    <span>👎 23</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">[deleted]</span></span>
+                    <span class="timestamp">3 hours ago</span>
+                </div>
+                <div class="comment-body deleted">
+                    [This comment was removed for accurately describing the study's methodology]
+                </div>
+                <div class="comment-actions">
+                    <span>👍 ???</span>
+                    <span>👎 ???</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">ModeratorBot</span></span>
+                    <span class="timestamp">3 hours ago</span>
+                </div>
+                <div class="comment-body deleted">
+                    [This comment was removed for explaining why the previous comment was removed]
+                </div>
+                <div class="comment-actions">
+                    <span>👍 lol</span>
+                    <span>👎 nice</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">TouringMusician_420</span></span>
+                    <span class="timestamp">2 hours ago</span>
+                </div>
+                <div class="comment-body">
+                    Wait, people are SURPRISED we drive?? How do they think we get to the next city?? We're not teleporting between venues. The van exists. The van has been driven by someone at 15 ng/mL for the past 40 years. Live music would not exist without stoned drivers. This is infrastructure.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 4,521</span>
+                    <span>👎 67</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment reply">
+                <div class="comment-header">
+                    <span><span class="username">LineCook_GaryX</span></span>
+                    <span class="timestamp">1 hour ago</span>
+                </div>
+                <div class="comment-body">
+                    Seconded from the restaurant industry. If we tested every line cook in America, the THC-positive rate would be roughly 420%. The entire food service economy runs on weed and energy drinks. This is not a secret. This has never been a secret.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 3,892</span>
+                    <span>👎 12</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">BigSobriety_Official</span></span>
+                    <span class="timestamp">30 min ago</span>
+                </div>
+                <div class="comment-body">
+                    We at the Sobriety Industrial Complex categorically deny capturing the discourse. We have never captured the discourse. The discourse captured itself. Please continue focusing on the 42% and not the 58%. There is no war on Not Being High. This is normal. This is fine.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 234</span>
+                    <span>👎 6,721</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">CoffeeStationWitness</span></span>
+                    <span class="timestamp">15 min ago</span>
+                </div>
+                <div class="comment-body">
+                    I was at that conference. I was getting coffee. The poster was RIGHT THERE. The researcher made eye contact with me while I was pouring creamer. Neither of us knew what to do. We both knew. We both knew this wasn't real peer review. He nodded. I nodded. I took my coffee. I left. I will never recover from this.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 9,456</span>
+                    <span>👎 0</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="comment-header">
+                    <span><span class="username">DefinitelyNotACop</span></span>
+                    <span class="timestamp">Just now</span>
+                </div>
+                <div class="comment-body">
+                    Hey fellow kids! Anyone want to admit to driving high in the replies? Completely normal question from a completely normal fellow cannabis enjoyer. What are your names and addresses? For friendship purposes only.
+                </div>
+                <div class="comment-actions">
+                    <span>👍 12</span>
+                    <span>👎 8,934</span>
+                    <span>💬 Reply</span>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 20px; color: #999;">— Load 2,831 more comments —</p>
+        </section>
+
+        <!-- Related Articles -->
+        <section class="related">
+            <h3>📰 Related Articles</h3>
+            <div class="related-grid">
+                <div class="related-item">
+                    <h4>Study: 100% Of Drowning Victims Found To Have Been Near Water</h4>
+                    <div class="meta">Big Water declines to comment</div>
+                </div>
+                <div class="related-item">
+                    <h4>Area Coroner Admits He Has No Test For "Mentally Staging The Living Room"</h4>
+                    <div class="meta">Realtors celebrate</div>
+                </div>
+                <div class="related-item">
+                    <h4>Legislative Limit For Everything Traced Back To "Someone Had To Type Something"</h4>
+                    <div class="meta">Forms with blank fields blamed</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">🔥 You Might Also Be Interested In</h3>
+            <div class="related-grid">
+                <div class="related-item">
+                    <h4>Podiatrist Absolutely Thunderstruck That Feet Used For Walking</h4>
+                    <div class="meta">"I did not see this coming" says man with medical degree</div>
+                </div>
+                <div class="related-item">
+                    <h4>Budweiser Quietly Sponsors All Traffic Safety Research, Asks No One To Look Into This</h4>
+                    <div class="meta">Fruit baskets sent to 47 institutions</div>
+                </div>
+                <div class="related-item">
+                    <h4>Ohio Confirmed As Only State That Cannot Change Under Any Circumstances</h4>
+                    <div class="meta">Physicists add "Ohio" to list of universal constants</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">📊 Trending Now</h3>
+            <div class="related-grid">
+                <div class="related-item">
+                    <h4>Conference Poster Board Given Same Weight As Peer-Reviewed Journal Article</h4>
+                    <div class="meta">Early-bird registration deadline praised as "rigorous vetting"</div>
+                </div>
+                <div class="related-item">
+                    <h4>"Recent Consumption" Voted Most Deceptive Phrase Since "Natural Flavors"</h4>
+                    <div class="meta">Half a gummy at 2pm could mean anything, experts confirm</div>
+                </div>
+                <div class="related-item">
+                    <h4>War On Not Being High Declared; 58% Of Drivers Now Suspect</h4>
+                    <div class="meta">Sobriety linked to majority of fatal crashes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horoscopes -->
+        <div style="background: #fafafa; padding: 30px; border-top: 3px solid #c41e3a;">
+            <h3 style="color: #c41e3a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">✨ Today's Horoscopes (Traffic Edition)</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; font-size: 0.9em;">
+                <div><strong>Aries:</strong> The stars say you will be blamed for a crash you didn't cause because you ate an edible 14 hours ago. Mars is in retrograde. So is your career.</div>
+                <div><strong>Taurus:</strong> A Budweiser truck will pass you today. You will not mention it. No one ever mentions it.</div>
+                <div><strong>Gemini:</strong> You will function at 50 ng/mL and no one will notice because the legal limit was made up by someone named Gary in 1988.</div>
+                <div><strong>Cancer:</strong> Ohio will remain Ohio. You will remain in Ohio. Nothing will change. The rate is 42%.</div>
+                <div><strong>Leo:</strong> Your poster board will be placed near the coffee station. This is not peer review. Accept it.</div>
+                <div><strong>Virgo:</strong> A realtor will rear-end you while checking Zillow. You will test positive for THC. You will be blamed. The stars are not on your side.</div>
+            </div>
+        </div>
+
+        <!-- Ad #4 -->
+        <div class="ad">
+            <div class="ad-label">Advertisement</div>
+            <h3>🚗 THE 1988 DRUG EDUCATION NOSTALGIA COLLECTION 🚗</h3>
+            <p>Remember when Officer Gary held up that laminated poster of "Mary Jane"?</p>
+            <p><strong>Now you can own a piece of history!</strong></p>
+            <p>Includes: Wilted plant poster • Comic Sans warning labels • VHS of assembly presentation • Blank form with arbitrary numbers</p>
+            <span class="cta">Order at: RememberGary.com</span>
+        </div>
+
+        <!-- Letters to the Editor -->
+        <div style="padding: 30px; background: #fff; border-top: 1px solid #ddd;">
+            <h3 style="color: #c41e3a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">✉️ Letters To The Editor</h3>
+
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dotted #ddd;">
+                <p><strong>Dear HuckFinn,</strong></p>
+                <p>As a form with a blank field, I want to clarify that I never asked for anyone to type "2-5 ng/mL" in me. Someone just did. I was minding my own business being blank. Now I'm responsible for arbitrary legal thresholds. This is not the life I envisioned.</p>
+                <p><em>— A Form, Columbus, OH</em></p>
+            </div>
+
+            <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px dotted #ddd;">
+                <p><strong>Dear HuckFinn,</strong></p>
+                <p>I'm the continental breakfast from the trauma surgery conference. I want it on record that I saw the whole thing. The poster board was *right there*. The methodology was questionable and the croissants were mediocre. We are all complicit.</p>
+                <p><em>— Continental Breakfast, Marriott Conference Center</em></p>
+            </div>
+
+            <div>
+                <p><strong>Dear HuckFinn,</strong></p>
+                <p>I'm the 42%. Before legalization and after. I have always been the 42%. I will always be the 42%. Ohio is eternal. Ohio is unchanging. Ohio is the rate.</p>
+                <p><em>— Anonymous, Dayton, OH (it's always Dayton)</em></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 HuckFinn: America's Finest Newspaper</p>
+            <p>Columbus, OH • Est. 1847 • "Tu Stultus Es"</p>
+            <p style="margin-top: 10px;">
+                <a href="#" style="color: #c41e3a;">Corrections</a> •
+                <a href="#" style="color: #c41e3a;">Ethics Policy (lol)</a> •
+                <a href="#" style="color: #c41e3a;">Send Us A Fruit Basket</a> •
+                <a href="#" style="color: #c41e3a;">Advertise</a>
+            </p>
+            <p class="disclaimer">
+                <strong>DISCLAIMER:</strong> HuckFinn is a satirical publication. Any resemblance to actual journalism is coincidental and frankly concerning.
+                The 42% is real. Ohio is real. The fruit basket has been sent.
+                No studies were peer-reviewed in the making of this newspaper.
+            </p>
+            <p style="margin-top: 15px; font-size: 0.8em; color: #555;">
+                This article was presented at a conference. It was not peer-reviewed. The poster board was located near a vending machine.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
