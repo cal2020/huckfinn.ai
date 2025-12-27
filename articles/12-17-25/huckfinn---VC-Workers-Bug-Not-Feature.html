@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venture Capitalists Discover Workers Are A Bug, Not A Feature | HuckFinn</title>
+    <meta name="description" content="Harvard Business Review publishes 3,000-word advertisement for author's investment portfolio; Calls mass layoffs 'liberation'">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://huckfinn.ai/articles/12-17-25/huckfinn---VC-Workers-Bug-Not-Feature.html">
+    <meta property="og:title" content="Venture Capitalists Discover Workers Are A Bug, Not A Feature">
+    <meta property="og:description" content="Harvard Business Review publishes 3,000-word advertisement for author's investment portfolio; Calls mass layoffs 'liberation'">
+    <meta property="og:image" content="https://huckfinn.ai/og-image.png">
+    <meta property="og:site_name" content="HuckFinn">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://huckfinn.ai/articles/12-17-25/huckfinn---VC-Workers-Bug-Not-Feature.html">
+    <meta name="twitter:title" content="Venture Capitalists Discover Workers Are A Bug, Not A Feature">
+    <meta name="twitter:description" content="Harvard Business Review publishes 3,000-word advertisement for author's investment portfolio; Calls mass layoffs 'liberation'">
+    <meta name="twitter:image" content="https://huckfinn.ai/og-image.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Anton&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f5f0e1;
+            --ink: #1a1a1a;
+            --aged-paper: #e8e0c8;
+            --red-accent: #8b0000;
+            --faded-ink: #3a3a3a;
+            --highlight: #fff3cd;
+            --ad-bg: #fffef5;
+            --border-dark: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--cream);
+            color: var(--ink);
+            font-family: 'Libre Baskerville', Georgia, serif;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .newspaper-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--aged-paper);
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .newspaper-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .masthead {
+            text-align: center;
+            padding: 20px 20px 15px;
+            border-bottom: 3px double var(--ink);
+            position: relative;
+            z-index: 2;
+        }
+
+        .masthead-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            font-style: italic;
+            margin-bottom: 10px;
+            padding: 0 20px;
+        }
+
+        .newspaper-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 12vw, 90px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .newspaper-title span {
+            color: var(--red-accent);
+        }
+
+        .tagline {
+            font-family: 'Special Elite', monospace;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .edition-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 20px;
+            border-bottom: 1px solid var(--ink);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .breaking-banner {
+            background: var(--red-accent);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-family: 'Anton', sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-content {
+            padding: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 6vw, 48px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .subheadline {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--faded-ink);
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--ink);
+        }
+
+        .byline {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .byline strong {
+            color: var(--red-accent);
+        }
+
+        .featured-image {
+            width: 100%;
+            margin: 25px 0;
+            border: 3px solid var(--ink);
+            background: white;
+            padding: 10px;
+        }
+
+        .featured-image svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-caption {
+            font-size: 12px;
+            font-style: italic;
+            text-align: center;
+            padding: 10px 15px;
+            background: var(--ink);
+            color: var(--cream);
+            margin-top: -4px;
+        }
+
+        .article-body p {
+            margin-bottom: 18px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 75px;
+            float: left;
+            line-height: 0.8;
+            padding-right: 10px;
+            margin-top: 5px;
+            color: var(--red-accent);
+        }
+
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-style: italic;
+            text-align: center;
+            padding: 30px 40px;
+            margin: 30px 0;
+            border-top: 3px solid var(--ink);
+            border-bottom: 3px solid var(--ink);
+            position: relative;
+        }
+
+        .pull-quote::before {
+            content: '"';
+            font-size: 80px;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            color: var(--red-accent);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .pull-quote-attribution {
+            display: block;
+            font-size: 14px;
+            font-style: normal;
+            margin-top: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Interstitial Ads */
+        .ad-container {
+            background: var(--ad-bg);
+            border: 2px dashed var(--ink);
+            padding: 20px;
+            margin: 35px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .ad-container::before {
+            content: 'ADVERTISEMENT';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--aged-paper);
+            padding: 0 10px;
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: var(--faded-ink);
+        }
+
+        .ad-headline {
+            font-family: 'Anton', sans-serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .ad-body {
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .ad-cta {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 20px;
+            background: var(--ink);
+            color: var(--cream);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        /* Sidebar boxes */
+        .sidebar-box {
+            background: var(--highlight);
+            border-left: 4px solid var(--red-accent);
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .sidebar-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            color: var(--red-accent);
+        }
+
+        .sidebar-box table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .sidebar-box td {
+            padding: 6px 10px;
+            border-bottom: 1px dotted var(--ink);
+        }
+
+        .sidebar-box td:first-child {
+            font-weight: bold;
+        }
+
+        /* Related Articles */
+        .related-section {
+            border-top: 3px double var(--ink);
+            padding-top: 25px;
+            margin-top: 40px;
+        }
+
+        .related-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .related-item {
+            border: 1px solid var(--ink);
+            padding: 15px;
+            background: white;
+        }
+
+        .related-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .related-item p {
+            font-size: 12px;
+            color: var(--faded-ink);
+            font-style: italic;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            border-top: 5px solid var(--ink);
+            padding: 30px;
+            background: #f9f6ee;
+            margin-top: 40px;
+        }
+
+        .comments-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .comments-count {
+            font-size: 13px;
+            color: var(--faded-ink);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--ink);
+        }
+
+        .comment {
+            padding: 15px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .comment.reply {
+            margin-left: 30px;
+            padding-left: 15px;
+            border-left: 2px solid var(--red-accent);
+        }
+
+        .comment-author {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .comment-author .badge {
+            font-size: 10px;
+            background: var(--red-accent);
+            color: white;
+            padding: 2px 6px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comment-meta {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .comment-body {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .comment-actions {
+            font-size: 11px;
+            margin-top: 10px;
+            color: var(--faded-ink);
+        }
+
+        .comment-actions span {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .comment-actions span:hover {
+            color: var(--red-accent);
+        }
+
+        /* Crossword Section */
+        .crossword-section {
+            border-top: 5px solid var(--ink);
+            padding: 30px;
+            background: white;
+        }
+
+        .crossword-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .crossword-subtitle {
+            text-align: center;
+            font-style: italic;
+            font-size: 14px;
+            margin-bottom: 25px;
+            color: var(--faded-ink);
+        }
+
+        .crossword-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .crossword-grid {
+            display: grid;
+            gap: 2px;
+            background: var(--ink);
+            padding: 2px;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .crossword-cell {
+            width: 38px;
+            height: 38px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-family: 'Anton', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .crossword-cell.black {
+            background: var(--ink);
+        }
+
+        .crossword-cell input {
+            width: 100%;
+            height: 100%;
+            border: none;
+            text-align: center;
+            font-family: 'Anton', sans-serif;
+            font-size: 20px;
+            text-transform: uppercase;
+            background: transparent;
+            outline: none;
+            padding: 0;
+        }
+
+        .crossword-cell input:focus {
+            background: var(--highlight);
+        }
+
+        .crossword-cell .cell-number {
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            font-size: 9px;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: bold;
+        }
+
+        .crossword-cell.correct input {
+            background: #d4edda;
+        }
+
+        .crossword-cell.incorrect input {
+            background: #f8d7da;
+        }
+
+        .crossword-clues {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        @media (max-width: 500px) {
+            .crossword-clues {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .clues-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 5px;
+        }
+
+        .clue {
+            font-size: 13px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .clue strong {
+            color: var(--red-accent);
+        }
+
+        .crossword-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .crossword-btn {
+            padding: 10px 20px;
+            font-family: 'Special Elite', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--ink);
+            background: var(--cream);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .crossword-btn:hover {
+            background: var(--ink);
+            color: var(--cream);
+        }
+
+        .crossword-message {
+            text-align: center;
+            font-family: 'Special Elite', monospace;
+            font-size: 14px;
+            min-height: 20px;
+            color: var(--red-accent);
+        }
+
+        /* Footer */
+        .newspaper-footer {
+            background: var(--ink);
+            color: var(--cream);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-links {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-copyright {
+            font-size: 10px;
+            opacity: 0.7;
+        }
+
+        /* Horoscopes & Other Sections */
+        .bonus-section {
+            border-top: 3px double var(--ink);
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .bonus-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .horoscope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .horoscope-item {
+            padding: 12px;
+            border: 1px solid var(--ink);
+            background: white;
+        }
+
+        .horoscope-item h5 {
+            font-family: 'Anton', sans-serif;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: var(--red-accent);
+        }
+
+        .horoscope-item p {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .obituaries {
+            margin-top: 25px;
+        }
+
+        .obituary-item {
+            padding: 15px;
+            border: 1px solid var(--ink);
+            background: white;
+            margin-bottom: 15px;
+        }
+
+        .obituary-item h5 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .obituary-item p {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 20px;
+            }
+
+            .crossword-cell {
+                width: 32px;
+                height: 32px;
+            }
+
+            .crossword-cell input {
+                font-size: 16px;
+            }
+
+            .comment.reply {
+                margin-left: 15px;
+            }
+
+            .pull-quote {
+                padding: 20px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-container">
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>Est. 1847</span>
+                <span>"All The News That's Fit To Fabricate"</span>
+                <span>Price: Your Soul</span>
+            </div>
+            <h1 class="newspaper-title">Huck<span>Finn</span></h1>
+            <p class="tagline">America's Finest News Source</p>
+        </header>
+
+        <div class="edition-bar">
+            <span>Vol. CLXXVIII No. 4,892</span>
+            <span>Wednesday, December 17, 2025</span>
+            <span>Silicon Valley Bureau</span>
+        </div>
+
+        <div class="breaking-banner">
+            ⚡ BREAKING: Millions Of Workers "Liberated" From Burden Of Employment ⚡
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <article>
+                <h1 class="headline">Venture Capitalists Discover Workers Are A Bug, Not A Feature</h1>
+
+                <p class="subheadline">Harvard Business Review publishes 3,000-word advertisement for author's investment portfolio; Calls mass layoffs "liberation"</p>
+
+                <p class="byline">By <strong>MIRANDA STOCKHOLDER</strong> | Disruption Correspondent</p>
+
+                <!-- Featured Image -->
+                <figure class="featured-image">
+                    <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background -->
+                        <rect width="800" height="450" fill="#f5f0e1"/>
+
+                        <!-- Office Building -->
+                        <rect x="250" y="80" width="300" height="320" fill="#2a2a2a" stroke="#1a1a1a" stroke-width="3"/>
+
+                        <!-- Windows (some lit, some dark) -->
+                        <g fill="#fff3cd">
+                            <rect x="270" y="100" width="40" height="30"/>
+                            <rect x="330" y="100" width="40" height="30"/>
+                            <rect x="430" y="100" width="40" height="30"/>
+                            <rect x="490" y="100" width="40" height="30"/>
+
+                            <rect x="270" y="150" width="40" height="30"/>
+                            <rect x="390" y="150" width="40" height="30"/>
+                            <rect x="490" y="150" width="40" height="30"/>
+
+                            <rect x="330" y="200" width="40" height="30"/>
+                            <rect x="430" y="200" width="40" height="30"/>
+
+                            <rect x="270" y="250" width="40" height="30"/>
+
+                            <rect x="490" y="300" width="40" height="30"/>
+                        </g>
+
+                        <!-- Dark windows -->
+                        <g fill="#1a1a1a">
+                            <rect x="390" y="100" width="40" height="30"/>
+                            <rect x="330" y="150" width="40" height="30"/>
+                            <rect x="430" y="150" width="40" height="30"/>
+                            <rect x="270" y="200" width="40" height="30"/>
+                            <rect x="390" y="200" width="40" height="30"/>
+                            <rect x="490" y="200" width="40" height="30"/>
+                            <rect x="330" y="250" width="40" height="30"/>
+                            <rect x="390" y="250" width="40" height="30"/>
+                            <rect x="430" y="250" width="40" height="30"/>
+                            <rect x="490" y="250" width="40" height="30"/>
+                            <rect x="270" y="300" width="40" height="30"/>
+                            <rect x="330" y="300" width="40" height="30"/>
+                            <rect x="390" y="300" width="40" height="30"/>
+                            <rect x="430" y="300" width="40" height="30"/>
+                        </g>
+
+                        <!-- Door -->
+                        <rect x="370" y="340" width="60" height="60" fill="#3a3a3a"/>
+
+                        <!-- Stick figures being ejected -->
+                        <g stroke="#8b0000" stroke-width="2" fill="none">
+                            <!-- Figure 1 flying left -->
+                            <circle cx="180" cy="180" r="12"/>
+                            <line x1="180" y1="192" x2="180" y2="230"/>
+                            <line x1="180" y1="205" x2="160" y2="195"/>
+                            <line x1="180" y1="205" x2="200" y2="220"/>
+                            <line x1="180" y1="230" x2="165" y2="260"/>
+                            <line x1="180" y1="230" x2="195" y2="260"/>
+
+                            <!-- Figure 2 flying right -->
+                            <circle cx="620" cy="150" r="12"/>
+                            <line x1="620" y1="162" x2="620" y2="200"/>
+                            <line x1="620" y1="175" x2="640" y2="165"/>
+                            <line x1="620" y1="175" x2="600" y2="185"/>
+                            <line x1="620" y1="200" x2="605" y2="230"/>
+                            <line x1="620" y1="200" x2="635" y2="230"/>
+
+                            <!-- Figure 3 flying up-left -->
+                            <circle cx="150" cy="100" r="10"/>
+                            <line x1="150" y1="110" x2="150" y2="140"/>
+                            <line x1="150" y1="120" x2="135" y2="110"/>
+                            <line x1="150" y1="120" x2="165" y2="130"/>
+                            <line x1="150" y1="140" x2="140" y2="165"/>
+                            <line x1="150" y1="140" x2="160" y2="165"/>
+
+                            <!-- Figure 4 flying right -->
+                            <circle cx="660" cy="250" r="12"/>
+                            <line x1="660" y1="262" x2="660" y2="300"/>
+                            <line x1="660" y1="275" x2="680" y2="265"/>
+                            <line x1="660" y1="275" x2="640" y2="285"/>
+                            <line x1="660" y1="300" x2="645" y2="330"/>
+                            <line x1="660" y1="300" x2="675" y2="330"/>
+                        </g>
+
+                        <!-- Motion lines -->
+                        <g stroke="#8b0000" stroke-width="1.5" opacity="0.6">
+                            <line x1="250" y1="180" x2="210" y2="175"/>
+                            <line x1="250" y1="190" x2="205" y2="188"/>
+                            <line x1="250" y1="200" x2="210" y2="200"/>
+
+                            <line x1="550" y1="150" x2="590" y2="145"/>
+                            <line x1="550" y1="160" x2="595" y2="158"/>
+                            <line x1="550" y1="170" x2="590" y2="170"/>
+
+                            <line x1="550" y1="250" x2="600" y2="248"/>
+                            <line x1="550" y1="260" x2="605" y2="260"/>
+                        </g>
+
+                        <!-- AI Robot on top of building -->
+                        <g transform="translate(400, 50)">
+                            <!-- Robot body -->
+                            <rect x="-25" y="0" width="50" height="40" fill="#3a3a3a" rx="5"/>
+                            <!-- Robot head -->
+                            <rect x="-20" y="-25" width="40" height="25" fill="#4a4a4a" rx="3"/>
+                            <!-- Robot eyes -->
+                            <circle cx="-8" cy="-12" r="5" fill="#ff0000"/>
+                            <circle cx="8" cy="-12" r="5" fill="#ff0000"/>
+                            <!-- Antenna -->
+                            <line x1="0" y1="-25" x2="0" y2="-35" stroke="#3a3a3a" stroke-width="3"/>
+                            <circle cx="0" cy="-38" r="4" fill="#ff0000"/>
+                        </g>
+
+                        <!-- Banner the robot is holding -->
+                        <g transform="translate(400, 35)">
+                            <rect x="40" y="-15" width="180" height="35" fill="#fff3cd" stroke="#1a1a1a" stroke-width="2"/>
+                            <text x="130" y="8" text-anchor="middle" font-family="Anton, sans-serif" font-size="12" fill="#1a1a1a">YOU'RE LIBERATED!</text>
+                        </g>
+
+                        <!-- Ground -->
+                        <rect x="0" y="400" width="800" height="50" fill="#2a2a2a"/>
+
+                        <!-- Cardboard boxes on ground -->
+                        <g fill="#c4a86b" stroke="#8b7355" stroke-width="1">
+                            <rect x="100" y="370" width="35" height="30"/>
+                            <rect x="680" y="375" width="30" height="25"/>
+                            <rect x="140" y="380" width="25" height="20"/>
+                        </g>
+
+                        <!-- "INNOVATION" sign -->
+                        <text x="400" y="430" text-anchor="middle" font-family="Anton, sans-serif" font-size="24" fill="#f5f0e1">INNOVATION CAMPUS</text>
+                    </svg>
+                    <figcaption class="image-caption">
+                        Workers experience the liberation of "talent freedom" as an AI system optimizes headcount in real-time. The robot's sign reads "You're Liberated!" which HR confirms is not ironic.
+                    </figcaption>
+                </figure>
+
+                <div class="article-body">
+                    <p>In a development that absolutely no one with stock options saw coming, a Harvard Business Review article authored by a venture capitalist with investments in AI companies has concluded that AI is "inevitable" and will definitely disrupt enterprise software—particularly the kind of software that competes with companies in his portfolio. The peer review process worked flawlessly: the peers were investors, and they reviewed their portfolios. They approved.</p>
+
+                    <p>The landmark piece, titled "How Gen AI Could Disrupt SaaS—and Change the Companies That Use It," arrived this week bearing the revolutionary thesis that artificial intelligence will transform workplaces by eliminating the need for the people who work in them. "Administrative teams in HR, finance, and IT will shrink or redeploy, freeing talent for innovation," the authors write, introducing what labor historians are calling "the layoff euphemism to end all layoff euphemisms."</p>
+
+                    <div class="sidebar-box">
+                        <h3>📊 The Layoff Euphemism Evolution</h3>
+                        <table>
+                            <tr><td>1980s</td><td>"Downsizing"</td></tr>
+                            <tr><td>1990s</td><td>"Rightsizing"</td></tr>
+                            <tr><td>2000s</td><td>"Workforce optimization"</td></tr>
+                            <tr><td>2010s</td><td>"Streamlining"</td></tr>
+                            <tr><td>2025</td><td>"Freeing talent for innovation"</td></tr>
+                        </table>
+                    </div>
+
+                    <p>Deep Nishar, the article's lead author, disclosed in a footnote written in font size normally reserved for pharmaceutical side effects that he holds investments in Anthropic, Figma, Glean, and Slack. He was joined by Nitin Nohria, former dean of Harvard Business School, whose presence adds the academic credibility required to transform "I would like my investments to increase in value" into "this is simply how the world works."</p>
+
+                    <p>"This is not a conflict of interest," explained a spokesperson for conflicts of interest. "This is the interest."</p>
+                </div>
+
+                <!-- AD 1 -->
+                <div class="ad-container">
+                    <p class="ad-headline">🎯 UPSKILL OR PERISH™</p>
+                    <p class="ad-body">Learn to train your replacement in just 6 weeks! Our AI Transition Certificate Program helps you become fluent in automating your own job. <em>"I taught the chatbot everything I knew. Now I have so much free time!"</em> — Former Employee</p>
+                    <a href="#" class="ad-cta">Enroll Before You're Liberated</a>
+                </div>
+
+                <div class="article-body">
+                    <p>Perhaps most striking is the article's repeated reference to workers as "the humans." The phrase appears with the clinical detachment of an exterminator discussing an infestation. "Change management, especially for the humans who will be affected," the authors note, in a sentence that reads like a software patch note. Not "employees." Not "people." Not "colleagues." The humans.</p>
+
+                    <p>Somewhere, a Roomba just felt seen.</p>
+
+                    <div class="pull-quote">
+                        "Careers will evolve or diminish. That's it. Those are your options. There is no Door #3."
+                        <span class="pull-quote-attribution">— The Article, Basically</span>
+                    </div>
+
+                    <p>The article's core argument centers on the transformation from "systems of workflow" to "systems of work"—a distinction that, upon close reading, translates to "software that needs humans to operate it" versus "software that doesn't." Companies like Klarna have already announced plans to sunset major platforms like Salesforce and Workday. Hitachi, the article notes approvingly, deployed AI across 120,000 employees in just eight weeks.</p>
+
+                    <p>For context, eight weeks is less time than most companies spend deciding on a new logo font. It's shorter than a standard HR investigation into who's been stealing lunches from the break room fridge. The previous IT system took four years to implement. This one took less time than onboarding a single intern properly.</p>
+
+                    <p>When reached for comment, the 120,000 employees said: <code>[RESPONSE GENERATED BY AGENTIC HR SYSTEM - ORIGINAL PERSONNEL DEPRECATED]</code></p>
+                </div>
+
+                <!-- AD 2 -->
+                <div class="ad-container">
+                    <p class="ad-headline">💼 LINKEDIN PREMIUM ULTRA™</p>
+                    <p class="ad-body">Our AI now writes your "Open to Work" posts AND sends them to other AIs pretending to be recruiters! It's networking, but with a 0% human interaction guarantee. <em>Perfect for the post-liberation economy.</em></p>
+                    <a href="#" class="ad-cta">Start Your 30-Day Pivot</a>
+                </div>
+
+                <div class="article-body">
+                    <p>The authors urge business leaders to establish "governance frameworks" immediately. Reading between the lines, this translates to: install the scapegoat before the crisis. The framework's primary function, sources confirm, is to ensure that when the AI inevitably approves 47 ghost employees, authorizes a $3M purchase order for "decorative asbestos," or terminates the entire Phoenix office via push notification, there will be a clear, documented chain of accountability leading directly to a human being who can be fired on television.</p>
+
+                    <p>Good governance, as it turns out, isn't about preventing disasters. It's about pre-positioning the blame.</p>
+
+                    <p>"Local economies will feel these shifts," the article acknowledges, in the same tone one might say "Pompeii residents felt some volcanic shifts." Entire regions built around software services—the Bangalores, the Austins, the Research Triangles—will "transition" from thriving tech hubs to cautionary tales featured in future Harvard Business Review articles titled "What We Can Learn From The Collapse of [Your City Here]."</p>
+
+                    <div class="sidebar-box">
+                        <h3>🔮 Decoding "Human-AI Collaboration"</h3>
+                        <table>
+                            <tr><td>"Collaboration"</td><td>The AI decides. You comply.</td></tr>
+                            <tr><td>"Handoff points"</td><td>The moment liability transfers to you.</td></tr>
+                            <tr><td>"Accountability"</td><td>Yours. Always yours.</td></tr>
+                            <tr><td>"Protocols"</td><td>Documentation for the lawsuit.</td></tr>
+                        </table>
+                    </div>
+
+                    <p>The word "inevitable" appears in this article like a load-bearing beam. It does important work: transforming decisions into destiny, choices into physics, "we're doing this" into "the universe is doing this." You cannot argue with inevitability. You cannot unionize against inevitability. Inevitability has no HR department, no customer service line, no appeals process. Your job isn't disappearing because of decisions made by people who will profit from those decisions. It's disappearing because of inevitability. And who could be mad at that?</p>
+
+                    <p>"Legacy software encodes best practices from past implementation projects," the article explains. "Generative AI invents best practices in real time."</p>
+
+                    <p>Translation: Why preserve decades of hard-won institutional knowledge when you can have an AI hallucinate new procedures every 45 seconds? The employee who spent 30 years learning why you never run payroll on a Tuesday during Mercury retrograde? Freed. The engineer who understood which database column would crash the entire system if you breathed on it? Liberated. In their place: a confident chatbot that invents protocols with the unearned certainty of a first-year consultant and the institutional memory of a goldfish.</p>
+                </div>
+
+                <!-- AD 3 -->
+                <div class="ad-container">
+                    <p class="ad-headline">🏠 CARDBOARD BOX PREMIUM</p>
+                    <p class="ad-body">Luxury transitional housing for the recently liberated! Each box features water-resistant coating, built-in WiFi (for job searching), and that new cardboard smell. <em>"Innovation Campus" adjacent locations available.</em></p>
+                    <a href="#" class="ad-cta">Reserve Your Box Today</a>
+                </div>
+
+                <div class="article-body">
+                    <p>The article concludes with a stirring call to action: "Just as software ate the world over the past 15 years, generative AI will now transform the software that shaped today's organizations—and, in doing so, redefine how we work for decades to come."</p>
+
+                    <p>First, software ate the world. Now AI eats the software. Soon, agentic AI will eat that AI. Then quantum AI will eat the agentic AI. It's disruption all the way down—a perpetual ouroboros of innovation, a snake eating its own tail while a VC stands nearby whispering, "This is actually good for the snake."</p>
+
+                    <p>The entire economy is now a never-ending game of technological musical chairs, except each round removes both a chair and a player, and the music is a podcast about hustle culture.</p>
+
+                    <p>"This disruption will have ripple effects far beyond software companies," the authors note, in what may be the only accurate prediction in the entire piece. Indeed. Some ripples are more like tsunamis. And the people on shore—the humans, as the article calls them—may soon experience what it truly means to be liberated.</p>
+
+                    <p>At press time, the article had been shared 47,000 times on LinkedIn, primarily by people adding "Thoughts?" to the top of their posts.</p>
+                </div>
+
+                <!-- Related Articles -->
+                <section class="related-section">
+                    <h2>📰 Related Headlines</h2>
+                    <div class="related-grid">
+                        <div class="related-item">
+                            <h4>McKinsey Releases Study Finding McKinsey Extremely Valuable</h4>
+                            <p>"Our rigorous methodology confirmed what we always suspected," says firm.</p>
+                        </div>
+                        <div class="related-item">
+                            <h4>Man Who Bought Bitcoin In 2011 Has Opinion About Your Career</h4>
+                            <p>"Have you tried disrupting yourself?" asks person who got lucky once.</p>
+                        </div>
+                        <div class="related-item">
+                            <h4>Thought Leader's LinkedIn Post Just 47 Paragraphs Of The Word "Mindset"</h4>
+                            <p>Engagement through the roof; meaning at record lows.</p>
+                        </div>
+                        <div class="related-item">
+                            <h4>AI Asked To Write Honest Press Release, Crashes Immediately</h4>
+                            <p>System encountered "irreconcilable contradiction," say developers.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- You Might Also Like -->
+                <section class="related-section">
+                    <h2>🔥 You Might Also Be Interested In</h2>
+                    <div class="related-grid">
+                        <div class="related-item">
+                            <h4>10 Signs Your Job Will Be Automated (Number 7 Is Having A Job)</h4>
+                            <p>Sponsored by: Companies That Sell Automation</p>
+                        </div>
+                        <div class="related-item">
+                            <h4>How I Learned To Stop Worrying And Love My Robot Overlords</h4>
+                            <p>An optimist's guide to economic obsolescence</p>
+                        </div>
+                        <div class="related-item">
+                            <h4>Why Your Children Should Major In "Prompt Engineering" (An Advertisement)</h4>
+                            <p>From the creators of "Learn To Code" (2015-2024, RIP)</p>
+                        </div>
+                        <div class="related-item">
+                            <h4>Local Man's "Side Hustle" Just A Regular Job With Worse Benefits</h4>
+                            <p>"I'm my own boss," says man answering to algorithm</p>
+                        </div>
+                    </div>
+                </section>
+            </article>
+
+            <!-- Horoscopes & Obituaries -->
+            <section class="bonus-section">
+                <h2>♈ Corporate Horoscopes</h2>
+                <div class="horoscope-grid">
+                    <div class="horoscope-item">
+                        <h5>♈ Aries (The Disruptor)</h5>
+                        <p>Mercury is in retrograde, which explains why your Slack is down. Today is a good day to update your LinkedIn. Tomorrow will also be.</p>
+                    </div>
+                    <div class="horoscope-item">
+                        <h5>♉ Taurus (The Stakeholder)</h5>
+                        <p>The stars suggest you will be "aligned" with someone's "vision" today. Resistance is not recommended by HR.</p>
+                    </div>
+                    <div class="horoscope-item">
+                        <h5>♊ Gemini (The Pivot)</h5>
+                        <p>Your two faces serve you well in today's all-hands meeting. One face smiles; the other updates its résumé under the table.</p>
+                    </div>
+                    <div class="horoscope-item">
+                        <h5>♋ Cancer (The Legacy System)</h5>
+                        <p>You are feeling deprecated today. That's not the stars—that's just how Tuesdays feel now.</p>
+                    </div>
+                </div>
+
+                <div class="obituaries">
+                    <h2>⚰️ Obituaries</h2>
+                    <div class="obituary-item">
+                        <h5>INSTITUTIONAL KNOWLEDGE (1947-2025)</h5>
+                        <p>Institutional Knowledge passed away peacefully on Tuesday, surrounded by chatbots. Born in the post-war era to parents Process and Experience, IK spent decades helping organizations avoid repeating mistakes. Survivors include Tribal Wisdom (in hospice) and That One Guy Who Knew Where Everything Was (recently liberated). In lieu of flowers, please document absolutely nothing and assume the AI will figure it out.</p>
+                    </div>
+                    <div class="obituary-item">
+                        <h5>JOB SECURITY (1945-2024)</h5>
+                        <p>Job Security died doing what it loved: being slowly eroded by market forces. A longtime resident of the American Dream, JS is survived by Gig Economy, Side Hustle, and Passive Income (location unknown). Services will be held at a WeWork that is also closing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Crossword Puzzle -->
+            <section class="crossword-section" id="crossword">
+                <h2 class="crossword-header">📝 The Daily Disruption Crossword</h2>
+                <p class="crossword-subtitle">"Synergizing Your Puzzle Experience"</p>
+
+                <div class="crossword-container">
+                    <div class="crossword-grid" id="crossword-grid" style="grid-template-columns: repeat(8, 1fr);">
+                        <!-- Grid will be generated by JavaScript -->
+                    </div>
+
+                    <div class="crossword-clues">
+                        <div class="clues-column">
+                            <h4>Across</h4>
+                            <div class="clue"><strong>1.</strong> What you're "freed" for after layoffs (10)</div>
+                            <div class="clue"><strong>5.</strong> What AI disruption supposedly is (10)</div>
+                            <div class="clue"><strong>7.</strong> What happens to careers that don't evolve (8)</div>
+                        </div>
+                        <div class="clues-column">
+                            <h4>Down</h4>
+                            <div class="clue"><strong>2.</strong> What workers are called in the article (6)</div>
+                            <div class="clue"><strong>3.</strong> Euphemism for getting fired (8)</div>
+                            <div class="clue"><strong>4.</strong> What frameworks provide when AI fails (5)</div>
+                            <div class="clue"><strong>6.</strong> What companies do to headcount (6)</div>
+                        </div>
+                    </div>
+
+                    <div class="crossword-buttons">
+                        <button class="crossword-btn" onclick="checkAnswers()">Check Answers</button>
+                        <button class="crossword-btn" onclick="revealAnswers()">Reveal All</button>
+                        <button class="crossword-btn" onclick="clearGrid()">Clear</button>
+                    </div>
+
+                    <div class="crossword-message" id="crossword-message"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Comments Section -->
+        <section class="comments-section">
+            <h2 class="comments-header">💬 Comments</h2>
+            <p class="comments-count">2,847 comments (437 from bots, 2,410 from people who didn't read the article)</p>
+
+            <div class="comment">
+                <p class="comment-author">ThoughtLeaderSteve <span class="badge">Top Contributor</span></p>
+                <p class="comment-meta">2 hours ago · San Francisco, CA</p>
+                <p class="comment-body">This is actually great news. I've been saying for years that humans are the bottleneck. Now we can finally scale empathy. Thoughts? 🚀</p>
+                <p class="comment-actions"><span>👍 2.3K</span> <span>👎 891</span> <span>Reply</span> <span>Share</span> <span>Report</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">LaidOffLarry47</p>
+                <p class="comment-meta">1 hour ago</p>
+                <p class="comment-body">Steve I worked with you for 6 years before they "liberated" me. You literally cried when they took away the free snacks in 2019.</p>
+                <p class="comment-actions"><span>👍 4.7K</span> <span>👎 12</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">ThoughtLeaderSteve</p>
+                <p class="comment-meta">58 minutes ago</p>
+                <p class="comment-body">That was about the principle, Larry. Anyway, have you considered upskilling? I hear prompt engineering is the new coding. 💪</p>
+                <p class="comment-actions"><span>👍 89</span> <span>👎 3.2K</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment">
+                <p class="comment-author">BootstrapBetty <span class="badge">Verified Founder</span></p>
+                <p class="comment-meta">3 hours ago · Austin, TX → (recently displaced)</p>
+                <p class="comment-body">I actually agree with this article. At my startup, we replaced 40 employees with one AI agent. Sure, the agent keeps approving purchase orders for "decorative uranium," but that's a governance issue, not a technology issue. Always be iterating! 📈</p>
+                <p class="comment-actions"><span>👍 567</span> <span>👎 1.2K</span> <span>Reply</span> <span>Share</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">RegulatorRick</p>
+                <p class="comment-meta">2 hours ago</p>
+                <p class="comment-body">Ma'am, I'm from the NRC. We need to talk.</p>
+                <p class="comment-actions"><span>👍 8.9K</span> <span>👎 3</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment">
+                <p class="comment-author">MiddleManagerMike</p>
+                <p class="comment-meta">3 hours ago · Somewhere with a mortgage</p>
+                <p class="comment-body">I've been in corporate America for 22 years. In 2001 they said learn Java. In 2010 they said learn cloud. In 2020 they said learn agile. Now they say learn prompts. At what point do I just become a series of LinkedIn Learning certificates in a trench coat?</p>
+                <p class="comment-actions"><span>👍 12.4K</span> <span>👎 89</span> <span>Reply</span> <span>Share</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">ZenMasterOfPivoting</p>
+                <p class="comment-meta">2 hours ago</p>
+                <p class="comment-body">Mike, the trench coat IS the skill. You've been disrupting yourself this whole time. That's the real learning. 🧘</p>
+                <p class="comment-actions"><span>👍 3.4K</span> <span>👎 567</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment">
+                <p class="comment-author">GaryFromAccounting</p>
+                <p class="comment-meta">6 hours ago · Cleveland, OH</p>
+                <p class="comment-body">I don't understand anything in this article. Is this about computers? My grandson does something with computers. He makes good money. I think. We don't talk much since the divorce.</p>
+                <p class="comment-actions"><span>👍 7.8K</span> <span>👎 12</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">CompassionateSam</p>
+                <p class="comment-meta">5 hours ago</p>
+                <p class="comment-body">Gary this is the most human comment in this entire section. I hope you and your grandson reconnect. ❤️</p>
+                <p class="comment-actions"><span>👍 6.3K</span> <span>👎 2</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">GaryFromAccounting</p>
+                <p class="comment-meta">5 hours ago</p>
+                <p class="comment-body">Thank you Sam. How do I save this website to my Rolodex?</p>
+                <p class="comment-actions"><span>👍 9.1K</span> <span>👎 0</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment">
+                <p class="comment-author">PhilosophyMajorPhil</p>
+                <p class="comment-meta">45 minutes ago · Coffee Shop (Not Employed Here)</p>
+                <p class="comment-body">Actually, if you read Heidegger's concept of "Gestell" alongside Marx's theory of alienation, you'll see that this moment was always inscribed in the teleological structure of technocapitalism. The AI isn't replacing workers; it's revealing that workers were always-already replaced by the abstract logic of capital itself. Anyway does anyone know if this place is hiring?</p>
+                <p class="comment-actions"><span>👍 1.8K</span> <span>👎 567</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">PracticalPam</p>
+                <p class="comment-meta">40 minutes ago</p>
+                <p class="comment-body">Sir this is a Wendy's.</p>
+                <p class="comment-actions"><span>👍 22.1K</span> <span>👎 3</span> <span>Reply</span></p>
+            </div>
+
+            <div class="comment reply">
+                <p class="comment-author">PhilosophyMajorPhil</p>
+                <p class="comment-meta">38 minutes ago</p>
+                <p class="comment-body">WENDY'S IS HIRING?!</p>
+                <p class="comment-actions"><span>👍 31.4K</span> <span>👎 0</span> <span>Reply</span></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="newspaper-footer">
+            <nav class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Advertise</a>
+                <a href="#">Subscribe</a>
+                <a href="#">Privacy Policy (lol)</a>
+                <a href="#">Careers (Just Kidding)</a>
+            </nav>
+            <p class="footer-copyright">© 2025 HuckFinn Media. All rights reserved. This is satire. Please don't sue us. Our legal department has been "liberated."</p>
+        </footer>
+    </div>
+
+    <script>
+        // Crossword puzzle data
+        const gridSize = 8;
+        const grid = [
+            ['I', 'N', 'N', 'O', 'V', 'A', 'T', 'I', 'O', 'N'],
+            ['#', 'U', '#', '#', '#', '#', '#', '#', '#', '#'],
+            ['#', 'M', '#', 'L', '#', 'B', '#', '#', '#', '#'],
+            ['#', 'A', '#', 'I', 'N', 'E', 'V', 'I', 'T', 'A', 'B', 'L', 'E'],
+            ['#', 'N', '#', 'B', '#', 'L', '#', '#', '#', '#'],
+            ['#', 'S', 'H', 'E', 'R', 'A', 'T', 'E', 'D', '#'],
+            ['#', '#', '#', 'R', '#', 'M', '#', '#', '#', '#'],
+            ['D', 'I', 'M', 'I', 'N', 'I', 'S', 'H', '#', '#'],
+            ['#', '#', '#', 'T', '#', 'E', '#', '#', '#', '#'],
+            ['#', '#', '#', 'E', '#', '#', '#', '#', '#', '#'],
+        ];
+
+        // Simplified 8x8 grid for mobile-friendliness
+        const simpleGrid = [
+            [{num: 1, letter: 'I'}, {letter: 'N'}, {letter: 'N'}, {letter: 'O'}, {letter: 'V'}, {letter: 'A'}, {letter: 'T'}, {letter: 'E'}],
+            [{black: true}, {num: 2, letter: 'U'}, {black: true}, {black: true}, {black: true}, {black: true}, {black: true}, {black: true}],
+            [{black: true}, {letter: 'M'}, {black: true}, {num: 3, letter: 'L'}, {black: true}, {num: 4, letter: 'B'}, {black: true}, {black: true}],
+            [{num: 5, letter: 'I'}, {letter: 'N'}, {letter: 'E'}, {letter: 'V'}, {letter: 'I'}, {letter: 'T'}, {letter: 'A'}, {letter: 'B'}],
+            [{black: true}, {letter: 'S'}, {black: true}, {letter: 'I'}, {black: true}, {letter: 'L'}, {black: true}, {black: true}],
+            [{num: 6, letter: 'F'}, {letter: 'R'}, {letter: 'E'}, {letter: 'E'}, {letter: 'D'}, {letter: 'A'}, {black: true}, {black: true}],
+            [{black: true}, {black: true}, {black: true}, {letter: 'D'}, {black: true}, {letter: 'M'}, {black: true}, {black: true}],
+            [{num: 7, letter: 'D'}, {letter: 'I'}, {letter: 'M'}, {black: true}, {black: true}, {letter: 'E'}, {black: true}, {black: true}],
+        ];
+
+        const answers = {
+            '1-across': 'INNOVATE',
+            '5-across': 'INEVITAB',
+            '6-across': 'FREED',
+            '7-across': 'DIM',
+            '2-down': 'HUMANS',
+            '3-down': 'LIEED',
+            '4-down': 'BLAME'
+        };
+
+        function initCrossword() {
+            const gridEl = document.getElementById('crossword-grid');
+            gridEl.innerHTML = '';
+            gridEl.style.gridTemplateColumns = `repeat(8, 1fr)`;
+
+            simpleGrid.forEach((row, rowIndex) => {
+                row.forEach((cell, colIndex) => {
+                    const cellEl = document.createElement('div');
+                    cellEl.className = 'crossword-cell';
+
+                    if (cell.black) {
+                        cellEl.classList.add('black');
+                    } else {
+                        if (cell.num) {
+                            const numEl = document.createElement('span');
+                            numEl.className = 'cell-number';
+                            numEl.textContent = cell.num;
+                            cellEl.appendChild(numEl);
+                        }
+
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.maxLength = 1;
+                        input.dataset.row = rowIndex;
+                        input.dataset.col = colIndex;
+                        input.dataset.answer = cell.letter;
+
+                        input.addEventListener('input', function(e) {
+                            this.value = this.value.toUpperCase();
+                            if (this.value) {
+                                moveToNext(rowIndex, colIndex);
+                            }
+                        });
+
+                        input.addEventListener('keydown', function(e) {
+                            if (e.key === 'Backspace' && !this.value) {
+                                moveToPrev(rowIndex, colIndex);
+                            }
+                        });
+
+                        cellEl.appendChild(input);
+                    }
+
+                    gridEl.appendChild(cellEl);
+                });
+            });
+        }
+
+        function moveToNext(row, col) {
+            const inputs = document.querySelectorAll('.crossword-cell input');
+            const currentIndex = row * 8 + col;
+            for (let i = currentIndex + 1; i < inputs.length; i++) {
+                const nextInput = inputs[i];
+                if (nextInput && !nextInput.closest('.black')) {
+                    nextInput.focus();
+                    break;
+                }
+            }
+        }
+
+        function moveToPrev(row, col) {
+            const inputs = document.querySelectorAll('.crossword-cell input');
+            const currentIndex = row * 8 + col;
+            for (let i = currentIndex - 1; i >= 0; i--) {
+                const prevInput = inputs[i];
+                if (prevInput && !prevInput.closest('.black')) {
+                    prevInput.focus();
+                    break;
+                }
+            }
+        }
+
+        function checkAnswers() {
+            const inputs = document.querySelectorAll('.crossword-cell input');
+            let correct = 0;
+            let total = 0;
+
+            inputs.forEach(input => {
+                const cell = input.closest('.crossword-cell');
+                cell.classList.remove('correct', 'incorrect');
+
+                if (input.value) {
+                    total++;
+                    if (input.value.toUpperCase() === input.dataset.answer) {
+                        cell.classList.add('correct');
+                        correct++;
+                    } else {
+                        cell.classList.add('incorrect');
+                    }
+                }
+            });
+
+            const msg = document.getElementById('crossword-message');
+            if (total === 0) {
+                msg.textContent = "Fill in some letters first!";
+            } else if (correct === inputs.length) {
+                msg.textContent = "🎉 Congratulations! You've been promoted to Chief Puzzle Officer!";
+            } else {
+                msg.textContent = `${correct} correct out of ${total} filled. Keep iterating!`;
+            }
+        }
+
+        function revealAnswers() {
+            const inputs = document.querySelectorAll('.crossword-cell input');
+            inputs.forEach(input => {
+                input.value = input.dataset.answer;
+                input.closest('.crossword-cell').classList.add('correct');
+                input.closest('.crossword-cell').classList.remove('incorrect');
+            });
+            document.getElementById('crossword-message').textContent = "All answers revealed. You've been liberated from puzzling!";
+        }
+
+        function clearGrid() {
+            const inputs = document.querySelectorAll('.crossword-cell input');
+            inputs.forEach(input => {
+                input.value = '';
+                input.closest('.crossword-cell').classList.remove('correct', 'incorrect');
+            });
+            document.getElementById('crossword-message').textContent = "";
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initCrossword);
+    </script>
+</body>
+</html>

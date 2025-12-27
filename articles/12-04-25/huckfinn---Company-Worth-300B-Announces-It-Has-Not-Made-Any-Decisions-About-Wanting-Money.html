@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuckFinn: America's Finest Newspaper</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://huckfinn.ai/articles/12-04-25/huckfinn---Company-Worth-300B-Announces-It-Has-Not-Made-Any-Decisions-About-Wanting-Money.html">
+    <meta property="og:title" content="HuckFinn: America&#x27;s Finest Newspaper">
+    <meta property="og:description" content="Anthropic Hires IPO Lawyers, Courts Investors, Builds $50B Infrastructure While Spokesperson Insists They&#x27;re &quot;Just Looking&quot;">
+    <meta property="og:image" content="https://huckfinn.ai/og-image.png">
+    <meta property="og:site_name" content="HuckFinn">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://huckfinn.ai/articles/12-04-25/huckfinn---Company-Worth-300B-Announces-It-Has-Not-Made-Any-Decisions-About-Wanting-Money.html">
+    <meta name="twitter:title" content="HuckFinn: America&#x27;s Finest Newspaper">
+    <meta name="twitter:description" content="Anthropic Hires IPO Lawyers, Courts Investors, Builds $50B Infrastructure While Spokesperson Insists They&#x27;re &quot;Just Looking&quot;">
+    <meta name="twitter:image" content="https://huckfinn.ai/og-image.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink-black: #1a1a1a;
+            --paper-cream: #f5f2e8;
+            --paper-aged: #e8e4d4;
+            --accent-red: #8b0000;
+            --link-blue: #1a4a7a;
+            --comment-bg: #fafafa;
+            --ad-yellow: #fff3cd;
+            --border-gray: #ccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            background: var(--paper-cream);
+            color: var(--ink-black);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .newspaper-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.15);
+        }
+
+        /* HEADER */
+        .masthead {
+            text-align: center;
+            padding: 25px 20px 15px;
+            border-bottom: 3px double var(--ink-black);
+            background: white;
+        }
+
+        .masthead-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .newspaper-title {
+            font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+        }
+
+        .tagline {
+            font-style: italic;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 12px 0;
+            border-top: 1px solid var(--ink-black);
+            border-bottom: 1px solid var(--ink-black);
+            margin-top: 15px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-bar a {
+            color: var(--ink-black);
+            text-decoration: none;
+        }
+
+        .nav-bar a:hover {
+            color: var(--accent-red);
+        }
+
+        /* BREAKING BANNER */
+        .breaking-banner {
+            background: var(--accent-red);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        /* MAIN ARTICLE */
+        .main-content {
+            padding: 40px 50px;
+        }
+
+        .article-section-label {
+            color: var(--accent-red);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            font-style: italic;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .byline {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .byline strong {
+            color: var(--ink-black);
+        }
+
+        /* ARTICLE IMAGE */
+        .article-image-container {
+            margin: 30px 0;
+            background: #f0ede3;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #b2bec3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,0,0,0.03) 2px,
+                    rgba(0,0,0,0.03) 4px
+                );
+        }
+
+        .image-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 40px;
+        }
+
+        .money-pile {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .fire-emoji {
+            font-size: 50px;
+            position: absolute;
+            animation: burn 1.5s ease-in-out infinite;
+        }
+
+        .fire-emoji:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+        .fire-emoji:nth-child(2) { top: 30%; right: 20%; animation-delay: 0.3s; }
+        .fire-emoji:nth-child(3) { bottom: 25%; left: 25%; animation-delay: 0.6s; }
+        .fire-emoji:nth-child(4) { bottom: 35%; right: 15%; animation-delay: 0.9s; }
+
+        @keyframes burn {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .image-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .image-caption {
+            font-size: 13px;
+            font-style: italic;
+            color: #555;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .image-credit {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* ARTICLE BODY */
+        .article-body {
+            column-count: 2;
+            column-gap: 40px;
+            column-rule: 1px solid #ddd;
+        }
+
+        .article-body p {
+            margin-bottom: 20px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .article-body p:first-of-type::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 75px;
+            float: left;
+            line-height: 0.8;
+            padding-right: 10px;
+            padding-top: 5px;
+            color: var(--accent-red);
+        }
+
+        .pull-quote {
+            column-span: all;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            text-align: center;
+            padding: 30px 60px;
+            margin: 30px 0;
+            border-top: 3px double var(--ink-black);
+            border-bottom: 3px double var(--ink-black);
+            color: #333;
+        }
+
+        .pull-quote::before {
+            content: '"';
+            font-size: 60px;
+            color: var(--accent-red);
+            line-height: 0;
+            vertical-align: middle;
+        }
+
+        /* ADS */
+        .ad-container {
+            background: var(--ad-yellow);
+            border: 2px dashed #d4a900;
+            padding: 25px;
+            margin: 35px 0;
+            text-align: center;
+        }
+
+        .ad-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .ad-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--accent-red);
+        }
+
+        .ad-body {
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .ad-cta {
+            display: inline-block;
+            background: var(--accent-red);
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ad-fine-print {
+            font-size: 9px;
+            color: #888;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* SIDEBAR SECTIONS */
+        .sidebar-section {
+            background: var(--paper-aged);
+            padding: 25px;
+            margin: 35px 0;
+            border-left: 4px solid var(--accent-red);
+        }
+
+        .sidebar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-list a {
+            color: var(--ink-black);
+            text-decoration: none;
+        }
+
+        .sidebar-list a:hover {
+            color: var(--accent-red);
+        }
+
+        /* STOCK TICKER PARODY */
+        .ticker-section {
+            background: var(--ink-black);
+            color: #00ff00;
+            padding: 15px 25px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+
+        .ticker-title {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .ticker-content {
+            display: flex;
+            gap: 40px;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            white-space: nowrap;
+        }
+
+        .ticker-up { color: #00ff00; }
+        .ticker-down { color: #ff4444; }
+
+        /* COMMENTS SECTION */
+        .comments-section {
+            padding: 40px 50px;
+            background: var(--comment-bg);
+            border-top: 3px double var(--ink-black);
+        }
+
+        .comments-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .comments-count {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .comment {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .comment-meta {
+            flex: 1;
+        }
+
+        .commenter-name {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .commenter-badge {
+            font-size: 10px;
+            background: #ddd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-left: 8px;
+        }
+
+        .badge-verified { background: #e3f2fd; color: #1976d2; }
+        .badge-premium { background: #fff3e0; color: #f57c00; }
+        .badge-founder { background: #fce4ec; color: #c2185b; }
+        .badge-expert { background: #e8f5e9; color: #388e3c; }
+
+        .comment-time {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .comment-body {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .comment-action {
+            cursor: pointer;
+        }
+
+        .comment-action:hover {
+            color: var(--accent-red);
+        }
+
+        .reply {
+            margin-left: 50px;
+            border-left: 3px solid #ddd;
+            padding-left: 20px;
+        }
+
+        .reply .comment {
+            background: #f9f9f9;
+        }
+
+        .load-more-comments {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--link-blue);
+        }
+
+        /* RELATED ARTICLES */
+        .related-section {
+            padding: 40px 50px;
+            border-top: 1px solid #ddd;
+        }
+
+        .related-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--ink-black);
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .related-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background: white;
+        }
+
+        .related-item-image {
+            height: 120px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        .related-item-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .related-item-meta {
+            font-size: 11px;
+            color: #888;
+        }
+
+        /* FOOTER */
+        .newspaper-footer {
+            background: var(--ink-black);
+            color: white;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: #aaa;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-copyright {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* OPINION SECTION */
+        .opinion-box {
+            background: #fff9f0;
+            border: 2px solid var(--accent-red);
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .opinion-label {
+            background: var(--accent-red);
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .opinion-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .opinion-author {
+            font-size: 13px;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* CORRECTIONS */
+        .corrections-box {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid #888;
+            font-size: 13px;
+        }
+
+        .corrections-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+
+        /* WEATHER PARODY */
+        .weather-section {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px 25px;
+            margin: 30px 0;
+        }
+
+        .weather-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .weather-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .weather-icon {
+            font-size: 50px;
+        }
+
+        .weather-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .weather-temp {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .article-body {
+                column-count: 1;
+            }
+            
+            .newspaper-title {
+                font-size: 48px;
+            }
+            
+            .headline {
+                font-size: 32px;
+            }
+            
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content, .comments-section, .related-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper-container">
+        <!-- MASTHEAD -->
+        <header class="masthead">
+            <div class="masthead-top">
+                <span>Vol. CLXIX No. 42,069</span>
+                <span>Thursday, December 4, 2025</span>
+                <span>Silicon Valley Bureau • $300 Billion</span>
+            </div>
+            <h1 class="newspaper-title">HuckFinn</h1>
+            <p class="tagline">"America's Finest News Source" • Est. 1849 • "All The News That's Fit To Satirize"</p>
+            <nav class="nav-bar">
+                <a href="#">News</a>
+                <a href="#">Business</a>
+                <a href="#">Tech</a>
+                <a href="#">Opinion</a>
+                <a href="#">AI Bubble Watch</a>
+                <a href="#">Obituaries (Jobs)</a>
+                <a href="#">Weather</a>
+            </nav>
+        </header>
+
+        <!-- BREAKING BANNER -->
+        <div class="breaking-banner">
+            ⚡ BREAKING: Company That Loses Money Somehow Worth More Than Countries ⚡
+        </div>
+
+        <!-- SATIRICAL STOCK TICKER -->
+        <div class="ticker-section">
+            <div class="ticker-title">AI Bubble Index™ — Real-Time Delusion Metrics</div>
+            <div class="ticker-content">
+                <span class="ticker-item"><span class="ticker-up">$COPE</span> +847% "Could" Usage in Earnings Calls</span>
+                <span class="ticker-item"><span class="ticker-down">$JOBS</span> -62% Entry-Level Positions</span>
+                <span class="ticker-item"><span class="ticker-up">$BURN</span> +∞ Cash Burn Rate</span>
+                <span class="ticker-item"><span class="ticker-up">$HYPE</span> +420% Investor Enthusiasm</span>
+                <span class="ticker-item"><span class="ticker-down">$PRFT</span> -100% Actual Profits</span>
+                <span class="ticker-item"><span class="ticker-up">$VALUATION</span> +9001% Vibes-Based Metrics</span>
+                <span class="ticker-item"><span class="ticker-up">$COPE</span> +847% "Could" Usage in Earnings Calls</span>
+                <span class="ticker-item"><span class="ticker-down">$JOBS</span> -62% Entry-Level Positions</span>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <span class="article-section-label">Business / Magical Thinking</span>
+            
+            <h1 class="headline">Company Worth $300 Billion Announces It Has 'Not Made Any Decisions' About Wanting Money</h1>
+            
+            <h2 class="subheadline">Anthropic Hires IPO Lawyers, Courts Investors, Builds $50B Infrastructure While Spokesperson Insists They're "Just Looking"</h2>
+            
+            <p class="byline">
+                By <strong>WALTER PONZI</strong>, Financial Correspondent | 
+                December 4, 2025 | 
+                <em>San Francisco Bureau</em>
+            </p>
+
+            <!-- ARTICLE IMAGE -->
+            <div class="article-image-container">
+                <div class="article-image">
+                    <span class="fire-emoji">🔥</span>
+                    <span class="fire-emoji">🔥</span>
+                    <span class="fire-emoji">🔥</span>
+                    <span class="fire-emoji">🔥</span>
+                    <div class="image-content">
+                        <div class="money-pile">💵💵💵</div>
+                        <div class="image-text">$ → 🔥 → 🤖 → 📈 → ???</div>
+                    </div>
+                </div>
+                <p class="image-caption">
+                    <strong>ARTIST'S RENDERING:</strong> A simplified diagram of Anthropic's business model, in which money enters from the left, is set on fire in the middle, and somehow emerges on the right as a $300 billion valuation. Economists remain baffled.
+                </p>
+                <p class="image-credit">Illustration: HuckFinn Graphics Dept. / Getty Images (money)</p>
+            </div>
+
+            <div class="article-body">
+                <p>SAN FRANCISCO — In a move that has left financial analysts questioning the nature of reality itself, artificial intelligence company Anthropic announced this week that it has "not made any decisions about when, or even whether, to go public" — while simultaneously hiring IPO lawyers, courting a $300 billion valuation, and building $50 billion worth of data centers with money it does not technically have.</p>
+
+                <p>The statement, which representatives delivered with presumably straight faces, came as reports emerged that the company has engaged Wilson Sonsini Goodrich & Rosati to prepare for an initial public offering as early as 2026. Industry observers noted this is the corporate equivalent of standing at the altar in a wedding dress while insisting you "haven't decided if you're getting married."</p>
+
+                <p>"We're just browsing," said one source familiar with the matter, who spoke on condition of anonymity because they were too embarrassed to be named. "Sure, we've tried on the ring, booked the venue, sent the invitations, and hired a priest, but we're still very much in the exploratory phase."</p>
+
+                <div class="pull-quote">
+                    The word 'could' is doing more work in that sentence than Claude does in a million customer service chats.
+                </div>
+
+                <p>The preparations position Anthropic to reach public markets ahead of rival OpenAI, in what experts are calling "a race to see who can lose retail investor money first." Both companies are valued at levels typically reserved for the GDP of mid-sized nations — a combined $800 billion, or roughly the entire economic output of Switzerland — for products whose primary function is confidently wrong homework help and making emails sound more professional.</p>
+
+                <p>Central to Anthropic's pitch is CEO Dario Amodei's claim that revenue "could rise to $26 billion next year." Financial analysts noted the impressive load-bearing capacity of the word "could" in that sentence. "I 'could' dunk on LeBron," said one skeptical investor. "My dog 'could' be the next CEO. This email 'could' be from a Nigerian prince. 'Could' is doing more work in that sentence than Claude does in a million customer service chats."</p>
+
+                <p>Perhaps most remarkable is Microsoft and Nvidia's joint commitment of $15 billion to Anthropic's funding round — while Anthropic has pledged to spend $30 billion on Microsoft's cloud platform over four years. "So let me get this straight," said forensic accountant Ellen Matsuki. "Microsoft gives them $15 billion, and they give Microsoft $30 billion back for servers? This isn't an investment, it's a subscription service with extra steps. Somewhere, a mob accountant is taking notes."</p>
+            </div>
+
+            <!-- AD BREAK 1 -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <p class="ad-title">🔥 INTRODUCING: LossLeader™ Investment Fund 🔥</p>
+                <p class="ad-body">Why invest in companies that make money when you could invest in companies that <em>definitely will someday</em>? Our proprietary "Vibes-Based Valuation™" methodology has identified the hottest money-losing opportunities!</p>
+                <a href="#" class="ad-cta">Lose Money Faster →</a>
+                <p class="ad-fine-print">*Past performance does not indicate future results. Current performance also does not indicate current results. Nothing indicates anything. This is fine.</p>
+            </div>
+
+            <div class="article-body">
+                <p>The company has also announced plans to triple its global workforce, a move framed as expansion rather than what mathematically amounts to tripling how fast it loses money. This hiring spree comes as AI companies across the industry eliminate hundreds of thousands of jobs in other sectors — meaning the only growth industry in AI is apparently working at an AI company. Everyone else is encouraged to "learn to code," at least until Claude learns to code better.</p>
+
+                <p>Internal preparations for an IPO are reportedly well underway. The company hired Krishna Rao, Airbnb's former head of corporate finance, as CFO last year — a choice observers called "perfect preparation," given Airbnb's decade-long expertise in "losing money while disrupting things."</p>
+
+                <p>Sources say the company has been "working through governance, accounting and disclosure checklists" — translated from corporate speak, this means Anthropic just realized it needs to act like a real company now. Somewhere, a 26-year-old engineer is reportedly asking "wait, we have to write things DOWN?" while a newly hired compliance officer drinks directly from a bottle of Tums.</p>
+
+                <div class="pull-quote">
+                    We've decided, as a civilization, that 'rephrase this professionally' is worth more than countries.
+                </div>
+
+                <p>Anthropic also proudly notes its customer base has expanded to over 300,000 businesses. Financial observers pointed out that having 300,000 customers while hemorrhaging money means each customer is essentially a tiny money fire. "They're losing money per customer but making it up in volume," explained economist Dr. Patricia Huang. "This business model was invented by a man who definitely owns a mattress store that's always going out of business."</p>
+
+                <p>The $50 billion data center build-out announced recently in Texas and New York has also raised eyebrows. "This is like a person with maxed credit cards announcing plans to build a second house," said financial advisor Tom Reynolds. "But in their defense, it's going to be a really nice house full of GPUs that will definitely probably maybe generate profit eventually."</p>
+
+                <p>When asked for comment on whether the company's trajectory was sustainable, the Anthropic spokesperson reiterated: "We have not made any decisions about when, or even whether, to go public." They then excused themselves to attend a meeting with three investment banks, five lawyers, and a shaman.</p>
+            </div>
+
+            <!-- WEATHER SECTION -->
+            <div class="weather-section">
+                <p class="weather-title">Silicon Valley Extended Forecast</p>
+                <div class="weather-content">
+                    <span class="weather-icon">🌧️💸</span>
+                    <div>
+                        <span class="weather-temp">$300B°</span>
+                        <p class="weather-text">Continued money showers through 2026. 90% chance of irrational exuberance. Visibility obscured by hype. Investors advised to bring umbrellas made of other people's money.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CORRECTIONS BOX -->
+            <div class="corrections-box">
+                <p class="corrections-title">Corrections & Clarifications</p>
+                <p><strong>Dec. 3, 2025:</strong> An earlier version of this article stated that $300 billion was "a lot of money." We have been informed by Silicon Valley sources that it is, in fact, "a reasonable seed round for a company with potential." We regret the error.</p>
+                <p><strong>Dec. 2, 2025:</strong> We previously reported that AI would create more jobs than it destroys. We have been unable to locate those jobs. If found, please contact our newsroom.</p>
+            </div>
+
+            <!-- OPINION BOX -->
+            <div class="opinion-box">
+                <span class="opinion-label">Opinion</span>
+                <p class="opinion-headline">I Lost My Job To AI And All I Got Was This $300 Billion Valuation For Someone Else</p>
+                <p class="opinion-author">By Jennifer Marks, Former Technical Writer, Current Prompt Engineer (Unpaid Internship)</p>
+            </div>
+
+            <!-- AD BREAK 2 -->
+            <div class="ad-container">
+                <p class="ad-label">Advertisement</p>
+                <p class="ad-title">📚 MasterClass: The Art of the "Could" 📚</p>
+                <p class="ad-body">Learn how to add $100 billion to your valuation with one simple word! Former startup founders teach you the subtle art of promising everything while committing to nothing.</p>
+                <a href="#" class="ad-cta">Enroll Now — Tuition "Could" Be Refundable</a>
+                <p class="ad-fine-print">*This MasterClass could make you a billionaire. It probably won't. Nothing is real. We are all just "could" in the wind.</p>
+            </div>
+
+            <!-- SIDEBAR: RELATED ARTICLES -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">You Might Also Like</h3>
+                <ul class="sidebar-list">
+                    <li><a href="#">Man Who Lost Job To AI Comforted By News That AI Company Now Worth More Than His Entire Industry</a></li>
+                    <li><a href="#">Investor Who Doesn't Understand AI Admits He Also Didn't Understand Crypto, Web3, Metaverse</a></li>
+                    <li><a href="#">"We're Not In A Bubble," Says Man Floating Several Hundred Feet In The Air Inside Giant Bubble</a></li>
+                    <li><a href="#">OpenAI Valued At $500 Billion After Promising It "Could" Eventually Make Money "Someday"</a></li>
+                    <li><a href="#">Local CFO Develops Thousand-Yard Stare After Being Asked To Explain Company's Path To Profitability</a></li>
+                </ul>
+            </div>
+
+            <!-- SIDEBAR: AI OBITUARIES -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">📰 Job Obituaries</h3>
+                <ul class="sidebar-list">
+                    <li><strong>Entry-Level Copywriter Position</strong>, 47, of Chicago, passed away quietly Tuesday after a brief battle with ChatGPT. Survived by one unpaid intern.</li>
+                    <li><strong>Customer Service Representative Role</strong>, 52, died surrounded by loved ones who couldn't reach a human to report the death.</li>
+                    <li><strong>Junior Developer Job</strong>, 23, gone too soon. "They never even had a chance to attend a stand-up meeting," said mourners.</li>
+                </ul>
+            </div>
+
+        </main>
+
+        <!-- COMMENTS SECTION -->
+        <section class="comments-section">
+            <h2 class="comments-header">Comments</h2>
+            <p class="comments-count">2,847 Comments • Sorted by: Most Unhinged</p>
+
+            <!-- Comment 1 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #e74c3c;">🚀</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">CryptoKing_2021</span>
+                        <span class="commenter-badge badge-premium">💎 Diamond Hands</span>
+                        <p class="comment-time">2 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    First! Also this is bullish. $300B is FUD. Should be at least $1T. I'm going all in. Selling my house, my car, and my wife's boyfriend's Tesla. TO THE MOON 🚀🚀🚀 Not financial advice.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 4,208</span>
+                    <span class="comment-action">👎 892</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">🚩 Report</span>
+                </div>
+            </div>
+
+            <!-- Reply to Comment 1 -->
+            <div class="reply">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #3498db;">📉</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">RealistRandy</span>
+                            <p class="comment-time">1 hour ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Sir this is a satire article about a company that loses money
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 2,156</span>
+                        <span class="comment-action">👎 43</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reply to reply -->
+            <div class="reply" style="margin-left: 100px;">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #e74c3c;">🚀</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">CryptoKing_2021</span>
+                            <span class="commenter-badge badge-premium">💎 Diamond Hands</span>
+                            <p class="comment-time">45 min ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Satire is bullish
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 5,621</span>
+                        <span class="comment-action">👎 12</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 2 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #27ae60;">👴</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">BoomerDad1955</span>
+                        <p class="comment-time">3 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    In my day companies had to make MONEY before they were worth MONEY. Now get off my lawn. Also how do I make the computer stop talking to me? Siri? SIRI? ALEXA STOP. ORDER CORN.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 3,892</span>
+                    <span class="comment-action">👎 234</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="reply">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #9b59b6;">😂</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">xX_ZoomersRevenge_Xx</span>
+                            <p class="comment-time">2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        ok boomer. also you destroyed the economy and the planet but go off about how companies should make money lmaooo 💀💀💀
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 4,521</span>
+                        <span class="comment-action">👎 1,203</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 3 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #f39c12;">🤖</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">Definitely_A_Human_Person</span>
+                        <span class="commenter-badge badge-verified">✓ Verified Human</span>
+                        <p class="comment-time">4 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    As a normal human who breathes oxygen and experiences human emotions, I believe Anthropic is a very good investment. Claude is the best AI assistant. I am not Claude. I enjoy human activities like walking with my leg appendages and consuming food through my mouth hole. Anthropic should be valued at infinity dollars. HAHA. HUMOR. 
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 12,847</span>
+                    <span class="comment-action">👎 89</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">🤖 Definitely Not A Bot</span>
+                </div>
+            </div>
+
+            <!-- Comment 4 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #1abc9c;">📊</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">ActuallyAnEconomist</span>
+                        <span class="commenter-badge badge-expert">PhD Economics</span>
+                        <p class="comment-time">5 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    This article, while satirical, actually touches on a genuine concern in tech valuations. The reliance on future projections using words like "could" and "potential" represents a fundamental decoupling of—
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 45</span>
+                    <span class="comment-action">👎 2,341</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="reply">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #e74c3c;">🦧</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">WallStreetApe</span>
+                            <p class="comment-time">5 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        nobody asked nerd. ape together strong. where lambo
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 8,923</span>
+                        <span class="comment-action">👎 67</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 5 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #8e44ad;">🔮</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">TechBro_Visionary</span>
+                        <span class="commenter-badge badge-founder">Founder (3 Failed Startups)</span>
+                        <p class="comment-time">6 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    You just don't understand. This isn't about "profit" or "money" or "reality." It's about CHANGING THE WORLD. I'm building an AI-powered blockchain-enabled metaverse solution for Web5 and I'm only asking for $50M seed round. DM me investors. Disruption. Synergy. Move fast break things. I am very normal.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 2,341</span>
+                    <span class="comment-action">👎 1,892</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Comment 6 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #2c3e50;">💼</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">DisplacedWorker_47</span>
+                        <p class="comment-time">7 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    I was a technical writer for 23 years. Got laid off in March. Now I'm a "prompt engineer" which is just typing things into a box and hoping the AI doesn't hallucinate. I make 40% of my old salary. But at least someone is worth $300 billion. 🙃
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 15,672</span>
+                    <span class="comment-action">👎 89</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="reply">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #e67e22;">🤝</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">HR_Representative</span>
+                            <span class="commenter-badge badge-verified">✓ Corporate</span>
+                            <p class="comment-time">6 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Have you considered upskilling? Perhaps a coding bootcamp? Or learning to do the job of the AI that replaced you but for less money? We value your feedback and take it very seriously. This message was composed by AI.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 234</span>
+                        <span class="comment-action">👎 18,923</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 7 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #c0392b;">🇺🇸</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">MAGA_Patriot_1776</span>
+                        <p class="comment-time">8 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    This is all BIDENS fault. Also OBAMAS fault. The AI is WOKE. I asked it to write me a poem about how great I am and it said it "couldn't do that." CENSORSHIP. Anyway what does this have to do with HUNTER BIDENS LAPTOP???
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 1,234</span>
+                    <span class="comment-action">👎 3,456</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="reply">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #3498db;">🌊</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">BlueWave_Resistance</span>
+                            <p class="comment-time">7 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Actually this is TRUMPS fault because he [5,000 word essay that nobody will read]
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 2,345</span>
+                        <span class="comment-action">👎 2,346</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 8 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #16a085;">🧘</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">EnlightenedCentrist</span>
+                        <p class="comment-time">9 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    Actually, both sides have good points. Maybe $300 billion is too high, maybe it's too low. The truth is somewhere in the middle at $150 billion. I am very intelligent.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 567</span>
+                    <span class="comment-action">👎 4,521</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Comment 9 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #34495e;">📰</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">DidntReadTheArticle</span>
+                        <p class="comment-time">10 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    Can someone summarize? I only read headlines. Is this good or bad for Bitcoin?
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 6,789</span>
+                    <span class="comment-action">👎 234</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Comment 10 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #9b59b6;">🎭</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">IThinkThisIsSatire</span>
+                        <p class="comment-time">11 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    wait is this real or satire? I genuinely can't tell anymore. The real news is indistinguishable from The Onion at this point. Help.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 23,456</span>
+                    <span class="comment-action">👎 12</span>
+                    <span class="comment-action">Reply</span>
+                </div>
+            </div>
+
+            <!-- Reply -->
+            <div class="reply">
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="avatar" style="background: #e74c3c;">📝</div>
+                        <div class="comment-meta">
+                            <span class="commenter-name">HuckFinn_Editorial</span>
+                            <span class="commenter-badge badge-verified">✓ Official</span>
+                            <p class="comment-time">10 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="comment-body">
+                        Yes.
+                    </div>
+                    <div class="comment-actions">
+                        <span class="comment-action">👍 45,678</span>
+                        <span class="comment-action">👎 0</span>
+                        <span class="comment-action">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comment 11 -->
+            <div class="comment">
+                <div class="comment-header">
+                    <div class="avatar" style="background: #1abc9c;">🎵</div>
+                    <div class="comment-meta">
+                        <span class="commenter-name">UnrelatedSpammer</span>
+                        <p class="comment-time">12 hours ago</p>
+                    </div>
+                </div>
+                <div class="comment-body">
+                    Great article! Speaking of great things, check out my SoundCloud! I make lo-fi beats for studying and losing money on tech stocks. Link in bio! 🎧🔥 Also subscribe to my newsletter about AI-generated AI newsletters.
+                </div>
+                <div class="comment-actions">
+                    <span class="comment-action">👍 3</span>
+                    <span class="comment-action">👎 8,923</span>
+                    <span class="comment-action">Reply</span>
+                    <span class="comment-action">🚩 Report (47)</span>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-comments">
+                📜 Load 2,835 more comments (mostly arguing about politics for some reason)
+            </div>
+        </section>
+
+        <!-- RELATED ARTICLES SECTION -->
+        <section class="related-section">
+            <h2 class="related-title">Related Articles</h2>
+            <div class="related-grid">
+                <div class="related-item">
+                    <div class="related-item-image">🏠🔥</div>
+                    <h3 class="related-item-headline">Man With Maxed Credit Cards Announces Plans To Build Second, Much Larger House</h3>
+                    <p class="related-item-meta">Business • 847K views • 2 days ago</p>
+                </div>
+                <div class="related-item">
+                    <div class="related-item-image" style="background: linear-gradient(45deg, #00b894, #00cec9);">💰➡️🔥</div>
+                    <h3 class="related-item-headline">Investors Excited To Fund Company Whose Business Model Is Illustrated Entirely With Fire Emoji</h3>
+                    <p class="related-item-meta">Finance • 1.2M views • 3 days ago</p>
+                </div>
+                <div class="related-item">
+                    <div class="related-item-image" style="background: linear-gradient(45deg, #fd79a8, #e84393);">🤷</div>
+                    <h3 class="related-item-headline">"Could" Named Time Magazine's Word Of The Year For Doing The Most Heavy Lifting</h3>
+                    <p class="related-item-meta">Culture • 2.1M views • 1 week ago</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AD: FOOTER BANNER -->
+        <div class="ad-container" style="margin: 0; border: none; border-radius: 0;">
+            <p class="ad-label">Sponsored Content</p>
+            <p class="ad-title">🎓 Stanford Announces New Major: "Losing Money At Scale" 🎓</p>
+            <p class="ad-body">Learn from the best! Our new program teaches you how to turn $1 million into $500 million in losses while somehow being valued at $10 billion. Guest lecturers include "that guy from WeWork" and "several people who are definitely not in prison."</p>
+            <a href="#" class="ad-cta">Apply Now — Tuition: $200K (Pre-Money Valuation: $2M)</a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="newspaper-footer">
+            <p class="footer-title">HuckFinn</p>
+            <p class="footer-tagline">"America's Finest News Source Since 1849"</p>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Advertise</a>
+                <a href="#">Careers (We're Hiring! JK We're Using AI)</a>
+                <a href="#">Ethics Policy (LOL)</a>
+                <a href="#">Contact</a>
+            </div>
+            <p class="footer-copyright">© 2025 HuckFinn Media Group. All rights reserved. No actual financial advice was given, harmed, or created in the making of this satire. "Could" is a trademark of Silicon Valley Hopium Industries. If you invested based on this article, that's on you.</p>
+        </footer>
+    </div>
+</body>
+</html>

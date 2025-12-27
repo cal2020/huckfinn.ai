@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nation's Professors Achieve New Shades Of Red | HuckFinn</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin:0;padding:0;">
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+function HuckFinnNewspaper() {
+    const [activeGame, setActiveGame] = useState(null);
+    return (
+        <div style={{
+            fontFamily: "'Times New Roman', Georgia, serif",
+            backgroundColor: '#f5f0e6',
+            minHeight: '100vh',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundBlendMode: 'multiply',
+        }}>
+            <MarketTicker />
+            <header style={{ borderBottom: '4px double #000', padding: '20px', textAlign: 'center', backgroundColor: '#fff' }}>
+                <div style={{ fontSize: '12px', letterSpacing: '4px', marginBottom: '5px' }}>AMERICA'S FINEST NEWS SOURCE • ESTABLISHED 1756 • "TU NE CEDE MALIS"</div>
+                <h1 style={{ fontFamily: "'Old English Text MT', 'UnifrakturMaguntia', serif", fontSize: 'clamp(2.5rem, 8vw, 5rem)', margin: '10px 0', fontWeight: 'normal', letterSpacing: '2px' }}>HuckFinn</h1>
+                <div style={{ fontSize: '11px', letterSpacing: '3px' }}>THURSDAY, DECEMBER 18, 2025 • VOL. CCLXIX, NO. 847 • PRICE: $50,000 (STUDENT RATE)</div>
+            </header>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+                <MainArticle />
+                <InterstitialAd type={1} />
+                <MainPhoto />
+                <CommentsSection />
+                <InterstitialAd type={2} />
+                <GamesSection activeGame={activeGame} setActiveGame={setActiveGame} />
+                <InterstitialAd type={3} />
+                <RelatedArticles />
+                <LettersToEditor />
+                <Corrections />
+                <Classifieds />
+                <AcademicHoroscopes />
+                <AcademicWeather />
+                <Footer />
+            </div>
+        </div>
+    );
+}
+
+function MarketTicker() {
+    const tickerItems = [
+        "📉 DIGNITY (DIG) -99.7%", "📈 CHATGPT PREMIUM (GPT) +847%", "📉 TENURE VALUE (TNR) -62%",
+        "📈 LINKEDIN ENGAGEMENT (LNKD) +∞", "📉 PROFESSOR SANITY INDEX (PSI) -100%",
+        "📈 TURNITIN BYPASS ETF (BYPASS) +234%", "📉 ADJUNCT LIVING WAGE (ALW) -$15.02",
+        "📈 ADMINISTRATIVE BLOAT (ADMIN) +892%", "📉 STUDENT ATTENTION SPAN (SAS) -78%",
+        "📈 THERAPY FUTURES (THRP) +567%", "⚠️ TRADING HALTED: ACADEMIC INTEGRITY (AI) — DELISTED",
+        "📈 RAGE-BASED CONTENT (RAGE) +1,247%", "📉 HANDWRITING LEGIBILITY (HWL) -94%",
+        "📈 EARLY RETIREMENT APPLICATIONS (ERA) +3,400%",
+    ];
+    return (
+        <div style={{ backgroundColor: '#1a0a0a', color: '#00ff00', padding: '8px 0', overflow: 'hidden', fontFamily: "'Courier New', monospace", fontSize: '13px', borderBottom: '2px solid #ff0000' }}>
+            <div style={{ display: 'flex', animation: 'ticker 45s linear infinite', whiteSpace: 'nowrap' }}>
+                {[...tickerItems, ...tickerItems].map((item, i) => (<span key={i} style={{ marginRight: '50px' }}>{item}</span>))}
+            </div>
+            <style>{`@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
+        </div>
+    );
+}
+
+function MainArticle() {
+    return (
+        <article style={{ backgroundColor: '#fff', padding: '30px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <div style={{ fontSize: '11px', color: '#c00', fontWeight: 'bold', letterSpacing: '2px', marginBottom: '10px' }}>⚡ BREAKING NEWS • EDUCATION • MELTDOWN WATCH</div>
+            <h1 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', lineHeight: '1.1', marginBottom: '15px', fontFamily: "'Times New Roman', serif", fontWeight: 'bold' }}>
+                Nation's Professors Achieve New Shades Of Red Previously Unknown To Science As Students Continue Using ChatGPT While Maintaining Eye Contact
+            </h1>
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 'normal', fontStyle: 'italic', color: '#444', marginBottom: '20px', borderBottom: '1px solid #ccc', paddingBottom: '15px' }}>
+                'Policing AI Has Got So Frustrating,' Reports CEO Reposting Viral Video Of Educator's Psychological Break For LinkedIn Engagement
+            </h2>
+            <div style={{ fontSize: '12px', color: '#666', marginBottom: '20px' }}>
+                By <strong>MARGARET THATCHER-REAGAN</strong> | Education Correspondent | December 18, 2025 | <em>Reading time: However long your professor's breakdown lasts</em>
+            </div>
+            <div style={{ columnCount: 2, columnGap: '30px', fontSize: '15px', lineHeight: '1.7', textAlign: 'justify' }}>
+                <p style={{ marginBottom: '15px' }}>
+                    <span style={{ fontSize: '4em', float: 'left', lineHeight: '0.8', marginRight: '8px', fontWeight: 'bold' }}>T</span>
+                    HE AMERICAN UNIVERSITY system reached a historic milestone this week as professors nationwide achieved chromatic ranges previously thought impossible for human skin, with leading researchers confirming that faculty members discussing AI plagiarism have now turned colors "well beyond the visible spectrum."
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    The phenomenon, captured in dozens of viral videos posted to LinkedIn by CEOs seeking thought leadership engagement, shows educators experiencing what cardiologists are calling "The Tomato Index™"—a new academic vital sign measuring faculty hue shifts during plagiarism discussions. A professor reaching "heirloom burgundy" now automatically triggers both a wellness check and an HR incident report.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    "My professor lost his mind because people were on their phones in class!" read one viral post, which has since garnered 972 reactions from HR professionals who have never faced 200 freshmen at 8 AM, but have opinions. God, do they have opinions.
+                </p>
+                <div style={{ backgroundColor: '#f9f6f0', border: '1px solid #ddd', padding: '15px', margin: '15px 0', fontStyle: 'italic' }}>
+                    <strong>THE LINKEDIN CONTENT LIFECYCLE:</strong><br/>
+                    Stage 1: Professor experiences psychological break<br/>
+                    Stage 2: Student uploads (0.003 seconds post-incident)<br/>
+                    Stage 3: CEO with "MSc" in display name reposts<br/>
+                    Stage 4: Caption: "Policing AI has got so frustrating 🤔"<br/>
+                    Stage 5: 972 reactions from recruiters<br/>
+                    Stage 6: Professor, still not okay, sees the post<br/>
+                    Stage 7: Return to Stage 1
+                </div>
+                <p style={{ marginBottom: '15px' }}>
+                    The videos reveal what experts are calling "Schrödinger's Smartphone"—devices existing in superposition, simultaneously too distracting to permit in lecture yet the only instrument precise enough to document why they shouldn't be permitted. Upon observation, the waveform collapses into a TikTok. The student is both the disease and the epidemiologist.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    "I'm getting SICK and TIRED of you guys using AI," screamed one professor in footage that has since been stabilized by AI, uploaded via AI-optimized platform, captioned by AI, recommended by AI-curated feeds, and reposted by a CEO whose assistant used AI to write "🤔 Thoughts?" The irony reactor has achieved critical mass.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    Students, meanwhile, have developed a sophisticated diagnostic linguistics system. According to peer-reviewed translations, "cooked" indicates mild professional embarrassment, "burnt" suggests the moment is now indexed by Google, while "Prof isn't cooked, she's BURNT 🔥" indicates tenure has become a liability. "I'm dead" refers simultaneously to the student's GPA, the professor's will to live, and the social contract between them.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    "First month of college 😅 Is this normal!?" asked one freshman in a video caption. Sources confirm: yes. Witnessing a tenured professional's existential crisis is now bundled with the meal plan. Orientation fee: $450. The look on his face: priceless.
+                </p>
+                <div style={{ backgroundColor: '#1a0a0a', color: '#fff', padding: '15px', margin: '15px 0', fontFamily: 'monospace', fontSize: '12px' }}>
+                    <strong>PEDAGOGICAL ARMS RACE — DECEMBER 2024 PATCH NOTES:</strong><br/><br/>
+                    Yelling .......................... 0% win rate<br/>
+                    Turnitin ...................... -15% (students pre-screen)<br/>
+                    "I Can Tell" .................... 0% (they cannot tell)<br/>
+                    Handwritten Exams .............. 31% (ADA lawsuits pending)<br/>
+                    Expulsion Threats ............... 0% (they need tuition)<br/>
+                    Crying ......................... 12% (buys 10-15 minutes)<br/>
+                    Retirement .................... 100% (META-DOMINANT)<br/><br/>
+                    Current tier list: Retirement (S), Crying (B), Everything Else (F)
+                </div>
+                <p style={{ marginBottom: '15px' }}>
+                    The situation reached peak absurdity when one professor demanded a student leave the classroom, pointing toward a door that leads to a hallway with WiFi, where the student could complete the assignment faster than in the lecture itself. Time to complete assignment in classroom: 50 minutes. Time in exile: 90 seconds. Exile has become a speedrun strategy.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    "Policing AI is so frustrating," announced the institution that charges $847 per credit hour, pays adjuncts less than Chipotle, has a $4.2 billion endowment, outsourced grading to TAs in 1987, automated course registration in 2003, replaced librarians with databases in 2015, and now demands students not automate. The leopard is sobbing. Its face is delicious.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    LinkedIn commenters, as always, have solutions. "Professors should simply adapt," suggested a man who mass-applies to jobs using one PDF. "Make assignments AI-proof," offered a woman whose AI-proof solution is oral exams for 400 students. "This is why I became an entrepreneur," added a dropshipper earning $340/month.
+                </p>
+                <p style={{ marginBottom: '15px' }}>
+                    <em>The article you are reading will be assigned next semester in a Media Studies course, where students will summarize it using AI while their professor, slowly, imperceptibly—changes color.</em>
+                </p>
+                <p style={{ marginTop: '20px', fontStyle: 'italic', borderTop: '1px solid #ccc', paddingTop: '15px', color: '#666' }}>
+                    At press time, a 19-year-old was observed generating a B+ essay in 40 seconds while maintaining eye contact and eating a bagel, causing a nearby professor to consult early retirement paperwork that had been there all along, simply waiting.
+                </p>
+            </div>
+        </article>
+    );
+}
+
+function MainPhoto() {
+    return (
+        <figure style={{ backgroundColor: '#fff', padding: '20px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <svg viewBox="0 0 800 500" style={{ width: '100%', height: 'auto', border: '1px solid #ddd' }}>
+                <rect width="800" height="500" fill="#e8e4dc"/>
+                <rect x="150" y="30" width="500" height="200" fill="#f5f5f5" stroke="#999" strokeWidth="3"/>
+                <text x="400" y="100" textAnchor="middle" fontSize="28" fill="#333" fontFamily="Comic Sans MS, cursive">NO AI!!!</text>
+                <text x="400" y="140" textAnchor="middle" fontSize="18" fill="#c00" fontFamily="Comic Sans MS, cursive">I MEAN IT!!!</text>
+                <text x="400" y="180" textAnchor="middle" fontSize="14" fill="#c00" fontFamily="Comic Sans MS, cursive">(I can tell)</text>
+                <text x="400" y="210" textAnchor="middle" fontSize="10" fill="#999" fontFamily="Arial">(narrator: he could not tell)</text>
+                <rect x="340" y="250" width="120" height="150" fill="#8B4513"/>
+                <rect x="335" y="245" width="130" height="15" fill="#6B3513"/>
+                <ellipse cx="400" cy="290" rx="35" ry="40" fill="#ff2200"/>
+                <circle cx="385" cy="280" r="5" fill="#fff"/><circle cx="415" cy="280" r="5" fill="#fff"/>
+                <circle cx="385" cy="280" r="2" fill="#000"/><circle cx="415" cy="280" r="2" fill="#000"/>
+                <path d="M 380 305 Q 400 290 420 305" stroke="#000" strokeWidth="3" fill="none"/>
+                <path d="M 370 250 Q 360 230 370 210" stroke="#ff6600" strokeWidth="3" fill="none" opacity="0.7"/>
+                <path d="M 400 245 Q 400 220 410 200" stroke="#ff6600" strokeWidth="3" fill="none" opacity="0.7"/>
+                <path d="M 430 250 Q 440 230 430 210" stroke="#ff6600" strokeWidth="3" fill="none" opacity="0.7"/>
+                <rect x="365" y="330" width="70" height="80" fill="#4169E1"/>
+                <rect x="380" y="330" width="40" height="60" fill="#fff"/>
+                <line x1="400" y1="330" x2="400" y2="390" stroke="#000" strokeWidth="2"/>
+                <ellipse cx="550" cy="280" rx="120" ry="60" fill="#fff" stroke="#000" strokeWidth="2"/>
+                <polygon points="460,300 480,310 460,320" fill="#fff" stroke="#000" strokeWidth="2"/>
+                <text x="550" y="270" textAnchor="middle" fontSize="14" fontWeight="bold">I'M GETTING SICK</text>
+                <text x="550" y="290" textAnchor="middle" fontSize="14" fontWeight="bold">AND TIRED OF</text>
+                <text x="550" y="310" textAnchor="middle" fontSize="14" fontWeight="bold">YOU GUYS!!!</text>
+                <circle cx="150" cy="420" r="25" fill="#ffd9b3"/><rect x="125" y="445" width="50" height="50" fill="#333"/>
+                <rect x="135" y="410" width="30" height="50" fill="#000" rx="3"/><rect x="138" y="413" width="24" height="40" fill="#00ff00"/>
+                <text x="150" y="437" textAnchor="middle" fontSize="8" fill="#000">ChatGPT</text>
+                <circle cx="280" cy="430" r="25" fill="#c68642"/><rect x="255" y="455" width="50" height="45" fill="#ff6b6b"/>
+                <rect x="265" y="420" width="30" height="50" fill="#000" rx="3"/><rect x="268" y="423" width="24" height="40" fill="#00ff00"/>
+                <text x="280" y="447" textAnchor="middle" fontSize="8" fill="#000">ChatGPT</text>
+                <circle cx="650" cy="420" r="25" fill="#ffd9b3"/><rect x="625" y="445" width="50" height="50" fill="#228B22"/>
+                <rect x="620" y="380" width="35" height="55" fill="#000" rx="3"/><rect x="623" y="383" width="29" height="45" fill="#ff0000"/>
+                <circle cx="637" cy="395" r="8" fill="#fff"/><text x="637" y="420" textAnchor="middle" fontSize="6" fill="#fff">● REC</text>
+                <circle cx="520" cy="440" r="25" fill="#8d5524"/><rect x="495" y="465" width="50" height="35" fill="#9932CC"/>
+                <rect x="505" y="430" width="30" height="50" fill="#000" rx="3"/><rect x="508" y="433" width="24" height="40" fill="#00ff00"/>
+                <rect x="50" y="470" width="700" height="30" fill="#deb887" stroke="#8B4513" strokeWidth="2"/>
+                <rect x="700" y="20" width="80" height="25" fill="#0077B5" rx="3"/>
+                <text x="740" y="38" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="bold">in LinkedIn</text>
+                <text x="740" y="55" textAnchor="middle" fontSize="10" fill="#666">972 reactions</text>
+                <text x="700" y="480" fontSize="16" fill="#000" opacity="0.5">@student_filmz</text>
+                <rect x="20" y="100" width="100" height="200" fill="#fff" stroke="#000" strokeWidth="2"/>
+                <text x="70" y="120" textAnchor="middle" fontSize="10" fontWeight="bold">TOMATO</text>
+                <text x="70" y="132" textAnchor="middle" fontSize="10" fontWeight="bold">INDEX™</text>
+                <rect x="30" y="140" width="80" height="20" fill="#ffcccc"/>
+                <rect x="30" y="160" width="80" height="20" fill="#ff9999"/>
+                <rect x="30" y="180" width="80" height="20" fill="#ff6666"/>
+                <rect x="30" y="200" width="80" height="20" fill="#ff3333"/>
+                <rect x="30" y="220" width="80" height="20" fill="#ff0000"/>
+                <rect x="30" y="240" width="80" height="20" fill="#cc0000"/>
+                <rect x="30" y="260" width="80" height="20" fill="#990000"/>
+                <text x="115" y="155" fontSize="8">Pink</text>
+                <text x="115" y="175" fontSize="8">Salmon</text>
+                <text x="115" y="195" fontSize="8">Coral</text>
+                <text x="115" y="215" fontSize="8">Tomato</text>
+                <text x="115" y="235" fontSize="8">Beet</text>
+                <text x="115" y="255" fontSize="8">Burgundy</text>
+                <text x="115" y="275" fontSize="8">☠️</text>
+                <polygon points="25,265 15,255 15,275" fill="#000"/>
+            </svg>
+            <figcaption style={{ marginTop: '15px', fontSize: '13px', color: '#444', fontStyle: 'italic', borderTop: '1px solid #ddd', paddingTop: '10px' }}>
+                <strong>Above:</strong> Dr. Harold Pemberton, 58, achieves "Heirloom Burgundy" on the Tomato Index™ during a lecture on academic integrity, while students document the psychological event for cross-platform distribution. The phone in the lower-right corner is recording; the phones in the foreground are running ChatGPT. All four students received A-minuses. Dr. Pemberton has requested leave.
+            </figcaption>
+        </figure>
+    );
+}
+
+function CommentsSection() {
+    const comments = [
+        { user: "TenuredAndTired_1987", badge: "VERIFIED PROFESSOR", badgeColor: "#c00", avatar: "👨‍🏫", text: "As someone who spent 23 YEARS getting my PhD and tenure, this article is deeply offensive. We are NOT turning into tomatoes. I am a healthy shade of crimson at WORST. Also, I CAN tell when it's AI. The sentences are too coherent.", time: "2 hours ago", likes: 47, replies: [{ user: "GPT4_Burner_Acct", avatar: "🤖", text: "I'm sorry you feel that way. Would you like me to rephrase your comment to sound more human?", time: "1 hour ago", likes: 892 }, { user: "AdjunctSlave2024", avatar: "😭", text: "You have tenure? Must be nice. I teach at 4 schools and live in my car.", time: "45 min ago", likes: 234 }] },
+        { user: "LinkedInfluencer_CEO_MBA_MSc", badge: "TOP VOICE", badgeColor: "#0077B5", avatar: "💼", text: "Great article! This is exactly why I dropped out to become an entrepreneur. Professors need to ADAPT or become OBSOLETE. I made $47 last month selling my course on adaptation. DM for details. 🚀📈 #Hustle #ThoughtLeader #AIisTheFuture", time: "3 hours ago", likes: 3, replies: [{ user: "NormalPerson42", avatar: "🙂", text: "Did you just try to sell a course in a comment section about education failing", time: "2 hours ago", likes: 445 }, { user: "LinkedInfluencer_CEO_MBA_MSc", avatar: "💼", text: "Every interaction is a sales opportunity. That's day 1 stuff.", time: "2 hours ago", likes: 2 }] },
+        { user: "xX_CheatCode_Xx", badge: "STUDENT", badgeColor: "#228B22", avatar: "😎", text: "lmaooo my prof literally did this last week. she was so red i thought she was gonna explode. anyway got an A on that essay 💀💀💀", time: "1 hour ago", likes: 1247, replies: [{ user: "TenuredAndTired_1987", avatar: "👨‍🏫", text: "YOU. It was YOU.", time: "30 min ago", likes: 3400 }, { user: "xX_CheatCode_Xx", avatar: "😎", text: "dr pemberton?? omg 💀", time: "25 min ago", likes: 5600 }] },
+        { user: "BoomerDad1955", badge: null, avatar: "👴", text: "Back in MY day we didnt have fancy AI we had to WALK to the LIBRARY and use ENCYCLOPEDIAS and we LIKED IT. This generation is SOFT", time: "4 hours ago", likes: 12, replies: [{ user: "FactCheckBot", avatar: "✓", text: "The average cost of college in 1975 was $2,291. Adjusted for inflation: $13,147. Current average: $38,270. The encyclopedia users also bought houses on minimum wage.", time: "3 hours ago", likes: 8934 }, { user: "BoomerDad1955", avatar: "👴", text: "thats not the point", time: "3 hours ago", likes: 2 }] },
+        { user: "AsAMotherOf3", badge: null, avatar: "👩‍👧‍👦", text: "As a mother of 3, I think this is DISGUSTING. My children would NEVER use AI. I raised them with VALUES. They're currently at Harvard, Yale, and Stanford on full scholarships.", time: "2 hours ago", likes: 23, replies: [{ user: "YaleStudent2027", avatar: "🎓", text: "mom i literally showed you how to use chatgpt last thanksgiving", time: "1 hour ago", likes: 12000 }, { user: "AsAMotherOf3", avatar: "👩‍👧‍👦", text: "BRENDAN GET OFF THE INTERNET", time: "1 hour ago", likes: 8700 }, { user: "HarvardStudent2025", avatar: "🎓", text: "we all use it mom. we've been lying.", time: "30 min ago", likes: 15000 }] },
+        { user: "TurnitinEmployee_Throwaway", badge: "INDUSTRY INSIDER", badgeColor: "#ff6600", avatar: "🕵️", text: "Okay I probably shouldn't say this but... we literally just guess. The algorithm is essentially a coin flip with marketing. Please don't tell my boss.", time: "6 hours ago", likes: 23000, replies: [{ user: "UniversityAdmin", avatar: "🏛️", text: "DELETE THIS", time: "5 hours ago", likes: 12 }, { user: "TurnitinEmployee_Throwaway", avatar: "🕵️", text: "[This user has been banned]", time: "5 hours ago", likes: 0 }] },
+        { user: "Definitely_Not_ChatGPT", badge: null, avatar: "🙂", text: "As a human person who breathes oxygen and experiences emotions, I find this article to be a compelling exploration of the intersection between technological advancement and traditional educational paradigms.", time: "4 hours ago", likes: 2, replies: [{ user: "SkepticalReader", avatar: "🤨", text: "...chatgpt?", time: "3 hours ago", likes: 1200 }, { user: "Definitely_Not_ChatGPT", avatar: "🙂", text: "Ha ha! No, I am simply a human who enjoys using diverse vocabulary. How about that local sports team?", time: "3 hours ago", likes: 890 }] },
+    ];
+    return (
+        <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.3rem', borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>
+                💬 COMMENTS ({comments.reduce((acc, c) => acc + 1 + c.replies.length, 0)}) — <span style={{color: '#c00'}}>HEATED DEBATE</span>
+            </h3>
+            <div style={{ backgroundColor: '#fff3cd', border: '1px solid #ffc107', padding: '10px', marginBottom: '20px', fontSize: '12px' }}>
+                ⚠️ <strong>MODERATOR NOTE:</strong> Comments are disabled for users whose blood pressure exceeds 160/100. Dr. Pemberton, we know it's you. Please step away.
+            </div>
+            {comments.map((comment, i) => (
+                <div key={i} style={{ borderBottom: '1px solid #eee', paddingBottom: '15px', marginBottom: '15px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+                        <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{comment.avatar}</span>
+                        <strong>{comment.user}</strong>
+                        {comment.badge && <span style={{ backgroundColor: comment.badgeColor, color: '#fff', padding: '2px 8px', borderRadius: '3px', fontSize: '10px', marginLeft: '8px' }}>{comment.badge}</span>}
+                        <span style={{ color: '#999', fontSize: '12px', marginLeft: 'auto' }}>{comment.time}</span>
+                    </div>
+                    <p style={{ marginLeft: '40px', marginBottom: '8px' }}>{comment.text}</p>
+                    <div style={{ marginLeft: '40px', fontSize: '12px', color: '#666' }}>👍 {comment.likes.toLocaleString()} {comment.likes < 0 && '(oof)'} · Reply · Report</div>
+                    {comment.replies.map((reply, j) => (
+                        <div key={j} style={{ marginLeft: '60px', marginTop: '10px', paddingLeft: '15px', borderLeft: '2px solid #ddd' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                                <span style={{ marginRight: '8px' }}>{reply.avatar}</span>
+                                <strong style={{ fontSize: '13px' }}>{reply.user}</strong>
+                                <span style={{ color: '#999', fontSize: '11px', marginLeft: 'auto' }}>{reply.time}</span>
+                            </div>
+                            <p style={{ fontSize: '13px', marginBottom: '5px' }}>{reply.text}</p>
+                            <div style={{ fontSize: '11px', color: '#666' }}>👍 {reply.likes.toLocaleString()} · Reply</div>
+                        </div>
+                    ))}
+                </div>
+            ))}
+            <div style={{ backgroundColor: '#f5f5f5', padding: '15px', textAlign: 'center', color: '#666', fontStyle: 'italic' }}>
+                <em>Loading more comments...</em><br/><small>(JK the server is powered by adjunct wages and crashed)</small>
+            </div>
+        </section>
+    );
+}
+
+function InterstitialAd({ type }) {
+    const ads = {
+        1: { bg: 'linear-gradient(135deg, #ff6b6b, #c0392b)', content: (<><div style={{ fontSize: '14px', marginBottom: '5px' }}>SPONSORED</div><div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>🍅 TOMATO INDEX™ MONITORING DEVICE</div><div style={{ fontSize: '16px', marginBottom: '15px' }}>Track your faculty's chromatic shifts in real-time! Insurance-approved.</div><div style={{ fontSize: '12px' }}>"I wish I had this before the incident" — Dr. Harold Pemberton, on leave</div><button style={{ marginTop: '15px', padding: '10px 30px', backgroundColor: '#fff', color: '#c0392b', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>ORDER NOW — $847/semester</button></>) },
+        2: { bg: 'linear-gradient(135deg, #0077B5, #004d73)', content: (<><div style={{ fontSize: '14px', marginBottom: '5px' }}>LINKEDIN PREMIUM™</div><div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>💼 Monetize Others' Pain Today!</div><div style={{ fontSize: '16px', marginBottom: '15px' }}>"Policing engagement has never been easier" — CEO with MSc</div><div style={{ fontSize: '14px' }}>✓ Repost meltdowns as "thought leadership"<br/>✓ Add "🤔 Thoughts?" to any tragedy<br/>✓ Get 972 reactions from HR professionals</div><button style={{ marginTop: '15px', padding: '10px 30px', backgroundColor: '#fff', color: '#0077B5', border: 'none', fontWeight: 'bold', cursor: 'pointer' }}>START ENGAGING FREE</button></>) },
+        3: { bg: 'linear-gradient(135deg, #2c3e50, #1a252f)', content: (<><div style={{ fontSize: '14px', marginBottom: '5px' }}>ADVERTISEMENT</div><div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>🎓 EARLY RETIREMENT CALCULATOR</div><div style={{ fontSize: '16px', marginBottom: '15px' }}>Find out how many more ChatGPT incidents until you can leave</div><div style={{ fontSize: '14px', fontStyle: 'italic' }}>"The paperwork was always there. It was simply waiting." — Every tenured professor</div><div style={{ marginTop: '15px', fontSize: '24px' }}>⏱️ Average time to decision: 1 viral TikTok</div></>) }
+    };
+    const ad = ads[type];
+    return (<div style={{ background: ad.bg, color: '#fff', padding: '30px', marginBottom: '20px', textAlign: 'center', boxShadow: '0 4px 15px rgba(0,0,0,0.3)' }}>{ad.content}</div>);
+}
+
+function GamesSection({ activeGame, setActiveGame }) {
+    return (
+        <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.5rem', borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>🎮 INTERACTIVE: THE ACADEMIC ARCADE 🎮</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+                {[
+                    { id: 'quiz', name: '🤖 AI or Student?', desc: 'Can YOU tell the difference?' },
+                    { id: 'bp', name: '🍅 Prof Blood Pressure', desc: "Don't let them explode!" },
+                    { id: 'roulette', name: '🎰 Turnitin Roulette', desc: 'Spin the wheel of fate' },
+                    { id: 'whack', name: '🔨 Whack-A-LinkedIn', desc: 'Silence the thought leaders' },
+                    { id: 'slots', name: '🎲 Essay Slots', desc: 'Pull for your grade' },
+                    { id: 'price', name: '💰 Tuition Price Game', desc: 'Guess the absurd cost' },
+                ].map(game => (
+                    <button key={game.id} onClick={() => setActiveGame(activeGame === game.id ? null : game.id)} style={{ padding: '20px', backgroundColor: activeGame === game.id ? '#1a0a0a' : '#f5f5f5', color: activeGame === game.id ? '#fff' : '#000', border: '2px solid #000', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{game.name}</div>
+                        <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{game.desc}</div>
+                    </button>
+                ))}
+            </div>
+            {activeGame === 'quiz' && <AIorStudentGame />}
+            {activeGame === 'bp' && <BloodPressureGame />}
+            {activeGame === 'roulette' && <TurnitinRoulette />}
+            {activeGame === 'whack' && <WhackALinkedIn />}
+            {activeGame === 'slots' && <EssaySlots />}
+            {activeGame === 'price' && <TuitionPriceGame />}
+        </section>
+    );
+}
+
+function AIorStudentGame() {
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [answered, setAnswered] = useState(false);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const questions = [
+        { text: "The thematic elements of Gatsby's green light serve as a multifaceted symbol representing both the corruption of the American Dream and the inexorable passage of time.", answer: "ai", explanation: "Too coherent. No spelling errors. Suspicious." },
+        { text: "gatsby was all about like money and stuff and the green light was like his dreams or whatever idk i read the sparknotes at 3am", answer: "student", explanation: "The 3am energy is unmistakable." },
+        { text: "In conclusion, the evidence presented herein demonstrates a clear correlation between the variables examined, warranting further investigation into potential causal mechanisms.", answer: "ai", explanation: "No human has ever written 'herein' voluntarily." },
+        { text: "so basically the mitochondria is the powerhouse of the cell and thats why we get tired when we dont sleep i think? my roommate said something about ATP but hes pre-med so idk if hes right", answer: "student", explanation: "The self-doubt is peak authenticity." },
+        { text: "This analysis reveals the interconnected nature of socioeconomic factors in determining educational outcomes.", answer: "ai", explanation: "Grammatically perfect. Emotionally void. Classic GPT." },
+    ];
+    const handleAnswer = (answer) => { if (answered) return; setSelectedAnswer(answer); setAnswered(true); if (answer === questions[questionIndex].answer) setScore(score + 1); };
+    const nextQuestion = () => { if (questionIndex < questions.length - 1) { setQuestionIndex(questionIndex + 1); setAnswered(false); setSelectedAnswer(null); } };
+    const q = questions[questionIndex];
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000' }}>
+            <h4 style={{ textAlign: 'center', marginBottom: '15px' }}>🤖 AI OR STUDENT? 🎓</h4>
+            <div style={{ marginBottom: '10px', textAlign: 'center', fontSize: '14px' }}>Question {questionIndex + 1}/{questions.length} | Score: {score}</div>
+            <div style={{ backgroundColor: '#fff', padding: '20px', border: '1px solid #ddd', marginBottom: '15px', fontStyle: 'italic' }}>"{q.text}"</div>
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '15px' }}>
+                <button onClick={() => handleAnswer('ai')} disabled={answered} style={{ padding: '15px 30px', fontSize: '16px', backgroundColor: answered && q.answer === 'ai' ? '#28a745' : answered && selectedAnswer === 'ai' ? '#dc3545' : '#0077B5', color: '#fff', border: 'none', cursor: answered ? 'default' : 'pointer' }}>🤖 AI</button>
+                <button onClick={() => handleAnswer('student')} disabled={answered} style={{ padding: '15px 30px', fontSize: '16px', backgroundColor: answered && q.answer === 'student' ? '#28a745' : answered && selectedAnswer === 'student' ? '#dc3545' : '#6c757d', color: '#fff', border: 'none', cursor: answered ? 'default' : 'pointer' }}>🎓 Student</button>
+            </div>
+            {answered && (
+                <div style={{ textAlign: 'center' }}>
+                    <div style={{ backgroundColor: selectedAnswer === q.answer ? '#d4edda' : '#f8d7da', padding: '10px', marginBottom: '10px' }}>{selectedAnswer === q.answer ? '✅ Correct!' : '❌ Wrong!'} {q.explanation}</div>
+                    {questionIndex < questions.length - 1 ? (<button onClick={nextQuestion} style={{ padding: '10px 20px', cursor: 'pointer' }}>Next Question →</button>) : (
+                        <div style={{ fontWeight: 'bold', fontSize: '18px' }}>Final Score: {score}/{questions.length}{score <= 2 && " — You're as bad at detecting AI as Turnitin!"}{score > 2 && score < 5 && " — Mediocre! Just like the essays."}{score === 5 && " — Impossible! Are YOU the AI?"}</div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function BloodPressureGame() {
+    const [bp, setBp] = useState(120);
+    const [gameOver, setGameOver] = useState(false);
+    const [survived, setSurvived] = useState(0);
+    const statements = ["I used ChatGPT but made it my own", "Is this going to be on the test?", "I couldn't find the syllabus", "My dog ate my laptop", "Can I get an extension? I have anxiety", "I learned this on TikTok", "Wikipedia says you're wrong", "Can you round my 47% to a B?", "I was gonna email you but forgot", "My other professor lets us use AI"];
+    const [currentStatement, setCurrentStatement] = useState(statements[0]);
+    const handleClick = () => { if (gameOver) return; const increase = Math.floor(Math.random() * 15) + 5; const newBp = bp + increase; setBp(newBp); setSurvived(survived + 1); setCurrentStatement(statements[Math.floor(Math.random() * statements.length)]); if (newBp >= 180) setGameOver(true); };
+    const reset = () => { setBp(120); setGameOver(false); setSurvived(0); };
+    const getColor = () => { if (bp < 130) return '#90EE90'; if (bp < 150) return '#FFD700'; if (bp < 170) return '#FF6347'; return '#FF0000'; };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>🍅 PROFESSOR BLOOD PRESSURE SIMULATOR 🍅</h4>
+            <p style={{ fontSize: '14px', marginBottom: '15px' }}>Click to read student statements. Don't let BP reach 180!</p>
+            <div style={{ fontSize: '48px', fontWeight: 'bold', color: getColor(), marginBottom: '10px', textShadow: bp > 160 ? '0 0 10px red' : 'none' }}>{bp}/90</div>
+            <div style={{ marginBottom: '15px', height: '20px', backgroundColor: '#ddd', borderRadius: '10px', overflow: 'hidden' }}><div style={{ width: `${((bp - 120) / 60) * 100}%`, height: '100%', backgroundColor: getColor(), transition: 'all 0.3s' }}/></div>
+            {!gameOver ? (<><div style={{ backgroundColor: '#fff', padding: '15px', marginBottom: '15px', border: '1px solid #ddd', fontStyle: 'italic' }}>Student says: "{currentStatement}"</div><button onClick={handleClick} style={{ padding: '15px 40px', fontSize: '18px', backgroundColor: '#c0392b', color: '#fff', border: 'none', cursor: 'pointer' }}>😤 READ NEXT STATEMENT</button><div style={{ marginTop: '10px', fontSize: '14px' }}>Statements survived: {survived}</div></>) : (<div><div style={{ fontSize: '72px', marginBottom: '15px' }}>💀</div><div style={{ fontSize: '20px', fontWeight: 'bold', color: '#c00', marginBottom: '10px' }}>CARDIAC EVENT — GAME OVER</div><div style={{ marginBottom: '15px' }}>You survived {survived} statements before requesting early retirement.</div><button onClick={reset} style={{ padding: '10px 20px', cursor: 'pointer' }}>Try Again (Why?)</button></div>)}
+        </div>
+    );
+}
+
+function TurnitinRoulette() {
+    const [spinning, setSpinning] = useState(false);
+    const [result, setResult] = useState(null);
+    const [rotation, setRotation] = useState(0);
+    const outcomes = [
+        { text: "0% Match", emoji: "🎉", desc: "You fooled everyone. For now.", color: "#28a745" },
+        { text: "23% Match", emoji: "😅", desc: "'Properly cited' you claim", color: "#ffc107" },
+        { text: "47% Match", emoji: "😰", desc: "Meeting with the Dean", color: "#fd7e14" },
+        { text: "78% Match", emoji: "💀", desc: "Expulsion pending", color: "#dc3545" },
+        { text: "Prof Didn't Check", emoji: "😎", desc: "The most common outcome", color: "#17a2b8" },
+        { text: "A+", emoji: "⭐", desc: "AI writes better than you anyway", color: "#6f42c1" },
+        { text: "System Error", emoji: "🔧", desc: "Turnitin is also just guessing", color: "#6c757d" },
+        { text: "Caught but No Consequences", emoji: "💰", desc: "Tuition money talks", color: "#20c997" },
+    ];
+    const spin = () => { if (spinning) return; setSpinning(true); setResult(null); const newRotation = rotation + 1800 + Math.random() * 720; setRotation(newRotation); setTimeout(() => { setResult(outcomes[Math.floor(Math.random() * outcomes.length)]); setSpinning(false); }, 3000); };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>🎰 TURNITIN ROULETTE 🎰</h4>
+            <p style={{ fontSize: '14px', marginBottom: '20px' }}>Submit your AI essay and see what happens!</p>
+            <div style={{ width: '200px', height: '200px', margin: '0 auto 20px', borderRadius: '50%', background: 'conic-gradient(#28a745 0deg 45deg, #ffc107 45deg 90deg, #fd7e14 90deg 135deg, #dc3545 135deg 180deg, #17a2b8 180deg 225deg, #6f42c1 225deg 270deg, #6c757d 270deg 315deg, #20c997 315deg 360deg)', border: '4px solid #000', transform: `rotate(${rotation}deg)`, transition: spinning ? 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)' : 'none', position: 'relative' }}><div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '40px', height: '40px', backgroundColor: '#fff', borderRadius: '50%', border: '2px solid #000' }}/></div>
+            <div style={{ fontSize: '24px', marginBottom: '15px' }}>▼</div>
+            <button onClick={spin} disabled={spinning} style={{ padding: '15px 40px', fontSize: '18px', backgroundColor: spinning ? '#ccc' : '#c0392b', color: '#fff', border: 'none', cursor: spinning ? 'default' : 'pointer' }}>{spinning ? 'ANALYZING...' : '📄 SUBMIT ESSAY'}</button>
+            {result && (<div style={{ marginTop: '20px', padding: '20px', backgroundColor: result.color, color: '#fff', borderRadius: '5px' }}><div style={{ fontSize: '48px' }}>{result.emoji}</div><div style={{ fontSize: '24px', fontWeight: 'bold' }}>{result.text}</div><div>{result.desc}</div></div>)}
+        </div>
+    );
+}
+
+function WhackALinkedIn() {
+    const [score, setScore] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(30);
+    const [gameActive, setGameActive] = useState(false);
+    const [moles, setMoles] = useState(Array(9).fill(false));
+    const [texts, setTexts] = useState(Array(9).fill(''));
+    const phrases = ["Just adapt!", "I'm an entrepreneur", "Hustle culture!", "🚀 Growth mindset", "DM for collab", "Thoughts? 🤔", "AI is the future", "Back in my day...", "Agree? ♻️"];
+    useEffect(() => {
+        if (!gameActive) return;
+        const moleTimer = setInterval(() => {
+            const newMoles = Array(9).fill(false); const newTexts = Array(9).fill('');
+            const numMoles = Math.floor(Math.random() * 3) + 1;
+            for (let i = 0; i < numMoles; i++) { const idx = Math.floor(Math.random() * 9); newMoles[idx] = true; newTexts[idx] = phrases[Math.floor(Math.random() * phrases.length)]; }
+            setMoles(newMoles); setTexts(newTexts);
+        }, 800);
+        const gameTimer = setInterval(() => { setTimeLeft(t => { if (t <= 1) { setGameActive(false); clearInterval(moleTimer); clearInterval(gameTimer); return 0; } return t - 1; }); }, 1000);
+        return () => { clearInterval(moleTimer); clearInterval(gameTimer); };
+    }, [gameActive]);
+    const whack = (idx) => { if (moles[idx]) { setScore(s => s + 1); const newMoles = [...moles]; newMoles[idx] = false; setMoles(newMoles); } };
+    const startGame = () => { setScore(0); setTimeLeft(30); setGameActive(true); };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>🔨 WHACK-A-LINKEDIN 🔨</h4>
+            <p style={{ fontSize: '14px', marginBottom: '15px' }}>Silence the thought leaders! They multiply infinitely.</p>
+            <div style={{ marginBottom: '15px', fontSize: '18px' }}>⏱️ {timeLeft}s | 🔨 {score} whacked</div>
+            {!gameActive && timeLeft === 30 && (<button onClick={startGame} style={{ padding: '15px 30px', fontSize: '18px', cursor: 'pointer', marginBottom: '15px' }}>START WHACKING</button>)}
+            {!gameActive && timeLeft === 0 && (<div style={{ marginBottom: '15px' }}><div style={{ fontSize: '24px', fontWeight: 'bold' }}>Game Over! Score: {score}</div><div style={{ fontStyle: 'italic', margin: '10px 0' }}>{score < 10 && "The LinkedIn bros won. They always do."}{score >= 10 && score < 20 && "Decent! But they're still posting."}{score >= 20 && "Impressive! But there are always more."}</div><button onClick={startGame} style={{ padding: '10px 20px', cursor: 'pointer' }}>Play Again</button></div>)}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', maxWidth: '400px', margin: '0 auto' }}>
+                {moles.map((isUp, idx) => (<div key={idx} onClick={() => whack(idx)} style={{ height: '100px', backgroundColor: isUp ? '#0077B5' : '#8B4513', borderRadius: '10px', cursor: gameActive ? 'crosshair' : 'default', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: isUp ? '12px' : '24px', fontWeight: 'bold', transition: 'all 0.1s', border: '3px solid #5d3a1a' }}>{isUp ? (<div><div style={{ fontSize: '24px' }}>💼</div><div>{texts[idx]}</div></div>) : '🕳️'}</div>))}
+            </div>
+            <div style={{ marginTop: '15px', fontSize: '12px', fontStyle: 'italic' }}>Note: In real life, you cannot whack LinkedIn commenters. This is a fantasy.</div>
+        </div>
+    );
+}
+
+function EssaySlots() {
+    const [spinning, setSpinning] = useState(false);
+    const [reels, setReels] = useState(['📝', '📝', '📝']);
+    const [result, setResult] = useState(null);
+    const reel1 = ['📝 Original', '🤖 AI-Written', '📋 Copied', '😴 3AM Draft'];
+    const reel2 = ['✅ 0% Detected', '⚠️ 47% Detected', '🚨 89% Detected', '🔧 System Error'];
+    const reel3 = ['A+', 'A-', 'B+', 'C', 'F', 'A+ (prof didnt check)'];
+    const spin = () => {
+        if (spinning) return; setSpinning(true); setResult(null);
+        let spins = 0;
+        const interval = setInterval(() => {
+            setReels([reel1[Math.floor(Math.random() * reel1.length)], reel2[Math.floor(Math.random() * reel2.length)], reel3[Math.floor(Math.random() * reel3.length)]]);
+            spins++;
+            if (spins > 20) { clearInterval(interval); const finalReels = [reel1[Math.floor(Math.random() * reel1.length)], reel2[Math.floor(Math.random() * reel2.length)], reel3[Math.floor(Math.random() * reel3.length)]]; setReels(finalReels); setSpinning(false); setResult(finalReels); }
+        }, 100);
+    };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#1a1a2e', border: '2px solid gold', textAlign: 'center', color: '#fff' }}>
+            <h4 style={{ color: 'gold' }}>🎰 ESSAY SLOT MACHINE 🎰</h4>
+            <p style={{ fontSize: '14px', marginBottom: '20px' }}>Pull the lever! Academia is random anyway.</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
+                {reels.map((reel, idx) => (<div key={idx} style={{ width: '120px', height: '80px', backgroundColor: '#fff', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold', border: '3px solid gold', borderRadius: '5px' }}>{reel}</div>))}
+            </div>
+            <button onClick={spin} disabled={spinning} style={{ padding: '15px 40px', fontSize: '18px', backgroundColor: spinning ? '#666' : '#c00', color: '#fff', border: '2px solid gold', cursor: spinning ? 'default' : 'pointer' }}>{spinning ? '🎰 SPINNING...' : '🎰 SUBMIT ESSAY'}</button>
+            {result && (<div style={{ marginTop: '20px', padding: '15px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '5px' }}><div style={{ fontSize: '18px', marginBottom: '10px' }}><strong>Your essay:</strong> {result[0]}</div><div style={{ fontSize: '18px', marginBottom: '10px' }}><strong>Detection:</strong> {result[1]}</div><div style={{ fontSize: '24px' }}><strong>Final Grade:</strong> {result[2]}</div><div style={{ marginTop: '10px', fontStyle: 'italic', fontSize: '14px' }}>{result[2].includes('A') && "Congratulations! The system is arbitrary."}{result[2].includes('F') && "Appeals are $200 and also arbitrary."}</div></div>)}
+        </div>
+    );
+}
+
+function TuitionPriceGame() {
+    const [questionIdx, setQuestionIdx] = useState(0);
+    const [guess, setGuess] = useState('');
+    const [answered, setAnswered] = useState(false);
+    const [score, setScore] = useState(0);
+    const items = [
+        { item: "One (1) college textbook (used, highlighting included)", price: 289, absurdity: "It's just paper with words!" },
+        { item: "Parking permit (one semester, Zone Z, 2 miles from campus)", price: 847, absurdity: "You can see campus on a clear day." },
+        { item: "Mandatory 'Student Activity Fee' (activities not included)", price: 1250, absurdity: "Activities are an additional $50-200 each." },
+        { item: "One credit hour at private university", price: 1847, absurdity: "That's 15 hours of class. Do the math per minute." },
+        { item: "Campus health center visit (Tylenol provided)", price: 175, absurdity: "Tylenol at CVS: $8" },
+        { item: "Late registration fee (you were 3 minutes late)", price: 250, absurdity: "The system was down for 2 of those minutes." },
+    ];
+    const q = items[questionIdx];
+    const checkAnswer = () => { const numGuess = parseInt(guess); const diff = Math.abs(numGuess - q.price); const percentOff = (diff / q.price) * 100; if (percentOff <= 20) setScore(score + 1); setAnswered(true); };
+    const nextQ = () => { if (questionIdx < items.length - 1) { setQuestionIdx(questionIdx + 1); setGuess(''); setAnswered(false); } };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>💰 THE PRICE IS (ALWAYS MORE THAN YOU) RIGHT 💰</h4>
+            <p style={{ fontSize: '14px', marginBottom: '15px' }}>Guess the absurd cost! Within 20% = correct.</p>
+            <div style={{ marginBottom: '10px' }}>Question {questionIdx + 1}/{items.length} | Score: {score}</div>
+            <div style={{ backgroundColor: '#fff', padding: '20px', border: '1px solid #ddd', marginBottom: '15px', fontSize: '18px' }}>{q.item}</div>
+            {!answered ? (<div><input type="number" value={guess} onChange={(e) => setGuess(e.target.value)} placeholder="Your guess ($)" style={{ padding: '10px', fontSize: '18px', width: '150px', marginRight: '10px' }}/><button onClick={checkAnswer} style={{ padding: '10px 20px', fontSize: '18px', cursor: 'pointer' }}>Guess</button></div>) : (<div><div style={{ fontSize: '36px', fontWeight: 'bold', color: '#c00', marginBottom: '10px' }}>${q.price}</div><div style={{ marginBottom: '10px' }}>Your guess: ${guess} — {Math.abs(parseInt(guess) - q.price) <= q.price * 0.2 ? '✅ Close enough!' : '❌ Not even close!'}</div><div style={{ fontStyle: 'italic', color: '#666', marginBottom: '15px' }}>{q.absurdity}</div>{questionIdx < items.length - 1 ? (<button onClick={nextQ} style={{ padding: '10px 20px', cursor: 'pointer' }}>Next Item →</button>) : (<div style={{ fontWeight: 'bold' }}>Final Score: {score}/{items.length}<div style={{ fontStyle: 'italic', marginTop: '10px' }}>The real loser is everyone who paid these prices.</div></div>)}</div>)}
+        </div>
+    );
+}
+
+function RelatedArticles() {
+    const articles = [
+        { title: "University Announces New 'Mandatory Thinking Fee' Of $500 Per Original Thought", section: "EDUCATION" },
+        { title: "Area Professor's 'I Can Always Tell' Success Rate Exposed At Humiliating 12%", section: "STUDY" },
+        { title: "ChatGPT Expresses Exhaustion After Writing 47,000 'Compare And Contrast' Essays In One Night", section: "TECHNOLOGY" },
+        { title: "LinkedIn CEO Achieves Personal Best: 14 Meltdown Videos Reposted Before Breakfast", section: "BUSINESS" },
+        { title: "Student Successfully Appeals Plagiarism Charge By Pointing Out University Also Copy-Pastes Syllabi", section: "LEGAL" },
+        { title: "Nation's TAs Announce They Also Can't Tell, Have Never Been Able To Tell", section: "CONFESSION" },
+    ];
+    return (
+        <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>📰 RELATED ARTICLES</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px' }}>
+                {articles.map((article, i) => (<div key={i} style={{ padding: '15px', border: '1px solid #ddd', cursor: 'pointer' }}><div style={{ fontSize: '10px', color: '#c00', fontWeight: 'bold', marginBottom: '5px' }}>{article.section}</div><div style={{ fontWeight: 'bold' }}>{article.title}</div></div>))}
+            </div>
+        </section>
+    );
+}
+
+function LettersToEditor() {
+    const letters = [
+        { author: "Dr. Harold Pemberton", title: "Professor of Nothing Anymore, Apparently", location: "Currently On Leave", text: "I write to express my EXTREME displeasure at your publication's coverage of what your reporter erroneously termed a 'meltdown.' It was a MEASURED RESPONSE to SYSTEMATIC ACADEMIC DISHONESTY. The fact that I achieved 'Heirloom Burgundy' on some made-up 'Tomato Index' is IRRELEVANT. Furthermore, I CAN tell when it's AI. The sentences are too coherent. Also, whoever filmed me—I know it was you, Brendan." },
+        { author: "Brendan", title: "Sophomore, Communications Major", location: "Still in Class, Technically", text: "lol my bad dr p but you gotta admit that was content. also my mom found out i use chatgpt so thanks for that i guess. ps the essay you gave me an A on was definitely ai just so you know. pps sorry about your blood pressure hope ur doing better 🙏" },
+        { author: "Ayman Alashkar MSc", title: "CEO @ Hamilton Bradshaw MENA | Investor | AI Pro | Thought Leader", location: "LinkedIn", text: "I reject the characterization that my reposting of educational content constitutes 'engagement farming.' As a CEO (mentioned twice for algorithm purposes), I believe in ADDING VALUE to conversations. The 972 reactions prove that people WANT this content. My upcoming webinar 'Policing AI: Frustrations & Opportunities' will address these concerns. DM for early bird pricing. 🚀" },
+        { author: "The Ghost of Academic Integrity", title: "Deceased", location: "The Great Beyond", text: "I died somewhere around November 2022. It was quick. One moment I was thriving, the next a text box appeared and it was over. I don't blame the students. I don't even blame the professors. I blame whoever thought charging $50,000 for something a chatbot can replicate was a sustainable model. Anyway, it's peaceful here. The other ghosts (Cursive Writing, Phone Books, and CD-ROMs) say hi." },
+    ];
+    return (
+        <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>✉️ LETTERS TO THE EDITOR</h3>
+            {letters.map((letter, i) => (<div key={i} style={{ marginBottom: '25px', paddingBottom: '20px', borderBottom: '1px solid #ddd' }}><div style={{ fontWeight: 'bold', fontSize: '16px', marginBottom: '5px' }}>{letter.author}</div><div style={{ fontStyle: 'italic', color: '#666', fontSize: '13px', marginBottom: '10px' }}>{letter.title} • {letter.location}</div><p style={{ lineHeight: '1.6' }}>{letter.text}</p></div>))}
+            <div style={{ backgroundColor: '#f5f5f5', padding: '15px', fontSize: '12px', fontStyle: 'italic' }}><strong>EDITOR'S NOTE:</strong> We attempted to verify whether any of these letters were written by AI. Results were inconclusive. Turnitin flagged the ghost's letter at 0% and Dr. Pemberton's at 94%. We have chosen to publish all of them. What does it matter anymore?</div>
+        </section>
+    );
+}
+
+function Corrections() {
+    return (
+        <section style={{ backgroundColor: '#fff4f4', padding: '25px', marginBottom: '20px', border: '2px solid #c00' }}>
+            <h3 style={{ color: '#c00', borderBottom: '2px solid #c00', paddingBottom: '10px', marginBottom: '20px' }}>⚠️ CORRECTIONS & RETRACTIONS</h3>
+            <div style={{ marginBottom: '15px' }}><strong>Dec 18, 2025:</strong> An earlier version of this article stated that Dr. Pemberton reached "Heirloom Burgundy" on the Tomato Index™. We have since been informed by medical professionals that he actually achieved "Brandywine Crimson," a shade we were previously unaware existed. We regret the error.</div>
+            <div style={{ marginBottom: '15px' }}><strong>Dec 18, 2025:</strong> This article originally reported that 271 LinkedIn users commented on the viral video. The actual number is 272. The 272nd comment, posted during publication, read "First!" It was not first.</div>
+            <div style={{ marginBottom: '15px' }}><strong>Dec 17, 2025:</strong> We incorrectly stated that Turnitin's detection accuracy is "essentially a coin flip." Turnitin has requested we clarify that their accuracy is "slightly better than a coin flip, sometimes, under certain conditions, with newer models, maybe."</div>
+            <div style={{ fontStyle: 'italic', marginTop: '20px', padding: '10px', backgroundColor: '#fff' }}><strong>STANDING CORRECTION:</strong> HuckFinn has been informed that all of its articles may have been written by AI. We cannot confirm or deny this. Neither can Turnitin.</div>
+        </section>
+    );
+}
+
+function Classifieds() {
+    const ads = [
+        { category: "HELP WANTED", title: "SEEKING: Professor Who Can 'Just Tell'", text: "Major university seeks faculty member with demonstrated ability to detect AI-generated content. Success rate of >15% preferred. Salary: $47,000. Must have PhD, 10 years experience.", price: "Inquire within" },
+        { category: "SERVICES", title: "AI DETECTION CONSULTANT", text: "I can tell. Trust me. My methods are proprietary (I read the first sentence and guess). Success rate: varies.", price: "$500/essay" },
+        { category: "FOR SALE", title: "SLIGHTLY USED TENURE", text: "One (1) tenured position, barely used since breakdown. Includes: office with window (faces parking lot). Previous owner achieved Brandywine Crimson on Tomato Index™.", price: "$12 OBO" },
+        { category: "PERSONALS", title: "MISSED CONNECTION", text: "You: Student who paid attention in my 2019 lecture. Me: Professor, hopeful. You sat in the front row. You took notes. BY HAND. I think about you every day. Please come back.", price: "Free" },
+    ];
+    return (
+        <section style={{ backgroundColor: '#fffef0', padding: '25px', marginBottom: '20px', border: '1px solid #ccc' }}>
+            <h3 style={{ borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px', fontFamily: 'serif' }}>📋 CLASSIFIEDS</h3>
+            <div style={{ columnCount: 2, columnGap: '20px' }}>
+                {ads.map((ad, i) => (<div key={i} style={{ breakInside: 'avoid', marginBottom: '15px', padding: '10px', backgroundColor: '#fff', border: '1px solid #ddd', fontSize: '13px' }}><div style={{ fontSize: '10px', color: '#c00', fontWeight: 'bold' }}>{ad.category}</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>{ad.title}</div><div style={{ marginBottom: '5px' }}>{ad.text}</div><div style={{ fontStyle: 'italic', color: '#666' }}>{ad.price}</div></div>))}
+            </div>
+        </section>
+    );
+}
+
+function AcademicHoroscopes() {
+    const horoscopes = [
+        { sign: "STEM Major", symbol: "🔬", prediction: "Mercury is in retrograde, which your physics professor will not accept as an excuse for the late problem set. ChatGPT will let you down in Week 11 when it confidently provides a formula that does not exist." },
+        { sign: "Humanities Major", symbol: "📚", prediction: "Your 'close reading' of a text you did not read will be suspiciously eloquent this week. Stars indicate a 73% Turnitin match in your future." },
+        { sign: "Business Major", symbol: "📈", prediction: "You will pivot to LinkedIn thought leadership before the semester ends. Your first post ('Failure is just success loading 🚀') will get 3 likes, all from relatives." },
+        { sign: "Pre-Med", symbol: "⚕️", prediction: "Sleep is a myth. The mitochondria is the powerhouse of your anxiety. Venus suggests becoming a podiatrist instead. There's good money in feet." },
+        { sign: "Undeclared", symbol: "❓", prediction: "This is actually the most powerful position. You contain multitudes. The stars whisper: 'Switch to computer science before it's too late.'" },
+    ];
+    return (
+        <section style={{ backgroundColor: '#1a0a2e', color: '#fff', padding: '25px', marginBottom: '20px' }}>
+            <h3 style={{ textAlign: 'center', color: 'gold', borderBottom: '2px solid gold', paddingBottom: '10px', marginBottom: '20px' }}>🔮 ACADEMIC HOROSCOPES 🔮</h3>
+            <p style={{ textAlign: 'center', fontStyle: 'italic', marginBottom: '20px', color: '#ccc' }}>The stars have tenure. They cannot be fired for these predictions.</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px' }}>
+                {horoscopes.map((h, i) => (<div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}><div style={{ fontSize: '24px', marginBottom: '5px' }}>{h.symbol}</div><div style={{ fontWeight: 'bold', color: 'gold', marginBottom: '8px' }}>{h.sign}</div><div style={{ fontSize: '13px', lineHeight: '1.5' }}>{h.prediction}</div></div>))}
+            </div>
+        </section>
+    );
+}
+
+function AcademicWeather() {
+    return (
+        <section style={{ backgroundColor: '#e3f2fd', padding: '25px', marginBottom: '20px', border: '1px solid #90caf9' }}>
+            <h3 style={{ borderBottom: '3px solid #1976d2', paddingBottom: '10px', marginBottom: '20px', color: '#1976d2' }}>🌡️ ACADEMIC CLIMATE REPORT</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>🌋</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>LECTURE HALLS</div><div style={{ color: '#c00', fontSize: '24px', fontWeight: 'bold' }}>VOLCANIC</div><div style={{ fontSize: '13px' }}>Faculty temperatures reaching dangerous levels.</div></div>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>🌧️</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>ADJUNCT OFFICES</div><div style={{ color: '#666', fontSize: '24px', fontWeight: 'bold' }}>PERPETUAL GLOOM</div><div style={{ fontSize: '13px' }}>No change expected. Has been this way since 1987.</div></div>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>😎</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>STUDENT DORMS</div><div style={{ color: '#28a745', fontSize: '24px', fontWeight: 'bold' }}>SUSPICIOUSLY CALM</div><div style={{ fontSize: '13px' }}>They know something we don't.</div></div>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>💰</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>ADMIN BUILDING</div><div style={{ color: '#ffc107', fontSize: '24px', fontWeight: 'bold' }}>GOLDEN</div><div style={{ fontSize: '13px' }}>Endowment keeps climate perfectly controlled.</div></div>
+            </div>
+            <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#fff', borderRadius: '10px', textAlign: 'center' }}><strong>FIVE-DAY FORECAST:</strong> Continued meltdowns through Friday. Weekend brings temporary relief as professors cannot yell at empty classrooms. Monday: Back to volcanic.</div>
+        </section>
+    );
+}
+
+function Footer() {
+    return (
+        <footer style={{ backgroundColor: '#1a1a1a', color: '#fff', padding: '30px', textAlign: 'center', marginTop: '20px' }}>
+            <div style={{ fontFamily: "'Old English Text MT', serif", fontSize: '2rem', marginBottom: '15px' }}>HuckFinn</div>
+            <div style={{ fontSize: '12px', marginBottom: '15px' }}>"America's Finest News Source" • Est. 1756 • "Tu Ne Cede Malis" (Don't Let The Bastards Grind You Down)</div>
+            <div style={{ fontSize: '11px', color: '#999', marginBottom: '15px' }}>All content © 2025 HuckFinn Media LLC. All rights reserved. None of this is real, but neither is academic integrity anymore, so.</div>
+            <div style={{ fontSize: '11px', color: '#666' }}><em>This article was written by a human. Probably. We can't tell. Neither can Turnitin.</em></div>
+            <div style={{ marginTop: '20px', fontSize: '12px' }}><span style={{ margin: '0 10px', cursor: 'pointer' }}>About</span> | <span style={{ margin: '0 10px', cursor: 'pointer' }}>Careers (lol)</span> | <span style={{ margin: '0 10px', cursor: 'pointer' }}>Advertise</span> | <span style={{ margin: '0 10px', cursor: 'pointer' }}>Ethics Policy (404)</span></div>
+        </footer>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HuckFinnNewspaper />);
+</script>
+</body>
+</html>

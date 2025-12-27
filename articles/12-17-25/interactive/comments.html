@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments | HuckFinn</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin:0;padding:0;">
+<div id="root"></div>
+<script type="text/babel">
+function CommentsPage() {
+    return (
+        <div style={{
+            fontFamily: "'Times New Roman', Georgia, serif",
+            backgroundColor: '#f5f0e6',
+            minHeight: '100vh',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundBlendMode: 'multiply',
+        }}>
+            <header style={{ borderBottom: '4px double #000', padding: '20px', textAlign: 'center', backgroundColor: '#fff' }}>
+                <div style={{ fontSize: '12px', letterSpacing: '4px', marginBottom: '5px' }}>AMERICA'S FINEST NEWS SOURCE • ESTABLISHED 1756</div>
+                <h1 style={{ fontFamily: "'Old English Text MT', 'UnifrakturMaguntia', serif", fontSize: 'clamp(2rem, 6vw, 4rem)', margin: '10px 0', fontWeight: 'normal' }}>HuckFinn</h1>
+                <div style={{ fontSize: '14px', marginTop: '10px' }}><a href="../huckfinn---Professors-ChatGPT-Meltdown.html" style={{ color: '#0066cc' }}>← Back to Article</a></div>
+            </header>
+            <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px' }}>
+                <CommentsSection />
+            </div>
+        </div>
+    );
+}
+
+function CommentsSection() {
+    const comments = [
+        { user: "TenuredAndTired_1987", badge: "VERIFIED PROFESSOR", badgeColor: "#c00", avatar: "👨‍🏫", text: "As someone who spent 23 YEARS getting my PhD and tenure, this article is deeply offensive. We are NOT turning into tomatoes. I am a healthy shade of crimson at WORST. Also, I CAN tell when it's AI. The sentences are too coherent.", time: "2 hours ago", likes: 47, replies: [{ user: "GPT4_Burner_Acct", avatar: "🤖", text: "I'm sorry you feel that way. Would you like me to rephrase your comment to sound more human?", time: "1 hour ago", likes: 892 }, { user: "AdjunctSlave2024", avatar: "😭", text: "You have tenure? Must be nice. I teach at 4 schools and live in my car.", time: "45 min ago", likes: 234 }] },
+        { user: "LinkedInfluencer_CEO_MBA_MSc", badge: "TOP VOICE", badgeColor: "#0077B5", avatar: "💼", text: "Great article! This is exactly why I dropped out to become an entrepreneur. Professors need to ADAPT or become OBSOLETE. I made $47 last month selling my course on adaptation. DM for details. 🚀📈 #Hustle #ThoughtLeader #AIisTheFuture", time: "3 hours ago", likes: 3, replies: [{ user: "NormalPerson42", avatar: "🙂", text: "Did you just try to sell a course in a comment section about education failing", time: "2 hours ago", likes: 445 }, { user: "LinkedInfluencer_CEO_MBA_MSc", avatar: "💼", text: "Every interaction is a sales opportunity. That's day 1 stuff.", time: "2 hours ago", likes: 2 }] },
+        { user: "xX_CheatCode_Xx", badge: "STUDENT", badgeColor: "#228B22", avatar: "😎", text: "lmaooo my prof literally did this last week. she was so red i thought she was gonna explode. anyway got an A on that essay 💀💀💀", time: "1 hour ago", likes: 1247, replies: [{ user: "TenuredAndTired_1987", avatar: "👨‍🏫", text: "YOU. It was YOU.", time: "30 min ago", likes: 3400 }, { user: "xX_CheatCode_Xx", avatar: "😎", text: "dr pemberton?? omg 💀", time: "25 min ago", likes: 5600 }] },
+        { user: "BoomerDad1955", badge: null, avatar: "👴", text: "Back in MY day we didnt have fancy AI we had to WALK to the LIBRARY and use ENCYCLOPEDIAS and we LIKED IT. This generation is SOFT", time: "4 hours ago", likes: 12, replies: [{ user: "FactCheckBot", avatar: "✓", text: "The average cost of college in 1975 was $2,291. Adjusted for inflation: $13,147. Current average: $38,270. The encyclopedia users also bought houses on minimum wage.", time: "3 hours ago", likes: 8934 }, { user: "BoomerDad1955", avatar: "👴", text: "thats not the point", time: "3 hours ago", likes: 2 }] },
+        { user: "AsAMotherOf3", badge: null, avatar: "👩‍👧‍👦", text: "As a mother of 3, I think this is DISGUSTING. My children would NEVER use AI. I raised them with VALUES. They're currently at Harvard, Yale, and Stanford on full scholarships.", time: "2 hours ago", likes: 23, replies: [{ user: "YaleStudent2027", avatar: "🎓", text: "mom i literally showed you how to use chatgpt last thanksgiving", time: "1 hour ago", likes: 12000 }, { user: "AsAMotherOf3", avatar: "👩‍👧‍👦", text: "BRENDAN GET OFF THE INTERNET", time: "1 hour ago", likes: 8700 }, { user: "HarvardStudent2025", avatar: "🎓", text: "we all use it mom. we've been lying.", time: "30 min ago", likes: 15000 }] },
+        { user: "TurnitinEmployee_Throwaway", badge: "INDUSTRY INSIDER", badgeColor: "#ff6600", avatar: "🕵️", text: "Okay I probably shouldn't say this but... we literally just guess. The algorithm is essentially a coin flip with marketing. Please don't tell my boss.", time: "6 hours ago", likes: 23000, replies: [{ user: "UniversityAdmin", avatar: "🏛️", text: "DELETE THIS", time: "5 hours ago", likes: 12 }, { user: "TurnitinEmployee_Throwaway", avatar: "🕵️", text: "[This user has been banned]", time: "5 hours ago", likes: 0 }] },
+        { user: "Definitely_Not_ChatGPT", badge: null, avatar: "🙂", text: "As a human person who breathes oxygen and experiences emotions, I find this article to be a compelling exploration of the intersection between technological advancement and traditional educational paradigms.", time: "4 hours ago", likes: 2, replies: [{ user: "SkepticalReader", avatar: "🤨", text: "...chatgpt?", time: "3 hours ago", likes: 1200 }, { user: "Definitely_Not_ChatGPT", avatar: "🙂", text: "Ha ha! No, I am simply a human who enjoys using diverse vocabulary. How about that local sports team?", time: "3 hours ago", likes: 890 }] },
+    ];
+    return (
+        <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.3rem', borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px' }}>
+                💬 COMMENTS ({comments.reduce((acc, c) => acc + 1 + c.replies.length, 0)}) — <span style={{color: '#c00'}}>HEATED DEBATE</span>
+            </h3>
+            <div style={{ backgroundColor: '#fff3cd', border: '1px solid #ffc107', padding: '10px', marginBottom: '20px', fontSize: '12px' }}>
+                ⚠️ <strong>MODERATOR NOTE:</strong> Comments are disabled for users whose blood pressure exceeds 160/100. Dr. Pemberton, we know it's you. Please step away.
+            </div>
+            {comments.map((comment, i) => (
+                <div key={i} style={{ borderBottom: '1px solid #eee', paddingBottom: '15px', marginBottom: '15px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
+                        <span style={{ fontSize: '1.5rem', marginRight: '10px' }}>{comment.avatar}</span>
+                        <strong>{comment.user}</strong>
+                        {comment.badge && <span style={{ backgroundColor: comment.badgeColor, color: '#fff', padding: '2px 8px', borderRadius: '3px', fontSize: '10px', marginLeft: '8px' }}>{comment.badge}</span>}
+                        <span style={{ color: '#999', fontSize: '12px', marginLeft: 'auto' }}>{comment.time}</span>
+                    </div>
+                    <p style={{ marginLeft: '40px', marginBottom: '8px' }}>{comment.text}</p>
+                    <div style={{ marginLeft: '40px', fontSize: '12px', color: '#666' }}>👍 {comment.likes.toLocaleString()} {comment.likes < 0 && '(oof)'} · Reply · Report</div>
+                    {comment.replies.map((reply, j) => (
+                        <div key={j} style={{ marginLeft: '60px', marginTop: '10px', paddingLeft: '15px', borderLeft: '2px solid #ddd' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '5px' }}>
+                                <span style={{ marginRight: '8px' }}>{reply.avatar}</span>
+                                <strong style={{ fontSize: '13px' }}>{reply.user}</strong>
+                                <span style={{ color: '#999', fontSize: '11px', marginLeft: 'auto' }}>{reply.time}</span>
+                            </div>
+                            <p style={{ fontSize: '13px', marginBottom: '5px' }}>{reply.text}</p>
+                            <div style={{ fontSize: '11px', color: '#666' }}>👍 {reply.likes.toLocaleString()} · Reply</div>
+                        </div>
+                    ))}
+                </div>
+            ))}
+            <div style={{ backgroundColor: '#f5f5f5', padding: '15px', textAlign: 'center', color: '#666', fontStyle: 'italic' }}>
+                <em>Loading more comments...</em><br/><small>(JK the server is powered by adjunct wages and crashed)</small>
+            </div>
+        </section>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<CommentsPage />);
+</script>
+</body>
+</html>
