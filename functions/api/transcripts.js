@@ -2,6 +2,7 @@
  * Cloudflare Pages Function - Transcript Webhook
  *
  * Receives transcripts and forwards them to a Discord channel via webhook.
+ * Supports both direct format and Omi AI format.
  *
  * Deployed to: https://huckfinn.ai/api/transcripts
  *
@@ -11,7 +12,9 @@
  * Usage:
  *   POST /api/transcripts
  *   Content-Type: application/json
- *   Body: { "transcript": "...", "metadata": { ... } }
+ *
+ *   Direct format: { "transcript": "...", "metadata": { "title": "..." } }
+ *   Omi format: { "session_id": "...", "segments": [{ "text": "...", "speaker": "..." }] }
  */
 
 const CORS_HEADERS = {
@@ -28,6 +31,59 @@ function jsonResponse(data, status = 200) {
   });
 }
 
+/**
+ * Parse incoming payload - supports multiple formats
+ */
+function parsePayload(body) {
+  // Omi format: { session_id, segments: [{ text, speaker, is_user }] }
+  if (body.segments && Array.isArray(body.segments)) {
+    const transcript = body.segments
+      .map(seg => {
+        const speaker = seg.is_user ? 'You' : (seg.speaker || 'Speaker');
+        return `**${speaker}**: ${seg.text}`;
+      })
+      .join('\n\n');
+
+    return {
+      transcript,
+      metadata: {
+        title: body.structured?.title || `Omi Session ${new Date().toLocaleDateString()}`,
+        session_id: body.session_id,
+        source: 'Omi'
+      }
+    };
+  }
+
+  // Omi memory format: { id, structured: { title, overview }, transcript_segments }
+  if (body.transcript_segments && Array.isArray(body.transcript_segments)) {
+    const transcript = body.transcript_segments
+      .map(seg => {
+        const speaker = seg.is_user ? 'You' : (seg.speaker || 'Speaker');
+        return `**${speaker}**: ${seg.text}`;
+      })
+      .join('\n\n');
+
+    return {
+      transcript: body.structured?.overview || transcript,
+      metadata: {
+        title: body.structured?.title || `Omi Memory ${new Date().toLocaleDateString()}`,
+        session_id: body.id,
+        source: 'Omi'
+      }
+    };
+  }
+
+  // Direct format: { transcript, metadata }
+  if (body.transcript) {
+    return {
+      transcript: body.transcript,
+      metadata: body.metadata || {}
+    };
+  }
+
+  return null;
+}
+
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -38,13 +94,22 @@ export async function onRequestPost(context) {
   }
 
   try {
-    // Parse the incoming transcript
+    // Parse the incoming request
     const body = await request.json();
-    const { transcript, metadata = {} } = body;
 
-    if (!transcript) {
-      return jsonResponse({ error: 'Missing transcript in request body' }, 400);
+    // Log incoming payload for debugging
+    console.log('Received payload:', JSON.stringify(body));
+
+    const parsed = parsePayload(body);
+
+    if (!parsed || !parsed.transcript) {
+      return jsonResponse({
+        error: 'Missing transcript in request body',
+        hint: 'Expected { transcript: "..." } or Omi format { segments: [...] }'
+      }, 400);
     }
+
+    const { transcript, metadata } = parsed;
 
     // Format the Discord message
     const discordMessage = formatDiscordMessage(transcript, metadata);
@@ -100,7 +165,7 @@ function formatDiscordMessage(transcript, metadata) {
     fields.push({ name: 'Duration', value: metadata.duration, inline: true });
   }
   if (metadata.session_id) {
-    fields.push({ name: 'Session ID', value: metadata.session_id, inline: true });
+    fields.push({ name: 'Session ID', value: String(metadata.session_id), inline: true });
   }
 
   // thread_name required for forum channels
