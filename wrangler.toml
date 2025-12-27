@@ -7,3 +7,4 @@ pages_build_output_dir = "."
 # Environment variables for production
 # Note: For secrets like DISCORD_WEBHOOK_URL, set via dashboard or use:
 # npx wrangler pages secret put DISCORD_WEBHOOK_URL
+
