@@ -259,6 +259,9 @@ function CommentsSection() {
             <div style={{ backgroundColor: '#f5f5f5', padding: '15px', textAlign: 'center', color: '#666', fontStyle: 'italic' }}>
                 <em>Loading more comments...</em><br/><small>(JK the server is powered by adjunct wages and crashed)</small>
             </div>
+            <div style={{ textAlign: 'center', marginTop: '15px' }}>
+                <a href="interactive/comments.html" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: '#1a0a0a', color: '#fff', textDecoration: 'none', fontWeight: 'bold' }}>View Full Comments Page →</a>
+            </div>
         </section>
     );
 }
@@ -298,6 +301,9 @@ function GamesSection({ activeGame, setActiveGame }) {
             {activeGame === 'whack' && <WhackALinkedIn />}
             {activeGame === 'slots' && <EssaySlots />}
             {activeGame === 'price' && <TuitionPriceGame />}
+            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <a href="interactive/academic-arcade.html" style={{ display: 'inline-block', padding: '12px 25px', backgroundColor: '#1a0a0a', color: '#fff', textDecoration: 'none', fontWeight: 'bold', fontSize: '16px' }}>Open Full Arcade Page →</a>
+            </div>
         </section>
     );
 }
@@ -554,6 +560,9 @@ function AcademicHoroscopes() {
             <p style={{ textAlign: 'center', fontStyle: 'italic', marginBottom: '20px', color: '#ccc' }}>The stars have tenure. They cannot be fired for these predictions.</p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px' }}>
                 {horoscopes.map((h, i) => (<div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}><div style={{ fontSize: '24px', marginBottom: '5px' }}>{h.symbol}</div><div style={{ fontWeight: 'bold', color: 'gold', marginBottom: '8px' }}>{h.sign}</div><div style={{ fontSize: '13px', lineHeight: '1.5' }}>{h.prediction}</div></div>))}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <a href="interactive/horoscopes.html" style={{ display: 'inline-block', padding: '10px 20px', backgroundColor: 'gold', color: '#1a0a2e', textDecoration: 'none', fontWeight: 'bold' }}>View Full Horoscopes & Weather →</a>
             </div>
         </section>
     );
