@@ -103,7 +103,11 @@ function formatDiscordMessage(transcript, metadata) {
     fields.push({ name: 'Session ID', value: metadata.session_id, inline: true });
   }
 
+  // thread_name required for forum channels
+  const threadName = metadata.title || `Transcript ${new Date().toLocaleDateString()}`;
+
   return {
+    thread_name: threadName,
     embeds: [{
       title: metadata.title || 'New Transcript Received',
       description: truncatedTranscript,
