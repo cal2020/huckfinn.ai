@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Horoscopes & Weather | HuckFinn</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin:0;padding:0;">
+<div id="root"></div>
+<script type="text/babel">
+function HoroscopesPage() {
+    return (
+        <div style={{
+            fontFamily: "'Times New Roman', Georgia, serif",
+            backgroundColor: '#f5f0e6',
+            minHeight: '100vh',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundBlendMode: 'multiply',
+        }}>
+            <header style={{ borderBottom: '4px double #000', padding: '20px', textAlign: 'center', backgroundColor: '#fff' }}>
+                <div style={{ fontSize: '12px', letterSpacing: '4px', marginBottom: '5px' }}>AMERICA'S FINEST NEWS SOURCE • ESTABLISHED 1756</div>
+                <h1 style={{ fontFamily: "'Old English Text MT', 'UnifrakturMaguntia', serif", fontSize: 'clamp(2rem, 6vw, 4rem)', margin: '10px 0', fontWeight: 'normal' }}>HuckFinn</h1>
+                <div style={{ fontSize: '14px', marginTop: '10px' }}><a href="../huckfinn---Professors-ChatGPT-Meltdown.html" style={{ color: '#0066cc' }}>← Back to Article</a></div>
+            </header>
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px' }}>
+                <AcademicHoroscopes />
+                <AcademicWeather />
+            </div>
+        </div>
+    );
+}
+
+function AcademicHoroscopes() {
+    const horoscopes = [
+        { sign: "STEM Major", symbol: "🔬", prediction: "Mercury is in retrograde, which your physics professor will not accept as an excuse for the late problem set. ChatGPT will let you down in Week 11 when it confidently provides a formula that does not exist." },
+        { sign: "Humanities Major", symbol: "📚", prediction: "Your 'close reading' of a text you did not read will be suspiciously eloquent this week. Stars indicate a 73% Turnitin match in your future." },
+        { sign: "Business Major", symbol: "📈", prediction: "You will pivot to LinkedIn thought leadership before the semester ends. Your first post ('Failure is just success loading 🚀') will get 3 likes, all from relatives." },
+        { sign: "Pre-Med", symbol: "⚕️", prediction: "Sleep is a myth. The mitochondria is the powerhouse of your anxiety. Venus suggests becoming a podiatrist instead. There's good money in feet." },
+        { sign: "Undeclared", symbol: "❓", prediction: "This is actually the most powerful position. You contain multitudes. The stars whisper: 'Switch to computer science before it's too late.'" },
+    ];
+    return (
+        <section style={{ backgroundColor: '#1a0a2e', color: '#fff', padding: '25px', marginBottom: '20px' }}>
+            <h3 style={{ textAlign: 'center', color: 'gold', borderBottom: '2px solid gold', paddingBottom: '10px', marginBottom: '20px' }}>🔮 ACADEMIC HOROSCOPES 🔮</h3>
+            <p style={{ textAlign: 'center', fontStyle: 'italic', marginBottom: '20px', color: '#ccc' }}>The stars have tenure. They cannot be fired for these predictions.</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '15px' }}>
+                {horoscopes.map((h, i) => (<div key={i} style={{ backgroundColor: 'rgba(255,255,255,0.1)', padding: '15px', borderRadius: '5px' }}><div style={{ fontSize: '24px', marginBottom: '5px' }}>{h.symbol}</div><div style={{ fontWeight: 'bold', color: 'gold', marginBottom: '8px' }}>{h.sign}</div><div style={{ fontSize: '13px', lineHeight: '1.5' }}>{h.prediction}</div></div>))}
+            </div>
+        </section>
+    );
+}
+
+function AcademicWeather() {
+    return (
+        <section style={{ backgroundColor: '#e3f2fd', padding: '25px', marginBottom: '20px', border: '1px solid #90caf9' }}>
+            <h3 style={{ borderBottom: '3px solid #1976d2', paddingBottom: '10px', marginBottom: '20px', color: '#1976d2' }}>🌡️ ACADEMIC CLIMATE REPORT</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>🌋</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>LECTURE HALLS</div><div style={{ color: '#c00', fontSize: '24px', fontWeight: 'bold' }}>VOLCANIC</div><div style={{ fontSize: '13px' }}>Faculty temperatures reaching dangerous levels.</div></div>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>🌧️</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>ADJUNCT OFFICES</div><div style={{ color: '#666', fontSize: '24px', fontWeight: 'bold' }}>PERPETUAL GLOOM</div><div style={{ fontSize: '13px' }}>No change expected. Has been this way since 1987.</div></div>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>😎</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>STUDENT DORMS</div><div style={{ color: '#28a745', fontSize: '24px', fontWeight: 'bold' }}>SUSPICIOUSLY CALM</div><div style={{ fontSize: '13px' }}>They know something we don't.</div></div>
+                <div style={{ textAlign: 'center', padding: '15px', backgroundColor: '#fff', borderRadius: '10px' }}><div style={{ fontSize: '48px' }}>💰</div><div style={{ fontWeight: 'bold', marginBottom: '5px' }}>ADMIN BUILDING</div><div style={{ color: '#ffc107', fontSize: '24px', fontWeight: 'bold' }}>GOLDEN</div><div style={{ fontSize: '13px' }}>Endowment keeps climate perfectly controlled.</div></div>
+            </div>
+            <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#fff', borderRadius: '10px', textAlign: 'center' }}><strong>FIVE-DAY FORECAST:</strong> Continued meltdowns through Friday. Weekend brings temporary relief as professors cannot yell at empty classrooms. Monday: Back to volcanic.</div>
+        </section>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<HoroscopesPage />);
+</script>
+</body>
+</html>

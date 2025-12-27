@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Academic Arcade | HuckFinn Games</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="margin:0;padding:0;">
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+function AcademicArcade() {
+    const [activeGame, setActiveGame] = useState(null);
+    return (
+        <div style={{
+            fontFamily: "'Times New Roman', Georgia, serif",
+            backgroundColor: '#f5f0e6',
+            minHeight: '100vh',
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+            backgroundBlendMode: 'multiply',
+        }}>
+            <header style={{ borderBottom: '4px double #000', padding: '20px', textAlign: 'center', backgroundColor: '#fff' }}>
+                <div style={{ fontSize: '12px', letterSpacing: '4px', marginBottom: '5px' }}>AMERICA'S FINEST NEWS SOURCE • ESTABLISHED 1756</div>
+                <h1 style={{ fontFamily: "'Old English Text MT', 'UnifrakturMaguntia', serif", fontSize: 'clamp(2rem, 6vw, 4rem)', margin: '10px 0', fontWeight: 'normal' }}>HuckFinn</h1>
+                <div style={{ fontSize: '14px', marginTop: '10px' }}><a href="../huckfinn---Professors-ChatGPT-Meltdown.html" style={{ color: '#0066cc' }}>← Back to Article</a></div>
+            </header>
+            <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px' }}>
+                <GamesSection activeGame={activeGame} setActiveGame={setActiveGame} />
+            </div>
+        </div>
+    );
+}
+
+function GamesSection({ activeGame, setActiveGame }) {
+    return (
+        <section style={{ backgroundColor: '#fff', padding: '25px', marginBottom: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+            <h3 style={{ fontSize: '1.5rem', borderBottom: '3px solid #000', paddingBottom: '10px', marginBottom: '20px', textAlign: 'center' }}>🎮 INTERACTIVE: THE ACADEMIC ARCADE 🎮</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px', marginBottom: '20px' }}>
+                {[
+                    { id: 'quiz', name: '🤖 AI or Student?', desc: 'Can YOU tell the difference?' },
+                    { id: 'bp', name: '🍅 Prof Blood Pressure', desc: "Don't let them explode!" },
+                    { id: 'roulette', name: '🎰 Turnitin Roulette', desc: 'Spin the wheel of fate' },
+                    { id: 'whack', name: '🔨 Whack-A-LinkedIn', desc: 'Silence the thought leaders' },
+                    { id: 'slots', name: '🎲 Essay Slots', desc: 'Pull for your grade' },
+                    { id: 'price', name: '💰 Tuition Price Game', desc: 'Guess the absurd cost' },
+                ].map(game => (
+                    <button key={game.id} onClick={() => setActiveGame(activeGame === game.id ? null : game.id)} style={{ padding: '20px', backgroundColor: activeGame === game.id ? '#1a0a0a' : '#f5f5f5', color: activeGame === game.id ? '#fff' : '#000', border: '2px solid #000', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }}>
+                        <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{game.name}</div>
+                        <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>{game.desc}</div>
+                    </button>
+                ))}
+            </div>
+            {activeGame === 'quiz' && <AIorStudentGame />}
+            {activeGame === 'bp' && <BloodPressureGame />}
+            {activeGame === 'roulette' && <TurnitinRoulette />}
+            {activeGame === 'whack' && <WhackALinkedIn />}
+            {activeGame === 'slots' && <EssaySlots />}
+            {activeGame === 'price' && <TuitionPriceGame />}
+        </section>
+    );
+}
+
+function AIorStudentGame() {
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [score, setScore] = useState(0);
+    const [answered, setAnswered] = useState(false);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const questions = [
+        { text: "The thematic elements of Gatsby's green light serve as a multifaceted symbol representing both the corruption of the American Dream and the inexorable passage of time.", answer: "ai", explanation: "Too coherent. No spelling errors. Suspicious." },
+        { text: "gatsby was all about like money and stuff and the green light was like his dreams or whatever idk i read the sparknotes at 3am", answer: "student", explanation: "The 3am energy is unmistakable." },
+        { text: "In conclusion, the evidence presented herein demonstrates a clear correlation between the variables examined, warranting further investigation into potential causal mechanisms.", answer: "ai", explanation: "No human has ever written 'herein' voluntarily." },
+        { text: "so basically the mitochondria is the powerhouse of the cell and thats why we get tired when we dont sleep i think? my roommate said something about ATP but hes pre-med so idk if hes right", answer: "student", explanation: "The self-doubt is peak authenticity." },
+        { text: "This analysis reveals the interconnected nature of socioeconomic factors in determining educational outcomes.", answer: "ai", explanation: "Grammatically perfect. Emotionally void. Classic GPT." },
+    ];
+    const handleAnswer = (answer) => { if (answered) return; setSelectedAnswer(answer); setAnswered(true); if (answer === questions[questionIndex].answer) setScore(score + 1); };
+    const nextQuestion = () => { if (questionIndex < questions.length - 1) { setQuestionIndex(questionIndex + 1); setAnswered(false); setSelectedAnswer(null); } };
+    const q = questions[questionIndex];
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000' }}>
+            <h4 style={{ textAlign: 'center', marginBottom: '15px' }}>🤖 AI OR STUDENT? 🎓</h4>
+            <div style={{ marginBottom: '10px', textAlign: 'center', fontSize: '14px' }}>Question {questionIndex + 1}/{questions.length} | Score: {score}</div>
+            <div style={{ backgroundColor: '#fff', padding: '20px', border: '1px solid #ddd', marginBottom: '15px', fontStyle: 'italic' }}>"{q.text}"</div>
+            <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginBottom: '15px' }}>
+                <button onClick={() => handleAnswer('ai')} disabled={answered} style={{ padding: '15px 30px', fontSize: '16px', backgroundColor: answered && q.answer === 'ai' ? '#28a745' : answered && selectedAnswer === 'ai' ? '#dc3545' : '#0077B5', color: '#fff', border: 'none', cursor: answered ? 'default' : 'pointer' }}>🤖 AI</button>
+                <button onClick={() => handleAnswer('student')} disabled={answered} style={{ padding: '15px 30px', fontSize: '16px', backgroundColor: answered && q.answer === 'student' ? '#28a745' : answered && selectedAnswer === 'student' ? '#dc3545' : '#6c757d', color: '#fff', border: 'none', cursor: answered ? 'default' : 'pointer' }}>🎓 Student</button>
+            </div>
+            {answered && (
+                <div style={{ textAlign: 'center' }}>
+                    <div style={{ backgroundColor: selectedAnswer === q.answer ? '#d4edda' : '#f8d7da', padding: '10px', marginBottom: '10px' }}>{selectedAnswer === q.answer ? '✅ Correct!' : '❌ Wrong!'} {q.explanation}</div>
+                    {questionIndex < questions.length - 1 ? (<button onClick={nextQuestion} style={{ padding: '10px 20px', cursor: 'pointer' }}>Next Question →</button>) : (
+                        <div style={{ fontWeight: 'bold', fontSize: '18px' }}>Final Score: {score}/{questions.length}{score <= 2 && " — You're as bad at detecting AI as Turnitin!"}{score > 2 && score < 5 && " — Mediocre! Just like the essays."}{score === 5 && " — Impossible! Are YOU the AI?"}</div>
+                    )}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function BloodPressureGame() {
+    const [bp, setBp] = useState(120);
+    const [gameOver, setGameOver] = useState(false);
+    const [survived, setSurvived] = useState(0);
+    const statements = ["I used ChatGPT but made it my own", "Is this going to be on the test?", "I couldn't find the syllabus", "My dog ate my laptop", "Can I get an extension? I have anxiety", "I learned this on TikTok", "Wikipedia says you're wrong", "Can you round my 47% to a B?", "I was gonna email you but forgot", "My other professor lets us use AI"];
+    const [currentStatement, setCurrentStatement] = useState(statements[0]);
+    const handleClick = () => { if (gameOver) return; const increase = Math.floor(Math.random() * 15) + 5; const newBp = bp + increase; setBp(newBp); setSurvived(survived + 1); setCurrentStatement(statements[Math.floor(Math.random() * statements.length)]); if (newBp >= 180) setGameOver(true); };
+    const reset = () => { setBp(120); setGameOver(false); setSurvived(0); };
+    const getColor = () => { if (bp < 130) return '#90EE90'; if (bp < 150) return '#FFD700'; if (bp < 170) return '#FF6347'; return '#FF0000'; };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>🍅 PROFESSOR BLOOD PRESSURE SIMULATOR 🍅</h4>
+            <p style={{ fontSize: '14px', marginBottom: '15px' }}>Click to read student statements. Don't let BP reach 180!</p>
+            <div style={{ fontSize: '48px', fontWeight: 'bold', color: getColor(), marginBottom: '10px', textShadow: bp > 160 ? '0 0 10px red' : 'none' }}>{bp}/90</div>
+            <div style={{ marginBottom: '15px', height: '20px', backgroundColor: '#ddd', borderRadius: '10px', overflow: 'hidden' }}><div style={{ width: `${((bp - 120) / 60) * 100}%`, height: '100%', backgroundColor: getColor(), transition: 'all 0.3s' }}/></div>
+            {!gameOver ? (<><div style={{ backgroundColor: '#fff', padding: '15px', marginBottom: '15px', border: '1px solid #ddd', fontStyle: 'italic' }}>Student says: "{currentStatement}"</div><button onClick={handleClick} style={{ padding: '15px 40px', fontSize: '18px', backgroundColor: '#c0392b', color: '#fff', border: 'none', cursor: 'pointer' }}>😤 READ NEXT STATEMENT</button><div style={{ marginTop: '10px', fontSize: '14px' }}>Statements survived: {survived}</div></>) : (<div><div style={{ fontSize: '72px', marginBottom: '15px' }}>💀</div><div style={{ fontSize: '20px', fontWeight: 'bold', color: '#c00', marginBottom: '10px' }}>CARDIAC EVENT — GAME OVER</div><div style={{ marginBottom: '15px' }}>You survived {survived} statements before requesting early retirement.</div><button onClick={reset} style={{ padding: '10px 20px', cursor: 'pointer' }}>Try Again (Why?)</button></div>)}
+        </div>
+    );
+}
+
+function TurnitinRoulette() {
+    const [spinning, setSpinning] = useState(false);
+    const [result, setResult] = useState(null);
+    const [rotation, setRotation] = useState(0);
+    const outcomes = [
+        { text: "0% Match", emoji: "🎉", desc: "You fooled everyone. For now.", color: "#28a745" },
+        { text: "23% Match", emoji: "😅", desc: "'Properly cited' you claim", color: "#ffc107" },
+        { text: "47% Match", emoji: "😰", desc: "Meeting with the Dean", color: "#fd7e14" },
+        { text: "78% Match", emoji: "💀", desc: "Expulsion pending", color: "#dc3545" },
+        { text: "Prof Didn't Check", emoji: "😎", desc: "The most common outcome", color: "#17a2b8" },
+        { text: "A+", emoji: "⭐", desc: "AI writes better than you anyway", color: "#6f42c1" },
+        { text: "System Error", emoji: "🔧", desc: "Turnitin is also just guessing", color: "#6c757d" },
+        { text: "Caught but No Consequences", emoji: "💰", desc: "Tuition money talks", color: "#20c997" },
+    ];
+    const spin = () => { if (spinning) return; setSpinning(true); setResult(null); const newRotation = rotation + 1800 + Math.random() * 720; setRotation(newRotation); setTimeout(() => { setResult(outcomes[Math.floor(Math.random() * outcomes.length)]); setSpinning(false); }, 3000); };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>🎰 TURNITIN ROULETTE 🎰</h4>
+            <p style={{ fontSize: '14px', marginBottom: '20px' }}>Submit your AI essay and see what happens!</p>
+            <div style={{ width: '200px', height: '200px', margin: '0 auto 20px', borderRadius: '50%', background: 'conic-gradient(#28a745 0deg 45deg, #ffc107 45deg 90deg, #fd7e14 90deg 135deg, #dc3545 135deg 180deg, #17a2b8 180deg 225deg, #6f42c1 225deg 270deg, #6c757d 270deg 315deg, #20c997 315deg 360deg)', border: '4px solid #000', transform: `rotate(${rotation}deg)`, transition: spinning ? 'transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)' : 'none', position: 'relative' }}><div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '40px', height: '40px', backgroundColor: '#fff', borderRadius: '50%', border: '2px solid #000' }}/></div>
+            <div style={{ fontSize: '24px', marginBottom: '15px' }}>▼</div>
+            <button onClick={spin} disabled={spinning} style={{ padding: '15px 40px', fontSize: '18px', backgroundColor: spinning ? '#ccc' : '#c0392b', color: '#fff', border: 'none', cursor: spinning ? 'default' : 'pointer' }}>{spinning ? 'ANALYZING...' : '📄 SUBMIT ESSAY'}</button>
+            {result && (<div style={{ marginTop: '20px', padding: '20px', backgroundColor: result.color, color: '#fff', borderRadius: '5px' }}><div style={{ fontSize: '48px' }}>{result.emoji}</div><div style={{ fontSize: '24px', fontWeight: 'bold' }}>{result.text}</div><div>{result.desc}</div></div>)}
+        </div>
+    );
+}
+
+function WhackALinkedIn() {
+    const [score, setScore] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(30);
+    const [gameActive, setGameActive] = useState(false);
+    const [moles, setMoles] = useState(Array(9).fill(false));
+    const [texts, setTexts] = useState(Array(9).fill(''));
+    const phrases = ["Just adapt!", "I'm an entrepreneur", "Hustle culture!", "🚀 Growth mindset", "DM for collab", "Thoughts? 🤔", "AI is the future", "Back in my day...", "Agree? ♻️"];
+    useEffect(() => {
+        if (!gameActive) return;
+        const moleTimer = setInterval(() => {
+            const newMoles = Array(9).fill(false); const newTexts = Array(9).fill('');
+            const numMoles = Math.floor(Math.random() * 3) + 1;
+            for (let i = 0; i < numMoles; i++) { const idx = Math.floor(Math.random() * 9); newMoles[idx] = true; newTexts[idx] = phrases[Math.floor(Math.random() * phrases.length)]; }
+            setMoles(newMoles); setTexts(newTexts);
+        }, 800);
+        const gameTimer = setInterval(() => { setTimeLeft(t => { if (t <= 1) { setGameActive(false); clearInterval(moleTimer); clearInterval(gameTimer); return 0; } return t - 1; }); }, 1000);
+        return () => { clearInterval(moleTimer); clearInterval(gameTimer); };
+    }, [gameActive]);
+    const whack = (idx) => { if (moles[idx]) { setScore(s => s + 1); const newMoles = [...moles]; newMoles[idx] = false; setMoles(newMoles); } };
+    const startGame = () => { setScore(0); setTimeLeft(30); setGameActive(true); };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>🔨 WHACK-A-LINKEDIN 🔨</h4>
+            <p style={{ fontSize: '14px', marginBottom: '15px' }}>Silence the thought leaders! They multiply infinitely.</p>
+            <div style={{ marginBottom: '15px', fontSize: '18px' }}>⏱️ {timeLeft}s | 🔨 {score} whacked</div>
+            {!gameActive && timeLeft === 30 && (<button onClick={startGame} style={{ padding: '15px 30px', fontSize: '18px', cursor: 'pointer', marginBottom: '15px' }}>START WHACKING</button>)}
+            {!gameActive && timeLeft === 0 && (<div style={{ marginBottom: '15px' }}><div style={{ fontSize: '24px', fontWeight: 'bold' }}>Game Over! Score: {score}</div><div style={{ fontStyle: 'italic', margin: '10px 0' }}>{score < 10 && "The LinkedIn bros won. They always do."}{score >= 10 && score < 20 && "Decent! But they're still posting."}{score >= 20 && "Impressive! But there are always more."}</div><button onClick={startGame} style={{ padding: '10px 20px', cursor: 'pointer' }}>Play Again</button></div>)}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', maxWidth: '400px', margin: '0 auto' }}>
+                {moles.map((isUp, idx) => (<div key={idx} onClick={() => whack(idx)} style={{ height: '100px', backgroundColor: isUp ? '#0077B5' : '#8B4513', borderRadius: '10px', cursor: gameActive ? 'crosshair' : 'default', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: isUp ? '12px' : '24px', fontWeight: 'bold', transition: 'all 0.1s', border: '3px solid #5d3a1a' }}>{isUp ? (<div><div style={{ fontSize: '24px' }}>💼</div><div>{texts[idx]}</div></div>) : '🕳️'}</div>))}
+            </div>
+            <div style={{ marginTop: '15px', fontSize: '12px', fontStyle: 'italic' }}>Note: In real life, you cannot whack LinkedIn commenters. This is a fantasy.</div>
+        </div>
+    );
+}
+
+function EssaySlots() {
+    const [spinning, setSpinning] = useState(false);
+    const [reels, setReels] = useState(['📝', '📝', '📝']);
+    const [result, setResult] = useState(null);
+    const reel1 = ['📝 Original', '🤖 AI-Written', '📋 Copied', '😴 3AM Draft'];
+    const reel2 = ['✅ 0% Detected', '⚠️ 47% Detected', '🚨 89% Detected', '🔧 System Error'];
+    const reel3 = ['A+', 'A-', 'B+', 'C', 'F', 'A+ (prof didnt check)'];
+    const spin = () => {
+        if (spinning) return; setSpinning(true); setResult(null);
+        let spins = 0;
+        const interval = setInterval(() => {
+            setReels([reel1[Math.floor(Math.random() * reel1.length)], reel2[Math.floor(Math.random() * reel2.length)], reel3[Math.floor(Math.random() * reel3.length)]]);
+            spins++;
+            if (spins > 20) { clearInterval(interval); const finalReels = [reel1[Math.floor(Math.random() * reel1.length)], reel2[Math.floor(Math.random() * reel2.length)], reel3[Math.floor(Math.random() * reel3.length)]]; setReels(finalReels); setSpinning(false); setResult(finalReels); }
+        }, 100);
+    };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#1a1a2e', border: '2px solid gold', textAlign: 'center', color: '#fff' }}>
+            <h4 style={{ color: 'gold' }}>🎰 ESSAY SLOT MACHINE 🎰</h4>
+            <p style={{ fontSize: '14px', marginBottom: '20px' }}>Pull the lever! Academia is random anyway.</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
+                {reels.map((reel, idx) => (<div key={idx} style={{ width: '120px', height: '80px', backgroundColor: '#fff', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold', border: '3px solid gold', borderRadius: '5px' }}>{reel}</div>))}
+            </div>
+            <button onClick={spin} disabled={spinning} style={{ padding: '15px 40px', fontSize: '18px', backgroundColor: spinning ? '#666' : '#c00', color: '#fff', border: '2px solid gold', cursor: spinning ? 'default' : 'pointer' }}>{spinning ? '🎰 SPINNING...' : '🎰 SUBMIT ESSAY'}</button>
+            {result && (<div style={{ marginTop: '20px', padding: '15px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '5px' }}><div style={{ fontSize: '18px', marginBottom: '10px' }}><strong>Your essay:</strong> {result[0]}</div><div style={{ fontSize: '18px', marginBottom: '10px' }}><strong>Detection:</strong> {result[1]}</div><div style={{ fontSize: '24px' }}><strong>Final Grade:</strong> {result[2]}</div><div style={{ marginTop: '10px', fontStyle: 'italic', fontSize: '14px' }}>{result[2].includes('A') && "Congratulations! The system is arbitrary."}{result[2].includes('F') && "Appeals are $200 and also arbitrary."}</div></div>)}
+        </div>
+    );
+}
+
+function TuitionPriceGame() {
+    const [questionIdx, setQuestionIdx] = useState(0);
+    const [guess, setGuess] = useState('');
+    const [answered, setAnswered] = useState(false);
+    const [score, setScore] = useState(0);
+    const items = [
+        { item: "One (1) college textbook (used, highlighting included)", price: 289, absurdity: "It's just paper with words!" },
+        { item: "Parking permit (one semester, Zone Z, 2 miles from campus)", price: 847, absurdity: "You can see campus on a clear day." },
+        { item: "Mandatory 'Student Activity Fee' (activities not included)", price: 1250, absurdity: "Activities are an additional $50-200 each." },
+        { item: "One credit hour at private university", price: 1847, absurdity: "That's 15 hours of class. Do the math per minute." },
+        { item: "Campus health center visit (Tylenol provided)", price: 175, absurdity: "Tylenol at CVS: $8" },
+        { item: "Late registration fee (you were 3 minutes late)", price: 250, absurdity: "The system was down for 2 of those minutes." },
+    ];
+    const q = items[questionIdx];
+    const checkAnswer = () => { const numGuess = parseInt(guess); const diff = Math.abs(numGuess - q.price); const percentOff = (diff / q.price) * 100; if (percentOff <= 20) setScore(score + 1); setAnswered(true); };
+    const nextQ = () => { if (questionIdx < items.length - 1) { setQuestionIdx(questionIdx + 1); setGuess(''); setAnswered(false); } };
+    return (
+        <div style={{ padding: '20px', backgroundColor: '#f9f9f9', border: '2px solid #000', textAlign: 'center' }}>
+            <h4>💰 THE PRICE IS (ALWAYS MORE THAN YOU) RIGHT 💰</h4>
+            <p style={{ fontSize: '14px', marginBottom: '15px' }}>Guess the absurd cost! Within 20% = correct.</p>
+            <div style={{ marginBottom: '10px' }}>Question {questionIdx + 1}/{items.length} | Score: {score}</div>
+            <div style={{ backgroundColor: '#fff', padding: '20px', border: '1px solid #ddd', marginBottom: '15px', fontSize: '18px' }}>{q.item}</div>
+            {!answered ? (<div><input type="number" value={guess} onChange={(e) => setGuess(e.target.value)} placeholder="Your guess ($)" style={{ padding: '10px', fontSize: '18px', width: '150px', marginRight: '10px' }}/><button onClick={checkAnswer} style={{ padding: '10px 20px', fontSize: '18px', cursor: 'pointer' }}>Guess</button></div>) : (<div><div style={{ fontSize: '36px', fontWeight: 'bold', color: '#c00', marginBottom: '10px' }}>${q.price}</div><div style={{ marginBottom: '10px' }}>Your guess: ${guess} — {Math.abs(parseInt(guess) - q.price) <= q.price * 0.2 ? '✅ Close enough!' : '❌ Not even close!'}</div><div style={{ fontStyle: 'italic', color: '#666', marginBottom: '15px' }}>{q.absurdity}</div>{questionIdx < items.length - 1 ? (<button onClick={nextQ} style={{ padding: '10px 20px', cursor: 'pointer' }}>Next Item →</button>) : (<div style={{ fontWeight: 'bold' }}>Final Score: {score}/{items.length}<div style={{ fontStyle: 'italic', marginTop: '10px' }}>The real loser is everyone who paid these prices.</div></div>)}</div>)}
+        </div>
+    );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<AcademicArcade />);
+</script>
+</body>
+</html>
