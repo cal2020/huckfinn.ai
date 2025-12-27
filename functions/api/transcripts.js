@@ -3,6 +3,8 @@
  *
  * Receives transcripts and forwards them to a Discord channel via webhook.
  *
+ * Deployed to: https://huckfinn.ai/api/transcripts
+ *
  * Environment Variables Required:
  *   DISCORD_WEBHOOK_URL - The Discord webhook URL for the target channel
  *
